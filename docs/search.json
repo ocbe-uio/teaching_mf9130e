@@ -1,0 +1,184 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "MF9130E - Introduction to Statistics",
+    "section": "",
+    "text": "This website is under construction. Stay tuned!\nDate: Time to be updated\nRoom: Location to be updated\n\n\nWelcome!\n\nThe goal of the 8-days course is to introduce kep concepts in statistics with medical applications.\nThe course is intended for students and researchers who are interested in statistics and R programming (e.g. biomedical data)\nCourse material can be found in the course github repository.\n\n\n\nSchedule (being updated!)\n\n\n\nTime\nTopic\nPresenter\n\n\n\n\n9:00 - 10:00\nplaceholder day1\nMZ\n\n\n10:15 - 11:00\nplaceholder day2\nMZ\n\n\n11:15 - 12:00\nplaceholder day3\nMZ"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "A central problem in machine learning is how to make an algorithm perform well not just on the training data, but also on new inputs. Many strategies in machine learning are explicitly designed to reduce this test error, possibly at the expense of increased training error. These strategies are collectively known as regularisation and they are instrumental for good performance of any kind of prediction or classification model, especially in the context of small data (many features, few samples).\nWe will discuss basic connected concepts of generalisation, overfitting, bias-variance trade-off and regularisation and will illustrate the principles with penalised (generalised) linear regression models, with ridge, lasso and elastic net penalties as prominent examples.\nFinally, we will present the idea of structured penalties and priors, which can be tailored to account for structures present in the data, e.g. multi-modality or complex correlation structures. We will use examples from large-scale cancer pharmacogenomic screens, where penalised regression and alternative Bayesian approaches are used for predicting drug sensitivity and synergy based on the genomic characterisation of tumour samples.\nIn the hands-on tutorial we will use R to perform an integrated analysis of multi-omics data with penalised regression.\n\nContact\nManuela Zucknick: manuela.zucknick@medisin.uio.no\nChi Zhang: chi.zhang@medisin.uio.no"
+  },
+  {
+    "objectID": "exercises_lab/lab1.html",
+    "href": "exercises_lab/lab1.html",
+    "title": "R Lab 1",
+    "section": "",
+    "text": "In this part of the exercise, we model (on the log-scale) the association of miRNA espression on protein expression adjusting for the corresponding mRNA.\nInvestigate miR-107 and B-RAF (Aure et al, 2015, Figure 2H)\n\n\n\n\nprt.BRAF = prt[12,]\nrna.BRAF = rna[12,]\nmir.107 = mir[16,] \n\n\n\non the log-scale, Aure et al. 2015, equation (3)\n\nfitA <- lm(prt.BRAF ~ mir.107 + rna.BRAF)\nsummary(fitA)\n\n\nCall:\nlm(formula = prt.BRAF ~ mir.107 + rna.BRAF)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-2.3028 -0.6126  0.0453  0.6153  3.1361 \n\nCoefficients:\n              Estimate Std. Error t value Pr(>|t|)    \n(Intercept) -7.315e-08  5.068e-02   0.000        1    \nmir.107      4.324e-01  5.079e-02   8.513 1.06e-15 ***\nrna.BRAF     3.200e-01  5.079e-02   6.301 1.15e-09 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.851 on 279 degrees of freedom\nMultiple R-squared:  0.281, Adjusted R-squared:  0.2758 \nF-statistic: 54.51 on 2 and 279 DF,  p-value: < 2.2e-16\n\n\nAdd smooth non-linear cures to the scatterplots: use existing panel.smooth() function, and add linear regression lines to the scatterplots:\n\npanel.linear <- function (x, y, col.regres = \"blue\", ...) \n{ \n  points(x, y, pch=19) \n  ok <- is.finite(x) & is.finite(y) \n  if (any(ok)) \n    abline(stats::lm(y[ok] ~ x[ok]), col = col.regres, ...) \n} \n\npairs(data.frame(mir.107, prt.BRAF, rna.BRAF), \n      lower.panel = panel.smooth,\n      upper.panel = panel.linear)\n\n\n\n\n\n\n\nwith all miRNAs (Aure et al. 2015, equation (4))\n\nlibrary(glmnet)\n\n# 10-fold CV to determine the optimal lambda:\n# Note: rna.BRAF is penalised together with all the mir variables. \n# You can use the penalty.factor option to avoid this.\nset.seed(1234)\ncvfit <- cv.glmnet(y=prt.BRAF, x=t(rbind(mir, rna.BRAF)),\n                   alpha=1, nfolds=10, standardize=TRUE)\n\npar(mfrow=c(1,1))\nplot(cvfit)\nlambda.opt <- cvfit$lambda.min\n\n# Coefficient path plot and coefficients for optimal lambda:\nfitB <- cvfit$glmnet.fit\n\nplot(fitB, xvar=\"lambda\")\nabline(v=log(lambda.opt))\n\ncoef(fitB, s=lambda.opt)\npredict(fitB, type=\"nonzero\", s=lambda.opt)\n\nCompare the regression coefficient of mir.107 from the models in (a) and (b):\n\ncoef(fitA)[\"mir.107\"]\nas.matrix(coef(fitB, s=cvfit$lambda.min))[\"hsa-miR-107\",]\n\n\n\n\n\n\n\nTask 3\n\n\n\nRepeat the lasso analysis, but this time do not penalise the rna.BRAF variable together with the mir variables.\nCheck out the information on the penalty.factor option in ?glmnet to understand how."
+  },
+  {
+    "objectID": "exercises_lab/exercise_lab_overview.html",
+    "href": "exercises_lab/exercise_lab_overview.html",
+    "title": "Exercises and R lab sessions",
+    "section": "",
+    "text": "This page provides an overview of the exercises and R lab sessions."
+  },
+  {
+    "objectID": "course_info/overview.html",
+    "href": "course_info/overview.html",
+    "title": "Course overview",
+    "section": "",
+    "text": "Learning Objectives\nAt the end of the course, participants will be able to\n\nunderstand key concepts …;\nunderstand how to …\n\n\n\nPre-requisites\n\n?\n\n\n\nContact\nManuela Zucknick (course lead): manuela.zucknick@medisin.uio.no\nChi Zhang (lecturer, developer of this website): chi.zhang@medisin.uio.no"
+  },
+  {
+    "objectID": "course_info/useful_links.html",
+    "href": "course_info/useful_links.html",
+    "title": "Useful links",
+    "section": "",
+    "text": "Here are some useful links for the participants of the course."
+  },
+  {
+    "objectID": "course_info/useful_links.html#software",
+    "href": "course_info/useful_links.html#software",
+    "title": "Useful links",
+    "section": "Software",
+    "text": "Software\nIn this workshop we will be using R. You can either\n\nhave R and Rstudio installed on your laptop\nor, use Posit cloud (formerly Rstudio Cloud).\n\nPosit cloud is free of charge for personal users, yet you need to sign up for a new user account and have internet connection."
+  },
+  {
+    "objectID": "course_info/useful_links.html#data",
+    "href": "course_info/useful_links.html#data",
+    "title": "Useful links",
+    "section": "Data",
+    "text": "Data"
+  },
+  {
+    "objectID": "course_info/useful_links.html#code",
+    "href": "course_info/useful_links.html#code",
+    "title": "Useful links",
+    "section": "Code",
+    "text": "Code"
+  },
+  {
+    "objectID": "course_info/useful_links.html#resources-updating",
+    "href": "course_info/useful_links.html#resources-updating",
+    "title": "Useful links",
+    "section": "Resources (updating…)",
+    "text": "Resources (updating…)\nLecture notes link\nLab notes link\nAure 2015 Paper link"
+  },
+  {
+    "objectID": "course_info/schedule.html",
+    "href": "course_info/schedule.html",
+    "title": "Schedule",
+    "section": "",
+    "text": "Here are the schedule for the course (being updated).\n\nSchedule (being updated!)\n\n\n\nTime\nTopic\nPresenter\n\n\n\n\n9:00 - 10:00\nplaceholder day1\nMZ\n\n\n10:15 - 11:00\nplaceholder day2\nMZ\n\n\n11:15 - 12:00\nplaceholder day3\nMZ"
+  },
+  {
+    "objectID": "daily_content/day8.html",
+    "href": "daily_content/day8.html",
+    "title": "Day 8",
+    "section": "",
+    "text": "Survival analysis"
+  },
+  {
+    "objectID": "daily_content/day4.html",
+    "href": "daily_content/day4.html",
+    "title": "Day 4",
+    "section": "",
+    "text": "Risks, Odds\n\n\nChi-squared tests"
+  },
+  {
+    "objectID": "daily_content/day5.html",
+    "href": "daily_content/day5.html",
+    "title": "Day 5",
+    "section": "",
+    "text": "Transformation\n\n\nNon-parametric tests\n\n\nSample size and power"
+  },
+  {
+    "objectID": "daily_content/day7.html",
+    "href": "daily_content/day7.html",
+    "title": "Day 7",
+    "section": "",
+    "text": "Logistic regression"
+  },
+  {
+    "objectID": "daily_content/day6.html",
+    "href": "daily_content/day6.html",
+    "title": "Day 6",
+    "section": "",
+    "text": "Linear regression"
+  },
+  {
+    "objectID": "daily_content/day2.html",
+    "href": "daily_content/day2.html",
+    "title": "Day 2",
+    "section": "",
+    "text": "Probability\n\n\nBayes Theorem\n\n\nDiagnostic tests, sensitivity, specificity"
+  },
+  {
+    "objectID": "daily_content/day3.html",
+    "href": "daily_content/day3.html",
+    "title": "Day 3",
+    "section": "",
+    "text": "Confidence interval\n\n\nT-test"
+  },
+  {
+    "objectID": "lecture_notes/lecture_notes_overview.html",
+    "href": "lecture_notes/lecture_notes_overview.html",
+    "title": "Lecture notes",
+    "section": "",
+    "text": "On this page you’ll find a list of lecture notes, organised by topics and days presented.\n\n\nDescriptive statistics (insert link)\n\n\n\nProbability\nBayes Theorem\nDiagnostic tests\n…"
+  },
+  {
+    "objectID": "supplementary/note1.html",
+    "href": "supplementary/note1.html",
+    "title": "Supplementary note 1",
+    "section": "",
+    "text": "Supplementary note\nThis is a placeholder for supplementary notes."
+  },
+  {
+    "objectID": "for_instructors/how-to.html",
+    "href": "for_instructors/how-to.html",
+    "title": "MF9130E - V23",
+    "section": "",
+    "text": "Where are my content\nLecture notes\n\nlecture_notes/\n\nLab content\n\nlab/code/ stores code\nlab/data/ stores data\nlab/Aure_2015.pdf is the paper\nlab/StatPrinciples_RLab.pdf is the lab notes\n\n\n\nThe course website\nThe website is linked to the github repository, specifically,\n\nHomepage links to index.qmd\nPreparation links to part0_prep.qmd\nR Lab - Part I links to part1_eda.qmd\nR Lab - Part II links to part2_model.qmd\nAbout links to about.qmd\n\nThe overall appearance is controlled by _quarto.yml.\n\n\nHow to modify the content\nThe website is made by quarto, which is a better version of Rmarkdown. The way code chunk works is exactly the same as Rmarkdown (only that it supports a few more languages in the same file).\nYou might need to install quarto and upgrade Rstudio to the latest version, to be able to render the documents by yourself.\nMake sure that the path are set properly so that files can be loaded properly.\nDeploy changes to the website: push all modifications to github, the site will update itself momentarily (after the CI/CD are successful)\nYou can also let me know if you need any help with the website or text."
+  },
+  {
+    "objectID": "preparation/r_setup.html",
+    "href": "preparation/r_setup.html",
+    "title": "Preparation",
+    "section": "",
+    "text": "Here are some preparation information for the participants."
+  },
+  {
+    "objectID": "preparation/r_setup.html#software",
+    "href": "preparation/r_setup.html#software",
+    "title": "Preparation",
+    "section": "Software",
+    "text": "Software\nIn this workshop we will be using R. You can either\n\nhave R and Rstudio installed on your laptop\nor, use Posit cloud (formerly Rstudio Cloud).\n\nPosit cloud is free of charge for personal users, yet you need to sign up for a new user account and have internet connection.\nThe R package we are using is glmnet."
+  },
+  {
+    "objectID": "preparation/r_setup.html#data",
+    "href": "preparation/r_setup.html#data",
+    "title": "Preparation",
+    "section": "Data",
+    "text": "Data\nThe datasets we use can be found here."
+  },
+  {
+    "objectID": "preparation/r_setup.html#code",
+    "href": "preparation/r_setup.html#code",
+    "title": "Preparation",
+    "section": "Code",
+    "text": "Code\nThe R scripts used in part 1 and part 2 can be found here."
+  },
+  {
+    "objectID": "preparation/r_setup.html#resources",
+    "href": "preparation/r_setup.html#resources",
+    "title": "Preparation",
+    "section": "Resources",
+    "text": "Resources\nLecture notes link\nLab notes link\nAure 2015 Paper link"
+  }
+]

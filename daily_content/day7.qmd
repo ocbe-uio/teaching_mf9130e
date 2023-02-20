@@ -1,0 +1,10 @@
+---
+title: "Day 7"
+format: 
+  html:
+    code-fold: false
+    code-tools: true
+editor: visual
+---
+
+# Logistic regression 

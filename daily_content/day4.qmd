@@ -1,0 +1,12 @@
+---
+title: "Day 4"
+format: 
+  html:
+    code-fold: false
+    code-tools: true
+editor: visual
+---
+
+# Risks, Odds
+
+# Chi-squared tests

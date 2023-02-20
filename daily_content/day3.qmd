@@ -1,0 +1,12 @@
+---
+title: "Day 3"
+format: 
+  html:
+    code-fold: false
+    code-tools: true
+editor: visual
+---
+
+# Confidence interval
+
+# T-test

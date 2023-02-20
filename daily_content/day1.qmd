@@ -1,0 +1,10 @@
+---
+title: "Day 1"
+format: 
+  html:
+    code-fold: false
+    code-tools: true
+editor: visual
+---
+
+## Descriptive statistics

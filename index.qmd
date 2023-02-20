@@ -1,0 +1,28 @@
+---
+title: "MF9130E - Introduction to Statistics"
+---
+
+**This website is under construction. Stay tuned!**
+
+Date: **Time to be updated**
+
+Room: **Location to be updated**
+
+------------------
+
+
+# Welcome!
+
+-   The goal of the 8-days course is to introduce kep concepts in statistics with medical applications.
+-   The course is intended for students and researchers who are interested in statistics and R programming (e.g. biomedical data)
+-   Course material can be found in the course [github repository](https://github.com/ocbe-uio/teaching_mf9130e).
+
+
+# Schedule (being updated!)
+
+|     Time      |                  Topic                   |    Presenter     |
+|:-------------:|:-----------------------------------------:|:-------------:|
+| 9:00 - 10:00  | [placeholder day1](course_info/overview.qmd) | MZ |
+| 10:15 - 11:00 |     [placeholder day2](course_info/overview.qmd)      | MZ |
+| 11:15 - 12:00 |     [placeholder day3](course_info/overview.qmd)      | MZ |
+

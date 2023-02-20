@@ -1,0 +1,27 @@
+---
+title: "Lecture notes"
+format: 
+  html:
+    code-fold: true
+    code-tools: true
+editor: visual
+---
+
+# Lecture notes
+
+On this page you'll find a list of lecture notes, organised by topics and days presented. 
+
+
+## Day 1
+
+Descriptive statistics (insert link)
+
+## Day 2
+
+Probability
+
+Bayes Theorem 
+
+Diagnostic tests
+
+... 

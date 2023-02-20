@@ -1,0 +1,25 @@
+---
+title: "Course overview"
+format: 
+  html:
+    code-fold: false
+    code-tools: false
+editor: visual
+---
+
+#### Learning Objectives
+
+At the end of the course, participants will be able to
+
+-   understand key concepts ...;
+-   understand how to ...
+
+#### Pre-requisites
+
+-   ?
+
+#### Contact
+
+Manuela Zucknick (course lead): manuela.zucknick\@medisin.uio.no
+
+Chi Zhang (lecturer, developer of this website): chi.zhang\@medisin.uio.no
