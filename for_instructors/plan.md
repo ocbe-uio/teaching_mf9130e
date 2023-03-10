@@ -32,16 +32,28 @@ Lab sessions
 
 
 
-#### Afternoon: lecture: Probability, distribution (A)
+#### Afternoon: lecture: Probability, Diagnostic testing (A)
 
+13:00-13:15 Intro to probabilites and diagnostic testing
+
+13:15-14:30 Self study 
+
+14:30-15:45 Paper and discussions in groups (COVID testing)
+
+15:45-16:00 Wrap up
 
 
 ## Wednesday (A,V)
 
 #### Morning: R lab, lecture: distributions, simulation (A)
 
+9:00 - 9:15 Intro to probability distributions
 
+9:15 - 10:15 Self study
 
+10:15 - 11:45 R lab (Simulations)
+
+11:45 - 12:00 Wrap up
 
 
 #### Afternoon: lecture: confidence interval, t-test (V)
