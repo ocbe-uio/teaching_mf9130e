@@ -180,5 +180,166 @@
     "title": "Preparation",
     "section": "Resources",
     "text": "Resources\nLecture notes link\nLab notes link\nAure 2015 Paper link"
+  },
+  {
+    "objectID": "lab/lab_overview.html",
+    "href": "lab/lab_overview.html",
+    "title": "R Lab",
+    "section": "",
+    "text": "Lab\n\n\n\n\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\nIntroduction to R\n\n\nR lab 1\n\n\n\n\nDescriptive statistics\n\n\nR lab 2\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "lab/lab1.html",
+    "href": "lab/lab1.html",
+    "title": "Introduction to R",
+    "section": "",
+    "text": "In this part of the exercise, we model (on the log-scale) the association of miRNA espression on protein expression adjusting for the corresponding mRNA.\nInvestigate miR-107 and B-RAF (Aure et al, 2015, Figure 2H)\n\n\n\n\nprt.BRAF = prt[12,]\nrna.BRAF = rna[12,]\nmir.107 = mir[16,] \n\n\n\non the log-scale, Aure et al. 2015, equation (3)\n\nfitA <- lm(prt.BRAF ~ mir.107 + rna.BRAF)\nsummary(fitA)\n\n\nCall:\nlm(formula = prt.BRAF ~ mir.107 + rna.BRAF)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-2.3028 -0.6126  0.0453  0.6153  3.1361 \n\nCoefficients:\n              Estimate Std. Error t value Pr(>|t|)    \n(Intercept) -7.315e-08  5.068e-02   0.000        1    \nmir.107      4.324e-01  5.079e-02   8.513 1.06e-15 ***\nrna.BRAF     3.200e-01  5.079e-02   6.301 1.15e-09 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.851 on 279 degrees of freedom\nMultiple R-squared:  0.281, Adjusted R-squared:  0.2758 \nF-statistic: 54.51 on 2 and 279 DF,  p-value: < 2.2e-16\n\n\n\n\n\n\n\n\nTask 3\n\n\n\nRepeat the lasso analysis, but this time do not penalise the rna.BRAF variable together with the mir variables.\nCheck out the information on the penalty.factor option in ?glmnet to understand how."
+  },
+  {
+    "objectID": "lab/lab2.html",
+    "href": "lab/lab2.html",
+    "title": "R Lab 1",
+    "section": "",
+    "text": "In this part of the exercise, we model (on the log-scale) the association of miRNA espression on protein expression adjusting for the corresponding mRNA.\nInvestigate miR-107 and B-RAF (Aure et al, 2015, Figure 2H)\n\n\n\n\nprt.BRAF = prt[12,]\nrna.BRAF = rna[12,]\nmir.107 = mir[16,] \n\n\n\non the log-scale, Aure et al. 2015, equation (3)\n\nfitA <- lm(prt.BRAF ~ mir.107 + rna.BRAF)\nsummary(fitA)\n\n\nCall:\nlm(formula = prt.BRAF ~ mir.107 + rna.BRAF)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-2.3028 -0.6126  0.0453  0.6153  3.1361 \n\nCoefficients:\n              Estimate Std. Error t value Pr(>|t|)    \n(Intercept) -7.315e-08  5.068e-02   0.000        1    \nmir.107      4.324e-01  5.079e-02   8.513 1.06e-15 ***\nrna.BRAF     3.200e-01  5.079e-02   6.301 1.15e-09 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.851 on 279 degrees of freedom\nMultiple R-squared:  0.281, Adjusted R-squared:  0.2758 \nF-statistic: 54.51 on 2 and 279 DF,  p-value: < 2.2e-16\n\n\nAdd smooth non-linear cures to the scatterplots: use existing panel.smooth() function, and add linear regression lines to the scatterplots:\n\npanel.linear <- function (x, y, col.regres = \"blue\", ...) \n{ \n  points(x, y, pch=19) \n  ok <- is.finite(x) & is.finite(y) \n  if (any(ok)) \n    abline(stats::lm(y[ok] ~ x[ok]), col = col.regres, ...) \n} \n\npairs(data.frame(mir.107, prt.BRAF, rna.BRAF), \n      lower.panel = panel.smooth,\n      upper.panel = panel.linear)\n\n\n\n\n\n\n\nwith all miRNAs (Aure et al. 2015, equation (4))\n\nlibrary(glmnet)\n\n# 10-fold CV to determine the optimal lambda:\n# Note: rna.BRAF is penalised together with all the mir variables. \n# You can use the penalty.factor option to avoid this.\nset.seed(1234)\ncvfit <- cv.glmnet(y=prt.BRAF, x=t(rbind(mir, rna.BRAF)),\n                   alpha=1, nfolds=10, standardize=TRUE)\n\npar(mfrow=c(1,1))\nplot(cvfit)\nlambda.opt <- cvfit$lambda.min\n\n# Coefficient path plot and coefficients for optimal lambda:\nfitB <- cvfit$glmnet.fit\n\nplot(fitB, xvar=\"lambda\")\nabline(v=log(lambda.opt))\n\ncoef(fitB, s=lambda.opt)\npredict(fitB, type=\"nonzero\", s=lambda.opt)\n\nCompare the regression coefficient of mir.107 from the models in (a) and (b):\n\ncoef(fitA)[\"mir.107\"]\nas.matrix(coef(fitB, s=cvfit$lambda.min))[\"hsa-miR-107\",]\n\n\n\n\n\n\n\nTask 3\n\n\n\nRepeat the lasso analysis, but this time do not penalise the rna.BRAF variable together with the mir variables.\nCheck out the information on the penalty.factor option in ?glmnet to understand how."
+  },
+  {
+    "objectID": "for_instructors/plan.html",
+    "href": "for_instructors/plan.html",
+    "title": "MF9130E - V23",
+    "section": "",
+    "text": "Self study sessions\nLab sessions"
+  },
+  {
+    "objectID": "for_instructors/plan.html#monday-m",
+    "href": "for_instructors/plan.html#monday-m",
+    "title": "MF9130E - V23",
+    "section": "Monday (M)",
+    "text": "Monday (M)\n\nAfternoon: lecture: Intro, descriptive statistics (M)"
+  },
+  {
+    "objectID": "for_instructors/plan.html#tuesday-ca",
+    "href": "for_instructors/plan.html#tuesday-ca",
+    "title": "MF9130E - V23",
+    "section": "Tuesday (C,A)",
+    "text": "Tuesday (C,A)\n\nMorning: R lab (C)\n9:00-10:00 Introduction to R\n10:15-11:00 Descriptive statistics\n11:00-12:00 Lab practice, plus discussion\n\n\nAfternoon: lecture: Probability, Diagnostic testing (A)\n13:00-13:15 Intro to probabilites and diagnostic testing\n13:15-14:30 Self study\n14:30-15:45 Paper and discussions in groups (COVID testing)\n15:45-16:00 Wrap up"
+  },
+  {
+    "objectID": "for_instructors/plan.html#wednesday-av",
+    "href": "for_instructors/plan.html#wednesday-av",
+    "title": "MF9130E - V23",
+    "section": "Wednesday (A,V)",
+    "text": "Wednesday (A,V)\n\nMorning: R lab, lecture: distributions, simulation (A)\n9:00 - 9:15 Intro to probability distributions\n9:15 - 10:15 Self study\n10:15 - 11:45 R lab (Simulations)\n11:45 - 12:00 Wrap up\n\n\nAfternoon: lecture: confidence interval, t-test (V)\n13:00-13:30 lecture on confidence interval (intro)\n13:30-14:30 self study CI\n14:30-15:15 intro on testing - t test (one sample), simplest situation - t test (two sample)\n15:15-16:00 self study/home\n\n\nThursday (C,V)\n\nMorning: R lab (C)\n9:00-9:45 Lab\n\nrepeat theory\nR example\n\n9:45 - 11:00 Lab\n11:00-11:30 Lab (discussion)\n\n\nAfternoon: lecture: proportions, tables, chi-sq (V)\n12:30-13:30 lecture\n\nproportions (CI)\ntables\nrisks\n\n13:30-14:30 self study\n14:30-15:15 V intro to chi-sq test"
+  },
+  {
+    "objectID": "for_instructors/plan.html#monday-cv",
+    "href": "for_instructors/plan.html#monday-cv",
+    "title": "MF9130E - V23",
+    "section": "Monday (C,V)",
+    "text": "Monday (C,V)\n\nMorning: lecture + lab: transformations, EDA, non-parametric tests (C)\n\n\nAfternoon: lecture + lab: sample size (V)"
+  },
+  {
+    "objectID": "for_instructors/plan.html#tuesday-jo-m",
+    "href": "for_instructors/plan.html#tuesday-jo-m",
+    "title": "MF9130E - V23",
+    "section": "Tuesday (Jo? M)",
+    "text": "Tuesday (Jo? M)\nMorning: Study design (Jo?)\nAfternoon: regression (M)"
+  },
+  {
+    "objectID": "for_instructors/plan.html#wednesday-mc",
+    "href": "for_instructors/plan.html#wednesday-mc",
+    "title": "MF9130E - V23",
+    "section": "Wednesday (M,C?)",
+    "text": "Wednesday (M,C?)\nMorning: regression\nAfternoon: regression"
+  },
+  {
+    "objectID": "for_instructors/plan.html#thursday-m",
+    "href": "for_instructors/plan.html#thursday-m",
+    "title": "MF9130E - V23",
+    "section": "Thursday (M)",
+    "text": "Thursday (M)"
+  },
+  {
+    "objectID": "lab/overview.html",
+    "href": "lab/overview.html",
+    "title": "R Lab and code",
+    "section": "",
+    "text": "Welcome! Here you will find material for R lab and code for this course."
+  },
+  {
+    "objectID": "lab/overview.html#lab",
+    "href": "lab/overview.html#lab",
+    "title": "R Lab and code",
+    "section": "Lab",
+    "text": "Lab\nPLAN: use hide-code? or prepare 2 sets, one for demonstration in class, another for home-exercise. for the home exercise, can attach worked solution at the bottom.\n\n\n\n\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\nIntroduction to R\n\n\nBasic commands, data I/O, manipulation, visualisation\n\n\n\n\nDescriptive statistics\n\n\nR lab 2\n\n\n\n\nStatistical inference and confidence interval\n\n\nR lab 1\n\n\n\n\nT test\n\n\nR lab 1\n\n\n\n\nCategorical data analysis\n\n\nContingency table, chi-square test, proportions\n\n\n\n\nExploratory data analysis\n\n\nEDA\n\n\n\n\nNon-parametric tests\n\n\nWilcoxon signed rank, rank sum test\n\n\n\n\nSample size and power\n\n\nR lab 1\n\n\n\n\nRegression analysis\n\n\nLinear, logistic regression\n\n\n\n\nSurvival analysis\n\n\nKM curve, log rank tests\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "lab/lab_descriptive.html",
+    "href": "lab/lab_descriptive.html",
+    "title": "Descriptive statistics",
+    "section": "",
+    "text": "In this part of the exercise, we model (on the log-scale) the association of miRNA espression on protein expression adjusting for the corresponding mRNA.\nInvestigate miR-107 and B-RAF (Aure et al, 2015, Figure 2H)\n\n\n\n\nprt.BRAF = prt[12,]\nrna.BRAF = rna[12,]\nmir.107 = mir[16,] \n\n\n\non the log-scale, Aure et al. 2015, equation (3)\n\nfitA <- lm(prt.BRAF ~ mir.107 + rna.BRAF)\nsummary(fitA)\n\n\nCall:\nlm(formula = prt.BRAF ~ mir.107 + rna.BRAF)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-2.3028 -0.6126  0.0453  0.6153  3.1361 \n\nCoefficients:\n              Estimate Std. Error t value Pr(>|t|)    \n(Intercept) -7.315e-08  5.068e-02   0.000        1    \nmir.107      4.324e-01  5.079e-02   8.513 1.06e-15 ***\nrna.BRAF     3.200e-01  5.079e-02   6.301 1.15e-09 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.851 on 279 degrees of freedom\nMultiple R-squared:  0.281, Adjusted R-squared:  0.2758 \nF-statistic: 54.51 on 2 and 279 DF,  p-value: < 2.2e-16\n\n\n\n\n\n\n\n\nTask 3\n\n\n\nRepeat the lasso analysis, but this time do not penalise the rna.BRAF variable together with the mir variables.\nCheck out the information on the penalty.factor option in ?glmnet to understand how."
+  },
+  {
+    "objectID": "lab/lab_intro_r.html",
+    "href": "lab/lab_intro_r.html",
+    "title": "Introduction to R",
+    "section": "",
+    "text": "Material on this page is under development. There could be errors."
+  },
+  {
+    "objectID": "lab/overview.html#lab-with-code-solution",
+    "href": "lab/overview.html#lab-with-code-solution",
+    "title": "R Lab and code",
+    "section": "Lab (with code solution)",
+    "text": "Lab (with code solution)\nPLAN: use hide-code? or prepare 2 sets, one for demonstration in class, another for home-exercise. for the home exercise, can attach worked solution at the bottom.\n\n\n\n\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\nIntroduction to R\n\n\nR lab 1\n\n\n\n\nDescriptive statistics\n\n\nR lab 2\n\n\n\n\nStatistical inference and confidence interval\n\n\nR lab 1\n\n\n\n\nT test\n\n\nR lab 1\n\n\n\n\nCategorical data analysis\n\n\nContingency table, chi-square test, proportions\n\n\n\n\nExploratory data analysis\n\n\nEDA\n\n\n\n\nNon-parametric tests\n\n\nWilcoxon signed rank, rank sum test\n\n\n\n\nSample size and power\n\n\nR lab 1\n\n\n\n\nRegression analysis\n\n\nLinear, logistic regression\n\n\n\n\nSurvival analysis\n\n\nKM curve, log rank tests\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "lab/overview.html#set-up",
+    "href": "lab/overview.html#set-up",
+    "title": "R Lab and code",
+    "section": "Set-up",
+    "text": "Set-up\nPlease refer to (link to setup) page for more information.\n\nData\nDatasets used for this course can be found at insert path.\n\n\nR scripts\nR scripts used for each section can be downloaded directly at insert path."
+  },
+  {
+    "objectID": "lab/overview.html#useful-resources",
+    "href": "lab/overview.html#useful-resources",
+    "title": "R Lab and code",
+    "section": "Useful resources",
+    "text": "Useful resources\nBook (Wickham et al) R for Data Science (2e)"
+  },
+  {
+    "objectID": "lab/lab_intro_r.html#data-import-and-export",
+    "href": "lab/lab_intro_r.html#data-import-and-export",
+    "title": "Introduction to R",
+    "section": "Data import and export",
+    "text": "Data import and export\nproject management\nset work directory"
+  },
+  {
+    "objectID": "lab/lab_intro_r.html#data-frame-manipulation",
+    "href": "lab/lab_intro_r.html#data-frame-manipulation",
+    "title": "Introduction to R",
+    "section": "Data frame manipulation",
+    "text": "Data frame manipulation"
+  },
+  {
+    "objectID": "lab/lab_intro_r.html#visualisation-base-r",
+    "href": "lab/lab_intro_r.html#visualisation-base-r",
+    "title": "Introduction to R",
+    "section": "Visualisation (base R)",
+    "text": "Visualisation (base R)\nJust some basics, since more specific types of viz will be shown in each section\n\n# need to load the data in this page again. DO NOT SHOW\nmir <- read.table(\"data/miRNA-421x282.txt\", header=T, sep=\"\\t\", dec=\".\")\n\nmir <- as.matrix(mir)\n\n\nmir.107 = mir[16,] \n\n\n(a) Linear regression model\non the log-scale, Aure et al. 2015, equation (3)\n\n\n\n\n\n\nTask 3\n\n\n\nRepeat the lasso analysis, but this time do not penalise the rna.BRAF variable together with the mir variables.\nCheck out the information on the penalty.factor option in ?glmnet to understand how."
+  },
+  {
+    "objectID": "lab/lab_intro_r.html#basic-commands",
+    "href": "lab/lab_intro_r.html#basic-commands",
+    "title": "Introduction to R",
+    "section": "Basic commands",
+    "text": "Basic commands\nassignment of object, r as calculator\n\n# assign values to variables a, b, c\n# (comments start with #)\na <- 3\nb <- 4\nc <- 7\n\n# calculate the mean\n# output directly\n(a+b+c)/3\n\n[1] 4.666667\n\n# or, save into a new variable d\nd <- (a+b+c)/3\nd\n\n[1] 4.666667"
+  },
+  {
+    "objectID": "lab/lab_intro_r.html#r-in-a-nutshell",
+    "href": "lab/lab_intro_r.html#r-in-a-nutshell",
+    "title": "Introduction to R",
+    "section": "R in a nutshell",
+    "text": "R in a nutshell\nR is a language and environment for statistical computing, data analysis, visualisation and graphics and many more. It is a free and open source software, under the terms of GNU General Public License.\nR runs on a wide variety of platforms, including Windows, Linux and MacOS.\nThe latest R version is 4.2.3 (2023-03-15), “Shortstop Beagle”.\n\nRStudio and Posit\nRStudio is a free and open-source IDE (integrated development environment). RStudio IDE is developed by Posit, previously RStudio PBC.\nIt is possible to download RStudio to your laptop or desktop; or use RStudio Cloud (need internet connection).\n4 Panels, use screenshot\n\n\nGetting help\n\nUse Google well! There are a lot of discussions in forums such as StackOverflow\nCheatsheets made by Posit and community\nType ?functionName in the console\nPackage vignettes (longer format of documentation)"
   }
 ]

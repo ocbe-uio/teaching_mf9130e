@@ -1,0 +1,12 @@
+---
+title: "Categorical data analysis"
+description: "Contingency table, chi-square test, proportions"
+format: 
+  html:
+    code-fold: false
+    code-tools: true
+editor: visual
+---
+
+## Inference and testing 
+

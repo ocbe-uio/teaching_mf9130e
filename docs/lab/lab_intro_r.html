@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Basic commands, data I/O, manipulation, visualisation">
 
-<title>MF9130E - V23 - Lecture notes</title>
+<title>MF9130E - V23 - Introduction to R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -147,7 +148,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../lecture_notes/lecture_notes_overview.html" aria-current="page">
+    <a class="nav-link" href="../lecture_notes/lecture_notes_overview.html">
  <span class="menu-text">Lecture notes</span></a>
   </li>  
   <li class="nav-item">
@@ -168,7 +169,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Lecture notes</h1>
+      <h1 class="quarto-secondary-nav-title">Introduction to R</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -300,10 +301,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#lecture-notes" id="toc-lecture-notes" class="nav-link active" data-scroll-target="#lecture-notes">Lecture notes</a>
+  <li><a href="#r-in-a-nutshell" id="toc-r-in-a-nutshell" class="nav-link active" data-scroll-target="#r-in-a-nutshell">R in a nutshell</a>
   <ul class="collapse">
-  <li><a href="#day-1" id="toc-day-1" class="nav-link" data-scroll-target="#day-1">Day 1</a></li>
-  <li><a href="#day-2" id="toc-day-2" class="nav-link" data-scroll-target="#day-2">Day 2</a></li>
+  <li><a href="#rstudio-and-posit" id="toc-rstudio-and-posit" class="nav-link" data-scroll-target="#rstudio-and-posit">RStudio and Posit</a></li>
+  <li><a href="#getting-help" id="toc-getting-help" class="nav-link" data-scroll-target="#getting-help">Getting help</a></li>
+  </ul></li>
+  <li><a href="#basic-commands" id="toc-basic-commands" class="nav-link" data-scroll-target="#basic-commands">Basic commands</a>
+  <ul class="collapse">
+  <li><a href="#assignment-of-object" id="toc-assignment-of-object" class="nav-link" data-scroll-target="#assignment-of-object">Assignment of object</a></li>
+  </ul></li>
+  <li><a href="#data-import-and-export" id="toc-data-import-and-export" class="nav-link" data-scroll-target="#data-import-and-export">Data import and export</a></li>
+  <li><a href="#data-structure" id="toc-data-structure" class="nav-link" data-scroll-target="#data-structure">Data structure</a></li>
+  <li><a href="#function-and-package" id="toc-function-and-package" class="nav-link" data-scroll-target="#function-and-package">Function and package</a></li>
+  <li><a href="#visualisation" id="toc-visualisation" class="nav-link" data-scroll-target="#visualisation">Visualisation</a>
+  <ul class="collapse">
+  <li><a href="#base-r" id="toc-base-r" class="nav-link" data-scroll-target="#base-r">(base R)</a></li>
+  <li><a href="#ggplot" id="toc-ggplot" class="nav-link" data-scroll-target="#ggplot">ggplot</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -313,9 +326,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block">Lecture notes</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<h1 class="title d-none d-lg-block">Introduction to R</h1>
 </div>
 
+<div>
+  <div class="description">
+    Basic commands, data I/O, manipulation, visualisation
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -328,22 +346,103 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="lecture-notes" class="level1">
-<h1>Lecture notes</h1>
-<p>On this page you’ll find a list of lecture notes, organised by topics and days presented.</p>
-<section id="day-1" class="level2">
-<h2 class="anchored" data-anchor-id="day-1">Day 1</h2>
-<p>Descriptive statistics (insert link)</p>
+<p><strong>Material on this page is under development. There could be errors. </strong></p>
+<section id="r-in-a-nutshell" class="level2">
+<h2 class="anchored" data-anchor-id="r-in-a-nutshell">R in a nutshell</h2>
+<p>R is a language and environment for statistical computing, data analysis, visualisation and graphics and many more. It is a free and open source software, under the terms of GNU General Public License.</p>
+<p>R runs on a wide variety of platforms, including Windows, Linux and MacOS.</p>
+<p>The latest R version is 4.2.3 (2023-03-15), “Shortstop Beagle”.</p>
+<section id="rstudio-and-posit" class="level3">
+<h3 class="anchored" data-anchor-id="rstudio-and-posit">RStudio and Posit</h3>
+<p>RStudio is a free and open-source IDE (integrated development environment). RStudio IDE is developed by Posit, previously RStudio PBC.</p>
+<p>It is possible to download RStudio to your laptop or desktop; or use RStudio Cloud (need internet connection).</p>
+<p><strong>4 Panels, use screenshot</strong></p>
 </section>
-<section id="day-2" class="level2">
-<h2 class="anchored" data-anchor-id="day-2">Day 2</h2>
-<p>Probability</p>
-<p>Bayes Theorem</p>
-<p>Diagnostic tests</p>
-<p>…</p>
+<section id="getting-help" class="level3">
+<h3 class="anchored" data-anchor-id="getting-help">Getting help</h3>
+<ul>
+<li>Use Google well! There are a lot of discussions in forums such as StackOverflow</li>
+<li>Cheatsheets made by Posit and community</li>
+<li>Type <code>?functionName</code> in the console</li>
+<li>Package vignettes (longer format of documentation)</li>
+</ul>
+</section>
+</section>
+<section id="basic-commands" class="level1">
+<h1>Basic commands</h1>
+<section id="assignment-of-object" class="level3">
+<h3 class="anchored" data-anchor-id="assignment-of-object">Assignment of object</h3>
+<p>r as calculator (<strong>use console first; use script AFTER project and workspace mgmt!</strong>)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># assign values to variables a, b, c</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (comments start with #)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the mean</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># output directly</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>(a<span class="sc">+</span>b<span class="sc">+</span>c)<span class="sc">/</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.666667</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or, save into a new variable d</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> (a<span class="sc">+</span>b<span class="sc">+</span>c)<span class="sc">/</span><span class="dv">3</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.666667</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="data-import-and-export" class="level1">
+<h1>Data import and export</h1>
+<p>project management</p>
+<p>set work directory</p>
+</section>
+<section id="data-structure" class="level1">
+<h1>Data structure</h1>
+<p><strong>Bec student background, it is not necessary to go into too much details</strong></p>
+<p><strong>MUST: concept of scalar, vector, matrix and data frame</strong> (dataset exploration put to descriptive and eda)</p>
+<p><strong>MUST: numeric, factor, character, logical</strong></p>
+</section>
+<section id="function-and-package" class="level1">
+<h1>Function and package</h1>
+<p><strong>just at abstract level for now (in the lecture), students can learn after seeing many examples</strong></p>
+<p><strong>in this document, would still be useful to include links so they can read on their own</strong></p>
+</section>
+<section id="visualisation" class="level1">
+<h1>Visualisation</h1>
+<section id="base-r" class="level3">
+<h3 class="anchored" data-anchor-id="base-r">(base R)</h3>
+</section>
+<section id="ggplot" class="level3">
+<h3 class="anchored" data-anchor-id="ggplot">ggplot</h3>
+<p>Just some basics, since more specific types of viz will be shown in each section</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># need to load the data in this page again. DO NOT SHOW</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>mir <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"data/miRNA-421x282.txt"</span>, <span class="at">header=</span>T, <span class="at">sep=</span><span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">dec=</span><span class="st">"."</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>mir <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(mir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mir<span class="fl">.107</span> <span class="ot">=</span> mir[<span class="dv">16</span>,] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Task 3
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Repeat the lasso analysis, but this time do not penalise the <code>rna.BRAF</code> variable together with the mir variables.</p>
+<p>Check out the information on the <code>penalty.factor</code> option in <code>?glmnet</code> to understand how.</p>
+</div>
+</div>
 
-
-<!-- -->
 
 </section>
 </section>
@@ -414,57 +513,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  const viewSource = window.document.getElementById('quarto-view-source') ||
-                     window.document.getElementById('quarto-code-tools-source');
-  if (viewSource) {
-    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-    viewSource.addEventListener("click", function(e) {
-      if (sourceUrl) {
-        // rstudio viewer pane
-        if (/\bcapabilities=\b/.test(window.location)) {
-          window.open(sourceUrl);
-        } else {
-          window.location.href = sourceUrl;
-        }
-      } else {
-        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-        modal.show();
-      }
-      return false;
-    });
-  }
-  function toggleCodeHandler(show) {
-    return function(e) {
-      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-      for (let i=0; i<detailsSrc.length; i++) {
-        const details = detailsSrc[i].parentElement;
-        if (show) {
-          details.open = true;
-        } else {
-          details.removeAttribute("open");
-        }
-      }
-      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-      const fromCls = show ? "hidden" : "unhidden";
-      const toCls = show ? "unhidden" : "hidden";
-      for (let i=0; i<cellCodeDivs.length; i++) {
-        const codeDiv = cellCodeDivs[i];
-        if (codeDiv.classList.contains(fromCls)) {
-          codeDiv.classList.remove(fromCls);
-          codeDiv.classList.add(toCls);
-        } 
-      }
-      return false;
-    }
-  }
-  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-  if (hideAllCode) {
-    hideAllCode.addEventListener("click", toggleCodeHandler(false));
-  }
-  const showAllCode = window.document.getElementById("quarto-show-all-code");
-  if (showAllCode) {
-    showAllCode.addEventListener("click", toggleCodeHandler(true));
-  }
   function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
@@ -532,35 +580,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Lecture notes"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> visual</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu"># Lecture notes</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>On this page you'll find a list of lecture notes, organised by topics and days presented. </span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## Day 1</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>Descriptive statistics (insert link)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">## Day 2</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>Probability</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>Bayes Theorem </span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>Diagnostic tests</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>... </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></div></div></div></div>
+</script>
 </div> <!-- /content -->
 
 

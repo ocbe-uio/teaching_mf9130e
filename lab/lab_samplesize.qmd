@@ -1,0 +1,12 @@
+---
+title: "Sample size and power"
+description: "R lab 1"
+format: 
+  html:
+    code-fold: false
+    code-tools: true
+editor: visual
+---
+
+## Inference and testing 
+

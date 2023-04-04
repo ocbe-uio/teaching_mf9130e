@@ -1,0 +1,12 @@
+---
+title: "Survival analysis"
+description: "KM curve, log rank tests"
+format: 
+  html:
+    code-fold: false
+    code-tools: true
+editor: visual
+---
+
+## Inference and testing 
+

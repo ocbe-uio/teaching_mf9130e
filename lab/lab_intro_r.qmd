@@ -1,0 +1,129 @@
+---
+title: "Introduction to R"
+description: "Basic commands, data I/O, manipulation, visualisation"
+format: 
+  html:
+    code-fold: false
+    code-tools: false
+editor: source
+---
+
+**Material on this page is under development. There could be errors. **
+
+## R in a nutshell 
+
+R is a language and environment for statistical computing, data analysis, visualisation and graphics and many more. It is a free and open source software, under the terms of GNU General Public License. 
+
+R runs on a wide variety of platforms, including Windows, Linux and MacOS. 
+
+The latest R version is 4.2.3 (2023-03-15), "Shortstop Beagle".
+
+### RStudio and Posit
+
+RStudio is a free and open-source IDE (integrated development environment). RStudio IDE is developed by Posit, previously RStudio PBC. 
+
+It is possible to download RStudio to your laptop or desktop; or use RStudio Cloud (need internet connection).
+
+**4 Panels, use screenshot**
+
+
+
+### Getting help 
+
+* Use Google well! There are a lot of discussions in forums such as StackOverflow
+* Cheatsheets made by Posit and community
+* Type `?functionName` in the console 
+* Package vignettes (longer format of documentation)
+
+
+
+# Basic commands 
+
+### Assignment of object
+
+r as calculator (**use console first; use script AFTER project and workspace mgmt!**)
+
+```{r}
+#| label: assign value
+#| warning: false
+#| echo: true
+
+# assign values to variables a, b, c
+# (comments start with #)
+a <- 3
+b <- 4
+c <- 7
+
+# calculate the mean
+# output directly
+(a+b+c)/3
+
+# or, save into a new variable d
+d <- (a+b+c)/3
+d
+
+```
+
+
+
+# Data import and export 
+
+project management 
+
+set work directory
+
+
+# Data structure
+
+**Bec student background, it is not necessary to go into too much details**
+
+**MUST: concept of scalar, vector, matrix and data frame** (dataset exploration put to descriptive and eda)
+
+**MUST: numeric, factor, character, logical**
+
+
+
+# Function and package
+
+**just at abstract level for now (in the lecture), students can learn after seeing many examples**
+
+**in this document, would still be useful to include links so they can read on their own**
+
+
+
+# Visualisation 
+
+### (base R)
+
+
+### ggplot
+
+Just some basics, since more specific types of viz will be shown in each section
+
+```{r}
+#| label: load-data-again
+#| warning: false
+#| echo: true
+
+# need to load the data in this page again. DO NOT SHOW
+mir <- read.table("data/miRNA-421x282.txt", header=T, sep="\t", dec=".")
+
+mir <- as.matrix(mir)
+```
+
+```{r}
+#| label: select-braf
+#| warning: false
+#| echo: true
+
+mir.107 = mir[16,] 
+```
+
+
+::: callout-note
+## Task 3
+
+Repeat the lasso analysis, but this time do not penalise the `rna.BRAF` variable together with the mir variables.
+
+Check out the information on the `penalty.factor` option in `?glmnet` to understand how.
+:::

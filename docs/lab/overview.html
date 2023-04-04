@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MF9130E - V23 - Lecture notes</title>
+<title>MF9130E - V23 - R Lab and code</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,69 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -93,6 +30,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-listing/list.min.js"></script>
+<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -121,7 +60,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-lab .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-lab'] = new List('listing-lab', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -147,11 +116,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../lecture_notes/lecture_notes_overview.html" aria-current="page">
+    <a class="nav-link" href="../lecture_notes/lecture_notes_overview.html">
  <span class="menu-text">Lecture notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../lab/overview.html">
+    <a class="nav-link active" href="../lab/overview.html" aria-current="page">
  <span class="menu-text">R lab and code</span></a>
   </li>  
 </ul>
@@ -168,7 +137,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Lecture notes</h1>
+      <h1 class="quarto-secondary-nav-title">R Lab and code</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -300,11 +269,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#lecture-notes" id="toc-lecture-notes" class="nav-link active" data-scroll-target="#lecture-notes">Lecture notes</a>
+  <li><a href="#set-up" id="toc-set-up" class="nav-link active" data-scroll-target="#set-up">Set-up</a>
   <ul class="collapse">
-  <li><a href="#day-1" id="toc-day-1" class="nav-link" data-scroll-target="#day-1">Day 1</a></li>
-  <li><a href="#day-2" id="toc-day-2" class="nav-link" data-scroll-target="#day-2">Day 2</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
+  <li><a href="#r-scripts" id="toc-r-scripts" class="nav-link" data-scroll-target="#r-scripts">R scripts</a></li>
   </ul></li>
+  <li><a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab">Lab</a></li>
+  <li><a href="#useful-resources" id="toc-useful-resources" class="nav-link" data-scroll-target="#useful-resources">Useful resources</a></li>
   </ul>
 </nav>
     </div>
@@ -313,7 +284,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block">Lecture notes</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<h1 class="title d-none d-lg-block">R Lab and code</h1>
 </div>
 
 
@@ -328,24 +299,130 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="lecture-notes" class="level1">
-<h1>Lecture notes</h1>
-<p>On this page you’ll find a list of lecture notes, organised by topics and days presented.</p>
-<section id="day-1" class="level2">
-<h2 class="anchored" data-anchor-id="day-1">Day 1</h2>
-<p>Descriptive statistics (insert link)</p>
+<p>Welcome! Here you will find material for R lab and code for this course.</p>
+<section id="set-up" class="level2">
+<h2 class="anchored" data-anchor-id="set-up">Set-up</h2>
+<p>Please refer to <strong>(link to setup)</strong> page for more information.</p>
+<section id="data" class="level3">
+<h3 class="anchored" data-anchor-id="data">Data</h3>
+<p>Datasets used for this course can be found at <strong>insert path</strong>.</p>
 </section>
-<section id="day-2" class="level2">
-<h2 class="anchored" data-anchor-id="day-2">Day 2</h2>
-<p>Probability</p>
-<p>Bayes Theorem</p>
-<p>Diagnostic tests</p>
-<p>…</p>
-
-
-<!-- -->
-
+<section id="r-scripts" class="level3">
+<h3 class="anchored" data-anchor-id="r-scripts">R scripts</h3>
+<p>R scripts used for each section can be downloaded directly at <strong>insert path</strong>.</p>
 </section>
+</section>
+<section id="lab" class="level2">
+<h2 class="anchored" data-anchor-id="lab">Lab</h2>
+<p><em>PLAN: use hide-code? or prepare 2 sets, one for demonstration in class, another for home-exercise. for the home exercise, can attach worked solution at the bottom.</em></p>
+<div id="listing-lab" class="quarto-listing quarto-listing-container-table">
+
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+Title
+</th>
+<th>
+Description
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-listing-file-modified-sort="1680626741554" data-listing-reading-time-sort="1.8" data-listing-title-sort="Introduction to R" data-listing-filename-sort="lab_intro_r.qmd">
+<td class="listing-title">
+<a href="../lab/lab_intro_r.html" class="title">Introduction to R</a>
+</td>
+<td class="listing-description">
+Basic commands, data I/O, manipulation, visualisation
+</td>
+</tr>
+<tr data-index="1" data-listing-file-modified-sort="1680616951270" data-listing-reading-time-sort="0.7" data-listing-title-sort="Descriptive statistics" data-listing-filename-sort="lab_descriptive.qmd">
+<td class="listing-title">
+<a href="../lab/lab_descriptive.html" class="title">Descriptive statistics</a>
+</td>
+<td class="listing-description">
+R lab 2
+</td>
+</tr>
+<tr data-index="2" data-listing-file-modified-sort="1680617009241" data-listing-reading-time-sort="0.005" data-listing-title-sort="Statistical inference and confidence interval" data-listing-filename-sort="lab_inf_ci.qmd">
+<td class="listing-title">
+<a href="../lab/lab_inf_ci.html" class="title">Statistical inference and confidence interval</a>
+</td>
+<td class="listing-description">
+R lab 1
+</td>
+</tr>
+<tr data-index="3" data-listing-file-modified-sort="1680617046462" data-listing-reading-time-sort="0.005" data-listing-title-sort="T test" data-listing-filename-sort="lab_ttest.qmd">
+<td class="listing-title">
+<a href="../lab/lab_ttest.html" class="title">T test</a>
+</td>
+<td class="listing-description">
+R lab 1
+</td>
+</tr>
+<tr data-index="4" data-listing-file-modified-sort="1680617101030" data-listing-reading-time-sort="0.005" data-listing-title-sort="Categorical data analysis" data-listing-filename-sort="lab_categorical.qmd">
+<td class="listing-title">
+<a href="../lab/lab_categorical.html" class="title">Categorical data analysis</a>
+</td>
+<td class="listing-description">
+Contingency table, chi-square test, proportions
+</td>
+</tr>
+<tr data-index="5" data-listing-file-modified-sort="1680617121396" data-listing-reading-time-sort="0.005" data-listing-title-sort="Exploratory data analysis" data-listing-filename-sort="lab_eda.qmd">
+<td class="listing-title">
+<a href="../lab/lab_eda.html" class="title">Exploratory data analysis</a>
+</td>
+<td class="listing-description">
+EDA
+</td>
+</tr>
+<tr data-index="6" data-listing-file-modified-sort="1680617166279" data-listing-reading-time-sort="0.005" data-listing-title-sort="Non-parametric tests" data-listing-filename-sort="lab_nonpara.qmd">
+<td class="listing-title">
+<a href="../lab/lab_nonpara.html" class="title">Non-parametric tests</a>
+</td>
+<td class="listing-description">
+Wilcoxon signed rank, rank sum test
+</td>
+</tr>
+<tr data-index="7" data-listing-file-modified-sort="1680617185392" data-listing-reading-time-sort="0.005" data-listing-title-sort="Sample size and power" data-listing-filename-sort="lab_samplesize.qmd">
+<td class="listing-title">
+<a href="../lab/lab_samplesize.html" class="title">Sample size and power</a>
+</td>
+<td class="listing-description">
+R lab 1
+</td>
+</tr>
+<tr data-index="8" data-listing-file-modified-sort="1680617238068" data-listing-reading-time-sort="0.005" data-listing-title-sort="Regression analysis" data-listing-filename-sort="lab_regression.qmd">
+<td class="listing-title">
+<a href="../lab/lab_regression.html" class="title">Regression analysis</a>
+</td>
+<td class="listing-description">
+Linear, logistic regression
+</td>
+</tr>
+<tr data-index="9" data-listing-file-modified-sort="1680617261605" data-listing-reading-time-sort="0.005" data-listing-title-sort="Survival analysis" data-listing-filename-sort="lab_survival.qmd">
+<td class="listing-title">
+<a href="../lab/lab_survival.html" class="title">Survival analysis</a>
+</td>
+<td class="listing-description">
+KM curve, log rank tests
+</td>
+</tr>
+</tbody>
+
+</table>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
+</section>
+<section id="useful-resources" class="level2">
+<h2 class="anchored" data-anchor-id="useful-resources">Useful resources</h2>
+<p>Book (Wickham et al) <a href="https://r4ds.hadley.nz">R for Data Science (2e)</a></p>
+
+
+
 </section>
 
 </main> <!-- /main -->
@@ -414,57 +491,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  const viewSource = window.document.getElementById('quarto-view-source') ||
-                     window.document.getElementById('quarto-code-tools-source');
-  if (viewSource) {
-    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-    viewSource.addEventListener("click", function(e) {
-      if (sourceUrl) {
-        // rstudio viewer pane
-        if (/\bcapabilities=\b/.test(window.location)) {
-          window.open(sourceUrl);
-        } else {
-          window.location.href = sourceUrl;
-        }
-      } else {
-        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-        modal.show();
-      }
-      return false;
-    });
-  }
-  function toggleCodeHandler(show) {
-    return function(e) {
-      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-      for (let i=0; i<detailsSrc.length; i++) {
-        const details = detailsSrc[i].parentElement;
-        if (show) {
-          details.open = true;
-        } else {
-          details.removeAttribute("open");
-        }
-      }
-      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-      const fromCls = show ? "hidden" : "unhidden";
-      const toCls = show ? "unhidden" : "hidden";
-      for (let i=0; i<cellCodeDivs.length; i++) {
-        const codeDiv = cellCodeDivs[i];
-        if (codeDiv.classList.contains(fromCls)) {
-          codeDiv.classList.remove(fromCls);
-          codeDiv.classList.add(toCls);
-        } 
-      }
-      return false;
-    }
-  }
-  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-  if (hideAllCode) {
-    hideAllCode.addEventListener("click", toggleCodeHandler(false));
-  }
-  const showAllCode = window.document.getElementById("quarto-show-all-code");
-  if (showAllCode) {
-    showAllCode.addEventListener("click", toggleCodeHandler(true));
-  }
   function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
@@ -532,35 +558,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Lecture notes"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> visual</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu"># Lecture notes</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>On this page you'll find a list of lecture notes, organised by topics and days presented. </span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## Day 1</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>Descriptive statistics (insert link)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">## Day 2</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>Probability</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>Bayes Theorem </span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>Diagnostic tests</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>... </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></div></div></div></div>
+</script>
 </div> <!-- /content -->
 
 

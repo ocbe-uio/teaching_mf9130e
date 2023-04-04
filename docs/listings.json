@@ -1,0 +1,24 @@
+[
+  {
+    "listing": "/lab/lab_overview.html",
+    "items": [
+      "/lab/lab1.html",
+      "/lab/lab2.html"
+    ]
+  },
+  {
+    "listing": "/lab/overview.html",
+    "items": [
+      "/lab/lab_intro_r.html",
+      "/lab/lab_descriptive.html",
+      "/lab/lab_inf_ci.html",
+      "/lab/lab_ttest.html",
+      "/lab/lab_categorical.html",
+      "/lab/lab_eda.html",
+      "/lab/lab_nonpara.html",
+      "/lab/lab_samplesize.html",
+      "/lab/lab_regression.html",
+      "/lab/lab_survival.html"
+    ]
+  }
+]

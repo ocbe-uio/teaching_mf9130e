@@ -1,0 +1,12 @@
+---
+title: "T test"
+description: "R lab 1"
+format: 
+  html:
+    code-fold: false
+    code-tools: true
+editor: visual
+---
+
+## T test
+

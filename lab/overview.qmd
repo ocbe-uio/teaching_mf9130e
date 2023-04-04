@@ -1,0 +1,55 @@
+---
+title: "R Lab and code"
+listing:
+  - id: lab
+    max-description-length: 500
+    image-height: 150px
+    fields: [title, description]
+    contents: 
+      - "lab_intro_r.qmd"
+      - "lab_descriptive.qmd"
+      - "lab_inf_ci.qmd"
+      - "lab_ttest.qmd"
+      - "lab_categorical.qmd"
+      - "lab_eda.qmd"
+      - "lab_nonpara.qmd"
+      - "lab_samplesize.qmd"
+      - "lab_regression.qmd"
+      - "lab_survival.qmd"
+    type: table
+    grid-item-border: false
+    sort-ui: false
+    sort: "date desc"
+    filter-ui: false
+    categories: false
+---
+
+Welcome! Here you will find material for R lab and code for this course. 
+
+## Set-up
+
+Please refer to **(link to setup)** page for more information.
+
+### Data
+
+Datasets used for this course can be found at **insert path**.
+
+### R scripts
+
+R scripts used for each section can be downloaded directly at **insert path**.
+
+
+
+## Lab
+
+*PLAN: use hide-code? or prepare 2 sets, one for demonstration in class, another for home-exercise. for the home exercise, can attach worked solution at the bottom.*
+
+::: {#lab}
+:::
+
+
+## Useful resources 
+
+Book (Wickham et al) [R for Data Science (2e)](https://r4ds.hadley.nz)
+
+

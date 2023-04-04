@@ -12,8 +12,8 @@ website:
         text: "Home"
       - href: lecture_notes/lecture_notes_overview.qmd
         text: "Lecture notes"
-      - href: exercises_lab/exercise_lab_overview.qmd
-        text: "Exercises and R lab"
+      - href: lab/overview.qmd
+        text: "R lab and code"
         
     right: 
       - icon: github

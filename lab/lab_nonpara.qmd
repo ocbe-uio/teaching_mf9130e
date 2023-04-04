@@ -1,0 +1,12 @@
+---
+title: "Non-parametric tests"
+description: "Wilcoxon signed rank, rank sum test"
+format: 
+  html:
+    code-fold: false
+    code-tools: true
+editor: visual
+---
+
+## Inference and testing 
+
