@@ -1,11 +1,77 @@
 ---
 title: "Regression analysis"
-description: "Linear, logistic regression"
+description: "Linear regression, logistic regression"
 format: 
   html:
     code-fold: false
     code-tools: true
-editor: visual
+editor: source
 ---
 
-## 
+# Linear regression 
+
+TBC
+
+
+# Logistic regression
+
+
+(Dataset `birth` might be switched out)
+
+```{r}
+#| label: birth example
+#| warning: false
+#| echo: true
+
+
+# load data
+birth_data <- haven::read_dta('data/birth.dta')
+
+# print the first rows of the data set
+head(birth_data)
+
+
+
+```
+
+### Fit a logistic regression model for `low` and `age`
+
+```{r}
+#| label: birth example (2)
+#| warning: false
+#| echo: true
+
+# low ~ age 
+
+lr_low_age <- glm(low ~ age, data = birth_data, family = 'binomial')
+summary(lr_low_age)
+
+```
+
+
+```{r}
+#| label: birth example (3)
+#| warning: false
+#| echo: true
+
+# the result regresssion coefficient is not odds ratio
+lr_low_age$coefficients
+
+# regression coefficients can also be extracted in this way:
+coefficients(lr_low_age)
+# coef(lr_low_age)
+
+# confidence interval for age and intercept
+confint(lr_low_age)
+```
+
+```{r}
+#| label: birth example (4)
+#| warning: false
+#| echo: true
+
+# to get odds ratio, exponentiate 
+exp(coef(lr_low_age))
+exp(confint(lr_low_age))
+
+```

@@ -1,0 +1,11 @@
+---
+title: "Exploratory data analysis (Part II)"
+description: "More on data manipulation, visualisation"
+format: 
+  html:
+    code-fold: false
+    code-tools: true
+editor: source
+---
+
+## Inference and testing

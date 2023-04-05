@@ -1,6 +1,6 @@
 ---
 title: "Introduction to R"
-description: "Basic commands, data I/O, manipulation, visualisation"
+description: "Get started in Rstudio, navigation, data types, data import ant export"
 format: 
   html:
     code-fold: false
@@ -65,6 +65,14 @@ d
 ```
 
 
+# Functions and packages
+
+
+**just at abstract level for now (in the lecture), students can learn after seeing many examples**
+
+**in this document, would still be useful to include links so they can read on their own**
+
+
 
 # Data import and export 
 
@@ -73,7 +81,23 @@ project management
 set work directory
 
 
-# Data structure
+import data of different formats (txt, csv, xlsx, rda...)
+
+```{r}
+#| label: load-data-penguins-mini
+#| warning: false
+#| echo: true
+
+# need to load the data in this page again. DO NOT SHOW
+penguins_mini <- read.csv('data/penguins_mini.csv', sep = ',')
+
+penguins_mini
+```
+
+
+
+
+# Data structure (use `penguins_mini` data as example)
 
 **Bec student background, it is not necessary to go into too much details**
 
@@ -83,15 +107,11 @@ set work directory
 
 
 
-# Function and package
-
-**just at abstract level for now (in the lecture), students can learn after seeing many examples**
-
-**in this document, would still be useful to include links so they can read on their own**
 
 
 
-# Visualisation 
+
+# Visualisation (only intro, details later)
 
 ### (base R)
 
@@ -100,30 +120,8 @@ set work directory
 
 Just some basics, since more specific types of viz will be shown in each section
 
-```{r}
-#| label: load-data-again
-#| warning: false
-#| echo: true
-
-# need to load the data in this page again. DO NOT SHOW
-mir <- read.table("data/miRNA-421x282.txt", header=T, sep="\t", dec=".")
-
-mir <- as.matrix(mir)
-```
-
-```{r}
-#| label: select-braf
-#| warning: false
-#| echo: true
-
-mir.107 = mir[16,] 
-```
-
-
 ::: callout-note
 ## Task 3
 
-Repeat the lasso analysis, but this time do not penalise the `rna.BRAF` variable together with the mir variables.
-
-Check out the information on the `penalty.factor` option in `?glmnet` to understand how.
+Try explore the penguins data
 :::

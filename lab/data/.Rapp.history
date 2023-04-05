@@ -1,0 +1,2 @@
+load("/Users/andrea/Documents/GitHub/teaching_mf9130e/lab/data/penguins_mini.rda")
+penguins_mini

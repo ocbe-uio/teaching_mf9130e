@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Basic commands, data I/O, manipulation, visualisation">
+<meta name="description" content="Get started in Rstudio, navigation, data types, data import ant export">
 
 <title>MF9130E - V23 - Introduction to R</title>
 <style>
@@ -310,10 +310,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#assignment-of-object" id="toc-assignment-of-object" class="nav-link" data-scroll-target="#assignment-of-object">Assignment of object</a></li>
   </ul></li>
+  <li><a href="#functions-and-packages" id="toc-functions-and-packages" class="nav-link" data-scroll-target="#functions-and-packages">Functions and packages</a></li>
   <li><a href="#data-import-and-export" id="toc-data-import-and-export" class="nav-link" data-scroll-target="#data-import-and-export">Data import and export</a></li>
-  <li><a href="#data-structure" id="toc-data-structure" class="nav-link" data-scroll-target="#data-structure">Data structure</a></li>
-  <li><a href="#function-and-package" id="toc-function-and-package" class="nav-link" data-scroll-target="#function-and-package">Function and package</a></li>
-  <li><a href="#visualisation" id="toc-visualisation" class="nav-link" data-scroll-target="#visualisation">Visualisation</a>
+  <li><a href="#data-structure-use-penguins_mini-data-as-example" id="toc-data-structure-use-penguins_mini-data-as-example" class="nav-link" data-scroll-target="#data-structure-use-penguins_mini-data-as-example">Data structure (use <code>penguins_mini</code> data as example)</a></li>
+  <li><a href="#visualisation-only-intro-details-later" id="toc-visualisation-only-intro-details-later" class="nav-link" data-scroll-target="#visualisation-only-intro-details-later">Visualisation (only intro, details later)</a>
   <ul class="collapse">
   <li><a href="#base-r" id="toc-base-r" class="nav-link" data-scroll-target="#base-r">(base R)</a></li>
   <li><a href="#ggplot" id="toc-ggplot" class="nav-link" data-scroll-target="#ggplot">ggplot</a></li>
@@ -331,7 +331,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div>
   <div class="description">
-    Basic commands, data I/O, manipulation, visualisation
+    Get started in Rstudio, navigation, data types, data import ant export
   </div>
 </div>
 
@@ -395,39 +395,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </section>
 </section>
+<section id="functions-and-packages" class="level1">
+<h1>Functions and packages</h1>
+<p><strong>just at abstract level for now (in the lecture), students can learn after seeing many examples</strong></p>
+<p><strong>in this document, would still be useful to include links so they can read on their own</strong></p>
+</section>
 <section id="data-import-and-export" class="level1">
 <h1>Data import and export</h1>
 <p>project management</p>
 <p>set work directory</p>
+<p>import data of different formats (txt, csv, xlsx, rda…)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># need to load the data in this page again. DO NOT SHOW</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>penguins_mini <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/penguins_mini.csv'</span>, <span class="at">sep =</span> <span class="st">','</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>penguins_mini</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    species    island bill_length_mm bill_depth_mm flipper_length_mm
+1    Adelie Torgersen           40.3          18.0               195
+2    Adelie Torgersen             NA            NA                NA
+3    Adelie     Dream           40.9          18.9               184
+4    Adelie Torgersen           37.2          19.4               184
+5    Adelie     Dream           36.0          17.1               187
+6    Gentoo    Biscoe           46.2          14.5               209
+7 Chinstrap     Dream           46.5          17.9               192
+8 Chinstrap     Dream           43.5          18.1               202
+9    Gentoo    Biscoe           44.9          13.3               213
+  body_mass_g    sex year
+1        3250 female 2007
+2          NA   &lt;NA&gt; 2007
+3        3900   male 2007
+4        3900   male 2008
+5        3700 female 2009
+6        4800 female 2007
+7        3500 female 2007
+8        3400 female 2009
+9        5100 female 2008</code></pre>
+</div>
+</div>
 </section>
-<section id="data-structure" class="level1">
-<h1>Data structure</h1>
+<section id="data-structure-use-penguins_mini-data-as-example" class="level1">
+<h1>Data structure (use <code>penguins_mini</code> data as example)</h1>
 <p><strong>Bec student background, it is not necessary to go into too much details</strong></p>
 <p><strong>MUST: concept of scalar, vector, matrix and data frame</strong> (dataset exploration put to descriptive and eda)</p>
 <p><strong>MUST: numeric, factor, character, logical</strong></p>
 </section>
-<section id="function-and-package" class="level1">
-<h1>Function and package</h1>
-<p><strong>just at abstract level for now (in the lecture), students can learn after seeing many examples</strong></p>
-<p><strong>in this document, would still be useful to include links so they can read on their own</strong></p>
-</section>
-<section id="visualisation" class="level1">
-<h1>Visualisation</h1>
+<section id="visualisation-only-intro-details-later" class="level1">
+<h1>Visualisation (only intro, details later)</h1>
 <section id="base-r" class="level3">
 <h3 class="anchored" data-anchor-id="base-r">(base R)</h3>
 </section>
 <section id="ggplot" class="level3">
 <h3 class="anchored" data-anchor-id="ggplot">ggplot</h3>
 <p>Just some basics, since more specific types of viz will be shown in each section</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># need to load the data in this page again. DO NOT SHOW</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>mir <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"data/miRNA-421x282.txt"</span>, <span class="at">header=</span>T, <span class="at">sep=</span><span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">dec=</span><span class="st">"."</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>mir <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(mir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mir<span class="fl">.107</span> <span class="ot">=</span> mir[<span class="dv">16</span>,] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -438,8 +458,7 @@ Task 3
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Repeat the lasso analysis, but this time do not penalise the <code>rna.BRAF</code> variable together with the mir variables.</p>
-<p>Check out the information on the <code>penalty.factor</code> option in <code>?glmnet</code> to understand how.</p>
+<p>Try explore the penguins data</p>
 </div>
 </div>
 

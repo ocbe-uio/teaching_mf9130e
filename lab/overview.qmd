@@ -7,11 +7,11 @@ listing:
     fields: [title, description]
     contents: 
       - "lab_intro_r.qmd"
-      - "lab_descriptive.qmd"
+      - "lab_eda_part1.qmd"
+      - "lab_eda_part2.qmd"
       - "lab_inf_ci.qmd"
       - "lab_ttest.qmd"
       - "lab_categorical.qmd"
-      - "lab_eda.qmd"
       - "lab_nonpara.qmd"
       - "lab_samplesize.qmd"
       - "lab_regression.qmd"

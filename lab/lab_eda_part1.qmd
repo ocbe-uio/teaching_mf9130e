@@ -1,0 +1,59 @@
+---
+title: "Exploratory data analysis (Part I)"
+description: "Exploring a dataset, basic data manipulation, descriptive statistics"
+format: 
+  html:
+    code-fold: false
+    code-tools: true
+editor: visual
+---
+
+
+Might be useful to have an outline and study goals 
+
+# Exploring a dataset
+
+
+head()
+
+View()
+
+str()
+
+colnames()
+
+dim()
+
+nrow(), ncol()
+
+length() of a vector 
+
+
+# Basic data manipulation
+
+only cover base R here; if needed, tidyverse put to eda 
+
+by index, [row, col]
+
+
+
+# Descriptive statistics 
+
+
+min, max, median
+
+IQR
+
+summary
+table () of a categorical vector
+
+
+# Visualisation
+
+::: callout-note
+## Task 3
+
+Repeat the lasso analysis, but this time do not penalise the `rna.BRAF` variable together with the mir variables.
+
+Check out the information on the `penalty.factor` option in `?glmnet` to understand how.
+:::
