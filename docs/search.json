@@ -355,5 +355,82 @@
     "title": "Regression analysis",
     "section": "",
     "text": "Linear regression\nTBC\n\n\nLogistic regression\n(Dataset birth might be switched out)\n\n# load data\nbirth_data <- haven::read_dta('data/birth.dta')\n\n# print the first rows of the data set\nhead(birth_data)\n\n# A tibble: 6 × 12\n     id low            age   lwt eth       smk   ptl ht      ui        fvt   ttv\n  <dbl> <dbl+lbl>    <dbl> <dbl> <dbl+l> <dbl> <dbl> <dbl+l> <dbl+l> <dbl> <dbl>\n1     4 1 [bwt < 25…    28   120 3 [oth…     1     1 0 [no]  1 [yes]     0     0\n2    10 1 [bwt < 25…    29   130 1 [whi…     0     0 0 [no]  1 [yes]     2     0\n3    11 1 [bwt < 25…    34   187 2 [bla…     1     0 1 [yes] 0 [no]      0     0\n4    13 1 [bwt < 25…    25   105 3 [oth…     0     1 1 [yes] 0 [no]      0     0\n5    15 1 [bwt < 25…    25    85 3 [oth…     0     0 0 [no]  1 [yes]     0     4\n6    16 1 [bwt < 25…    27   150 3 [oth…     0     0 0 [no]  0 [no]      0     5\n# … with 1 more variable: bwt <dbl>\n\n\n\nFit a logistic regression model for low and age\n\n# low ~ age \n\nlr_low_age <- glm(low ~ age, data = birth_data, family = 'binomial')\nsummary(lr_low_age)\n\n\nCall:\nglm(formula = low ~ age, family = \"binomial\", data = birth_data)\n\nDeviance Residuals: \n    Min       1Q   Median       3Q      Max  \n-1.0402  -0.9018  -0.7754   1.4119   1.7800  \n\nCoefficients:\n            Estimate Std. Error z value Pr(>|z|)\n(Intercept)  0.38458    0.73212   0.525    0.599\nage         -0.05115    0.03151  -1.623    0.105\n\n(Dispersion parameter for binomial family taken to be 1)\n\n    Null deviance: 234.67  on 188  degrees of freedom\nResidual deviance: 231.91  on 187  degrees of freedom\nAIC: 235.91\n\nNumber of Fisher Scoring iterations: 4\n\n\n\n# the result regresssion coefficient is not odds ratio\nlr_low_age$coefficients\n\n(Intercept)         age \n 0.38458192 -0.05115294 \n\n# regression coefficients can also be extracted in this way:\ncoefficients(lr_low_age)\n\n(Intercept)         age \n 0.38458192 -0.05115294 \n\n# coef(lr_low_age)\n\n# confidence interval for age and intercept\nconfint(lr_low_age)\n\n                 2.5 %      97.5 %\n(Intercept) -1.0336270 1.847399861\nage         -0.1150799 0.008986436\n\n\n\n# to get odds ratio, exponentiate \nexp(coef(lr_low_age))\n\n(Intercept)         age \n  1.4690000   0.9501333 \n\nexp(confint(lr_low_age))\n\n                2.5 %   97.5 %\n(Intercept) 0.3557144 6.343305\nage         0.8912949 1.009027"
+  },
+  {
+    "objectID": "lab/lab_intro_r.html#matrix-and",
+    "href": "lab/lab_intro_r.html#matrix-and",
+    "title": "Introduction to R",
+    "section": "Matrix and",
+    "text": "Matrix and"
+  },
+  {
+    "objectID": "lab/lab_intro_r.html#data-frame",
+    "href": "lab/lab_intro_r.html#data-frame",
+    "title": "Introduction to R",
+    "section": "Data frame",
+    "text": "Data frame"
+  },
+  {
+    "objectID": "lab/lab_intro_r.html#basic-subsetting",
+    "href": "lab/lab_intro_r.html#basic-subsetting",
+    "title": "Introduction to R",
+    "section": "Basic subsetting",
+    "text": "Basic subsetting\nwhich will be continued later"
+  },
+  {
+    "objectID": "lab/lab_intro_r.html#basic-calculations",
+    "href": "lab/lab_intro_r.html#basic-calculations",
+    "title": "Introduction to R",
+    "section": "Basic calculations",
+    "text": "Basic calculations\nr as calculator (use console first; use script AFTER project and workspace mgmt!)\nexp, division\n\n# assign values to variables a, b, c\na <- 3\nb <- 4\nc <- 7\n\n# calculate the average of a,b,c\n# output directly\n(a+b+c)/3\n\n[1] 4.666667\n\n# or, save into a new variable d\nd <- (a+b+c)/3\nd\n\n[1] 4.666667"
+  },
+  {
+    "objectID": "lab/lab_intro_r.html#vectors",
+    "href": "lab/lab_intro_r.html#vectors",
+    "title": "Introduction to R",
+    "section": "Vectors",
+    "text": "Vectors\nA vector is a list of values; it can be numeric, and also characters and logical.\nTo create a vector, use function c().\n\n# numeric\nnum_vector <- c(1, 2, 3, 4, 5)\nnum_vector\n\n[1] 1 2 3 4 5\n\n# character\nchar_vector <- c('student_a', 'student_b', 'student_c')\nchar_vector\n\n[1] \"student_a\" \"student_b\" \"student_c\"\n\n# logical \nlogical_vector <- c(T, F, T, F)\nlogical_vector\n\n[1]  TRUE FALSE  TRUE FALSE\n\n\nThere are some shortcuts to create a sequence of values; not required to learn, but very useful.\n\n# numeric\n# num_vector <- c(1, 2, 3, 4, 5)\nnum_vector <- 1:5 # from 1 to 5\nseq(from = 1, to = 11, by = 2) # from 1 to 11, with 2 between each\n\n[1]  1  3  5  7  9 11\n\nrep(1, 5) # repeat 1 for 5 times\n\n[1] 1 1 1 1 1\n\n# character\n# char_vector <- c('student_a', 'student_b', 'student_c')\nchar_vector <- paste0('student_', c('a', 'b', 'c'))\n\n\n\n\n\n\n\nTypes of elements in a vector\n\n\n\nIn a vector, types of the elements must be the same. If you try to combine multiple types of variables in the same vector, such as a numeric number and a character, R will try to convert them into the same type.\nTry to combine the following values into a vector, and see what happens.\n\n1.52, “student_a”\n1.52, TRUE (logical)\nTRUE, “student_a”\n\n\n\n\nCombine multiple vectors\nYou can combine multiple vectors using c(). For example, vec1 has 3 elements, vec2 has 2 elements (assuming that they are of the same type), combining them gives 5 elements.\n\nvec1 <- c(1, 3, 5)\nvec2 <- c(100, 101)\nc(vec1, vec2)\n\n[1]   1   3   5 100 101\n\n# you can also save it into a new variable, \n# so that you can access it in the future\nvec_combined <- c(vec1, vec2)\nvec_combined\n\n[1]   1   3   5 100 101"
+  },
+  {
+    "objectID": "lab/lab_intro_r.html#matrix",
+    "href": "lab/lab_intro_r.html#matrix",
+    "title": "Introduction to R",
+    "section": "Matrix",
+    "text": "Matrix\nA matrix can be thought of as a stack of vectors. When you collect data from \\(n\\) patients (or subjects), you measure a few aspects on each patient such as age, sex, height and smoking. Let’s say you have measured \\(p\\) aspects. This forms a matrix of size \\(n \\times p\\).\nYou might not need to create a matrix from scratch in R (because the focus of this course is data analysis); but it is helpful to understand some basic data manipulation commands.\nYou can create a matrix using matrix(), with some parameters:\n\nmatrix_1 <- matrix(data = c(1, 2, 3, 4), nrow = 2, ncol = 2, byrow = T)\nmatrix_1\n\n     [,1] [,2]\n[1,]    1    2\n[2,]    3    4\n\n\nYou can also create a matrix by combining two vectors of the same size, using cbind() or rbind(), which stands for “column bind” and “rowbind”.\n\nvec1 <- c(1, 2)\nvec2 <- c(3, 4)\n\n# bind by columnn\nmatrix_c <- cbind(vec1, vec2)\nmatrix_c\n\n     vec1 vec2\n[1,]    1    3\n[2,]    2    4\n\n# bind by row\nmatrix_r <- rbind(vec1, vec2)\nmatrix_r\n\n     [,1] [,2]\nvec1    1    2\nvec2    3    4"
+  },
+  {
+    "objectID": "lab/lab_intro_r.html#dataframe",
+    "href": "lab/lab_intro_r.html#dataframe",
+    "title": "Introduction to R",
+    "section": "Dataframe",
+    "text": "Dataframe\nDataframe, data.frame is a format of data commonly used in data analysis with R and python. It can be considered as a matrix, but allows a mixture of data types, such as numeric and categorical measurements (age and sex).\nIn this course, you will mostly be working with dataframes.\nWe create a small dataframe of 3 subjects:\n\nSubject 1 is a 20 years-old male who has covid\nSubject 2 is a 50 years-old female who has covid\nSubject 3 is a 32 years-old male who does not have covid\n\nThis is how you can present the dataframe, where each column has a different data type.\n\nmini_data <- data.frame(\n  age = c(20, 50, 32), \n  sex = c('male', 'female', 'male'), \n  has_covid = c(T, T, F)\n)\nmini_data\n\n  age    sex has_covid\n1  20   male      TRUE\n2  50 female      TRUE\n3  32   male     FALSE"
+  },
+  {
+    "objectID": "lab/lab_intro_r.html#dimension-of-your-data",
+    "href": "lab/lab_intro_r.html#dimension-of-your-data",
+    "title": "Introduction to R",
+    "section": "Dimension of your data",
+    "text": "Dimension of your data\nYou can find the size of a vector with length().\nFor a matrix or dataframe, you can use dim(). It will return nrow ncol, number of rows and number of columns.\n\nvec1 <- c(1, 2)\nlength(vec1)\n\n[1] 2\n\n# matrix\nmat <- matrix(data = c(1, 2, 3, 4), nrow = 2, byrow = 2)\ndim(mat)\n\n[1] 2 2\n\n# dataframe\ndim(mini_data)\n\n[1] 3 3\n\n\n\n\n\n\n\n\ndim() or length()\n\n\n\nIf you use dim() on a vector, it returns NULL. Given that a vector is just a matrix with 1 row (or column), this seems insensible.\nNonetheless, dim() works on matrix objects. if you convert the vector into a matrix with nrow =1 or ncol = 1, dim() will work.\nIf you use length() on a matrix, it will return the total number of elements, i.e. ncol times nrow.\n\n\nYou can also use nrow(), ncol() to get the number of rows and columns explicitly.\n\n# ncol, nrow\n# dim(mini_data)\nnrow(mini_data)\n\n[1] 3\n\nncol(mini_data)\n\n[1] 3"
+  },
+  {
+    "objectID": "lab/lab_intro_r.html#index",
+    "href": "lab/lab_intro_r.html#index",
+    "title": "Introduction to R",
+    "section": "Index",
+    "text": "Index\nwhich will be continued later"
+  },
+  {
+    "objectID": "lab/lab_intro_r.html#modify-existing-data",
+    "href": "lab/lab_intro_r.html#modify-existing-data",
+    "title": "Introduction to R",
+    "section": "Modify existing data",
+    "text": "Modify existing data\n\n\n\n\n\n\nKeep your original data safe!\n\n\n\nModifying an existing data is easy, but you should be aware of the risks. In this class we only modify data we created in the class so there is little risk, but you might have your own datasets to analyse in the future.\nYou should keep your original data in a safe place, and work on copies of it.\nVersion control is a good skill to learn.\n\n\n\n# vector\n# make e into E \nletters[5] <- 'E'\nletters\n\n[1] \"a\" \"b\" \"c\" \"d\" \"E\" \"f\" \"g\" \"h\"\n\n# matrix\n# make (1, 1) 20\nmat_3by3[1, 1] # originally was 1\n\n[1] 1\n\nmat_3by3[1, 1] <- 20\nmat_3by3\n\n     [,1] [,2] [,3]\n[1,]   20    2    3\n[2,]    4    5    6\n[3,]    7    8    9\n\n# dataframe\n# make so that subject 2 does not have covid\nmini_data\n\n  age    sex has_covid\n1  20   male      TRUE\n2  50 female      TRUE\n3  32   male     FALSE\n\nmini_data$has_covid[2] <- F\nmini_data\n\n  age    sex has_covid\n1  20   male      TRUE\n2  50 female     FALSE\n3  32   male     FALSE"
+  },
+  {
+    "objectID": "lab/lab_intro_r.html#accessing-elements-in-your-data",
+    "href": "lab/lab_intro_r.html#accessing-elements-in-your-data",
+    "title": "Introduction to R",
+    "section": "Accessing elements in your data",
+    "text": "Accessing elements in your data\nFor a vector, you can access\n\nan element at a given position\nmultiple elements at given positions\n\nelements beyond, or below a certain element\n\nSometimes you might need to combine previous knowledge to get what you want (e.g. to know how many elements in total there are). But not required now.\n\nletters <- c('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h')\n\n# 3rd letter\nletters[3]\n\n[1] \"c\"\n\n# 3rd, and 5th\nletters[c(3, 5)]\n\n[1] \"c\" \"e\"\n\n# letters beyond 4\nletters[5:8] # or, letters[5:length(letters)]\n\n[1] \"e\" \"f\" \"g\" \"h\"\n\n\nFor a matrix,\n\nmatrix[r, c] to get the element on \\(r\\)-th row, \\(c\\)-th column.\nmatrix[r, ], matrix[, c] to get all the elements on \\(r\\)-th row or \\(c\\)-th column\n\n\nmat_3by3 <- matrix(data = 1:9, nrow = 3, byrow = T)\nmat_3by3\n\n     [,1] [,2] [,3]\n[1,]    1    2    3\n[2,]    4    5    6\n[3,]    7    8    9\n\n# element (2,3)\nmat_3by3[2, 3]\n\n[1] 6\n\n# first row\nmat_3by3[1,]\n\n[1] 1 2 3\n\n\nFor a dataframe,\n\nyou can use indices (row, col) in the same way as matrices above;\nuse data$column_name, or data['column_name'] to access the entire column\n\nConventionally, each row is a subject, and each columnn is a variable (or aspect of measurement, feature, characteristic, risk factor etc).\n\nmini_data\n\n  age    sex has_covid\n1  20   male      TRUE\n2  50 female      TRUE\n3  32   male     FALSE\n\n# first row \nmini_data[1, ]\n\n  age  sex has_covid\n1  20 male      TRUE\n\n# second col\nmini_data[, 2]\n\n[1] \"male\"   \"female\" \"male\"  \n\n# via column name \nmini_data$age\n\n[1] 20 50 32\n\nmini_data['age']\n\n  age\n1  20\n2  50\n3  32"
   }
 ]

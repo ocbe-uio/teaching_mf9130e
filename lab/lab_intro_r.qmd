@@ -37,32 +37,389 @@ It is possible to download RStudio to your laptop or desktop; or use RStudio Clo
 
 
 
-# Basic commands 
+# Create variables
 
-### Assignment of object
+In R, there are a few types of variables. The ones you will interact with are:
 
-r as calculator (**use console first; use script AFTER project and workspace mgmt!**)
+* numeric (real numbers): 1.2, -5
+* integer: 1, 2, 2000
+* character (strings): "male", "female"
+* logical (binary, 1/0): True or False
+
+To create a variable, you type `variable_name <- variable_value` in the console. Note that code that start with `#` are **comments**, and are not evaluated.
 
 ```{r}
-#| label: assign value
+#| label: create variables
 #| warning: false
 #| echo: true
 
-# assign values to variables a, b, c
-# (comments start with #)
-a <- 3
-b <- 4
-c <- 7
+# create a numeric variable number_1
+number_1 <- 1.2
 
-# calculate the mean
-# output directly
-(a+b+c)/3
+# a character variable student
+student <- 'hadley'
 
-# or, save into a new variable d
-d <- (a+b+c)/3
-d
+# a logical variable true_or_false
+true_or_false <- T
+```
+
+To evaluate (or return) the variable you have created, you can either type the name of the variable, or `print()` with the variable name inside the bracket. 
+
+```{r}
+#| label: return variables
+#| warning: false
+#| echo: true
+
+number_1
+print(number_1)
+```
+
+You can check the variable type using `class(variable_name)`: 
+
+```{r}
+#| label: check variable type
+#| warning: false
+#| echo: true
+
+class(number_1)
+class(student)
+class(true_or_false)
+```
+
+
+::: callout-note
+## Name your variable
+
+It is good practice to give your variable a name that is both easy to understand, and also **valid**.
+
+* Names are **case sensitive**, `VariableA` is not the same as `variablea`
+* Numbers can not be a variable name by itself. Combining numbers and letters is allowed, but should **start with a letter**, such as `variable3`, but NOT `22variable`
+* You can use **underscores** ("snake_case" naming style). In fact it encourages readability, so it is my personal favoriate.
+
+Avoid the following:
+
+* Other special characters, such as dot and dollar sign: `var.A`, `var$A` have special meanings in R.
+* Avoid using function names like `function`, `list` and so on. If you really can't think of a better name, you can use names `my_function`, `list_1` to avoid the ambiguity.  
+:::
+
+
+# Data structure
+
+## Vectors
+
+A **vector** is a list of values; it can be numeric, and also characters and logical. 
+
+To create a vector, use function `c()`. 
+
+```{r}
+#| label: create a vector
+#| warning: false
+#| echo: true
+
+# numeric
+num_vector <- c(1, 2, 3, 4, 5)
+num_vector
+
+# character
+char_vector <- c('student_a', 'student_b', 'student_c')
+char_vector
+
+# logical 
+logical_vector <- c(T, F, T, F)
+logical_vector
+```
+
+
+There are some shortcuts to **create a sequence of values**; not required to learn, but very useful.
+
+```{r}
+#| label: create a vector shortcut
+#| warning: false
+#| echo: true
+
+# numeric
+# num_vector <- c(1, 2, 3, 4, 5)
+num_vector <- 1:5 # from 1 to 5
+seq(from = 1, to = 11, by = 2) # from 1 to 11, with 2 between each
+rep(1, 5) # repeat 1 for 5 times
+
+# character
+# char_vector <- c('student_a', 'student_b', 'student_c')
+char_vector <- paste0('student_', c('a', 'b', 'c'))
+
 
 ```
+
+
+
+::: callout-note
+## Types of elements in a vector
+
+In a vector, types of the elements must be the same. If you try to combine multiple types of variables in the same vector, such as a numeric number and a character, R will try to convert them into the same type.  
+
+Try to combine the following values into a vector, and see what happens.
+
+* 1.52, "student_a"
+* 1.52, TRUE (logical)
+* TRUE, "student_a"
+:::
+
+### Combine multiple vectors
+
+You can combine multiple vectors using `c()`. For example, `vec1` has 3 elements, `vec2` has 2 elements (assuming that they are of the same type), combining them gives 5 elements.
+
+```{r}
+#| label: combine vectors
+#| warning: false
+#| echo: true
+
+vec1 <- c(1, 3, 5)
+vec2 <- c(100, 101)
+c(vec1, vec2)
+
+# you can also save it into a new variable, 
+# so that you can access it in the future
+vec_combined <- c(vec1, vec2)
+vec_combined
+```
+
+
+
+## Matrix 
+
+A matrix can be thought of as a stack of vectors. When you collect data from $n$ patients (or subjects), you measure a few aspects on each patient such as age, sex, height and smoking. Let's say you have measured $p$ aspects. This forms a matrix of size $n \times p$.
+
+You might not need to create a matrix from scratch in R (because the focus of this course is data analysis); but it is helpful to understand some basic data manipulation commands.
+
+You can create a matrix using `matrix()`, with some parameters:
+
+```{r}
+#| label: create matrix 1
+#| warning: false
+#| echo: true
+
+matrix_1 <- matrix(data = c(1, 2, 3, 4), nrow = 2, ncol = 2, byrow = T)
+matrix_1
+```
+
+You can also create a matrix by combining two vectors of the same size, using `cbind()` or `rbind()`, which stands for "column bind" and "rowbind". 
+
+```{r}
+#| label: create matrix 2
+#| warning: false
+#| echo: true
+
+vec1 <- c(1, 2)
+vec2 <- c(3, 4)
+
+# bind by columnn
+matrix_c <- cbind(vec1, vec2)
+matrix_c
+# bind by row
+matrix_r <- rbind(vec1, vec2)
+matrix_r
+```
+
+
+
+
+## Dataframe
+
+Dataframe, `data.frame` is a format of data commonly used in data analysis with R and python. It can be considered as a matrix, but allows a mixture of data types, such as numeric and categorical measurements (age and sex).
+
+In this course, you will mostly be working with dataframes. 
+
+We create a small dataframe of 3 subjects:
+
+* Subject 1 is a 20 years-old male who has covid
+* Subject 2 is a 50 years-old female who has covid
+* Subject 3 is a 32 years-old male who does not have covid
+
+This is how you can present the dataframe, where each column has a different data type.
+
+```{r}
+#| label: create dataframe
+#| warning: false
+#| echo: true
+
+mini_data <- data.frame(
+  age = c(20, 50, 32), 
+  sex = c('male', 'female', 'male'), 
+  has_covid = c(T, T, F)
+)
+mini_data
+```
+
+
+
+
+# Data manipulation primer
+
+
+## Dimension of your data
+
+You can find the size of a **vector** with `length()`. 
+
+For a matrix or dataframe, you can use `dim()`. It will return `nrow ncol`, number of rows and number of columns.
+
+
+```{r}
+#| label: dimension of data 1
+#| warning: false
+#| echo: true
+
+vec1 <- c(1, 2)
+length(vec1)
+
+# matrix
+mat <- matrix(data = c(1, 2, 3, 4), nrow = 2, byrow = 2)
+dim(mat)
+
+# dataframe
+dim(mini_data)
+```
+
+
+::: callout-note
+## `dim()` or `length()`
+
+If you use `dim()` on a **vector**, it returns `NULL`. Given that a vector is just a matrix with 1 row (or column), this seems insensible. 
+
+Nonetheless, `dim()` works on **matrix** objects. if you convert the vector into a matrix with `nrow =1` or `ncol = 1`, `dim()` will work.  
+
+If you use `length()` on a matrix, it will return the total number of elements, i.e. ncol times nrow. 
+:::
+
+You can also use `nrow()`, `ncol()` to get the number of rows and columns explicitly. 
+
+```{r}
+#| label: dimension of data 2
+#| warning: false
+#| echo: true
+
+# ncol, nrow
+# dim(mini_data)
+nrow(mini_data)
+ncol(mini_data)
+```
+
+
+
+## Accessing elements in your data
+
+For a **vector**, you can access 
+
+* an element at a given position
+* multiple elements at given positions  
+* elements beyond, or below a certain element
+
+Sometimes you might need to combine previous knowledge to get what you want (e.g. to know how many elements in total there are). But not required now.
+
+```{r}
+#| label: indexing vector 1
+#| warning: false
+#| echo: true
+
+letters <- c('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h')
+
+# 3rd letter
+letters[3]
+
+# 3rd, and 5th
+letters[c(3, 5)]
+
+# letters beyond 4
+letters[5:8] # or, letters[5:length(letters)]
+```
+
+
+For a **matrix**,
+
+* `matrix[r, c]` to get the element on $r$-th row, $c$-th column.
+* `matrix[r, ]`, `matrix[, c]` to get all the elements on $r$-th row or $c$-th column
+
+```{r}
+#| label: indexing matrix
+#| warning: false
+#| echo: true
+
+mat_3by3 <- matrix(data = 1:9, nrow = 3, byrow = T)
+mat_3by3
+# element (2,3)
+mat_3by3[2, 3]
+
+# first row
+mat_3by3[1,]
+```
+
+
+For a **dataframe**, 
+
+* you can use indices (row, col) in the same way as matrices above; 
+* use `data$column_name`, or `data['column_name']` to access the entire **column**
+
+
+Conventionally, each row is a subject, and each columnn is a variable (or aspect of measurement, feature, characteristic, risk factor etc). 
+
+
+```{r}
+#| label: indexing dataframe
+#| warning: false
+#| echo: true
+
+mini_data
+
+# first row 
+mini_data[1, ]
+
+# second col
+mini_data[, 2]
+
+# via column name 
+mini_data$age
+mini_data['age']
+```
+
+
+
+
+## Modify existing data
+
+::: callout-note
+## Keep your original data safe!
+
+Modifying an existing data is easy, but you should be aware of the risks. In this class we only modify data we created in the class so there is little risk, but you might have your own datasets to analyse in the future.
+
+You should keep your original data in a safe place, and work on copies of it.
+
+Version control is a good skill to learn.
+:::
+
+```{r}
+#| label: modify data
+#| warning: false
+#| echo: true
+
+# vector
+# make e into E 
+letters[5] <- 'E'
+letters
+
+# matrix
+# make (1, 1) 20
+mat_3by3[1, 1] # originally was 1
+mat_3by3[1, 1] <- 20
+mat_3by3
+
+# dataframe
+# make so that subject 2 does not have covid
+mini_data
+mini_data$has_covid[2] <- F
+mini_data
+
+```
+
+
 
 
 # Functions and packages
@@ -71,6 +428,32 @@ d
 **just at abstract level for now (in the lecture), students can learn after seeing many examples**
 
 **in this document, would still be useful to include links so they can read on their own**
+
+## Basic calculations
+
+r as calculator (**use console first; use script AFTER project and workspace mgmt!**)
+
+exp, division
+
+```{r}
+#| label: basic calculation
+#| warning: false
+#| echo: true
+
+# assign values to variables a, b, c
+a <- 3
+b <- 4
+c <- 7
+
+# calculate the average of a,b,c
+# output directly
+(a+b+c)/3
+
+# or, save into a new variable d
+d <- (a+b+c)/3
+d
+```
+
 
 
 
@@ -97,31 +480,7 @@ penguins_mini
 
 
 
-# Data structure (use `penguins_mini` data as example)
-
-**Bec student background, it is not necessary to go into too much details**
-
-**MUST: concept of scalar, vector, matrix and data frame** (dataset exploration put to descriptive and eda)
-
-**MUST: numeric, factor, character, logical**
 
 
 
 
-
-
-
-# Visualisation (only intro, details later)
-
-### (base R)
-
-
-### ggplot
-
-Just some basics, since more specific types of viz will be shown in each section
-
-::: callout-note
-## Task 3
-
-Try explore the penguins data
-:::

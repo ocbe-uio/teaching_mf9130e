@@ -11,6 +11,17 @@ editor: visual
 
 Might be useful to have an outline and study goals 
 
+# Data structure (use `penguins_mini` data as example)
+
+**Bec student background, it is not necessary to go into too much details**
+
+**MUST: concept of scalar, vector, matrix and data frame** (dataset exploration put to descriptive and eda)
+
+**MUST: numeric, factor, character, logical**
+
+
+
+
 # Exploring a dataset
 
 
@@ -48,12 +59,13 @@ summary
 table () of a categorical vector
 
 
-# Visualisation
 
-::: callout-note
-## Task 3
+# Visualisation (only intro, details later)
 
-Repeat the lasso analysis, but this time do not penalise the `rna.BRAF` variable together with the mir variables.
+### (base R)
 
-Check out the information on the `penalty.factor` option in `?glmnet` to understand how.
-:::
+
+### ggplot
+
+Just some basics, since more specific types of viz will be shown in each section
+
