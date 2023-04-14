@@ -4,14 +4,14 @@
     "href": "index.html",
     "title": "MF9130E - Introduction to Statistics",
     "section": "",
-    "text": "This website is under construction. Stay tuned!\nDate: Time to be updated\nRoom: Location to be updated\n\n\nWelcome!\n\nThe goal of the 8-days course is to introduce kep concepts in statistics with medical applications.\nThe course is intended for students and researchers who are interested in statistics and R programming (e.g. biomedical data)\nCourse material can be found in the course github repository.\n\n\n\nSchedule (being updated!)\n\n\n\nTime\nTopic\nPresenter\n\n\n\n\n9:00 - 10:00\nplaceholder day1\nMZ\n\n\n10:15 - 11:00\nplaceholder day2\nMZ\n\n\n11:15 - 12:00\nplaceholder day3\nMZ"
+    "text": "This website is under construction. Stay tuned!\n\n\nWelcome!\n\nThe goal of the 8-days course is to introduce kep concepts in statistics with medical applications.\nThe course is intended for students and researchers who are interested in statistics and R programming (e.g. biomedical data)\nCourse material can be found in the course github repository.\n\n\n\nCourse material\nYou can find the course schedule with material used for each session here.\n\n\nSchedule\nYou can find the official course schedule provided by University of Oslo here.\n\nWeek 1\n\n\n\n\n\n\n\n\n\nDate\nTime\nTopic\nPlace\n\n\n\n\nApr 24\n12:45-16:00\nLecture: course introduction, data and descriptive statistics\nDME, Lille auditorium\n\n\nApr 25\n08:30-11:45\nGuided lab session\nDME, Auditorium 13\n\n\nApr 25\n12:45-16:00\nLecture: probability, Bayes law, diagnostic tests, distributions\nDME, Auditorium 13\n\n\nApr 26\n08:30-11:45\nGuided lab session\nDME, Store auditorium\n\n\nApr 26\n12:45-16:00\nLecture: statistical inference, hypothesis testing, confidence intervals, t-tests\nDME, Store auditorium\n\n\nApr 27\n08:30-11:45\nGuided lab session\nDME, Runde auditorium R105\n\n\nApr 27\n12:45-16:00\nLecture: categorical data analysis\nDME, Runde auditorium R105\n\n\nApr 28\n08:30-11:45\nGuided lab session\nDME, Store Auditorium\n\n\n\n\n\nWeek 2\n\n\n\n\n\n\n\n\n\nDate\nTime\nTopic\nPlace\n\n\n\n\nMay 8\n08:30-11:45\nLecture and lab: exploratory data analysis, transformation, non-parametric methods\nDME, Lille auditorium\n\n\nMay 8\n12:45-16:00\nLecture and lab: sample size, statistical power\nDME, Lille auditorium\n\n\nMay 9\n08:30-11:45\nLecture: study designs, principle of clinical trials\nHelga Engs hus Auditorium 3\n\n\nMay 9\n12:45-16:00\nLecture and lab: regression I\nHelga Engs hus Auditorium 3\n\n\nMay 10\n08:30-11:45\nLecture: regression II\nDME, Auditorium 13\n\n\nMay 10\n12:45-16:00\nLecture and lab: regression II\nDME, Auditorium 13\n\n\nMay 11\n08:30-11:45\nLecture and lab: regression III\nDME, Auditorium 13\n\n\nMay 11\n12:45-16:00\nLecture and lab: survival analysis, course summary\nDME, Auditorium 13"
   },
   {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "A central problem in machine learning is how to make an algorithm perform well not just on the training data, but also on new inputs. Many strategies in machine learning are explicitly designed to reduce this test error, possibly at the expense of increased training error. These strategies are collectively known as regularisation and they are instrumental for good performance of any kind of prediction or classification model, especially in the context of small data (many features, few samples).\nWe will discuss basic connected concepts of generalisation, overfitting, bias-variance trade-off and regularisation and will illustrate the principles with penalised (generalised) linear regression models, with ridge, lasso and elastic net penalties as prominent examples.\nFinally, we will present the idea of structured penalties and priors, which can be tailored to account for structures present in the data, e.g. multi-modality or complex correlation structures. We will use examples from large-scale cancer pharmacogenomic screens, where penalised regression and alternative Bayesian approaches are used for predicting drug sensitivity and synergy based on the genomic characterisation of tumour samples.\nIn the hands-on tutorial we will use R to perform an integrated analysis of multi-omics data with penalised regression.\n\nContact\nManuela Zucknick: manuela.zucknick@medisin.uio.no\nChi Zhang: chi.zhang@medisin.uio.no"
+    "text": "This is the ABOUT page for this course.\nBeing updated right now\n\nContact\nCourse leader: Manuela Zucknick: manuela.zucknick@medisin.uio.no\nCourse Quarto page developer: Chi Zhang: chi.zhang@medisin.uio.no"
   },
   {
     "objectID": "exercises_lab/lab1.html",
@@ -347,7 +347,7 @@
     "href": "lab/lab_eda_part1.html",
     "title": "Exploratory data analysis (Part I)",
     "section": "",
-    "text": "Might be useful to have an outline and study goals\n\nExploring a dataset\nhead()\nView()\nstr()\ncolnames()\ndim()\nnrow(), ncol()\nlength() of a vector\n\n\nBasic data manipulation\nonly cover base R here; if needed, tidyverse put to eda\nby index, [row, col]\n\n\nDescriptive statistics\nmin, max, median\nIQR\nsummary table () of a categorical vector\n\n\nVisualisation\n\n\n\n\n\n\nTask 3\n\n\n\nRepeat the lasso analysis, but this time do not penalise the rna.BRAF variable together with the mir variables.\nCheck out the information on the penalty.factor option in ?glmnet to understand how."
+    "text": "Might be useful to have an outline and study goals\n\nData structure (use penguins_mini data as example)\nBec student background, it is not necessary to go into too much details\nMUST: concept of scalar, vector, matrix and data frame (dataset exploration put to descriptive and eda)\nMUST: numeric, factor, character, logical\n\n\nExploring a dataset\nhead()\nView()\nstr()\ncolnames()\ndim()\nnrow(), ncol()\nlength() of a vector\n\n\nBasic data manipulation\nonly cover base R here; if needed, tidyverse put to eda\nby index, [row, col]\n\n\nDescriptive statistics\nmin, max, median\nIQR\nsummary table () of a categorical vector\n\n\nVisualisation (only intro, details later)\n\n(base R)\n\n\nggplot\nJust some basics, since more specific types of viz will be shown in each section"
   },
   {
     "objectID": "lab/lab_regression.html",
@@ -432,5 +432,145 @@
     "title": "Introduction to R",
     "section": "Accessing elements in your data",
     "text": "Accessing elements in your data\nFor a vector, you can access\n\nan element at a given position\nmultiple elements at given positions\n\nelements beyond, or below a certain element\n\nSometimes you might need to combine previous knowledge to get what you want (e.g. to know how many elements in total there are). But not required now.\n\nletters <- c('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h')\n\n# 3rd letter\nletters[3]\n\n[1] \"c\"\n\n# 3rd, and 5th\nletters[c(3, 5)]\n\n[1] \"c\" \"e\"\n\n# letters beyond 4\nletters[5:8] # or, letters[5:length(letters)]\n\n[1] \"e\" \"f\" \"g\" \"h\"\n\n\nFor a matrix,\n\nmatrix[r, c] to get the element on \\(r\\)-th row, \\(c\\)-th column.\nmatrix[r, ], matrix[, c] to get all the elements on \\(r\\)-th row or \\(c\\)-th column\n\n\nmat_3by3 <- matrix(data = 1:9, nrow = 3, byrow = T)\nmat_3by3\n\n     [,1] [,2] [,3]\n[1,]    1    2    3\n[2,]    4    5    6\n[3,]    7    8    9\n\n# element (2,3)\nmat_3by3[2, 3]\n\n[1] 6\n\n# first row\nmat_3by3[1,]\n\n[1] 1 2 3\n\n\nFor a dataframe,\n\nyou can use indices (row, col) in the same way as matrices above;\nuse data$column_name, or data['column_name'] to access the entire column\n\nConventionally, each row is a subject, and each columnn is a variable (or aspect of measurement, feature, characteristic, risk factor etc).\n\nmini_data\n\n  age    sex has_covid\n1  20   male      TRUE\n2  50 female      TRUE\n3  32   male     FALSE\n\n# first row \nmini_data[1, ]\n\n  age  sex has_covid\n1  20 male      TRUE\n\n# second col\nmini_data[, 2]\n\n[1] \"male\"   \"female\" \"male\"  \n\n# via column name \nmini_data$age\n\n[1] 20 50 32\n\nmini_data['age']\n\n  age\n1  20\n2  50\n3  32"
+  },
+  {
+    "objectID": "course_material/course_material_overview.html",
+    "href": "course_material/course_material_overview.html",
+    "title": "Course material",
+    "section": "",
+    "text": "On this page you’ll find a list of lecture notes, R lab notes and other material used in this course."
+  },
+  {
+    "objectID": "course_material/course_material_overview.html#day-1",
+    "href": "course_material/course_material_overview.html#day-1",
+    "title": "Lecture notes",
+    "section": "Day 1",
+    "text": "Day 1\nDescriptive statistics (insert link)\n\n\n\nTime\nTopic\nLab\nNotes\n\n\n\n\nApril 25 Morning\n\ntest notes\n\n\n\nApril 25 Afternoon\n\nMZ"
+  },
+  {
+    "objectID": "course_material/test.html",
+    "href": "course_material/test.html",
+    "title": "Diagnostic tests",
+    "section": "",
+    "text": "On this page you’ll find a list of lecture notes, organised by topics and days presented."
+  },
+  {
+    "objectID": "course_material/course_material_overview.html#week-1",
+    "href": "course_material/course_material_overview.html#week-1",
+    "title": "Course material",
+    "section": "Week 1",
+    "text": "Week 1\n\n\n\nTime\nTopic\nNotes\nLab\nOther\n\n\n\n\nApril 24 PM\nCourse introduction\n\nN/A\n\n\n\n\nDescriptive statistics\nExample pdf notes\nN/A\n\n\n\nApril 25 AM\nIntroduction to R\n\n\n\n\n\n\nDescriptive statistics\n\n\n\n\n\nApril 25 PM\nProbability, diagnosistic tests\nDiagnostic tests\n\n\n\n\n\nStatistical distributions\n\n\n\n\n\nApril 26 AM\nLab session\n\n\n\n\n\nApril 26 PM\nStatistical inference, tests and confidence intervals\n\n\n\n\n\n\nt-tests\n\n\n\n\n\nApril 27 AM\nLab session\n\n\n\n\n\nApril 27 PM\nCategorical data, table analysis\n\n\n\n\n\nApril 28 AM\nLab session"
+  },
+  {
+    "objectID": "course_material/course_material_overview.html#week-2",
+    "href": "course_material/course_material_overview.html#week-2",
+    "title": "Course material",
+    "section": "Week 2",
+    "text": "Week 2\n\n\n\n\n\n\n\n\n\nTime\nTopic\nNotes\nLab session\n\n\n\n\nMay 8 AM\nExploratory data analysis, transformation\n\n\n\n\n\nNon-parametric methods\n\n\n\n\nMay 8 PM\nSample size, statistical power\n\n\n\n\nMay 9 AM\nStudy design, principles of clinical trials\n\nNA\n\n\nMay 9 PM\nLinear regression I\n\n\n\n\nMay 10 AM\nLinear regression II\n\n\n\n\nMay 10 PM\nSurvival analysis"
+  },
+  {
+    "objectID": "course_material/notes_diagnostic_tests.html",
+    "href": "course_material/notes_diagnostic_tests.html",
+    "title": "Evaluation of diagnostic tests",
+    "section": "",
+    "text": "Topics:\nBook and resources:"
+  },
+  {
+    "objectID": "course_material/notes_diagnostic_tests.html#confusion-matrix",
+    "href": "course_material/notes_diagnostic_tests.html#confusion-matrix",
+    "title": "Evaluation of diagnostic tests",
+    "section": "Confusion matrix",
+    "text": "Confusion matrix\nDenote the subjects with positive condition as \\(P\\), and subjects with negative condition as \\(N\\).\nTotal population: \\(P+N\\)\nPrevalence (of positive condition): \\(\\frac{P}{P+N}\\)\n\n\n\n\n\n\n\n\n\nPredicted Positive\nPredicted Negative\n\n\n\n\nPositive condition \\(P\\)\nTrue Positive TP\nFalse Negative FN\n\n\nNegative condition \\(N\\)\nFalse Positive FP\nTrue Negative TN\n\n\n\nSensitivity is the probability of revealing that a person has the condition. It is also known as true positive rate (TPR), as it is the proportion of true positives.\n\\[\\text{Sensitivity}= \\frac{TP}{P} = \\frac{TP}{TP+FN}\\]\nThe complement of sensitivity (TPR) is the false negative rate (FNR),\n\\[FNR = 1-\\text{sensitivity} =\\frac{FN}{P} = \\frac{FN}{TP + FN}\\]\nSpecificity is the probability of revealing that a person does not have the condition (i.e. healthy). It is also known as true negative rate.\n\\[\\text{Specificity} = \\frac{TN}{N} = \\frac{TN}{TN + FP}\\]\nThe complement of specificity is false positive rate (FPR),\n\\[FPR = 1-\\text{specificity} =\\frac{FP}{N} = \\frac{FP}{TN + FP}\\]\nPositive predictive value (PPV): probability that the person with the condition was given a positive test result\n\\[PPV = \\frac{TP}{P_{predicted}} = \\frac{TP}{TP + FP}\\]\nNegative predictive value (NPV): probability that the person without the condition (i.e. healthy) was give a negative test result.\n\\[NPV = \\frac{TN}{N_{predicted}} = \\frac{TN}{TN + FN}\\]\n\n\n\n\n\n\nExplain\n\n\n\nuse visual aid\n\n\n\n\n\n\n\n\nExample: Mammography\n\n\n\n\n\n(From the Norwegian Medical Journal, 1990) 372 women with a lump in the breast have been referred to a surgical clinic.\n\n\n\n\nMammography benign\nMammography malign\n\n\n\n\nFinal diagnosis benign\n331\n16\n\n\nFinal diagnosis malign\n3\n22\n\n\n\nIdentify the positive test result (malign), and positive condition (diagnosis malign).\nSensitivity: \\(22/(22+3) = 0.88\\)\nSpecificity: \\(331/(331+16) = 0.95\\)\nPositive predictive value: \\(22/(22+16) = 0.58\\)\nNegative predictive value: \\(331/(331+3) = 0.99\\)"
+  },
+  {
+    "objectID": "course_material/notes_diagnostic_tests.html#diagnostic-tests-and-prevalence",
+    "href": "course_material/notes_diagnostic_tests.html#diagnostic-tests-and-prevalence",
+    "title": "Evaluation of diagnostic tests",
+    "section": "Diagnostic tests and prevalence",
+    "text": "Diagnostic tests and prevalence\nThe concepts in diagnostic testing can be formulated in the form of conditional probability,\n\nSensitivity: \\(P(\\text{pred pos}|\\text{disease})\\)\nSpecificity: \\(P(\\text{pred neg}|\\text{healthy})\\)\nPositive predictive value: \\(P(\\text{disease}|\\text{pred pos})\\)\nNegative predictive value: \\(P(\\text{healthy}|\\text{pred neg})\\)\n\nBayes’ theorem can be applied to link sensitivity, specificity and prevalence to PPV and NPV.\nFor positive predictive value,\n\\[PPV = \\frac{\\text{sens} \\cdot \\text{prev}}{\\text{sens} \\cdot \\text{prev} + (1-\\text{spes}) \\cdot (1-\\text{prev})}\\]\nSimilarly, for negative predictive value,\n\\[NPV = \\frac{\\text{spes} \\cdot (1-\\text{prev}) }{(1-\\text{sens}) \\cdot \\text{prev} + \\text{spes} \\cdot (1-\\text{prev})}\\]\n\n\n\n\n\n\nExplain\n\n\n\nderivation?\n\n\n\nExample: HIV testing\nWe want to test for antibodies of the HIV virus.\n\nPositive result: test shows antibodies\nNegative result: test does not show antibodies\n\nThe test result may be wrong.\nA false positive might come from antibodies from related virus, but not HIV. The probability of error is 0.2%.\nA false negative might be that antibodies are not yet produced in sufficient quantity, hence are not detected by the test. The probability of error is 2%.\nAssume that prevalence of HIV is 0.1%.\nWhat is the probability of a person having HIV, if he got a positive test result?\nWhat is the probability of a person not having HIV, if he got a negative test result?\n\n\n\n\n\n\nExample: HIV testing I\n\n\n\nRecall the relation between sensitivity and false negative, and between specificity with false positive.\nWe know the following information about the test:\n\nfalse negative rate \\(FNR = 2\\%\\): sensitivity \\(\\text{sens} = 1-2\\% = 98\\%\\)\nfalse positive rate \\(FPR = 0.2\\%\\): specificity \\(\\text{spec} = 1-0.2\\% = 99.8\\%\\)\n\nFor 100 000 persons,\n\nNumber of HIV infected (positive condition): \\(100000 \\times 0.001 = 100\\)\nTrue positives: \\(100 \\times 0.98 = 98\\)\nFalse negatives: 2\nNumber of not HIV infected (negative condition): \\(100000-100 = 99900\\)\nFalse positives: \\(99900 \\times 0.002 = 199.8\\), say \\(200\\)\nTrue negatives: \\(99900 \\times 0.998 = 99700\\)\nPositive predictive value, \\(PPV = TP/(TP+FP) = 98/(98+200)= 0.329\\)\nNegative predictive value, \\(NPV = TN/(TN+FN) = 99700/(99700+2) = 0.9999\\)\n\n\n\nWe can also use the formula.\n\n\n\n\n\n\nExample: HIV testing II\n\n\n\n\\(PPV = \\frac{\\text{sens} \\cdot \\text{prev}}{\\text{sens} \\cdot \\text{prev} + (1-\\text{spes}) \\cdot (1-\\text{prev})} = \\frac{0.98 \\times 0.001}{0.98 \\times 0.001 + 0.002 \\times 0.999} = 0.329\\)\n\\(NPV = \\frac{\\text{spes} \\cdot (1-\\text{prev}) }{(1-\\text{sens}) \\cdot \\text{prev} + \\text{spes} \\cdot (1-\\text{prev})} = \\frac{0.998 \\times 0.999}{0.98 \\times 0.001 + 0.998 \\times 0.999} = 0.999\\)\n\n\n\n\nFalse positive, PPV and revalence\nAs can be seen from the HIV example, PPV (i.e. the probability of detecting an actual condition, when the test is positive) depends on prevalence.\n\nWhen prevalence is 1/10000, 1/1000, 1/100, 1/10\nCorresponding PPV: 5%, 33%, 83%, 98%\n\nThe risk of getting false positives is greater for rare diseases, and smaller for more common diseases.\nFalse positives are problematic in mass screening for disease. It is possible that the majority of the positives (test results) are false positives."
+  },
+  {
+    "objectID": "get_started/get_started_1.html",
+    "href": "get_started/get_started_1.html",
+    "title": "Get started",
+    "section": "",
+    "text": "Here you will find useful information on how to get started."
+  },
+  {
+    "objectID": "get_started/get_started_1.html#data",
+    "href": "get_started/get_started_1.html#data",
+    "title": "Get started",
+    "section": "Data",
+    "text": "Data"
+  },
+  {
+    "objectID": "get_started/get_started_1.html#code",
+    "href": "get_started/get_started_1.html#code",
+    "title": "Get started",
+    "section": "Code",
+    "text": "Code"
+  },
+  {
+    "objectID": "get_started/get_started_1.html#resources-updating",
+    "href": "get_started/get_started_1.html#resources-updating",
+    "title": "Get started",
+    "section": "Resources (updating…)",
+    "text": "Resources (updating…)\nLecture notes link\nLab notes link\nAure 2015 Paper link"
+  },
+  {
+    "objectID": "get_started/get_started_1.html#books",
+    "href": "get_started/get_started_1.html#books",
+    "title": "Get started",
+    "section": "Books",
+    "text": "Books"
+  },
+  {
+    "objectID": "get_started/get_started_1.html#papers",
+    "href": "get_started/get_started_1.html#papers",
+    "title": "Get started",
+    "section": "Papers",
+    "text": "Papers"
+  },
+  {
+    "objectID": "get_started/get_started.html",
+    "href": "get_started/get_started.html",
+    "title": "Get started",
+    "section": "",
+    "text": "Here you will find useful information on how to get started."
+  },
+  {
+    "objectID": "get_started/get_started.html#data",
+    "href": "get_started/get_started.html#data",
+    "title": "Get started",
+    "section": "Data",
+    "text": "Data"
+  },
+  {
+    "objectID": "get_started/get_started.html#code",
+    "href": "get_started/get_started.html#code",
+    "title": "Get started",
+    "section": "Code",
+    "text": "Code"
+  },
+  {
+    "objectID": "get_started/get_started.html#resources-updating",
+    "href": "get_started/get_started.html#resources-updating",
+    "title": "Get started",
+    "section": "Resources (updating…)",
+    "text": "Resources (updating…)\nLecture notes link\nLab notes link\nAure 2015 Paper link"
+  },
+  {
+    "objectID": "get_started/get_started.html#books",
+    "href": "get_started/get_started.html#books",
+    "title": "Get started",
+    "section": "Books",
+    "text": "Books"
+  },
+  {
+    "objectID": "get_started/get_started.html#papers",
+    "href": "get_started/get_started.html#papers",
+    "title": "Get started",
+    "section": "Papers",
+    "text": "Papers"
   }
 ]

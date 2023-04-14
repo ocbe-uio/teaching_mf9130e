@@ -1,0 +1,47 @@
+---
+title: "Get started"
+format: 
+  html:
+    code-fold: false
+    code-tools: true
+editor: source
+---
+
+Here you will find useful information on how to get started. 
+
+
+
+# Set up your RStudio 
+
+
+In this workshop we will be using R. You can either
+
+-   have **R and Rstudio** installed on your laptop
+-   or, use **Posit cloud** (formerly Rstudio Cloud).
+
+[Posit cloud](https://posit.cloud) is free of charge for personal users, yet you need to [sign up](https://posit.cloud/plans/free) for a new user account and have internet connection.
+
+## Data
+
+## Code
+
+## Resources (updating...)
+
+Lecture notes [link](https://github.com/ocbe-uio/2022_bioinformatics_workshop/tree/main/lecture_notes)
+
+Lab notes [link](https://github.com/ocbe-uio/2022_bioinformatics_workshop/blob/main/lab/StatPrinciples_RLab.pdf)
+
+Aure 2015 Paper [link](https://github.com/ocbe-uio/2022_bioinformatics_workshop/blob/main/lab/Aure_2015.pdf)
+
+
+
+
+
+# Resources 
+Here are some useful links for the participants of the course.
+
+## Books
+
+## Papers 
+
+

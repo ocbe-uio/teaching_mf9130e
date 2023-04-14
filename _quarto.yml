@@ -10,58 +10,18 @@ website:
     left: 
       - href: index.qmd
         text: "Home"
-      - href: lecture_notes/lecture_notes_overview.qmd
-        text: "Lecture notes"
+      - href: get_started/get_started.qmd
+        text: "Get Started"
+      - href: course_material/course_material_overview.qmd
+        text: "Course material"
       - href: lab/overview.qmd
-        text: "R lab and code"
+        text: "R Lab and Code"
+      - href: about.qmd
+        text: "About"
         
     right: 
       - icon: github
         href: https://github.com/ocbe-uio/teaching_mf9130e
-        
-  sidebar:
-    style: "docked"
-    search: true
-    collapse-level: 1
-    contents:
-      - section: "Course information"
-        contents: 
-          - href: course_info/overview.qmd
-            text: "Overview"
-          - href: course_info/schedule.qmd
-            text: "Schedule"
-          - href: course_info/useful_links.qmd
-            text: "Useful links"
-
-      - section: "Preparation"
-        contents: 
-          - href: preparation/r_setup.qmd
-            text: "Set up"
-            
-      - section: "Daily materials"
-        contents: 
-          - href: daily_content/day1.qmd
-            text: "Day 1"
-          - href: daily_content/day2.qmd
-            text: "Day 2"
-          - href: daily_content/day3.qmd
-            text: "Day 3"
-          - href: daily_content/day4.qmd
-            text: "Day 4"
-          - href: daily_content/day5.qmd
-            text: "Day 5"
-          - href: daily_content/day6.qmd
-            text: "Day 6"
-          - href: daily_content/day7.qmd
-            text: "Day 7"
-          - href: daily_content/day8.qmd
-            text: "Day 8"
-
-      - section: "Supplemental notes"
-        contents: 
-          - href: supplementary/note1.qmd
-            text: "Notes"
- 
 
   page-navigation: true
 
