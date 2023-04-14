@@ -1,32 +1,37 @@
+# DO NOT EDIT
+
+`doc` folder is generated automatically when render. Do not edit by hand.
+
+
+
 # Where are my content
 
 Lecture notes
 
--   `lecture_notes/`
+-   `course_material/course_material_overview.qmd`: overview with a table. this is where you edit the links to each topic 
+-   `notes_diagnostic_tests.qmd`: this is an example of `qmd` notes. renders to html.
+-   `example.pdf`: an example of `pdf` notes. downloadable by students directly from the browser
 
 Lab content
 
 -   `lab/code/` stores code
-
 -   `lab/data/` stores data
 
--   `lab/Aure_2015.pdf` is the paper
 
--   `lab/StatPrinciples_RLab.pdf` is the lab notes
 
 # The course website
 
 The website is linked to the github repository, specifically,
 
--   [Homepage](https://ocbe-uio.github.io/2022_bioinformatics_workshop/) links to `index.qmd`
+-   [Home](https://ocbe-uio.github.io/teaching_mf9130e/) links to `index.qmd`
 
--   [Preparation](https://ocbe-uio.github.io/2022_bioinformatics_workshop/part0_prep.html) links to `part0_prep.qmd`
+- [Get started](https://ocbe-uio.github.io/teaching_mf9130e/get_started/get_started.html) links to `get_started/get_started.qmd`
 
--   [R Lab - Part I](https://ocbe-uio.github.io/2022_bioinformatics_workshop/part1_eda.html) links to `part1_eda.qmd`
+- [Course material](https://ocbe-uio.github.io/teaching_mf9130e/course_material/course_material_overview.html) links to `course_material/course_material_overview.qmd`
 
--   [R Lab - Part II](https://ocbe-uio.github.io/2022_bioinformatics_workshop/part2_model.html) links to `part2_model.qmd`
+- [R labs and code](https://ocbe-uio.github.io/teaching_mf9130e/lab/overview.html) links to `lab/overview.qmd`, which links a bunch of sub material
 
--   [About](https://ocbe-uio.github.io/2022_bioinformatics_workshop/about.html) links to `about.qmd`
+  
 
 The overall appearance is controlled by `_quarto.yml`.
 
@@ -36,8 +41,20 @@ The website is made by [quarto](https://quarto.org), which is a better version o
 
 You might need to [install quarto](https://quarto.org/docs/get-started/) and upgrade Rstudio to the latest version, to be able to render the documents by yourself.
 
-Make sure that the path are set properly so that files can be loaded properly.
+### Recommended workflow
 
-*Deploy changes to the website*: push all modifications to github, the site will update itself momentarily (after the CI/CD are successful)
+1. Clone the repo to your local 
+2. Make a branch
+3. test render `index.qmd`, see if the whole website renders
+4. change something on the branch
+5. test `render` the `qmd` files you modified. Make sure that the path are set properly so that files can be loaded properly
+6. push to remote
+7. make a pull request, someone will take over from here
+
+
+
+### Deploy changes to the website (avoid this if you are not sure!)
+
+push all modifications to github, the site will update itself momentarily (after the CI/CD are successful)
 
 You can also let me know if you need any help with the website or text.
