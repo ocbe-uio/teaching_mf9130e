@@ -1,12 +1,34 @@
 ---
-title: "Statistical inference and confidence interval"
-description: "R lab 1"
+title: "Statistical inference"
+description: "Confidence interval, hypothesis testing"
 format: 
   html:
     code-fold: false
     code-tools: true
-editor: visual
+editor: source
 ---
 
-## Inference and testing 
+# Confidence interval
+
+
+
+# Hypothesis testing
+
+### Error
+
+Type I error: conclude that there is an effect when there is not (false positive).
+
+* controlled by **significance level**, $\alpha$
+* usually choose $\alpha = 0.05$
+
+Type II error: conclude there is not an effect when there really is (false negative).
+
+* power: $1-\beta$
+* a minimum for "good" power is usually 80%; i.e. 80% chance of correctly rejecting the null hypothesis if there is an effect.
+
+
+
+
+
+
 

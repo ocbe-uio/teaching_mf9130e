@@ -38,11 +38,11 @@ On this page you'll find a list of **lecture notes**, **R lab notes** and other 
 |:-------------:|:-----------------------------------------:|:-------------:|:-------------:|
 | May 8 AM  | Exploratory data analysis, transformation | | |
 |                  | Non-parametric methods | | |
-| May 8 PM | Sample size, statistical power          | |  |
+| May 8 PM | Sample size, statistical power          | | [Code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/5_samplesize.R) |
 | May 9 AM | Study design, principles of clinical trials          | | NA |
 | May 9 PM | Linear regression I        | |  |
 | May 10 AM | Linear regression II          | |  |
-| May 10 PM | Survival analysis          | |  |
+| May 10 PM | Survival analysis          | | [Lab](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_survival.html), [Code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/7_survival.R) |
 
 
 

@@ -3,7 +3,7 @@ library(survival)
 
 
 # ex 2: melanoma ----
-# effect onn survival on the patient's gender and tumor thickness
+# effect on survival on the patient's gender and tumor thickness
 
 melanoma <- haven::read_dta('./lab/data/melanoma.dta')
 head(melanoma)
@@ -26,9 +26,13 @@ melanoma[1,]
 # you can also use 'factor' function
 death <- ifelse(melanoma$status == 1, 1, 0)
 
-# check if it is correct
-head(death)
+# death <- factor(melanoma$status, 
+#                 levels = c('1', '0'),
+#                 labels = c('Death from melanoma', 'Death from others'))
 
+# check if it is correct
+table(death)
+table(melanoma$status)
 lifetime <- melanoma$lifetime
 
 

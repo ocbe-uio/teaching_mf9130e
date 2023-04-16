@@ -1,12 +1,276 @@
 ---
 title: "Survival analysis"
-description: "KM curve, log rank tests"
+description: "Kaplan-Meier curve, log rank tests"
 format: 
   html:
     code-fold: false
     code-tools: true
-editor: visual
+editor: source
 ---
 
-## Inference and testing 
+# Melanoma 
 
+(This is the example 2 in the exercises)
+
+First we load the dataset, and check what columns are there.
+
+```{r}
+#| label: melanoma-1
+#| warning: false
+#| echo: true
+library(survival)
+
+melanoma <- haven::read_dta('data/melanoma.dta')
+
+head(melanoma)
+colnames(melanoma)
+```
+
+### a) Recode variable
+
+We only need "death from melanoma" or else, hence we need to recode the `status` variable which originally had three categories.
+
+```{r}
+#| label: melanoma-a1
+#| warning: false
+#| echo: true
+
+# if status == 1, code 1; otherwise, code 0
+# this indicates whether deaths from melanoma
+death <- ifelse(melanoma$status == 1, 1, 0)
+
+# check if the labels are correct
+table(death)
+table(melanoma$status)
+
+```
+
+You can see that the category `melanoma$status == 1` should match `death == 1`, and `melanoma$status` of 2 and 4 are merged together and coded as `death == 0`. 
+
+### b) Kaplan-Meier plot 
+
+
+```{r}
+#| label: melanoma-b1
+#| warning: false
+#| echo: true
+
+# take lifetime variable
+lifetime <- melanoma$lifetime
+
+
+km_fit <- survfit(Surv(lifetime, death) ~ 1)
+plot(km_fit)
+
+# add title and text
+title(main = 'Kaplan-Meier survival estimate', 
+      xlab = 'Time', 
+      ylab = 'Survival probability')
+
+```
+
+
+Now we check only time 1, 2, 5. 
+
+```{r}
+#| label: melanoma-b2
+#| warning: false
+#| echo: true
+
+# time 1, 2, 5
+tme <- c(1, 2, 5)
+summary(km_fit, times = tme)
+```
+
+
+### c) Compare two genders 
+
+```{r}
+#| label: melanoma-c1
+#| warning: false
+#| echo: true
+
+# gender == 1: female; gender == 2: male
+gender <- melanoma$gender
+
+
+km_fit_gender <- survfit(Surv(lifetime, death) ~ gender)
+plot(km_fit_gender, col = c('blue', 'red'))
+title(main = 'Kaplan-Meier survival estimate: stratify by gender', 
+      xlab = 'Time', 
+      ylab = 'Survial probability')
+
+# add legend
+legend( 'bottomleft', 
+       legend = c('Female', 'Male'), 
+       lty = c('solid', 'solid'), 
+       col = c('blue','red'))
+
+```
+
+Now we test the difference with log-rank test
+
+```{r}
+#| label: melanoma-c2
+#| warning: false
+#| echo: true
+
+# test difference with logrank test 
+survdiff(Surv(lifetime, death) ~ gender)
+```
+
+
+### d) Compare tumor thickness
+
+First we do some data processing
+
+```{r}
+#| label: melanoma-d1
+#| warning: false
+#| echo: true
+
+# check the original data type 
+melanoma$grouped_tumor_thickness
+
+# you can code them so that the data is more readable
+grouped_tumor_thickness <- factor(melanoma$grouped_tumor_thickness, 
+                           levels = c('1','2', '3'),
+                           labels = c('0-2 mm', '2-5 mm', '5+ mm'))
+
+# check if it is coded correctly
+table(grouped_tumor_thickness)
+table(melanoma$grouped_tumor_thickness)
+
+```
+
+
+Now we plot the KM plot, and carry out a log-rank test
+```{r}
+#| label: melanoma-d2
+#| warning: false
+#| echo: true
+
+km_fit_tumor <- survfit(Surv(lifetime, death) ~ grouped_tumor_thickness)
+plot(km_fit_tumor, col = c('blue', 'red', 'forestgreen'))
+
+title(main = 'Kaplan-Meier survival estimate: stratify by tumor thickness', 
+      xlab = 'Time', 
+      ylab = 'Survial probability')
+
+# add legend
+legend( 'bottomleft', 
+        legend = c('0-2 mm', '2-5 mm', '5+ mm'), 
+        lty = c('solid', 'solid', 'solid'), 
+        col = c('blue','red', 'forestgreen'))
+
+
+# test difference with logrank test 
+survdiff(Surv(lifetime, death) ~ grouped_tumor_thickness)
+
+```
+
+
+
+
+# Length of hospital stay 
+
+(This is the exercise 3 from the exercise for day 7)
+
+
+```{r}
+#| label: liggetid
+#| warning: false
+#| echo: true
+
+liggetid <- haven::read_dta('data/liggetid.dta')
+head(liggetid)
+colnames(liggetid)
+
+# all status are 1 
+status <- liggetid$status
+```
+
+
+### a) Length of stay vs gender
+
+```{r}
+#| label: liggetid-a1
+#| warning: false
+#| echo: true
+
+# length of stay (los) vs gender
+los <- liggetid$liggetid
+head(los)
+
+# can choose to recode; or leave as it is;
+# gender == 0: female; gender == 1: male
+gender <- liggetid$kjoenn
+head(gender)
+
+# fit km 
+km_liggetid_gender <- survfit(Surv(los, status) ~ gender)
+
+plot(km_liggetid_gender, col = c('blue', 'red'))
+
+title(main = 'Kaplan-Meier survival estimate: stratify by gender', 
+      xlab = 'Time', 
+      ylab = 'Survial probability')
+
+# add legend
+legend( 'topright', 
+        legend = c('Female', 'Male'), 
+        lty = c('solid', 'solid'), 
+        col = c('blue','red'))
+
+```
+
+Now we do log-rank test
+
+```{r}
+#| label: liggetid-a2
+#| warning: false
+#| echo: true
+
+# log rank test 
+survdiff(Surv(los, status) ~ gender)
+```
+
+
+### b) Length of stay vs stroke 
+
+```{r}
+#| label: liggetid-b1
+#| warning: false
+#| echo: true
+
+
+# length of stay vs stroke
+# slag == 1: yes, slag == 2: no
+stroke <- liggetid$slag
+
+# fit km 
+km_liggetid_stroke <- survfit(Surv(los, status) ~ stroke)
+
+plot(km_liggetid_stroke, col = c('blue', 'red'))
+
+title(main = 'Kaplan-Meier survival estimate: stratify by stroke', 
+      xlab = 'Time', 
+      ylab = 'Survial probability')
+
+# add legend
+legend( 'topright', 
+        legend = c('Stroke: yes', 'Stroke: no'), 
+        lty = c('solid', 'solid'), 
+        col = c('blue','red'))
+
+```
+
+
+```{r}
+#| label: liggetid-b2
+#| warning: false
+#| echo: true
+
+# log rank test
+survdiff(Surv(los, status) ~ stroke)
+```
