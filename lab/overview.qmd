@@ -1,27 +1,10 @@
 ---
-title: "R Lab and code"
-listing:
-  - id: lab
-    max-description-length: 500
-    image-height: 150px
-    fields: [title, description]
-    contents: 
-      - "lab_intro_r.qmd"
-      - "lab_eda_part1.qmd"
-      - "lab_eda_part2.qmd"
-      - "lab_inf_ci.qmd"
-      - "lab_ttest.qmd"
-      - "lab_categorical.qmd"
-      - "lab_nonpara.qmd"
-      - "lab_samplesize.qmd"
-      - "lab_regression.qmd"
-      - "lab_survival.qmd"
-    type: table
-    grid-item-border: false
-    sort-ui: false
-    sort: "date desc"
-    filter-ui: false
-    categories: false
+title: "R Lab and Code"
+format: 
+  html:
+    code-fold: true
+    code-tools: true
+editor: source
 ---
 
 Welcome! Here you will find material for R lab and code for this course. 
@@ -30,23 +13,35 @@ Welcome! Here you will find material for R lab and code for this course.
 
 Please refer to **(link to setup)** page for more information.
 
-### Data
+### Data and R scripts
 
 Datasets used for this course can be found at **insert path**.
-
-### R scripts
 
 R scripts used for each section can be downloaded directly at **insert path**.
 
 
 
-## Lab
+# Lab notes and exercises
 
-*PLAN: use hide-code? or prepare 2 sets, one for demonstration in class, another for home-exercise. for the home exercise, can attach worked solution at the bottom.*
+Here you can find the lab sessions discussed in class. **Lab notes** contain worked examples (code, visualisation) and some comments. 
 
-::: {#lab}
-:::
+**Exercises** (without solution) can be used when you want to try the examples by yourself. The solution can be found in corresponding lab notes.
 
+
+| Lab notes   |  Topics             | Exercises |
+|:---------------:|:----------:|:------------------:|
+| [Introduction to R](lab_intro_r.qmd) | Get started, navigation, data types, data import and export  |  |
+| [EDA I](lab_eda_part1.qmd) | Exploring a dataset, basic data manipulation, descriptive statistics | exercise |
+| [EDA II](lab_eda_part2.qmd)| (Week 2) More on data manipulation, visualisation| exercise |
+| [Statistical inference](lab_inf_ci.qmd)| Confidence interval, hypothesis testing | |
+| [t-test](lab_ttest.qmd)| One sample, two sample t-tests | exercise |
+| [Table analysis](lab_categorical.qmd)| Proportions, contingency table, chi-square test | exercise|
+| [Non-parametric tests](lab_nonpara.qmd)|Wilcoxon signed test, rank sum test | exercise|
+| [Sample size, power](lab_samplesize.qmd)| Sample size, power calculation | |
+| [Regression analysis](lab_regression.qmd)| Linear regression, logistic regression | exercise|
+| [Survival analysis](lab_survival.qmd)|Kaplan-Meier curve, log rank tests | |
+
+(EDA: exploratory data analysis)
 
 ## Useful resources 
 

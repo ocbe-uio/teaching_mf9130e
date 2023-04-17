@@ -44,16 +44,16 @@
   {
     "objectID": "lab/overview.html",
     "href": "lab/overview.html",
-    "title": "R Lab and code",
+    "title": "R Lab and Code",
     "section": "",
     "text": "Welcome! Here you will find material for R lab and code for this course."
   },
   {
     "objectID": "lab/overview.html#set-up",
     "href": "lab/overview.html#set-up",
-    "title": "R Lab and code",
+    "title": "R Lab and Code",
     "section": "Set-up",
-    "text": "Set-up\nPlease refer to (link to setup) page for more information.\n\nData\nDatasets used for this course can be found at insert path.\n\n\nR scripts\nR scripts used for each section can be downloaded directly at insert path."
+    "text": "Set-up\nPlease refer to (link to setup) page for more information.\n\nData and R scripts\nDatasets used for this course can be found at insert path.\nR scripts used for each section can be downloaded directly at insert path."
   },
   {
     "objectID": "lab/overview.html#lab",
@@ -65,7 +65,7 @@
   {
     "objectID": "lab/overview.html#useful-resources",
     "href": "lab/overview.html#useful-resources",
-    "title": "R Lab and code",
+    "title": "R Lab and Code",
     "section": "Useful resources",
     "text": "Useful resources\nBook (Wickham et al) R for Data Science (2e)"
   },
