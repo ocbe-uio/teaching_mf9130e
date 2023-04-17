@@ -1,12 +1,5 @@
 [
   {
-    "listing": "/lab/lab_overview.html",
-    "items": [
-      "/lab/lab1.html",
-      "/lab/lab2.html"
-    ]
-  },
-  {
     "listing": "/lab/overview.html",
     "items": [
       "/lab/lab_intro_r.html",

@@ -2,142 +2,184 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "MF9130E - Introduction to Statistics",
+    "title": "MF9130E - Introductory course in Statistics",
     "section": "",
-    "text": "This website is under construction. Stay tuned!\n\n\nWelcome!\n\nThe goal of the 8-days course is to introduce kep concepts in statistics with medical applications.\nThe course is intended for students and researchers who are interested in statistics and R programming (e.g. biomedical data)\nCourse material can be found in the course github repository.\n\n\n\nCourse material\nYou can find the course schedule with material used for each session here.\n\n\nSchedule\nYou can find the official course schedule provided by University of Oslo here.\n\nWeek 1\n\n\n\n\n\n\n\n\n\nDate\nTime\nTopic\nPlace\n\n\n\n\nApr 24\n12:45-16:00\nLecture: course introduction, data and descriptive statistics\nDME, Lille auditorium\n\n\nApr 25\n08:30-11:45\nGuided lab session\nDME, Auditorium 13\n\n\nApr 25\n12:45-16:00\nLecture: probability, Bayes law, diagnostic tests, distributions\nDME, Auditorium 13\n\n\nApr 26\n08:30-11:45\nGuided lab session\nDME, Store auditorium\n\n\nApr 26\n12:45-16:00\nLecture: statistical inference, hypothesis testing, confidence intervals, t-tests\nDME, Store auditorium\n\n\nApr 27\n08:30-11:45\nGuided lab session\nDME, Runde auditorium R105\n\n\nApr 27\n12:45-16:00\nLecture: categorical data analysis\nDME, Runde auditorium R105\n\n\nApr 28\n08:30-11:45\nGuided lab session\nDME, Store Auditorium\n\n\n\n\n\nWeek 2\n\n\n\n\n\n\n\n\n\nDate\nTime\nTopic\nPlace\n\n\n\n\nMay 8\n08:30-11:45\nLecture and lab: exploratory data analysis, transformation, non-parametric methods\nDME, Lille auditorium\n\n\nMay 8\n12:45-16:00\nLecture and lab: sample size, statistical power\nDME, Lille auditorium\n\n\nMay 9\n08:30-11:45\nLecture: study designs, principle of clinical trials\nHelga Engs hus Auditorium 3\n\n\nMay 9\n12:45-16:00\nLecture and lab: regression I\nHelga Engs hus Auditorium 3\n\n\nMay 10\n08:30-11:45\nLecture: regression II\nDME, Auditorium 13\n\n\nMay 10\n12:45-16:00\nLecture and lab: regression II\nDME, Auditorium 13\n\n\nMay 11\n08:30-11:45\nLecture and lab: regression III\nDME, Auditorium 13\n\n\nMay 11\n12:45-16:00\nLecture and lab: survival analysis, course summary\nDME, Auditorium 13"
+    "text": "This website is under construction. Stay tuned!\n\n\nWelcome!\nYou are on the course website for MF9130E - Introductory Course in Statistics.\n\nThe course is intended for students and researchers who are interested in statistics and R programming, with applications in medical and healthcare data. No previous programming experience is required to participate in this course.\nThis website is developed by the instructors of the course, hosted for free and public access on Github. The course github repository can be accessed here.\nYou can check the course page by UiO for information related to applications, evaluations and other administrative matters.\n\n\nPreparation\nYou should have a working solution of R (either installed on your own laptop, or using Posit cloud) before the course.\nIt would also be helpful if you familiarize yourself with the course website.\n\nGet Started provides some information about software installation, where to download data and code, and some resources.\nCourse material provides an overview and links for the topics we will cover.\nR Lab and Code hosts the lab session notes.\n\n\n\n\nSchedule\nYou can find the official course schedule provided by University of Oslo here. If there is an error in the time and place on this page, please refer to the official schedule.\n\nWeek 1\n\n\n\n\n\n\n\n\n\nDate\nTime\nTopic\nPlace\n\n\n\n\nApr 24\n12:45-16:00\nLecture: course introduction, data and descriptive statistics\nDME, Lille auditorium\n\n\nApr 25\n08:30-11:45\nGuided lab session\nDME, Auditorium 13\n\n\nApr 25\n12:45-16:00\nLecture: probability, Bayes law, diagnostic tests, distributions\nDME, Auditorium 13\n\n\nApr 26\n08:30-11:45\nGuided lab session\nDME, Store auditorium\n\n\nApr 26\n12:45-16:00\nLecture: statistical inference, hypothesis testing, confidence intervals, t-tests\nDME, Store auditorium\n\n\nApr 27\n08:30-11:45\nGuided lab session\nDME, Runde auditorium R105\n\n\nApr 27\n12:45-16:00\nLecture: categorical data analysis\nDME, Runde auditorium R105\n\n\nApr 28\n08:30-11:45\nGuided lab session\nDME, Store Auditorium\n\n\n\n\n\nWeek 2\n\n\n\n\n\n\n\n\n\nDate\nTime\nTopic\nPlace\n\n\n\n\nMay 8\n08:30-11:45\nLecture and lab: exploratory data analysis, transformation, non-parametric methods\nDME, Lille auditorium\n\n\nMay 8\n12:45-16:00\nLecture and lab: sample size, statistical power\nDME, Lille auditorium\n\n\nMay 9\n08:30-11:45\nLecture: study designs, principle of clinical trials\nHelga Engs hus Auditorium 3\n\n\nMay 9\n12:45-16:00\nLecture and lab: regression I\nHelga Engs hus Auditorium 3\n\n\nMay 10\n08:30-11:45\nLecture: regression II\nDME, Auditorium 13\n\n\nMay 10\n12:45-16:00\nLecture and lab: regression II\nDME, Auditorium 13\n\n\nMay 11\n08:30-11:45\nLecture and lab: regression III\nDME, Auditorium 13\n\n\nMay 11\n12:45-16:00\nLecture and lab: survival analysis, course summary\nDME, Auditorium 13"
   },
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "About the course",
     "section": "",
-    "text": "This is the ABOUT page for this course.\nBeing updated right now\n\nContact\nCourse leader: Manuela Zucknick: manuela.zucknick@medisin.uio.no\nCourse Quarto page developer: Chi Zhang: chi.zhang@medisin.uio.no"
+    "text": "The aim of the course is to make the participants acquainted with basic statistical ideas and methods. No special previous knowledge of mathematics or statistics is assumed. The statistical software R and the RStudio environment will be used in many of the exercises. Analysis of examples from biomedical research will be emphasized.\n\nContact\n\nManuela Zucknick: manuela.zucknick@medisin.uio.no\nValeria Vitelli: valeria.vitelli@medisin.uio.no\nAlvaro Kohn Luque: a.k.luque@medisin.uio.no\nChi Zhang: chi.zhang@medisin.uio.no"
   },
   {
-    "objectID": "exercises_lab/lab1.html",
-    "href": "exercises_lab/lab1.html",
-    "title": "R Lab 1",
+    "objectID": "course_material/course_material_overview.html",
+    "href": "course_material/course_material_overview.html",
+    "title": "Course material",
     "section": "",
-    "text": "In this part of the exercise, we model (on the log-scale) the association of miRNA espression on protein expression adjusting for the corresponding mRNA.\nInvestigate miR-107 and B-RAF (Aure et al, 2015, Figure 2H)\n\n\n\n\nprt.BRAF = prt[12,]\nrna.BRAF = rna[12,]\nmir.107 = mir[16,] \n\n\n\non the log-scale, Aure et al. 2015, equation (3)\n\nfitA <- lm(prt.BRAF ~ mir.107 + rna.BRAF)\nsummary(fitA)\n\n\nCall:\nlm(formula = prt.BRAF ~ mir.107 + rna.BRAF)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-2.3028 -0.6126  0.0453  0.6153  3.1361 \n\nCoefficients:\n              Estimate Std. Error t value Pr(>|t|)    \n(Intercept) -7.315e-08  5.068e-02   0.000        1    \nmir.107      4.324e-01  5.079e-02   8.513 1.06e-15 ***\nrna.BRAF     3.200e-01  5.079e-02   6.301 1.15e-09 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.851 on 279 degrees of freedom\nMultiple R-squared:  0.281, Adjusted R-squared:  0.2758 \nF-statistic: 54.51 on 2 and 279 DF,  p-value: < 2.2e-16\n\n\nAdd smooth non-linear cures to the scatterplots: use existing panel.smooth() function, and add linear regression lines to the scatterplots:\n\npanel.linear <- function (x, y, col.regres = \"blue\", ...) \n{ \n  points(x, y, pch=19) \n  ok <- is.finite(x) & is.finite(y) \n  if (any(ok)) \n    abline(stats::lm(y[ok] ~ x[ok]), col = col.regres, ...) \n} \n\npairs(data.frame(mir.107, prt.BRAF, rna.BRAF), \n      lower.panel = panel.smooth,\n      upper.panel = panel.linear)\n\n\n\n\n\n\n\nwith all miRNAs (Aure et al. 2015, equation (4))\n\nlibrary(glmnet)\n\n# 10-fold CV to determine the optimal lambda:\n# Note: rna.BRAF is penalised together with all the mir variables. \n# You can use the penalty.factor option to avoid this.\nset.seed(1234)\ncvfit <- cv.glmnet(y=prt.BRAF, x=t(rbind(mir, rna.BRAF)),\n                   alpha=1, nfolds=10, standardize=TRUE)\n\npar(mfrow=c(1,1))\nplot(cvfit)\nlambda.opt <- cvfit$lambda.min\n\n# Coefficient path plot and coefficients for optimal lambda:\nfitB <- cvfit$glmnet.fit\n\nplot(fitB, xvar=\"lambda\")\nabline(v=log(lambda.opt))\n\ncoef(fitB, s=lambda.opt)\npredict(fitB, type=\"nonzero\", s=lambda.opt)\n\nCompare the regression coefficient of mir.107 from the models in (a) and (b):\n\ncoef(fitA)[\"mir.107\"]\nas.matrix(coef(fitB, s=cvfit$lambda.min))[\"hsa-miR-107\",]\n\n\n\n\n\n\n\nTask 3\n\n\n\nRepeat the lasso analysis, but this time do not penalise the rna.BRAF variable together with the mir variables.\nCheck out the information on the penalty.factor option in ?glmnet to understand how."
+    "text": "On this page you’ll find a list of lecture notes, R lab notes and other material used in this course."
   },
   {
-    "objectID": "exercises_lab/exercise_lab_overview.html",
-    "href": "exercises_lab/exercise_lab_overview.html",
-    "title": "Exercises and R lab sessions",
+    "objectID": "course_material/course_material_overview.html#week-1",
+    "href": "course_material/course_material_overview.html#week-1",
+    "title": "Course material",
+    "section": "Week 1",
+    "text": "Week 1\n\n\n\nTime\nTopic\nNotes\nLab\nOther\n\n\n\n\nApril 24 PM\nCourse introduction\n\nN/A\n\n\n\n\nDescriptive statistics\nExample pdf notes\nN/A\n\n\n\nApril 25 AM\nIntroduction to R\n\n\n\n\n\n\nDescriptive statistics\n\n\n\n\n\nApril 25 PM\nProbability, diagnosistic tests\nDiagnostic tests\n\n\n\n\n\nStatistical distributions\n\n\n\n\n\nApril 26 AM\nLab session\n\n\n\n\n\nApril 26 PM\nStatistical inference, tests and confidence intervals\n\n\n\n\n\n\nt-tests\n\n\n\n\n\nApril 27 AM\nLab session\n\n\n\n\n\nApril 27 PM\nCategorical data, table analysis\n\n\n\n\n\nApril 28 AM\nLab session"
+  },
+  {
+    "objectID": "course_material/course_material_overview.html#week-2",
+    "href": "course_material/course_material_overview.html#week-2",
+    "title": "Course material",
+    "section": "Week 2",
+    "text": "Week 2\n\n\n\nTime\nTopic\nNotes\nLab session\n\n\n\n\nMay 8 AM\nExploratory data analysis, transformation\n\n\n\n\n\nNon-parametric methods\n\n\n\n\nMay 8 PM\nSample size, statistical power\n\nCode\n\n\nMay 9 AM\nStudy design, principles of clinical trials\n\nNA\n\n\nMay 9 PM\nLinear regression I\n\n\n\n\nMay 10 AM\nLinear regression II\n\n\n\n\nMay 10 PM\nSurvival analysis\n\nLab, Code"
+  },
+  {
+    "objectID": "get_started/get_started.html",
+    "href": "get_started/get_started.html",
+    "title": "Get started",
     "section": "",
-    "text": "This page provides an overview of the exercises and R lab sessions."
+    "text": "Here you will find useful information on how to get started.\nIn this workshop we will be using R. You can either\n\n(recommended) have R and Rstudio installed on your laptop\nor, use Posit cloud (formerly Rstudio Cloud).\n\n\nSet up your RStudio on your laptop\nYou will need both R and Rstudio, they are two separate things.\nYou can download Rstudio here. In this page it will ask you to install R, so it should be clear to follow.\n\nYou can download R for Linux, macOS or Windows here or here\n\nWatch these YouTube videos if you are stuck.\n\n\nUse Posit Cloud\nPosit cloud is free of charge for personal users, yet you need to sign up for a new user account and have internet connection.\n\n\nData\nThe datasets used in this course are stored in this folder.\n\nDownload data\n\nGo to the repository, select the data you want to download by left-click the file name\nIf it is a dataset in .csv, .txt format, you will see something like this\n\n\n\nfind Raw button, right-click, you will see a list of options\nchoose Download Linked File, this will download the data into your default download folder\nalternatively, choose Download linked file as… so that you can change where you put it and file name.\n\n\nIf it is a dataset in .dta, .xlsx or other format, you might not see the data directly:\n\n\n\nfind Download button, left-click, and you will download it into your default download folder.\n\n\nOptional: download data via URL\nIf you feel like it, you can also download data inside R via URL. You can read more about it here.\n\n\n\n\nCode\nR scripts are stored in this folder.\nTo download an R script, it is similar to downloading a dataset\n\nAlternatively, you can create your own R script locally inside Rstudio, by copy and paste the script from Github.\n\n\nResources\nYou will find the material used in class on this page.\nWe keep updating the material, so please stay tuned!\n\nBooks and papers\nYou can find these books in the library.\n\nEssential medical statistics (Kirkwood and Sterne, 2nd edition, 2003) (link\nStatistiske metoder i medisin og helsefag (Aalen, Frigessi, Moger, Scheel, Skovlund og Veierød, 2 utg, 2018) (link)\n\n\n\nVideos\nInstall R and Rstudio YouTube videos"
   },
   {
-    "objectID": "course_info/overview.html",
-    "href": "course_info/overview.html",
-    "title": "Course overview",
+    "objectID": "lab/overview.html",
+    "href": "lab/overview.html",
+    "title": "R Lab and code",
     "section": "",
-    "text": "Learning Objectives\nAt the end of the course, participants will be able to\n\nunderstand key concepts …;\nunderstand how to …\n\n\n\nPre-requisites\n\n?\n\n\n\nContact\nManuela Zucknick (course lead): manuela.zucknick@medisin.uio.no\nChi Zhang (lecturer, developer of this website): chi.zhang@medisin.uio.no"
+    "text": "Welcome! Here you will find material for R lab and code for this course."
   },
   {
-    "objectID": "course_info/useful_links.html",
-    "href": "course_info/useful_links.html",
-    "title": "Useful links",
+    "objectID": "lab/overview.html#set-up",
+    "href": "lab/overview.html#set-up",
+    "title": "R Lab and code",
+    "section": "Set-up",
+    "text": "Set-up\nPlease refer to (link to setup) page for more information.\n\nData\nDatasets used for this course can be found at insert path.\n\n\nR scripts\nR scripts used for each section can be downloaded directly at insert path."
+  },
+  {
+    "objectID": "lab/overview.html#lab",
+    "href": "lab/overview.html#lab",
+    "title": "R Lab and code",
+    "section": "Lab",
+    "text": "Lab\nPLAN: use hide-code? or prepare 2 sets, one for demonstration in class, another for home-exercise. for the home exercise, can attach worked solution at the bottom.\n\n\n\n\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\nIntroduction to R\n\n\nGet started in Rstudio, navigation, data types, data import ant export\n\n\n\n\nExploratory data analysis (Part I)\n\n\nExploring a dataset, basic data manipulation, descriptive statistics\n\n\n\n\nExploratory data analysis (Part II)\n\n\nMore on data manipulation, visualisation\n\n\n\n\nStatistical inference\n\n\nConfidence interval, hypothesis testing\n\n\n\n\nT test\n\n\nR lab 1\n\n\n\n\nCategorical data analysis\n\n\nContingency table, chi-square test, proportions\n\n\n\n\nNon-parametric tests\n\n\nWilcoxon signed rank, rank sum test\n\n\n\n\nSample size and power\n\n\nR lab 1\n\n\n\n\nRegression analysis\n\n\nLinear regression, logistic regression\n\n\n\n\nSurvival analysis\n\n\nKaplan-Meier curve, log rank tests\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "lab/overview.html#useful-resources",
+    "href": "lab/overview.html#useful-resources",
+    "title": "R Lab and code",
+    "section": "Useful resources",
+    "text": "Useful resources\nBook (Wickham et al) R for Data Science (2e)"
+  },
+  {
+    "objectID": "lab/lab_survival.html",
+    "href": "lab/lab_survival.html",
+    "title": "Survival analysis",
     "section": "",
-    "text": "Here are some useful links for the participants of the course."
+    "text": "Melanoma\n(This is the example 2 in the exercises)\nFirst we load the dataset, and check what columns are there.\n\nlibrary(survival)\n\nmelanoma <- haven::read_dta('data/melanoma.dta')\n\nhead(melanoma)\n\n# A tibble: 6 × 12\n  status    lifet…¹ ulcer…² tumor…³ gender   age group…⁴ logar…⁵  SUR_1     SE_1\n  <dbl+lbl>   <dbl> <dbl+l>   <dbl> <dbl+> <dbl> <dbl+l>   <dbl>  <dbl>    <dbl>\n1 4 [Death…  0.0274 1 [Yes]    6.76 2 [m]     76 3 [5+ …   1.91  NA     NA      \n2 4 [Death…  0.0822 2 [No]     0.65 2 [m]     56 1 [0-2…  -0.431 NA     NA      \n3 2 [Censo…  0.0959 2 [No]     1.34 2 [m]     41 1 [0-2…   0.293 NA     NA      \n4 4 [Death…  0.271  2 [No]     2.9  1 [f]     71 2 [2-5…   1.06  NA     NA      \n5 1 [Death…  0.507  1 [Yes]   12.1  2 [m]     52 3 [5+ …   2.49   0.995  0.00496\n6 1 [Death…  0.559  1 [Yes]    4.84 2 [m]     28 2 [2-5…   1.58   0.990  0.00700\n# … with 2 more variables: SUR_2 <dbl>, SE_2 <dbl>, and abbreviated variable\n#   names ¹​lifetime, ²​ulceration, ³​tumor_thickness, ⁴​grouped_tumor_thickness,\n#   ⁵​logarithm_of_tumor_thickness\n\ncolnames(melanoma)\n\n [1] \"status\"                       \"lifetime\"                    \n [3] \"ulceration\"                   \"tumor_thickness\"             \n [5] \"gender\"                       \"age\"                         \n [7] \"grouped_tumor_thickness\"      \"logarithm_of_tumor_thickness\"\n [9] \"SUR_1\"                        \"SE_1\"                        \n[11] \"SUR_2\"                        \"SE_2\"                        \n\n\n\na) Recode variable\nWe only need “death from melanoma” or else, hence we need to recode the status variable which originally had three categories.\n\n# if status == 1, code 1; otherwise, code 0\n# this indicates whether deaths from melanoma\ndeath <- ifelse(melanoma$status == 1, 1, 0)\n\n# check if the labels are correct\ntable(death)\n\ndeath\n  0   1 \n148  57 \n\ntable(melanoma$status)\n\n\n  1   2   4 \n 57 134  14 \n\n\nYou can see that the category melanoma$status == 1 should match death == 1, and melanoma$status of 2 and 4 are merged together and coded as death == 0.\n\n\nb) Kaplan-Meier plot\n\n# take lifetime variable\nlifetime <- melanoma$lifetime\n\n\nkm_fit <- survfit(Surv(lifetime, death) ~ 1)\nplot(km_fit)\n\n# add title and text\ntitle(main = 'Kaplan-Meier survival estimate', \n      xlab = 'Time', \n      ylab = 'Survival probability')\n\n\n\n\nNow we check only time 1, 2, 5.\n\n# time 1, 2, 5\ntme <- c(1, 2, 5)\nsummary(km_fit, times = tme)\n\nCall: survfit(formula = Surv(lifetime, death) ~ 1)\n\n time n.risk n.event survival std.err lower 95% CI upper 95% CI\n    1    193       6    0.970  0.0120        0.947        0.994\n    2    183       9    0.925  0.0187        0.889        0.962\n    5    122      30    0.769  0.0303        0.712        0.831\n\n\n\n\nc) Compare two genders\n\n# gender == 1: female; gender == 2: male\ngender <- melanoma$gender\n\n\nkm_fit_gender <- survfit(Surv(lifetime, death) ~ gender)\nplot(km_fit_gender, col = c('blue', 'red'))\ntitle(main = 'Kaplan-Meier survival estimate: stratify by gender', \n      xlab = 'Time', \n      ylab = 'Survial probability')\n\n# add legend\nlegend( 'bottomleft', \n       legend = c('Female', 'Male'), \n       lty = c('solid', 'solid'), \n       col = c('blue','red'))\n\n\n\n\nNow we test the difference with log-rank test\n\n# test difference with logrank test \nsurvdiff(Surv(lifetime, death) ~ gender)\n\nCall:\nsurvdiff(formula = Surv(lifetime, death) ~ gender)\n\n           N Observed Expected (O-E)^2/E (O-E)^2/V\ngender=1 126       28     37.1      2.25      6.47\ngender=2  79       29     19.9      4.21      6.47\n\n Chisq= 6.5  on 1 degrees of freedom, p= 0.01 \n\n\n\n\nd) Compare tumor thickness\nFirst we do some data processing\n\n# check the original data type \nmelanoma$grouped_tumor_thickness\n\n<labelled<double>[205]>: Thickness group\n  [1] 3 1 1 2 3 2 3 2 3 3 2 1 2 2 2 3 3 3 3 3 3 2 2 2 2 1 3 2 2 2 1 2 1 3 3 2 2\n [38] 2 1 2 2 2 3 1 2 1 2 3 1 1 2 1 1 1 1 2 1 1 1 3 1 1 1 1 1 1 1 1 3 1 1 1 2 1\n [75] 1 2 1 2 1 1 1 1 2 1 1 1 1 1 2 1 1 2 2 1 2 1 1 3 1 3 2 2 1 1 2 1 2 1 1 2 2\n[112] 2 2 1 1 1 1 1 1 1 1 3 3 1 3 2 2 1 1 3 1 2 2 1 1 1 2 1 2 1 3 1 2 1 1 2 1 1\n[149] 1 1 1 1 1 2 1 1 3 1 1 1 1 3 1 1 2 1 2 2 1 1 2 1 2 2 2 1 1 1 1 1 1 2 2 1 1\n[186] 3 1 1 1 3 3 1 2 2 1 1 1 2 1 1 3 3 1 2 2\n\nLabels:\n value  label\n     1 0-2 mm\n     2 2-5 mm\n     3  5+ mm\n\n# you can code them so that the data is more readable\ngrouped_tumor_thickness <- factor(melanoma$grouped_tumor_thickness, \n                           levels = c('1','2', '3'),\n                           labels = c('0-2 mm', '2-5 mm', '5+ mm'))\n\n# check if it is coded correctly\ntable(grouped_tumor_thickness)\n\ngrouped_tumor_thickness\n0-2 mm 2-5 mm  5+ mm \n   109     64     32 \n\ntable(melanoma$grouped_tumor_thickness)\n\n\n  1   2   3 \n109  64  32 \n\n\nNow we plot the KM plot, and carry out a log-rank test\n\nkm_fit_tumor <- survfit(Surv(lifetime, death) ~ grouped_tumor_thickness)\nplot(km_fit_tumor, col = c('blue', 'red', 'forestgreen'))\n\ntitle(main = 'Kaplan-Meier survival estimate: stratify by tumor thickness', \n      xlab = 'Time', \n      ylab = 'Survial probability')\n\n# add legend\nlegend( 'bottomleft', \n        legend = c('0-2 mm', '2-5 mm', '5+ mm'), \n        lty = c('solid', 'solid', 'solid'), \n        col = c('blue','red', 'forestgreen'))\n\n\n\n# test difference with logrank test \nsurvdiff(Surv(lifetime, death) ~ grouped_tumor_thickness)\n\nCall:\nsurvdiff(formula = Surv(lifetime, death) ~ grouped_tumor_thickness)\n\n                                 N Observed Expected (O-E)^2/E (O-E)^2/V\ngrouped_tumor_thickness=0-2 mm 109       13    33.75     12.75     31.36\ngrouped_tumor_thickness=2-5 mm  64       30    16.39     11.30     15.88\ngrouped_tumor_thickness=5+ mm   32       14     6.86      7.42      8.45\n\n Chisq= 31.6  on 2 degrees of freedom, p= 1e-07 \n\n\n\n\n\nLength of hospital stay\n(This is the exercise 3 from the exercise for day 7)\n\nliggetid <- haven::read_dta('data/liggetid.dta')\nhead(liggetid)\n\n# A tibble: 6 × 21\n   faar fmaan  fdag innaar innmaan inndag utaar utmaan utdag kjoenn     kom_fra \n  <dbl> <dbl> <dbl>  <dbl>   <dbl>  <dbl> <dbl>  <dbl> <dbl> <dbl+lbl>  <dbl+lb>\n1  1906     3     4   1987       3      5    87      3    18 0 [kvinne] 1 [hjem]\n2  1891     4     3   1987       3      6    87      3    23 0 [kvinne] 1 [hjem]\n3  1908     9     6   1987       3     10    87      3    16 0 [kvinne] 1 [hjem]\n4  1910     1    11   1987       3     11    87      3    25 1 [mann]   1 [hjem]\n5  1907     1     6   1987       3     13    87      3    30 0 [kvinne] 1 [hjem]\n6  1901    12    19   1987       3     13    87      4     2 0 [kvinne] 1 [hjem]\n# … with 10 more variables: slag <dbl+lbl>, alder <dbl>, liggetid <dbl>,\n#   lnliggti <dbl>, kom_fra2 <dbl>, kom_fra3 <dbl>, kom_fra4 <dbl>,\n#   kom_fra5 <dbl>, kom_fra6 <dbl>, status <dbl>\n\ncolnames(liggetid)\n\n [1] \"faar\"     \"fmaan\"    \"fdag\"     \"innaar\"   \"innmaan\"  \"inndag\"  \n [7] \"utaar\"    \"utmaan\"   \"utdag\"    \"kjoenn\"   \"kom_fra\"  \"slag\"    \n[13] \"alder\"    \"liggetid\" \"lnliggti\" \"kom_fra2\" \"kom_fra3\" \"kom_fra4\"\n[19] \"kom_fra5\" \"kom_fra6\" \"status\"  \n\n# all status are 1 \nstatus <- liggetid$status\n\n\na) Length of stay vs gender\n\n# length of stay (los) vs gender\nlos <- liggetid$liggetid\nhead(los)\n\n[1] 13 17  6 14 17 20\n\n# can choose to recode; or leave as it is;\n# gender == 0: female; gender == 1: male\ngender <- liggetid$kjoenn\nhead(gender)\n\n<labelled<double>[6]>\n[1] 0 0 0 1 0 0\n\nLabels:\n value  label\n     0 kvinne\n     1   mann\n\n# fit km \nkm_liggetid_gender <- survfit(Surv(los, status) ~ gender)\n\nplot(km_liggetid_gender, col = c('blue', 'red'))\n\ntitle(main = 'Kaplan-Meier survival estimate: stratify by gender', \n      xlab = 'Time', \n      ylab = 'Survial probability')\n\n# add legend\nlegend( 'topright', \n        legend = c('Female', 'Male'), \n        lty = c('solid', 'solid'), \n        col = c('blue','red'))\n\n\n\n\nNow we do log-rank test\n\n# log rank test \nsurvdiff(Surv(los, status) ~ gender)\n\nCall:\nsurvdiff(formula = Surv(los, status) ~ gender)\n\nn=1138, 1 observation deleted due to missingness.\n\n           N Observed Expected (O-E)^2/E (O-E)^2/V\ngender=0 714      714      799      9.06      31.9\ngender=1 424      424      339     21.36      31.9\n\n Chisq= 31.9  on 1 degrees of freedom, p= 2e-08 \n\n\n\n\nb) Length of stay vs stroke\n\n# length of stay vs stroke\n# slag == 1: yes, slag == 2: no\nstroke <- liggetid$slag\n\n# fit km \nkm_liggetid_stroke <- survfit(Surv(los, status) ~ stroke)\n\nplot(km_liggetid_stroke, col = c('blue', 'red'))\n\ntitle(main = 'Kaplan-Meier survival estimate: stratify by stroke', \n      xlab = 'Time', \n      ylab = 'Survial probability')\n\n# add legend\nlegend( 'topright', \n        legend = c('Stroke: yes', 'Stroke: no'), \n        lty = c('solid', 'solid'), \n        col = c('blue','red'))\n\n\n\n\n\n# log rank test\nsurvdiff(Surv(los, status) ~ stroke)\n\nCall:\nsurvdiff(formula = Surv(los, status) ~ stroke)\n\nn=1054, 85 observations deleted due to missingness.\n\n           N Observed Expected (O-E)^2/E (O-E)^2/V\nstroke=0 891      891      864     0.814      4.61\nstroke=1 163      163      190     3.714      4.61\n\n Chisq= 4.6  on 1 degrees of freedom, p= 0.03"
   },
   {
-    "objectID": "course_info/useful_links.html#software",
-    "href": "course_info/useful_links.html#software",
-    "title": "Useful links",
-    "section": "Software",
-    "text": "Software\nIn this workshop we will be using R. You can either\n\nhave R and Rstudio installed on your laptop\nor, use Posit cloud (formerly Rstudio Cloud).\n\nPosit cloud is free of charge for personal users, yet you need to sign up for a new user account and have internet connection."
-  },
-  {
-    "objectID": "course_info/useful_links.html#data",
-    "href": "course_info/useful_links.html#data",
-    "title": "Useful links",
-    "section": "Data",
-    "text": "Data"
-  },
-  {
-    "objectID": "course_info/useful_links.html#code",
-    "href": "course_info/useful_links.html#code",
-    "title": "Useful links",
-    "section": "Code",
-    "text": "Code"
-  },
-  {
-    "objectID": "course_info/useful_links.html#resources-updating",
-    "href": "course_info/useful_links.html#resources-updating",
-    "title": "Useful links",
-    "section": "Resources (updating…)",
-    "text": "Resources (updating…)\nLecture notes link\nLab notes link\nAure 2015 Paper link"
-  },
-  {
-    "objectID": "course_info/schedule.html",
-    "href": "course_info/schedule.html",
-    "title": "Schedule",
+    "objectID": "lab/lab_intro_r.html",
+    "href": "lab/lab_intro_r.html",
+    "title": "Introduction to R",
     "section": "",
-    "text": "Here are the schedule for the course (being updated).\n\nSchedule (being updated!)\n\n\n\nTime\nTopic\nPresenter\n\n\n\n\n9:00 - 10:00\nplaceholder day1\nMZ\n\n\n10:15 - 11:00\nplaceholder day2\nMZ\n\n\n11:15 - 12:00\nplaceholder day3\nMZ"
+    "text": "Material on this page is under development. There could be errors."
   },
   {
-    "objectID": "daily_content/day8.html",
-    "href": "daily_content/day8.html",
-    "title": "Day 8",
-    "section": "",
-    "text": "Survival analysis"
+    "objectID": "lab/lab_intro_r.html#r-in-a-nutshell",
+    "href": "lab/lab_intro_r.html#r-in-a-nutshell",
+    "title": "Introduction to R",
+    "section": "R in a nutshell",
+    "text": "R in a nutshell\nR is a language and environment for statistical computing, data analysis, visualisation and graphics and many more. It is a free and open source software, under the terms of GNU General Public License.\nR runs on a wide variety of platforms, including Windows, Linux and MacOS.\nThe latest R version is 4.2.3 (2023-03-15), “Shortstop Beagle”.\n\nRStudio and Posit\nRStudio is a free and open-source IDE (integrated development environment). RStudio IDE is developed by Posit, previously RStudio PBC.\nIt is possible to download RStudio to your laptop or desktop; or use RStudio Cloud (need internet connection).\n4 Panels, use screenshot\n\n\nGetting help\n\nUse Google well! There are a lot of discussions in forums such as StackOverflow\nCheatsheets made by Posit and community\nType ?functionName in the console\nPackage vignettes (longer format of documentation)"
   },
   {
-    "objectID": "daily_content/day4.html",
-    "href": "daily_content/day4.html",
-    "title": "Day 4",
-    "section": "",
-    "text": "Risks, Odds\n\n\nChi-squared tests"
+    "objectID": "lab/lab_intro_r.html#vectors",
+    "href": "lab/lab_intro_r.html#vectors",
+    "title": "Introduction to R",
+    "section": "Vectors",
+    "text": "Vectors\nA vector is a list of values; it can be numeric, and also characters and logical.\nTo create a vector, use function c().\n\n# numeric\nnum_vector <- c(1, 2, 3, 4, 5)\nnum_vector\n\n[1] 1 2 3 4 5\n\n# character\nchar_vector <- c('student_a', 'student_b', 'student_c')\nchar_vector\n\n[1] \"student_a\" \"student_b\" \"student_c\"\n\n# logical \nlogical_vector <- c(T, F, T, F)\nlogical_vector\n\n[1]  TRUE FALSE  TRUE FALSE\n\n\nThere are some shortcuts to create a sequence of values; not required to learn, but very useful.\n\n# numeric\n# num_vector <- c(1, 2, 3, 4, 5)\nnum_vector <- 1:5 # from 1 to 5\nseq(from = 1, to = 11, by = 2) # from 1 to 11, with 2 between each\n\n[1]  1  3  5  7  9 11\n\nrep(1, 5) # repeat 1 for 5 times\n\n[1] 1 1 1 1 1\n\n# character\n# char_vector <- c('student_a', 'student_b', 'student_c')\nchar_vector <- paste0('student_', c('a', 'b', 'c'))\n\n\n\n\n\n\n\nTypes of elements in a vector\n\n\n\nIn a vector, types of the elements must be the same. If you try to combine multiple types of variables in the same vector, such as a numeric number and a character, R will try to convert them into the same type.\nTry to combine the following values into a vector, and see what happens.\n\n1.52, “student_a”\n1.52, TRUE (logical)\nTRUE, “student_a”\n\n\n\n\nCombine multiple vectors\nYou can combine multiple vectors using c(). For example, vec1 has 3 elements, vec2 has 2 elements (assuming that they are of the same type), combining them gives 5 elements.\n\nvec1 <- c(1, 3, 5)\nvec2 <- c(100, 101)\nc(vec1, vec2)\n\n[1]   1   3   5 100 101\n\n# you can also save it into a new variable, \n# so that you can access it in the future\nvec_combined <- c(vec1, vec2)\nvec_combined\n\n[1]   1   3   5 100 101"
   },
   {
-    "objectID": "daily_content/day5.html",
-    "href": "daily_content/day5.html",
-    "title": "Day 5",
-    "section": "",
-    "text": "Transformation\n\n\nNon-parametric tests\n\n\nSample size and power"
+    "objectID": "lab/lab_intro_r.html#matrix",
+    "href": "lab/lab_intro_r.html#matrix",
+    "title": "Introduction to R",
+    "section": "Matrix",
+    "text": "Matrix\nA matrix can be thought of as a stack of vectors. When you collect data from \\(n\\) patients (or subjects), you measure a few aspects on each patient such as age, sex, height and smoking. Let’s say you have measured \\(p\\) aspects. This forms a matrix of size \\(n \\times p\\).\nYou might not need to create a matrix from scratch in R (because the focus of this course is data analysis); but it is helpful to understand some basic data manipulation commands.\nYou can create a matrix using matrix(), with some parameters:\n\nmatrix_1 <- matrix(data = c(1, 2, 3, 4), nrow = 2, ncol = 2, byrow = T)\nmatrix_1\n\n     [,1] [,2]\n[1,]    1    2\n[2,]    3    4\n\n\nYou can also create a matrix by combining two vectors of the same size, using cbind() or rbind(), which stands for “column bind” and “rowbind”.\n\nvec1 <- c(1, 2)\nvec2 <- c(3, 4)\n\n# bind by columnn\nmatrix_c <- cbind(vec1, vec2)\nmatrix_c\n\n     vec1 vec2\n[1,]    1    3\n[2,]    2    4\n\n# bind by row\nmatrix_r <- rbind(vec1, vec2)\nmatrix_r\n\n     [,1] [,2]\nvec1    1    2\nvec2    3    4"
   },
   {
-    "objectID": "daily_content/day7.html",
-    "href": "daily_content/day7.html",
-    "title": "Day 7",
-    "section": "",
-    "text": "Logistic regression"
+    "objectID": "lab/lab_intro_r.html#dataframe",
+    "href": "lab/lab_intro_r.html#dataframe",
+    "title": "Introduction to R",
+    "section": "Dataframe",
+    "text": "Dataframe\nDataframe, data.frame is a format of data commonly used in data analysis with R and python. It can be considered as a matrix, but allows a mixture of data types, such as numeric and categorical measurements (age and sex).\nIn this course, you will mostly be working with dataframes.\nWe create a small dataframe of 3 subjects:\n\nSubject 1 is a 20 years-old male who has covid\nSubject 2 is a 50 years-old female who has covid\nSubject 3 is a 32 years-old male who does not have covid\n\nThis is how you can present the dataframe, where each column has a different data type.\n\nmini_data <- data.frame(\n  age = c(20, 50, 32), \n  sex = c('male', 'female', 'male'), \n  has_covid = c(T, T, F)\n)\nmini_data\n\n  age    sex has_covid\n1  20   male      TRUE\n2  50 female      TRUE\n3  32   male     FALSE"
   },
   {
-    "objectID": "daily_content/day6.html",
-    "href": "daily_content/day6.html",
-    "title": "Day 6",
-    "section": "",
-    "text": "Linear regression"
+    "objectID": "lab/lab_intro_r.html#dimension-of-your-data",
+    "href": "lab/lab_intro_r.html#dimension-of-your-data",
+    "title": "Introduction to R",
+    "section": "Dimension of your data",
+    "text": "Dimension of your data\nYou can find the size of a vector with length().\nFor a matrix or dataframe, you can use dim(). It will return nrow ncol, number of rows and number of columns.\n\nvec1 <- c(1, 2)\nlength(vec1)\n\n[1] 2\n\n# matrix\nmat <- matrix(data = c(1, 2, 3, 4), nrow = 2, byrow = 2)\ndim(mat)\n\n[1] 2 2\n\n# dataframe\ndim(mini_data)\n\n[1] 3 3\n\n\n\n\n\n\n\n\ndim() or length()\n\n\n\nIf you use dim() on a vector, it returns NULL. Given that a vector is just a matrix with 1 row (or column), this seems insensible.\nNonetheless, dim() works on matrix objects. if you convert the vector into a matrix with nrow =1 or ncol = 1, dim() will work.\nIf you use length() on a matrix, it will return the total number of elements, i.e. ncol times nrow.\n\n\nYou can also use nrow(), ncol() to get the number of rows and columns explicitly.\n\n# ncol, nrow\n# dim(mini_data)\nnrow(mini_data)\n\n[1] 3\n\nncol(mini_data)\n\n[1] 3"
   },
   {
-    "objectID": "daily_content/day2.html",
-    "href": "daily_content/day2.html",
-    "title": "Day 2",
-    "section": "",
-    "text": "Probability\n\n\nBayes Theorem\n\n\nDiagnostic tests, sensitivity, specificity"
+    "objectID": "lab/lab_intro_r.html#accessing-elements-in-your-data",
+    "href": "lab/lab_intro_r.html#accessing-elements-in-your-data",
+    "title": "Introduction to R",
+    "section": "Accessing elements in your data",
+    "text": "Accessing elements in your data\nFor a vector, you can access\n\nan element at a given position\nmultiple elements at given positions\n\nelements beyond, or below a certain element\n\nSometimes you might need to combine previous knowledge to get what you want (e.g. to know how many elements in total there are). But not required now.\n\nletters <- c('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h')\n\n# 3rd letter\nletters[3]\n\n[1] \"c\"\n\n# 3rd, and 5th\nletters[c(3, 5)]\n\n[1] \"c\" \"e\"\n\n# letters beyond 4\nletters[5:8] # or, letters[5:length(letters)]\n\n[1] \"e\" \"f\" \"g\" \"h\"\n\n\nFor a matrix,\n\nmatrix[r, c] to get the element on \\(r\\)-th row, \\(c\\)-th column.\nmatrix[r, ], matrix[, c] to get all the elements on \\(r\\)-th row or \\(c\\)-th column\n\n\nmat_3by3 <- matrix(data = 1:9, nrow = 3, byrow = T)\nmat_3by3\n\n     [,1] [,2] [,3]\n[1,]    1    2    3\n[2,]    4    5    6\n[3,]    7    8    9\n\n# element (2,3)\nmat_3by3[2, 3]\n\n[1] 6\n\n# first row\nmat_3by3[1,]\n\n[1] 1 2 3\n\n\nFor a dataframe,\n\nyou can use indices (row, col) in the same way as matrices above;\nuse data$column_name, or data['column_name'] to access the entire column\n\nConventionally, each row is a subject, and each columnn is a variable (or aspect of measurement, feature, characteristic, risk factor etc).\n\nmini_data\n\n  age    sex has_covid\n1  20   male      TRUE\n2  50 female      TRUE\n3  32   male     FALSE\n\n# first row \nmini_data[1, ]\n\n  age  sex has_covid\n1  20 male      TRUE\n\n# second col\nmini_data[, 2]\n\n[1] \"male\"   \"female\" \"male\"  \n\n# via column name \nmini_data$age\n\n[1] 20 50 32\n\nmini_data['age']\n\n  age\n1  20\n2  50\n3  32"
   },
   {
-    "objectID": "daily_content/day3.html",
-    "href": "daily_content/day3.html",
-    "title": "Day 3",
-    "section": "",
-    "text": "Confidence interval\n\n\nT-test"
+    "objectID": "lab/lab_intro_r.html#modify-existing-data",
+    "href": "lab/lab_intro_r.html#modify-existing-data",
+    "title": "Introduction to R",
+    "section": "Modify existing data",
+    "text": "Modify existing data\n\n\n\n\n\n\nKeep your original data safe!\n\n\n\nModifying an existing data is easy, but you should be aware of the risks. In this class we only modify data we created in the class so there is little risk, but you might have your own datasets to analyse in the future.\nYou should keep your original data in a safe place, and work on copies of it.\nVersion control is a good skill to learn.\n\n\n\n# vector\n# make e into E \nletters[5] <- 'E'\nletters\n\n[1] \"a\" \"b\" \"c\" \"d\" \"E\" \"f\" \"g\" \"h\"\n\n# matrix\n# make (1, 1) 20\nmat_3by3[1, 1] # originally was 1\n\n[1] 1\n\nmat_3by3[1, 1] <- 20\nmat_3by3\n\n     [,1] [,2] [,3]\n[1,]   20    2    3\n[2,]    4    5    6\n[3,]    7    8    9\n\n# dataframe\n# make so that subject 2 does not have covid\nmini_data\n\n  age    sex has_covid\n1  20   male      TRUE\n2  50 female      TRUE\n3  32   male     FALSE\n\nmini_data$has_covid[2] <- F\nmini_data\n\n  age    sex has_covid\n1  20   male      TRUE\n2  50 female     FALSE\n3  32   male     FALSE"
   },
   {
-    "objectID": "lecture_notes/lecture_notes_overview.html",
-    "href": "lecture_notes/lecture_notes_overview.html",
-    "title": "Lecture notes",
-    "section": "",
-    "text": "On this page you’ll find a list of lecture notes, organised by topics and days presented.\n\n\nDescriptive statistics (insert link)\n\n\n\nProbability\nBayes Theorem\nDiagnostic tests\n…"
+    "objectID": "lab/lab_intro_r.html#basic-calculations",
+    "href": "lab/lab_intro_r.html#basic-calculations",
+    "title": "Introduction to R",
+    "section": "Basic calculations",
+    "text": "Basic calculations\nr as calculator (use console first; use script AFTER project and workspace mgmt!)\nexp, division\n\n# assign values to variables a, b, c\na <- 3\nb <- 4\nc <- 7\n\n# calculate the average of a,b,c\n# output directly\n(a+b+c)/3\n\n[1] 4.666667\n\n# or, save into a new variable d\nd <- (a+b+c)/3\nd\n\n[1] 4.666667"
   },
   {
-    "objectID": "supplementary/note1.html",
-    "href": "supplementary/note1.html",
-    "title": "Supplementary note 1",
+    "objectID": "lab/lab_inf_ci.html",
+    "href": "lab/lab_inf_ci.html",
+    "title": "Statistical inference",
     "section": "",
-    "text": "Supplementary note\nThis is a placeholder for supplementary notes."
+    "text": "Confidence interval\n\n\nHypothesis testing\n\nError\nType I error: conclude that there is an effect when there is not (false positive).\n\ncontrolled by significance level, \\(\\alpha\\)\nusually choose \\(\\alpha = 0.05\\)\n\nType II error: conclude there is not an effect when there really is (false negative).\n\npower: \\(1-\\beta\\)\na minimum for “good” power is usually 80%; i.e. 80% chance of correctly rejecting the null hypothesis if there is an effect."
+  },
+  {
+    "objectID": "lab/lab_regression.html",
+    "href": "lab/lab_regression.html",
+    "title": "Regression analysis",
+    "section": "",
+    "text": "Linear regression\nTBC\n\n\nLogistic regression\n(Dataset birth might be switched out)\n\n# load data\nbirth_data <- haven::read_dta('data/birth.dta')\n\n# print the first rows of the data set\nhead(birth_data)\n\n# A tibble: 6 × 12\n     id low            age   lwt eth       smk   ptl ht      ui        fvt   ttv\n  <dbl> <dbl+lbl>    <dbl> <dbl> <dbl+l> <dbl> <dbl> <dbl+l> <dbl+l> <dbl> <dbl>\n1     4 1 [bwt < 25…    28   120 3 [oth…     1     1 0 [no]  1 [yes]     0     0\n2    10 1 [bwt < 25…    29   130 1 [whi…     0     0 0 [no]  1 [yes]     2     0\n3    11 1 [bwt < 25…    34   187 2 [bla…     1     0 1 [yes] 0 [no]      0     0\n4    13 1 [bwt < 25…    25   105 3 [oth…     0     1 1 [yes] 0 [no]      0     0\n5    15 1 [bwt < 25…    25    85 3 [oth…     0     0 0 [no]  1 [yes]     0     4\n6    16 1 [bwt < 25…    27   150 3 [oth…     0     0 0 [no]  0 [no]      0     5\n# … with 1 more variable: bwt <dbl>\n\n\n\nFit a logistic regression model for low and age\n\n# low ~ age \n\nlr_low_age <- glm(low ~ age, data = birth_data, family = 'binomial')\nsummary(lr_low_age)\n\n\nCall:\nglm(formula = low ~ age, family = \"binomial\", data = birth_data)\n\nDeviance Residuals: \n    Min       1Q   Median       3Q      Max  \n-1.0402  -0.9018  -0.7754   1.4119   1.7800  \n\nCoefficients:\n            Estimate Std. Error z value Pr(>|z|)\n(Intercept)  0.38458    0.73212   0.525    0.599\nage         -0.05115    0.03151  -1.623    0.105\n\n(Dispersion parameter for binomial family taken to be 1)\n\n    Null deviance: 234.67  on 188  degrees of freedom\nResidual deviance: 231.91  on 187  degrees of freedom\nAIC: 235.91\n\nNumber of Fisher Scoring iterations: 4\n\n\n\n# the result regresssion coefficient is not odds ratio\nlr_low_age$coefficients\n\n(Intercept)         age \n 0.38458192 -0.05115294 \n\n# regression coefficients can also be extracted in this way:\ncoefficients(lr_low_age)\n\n(Intercept)         age \n 0.38458192 -0.05115294 \n\n# coef(lr_low_age)\n\n# confidence interval for age and intercept\nconfint(lr_low_age)\n\n                 2.5 %      97.5 %\n(Intercept) -1.0336270 1.847399861\nage         -0.1150799 0.008986436\n\n\n\n# to get odds ratio, exponentiate \nexp(coef(lr_low_age))\n\n(Intercept)         age \n  1.4690000   0.9501333 \n\nexp(confint(lr_low_age))\n\n                2.5 %   97.5 %\n(Intercept) 0.3557144 6.343305\nage         0.8912949 1.009027"
+  },
+  {
+    "objectID": "course_material/notes_diagnostic_tests.html",
+    "href": "course_material/notes_diagnostic_tests.html",
+    "title": "Evaluation of diagnostic tests",
+    "section": "",
+    "text": "Topics:\nBook and resources:"
+  },
+  {
+    "objectID": "course_material/notes_diagnostic_tests.html#confusion-matrix",
+    "href": "course_material/notes_diagnostic_tests.html#confusion-matrix",
+    "title": "Evaluation of diagnostic tests",
+    "section": "Confusion matrix",
+    "text": "Confusion matrix\nDenote the subjects with positive condition as \\(P\\), and subjects with negative condition as \\(N\\).\nTotal population: \\(P+N\\)\nPrevalence (of positive condition): \\(\\frac{P}{P+N}\\)\n\n\n\n\n\n\n\n\n\nPredicted Positive\nPredicted Negative\n\n\n\n\nPositive condition \\(P\\)\nTrue Positive TP\nFalse Negative FN\n\n\nNegative condition \\(N\\)\nFalse Positive FP\nTrue Negative TN\n\n\n\nSensitivity is the probability of revealing that a person has the condition. It is also known as true positive rate (TPR), as it is the proportion of true positives.\n\\[\\text{Sensitivity}= \\frac{TP}{P} = \\frac{TP}{TP+FN}\\]\nThe complement of sensitivity (TPR) is the false negative rate (FNR),\n\\[FNR = 1-\\text{sensitivity} =\\frac{FN}{P} = \\frac{FN}{TP + FN}\\]\nSpecificity is the probability of revealing that a person does not have the condition (i.e. healthy). It is also known as true negative rate.\n\\[\\text{Specificity} = \\frac{TN}{N} = \\frac{TN}{TN + FP}\\]\nThe complement of specificity is false positive rate (FPR),\n\\[FPR = 1-\\text{specificity} =\\frac{FP}{N} = \\frac{FP}{TN + FP}\\]\nPositive predictive value (PPV): probability that the person with the condition was given a positive test result\n\\[PPV = \\frac{TP}{P_{predicted}} = \\frac{TP}{TP + FP}\\]\nNegative predictive value (NPV): probability that the person without the condition (i.e. healthy) was give a negative test result.\n\\[NPV = \\frac{TN}{N_{predicted}} = \\frac{TN}{TN + FN}\\]\n\n\n\n\n\n\nExplain\n\n\n\nuse visual aid\n\n\n\n\n\n\n\n\nExample: Mammography\n\n\n\n\n\n(From the Norwegian Medical Journal, 1990) 372 women with a lump in the breast have been referred to a surgical clinic.\n\n\n\n\nMammography benign\nMammography malign\n\n\n\n\nFinal diagnosis benign\n331\n16\n\n\nFinal diagnosis malign\n3\n22\n\n\n\nIdentify the positive test result (malign), and positive condition (diagnosis malign).\nSensitivity: \\(22/(22+3) = 0.88\\)\nSpecificity: \\(331/(331+16) = 0.95\\)\nPositive predictive value: \\(22/(22+16) = 0.58\\)\nNegative predictive value: \\(331/(331+3) = 0.99\\)"
+  },
+  {
+    "objectID": "course_material/notes_diagnostic_tests.html#diagnostic-tests-and-prevalence",
+    "href": "course_material/notes_diagnostic_tests.html#diagnostic-tests-and-prevalence",
+    "title": "Evaluation of diagnostic tests",
+    "section": "Diagnostic tests and prevalence",
+    "text": "Diagnostic tests and prevalence\nThe concepts in diagnostic testing can be formulated in the form of conditional probability,\n\nSensitivity: \\(P(\\text{pred pos}|\\text{disease})\\)\nSpecificity: \\(P(\\text{pred neg}|\\text{healthy})\\)\nPositive predictive value: \\(P(\\text{disease}|\\text{pred pos})\\)\nNegative predictive value: \\(P(\\text{healthy}|\\text{pred neg})\\)\n\nBayes’ theorem can be applied to link sensitivity, specificity and prevalence to PPV and NPV.\nFor positive predictive value,\n\\[PPV = \\frac{\\text{sens} \\cdot \\text{prev}}{\\text{sens} \\cdot \\text{prev} + (1-\\text{spes}) \\cdot (1-\\text{prev})}\\]\nSimilarly, for negative predictive value,\n\\[NPV = \\frac{\\text{spes} \\cdot (1-\\text{prev}) }{(1-\\text{sens}) \\cdot \\text{prev} + \\text{spes} \\cdot (1-\\text{prev})}\\]\n\n\n\n\n\n\nExplain\n\n\n\nderivation?\n\n\n\nExample: HIV testing\nWe want to test for antibodies of the HIV virus.\n\nPositive result: test shows antibodies\nNegative result: test does not show antibodies\n\nThe test result may be wrong.\nA false positive might come from antibodies from related virus, but not HIV. The probability of error is 0.2%.\nA false negative might be that antibodies are not yet produced in sufficient quantity, hence are not detected by the test. The probability of error is 2%.\nAssume that prevalence of HIV is 0.1%.\nWhat is the probability of a person having HIV, if he got a positive test result?\nWhat is the probability of a person not having HIV, if he got a negative test result?\n\n\n\n\n\n\nExample: HIV testing I\n\n\n\nRecall the relation between sensitivity and false negative, and between specificity with false positive.\nWe know the following information about the test:\n\nfalse negative rate \\(FNR = 2\\%\\): sensitivity \\(\\text{sens} = 1-2\\% = 98\\%\\)\nfalse positive rate \\(FPR = 0.2\\%\\): specificity \\(\\text{spec} = 1-0.2\\% = 99.8\\%\\)\n\nFor 100 000 persons,\n\nNumber of HIV infected (positive condition): \\(100000 \\times 0.001 = 100\\)\nTrue positives: \\(100 \\times 0.98 = 98\\)\nFalse negatives: 2\nNumber of not HIV infected (negative condition): \\(100000-100 = 99900\\)\nFalse positives: \\(99900 \\times 0.002 = 199.8\\), say \\(200\\)\nTrue negatives: \\(99900 \\times 0.998 = 99700\\)\nPositive predictive value, \\(PPV = TP/(TP+FP) = 98/(98+200)= 0.329\\)\nNegative predictive value, \\(NPV = TN/(TN+FN) = 99700/(99700+2) = 0.9999\\)\n\n\n\nWe can also use the formula.\n\n\n\n\n\n\nExample: HIV testing II\n\n\n\n\\(PPV = \\frac{\\text{sens} \\cdot \\text{prev}}{\\text{sens} \\cdot \\text{prev} + (1-\\text{spes}) \\cdot (1-\\text{prev})} = \\frac{0.98 \\times 0.001}{0.98 \\times 0.001 + 0.002 \\times 0.999} = 0.329\\)\n\\(NPV = \\frac{\\text{spes} \\cdot (1-\\text{prev}) }{(1-\\text{sens}) \\cdot \\text{prev} + \\text{spes} \\cdot (1-\\text{prev})} = \\frac{0.998 \\times 0.999}{0.98 \\times 0.001 + 0.998 \\times 0.999} = 0.999\\)\n\n\n\n\nFalse positive, PPV and revalence\nAs can be seen from the HIV example, PPV (i.e. the probability of detecting an actual condition, when the test is positive) depends on prevalence.\n\nWhen prevalence is 1/10000, 1/1000, 1/100, 1/10\nCorresponding PPV: 5%, 33%, 83%, 98%\n\nThe risk of getting false positives is greater for rare diseases, and smaller for more common diseases.\nFalse positives are problematic in mass screening for disease. It is possible that the majority of the positives (test results) are false positives."
+  },
+  {
+    "objectID": "lab/lab_eda_part1.html",
+    "href": "lab/lab_eda_part1.html",
+    "title": "Exploratory data analysis (Part I)",
+    "section": "",
+    "text": "Might be useful to have an outline and study goals\n\nData structure (use penguins_mini data as example)\nBec student background, it is not necessary to go into too much details\nMUST: concept of scalar, vector, matrix and data frame (dataset exploration put to descriptive and eda)\nMUST: numeric, factor, character, logical\n\n\nExploring a dataset\nhead()\nView()\nstr()\ncolnames()\ndim()\nnrow(), ncol()\nlength() of a vector\n\n\nBasic data manipulation\nonly cover base R here; if needed, tidyverse put to eda\nby index, [row, col]\n\n\nDescriptive statistics\nmin, max, median\nIQR\nsummary table () of a categorical vector\n\n\nVisualisation (only intro, details later)\n\n(base R)\n\n\nggplot\nJust some basics, since more specific types of viz will be shown in each section"
   },
   {
     "objectID": "for_instructors/how-to.html",
@@ -145,62 +187,6 @@
     "title": "MF9130E - V23",
     "section": "",
     "text": "DO NOT EDIT\ndoc folder is generated automatically when render. Do not edit by hand.\n\n\nWhere are my content\nLecture notes\n\ncourse_material/course_material_overview.qmd: overview with a table. this is where you edit the links to each topic\nnotes_diagnostic_tests.qmd: this is an example of qmd notes. renders to html.\nexample.pdf: an example of pdf notes. downloadable by students directly from the browser\n\nLab content\n\nlab/code/ stores code\nlab/data/ stores data\n\n\n\nThe course website\nThe website is linked to the github repository, specifically,\n\nHome links to index.qmd\nGet started links to get_started/get_started.qmd\nCourse material links to course_material/course_material_overview.qmd\nR labs and code links to lab/overview.qmd, which links a bunch of sub material\n\nThe overall appearance is controlled by _quarto.yml.\n\n\nHow to modify the content\nThe website is made by quarto, which is a better version of Rmarkdown. The way code chunk works is exactly the same as Rmarkdown (only that it supports a few more languages in the same file).\nYou might need to install quarto and upgrade Rstudio to the latest version, to be able to render the documents by yourself.\n\nRecommended workflow\n\nClone the repo to your local\nMake a branch\ntest render index.qmd, see if the whole website renders\nchange something on the branch\ntest render the qmd files you modified. Make sure that the path are set properly so that files can be loaded properly\npush to remote\nmake a pull request, someone will take over from here\n\n\n\nDeploy changes to the website (avoid this if you are not sure!)\npush all modifications to github, the site will update itself momentarily (after the CI/CD are successful)\nYou can also let me know if you need any help with the website or text."
-  },
-  {
-    "objectID": "preparation/r_setup.html",
-    "href": "preparation/r_setup.html",
-    "title": "Preparation",
-    "section": "",
-    "text": "Here are some preparation information for the participants."
-  },
-  {
-    "objectID": "preparation/r_setup.html#software",
-    "href": "preparation/r_setup.html#software",
-    "title": "Preparation",
-    "section": "Software",
-    "text": "Software\nIn this workshop we will be using R. You can either\n\nhave R and Rstudio installed on your laptop\nor, use Posit cloud (formerly Rstudio Cloud).\n\nPosit cloud is free of charge for personal users, yet you need to sign up for a new user account and have internet connection.\nThe R package we are using is glmnet."
-  },
-  {
-    "objectID": "preparation/r_setup.html#data",
-    "href": "preparation/r_setup.html#data",
-    "title": "Preparation",
-    "section": "Data",
-    "text": "Data\nThe datasets we use can be found here."
-  },
-  {
-    "objectID": "preparation/r_setup.html#code",
-    "href": "preparation/r_setup.html#code",
-    "title": "Preparation",
-    "section": "Code",
-    "text": "Code\nThe R scripts used in part 1 and part 2 can be found here."
-  },
-  {
-    "objectID": "preparation/r_setup.html#resources",
-    "href": "preparation/r_setup.html#resources",
-    "title": "Preparation",
-    "section": "Resources",
-    "text": "Resources\nLecture notes link\nLab notes link\nAure 2015 Paper link"
-  },
-  {
-    "objectID": "lab/lab_overview.html",
-    "href": "lab/lab_overview.html",
-    "title": "R Lab",
-    "section": "",
-    "text": "Lab\n\n\n\n\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\nIntroduction to R\n\n\nR lab 1\n\n\n\n\nDescriptive statistics\n\n\nR lab 2\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "lab/lab1.html",
-    "href": "lab/lab1.html",
-    "title": "Introduction to R",
-    "section": "",
-    "text": "In this part of the exercise, we model (on the log-scale) the association of miRNA espression on protein expression adjusting for the corresponding mRNA.\nInvestigate miR-107 and B-RAF (Aure et al, 2015, Figure 2H)\n\n\n\n\nprt.BRAF = prt[12,]\nrna.BRAF = rna[12,]\nmir.107 = mir[16,] \n\n\n\non the log-scale, Aure et al. 2015, equation (3)\n\nfitA <- lm(prt.BRAF ~ mir.107 + rna.BRAF)\nsummary(fitA)\n\n\nCall:\nlm(formula = prt.BRAF ~ mir.107 + rna.BRAF)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-2.3028 -0.6126  0.0453  0.6153  3.1361 \n\nCoefficients:\n              Estimate Std. Error t value Pr(>|t|)    \n(Intercept) -7.315e-08  5.068e-02   0.000        1    \nmir.107      4.324e-01  5.079e-02   8.513 1.06e-15 ***\nrna.BRAF     3.200e-01  5.079e-02   6.301 1.15e-09 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.851 on 279 degrees of freedom\nMultiple R-squared:  0.281, Adjusted R-squared:  0.2758 \nF-statistic: 54.51 on 2 and 279 DF,  p-value: < 2.2e-16\n\n\n\n\n\n\n\n\nTask 3\n\n\n\nRepeat the lasso analysis, but this time do not penalise the rna.BRAF variable together with the mir variables.\nCheck out the information on the penalty.factor option in ?glmnet to understand how."
-  },
-  {
-    "objectID": "lab/lab2.html",
-    "href": "lab/lab2.html",
-    "title": "R Lab 1",
-    "section": "",
-    "text": "In this part of the exercise, we model (on the log-scale) the association of miRNA espression on protein expression adjusting for the corresponding mRNA.\nInvestigate miR-107 and B-RAF (Aure et al, 2015, Figure 2H)\n\n\n\n\nprt.BRAF = prt[12,]\nrna.BRAF = rna[12,]\nmir.107 = mir[16,] \n\n\n\non the log-scale, Aure et al. 2015, equation (3)\n\nfitA <- lm(prt.BRAF ~ mir.107 + rna.BRAF)\nsummary(fitA)\n\n\nCall:\nlm(formula = prt.BRAF ~ mir.107 + rna.BRAF)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-2.3028 -0.6126  0.0453  0.6153  3.1361 \n\nCoefficients:\n              Estimate Std. Error t value Pr(>|t|)    \n(Intercept) -7.315e-08  5.068e-02   0.000        1    \nmir.107      4.324e-01  5.079e-02   8.513 1.06e-15 ***\nrna.BRAF     3.200e-01  5.079e-02   6.301 1.15e-09 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.851 on 279 degrees of freedom\nMultiple R-squared:  0.281, Adjusted R-squared:  0.2758 \nF-statistic: 54.51 on 2 and 279 DF,  p-value: < 2.2e-16\n\n\nAdd smooth non-linear cures to the scatterplots: use existing panel.smooth() function, and add linear regression lines to the scatterplots:\n\npanel.linear <- function (x, y, col.regres = \"blue\", ...) \n{ \n  points(x, y, pch=19) \n  ok <- is.finite(x) & is.finite(y) \n  if (any(ok)) \n    abline(stats::lm(y[ok] ~ x[ok]), col = col.regres, ...) \n} \n\npairs(data.frame(mir.107, prt.BRAF, rna.BRAF), \n      lower.panel = panel.smooth,\n      upper.panel = panel.linear)\n\n\n\n\n\n\n\nwith all miRNAs (Aure et al. 2015, equation (4))\n\nlibrary(glmnet)\n\n# 10-fold CV to determine the optimal lambda:\n# Note: rna.BRAF is penalised together with all the mir variables. \n# You can use the penalty.factor option to avoid this.\nset.seed(1234)\ncvfit <- cv.glmnet(y=prt.BRAF, x=t(rbind(mir, rna.BRAF)),\n                   alpha=1, nfolds=10, standardize=TRUE)\n\npar(mfrow=c(1,1))\nplot(cvfit)\nlambda.opt <- cvfit$lambda.min\n\n# Coefficient path plot and coefficients for optimal lambda:\nfitB <- cvfit$glmnet.fit\n\nplot(fitB, xvar=\"lambda\")\nabline(v=log(lambda.opt))\n\ncoef(fitB, s=lambda.opt)\npredict(fitB, type=\"nonzero\", s=lambda.opt)\n\nCompare the regression coefficient of mir.107 from the models in (a) and (b):\n\ncoef(fitA)[\"mir.107\"]\nas.matrix(coef(fitB, s=cvfit$lambda.min))[\"hsa-miR-107\",]\n\n\n\n\n\n\n\nTask 3\n\n\n\nRepeat the lasso analysis, but this time do not penalise the rna.BRAF variable together with the mir variables.\nCheck out the information on the penalty.factor option in ?glmnet to understand how."
   },
   {
     "objectID": "for_instructors/plan.html",
@@ -257,334 +243,5 @@
     "title": "MF9130E - V23",
     "section": "Thursday (M)",
     "text": "Thursday (M)"
-  },
-  {
-    "objectID": "lab/overview.html",
-    "href": "lab/overview.html",
-    "title": "R Lab and code",
-    "section": "",
-    "text": "Welcome! Here you will find material for R lab and code for this course."
-  },
-  {
-    "objectID": "lab/overview.html#lab",
-    "href": "lab/overview.html#lab",
-    "title": "R Lab and code",
-    "section": "Lab",
-    "text": "Lab\nPLAN: use hide-code? or prepare 2 sets, one for demonstration in class, another for home-exercise. for the home exercise, can attach worked solution at the bottom.\n\n\n\n\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\nIntroduction to R\n\n\nGet started in Rstudio, navigation, data types, data import ant export\n\n\n\n\nExploratory data analysis (Part I)\n\n\nExploring a dataset, basic data manipulation, descriptive statistics\n\n\n\n\nExploratory data analysis (Part II)\n\n\nMore on data manipulation, visualisation\n\n\n\n\nStatistical inference\n\n\nConfidence interval, hypothesis testing\n\n\n\n\nT test\n\n\nR lab 1\n\n\n\n\nCategorical data analysis\n\n\nContingency table, chi-square test, proportions\n\n\n\n\nNon-parametric tests\n\n\nWilcoxon signed rank, rank sum test\n\n\n\n\nSample size and power\n\n\nR lab 1\n\n\n\n\nRegression analysis\n\n\nLinear regression, logistic regression\n\n\n\n\nSurvival analysis\n\n\nKaplan-Meier curve, log rank tests\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "lab/lab_descriptive.html",
-    "href": "lab/lab_descriptive.html",
-    "title": "Descriptive statistics",
-    "section": "",
-    "text": "In this part of the exercise, we model (on the log-scale) the association of miRNA espression on protein expression adjusting for the corresponding mRNA.\nInvestigate miR-107 and B-RAF (Aure et al, 2015, Figure 2H)\n\n\n\n\nprt.BRAF = prt[12,]\nrna.BRAF = rna[12,]\nmir.107 = mir[16,] \n\n\n\non the log-scale, Aure et al. 2015, equation (3)\n\nfitA <- lm(prt.BRAF ~ mir.107 + rna.BRAF)\nsummary(fitA)\n\n\nCall:\nlm(formula = prt.BRAF ~ mir.107 + rna.BRAF)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-2.3028 -0.6126  0.0453  0.6153  3.1361 \n\nCoefficients:\n              Estimate Std. Error t value Pr(>|t|)    \n(Intercept) -7.315e-08  5.068e-02   0.000        1    \nmir.107      4.324e-01  5.079e-02   8.513 1.06e-15 ***\nrna.BRAF     3.200e-01  5.079e-02   6.301 1.15e-09 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.851 on 279 degrees of freedom\nMultiple R-squared:  0.281, Adjusted R-squared:  0.2758 \nF-statistic: 54.51 on 2 and 279 DF,  p-value: < 2.2e-16\n\n\n\n\n\n\n\n\nTask 3\n\n\n\nRepeat the lasso analysis, but this time do not penalise the rna.BRAF variable together with the mir variables.\nCheck out the information on the penalty.factor option in ?glmnet to understand how."
-  },
-  {
-    "objectID": "lab/lab_intro_r.html",
-    "href": "lab/lab_intro_r.html",
-    "title": "Introduction to R",
-    "section": "",
-    "text": "Material on this page is under development. There could be errors."
-  },
-  {
-    "objectID": "lab/overview.html#lab-with-code-solution",
-    "href": "lab/overview.html#lab-with-code-solution",
-    "title": "R Lab and code",
-    "section": "Lab (with code solution)",
-    "text": "Lab (with code solution)\nPLAN: use hide-code? or prepare 2 sets, one for demonstration in class, another for home-exercise. for the home exercise, can attach worked solution at the bottom.\n\n\n\n\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\nIntroduction to R\n\n\nR lab 1\n\n\n\n\nDescriptive statistics\n\n\nR lab 2\n\n\n\n\nStatistical inference and confidence interval\n\n\nR lab 1\n\n\n\n\nT test\n\n\nR lab 1\n\n\n\n\nCategorical data analysis\n\n\nContingency table, chi-square test, proportions\n\n\n\n\nExploratory data analysis\n\n\nEDA\n\n\n\n\nNon-parametric tests\n\n\nWilcoxon signed rank, rank sum test\n\n\n\n\nSample size and power\n\n\nR lab 1\n\n\n\n\nRegression analysis\n\n\nLinear, logistic regression\n\n\n\n\nSurvival analysis\n\n\nKM curve, log rank tests\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "lab/overview.html#set-up",
-    "href": "lab/overview.html#set-up",
-    "title": "R Lab and code",
-    "section": "Set-up",
-    "text": "Set-up\nPlease refer to (link to setup) page for more information.\n\nData\nDatasets used for this course can be found at insert path.\n\n\nR scripts\nR scripts used for each section can be downloaded directly at insert path."
-  },
-  {
-    "objectID": "lab/overview.html#useful-resources",
-    "href": "lab/overview.html#useful-resources",
-    "title": "R Lab and code",
-    "section": "Useful resources",
-    "text": "Useful resources\nBook (Wickham et al) R for Data Science (2e)"
-  },
-  {
-    "objectID": "lab/lab_intro_r.html#data-import-and-export",
-    "href": "lab/lab_intro_r.html#data-import-and-export",
-    "title": "Introduction to R",
-    "section": "Data import and export",
-    "text": "Data import and export\nproject management\nset work directory"
-  },
-  {
-    "objectID": "lab/lab_intro_r.html#data-frame-manipulation",
-    "href": "lab/lab_intro_r.html#data-frame-manipulation",
-    "title": "Introduction to R",
-    "section": "Data frame manipulation",
-    "text": "Data frame manipulation"
-  },
-  {
-    "objectID": "lab/lab_intro_r.html#visualisation-base-r",
-    "href": "lab/lab_intro_r.html#visualisation-base-r",
-    "title": "Introduction to R",
-    "section": "Visualisation (base R)",
-    "text": "Visualisation (base R)\nJust some basics, since more specific types of viz will be shown in each section\n\n# need to load the data in this page again. DO NOT SHOW\nmir <- read.table(\"data/miRNA-421x282.txt\", header=T, sep=\"\\t\", dec=\".\")\n\nmir <- as.matrix(mir)\n\n\nmir.107 = mir[16,] \n\n\n(a) Linear regression model\non the log-scale, Aure et al. 2015, equation (3)\n\n\n\n\n\n\nTask 3\n\n\n\nRepeat the lasso analysis, but this time do not penalise the rna.BRAF variable together with the mir variables.\nCheck out the information on the penalty.factor option in ?glmnet to understand how."
-  },
-  {
-    "objectID": "lab/lab_intro_r.html#basic-commands",
-    "href": "lab/lab_intro_r.html#basic-commands",
-    "title": "Introduction to R",
-    "section": "Basic commands",
-    "text": "Basic commands\nassignment of object, r as calculator\n\n# assign values to variables a, b, c\n# (comments start with #)\na <- 3\nb <- 4\nc <- 7\n\n# calculate the mean\n# output directly\n(a+b+c)/3\n\n[1] 4.666667\n\n# or, save into a new variable d\nd <- (a+b+c)/3\nd\n\n[1] 4.666667"
-  },
-  {
-    "objectID": "lab/lab_intro_r.html#r-in-a-nutshell",
-    "href": "lab/lab_intro_r.html#r-in-a-nutshell",
-    "title": "Introduction to R",
-    "section": "R in a nutshell",
-    "text": "R in a nutshell\nR is a language and environment for statistical computing, data analysis, visualisation and graphics and many more. It is a free and open source software, under the terms of GNU General Public License.\nR runs on a wide variety of platforms, including Windows, Linux and MacOS.\nThe latest R version is 4.2.3 (2023-03-15), “Shortstop Beagle”.\n\nRStudio and Posit\nRStudio is a free and open-source IDE (integrated development environment). RStudio IDE is developed by Posit, previously RStudio PBC.\nIt is possible to download RStudio to your laptop or desktop; or use RStudio Cloud (need internet connection).\n4 Panels, use screenshot\n\n\nGetting help\n\nUse Google well! There are a lot of discussions in forums such as StackOverflow\nCheatsheets made by Posit and community\nType ?functionName in the console\nPackage vignettes (longer format of documentation)"
-  },
-  {
-    "objectID": "lab/lab_eda_part1.html",
-    "href": "lab/lab_eda_part1.html",
-    "title": "Exploratory data analysis (Part I)",
-    "section": "",
-    "text": "Might be useful to have an outline and study goals\n\nData structure (use penguins_mini data as example)\nBec student background, it is not necessary to go into too much details\nMUST: concept of scalar, vector, matrix and data frame (dataset exploration put to descriptive and eda)\nMUST: numeric, factor, character, logical\n\n\nExploring a dataset\nhead()\nView()\nstr()\ncolnames()\ndim()\nnrow(), ncol()\nlength() of a vector\n\n\nBasic data manipulation\nonly cover base R here; if needed, tidyverse put to eda\nby index, [row, col]\n\n\nDescriptive statistics\nmin, max, median\nIQR\nsummary table () of a categorical vector\n\n\nVisualisation (only intro, details later)\n\n(base R)\n\n\nggplot\nJust some basics, since more specific types of viz will be shown in each section"
-  },
-  {
-    "objectID": "lab/lab_regression.html",
-    "href": "lab/lab_regression.html",
-    "title": "Regression analysis",
-    "section": "",
-    "text": "Linear regression\nTBC\n\n\nLogistic regression\n(Dataset birth might be switched out)\n\n# load data\nbirth_data <- haven::read_dta('data/birth.dta')\n\n# print the first rows of the data set\nhead(birth_data)\n\n# A tibble: 6 × 12\n     id low            age   lwt eth       smk   ptl ht      ui        fvt   ttv\n  <dbl> <dbl+lbl>    <dbl> <dbl> <dbl+l> <dbl> <dbl> <dbl+l> <dbl+l> <dbl> <dbl>\n1     4 1 [bwt < 25…    28   120 3 [oth…     1     1 0 [no]  1 [yes]     0     0\n2    10 1 [bwt < 25…    29   130 1 [whi…     0     0 0 [no]  1 [yes]     2     0\n3    11 1 [bwt < 25…    34   187 2 [bla…     1     0 1 [yes] 0 [no]      0     0\n4    13 1 [bwt < 25…    25   105 3 [oth…     0     1 1 [yes] 0 [no]      0     0\n5    15 1 [bwt < 25…    25    85 3 [oth…     0     0 0 [no]  1 [yes]     0     4\n6    16 1 [bwt < 25…    27   150 3 [oth…     0     0 0 [no]  0 [no]      0     5\n# … with 1 more variable: bwt <dbl>\n\n\n\nFit a logistic regression model for low and age\n\n# low ~ age \n\nlr_low_age <- glm(low ~ age, data = birth_data, family = 'binomial')\nsummary(lr_low_age)\n\n\nCall:\nglm(formula = low ~ age, family = \"binomial\", data = birth_data)\n\nDeviance Residuals: \n    Min       1Q   Median       3Q      Max  \n-1.0402  -0.9018  -0.7754   1.4119   1.7800  \n\nCoefficients:\n            Estimate Std. Error z value Pr(>|z|)\n(Intercept)  0.38458    0.73212   0.525    0.599\nage         -0.05115    0.03151  -1.623    0.105\n\n(Dispersion parameter for binomial family taken to be 1)\n\n    Null deviance: 234.67  on 188  degrees of freedom\nResidual deviance: 231.91  on 187  degrees of freedom\nAIC: 235.91\n\nNumber of Fisher Scoring iterations: 4\n\n\n\n# the result regresssion coefficient is not odds ratio\nlr_low_age$coefficients\n\n(Intercept)         age \n 0.38458192 -0.05115294 \n\n# regression coefficients can also be extracted in this way:\ncoefficients(lr_low_age)\n\n(Intercept)         age \n 0.38458192 -0.05115294 \n\n# coef(lr_low_age)\n\n# confidence interval for age and intercept\nconfint(lr_low_age)\n\n                 2.5 %      97.5 %\n(Intercept) -1.0336270 1.847399861\nage         -0.1150799 0.008986436\n\n\n\n# to get odds ratio, exponentiate \nexp(coef(lr_low_age))\n\n(Intercept)         age \n  1.4690000   0.9501333 \n\nexp(confint(lr_low_age))\n\n                2.5 %   97.5 %\n(Intercept) 0.3557144 6.343305\nage         0.8912949 1.009027"
-  },
-  {
-    "objectID": "lab/lab_intro_r.html#matrix-and",
-    "href": "lab/lab_intro_r.html#matrix-and",
-    "title": "Introduction to R",
-    "section": "Matrix and",
-    "text": "Matrix and"
-  },
-  {
-    "objectID": "lab/lab_intro_r.html#data-frame",
-    "href": "lab/lab_intro_r.html#data-frame",
-    "title": "Introduction to R",
-    "section": "Data frame",
-    "text": "Data frame"
-  },
-  {
-    "objectID": "lab/lab_intro_r.html#basic-subsetting",
-    "href": "lab/lab_intro_r.html#basic-subsetting",
-    "title": "Introduction to R",
-    "section": "Basic subsetting",
-    "text": "Basic subsetting\nwhich will be continued later"
-  },
-  {
-    "objectID": "lab/lab_intro_r.html#basic-calculations",
-    "href": "lab/lab_intro_r.html#basic-calculations",
-    "title": "Introduction to R",
-    "section": "Basic calculations",
-    "text": "Basic calculations\nr as calculator (use console first; use script AFTER project and workspace mgmt!)\nexp, division\n\n# assign values to variables a, b, c\na <- 3\nb <- 4\nc <- 7\n\n# calculate the average of a,b,c\n# output directly\n(a+b+c)/3\n\n[1] 4.666667\n\n# or, save into a new variable d\nd <- (a+b+c)/3\nd\n\n[1] 4.666667"
-  },
-  {
-    "objectID": "lab/lab_intro_r.html#vectors",
-    "href": "lab/lab_intro_r.html#vectors",
-    "title": "Introduction to R",
-    "section": "Vectors",
-    "text": "Vectors\nA vector is a list of values; it can be numeric, and also characters and logical.\nTo create a vector, use function c().\n\n# numeric\nnum_vector <- c(1, 2, 3, 4, 5)\nnum_vector\n\n[1] 1 2 3 4 5\n\n# character\nchar_vector <- c('student_a', 'student_b', 'student_c')\nchar_vector\n\n[1] \"student_a\" \"student_b\" \"student_c\"\n\n# logical \nlogical_vector <- c(T, F, T, F)\nlogical_vector\n\n[1]  TRUE FALSE  TRUE FALSE\n\n\nThere are some shortcuts to create a sequence of values; not required to learn, but very useful.\n\n# numeric\n# num_vector <- c(1, 2, 3, 4, 5)\nnum_vector <- 1:5 # from 1 to 5\nseq(from = 1, to = 11, by = 2) # from 1 to 11, with 2 between each\n\n[1]  1  3  5  7  9 11\n\nrep(1, 5) # repeat 1 for 5 times\n\n[1] 1 1 1 1 1\n\n# character\n# char_vector <- c('student_a', 'student_b', 'student_c')\nchar_vector <- paste0('student_', c('a', 'b', 'c'))\n\n\n\n\n\n\n\nTypes of elements in a vector\n\n\n\nIn a vector, types of the elements must be the same. If you try to combine multiple types of variables in the same vector, such as a numeric number and a character, R will try to convert them into the same type.\nTry to combine the following values into a vector, and see what happens.\n\n1.52, “student_a”\n1.52, TRUE (logical)\nTRUE, “student_a”\n\n\n\n\nCombine multiple vectors\nYou can combine multiple vectors using c(). For example, vec1 has 3 elements, vec2 has 2 elements (assuming that they are of the same type), combining them gives 5 elements.\n\nvec1 <- c(1, 3, 5)\nvec2 <- c(100, 101)\nc(vec1, vec2)\n\n[1]   1   3   5 100 101\n\n# you can also save it into a new variable, \n# so that you can access it in the future\nvec_combined <- c(vec1, vec2)\nvec_combined\n\n[1]   1   3   5 100 101"
-  },
-  {
-    "objectID": "lab/lab_intro_r.html#matrix",
-    "href": "lab/lab_intro_r.html#matrix",
-    "title": "Introduction to R",
-    "section": "Matrix",
-    "text": "Matrix\nA matrix can be thought of as a stack of vectors. When you collect data from \\(n\\) patients (or subjects), you measure a few aspects on each patient such as age, sex, height and smoking. Let’s say you have measured \\(p\\) aspects. This forms a matrix of size \\(n \\times p\\).\nYou might not need to create a matrix from scratch in R (because the focus of this course is data analysis); but it is helpful to understand some basic data manipulation commands.\nYou can create a matrix using matrix(), with some parameters:\n\nmatrix_1 <- matrix(data = c(1, 2, 3, 4), nrow = 2, ncol = 2, byrow = T)\nmatrix_1\n\n     [,1] [,2]\n[1,]    1    2\n[2,]    3    4\n\n\nYou can also create a matrix by combining two vectors of the same size, using cbind() or rbind(), which stands for “column bind” and “rowbind”.\n\nvec1 <- c(1, 2)\nvec2 <- c(3, 4)\n\n# bind by columnn\nmatrix_c <- cbind(vec1, vec2)\nmatrix_c\n\n     vec1 vec2\n[1,]    1    3\n[2,]    2    4\n\n# bind by row\nmatrix_r <- rbind(vec1, vec2)\nmatrix_r\n\n     [,1] [,2]\nvec1    1    2\nvec2    3    4"
-  },
-  {
-    "objectID": "lab/lab_intro_r.html#dataframe",
-    "href": "lab/lab_intro_r.html#dataframe",
-    "title": "Introduction to R",
-    "section": "Dataframe",
-    "text": "Dataframe\nDataframe, data.frame is a format of data commonly used in data analysis with R and python. It can be considered as a matrix, but allows a mixture of data types, such as numeric and categorical measurements (age and sex).\nIn this course, you will mostly be working with dataframes.\nWe create a small dataframe of 3 subjects:\n\nSubject 1 is a 20 years-old male who has covid\nSubject 2 is a 50 years-old female who has covid\nSubject 3 is a 32 years-old male who does not have covid\n\nThis is how you can present the dataframe, where each column has a different data type.\n\nmini_data <- data.frame(\n  age = c(20, 50, 32), \n  sex = c('male', 'female', 'male'), \n  has_covid = c(T, T, F)\n)\nmini_data\n\n  age    sex has_covid\n1  20   male      TRUE\n2  50 female      TRUE\n3  32   male     FALSE"
-  },
-  {
-    "objectID": "lab/lab_intro_r.html#dimension-of-your-data",
-    "href": "lab/lab_intro_r.html#dimension-of-your-data",
-    "title": "Introduction to R",
-    "section": "Dimension of your data",
-    "text": "Dimension of your data\nYou can find the size of a vector with length().\nFor a matrix or dataframe, you can use dim(). It will return nrow ncol, number of rows and number of columns.\n\nvec1 <- c(1, 2)\nlength(vec1)\n\n[1] 2\n\n# matrix\nmat <- matrix(data = c(1, 2, 3, 4), nrow = 2, byrow = 2)\ndim(mat)\n\n[1] 2 2\n\n# dataframe\ndim(mini_data)\n\n[1] 3 3\n\n\n\n\n\n\n\n\ndim() or length()\n\n\n\nIf you use dim() on a vector, it returns NULL. Given that a vector is just a matrix with 1 row (or column), this seems insensible.\nNonetheless, dim() works on matrix objects. if you convert the vector into a matrix with nrow =1 or ncol = 1, dim() will work.\nIf you use length() on a matrix, it will return the total number of elements, i.e. ncol times nrow.\n\n\nYou can also use nrow(), ncol() to get the number of rows and columns explicitly.\n\n# ncol, nrow\n# dim(mini_data)\nnrow(mini_data)\n\n[1] 3\n\nncol(mini_data)\n\n[1] 3"
-  },
-  {
-    "objectID": "lab/lab_intro_r.html#index",
-    "href": "lab/lab_intro_r.html#index",
-    "title": "Introduction to R",
-    "section": "Index",
-    "text": "Index\nwhich will be continued later"
-  },
-  {
-    "objectID": "lab/lab_intro_r.html#modify-existing-data",
-    "href": "lab/lab_intro_r.html#modify-existing-data",
-    "title": "Introduction to R",
-    "section": "Modify existing data",
-    "text": "Modify existing data\n\n\n\n\n\n\nKeep your original data safe!\n\n\n\nModifying an existing data is easy, but you should be aware of the risks. In this class we only modify data we created in the class so there is little risk, but you might have your own datasets to analyse in the future.\nYou should keep your original data in a safe place, and work on copies of it.\nVersion control is a good skill to learn.\n\n\n\n# vector\n# make e into E \nletters[5] <- 'E'\nletters\n\n[1] \"a\" \"b\" \"c\" \"d\" \"E\" \"f\" \"g\" \"h\"\n\n# matrix\n# make (1, 1) 20\nmat_3by3[1, 1] # originally was 1\n\n[1] 1\n\nmat_3by3[1, 1] <- 20\nmat_3by3\n\n     [,1] [,2] [,3]\n[1,]   20    2    3\n[2,]    4    5    6\n[3,]    7    8    9\n\n# dataframe\n# make so that subject 2 does not have covid\nmini_data\n\n  age    sex has_covid\n1  20   male      TRUE\n2  50 female      TRUE\n3  32   male     FALSE\n\nmini_data$has_covid[2] <- F\nmini_data\n\n  age    sex has_covid\n1  20   male      TRUE\n2  50 female     FALSE\n3  32   male     FALSE"
-  },
-  {
-    "objectID": "lab/lab_intro_r.html#accessing-elements-in-your-data",
-    "href": "lab/lab_intro_r.html#accessing-elements-in-your-data",
-    "title": "Introduction to R",
-    "section": "Accessing elements in your data",
-    "text": "Accessing elements in your data\nFor a vector, you can access\n\nan element at a given position\nmultiple elements at given positions\n\nelements beyond, or below a certain element\n\nSometimes you might need to combine previous knowledge to get what you want (e.g. to know how many elements in total there are). But not required now.\n\nletters <- c('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h')\n\n# 3rd letter\nletters[3]\n\n[1] \"c\"\n\n# 3rd, and 5th\nletters[c(3, 5)]\n\n[1] \"c\" \"e\"\n\n# letters beyond 4\nletters[5:8] # or, letters[5:length(letters)]\n\n[1] \"e\" \"f\" \"g\" \"h\"\n\n\nFor a matrix,\n\nmatrix[r, c] to get the element on \\(r\\)-th row, \\(c\\)-th column.\nmatrix[r, ], matrix[, c] to get all the elements on \\(r\\)-th row or \\(c\\)-th column\n\n\nmat_3by3 <- matrix(data = 1:9, nrow = 3, byrow = T)\nmat_3by3\n\n     [,1] [,2] [,3]\n[1,]    1    2    3\n[2,]    4    5    6\n[3,]    7    8    9\n\n# element (2,3)\nmat_3by3[2, 3]\n\n[1] 6\n\n# first row\nmat_3by3[1,]\n\n[1] 1 2 3\n\n\nFor a dataframe,\n\nyou can use indices (row, col) in the same way as matrices above;\nuse data$column_name, or data['column_name'] to access the entire column\n\nConventionally, each row is a subject, and each columnn is a variable (or aspect of measurement, feature, characteristic, risk factor etc).\n\nmini_data\n\n  age    sex has_covid\n1  20   male      TRUE\n2  50 female      TRUE\n3  32   male     FALSE\n\n# first row \nmini_data[1, ]\n\n  age  sex has_covid\n1  20 male      TRUE\n\n# second col\nmini_data[, 2]\n\n[1] \"male\"   \"female\" \"male\"  \n\n# via column name \nmini_data$age\n\n[1] 20 50 32\n\nmini_data['age']\n\n  age\n1  20\n2  50\n3  32"
-  },
-  {
-    "objectID": "course_material/course_material_overview.html",
-    "href": "course_material/course_material_overview.html",
-    "title": "Course material",
-    "section": "",
-    "text": "On this page you’ll find a list of lecture notes, R lab notes and other material used in this course."
-  },
-  {
-    "objectID": "course_material/course_material_overview.html#day-1",
-    "href": "course_material/course_material_overview.html#day-1",
-    "title": "Lecture notes",
-    "section": "Day 1",
-    "text": "Day 1\nDescriptive statistics (insert link)\n\n\n\nTime\nTopic\nLab\nNotes\n\n\n\n\nApril 25 Morning\n\ntest notes\n\n\n\nApril 25 Afternoon\n\nMZ"
-  },
-  {
-    "objectID": "course_material/test.html",
-    "href": "course_material/test.html",
-    "title": "Diagnostic tests",
-    "section": "",
-    "text": "On this page you’ll find a list of lecture notes, organised by topics and days presented."
-  },
-  {
-    "objectID": "course_material/course_material_overview.html#week-1",
-    "href": "course_material/course_material_overview.html#week-1",
-    "title": "Course material",
-    "section": "Week 1",
-    "text": "Week 1\n\n\n\nTime\nTopic\nNotes\nLab\nOther\n\n\n\n\nApril 24 PM\nCourse introduction\n\nN/A\n\n\n\n\nDescriptive statistics\nExample pdf notes\nN/A\n\n\n\nApril 25 AM\nIntroduction to R\n\n\n\n\n\n\nDescriptive statistics\n\n\n\n\n\nApril 25 PM\nProbability, diagnosistic tests\nDiagnostic tests\n\n\n\n\n\nStatistical distributions\n\n\n\n\n\nApril 26 AM\nLab session\n\n\n\n\n\nApril 26 PM\nStatistical inference, tests and confidence intervals\n\n\n\n\n\n\nt-tests\n\n\n\n\n\nApril 27 AM\nLab session\n\n\n\n\n\nApril 27 PM\nCategorical data, table analysis\n\n\n\n\n\nApril 28 AM\nLab session"
-  },
-  {
-    "objectID": "course_material/course_material_overview.html#week-2",
-    "href": "course_material/course_material_overview.html#week-2",
-    "title": "Course material",
-    "section": "Week 2",
-    "text": "Week 2\n\n\n\nTime\nTopic\nNotes\nLab session\n\n\n\n\nMay 8 AM\nExploratory data analysis, transformation\n\n\n\n\n\nNon-parametric methods\n\n\n\n\nMay 8 PM\nSample size, statistical power\n\nCode\n\n\nMay 9 AM\nStudy design, principles of clinical trials\n\nNA\n\n\nMay 9 PM\nLinear regression I\n\n\n\n\nMay 10 AM\nLinear regression II\n\n\n\n\nMay 10 PM\nSurvival analysis\n\nLab, Code"
-  },
-  {
-    "objectID": "course_material/notes_diagnostic_tests.html",
-    "href": "course_material/notes_diagnostic_tests.html",
-    "title": "Evaluation of diagnostic tests",
-    "section": "",
-    "text": "Topics:\nBook and resources:"
-  },
-  {
-    "objectID": "course_material/notes_diagnostic_tests.html#confusion-matrix",
-    "href": "course_material/notes_diagnostic_tests.html#confusion-matrix",
-    "title": "Evaluation of diagnostic tests",
-    "section": "Confusion matrix",
-    "text": "Confusion matrix\nDenote the subjects with positive condition as \\(P\\), and subjects with negative condition as \\(N\\).\nTotal population: \\(P+N\\)\nPrevalence (of positive condition): \\(\\frac{P}{P+N}\\)\n\n\n\n\n\n\n\n\n\nPredicted Positive\nPredicted Negative\n\n\n\n\nPositive condition \\(P\\)\nTrue Positive TP\nFalse Negative FN\n\n\nNegative condition \\(N\\)\nFalse Positive FP\nTrue Negative TN\n\n\n\nSensitivity is the probability of revealing that a person has the condition. It is also known as true positive rate (TPR), as it is the proportion of true positives.\n\\[\\text{Sensitivity}= \\frac{TP}{P} = \\frac{TP}{TP+FN}\\]\nThe complement of sensitivity (TPR) is the false negative rate (FNR),\n\\[FNR = 1-\\text{sensitivity} =\\frac{FN}{P} = \\frac{FN}{TP + FN}\\]\nSpecificity is the probability of revealing that a person does not have the condition (i.e. healthy). It is also known as true negative rate.\n\\[\\text{Specificity} = \\frac{TN}{N} = \\frac{TN}{TN + FP}\\]\nThe complement of specificity is false positive rate (FPR),\n\\[FPR = 1-\\text{specificity} =\\frac{FP}{N} = \\frac{FP}{TN + FP}\\]\nPositive predictive value (PPV): probability that the person with the condition was given a positive test result\n\\[PPV = \\frac{TP}{P_{predicted}} = \\frac{TP}{TP + FP}\\]\nNegative predictive value (NPV): probability that the person without the condition (i.e. healthy) was give a negative test result.\n\\[NPV = \\frac{TN}{N_{predicted}} = \\frac{TN}{TN + FN}\\]\n\n\n\n\n\n\nExplain\n\n\n\nuse visual aid\n\n\n\n\n\n\n\n\nExample: Mammography\n\n\n\n\n\n(From the Norwegian Medical Journal, 1990) 372 women with a lump in the breast have been referred to a surgical clinic.\n\n\n\n\nMammography benign\nMammography malign\n\n\n\n\nFinal diagnosis benign\n331\n16\n\n\nFinal diagnosis malign\n3\n22\n\n\n\nIdentify the positive test result (malign), and positive condition (diagnosis malign).\nSensitivity: \\(22/(22+3) = 0.88\\)\nSpecificity: \\(331/(331+16) = 0.95\\)\nPositive predictive value: \\(22/(22+16) = 0.58\\)\nNegative predictive value: \\(331/(331+3) = 0.99\\)"
-  },
-  {
-    "objectID": "course_material/notes_diagnostic_tests.html#diagnostic-tests-and-prevalence",
-    "href": "course_material/notes_diagnostic_tests.html#diagnostic-tests-and-prevalence",
-    "title": "Evaluation of diagnostic tests",
-    "section": "Diagnostic tests and prevalence",
-    "text": "Diagnostic tests and prevalence\nThe concepts in diagnostic testing can be formulated in the form of conditional probability,\n\nSensitivity: \\(P(\\text{pred pos}|\\text{disease})\\)\nSpecificity: \\(P(\\text{pred neg}|\\text{healthy})\\)\nPositive predictive value: \\(P(\\text{disease}|\\text{pred pos})\\)\nNegative predictive value: \\(P(\\text{healthy}|\\text{pred neg})\\)\n\nBayes’ theorem can be applied to link sensitivity, specificity and prevalence to PPV and NPV.\nFor positive predictive value,\n\\[PPV = \\frac{\\text{sens} \\cdot \\text{prev}}{\\text{sens} \\cdot \\text{prev} + (1-\\text{spes}) \\cdot (1-\\text{prev})}\\]\nSimilarly, for negative predictive value,\n\\[NPV = \\frac{\\text{spes} \\cdot (1-\\text{prev}) }{(1-\\text{sens}) \\cdot \\text{prev} + \\text{spes} \\cdot (1-\\text{prev})}\\]\n\n\n\n\n\n\nExplain\n\n\n\nderivation?\n\n\n\nExample: HIV testing\nWe want to test for antibodies of the HIV virus.\n\nPositive result: test shows antibodies\nNegative result: test does not show antibodies\n\nThe test result may be wrong.\nA false positive might come from antibodies from related virus, but not HIV. The probability of error is 0.2%.\nA false negative might be that antibodies are not yet produced in sufficient quantity, hence are not detected by the test. The probability of error is 2%.\nAssume that prevalence of HIV is 0.1%.\nWhat is the probability of a person having HIV, if he got a positive test result?\nWhat is the probability of a person not having HIV, if he got a negative test result?\n\n\n\n\n\n\nExample: HIV testing I\n\n\n\nRecall the relation between sensitivity and false negative, and between specificity with false positive.\nWe know the following information about the test:\n\nfalse negative rate \\(FNR = 2\\%\\): sensitivity \\(\\text{sens} = 1-2\\% = 98\\%\\)\nfalse positive rate \\(FPR = 0.2\\%\\): specificity \\(\\text{spec} = 1-0.2\\% = 99.8\\%\\)\n\nFor 100 000 persons,\n\nNumber of HIV infected (positive condition): \\(100000 \\times 0.001 = 100\\)\nTrue positives: \\(100 \\times 0.98 = 98\\)\nFalse negatives: 2\nNumber of not HIV infected (negative condition): \\(100000-100 = 99900\\)\nFalse positives: \\(99900 \\times 0.002 = 199.8\\), say \\(200\\)\nTrue negatives: \\(99900 \\times 0.998 = 99700\\)\nPositive predictive value, \\(PPV = TP/(TP+FP) = 98/(98+200)= 0.329\\)\nNegative predictive value, \\(NPV = TN/(TN+FN) = 99700/(99700+2) = 0.9999\\)\n\n\n\nWe can also use the formula.\n\n\n\n\n\n\nExample: HIV testing II\n\n\n\n\\(PPV = \\frac{\\text{sens} \\cdot \\text{prev}}{\\text{sens} \\cdot \\text{prev} + (1-\\text{spes}) \\cdot (1-\\text{prev})} = \\frac{0.98 \\times 0.001}{0.98 \\times 0.001 + 0.002 \\times 0.999} = 0.329\\)\n\\(NPV = \\frac{\\text{spes} \\cdot (1-\\text{prev}) }{(1-\\text{sens}) \\cdot \\text{prev} + \\text{spes} \\cdot (1-\\text{prev})} = \\frac{0.998 \\times 0.999}{0.98 \\times 0.001 + 0.998 \\times 0.999} = 0.999\\)\n\n\n\n\nFalse positive, PPV and revalence\nAs can be seen from the HIV example, PPV (i.e. the probability of detecting an actual condition, when the test is positive) depends on prevalence.\n\nWhen prevalence is 1/10000, 1/1000, 1/100, 1/10\nCorresponding PPV: 5%, 33%, 83%, 98%\n\nThe risk of getting false positives is greater for rare diseases, and smaller for more common diseases.\nFalse positives are problematic in mass screening for disease. It is possible that the majority of the positives (test results) are false positives."
-  },
-  {
-    "objectID": "get_started/get_started_1.html",
-    "href": "get_started/get_started_1.html",
-    "title": "Get started",
-    "section": "",
-    "text": "Here you will find useful information on how to get started."
-  },
-  {
-    "objectID": "get_started/get_started_1.html#data",
-    "href": "get_started/get_started_1.html#data",
-    "title": "Get started",
-    "section": "Data",
-    "text": "Data"
-  },
-  {
-    "objectID": "get_started/get_started_1.html#code",
-    "href": "get_started/get_started_1.html#code",
-    "title": "Get started",
-    "section": "Code",
-    "text": "Code"
-  },
-  {
-    "objectID": "get_started/get_started_1.html#resources-updating",
-    "href": "get_started/get_started_1.html#resources-updating",
-    "title": "Get started",
-    "section": "Resources (updating…)",
-    "text": "Resources (updating…)\nLecture notes link\nLab notes link\nAure 2015 Paper link"
-  },
-  {
-    "objectID": "get_started/get_started_1.html#books",
-    "href": "get_started/get_started_1.html#books",
-    "title": "Get started",
-    "section": "Books",
-    "text": "Books"
-  },
-  {
-    "objectID": "get_started/get_started_1.html#papers",
-    "href": "get_started/get_started_1.html#papers",
-    "title": "Get started",
-    "section": "Papers",
-    "text": "Papers"
-  },
-  {
-    "objectID": "get_started/get_started.html",
-    "href": "get_started/get_started.html",
-    "title": "Get started",
-    "section": "",
-    "text": "Here you will find useful information on how to get started."
-  },
-  {
-    "objectID": "get_started/get_started.html#data",
-    "href": "get_started/get_started.html#data",
-    "title": "Get started",
-    "section": "Data",
-    "text": "Data"
-  },
-  {
-    "objectID": "get_started/get_started.html#code",
-    "href": "get_started/get_started.html#code",
-    "title": "Get started",
-    "section": "Code",
-    "text": "Code"
-  },
-  {
-    "objectID": "get_started/get_started.html#resources-updating",
-    "href": "get_started/get_started.html#resources-updating",
-    "title": "Get started",
-    "section": "Resources (updating…)",
-    "text": "Resources (updating…)\nLecture notes link\nLab notes link\nAure 2015 Paper link"
-  },
-  {
-    "objectID": "get_started/get_started.html#books",
-    "href": "get_started/get_started.html#books",
-    "title": "Get started",
-    "section": "Books",
-    "text": "Books"
-  },
-  {
-    "objectID": "get_started/get_started.html#papers",
-    "href": "get_started/get_started.html#papers",
-    "title": "Get started",
-    "section": "Papers",
-    "text": "Papers"
-  },
-  {
-    "objectID": "lab/lab_survival.html",
-    "href": "lab/lab_survival.html",
-    "title": "Survival analysis",
-    "section": "",
-    "text": "Melanoma\n(This is the example 2 in the exercises)\nFirst we load the dataset, and check what columns are there.\n\nlibrary(survival)\n\nmelanoma <- haven::read_dta('data/melanoma.dta')\n\nhead(melanoma)\n\n# A tibble: 6 × 12\n  status    lifet…¹ ulcer…² tumor…³ gender   age group…⁴ logar…⁵  SUR_1     SE_1\n  <dbl+lbl>   <dbl> <dbl+l>   <dbl> <dbl+> <dbl> <dbl+l>   <dbl>  <dbl>    <dbl>\n1 4 [Death…  0.0274 1 [Yes]    6.76 2 [m]     76 3 [5+ …   1.91  NA     NA      \n2 4 [Death…  0.0822 2 [No]     0.65 2 [m]     56 1 [0-2…  -0.431 NA     NA      \n3 2 [Censo…  0.0959 2 [No]     1.34 2 [m]     41 1 [0-2…   0.293 NA     NA      \n4 4 [Death…  0.271  2 [No]     2.9  1 [f]     71 2 [2-5…   1.06  NA     NA      \n5 1 [Death…  0.507  1 [Yes]   12.1  2 [m]     52 3 [5+ …   2.49   0.995  0.00496\n6 1 [Death…  0.559  1 [Yes]    4.84 2 [m]     28 2 [2-5…   1.58   0.990  0.00700\n# … with 2 more variables: SUR_2 <dbl>, SE_2 <dbl>, and abbreviated variable\n#   names ¹​lifetime, ²​ulceration, ³​tumor_thickness, ⁴​grouped_tumor_thickness,\n#   ⁵​logarithm_of_tumor_thickness\n\ncolnames(melanoma)\n\n [1] \"status\"                       \"lifetime\"                    \n [3] \"ulceration\"                   \"tumor_thickness\"             \n [5] \"gender\"                       \"age\"                         \n [7] \"grouped_tumor_thickness\"      \"logarithm_of_tumor_thickness\"\n [9] \"SUR_1\"                        \"SE_1\"                        \n[11] \"SUR_2\"                        \"SE_2\"                        \n\n\n\na) Recode variable\nWe only need “death from melanoma” or else, hence we need to recode the status variable which originally had three categories.\n\n# if status == 1, code 1; otherwise, code 0\n# this indicates whether deaths from melanoma\ndeath <- ifelse(melanoma$status == 1, 1, 0)\n\n# check if the labels are correct\ntable(death)\n\ndeath\n  0   1 \n148  57 \n\ntable(melanoma$status)\n\n\n  1   2   4 \n 57 134  14 \n\n\nYou can see that the category melanoma$status == 1 should match death == 1, and melanoma$status of 2 and 4 are merged together and coded as death == 0.\n\n\nb) Kaplan-Meier plot\n\n# take lifetime variable\nlifetime <- melanoma$lifetime\n\n\nkm_fit <- survfit(Surv(lifetime, death) ~ 1)\nplot(km_fit)\n\n# add title and text\ntitle(main = 'Kaplan-Meier survival estimate', \n      xlab = 'Time', \n      ylab = 'Survival probability')\n\n\n\n\nNow we check only time 1, 2, 5.\n\n# time 1, 2, 5\ntme <- c(1, 2, 5)\nsummary(km_fit, times = tme)\n\nCall: survfit(formula = Surv(lifetime, death) ~ 1)\n\n time n.risk n.event survival std.err lower 95% CI upper 95% CI\n    1    193       6    0.970  0.0120        0.947        0.994\n    2    183       9    0.925  0.0187        0.889        0.962\n    5    122      30    0.769  0.0303        0.712        0.831\n\n\n\n\nc) Compare two genders\n\n# gender == 1: female; gender == 2: male\ngender <- melanoma$gender\n\n\nkm_fit_gender <- survfit(Surv(lifetime, death) ~ gender)\nplot(km_fit_gender, col = c('blue', 'red'))\ntitle(main = 'Kaplan-Meier survival estimate: stratify by gender', \n      xlab = 'Time', \n      ylab = 'Survial probability')\n\n# add legend\nlegend( 'bottomleft', \n       legend = c('Female', 'Male'), \n       lty = c('solid', 'solid'), \n       col = c('blue','red'))\n\n\n\n\nNow we test the difference with log-rank test\n\n# test difference with logrank test \nsurvdiff(Surv(lifetime, death) ~ gender)\n\nCall:\nsurvdiff(formula = Surv(lifetime, death) ~ gender)\n\n           N Observed Expected (O-E)^2/E (O-E)^2/V\ngender=1 126       28     37.1      2.25      6.47\ngender=2  79       29     19.9      4.21      6.47\n\n Chisq= 6.5  on 1 degrees of freedom, p= 0.01 \n\n\n\n\nd) Compare tumor thickness\nFirst we do some data processing\n\n# check the original data type \nmelanoma$grouped_tumor_thickness\n\n<labelled<double>[205]>: Thickness group\n  [1] 3 1 1 2 3 2 3 2 3 3 2 1 2 2 2 3 3 3 3 3 3 2 2 2 2 1 3 2 2 2 1 2 1 3 3 2 2\n [38] 2 1 2 2 2 3 1 2 1 2 3 1 1 2 1 1 1 1 2 1 1 1 3 1 1 1 1 1 1 1 1 3 1 1 1 2 1\n [75] 1 2 1 2 1 1 1 1 2 1 1 1 1 1 2 1 1 2 2 1 2 1 1 3 1 3 2 2 1 1 2 1 2 1 1 2 2\n[112] 2 2 1 1 1 1 1 1 1 1 3 3 1 3 2 2 1 1 3 1 2 2 1 1 1 2 1 2 1 3 1 2 1 1 2 1 1\n[149] 1 1 1 1 1 2 1 1 3 1 1 1 1 3 1 1 2 1 2 2 1 1 2 1 2 2 2 1 1 1 1 1 1 2 2 1 1\n[186] 3 1 1 1 3 3 1 2 2 1 1 1 2 1 1 3 3 1 2 2\n\nLabels:\n value  label\n     1 0-2 mm\n     2 2-5 mm\n     3  5+ mm\n\n# you can code them so that the data is more readable\ngrouped_tumor_thickness <- factor(melanoma$grouped_tumor_thickness, \n                           levels = c('1','2', '3'),\n                           labels = c('0-2 mm', '2-5 mm', '5+ mm'))\n\n# check if it is coded correctly\ntable(grouped_tumor_thickness)\n\ngrouped_tumor_thickness\n0-2 mm 2-5 mm  5+ mm \n   109     64     32 \n\ntable(melanoma$grouped_tumor_thickness)\n\n\n  1   2   3 \n109  64  32 \n\n\nNow we plot the KM plot, and carry out a log-rank test\n\nkm_fit_tumor <- survfit(Surv(lifetime, death) ~ grouped_tumor_thickness)\nplot(km_fit_tumor, col = c('blue', 'red', 'forestgreen'))\n\ntitle(main = 'Kaplan-Meier survival estimate: stratify by tumor thickness', \n      xlab = 'Time', \n      ylab = 'Survial probability')\n\n# add legend\nlegend( 'bottomleft', \n        legend = c('0-2 mm', '2-5 mm', '5+ mm'), \n        lty = c('solid', 'solid', 'solid'), \n        col = c('blue','red', 'forestgreen'))\n\n\n\n# test difference with logrank test \nsurvdiff(Surv(lifetime, death) ~ grouped_tumor_thickness)\n\nCall:\nsurvdiff(formula = Surv(lifetime, death) ~ grouped_tumor_thickness)\n\n                                 N Observed Expected (O-E)^2/E (O-E)^2/V\ngrouped_tumor_thickness=0-2 mm 109       13    33.75     12.75     31.36\ngrouped_tumor_thickness=2-5 mm  64       30    16.39     11.30     15.88\ngrouped_tumor_thickness=5+ mm   32       14     6.86      7.42      8.45\n\n Chisq= 31.6  on 2 degrees of freedom, p= 1e-07 \n\n\n\n\n\nLength of hospital stay\n(This is the exercise 3 from the exercise for day 7)\n\nliggetid <- haven::read_dta('data/liggetid.dta')\nhead(liggetid)\n\n# A tibble: 6 × 21\n   faar fmaan  fdag innaar innmaan inndag utaar utmaan utdag kjoenn     kom_fra \n  <dbl> <dbl> <dbl>  <dbl>   <dbl>  <dbl> <dbl>  <dbl> <dbl> <dbl+lbl>  <dbl+lb>\n1  1906     3     4   1987       3      5    87      3    18 0 [kvinne] 1 [hjem]\n2  1891     4     3   1987       3      6    87      3    23 0 [kvinne] 1 [hjem]\n3  1908     9     6   1987       3     10    87      3    16 0 [kvinne] 1 [hjem]\n4  1910     1    11   1987       3     11    87      3    25 1 [mann]   1 [hjem]\n5  1907     1     6   1987       3     13    87      3    30 0 [kvinne] 1 [hjem]\n6  1901    12    19   1987       3     13    87      4     2 0 [kvinne] 1 [hjem]\n# … with 10 more variables: slag <dbl+lbl>, alder <dbl>, liggetid <dbl>,\n#   lnliggti <dbl>, kom_fra2 <dbl>, kom_fra3 <dbl>, kom_fra4 <dbl>,\n#   kom_fra5 <dbl>, kom_fra6 <dbl>, status <dbl>\n\ncolnames(liggetid)\n\n [1] \"faar\"     \"fmaan\"    \"fdag\"     \"innaar\"   \"innmaan\"  \"inndag\"  \n [7] \"utaar\"    \"utmaan\"   \"utdag\"    \"kjoenn\"   \"kom_fra\"  \"slag\"    \n[13] \"alder\"    \"liggetid\" \"lnliggti\" \"kom_fra2\" \"kom_fra3\" \"kom_fra4\"\n[19] \"kom_fra5\" \"kom_fra6\" \"status\"  \n\n# all status are 1 \nstatus <- liggetid$status\n\n\na) Length of stay vs gender\n\n# length of stay (los) vs gender\nlos <- liggetid$liggetid\nhead(los)\n\n[1] 13 17  6 14 17 20\n\n# can choose to recode; or leave as it is;\n# gender == 0: female; gender == 1: male\ngender <- liggetid$kjoenn\nhead(gender)\n\n<labelled<double>[6]>\n[1] 0 0 0 1 0 0\n\nLabels:\n value  label\n     0 kvinne\n     1   mann\n\n# fit km \nkm_liggetid_gender <- survfit(Surv(los, status) ~ gender)\n\nplot(km_liggetid_gender, col = c('blue', 'red'))\n\ntitle(main = 'Kaplan-Meier survival estimate: stratify by gender', \n      xlab = 'Time', \n      ylab = 'Survial probability')\n\n# add legend\nlegend( 'topright', \n        legend = c('Female', 'Male'), \n        lty = c('solid', 'solid'), \n        col = c('blue','red'))\n\n\n\n\nNow we do log-rank test\n\n# log rank test \nsurvdiff(Surv(los, status) ~ gender)\n\nCall:\nsurvdiff(formula = Surv(los, status) ~ gender)\n\nn=1138, 1 observation deleted due to missingness.\n\n           N Observed Expected (O-E)^2/E (O-E)^2/V\ngender=0 714      714      799      9.06      31.9\ngender=1 424      424      339     21.36      31.9\n\n Chisq= 31.9  on 1 degrees of freedom, p= 2e-08 \n\n\n\n\nb) Length of stay vs stroke\n\n# length of stay vs stroke\n# slag == 1: yes, slag == 2: no\nstroke <- liggetid$slag\n\n# fit km \nkm_liggetid_stroke <- survfit(Surv(los, status) ~ stroke)\n\nplot(km_liggetid_stroke, col = c('blue', 'red'))\n\ntitle(main = 'Kaplan-Meier survival estimate: stratify by stroke', \n      xlab = 'Time', \n      ylab = 'Survial probability')\n\n# add legend\nlegend( 'topright', \n        legend = c('Stroke: yes', 'Stroke: no'), \n        lty = c('solid', 'solid'), \n        col = c('blue','red'))\n\n\n\n\n\n# log rank test\nsurvdiff(Surv(los, status) ~ stroke)\n\nCall:\nsurvdiff(formula = Surv(los, status) ~ stroke)\n\nn=1054, 85 observations deleted due to missingness.\n\n           N Observed Expected (O-E)^2/E (O-E)^2/V\nstroke=0 891      891      864     0.814      4.61\nstroke=1 163      163      190     3.714      4.61\n\n Chisq= 4.6  on 1 degrees of freedom, p= 0.03"
-  },
-  {
-    "objectID": "lab/lab_inf_ci.html",
-    "href": "lab/lab_inf_ci.html",
-    "title": "Statistical inference",
-    "section": "",
-    "text": "Confidence interval\n\n\nHypothesis testing\n\nError\nType I error: conclude that there is an effect when there is not (false positive).\n\ncontrolled by significance level, \\(\\alpha\\)\nusually choose \\(\\alpha = 0.05\\)\n\nType II error: conclude there is not an effect when there really is (false negative).\n\npower: \\(1-\\beta\\)\na minimum for “good” power is usually 80%; i.e. 80% chance of correctly rejecting the null hypothesis if there is an effect."
   }
 ]

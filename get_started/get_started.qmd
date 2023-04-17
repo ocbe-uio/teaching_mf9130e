@@ -3,45 +3,109 @@ title: "Get started"
 format: 
   html:
     code-fold: false
-    code-tools: true
+    code-tools: false
 editor: source
 ---
 
 Here you will find useful information on how to get started. 
 
-
-
-# Set up your RStudio 
-
-
 In this workshop we will be using R. You can either
 
--   have **R and Rstudio** installed on your laptop
+-   (recommended) have **R and Rstudio** installed on your laptop 
 -   or, use **Posit cloud** (formerly Rstudio Cloud).
+
+
+### Set up your RStudio on your laptop
+
+You will need both R and Rstudio, they are two separate things. 
+
+You can download **Rstudio** [here](https://posit.co/download/rstudio-desktop/). In this page it will ask you to install R, so it should be clear to follow.
+
+<img src="fig_get_started_downloadrstudio.png" align="center" width="800" /></a>
+
+
+You can download **R** for Linux, macOS or Windows [here](https://cran.rstudio.com) or [here](https://cran.uib.no)
+
+<img src="fig_get_started_downloadr.png" align="center" width="800" /></a>
+
+
+Watch these [YouTube videos](https://www.youtube.com/results?search_query=download+r+and+rstudio) if you are stuck.
+
+
+
+### Use Posit Cloud
 
 [Posit cloud](https://posit.cloud) is free of charge for personal users, yet you need to [sign up](https://posit.cloud/plans/free) for a new user account and have internet connection.
 
-## Data
-
-## Code
-
-## Resources (updating...)
-
-Lecture notes [link](https://github.com/ocbe-uio/2022_bioinformatics_workshop/tree/main/lecture_notes)
-
-Lab notes [link](https://github.com/ocbe-uio/2022_bioinformatics_workshop/blob/main/lab/StatPrinciples_RLab.pdf)
-
-Aure 2015 Paper [link](https://github.com/ocbe-uio/2022_bioinformatics_workshop/blob/main/lab/Aure_2015.pdf)
 
 
+
+
+
+# Data
+
+The datasets used in this course are stored in this [folder](https://github.com/ocbe-uio/teaching_mf9130e/tree/main/lab/data).
+
+### Download data
+
+1. Go to the repository, select the data you want to download by **left-click the file name**
+
+2. If it is a dataset in `.csv, .txt` format, you will see something like this
+
+
+<img src="fig_get_started_download2.png" align="center" width="800" /></a>
+
+  * find **Raw** button, **right-click**, you will see a list of options
+  * choose **Download Linked File**, this will download the data into your default download folder 
+  * alternatively, choose **Download linked file as...** so that you can change where you put it and file name. 
+
+3. If it is a dataset in `.dta, .xlsx` or other format, you might not see the data directly:
+
+<img src="fig_get_started_download1.png" align="center" width="800" /></a>
+
+  * find **Download** button, left-click, and you will download it into your default download folder.
+
+
+#### Optional: download data via URL
+
+If you feel like it, you can also download data inside R via URL. You can read more about it [here](https://rpubs.com/lokraj/github_csv).
+
+
+
+
+# Code
+
+R scripts are stored in this [folder](https://github.com/ocbe-uio/teaching_mf9130e/tree/main/lab/code). 
+
+To **download an R script**, it is similar to downloading a dataset
+
+<img src="fig_get_started_download3.png" align="center" width="800" /></a>
+
+Alternatively, you can **create your own R script locally** inside Rstudio, by copy and paste the script from Github.
 
 
 
 # Resources 
-Here are some useful links for the participants of the course.
 
-## Books
+You will find the material used in class on this [page](https://ocbe-uio.github.io/teaching_mf9130e/course_material/course_material_overview.html).
 
-## Papers 
+We keep updating the material, so please stay tuned! 
+
+
+
+### Books and papers
+
+You can find these books in the library.
+
+* **Essential medical statistics** (Kirkwood and Sterne, 2nd edition, 2003) ([link](https://www.adlibris.com/no/bok/essential-medical-statistics-2e-9780865428713) 
+* **Statistiske metoder i medisin og helsefag** (Aalen, Frigessi, Moger, Scheel, Skovlund og Veierød, 2 utg, 2018) ([link](https://www.akademika.no/realfag/matematikk/statistiske-metoder-i-medisin-og-helsefag/9788205507647?gclid=CjwKCAjw3POhBhBQEiwAqTCuBpsl01CXYI4ODwRfQP_lZH8T6AQKqWofDpbq7P0aojL56LQFmY2s3RoCSB0QAvD_BwE))
+
+
+### Videos 
+
+Install R and Rstudio [YouTube videos](https://www.youtube.com/results?search_query=download+r+and+rstudio) 
+
+
+
 
 

@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: "About the course"
 format: 
   html:
     code-fold: true
@@ -7,12 +7,13 @@ format:
 editor: source
 ---
 
-This is the ABOUT page for this course. 
 
-**Being updated right now**
+The aim of the course is to make the participants acquainted with basic statistical ideas and methods. No special previous knowledge of mathematics or statistics is assumed. The statistical software R and the RStudio environment will be used in many of the exercises. Analysis of examples from biomedical research will be emphasized.
+
 
 #### Contact
 
-Course leader: Manuela Zucknick: manuela.zucknick\@medisin.uio.no
-
-Course Quarto page developer: Chi Zhang: chi.zhang\@medisin.uio.no
+* Manuela Zucknick: manuela.zucknick\@medisin.uio.no
+* Valeria Vitelli: valeria.vitelli\@medisin.uio.no
+* Alvaro Kohn Luque: a.k.luque\@medisin.uio.no
+* Chi Zhang: chi.zhang\@medisin.uio.no
