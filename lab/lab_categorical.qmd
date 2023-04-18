@@ -5,8 +5,7 @@ format:
   html:
     code-fold: false
     code-tools: true
-editor: visual
+editor: source
 ---
 
-## Inference and testing 
-
+## Inference and testing

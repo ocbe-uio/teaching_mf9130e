@@ -5,13 +5,12 @@ format:
   html:
     code-fold: false
     code-tools: true
-editor: visual
+editor: source
 ---
 
+Might be useful to have an outline and study goals
 
-Might be useful to have an outline and study goals 
-
-# Data structure (use `penguins_mini` data as example)
+## Data structure (use `penguins_mini` data as example)
 
 **Bec student background, it is not necessary to go into too much details**
 
@@ -19,11 +18,7 @@ Might be useful to have an outline and study goals
 
 **MUST: numeric, factor, character, logical**
 
-
-
-
-# Exploring a dataset
-
+## Exploring a dataset
 
 head()
 
@@ -37,35 +32,252 @@ dim()
 
 nrow(), ncol()
 
-length() of a vector 
+length() of a vector
 
+## Basic data manipulation
 
-# Basic data manipulation
+only cover base R here; if needed, tidyverse put to eda
 
-only cover base R here; if needed, tidyverse put to eda 
+by index, \[row, col\]
 
-by index, [row, col]
-
-
-
-# Descriptive statistics 
-
+## Descriptive statistics
 
 min, max, median
 
 IQR
 
-summary
-table () of a categorical vector
+summary table () of a categorical vector
+
+## Visualisation (only intro, details later)
+
+focus on baseR solutions 
 
 
 
-# Visualisation (only intro, details later)
-
-### (base R)
 
 
-### ggplot
 
-Just some basics, since more specific types of viz will be shown in each section
+
+
+
+
+# Examples (exercises with solution)
+## Exercise 1 (weight)
+
+### 1a 
+
+Generate a variable named `weight`, with the following measurements:
+
+```
+50 75 70 74 95 83 65 94 66 65 65 75 84 55 73 68 72 67 53 65
+```
+
+```{r}
+weight <- c(50, 75, 70, 74, 95, 
+            83, 65, 94, 66, 65, 
+            65, 75, 84, 55, 73, 
+            68, 72, 67, 53, 65)
+
+```
+
+
+### 1b
+
+Make a simple descriptive analysis of the variable, what are the mean, median, maximum, minimum and quantiles?
+
+How to interpret the data?
+
+```{r}
+mean(weight)
+median(weight)
+max(weight)
+min(weight)
+
+# alternatively, 
+summary(weight)
+```
+
+
+### 1c
+
+Make a histogram.
+
+```{r}
+hist(weight)
+```
+
+### 1d
+
+Make a boxplot. What do the two dots on the top represent?
+
+```{r}
+boxplot(weight)
+```
+
+
+
+
+## Exercise 2 (lung function)
+
+Lung function has been measured on 106 medical students. Peak expiratory flow rate (PEF, measured in liters per minute) was measured three times in a sittinng position, and three times in a standing position.
+
+The variables are 
+
+* Age (years)
+* Gender (1 is female, 2 is male)
+* Height (cm)
+* Weight (kg)
+* PEF measured three times in a sitting position (pefsit1, pefsit2, pefsit3)
+* PEF measured three times in a standing position (pefsta1, pefsta2, pefsta3)
+* Mean of the three measurements made in a sitting position (pefsitm)
+* Mean of the three measurements made in a standing position (pefstam)
+* Mean of all six PEF values (pefmean)
+
+### 2a) 
+
+Download and open `PEFH98-english.dta` into R. 
+
+If you have problem with `.dta` data format, you can also use `PEFH98-english.csv`.
+
+Pay attention to how `gender` is coded. We might have to modify it. 
+
+```{r}
+# locate your datafile, set the path to your data
+lung_data <- haven::read_dta('data/PEFH98-english.dta')
+head(lung_data)
+
+# gender is coded as 1 and 2, but it looks like it's not a category but a 'double' (number)
+# we code it explicitly fo readability
+lung_data$gender <- factor(lung_data$gender, 
+                           levels = c('1','2'),
+                           labels = c('female','male')) 
+head(lung_data)
+```
+
+
+### 2b)
+
+How many observations are there (number of subjects)? How do you get a list of variable names from your dataset?
+
+```{r}
+nrow(lung_data)
+colnames(lung_data)
+```
+
+Make a histogram for each of the following variables. Compute means, and interpret the results.
+
+```
+height
+weight
+age
+pefsitm
+pefstam
+```
+
+```{r}
+hist(lung_data$height)
+```
+
+We repeat it for the other 4 variables. We can put them more compactly,
+
+```{r}
+par(mfrow = c(2, 2)) 
+# we use this line to display (2 rows 2 columns)
+# by default it is 1 row 1 column
+# run this line to set it back to default:
+# par(mfrow = c(1, 1))
+hist(lung_data$weight)
+hist(lung_data$age)
+hist(lung_data$pefsitm)
+hist(lung_data$pefstam)
+```
+
+
+
+
+
+### 2c)
+
+Make histograms for the variables `height` and `pefmean` for men and women separately. Also try to make boxplots.
+
+What conclusion can you draw? 
+
+```{r}
+height_f <- lung_data$height[lung_data$gender == 'female']
+height_m <- lung_data$height[lung_data$gender == 'male']
+
+par(mfrow = c(1,2)) # plot in parallel
+hist(height_f)
+hist(height_m)
+
+# we can make it more customized
+# add axis limit, title and xaxis name
+par(mfrow = c(1,2)) # plot in parallel
+hist(height_f, main = 'Height: female', xlab = 'Height (cm)',
+     xlim = c(150, 200))
+hist(height_m, main = 'Height: male', xlab = 'Height (cm)',
+     xlim = c(150, 200))
+```
+
+Similarly, histogram for `pefmean` can be done in the same way.
+
+```{r}
+pefmean_f <- lung_data$pefmean[lung_data$gender == 'female']
+pefmean_m <- lung_data$pefmean[lung_data$gender == 'male']
+
+par(mfrow = c(1,2)) # plot in parallel
+hist(pefmean_f)
+hist(pefmean_m)
+```
+
+Now we can make some boxplots
+
+```{r}
+par(mfrow = c(1, 2))
+boxplot(height ~ gender, data = lung_data, main = 'Height vs Gender')
+
+# it is also possible to remove the frame
+boxplot(pefmean ~ gender, data = lung_data, frame = F, main = 'PEFmean vs gender')
+```
+
+### 2d)
+
+Make three scatterplots to compare 
+
+* `pefmean` with `height`
+* `pefmean` with `weight`
+* `pefmean` with `age` 
+
+What association do you see?
+
+```{r}
+# pefmean height
+plot(lung_data$pefmean, lung_data$height)
+
+# it is possible to customize 
+plot(lung_data$pefmean, lung_data$height, 
+     main = 'PEF mean vs height', 
+     xlab = 'PEF mean', ylab = 'Height',
+     pch = 20)
+# pch: plotting symbols
+```
+
+`pch = 20` is setting the symbol to small solid dots. You can try different values, from 0 to 25. [Read more](http://www.sthda.com/english/wiki/r-plot-pch-symbols-the-different-point-shapes-available-in-r)
+
+
+```{r}
+par(mfrow = c(1, 2))
+# pefmean weight
+plot(lung_data$pefmean, lung_data$weight, 
+     main = 'PEF mean vs weight', 
+     xlab = 'PEF mean', ylab = 'Weight',
+     pch = 20)
+
+# pefmean age
+plot(lung_data$pefmean, lung_data$age, 
+     main = 'PEF mean vs age', 
+     xlab = 'PEF mean', ylab = 'Age',
+     pch = 20)
+```
+
 

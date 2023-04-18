@@ -31,7 +31,7 @@ Here you can find the lab sessions discussed in class. **Lab notes** contain wor
 | Lab notes   |  Topics             | Exercises |
 |:---------------:|:----------:|:------------------:|
 | [Introduction to R](lab_intro_r.qmd) | Get started, navigation, data types, data import and export  |  |
-| [EDA I](lab_eda_part1.qmd) | Exploring a dataset, basic data manipulation, descriptive statistics | exercise |
+| [EDA I](lab_eda_part1.qmd) | Exploring a dataset, basic data manipulation, descriptive statistics | [exercise](ex_eda_part1.qmd), code |
 | [EDA II](lab_eda_part2.qmd)| (Week 2) More on data manipulation, visualisation| exercise |
 | [Statistical inference](lab_inf_ci.qmd)| Confidence interval, hypothesis testing | |
 | [t-test](lab_ttest.qmd)| One sample, two sample t-tests | exercise |
