@@ -34,7 +34,7 @@ Here you can find the lab sessions discussed in class. **Lab notes** contain wor
 | [EDA I](lab_eda_part1.qmd) | Exploring a dataset, basic data manipulation, descriptive statistics | [exercise](ex_eda_part1.qmd), code |
 | [EDA II](lab_eda_part2.qmd)| (Week 2) More on data manipulation, visualisation| exercise |
 | [Statistical inference](lab_inf_ci.qmd)| Confidence interval, hypothesis testing | |
-| [t-test](lab_ttest.qmd)| One sample, two sample t-tests | exercise |
+| [t-test](lab_ttest.qmd)| One sample, two sample t-tests | [exercise](ex_ttest.qmd), code |
 | [Table analysis](lab_categorical.qmd)| Proportions, contingency table, chi-square test | exercise|
 | [Non-parametric tests](lab_nonpara.qmd)|Wilcoxon signed test, rank sum test | exercise|
 | [Sample size, power](lab_samplesize.qmd)| Sample size, power calculation | |

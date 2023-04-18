@@ -1,0 +1,140 @@
+---
+title: "Exercise - t-test"
+description: "One sample, two sample t-tests"
+format: 
+  html:
+    code-fold: false
+    code-tools: false
+editor: source
+---
+
+## Exercise 1 (heart)
+
+The weight of the hearts of 20 men with age between 25 and 55 years have been evaluated, and is given below (in ounces, 1 ounce = 28g) 
+
+```
+11.50 14.75 13.75 10.50 14.75 13.50 10.75 9.50 11.75 12.00
+10.50 11.75 10.00 14.50 12.00 11.00 14.00 15.00 11.50 10.25
+```
+
+#### 1a)
+
+Create a variable in R, and enter the data. Compute the mean weight of the hearts based on the formula; then verify it with R function.
+
+::: {.callout-tip}
+## Formula: mean
+
+The mean of data $X = (x_1, x_2, ... x_n)$, $\bar{x} = \frac{1}{n}\sum_{i = 1}^N x_i$
+:::
+
+
+
+#### 1b) 
+
+Compute the 95% confidence interval for the mean. Verify your computed confidence interval with R function `t.test(heart)`.
+
+::: {.callout-tip}
+## Formula: confidence interval for the mean
+
+
+:::
+
+
+
+#### 1c)
+
+We would like to know whether the mean heart weight is equal to 11 and 11.5. 
+
+Before you carry out hypothesis tests, you can gain useful insight 
+by visualization. You can try to use histogram, Q-Q plot and boxplot, and compare the mean heart weight with 11 and 11.5.
+
+What can you conclude?
+
+
+#### 1d)
+
+Formulate hypothesis tests. Decide whether you need one-sided or two-sided test, and state your conclusion (with p-values and confidence intervals). 
+
+
+
+
+
+
+## Exercise 2 (lung function)
+
+Lung function has been measured on 106 medical students. Peak expiratory flow rate (PEF, measured in liters per minute) was measured three times in a sittinng position, and three times in a standing position.
+
+The variables are 
+
+* Age (years)
+* Gender (1 is female, 2 is male)
+* Height (cm)
+* Weight (kg)
+* PEF measured three times in a sitting position (pefsit1, pefsit2, pefsit3)
+* PEF measured three times in a standing position (pefsta1, pefsta2, pefsta3)
+* Mean of the three measurements made in a sitting position (pefsitm)
+* Mean of the three measurements made in a standing position (pefstam)
+* Mean of all six PEF values (pefmean)
+
+::: {.callout-tip}
+## Lung function data
+
+This is the same dataset we have used in EDA (part I) from two days ago. You can use either `PEFH98-english.dta`, or `PEFH98-english.csv` data. 
+
+If you forgot how to load the data, you can refresh your knowledge by reading these [notes](lab_eda_part1.qmd) (Example 2)
+:::
+
+
+#### 2a) 
+
+Open `PEFH98-english.dta` (or `PEFH98-english.csv`) into R. 
+
+Pay attention to how `gender` is coded. We might have to modify it. 
+
+Determine the mean height for females. Calculate the standard deviation and a 95% confidence interval. How would you comment on this result?
+
+Do the same for males.
+
+#### 2b)
+
+Assume that the average height for female students a few years ago was 167 cm. Does the height in the present material differ significantly?
+
+Formulate a null hypothesis, calculate a test statistic and p-value. 
+
+#### 2c)
+
+Do the values `pefsit1` and `pefsit2` differ significantly? Calculate a test statistic, the mean difference, and the 95% confidence interval, and formulate a conclusion. Interpret the results.
+
+#### 2d)
+
+Carry out a t-test to decide whether `pefsitm` annd `pefstam` are significantly different.
+
+#### 2e)
+
+Are the assumptions of the previous test reasonably fulfilled? 
+
+You should check that the difference between `pefsitm` and `pefstam` is normally distributed. 
+
+::: {.callout-tip collapse="true"}
+## Expand to read hint
+
+You can create a new variable called `difference` by `difference <- pefsitm - pefstam`, then check the normality of `difference` by looking at histogram (`hist(difference)`), or QQ plot (`qnorm difference`)
+:::
+
+
+#### 2f) 
+
+Carry out a t-test to evaluate whether `pefmean` is signinficantly different for men and women. 
+
+Interpret the results, and formulate a conclusion including p-value and confidence interval.
+
+
+
+#### 2g)
+
+Are the assumptions fulfilled in the previous test (`pefmean` vs `gender`)? 
+
+
+
+
+

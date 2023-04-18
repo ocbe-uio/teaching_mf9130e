@@ -1,0 +1,61 @@
+---
+title: "Exercise - Table analysis"
+description: "Categorical data analysis: proportions, contingency table, chi-square test"
+format: 
+  html:
+    code-fold: false
+    code-tools: false
+editor: source
+---
+
+## Exercise 1 (lung function)
+
+Lung function has been measured on 106 medical students. Peak expiratory flow rate (PEF, measured in liters per minute) was measured three times in a sittinng position, and three times in a standing position.
+
+The variables are 
+
+* Age (years)
+* Gender (1 is female, 2 is male)
+* Height (cm)
+* Weight (kg)
+* PEF measured three times in a sitting position (pefsit1, pefsit2, pefsit3)
+* PEF measured three times in a standing position (pefsta1, pefsta2, pefsta3)
+* Mean of the three measurements made in a sitting position (pefsitm)
+* Mean of the three measurements made in a standing position (pefstam)
+* Mean of all six PEF values (pefmean)
+
+::: {.callout-tip}
+## Lung function data
+
+This is the same dataset we have used in EDA (part I) from two days ago. You can use either `PEFH98-english.dta`, or `PEFH98-english.csv` data. 
+
+If you forgot how to load the data, you can refresh your knowledge by reading these [notes](lab_eda_part1.qmd) (Example 2)
+:::
+
+
+#### 1a) 
+
+We investigate whether having a high value of `pefmean` is associated with `gender`. 
+
+First, create a new variable **highpef** that indicates whether `pefmean` is above 500.
+
+
+#### 1b)
+
+We investigate the association between these two variables via an appropriate table analysis. Make a table of `highpef` vs `gender`, and carry out a chi-square analysis. Interpret your results.
+
+
+
+## Exercise 2 (birth data)
+
+#### 2a) 
+
+Does smoking influence the birth weight of a baby? 
+
+Make a histogram and a box plot, and find the median and mean for birth weight in grams (`bwt`) for 
+
+
+
+
+
+
