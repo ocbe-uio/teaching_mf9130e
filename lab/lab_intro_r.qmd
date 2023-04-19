@@ -1,6 +1,6 @@
 ---
 title: "Introduction to R"
-description: "Get started in Rstudio, navigation, data types, data import ant export"
+description: "data types, data import ant export"
 format: 
   html:
     code-fold: false
@@ -8,32 +8,23 @@ format:
 editor: source
 ---
 
-**Material on this page is under development. There could be errors. **
-
-## R in a nutshell 
-
 R is a language and environment for statistical computing, data analysis, visualisation and graphics and many more. It is a free and open source software, under the terms of GNU General Public License. 
 
 R runs on a wide variety of platforms, including Windows, Linux and MacOS. 
 
 The latest R version is 4.2.3 (2023-03-15), "Shortstop Beagle".
 
-### RStudio and Posit
-
-RStudio is a free and open-source IDE (integrated development environment). RStudio IDE is developed by Posit, previously RStudio PBC. 
-
-It is possible to download RStudio to your laptop or desktop; or use RStudio Cloud (need internet connection).
-
-**4 Panels, use screenshot**
 
 
-
-### Getting help 
+::: callout-note
+## Getting help 
 
 * Use Google well! There are a lot of discussions in forums such as StackOverflow
 * Cheatsheets made by Posit and community
 * Type `?functionName` in the console 
 * Package vignettes (longer format of documentation)
+:::
+
 
 
 

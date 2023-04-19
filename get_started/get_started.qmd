@@ -15,7 +15,7 @@ In this workshop we will be using R. You can either
 -   or, use **Posit cloud** (formerly Rstudio Cloud).
 
 
-### Set up your RStudio on your laptop
+### Option 1: Set up your RStudio on your laptop
 
 You will need both R and Rstudio, they are two separate things. 
 
@@ -29,15 +29,42 @@ You can download **R** for Linux, macOS or Windows [here](https://cran.rstudio.c
 <img src="fig_get_started_downloadr.png" align="center" width="800" /></a>
 
 
+Once you have finished installing both R and Rstudio, open Rstudio, and you should be seeing something like this:
+
+<img src="fig_get_started_newproj.png" align="center" width="800" /></a>
+
+
+
+
+::: {.callout-tip}
 Watch these [YouTube videos](https://www.youtube.com/results?search_query=download+r+and+rstudio) if you are stuck.
+:::
+
+
+### Option 2: Use Posit Cloud
+
+
+::: {.callout-tip}
+## Note
+
+It is recommended to have R and Rstudio installed on your laptop, this is because you have a better control of where you prefer to download data and course material. This is also useful when you want to analyse your own datasets. For example, you might have to upload datafiles to the server for Posit Cloud to work.
+
+However, if there is a problem with the installation, you can use Posit Cloud as an alternative.
+
+On Tuesday morning we will see if most people can successfully make R run on their laptop and make necessary adjustments.
+:::
 
 
 
-### Use Posit Cloud
-
-[Posit cloud](https://posit.cloud) is free of charge for personal users, yet you need to [sign up](https://posit.cloud/plans/free) for a new user account and have internet connection.
 
 
+[Posit Cloud](https://posit.cloud) is free of charge for personal users. You need to [sign up](https://posit.cloud/plans/free) for a new user account and have internet connection.
+
+<img src="fig_get_started_cloud1.png" align="center" width="800" /></a>
+
+Once you signed up, you can open a new **workspace**, and it will look like something like this. If it is the first time you use Posit Cloud, it will be empty (i.e. no script or data). 
+
+<img src="fig_get_started_cloud2.png" align="center" width="800" /></a>
 
 
 
@@ -45,6 +72,8 @@ Watch these [YouTube videos](https://www.youtube.com/results?search_query=downlo
 # Data
 
 The datasets used in this course are stored in this [folder](https://github.com/ocbe-uio/teaching_mf9130e/tree/main/lab/data).
+
+
 
 ### Download data
 

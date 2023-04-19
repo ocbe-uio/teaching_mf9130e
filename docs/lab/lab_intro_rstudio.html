@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Create new project, workspace navigation">
 
-<title>MF9130E - V23 - Get started</title>
+<title>MF9130E - V23 - Getting started in RStudio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -84,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../get_started/get_started.html" aria-current="page">
+    <a class="nav-link" href="../get_started/get_started.html">
  <span class="menu-text">Get Started</span></a>
   </li>  
   <li class="nav-item">
@@ -121,17 +122,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#option-1-set-up-your-rstudio-on-your-laptop" id="toc-option-1-set-up-your-rstudio-on-your-laptop" class="nav-link active" data-scroll-target="#option-1-set-up-your-rstudio-on-your-laptop">Option 1: Set up your RStudio on your laptop</a></li>
-  <li><a href="#option-2-use-posit-cloud" id="toc-option-2-use-posit-cloud" class="nav-link" data-scroll-target="#option-2-use-posit-cloud">Option 2: Use Posit Cloud</a></li>
-  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a>
+  <li><a href="#rstudio-and-posit" id="toc-rstudio-and-posit" class="nav-link active" data-scroll-target="#rstudio-and-posit">RStudio and Posit</a></li>
+  <li><a href="#create-a-new-project" id="toc-create-a-new-project" class="nav-link" data-scroll-target="#create-a-new-project">Create a new project</a></li>
+  <li><a href="#navigate-your-project" id="toc-navigate-your-project" class="nav-link" data-scroll-target="#navigate-your-project">Navigate your project</a>
   <ul class="collapse">
-  <li><a href="#download-data" id="toc-download-data" class="nav-link" data-scroll-target="#download-data">Download data</a></li>
-  </ul></li>
-  <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a></li>
-  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a>
-  <ul class="collapse">
-  <li><a href="#books-and-papers" id="toc-books-and-papers" class="nav-link" data-scroll-target="#books-and-papers">Books and papers</a></li>
-  <li><a href="#videos" id="toc-videos" class="nav-link" data-scroll-target="#videos">Videos</a></li>
+  <li><a href="#example-import-data-in-rstudio" id="toc-example-import-data-in-rstudio" class="nav-link" data-scroll-target="#example-import-data-in-rstudio">Example: import data in Rstudio</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -141,9 +136,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Get started</h1>
+<h1 class="title">Getting started in RStudio</h1>
 </div>
 
+<div>
+  <div class="description">
+    Create new project, workspace navigation
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -156,107 +156,98 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Here you will find useful information on how to get started.</p>
-<p>In this workshop we will be using R. You can either</p>
-<ul>
-<li>(recommended) have <strong>R and Rstudio</strong> installed on your laptop</li>
-<li>or, use <strong>Posit cloud</strong> (formerly Rstudio Cloud).</li>
-</ul>
-<section id="option-1-set-up-your-rstudio-on-your-laptop" class="level3">
-<h3 class="anchored" data-anchor-id="option-1-set-up-your-rstudio-on-your-laptop">Option 1: Set up your RStudio on your laptop</h3>
-<p>You will need both R and Rstudio, they are two separate things.</p>
-<p>You can download <strong>Rstudio</strong> <a href="https://posit.co/download/rstudio-desktop/">here</a>. In this page it will ask you to install R, so it should be clear to follow.</p>
-<p><img src="fig_get_started_downloadrstudio.png" align="center" width="800"></p>
-<p>You can download <strong>R</strong> for Linux, macOS or Windows <a href="https://cran.rstudio.com">here</a> or <a href="https://cran.uib.no">here</a></p>
-<p><img src="fig_get_started_downloadr.png" align="center" width="800"></p>
-<p>Once you have finished installing both R and Rstudio, open Rstudio, and you should be seeing something like this:</p>
-<p><img src="fig_get_started_newproj.png" align="center" width="800"></p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<section id="rstudio-and-posit" class="level2">
+<h2 class="anchored" data-anchor-id="rstudio-and-posit">RStudio and Posit</h2>
+<p>RStudio is a free and open-source IDE (integrated development environment). RStudio IDE is developed by Posit, previously RStudio PBC.</p>
+<p>It is convenient to download RStudio to your laptop or desktop; or use RStudio Cloud (need internet connection).</p>
+<p>When you open Rstudio, you will see something like this.</p>
+<p><img src="fig/fig_newproject4.png" align="center" width="800"></p>
+<div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Tip
+Empty bottom right panel
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Watch these <a href="https://www.youtube.com/results?search_query=download+r+and+rstudio">YouTube videos</a> if you are stuck.</p>
+<p>You might NOT see anything in the bottom right panel, because you might not have a <em>Project</em> yet.</p>
+<p>Don’t worry, we will learn how to create it.</p>
 </div>
 </div>
 </section>
-<section id="option-2-use-posit-cloud" class="level3">
-<h3 class="anchored" data-anchor-id="option-2-use-posit-cloud">Option 2: Use Posit Cloud</h3>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<section id="create-a-new-project" class="level1">
+<h1>Create a new project</h1>
+<p>You can use Rstudio <em>without</em> a <code>project</code>. However, it can help you navigating the workspace by</p>
+<ul>
+<li>creating a folder</li>
+<li>collecting your scripts and documentation</li>
+</ul>
+<p>As a result, you can find things more easily, and do not need to set a path every time you open R.</p>
+<p>Click the button on the top left, it allows you to <strong>craete project</strong>. We choose <code>New Directory</code>.</p>
+<p><img src="fig/fig_newproject1.png" align="center" width="500"></p>
+<p><img src="fig/fig_newproject2.png" align="center" width="500"></p>
+<p>You need to give this project a name. We can call it <code>mf9130</code> for now.</p>
+<p>RStudio will also ask you where to put this project; you can put it somewhere easy to find.</p>
+<p><img src="fig/fig_newproject3.png" align="center" width="500"></p>
+<p>Now you will see a new Rstudio session has been opened. At this point, you should be able to see the bottom right panel with a blue icon, with your specified project name.</p>
+<p><img src="fig/fig_newproject5.png" align="center" width="800"></p>
+</section>
+<section id="navigate-your-project" class="level1">
+<h1>Navigate your project</h1>
+<p>The benefit of creating a project is that all your work (code, documentation, possibly datasets) is put in one place.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Note
+Where to put your data
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>It is recommended to have R and Rstudio installed on your laptop, this is because you have a better control of where you prefer to download data and course material. This is also useful when you want to analyse your own datasets. For example, you might have to upload datafiles to the server for Posit Cloud to work.</p>
-<p>However, if there is a problem with the installation, you can use Posit Cloud as an alternative.</p>
-<p>On Tuesday morning we will see if most people can successfully make R run on their laptop and make necessary adjustments.</p>
+<p>To keep things organized, people typically do one of the two things when it comes to data:</p>
+<ul>
+<li>store the data in the same folder as other related code and analysis (this is what we are showing now);</li>
+<li>store all the data from different studies together somewhere else, inside a <code>data</code> folder.</li>
+</ul>
+<p>Both are good practices, as long as you stay organized.</p>
 </div>
 </div>
-<p><a href="https://posit.cloud">Posit Cloud</a> is free of charge for personal users. You need to <a href="https://posit.cloud/plans/free">sign up</a> for a new user account and have internet connection.</p>
-<p><img src="fig_get_started_cloud1.png" align="center" width="800"></p>
-<p>Once you signed up, you can open a new <strong>workspace</strong>, and it will look like something like this. If it is the first time you use Posit Cloud, it will be empty (i.e.&nbsp;no script or data).</p>
-<p><img src="fig_get_started_cloud2.png" align="center" width="800"></p>
-</section>
-<section id="data" class="level1">
-<h1>Data</h1>
-<p>The datasets used in this course are stored in this <a href="https://github.com/ocbe-uio/teaching_mf9130e/tree/main/lab/data">folder</a>.</p>
-<section id="download-data" class="level3">
-<h3 class="anchored" data-anchor-id="download-data">Download data</h3>
-<ol type="1">
-<li><p>Go to the repository, select the data you want to download by <strong>left-click the file name</strong></p></li>
-<li><p>If it is a dataset in <code>.csv, .txt</code> format, you will see something like this</p></li>
-</ol>
-<p><img src="fig_get_started_download2.png" align="center" width="800"></p>
+<section id="example-import-data-in-rstudio" class="level3">
+<h3 class="anchored" data-anchor-id="example-import-data-in-rstudio">Example: import data in Rstudio</h3>
+<p>Assume that you have the following datasets:</p>
 <ul>
-<li>find <strong>Raw</strong> button, <strong>right-click</strong>, you will see a list of options</li>
-<li>choose <strong>Download Linked File</strong>, this will download the data into your default download folder</li>
-<li>alternatively, choose <strong>Download linked file as…</strong> so that you can change where you put it and file name.</li>
-</ul>
-<ol start="3" type="1">
-<li>If it is a dataset in <code>.dta, .xlsx</code> or other format, you might not see the data directly:</li>
-</ol>
-<p><img src="fig_get_started_download1.png" align="center" width="800"></p>
+<li><code>penguins_mini.csv</code> in the same folder as your <code>mf9130.Rproj</code></li>
+<li><code>penguins_mini_copy.csv</code> in the <code>data</code> folder, inside your project folder
 <ul>
-<li>find <strong>Download</strong> button, left-click, and you will download it into your default download folder.</li>
+<li>we would refer to it as <code>data/penguins_mini_copy.csv</code></li>
+<li>if you use windows system, it could look like <code>data\penguins_mini_copy.csv</code>.</li>
+</ul></li>
 </ul>
-<section id="optional-download-data-via-url" class="level4">
-<h4 class="anchored" data-anchor-id="optional-download-data-via-url">Optional: download data via URL</h4>
-<p>If you feel like it, you can also download data inside R via URL. You can read more about it <a href="https://rpubs.com/lokraj/github_csv">here</a>.</p>
-</section>
-</section>
-</section>
-<section id="code" class="level1">
-<h1>Code</h1>
-<p>R scripts are stored in this <a href="https://github.com/ocbe-uio/teaching_mf9130e/tree/main/lab/code">folder</a>.</p>
-<p>To <strong>download an R script</strong>, it is similar to downloading a dataset</p>
-<p><img src="fig_get_started_download3.png" align="center" width="800"></p>
-<p>Alternatively, you can <strong>create your own R script locally</strong> inside Rstudio, by copy and paste the script from Github.</p>
-</section>
-<section id="resources" class="level1">
-<h1>Resources</h1>
-<p>You will find the material used in class on this <a href="https://ocbe-uio.github.io/teaching_mf9130e/course_material/course_material_overview.html">page</a>.</p>
-<p>We keep updating the material, so please stay tuned!</p>
-<section id="books-and-papers" class="level3">
-<h3 class="anchored" data-anchor-id="books-and-papers">Books and papers</h3>
-<p>You can find these books in the library.</p>
-<ul>
-<li><strong>Essential medical statistics</strong> (Kirkwood and Sterne, 2nd edition, 2003) (<a href="https://www.adlibris.com/no/bok/essential-medical-statistics-2e-9780865428713">link</a></li>
-<li><strong>Statistiske metoder i medisin og helsefag</strong> (Aalen, Frigessi, Moger, Scheel, Skovlund og Veierød, 2 utg, 2018) (<a href="https://www.akademika.no/realfag/matematikk/statistiske-metoder-i-medisin-og-helsefag/9788205507647?gclid=CjwKCAjw3POhBhBQEiwAqTCuBpsl01CXYI4ODwRfQP_lZH8T6AQKqWofDpbq7P0aojL56LQFmY2s3RoCSB0QAvD_BwE">link</a>)</li>
-</ul>
-</section>
-<section id="videos" class="level3">
-<h3 class="anchored" data-anchor-id="videos">Videos</h3>
-<p>Install R and Rstudio <a href="https://www.youtube.com/results?search_query=download+r+and+rstudio">YouTube videos</a></p>
+<p>In Rstudio project, you can see them presented in the same way that matches your folder.</p>
+<p><img src="fig/fig_datadirectory_mac.png" align="center" width="500"></p>
+<p><img src="fig/fig_datadirectory.png" align="center" width="500"></p>
+<p>To <strong>load data within the Rstudio project</strong>, you only need to call the <em>relative path</em> to the data: for example, <code>penguins_mini.csv</code> or <code>data/penguins_mini_copy.csv</code></p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Relative path
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If your project called <code>/Users/your/project/location/proj</code>, and your data is located in <code>/Users/your/project/location/data/data.csv</code>, the relative path between the project and data is <code>data/data.csv</code>.</p>
+</div>
+</div>
+</div>
+<p>To load data outside the project, you need to specify the <em>absolute path</em> in your system (looks like the last line below). It can be a bit annoying to do it everytime, so it might be a good idea to create a project!</p>
+<p><img src="fig/fig_specify_path.png" align="center" width="500"></p>
 
 
 </section>
