@@ -20,7 +20,7 @@ If you forgot how to load the data, you can refresh your knowledge by reading th
 
 ## Exercise 1 (lung function)
 
-Lung function has been measured on 106 medical students. Peak expiratory flow rate (PEF, measured in liters per minute) was measured three times in a sittinng position, and three times in a standing position.
+Lung function has been measured on 106 medical students. Peak expiratory flow rate (PEF, measured in liters per minute) was measured three times in a sitting position, and three times in a standing position.
 
 The variables are 
 
@@ -48,6 +48,25 @@ First, create a new variable **highpef** that indicates whether `pefmean` is abo
 
 We investigate the association between these two variables via an appropriate table analysis. Make a table of `highpef` vs `gender`, and carry out a chi-square analysis. Interpret your results.
 
+
+
+#### 1c)
+
+Compute risk ratio and odds ratio (only the point estimates). Here the exposure is `gender` (we assume that the reference group is *female*: unexposed), and outcome is `highpef`. Interpret your results. 
+
+::: {.callout-tip collapse="true"}
+## Risk ratio and odds ratio
+
+|          | Outcome (yes) | Outcome (no) |
+|----------|---------------|--------------|
+| Exposed  | a             | b            |
+| Unexposed| c             | d            |
+
+Risk ratio: $\frac{a/(a+b)}{c/(c+d)}$
+
+Odds ratio: $\frac{a/b}{c/d} = \frac{ad}{bc}$
+
+:::
 
 
 ## Exercise 2 (birth data)

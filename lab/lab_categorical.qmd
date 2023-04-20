@@ -4,11 +4,224 @@ description: "Contingency table, chi-square test, proportions"
 format: 
   html:
     code-fold: false
-    code-tools: true
+    code-tools: false
 editor: source
 ---
 
 # Examples (exercises with solution)
+
+
+## Exercise 1 (lung function)
+
+Lung function has been measured on 106 medical students. Peak expiratory flow rate (PEF, measured in liters per minute) was measured three times in a sittinng position, and three times in a standing position.
+
+The variables are 
+
+* Age (years)
+* Gender (1 is female, 2 is male)
+* Height (cm)
+* Weight (kg)
+* PEF measured three times in a sitting position (pefsit1, pefsit2, pefsit3)
+* PEF measured three times in a standing position (pefsta1, pefsta2, pefsta3)
+* Mean of the three measurements made in a sitting position (pefsitm)
+* Mean of the three measurements made in a standing position (pefstam)
+* Mean of all six PEF values (pefmean)
+
+
+
+
+### 1a) 
+
+We investigate whether having a high value of `pefmean` is associated with `gender`. 
+First, create a new variable **highpef** that indicates whether `pefmean` is above 500.
+
+```{r}
+lung_data <- haven::read_dta('data/PEFH98-english.dta')
+
+# recode gender: female, male
+lung_data$gender <- factor(lung_data$gender, 
+                           levels = c('1','2'),
+                           labels = c('female','male')) 
+# head(lung_data)
+
+# examine variable pefmean
+# visualise the distribution
+hist(lung_data$pefmean)
+abline(v = 500, col = 'red', lwd = 2)
+```
+
+There are multiple ways to do it. Here we show two of them.
+
+In option 1, we use the function `ifelse()`. It will create a binary vector, and fill in different output based on whether the condition was true or not.
+
+```{r}
+# option 1
+# code new variable: highpef with cutoff = 500
+# this is a binary variable, 1 means yes (higher than 500), 0 means no
+highpef <- ifelse(lung_data$pefmean > 500, '1', '0')
+
+# check if it makes sense
+head(lung_data$pefmean)
+head(highpef)
+```
+
+In option 2, we create a vector with a pre-specified value, then replace the elements for given indices.
+
+```{r}
+# option 2 
+# create a vector with all '0's
+# then set the elements above 500 in 'pefmean' as '1'
+# (replacement with index)
+
+n <- length(lung_data$pefmean) # 106
+highpef_alt <- rep('0', n) # repeat '0' 106 times
+highpef_alt[lung_data$pefmean > 500] <- '1'
+head(highpef_alt)
+```
+
+
+
+### 1b)
+
+We investigate the association between these two variables via an appropriate table analysis. Make a table of `highpef` vs `gender`, and carry out a chi-square analysis. Interpret your results.
+
+
+```{r}
+# take out gender variable so we don't need to use $ any more
+gender <- lung_data$gender
+
+# we can count how many subjects are in each category for the two variables
+# put in two tables 
+table(gender)
+table(highpef)
+
+# now we count how many subjects are in the combinations 
+table_gender_highpef <- table(gender, highpef)
+table_gender_highpef
+
+```
+
+We do a chi-square test with `chisq.test()` function. To read more about what is required as input, you can use `?chisq.test()` to get the documentation.
+
+```{r}
+# note: 
+# we have not distinguished between exposure and outcome
+# by default, 'table' function puts the first input in rows (gender)
+# the order does not affect the result of chi-square test
+
+chisq.test(table_gender_highpef)
+```
+
+::: {.callout-caution}
+## Chi-square test measures strength of association
+
+It is worth pointing out that `chisq.test()` does not distinguish between exposure and outcome variables. If you reverse the variable order, the test-statistic and p-value is exactly the same.
+
+This is why you should always be clear in your mind what is your exposure and outcome, and report risk ratio and/or odds ratio.
+
+:::
+
+```{r}
+# reverse the order of the two variables
+table_highpef_gender <- table(highpef, gender)
+chisq.test(table_highpef_gender)
+```
+
+### 1c)
+
+Compute risk ratio and odds ratio (only the point estimates). Here the exposure is `gender` (we assume that the reference group is *female*: unexposed), and outcome is `highpef`. Interpret your results. 
+
+::: {.callout-tip collapse="true"}
+## Risk ratio and odds ratio
+
+|          | Outcome (yes) | Outcome (no) |
+|----------|---------------|--------------|
+| Exposed  | a             | b            |
+| Unexposed| c             | d            |
+
+Risk ratio: $\frac{a/(a+b)}{c/(c+d)}$
+
+Odds ratio: $\frac{a/b}{c/d} = \frac{ad}{bc}$
+
+:::
+
+
+It could help by drawing a table before computing the metrics.
+
+|          | Outcome (`highpef = 1`) | Outcome (`highpef = 0`) |
+|----------|---------------|--------------|
+| Exposed (`gender = male`) | 46           | 6        |
+| Unexposed (`gender = female`)| 5            | 48        |
+
+
+```{r}
+# first use formula (only point estimates)
+# risk ratio (relative risk)
+# risk in exposed / risk in unexposed
+
+risk_exposed <- 46/(46+6)  # 0.885
+risk_unexposed <- 5/(5+48) # 0.094
+rr <- risk_exposed/risk_unexposed
+rr  # 9.37
+
+# odds ratio
+# odds of event in exposed group / odds of event in non-exposed group
+odds_exposed <- 46/6
+odds_unexposed <- 5/48
+or <- odds_exposed/odds_unexposed
+or # 73.6
+```
+
+
+
+### Optional
+
+You can verify if this is correct with some R packages that implement risk ratio and odds ratio. 
+
+
+::: {.callout-tip}
+## Be careful with the input format when using packages
+
+Different packages can have different requirements for how your data input should look like. Always check documentation to get the correct result. 
+
+This is also true with other softwares like STATA.
+
+Comparison of different packages in computing risk ratio: read this [discussion](https://stats.stackexchange.com/questions/472093/calculating-risk-ratio-different-results-with-different-r-packages-epitools-an)
+
+[Documentation: epitools](https://cran.r-project.org/web/packages/epitools/epitools.pdf)
+[Documentation: epiR](https://cran.r-project.org/web/packages/epiR/epiR.pdf)
+
+:::
+
+
+The first function we use is `epitab` from `epitools` package. 
+
+```{r}
+# install.packages('epitools')
+
+# match the expected data format
+# col: outcome -, outcome +
+# row: exposure -, exposure +
+tb1 <- matrix(c(48, 5, 6, 46), byrow = T, ncol = 2)
+tb1
+epitools::epitab(tb1, method = 'riskratio')
+epitools::epitab(tb1, method = 'oddsratio')
+```
+
+
+The second function we use is `epi.2by2` from `epiR` package.
+
+```{r}
+# install.packages('epiR')
+
+# match the expected data format
+# col: outcome +, outcome -
+# row: exposure +, exposure -
+tb2 <- matrix(c(46, 6, 5, 48), byrow = T, ncol = 2)
+tb2
+epiR::epi.2by2(tb2, method = 'cohort.count')
+```
+
 
 
 
