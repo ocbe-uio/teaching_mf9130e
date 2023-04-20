@@ -166,8 +166,8 @@ rr  # 9.37
 
 # odds ratio
 # odds of event in exposed group / odds of event in non-exposed group
-odds_exposed <- 46/6
-odds_unexposed <- 5/48
+odds_exposed <- 46/6  # 7.667
+odds_unexposed <- 5/48  # 0.104
 or <- odds_exposed/odds_unexposed
 or # 73.6
 ```

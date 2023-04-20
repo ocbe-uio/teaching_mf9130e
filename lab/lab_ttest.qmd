@@ -1,6 +1,6 @@
 ---
 title: "t-test"
-description: "R lab 1"
+description: "Compare two continuous variables"
 format: 
   html:
     code-fold: false
@@ -90,8 +90,9 @@ t025 <- qt(p = 0.025, df = n-1) # -2.09
 t975 <- qt(p = 0.975, df = n-1) # 2.09
 c(t025, t975) # symmetric around 0
 
-ci_lower <- 12.162 - 2.09 * 1.779/sqrt(20)
-ci_upper <- 12.162 + 2.09 * 1.779/sqrt(20)
+# plug in the formula
+ci_lower <- mean(heart) - t975 * sd(heart)/sqrt(n)
+ci_upper <- mean(heart) + t975 * sd(heart)/sqrt(n)
 c(ci_lower, ci_upper)
 
 # verify by doing a one-sample t-test
@@ -161,9 +162,231 @@ t.test(heart, mu = 11.5, conf.level = 0.95)
 ## Exercise 2 (lung function)
 
 
+Lung function has been measured on 106 medical students. Peak expiratory flow rate (PEF, measured in liters per minute) was measured three times in a sittinng position, and three times in a standing position.
+
+The variables are 
+
+* Age (years)
+* Gender (1 is female, 2 is male)
+* Height (cm)
+* Weight (kg)
+* PEF measured three times in a sitting position (pefsit1, pefsit2, pefsit3)
+* PEF measured three times in a standing position (pefsta1, pefsta2, pefsta3)
+* Mean of the three measurements made in a sitting position (pefsitm)
+* Mean of the three measurements made in a standing position (pefstam)
+* Mean of all six PEF values (pefmean)
+
+::: {.callout-tip}
+## Lung function data
+
+This is the same dataset we have used in EDA (part I) from two days ago. You can use either `PEFH98-english.dta`, or `PEFH98-english.csv` data. 
+
+If you forgot how to load the data, you can refresh your knowledge by reading these [notes](lab_eda_part1.qmd) (Example 2)
+:::
 
 
+### 2a) 
 
+Open `PEFH98-english.dta` (or `PEFH98-english.csv`) into R. 
+
+Pay attention to how `gender` is coded. We might have to modify it. 
+
+Determine the mean height for **females**. Calculate the standard deviation and a 95% confidence interval. How would you comment on this result?
+
+Do the same for **males**.
+
+```{r}
+lung_data <- haven::read_dta('data/PEFH98-english.dta')
+
+# recode gender: female, male
+lung_data$gender <- factor(lung_data$gender, 
+                           levels = c('1','2'),
+                           labels = c('female','male')) 
+# head(lung_data)
+# we can focus on height and gender variable only
+head(lung_data[, c('height', 'gender')], 10)
+```
+
+Now we need to separate the `height` data for based on `gender`. First, we do it for `gender == 'female'`. 
+
+```{r}
+# for convenience, we create a variable names 'gender'
+gender <- lung_data$gender
+# height for female
+height_f <- lung_data$height[gender == 'female']
+```
+
+You should always check whether your newly created variable is correct: for example, you can compare the first several values of `height_f` with the original data, to see if it is really only selecting height for females.
+
+Another useful thing to do is to check how many data poinnts have been selected. 
+
+```{r}
+# check the first few values, is it only selecting female heights?
+head(height_f)
+
+# number of females
+nf <- length(height_f)  # 54
+nf
+```
+
+Now we can compute the **mean** and **confidence interval** on the newly created variable, `height_f`.
+
+```{r}
+mean(height_f) # 169.57
+sd(height_f) # 5.69
+# se_f <- sd(height_f)/sqrt(54) 0.774
+
+# quantile for t distribution: pay attention to df!
+t975 <- qt(p = 0.975, df = nf-1) # 2.005
+
+# 95% CI 
+ci_upper_f <- mean(height_f) + t975 * sd(height_f)/sqrt(nf) # 171.1277
+ci_lower_f <- mean(height_f) - t975 * sd(height_f)/sqrt(nf) # 168.0204
+c(ci_lower_f, ci_upper_f)
+
+# double check by running a t.test
+t.test(height_f)
+```
+
+For `gender == 'male'`, we can do the same thing. Pay attention to the different degrees of freedom, because the sample size has changed.
+
+
+```{r}
+# height for male 
+height_m <- lung_data$height[gender == 'male']
+# number of males
+nm <- length(height_m)  # 52
+
+mean(height_m) # 181.87
+sd(height_m) # 5.67
+# se_m <- sd(height_m)/sqrt(52) # 0.786
+
+# find quantile for males (pay attention to df)
+t975 <- qt(p = 0.975, df = nm-1) # 2.007
+# 95% CI
+ci_upper_m <- mean(height_m) + t975 * sd(height_m)/sqrt(nm) # 183.44
+ci_lower_m <- mean(height_m) - t975 * sd(height_m)/sqrt(nm)  # 180.28
+c(ci_lower_m, ci_upper_m)
+
+# verify by t.test
+t.test(height_m)
+```
+
+
+### 2b)
+
+Assume that the average height for female students a few years ago was 167 cm. Does the height in the present material differ significantly?
+
+Formulate a null hypothesis, calculate a test statistic and p-value. 
+
+```{r}
+# use t.test command
+t.test(height_f, mu = 167)
+
+# alternatively, 
+# calculate by hand
+t_stat <- (mean(height_f) - 167)/(sd(height_f)/sqrt(nf))
+t_stat  # 3.323
+
+# compare this with t distribution with nf-1 degrees of freedom
+pval_twosided <- pt(q = t_stat, df = nf-1, lower.tail = F)*2
+pval_twosided
+
+```
+
+### 2c)
+
+Do the values `pefsit1` and `pefsit2` differ significantly? Calculate a test statistic, the mean difference, and the 95% confidence interval, and formulate a conclusion. Interpret the results.
+
+
+```{r}
+pefsit1 <- lung_data$pefsit1
+pefsit2 <- lung_data$pefsit2
+# hist(pefsit1)
+# hist(pefsit2)
+
+t.test(pefsit1, pefsit2, paired = T)
+
+# alternatively, you can test whether the difference is equal to 0
+diff_sit1_sit2 <- pefsit1 - pefsit2
+t.test(diff_sit1_sit2, mu = 0)
+```
+
+### 2d)
+
+Carry out a t-test to decide whether `pefsitm` annd `pefstam` are significantly different.
+
+
+```{r}
+# compare pefsitm, pefstam (paired t-test)
+pefsitm <- lung_data$pefsitm
+pefstam <- lung_data$pefstam
+
+t.test(pefsitm, pefstam, paired = T)
+```
+
+### 2e)
+
+Are the assumptions of the previous test reasonably fulfilled? 
+
+You should check that the difference between `pefsitm` and `pefstam` is normally distributed. 
+
+::: {.callout-tip collapse="true"}
+## Expand to read hint
+
+You can create a new variable called `difference` by `difference <- pefsitm - pefstam`, then check the normality of `difference` by looking at histogram (`hist(difference)`), or QQ plot (`qnorm difference`)
+:::
+
+
+```{r}
+# create a variable
+diff_sitm_stam <- pefsitm - pefstam
+qqnorm(diff_sitm_stam, pch = 20)
+qqline(diff_sitm_stam, col = 'red', lwd = 2)
+
+```
+
+
+### 2f) 
+
+Carry out a t-test to evaluate whether `pefmean` is signinficantly different for men and women. 
+
+Interpret the results, and formulate a conclusion including p-value and confidence interval.
+
+```{r}
+# this is independent two samples t-test
+# we need two variables: pefmean for men, pefmean for women
+
+pefmean_f <- lung_data$pefmean[gender == 'female']
+pefmean_m <- lung_data$pefmean[gender == 'male']
+
+
+# visually spot whether there is a difference
+# NOTE: there is a NA in pefmean_f
+par(mfrow = c(1, 2))
+hist(pefmean_f, main = 'pefmean (F)')
+abline(v = mean(pefmean_f, na.rm = T), col = 'red', lwd = 2)
+hist(pefmean_m, main = 'pefmean (M)')
+abline(v = mean(pefmean_m), col = 'red', lwd = 2)
+
+# two sample t-test 
+t.test(pefmean_f, pefmean_m, paired = F)
+```
+
+### 2g)
+
+Are the assumptions fulfilled in the previous test (`pefmean` vs `gender`)? 
+
+ 
+```{r}
+par(mfrow = c(1, 2))
+qqnorm(pefmean_f, pch = 20, main = 'Q-Q plot: pefmean (F)')
+qqline(pefmean_f, col = 'red', lwd = 2)
+
+qqnorm(pefmean_m, pch = 20, main = 'Q-Q plot: pefmean (M)')
+qqline(pefmean_m, col = 'red', lwd = 2)
+
+```
 
 
 
