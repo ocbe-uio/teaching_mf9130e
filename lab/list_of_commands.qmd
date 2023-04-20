@@ -1,0 +1,52 @@
+---
+title: "List of commands"
+description: "To help you navigate the course material"
+format: 
+  html:
+    code-fold: false
+    code-tools: false
+editor: source
+---
+
+# Data 
+
+#### Data import
+
+
+
+#### Data manipulation and exploration
+
+
+
+#### visualisation
+
+
+
+
+# Hypothesis tests
+
+#### t-test
+
+
+#### chi-square tests
+
+
+#### non-parametric tests
+
+
+# Regression
+
+#### Correlation
+
+
+#### Linear regression
+
+
+#### Logistic regression
+
+#### Survival analysis
+
+
+
+
+

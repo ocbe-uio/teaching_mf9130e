@@ -8,4 +8,7 @@ format:
 editor: source
 ---
 
-## Inference and testing
+# Examples (exercises with solution)
+
+
+

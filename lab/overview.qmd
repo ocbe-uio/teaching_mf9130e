@@ -2,30 +2,54 @@
 title: "R Lab and Code"
 format: 
   html:
-    code-fold: true
-    code-tools: true
+    code-fold: false
+    code-tools: false
 editor: source
 ---
 
-Welcome! Here you will find material for R lab and code for this course. 
+Welcome! Here you will find material for **R lab and code** for this course. Lecture notes, videos and other resources can be found in [Course material](https://ocbe-uio.github.io/teaching_mf9130e/course_material/course_material_overview.html) page.
 
-## Set-up
+### Set up 
 
-Please refer to **(link to setup)** page for more information.
+You need R for these exercises. It is recommended that you have R and RStudio on your laptop, but if there are problems with installation, you can choose Posit Cloud. 
+
+If you don't have R yet, please read [this page](https://ocbe-uio.github.io/teaching_mf9130e/get_started/get_started.html) to get started.
 
 ### Data and R scripts
 
-Datasets used for this course can be found at **insert path**.
+Datasets used for this course can be found in [this folder](https://github.com/ocbe-uio/teaching_mf9130e/tree/main/lab/data). R scripts used for each section are place in [this folder](https://github.com/ocbe-uio/teaching_mf9130e/tree/main/lab/code). 
 
-R scripts used for each section can be downloaded directly at **insert path**.
+In the first R lab session, we will go through how to download them from Github; you can also try it yourself following instructions on [this page](https://ocbe-uio.github.io/teaching_mf9130e/get_started/get_started.html).
 
 
 
 # Lab notes and exercises
 
-Here you can find the lab sessions discussed in class. **Lab notes** contain worked examples (code, visualisation) and some comments. 
+**Lab notes** contain 
 
-**Exercises** (without solution) can be used when you want to try the examples by yourself. The solution can be found in corresponding lab notes.
+* Brief summary of the topics discussed in class;
+* Worked data analysis examples (code, visualisation) and some comments;
+* Exercise solutions
+
+
+**Exercises** (without solution) can be used when you want to try the examples by yourself. 
+
+* The solution can be found in corresponding lab notes;
+* You can open two tabs in your web browser, one without solution and another with solution in case you get stuck.
+
+
+
+::: {.callout-tip}
+
+# How much programming do I need to learn?
+
+If this is the first time you write code, you might find it a bit overwhelming. It is ok! *Not all* code shown in class are necessary to master; it's more for you to understand the topics we discussed. 
+
+To help you with the exercises and homework, we have created this [list of commands](list_of_commands.qmd). This hopefully could make it easier to navigate through the course. 
+:::
+
+
+
 
 
 | Lab notes   |  Topics             | Exercises |
@@ -36,8 +60,8 @@ Here you can find the lab sessions discussed in class. **Lab notes** contain wor
 | [EDA II](lab_eda_part2.qmd)| (Week 2) More on data manipulation, visualisation| exercise |
 | [Statistical inference](lab_inf_ci.qmd)| Confidence interval, hypothesis testing | |
 | [t-test](lab_ttest.qmd)| One sample, two sample t-tests | [exercise](ex_ttest.qmd), code |
-| [Table analysis](lab_categorical.qmd)| Proportions, contingency table, chi-square test | exercise|
-| [Non-parametric tests](lab_nonpara.qmd)|Wilcoxon signed test, rank sum test | exercise|
+| [Categorical data analysis](lab_categorical.qmd)| Proportions, contingency table, chi-square test | [exercise](ex_categorical.qmd), code|
+| [Non-parametric tests](lab_nonpara.qmd)|Wilcoxon signed test, rank sum test | exercise, code|
 | [Sample size, power](lab_samplesize.qmd)| Sample size, power calculation | |
 | [Regression analysis](lab_regression.qmd)| Linear regression, logistic regression | exercise|
 | [Survival analysis](lab_survival.qmd)|Kaplan-Meier curve, log rank tests | |
@@ -45,6 +69,8 @@ Here you can find the lab sessions discussed in class. **Lab notes** contain wor
 (EDA: exploratory data analysis)
 
 ## Useful resources 
+
+List of commands that are useful for this course: [list of commands](list_of_commands.qmd)
 
 Book (Wickham et al) [R for Data Science (2e)](https://r4ds.hadley.nz)
 

@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Categorical data analysis: proportions, contingency table, chi-square test">
+<meta name="description" content="Proportions, contingency table, chi-square test">
 
-<title>MF9130E - V23 - Exercise - Table analysis</title>
+<title>MF9130E - V23 - Exercise - Categorical data analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -60,6 +60,7 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -132,12 +133,12 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Exercise - Table analysis</h1>
+<h1 class="title">Exercise - Categorical data analysis</h1>
 </div>
 
 <div>
   <div class="description">
-    Categorical data analysis: proportions, contingency table, chi-square test
+    Proportions, contingency table, chi-square test
   </div>
 </div>
 
@@ -152,6 +153,21 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Datasets for exercises
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For exercise I, it is the same dataset we have used in EDA (part I) from two days ago. You can use either <code>PEFH98-english.dta</code>, or <code>PEFH98-english.csv</code> data.</p>
+<p>For exercise II, we use a dataset called <code>birth.dta</code> (or <code>birth.csv</code>).</p>
+<p>If you forgot how to load the data, you can refresh your knowledge by reading these <a href="../lab/lab_eda_part1.html">notes</a> (Example 2)</p>
+</div>
+</div>
 <section id="exercise-1-lung-function" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-1-lung-function">Exercise 1 (lung function)</h2>
 <p>Lung function has been measured on 106 medical students. Peak expiratory flow rate (PEF, measured in liters per minute) was measured three times in a sittinng position, and three times in a standing position.</p>
@@ -167,20 +183,6 @@ ul.task-list li input[type="checkbox"] {
 <li>Mean of the three measurements made in a standing position (pefstam)</li>
 <li>Mean of all six PEF values (pefmean)</li>
 </ul>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Lung function data
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This is the same dataset we have used in EDA (part I) from two days ago. You can use either <code>PEFH98-english.dta</code>, or <code>PEFH98-english.csv</code> data.</p>
-<p>If you forgot how to load the data, you can refresh your knowledge by reading these <a href="../lab/lab_eda_part1.html">notes</a> (Example 2)</p>
-</div>
-</div>
 <section id="a" class="level4">
 <h4 class="anchored" data-anchor-id="a">1a)</h4>
 <p>We investigate whether having a high value of <code>pefmean</code> is associated with <code>gender</code>.</p>
@@ -193,10 +195,35 @@ Lung function data
 </section>
 <section id="exercise-2-birth-data" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-2-birth-data">Exercise 2 (birth data)</h2>
+<p>We shall analyse the data set given in the file <code>birth.dta</code>. In a study in Massachusetts, USA, birth weight was measured for the children of 189 women. The main variable in the study was birth weight, <code>BWT</code>, which is an important indicator of the condition of a newborn child. Low birth weight (below 2500 g) may be a medical risk factor. A major question is whether smoking during pregnancy influences the birth weight. One has also studied whether a number of other factors are related to birth weight, such as hypertension in the mother.</p>
+<p>The variables of the study are</p>
+<ul>
+<li>Identification number (ID)</li>
+<li>Low birth weight, 1 means <span class="math inline">\(BWT \leq 2500g\)</span>, 0 means <span class="math inline">\(BWT &gt; 2500g\)</span> (LOW)</li>
+<li>Age of the mother (AGE)</li>
+<li>Weight (in pounds) at last menstruaal period (LWT)</li>
+<li>Ethnicity, 1 means White, 2 means African American, 3 meaans other (ETH)</li>
+<li>Smoking status, 1 means current smoker, 0 means not smoking during pregnancy (SMK)</li>
+<li>History of premature labbour, values 0, 1, 2… (PTL)</li>
+<li>History of hypertension, 1 is yes, 0 is no (HT)</li>
+<li>Uterine irritability, 1 is yes, 0 is no (UI)</li>
+<li>First trimester visits, values 0, 1, 2… (FTV)</li>
+<li>Third trimster visits, values 0, 1, 2… (TTV)</li>
+<li>Birth weight (BWT)</li>
+</ul>
 <section id="a-1" class="level4">
 <h4 class="anchored" data-anchor-id="a-1">2a)</h4>
 <p>Does smoking influence the birth weight of a baby?</p>
-<p>Make a histogram and a box plot, and find the median and mean for birth weight in grams (<code>bwt</code>) for</p>
+<p>Make a histogram and a box plot, and find the median and mean for birth weight in grams (<code>BWT</code>) for the two groups of mothers: group 1 that smokes, and group 2 that does not smoke durinng the pregnancy. (Hint: use variable <code>SMK</code> for this task)</p>
+</section>
+<section id="b-1" class="level4">
+<h4 class="anchored" data-anchor-id="b-1">2b)</h4>
+<p>Are the distributions for the two groups normal? Can we conclude that smoking has an effect on the weight of a newborn? Use a t-test.</p>
+</section>
+<section id="c" class="level4">
+<h4 class="anchored" data-anchor-id="c">2c)</h4>
+<p>Do mothers of hypertension have a tendency to have babies with a lower birth weight? (The variable for hypertension is <code>HT</code>)</p>
+<p>Make a histogram of birth weight for the two groups of mothers with and without hypertension. What do you observe?</p>
 
 
 </section>

@@ -1,12 +1,22 @@
 ---
-title: "Exercise - Table analysis"
-description: "Categorical data analysis: proportions, contingency table, chi-square test"
+title: "Exercise - Categorical data analysis"
+description: "Proportions, contingency table, chi-square test"
 format: 
   html:
     code-fold: false
     code-tools: false
 editor: source
 ---
+
+::: {.callout-tip}
+## Datasets for exercises
+
+For exercise I, it is the same dataset we have used in EDA (part I) from two days ago. You can use either `PEFH98-english.dta`, or `PEFH98-english.csv` data. 
+
+For exercise II, we use a dataset called `birth.dta` (or `birth.csv`). 
+
+If you forgot how to load the data, you can refresh your knowledge by reading these [notes](lab_eda_part1.qmd) (Example 2)
+:::
 
 ## Exercise 1 (lung function)
 
@@ -24,13 +34,7 @@ The variables are
 * Mean of the three measurements made in a standing position (pefstam)
 * Mean of all six PEF values (pefmean)
 
-::: {.callout-tip}
-## Lung function data
 
-This is the same dataset we have used in EDA (part I) from two days ago. You can use either `PEFH98-english.dta`, or `PEFH98-english.csv` data. 
-
-If you forgot how to load the data, you can refresh your knowledge by reading these [notes](lab_eda_part1.qmd) (Example 2)
-:::
 
 
 #### 1a) 
@@ -48,11 +52,52 @@ We investigate the association between these two variables via an appropriate ta
 
 ## Exercise 2 (birth data)
 
+We shall analyse the data set given in the file `birth.dta`. In a study in Massachusetts, USA, birth weight was measured for the children of 189 women. The main variable in the study was birth weight, `BWT`, which is an important indicator of the condition of a newborn child. Low birth weight (below 2500 g) may be a medical risk factor. A major question is whether smoking during pregnancy influences the birth weight. One has also studied whether a number of other factors are related to birth weight, such as hypertension in the mother. 
+
+The variables of the study are
+
+* Identification number (ID)
+* Low birth weight, 1 means $BWT \leq 2500g$, 0 means $BWT > 2500g$ (LOW) 
+* Age of the mother (AGE)
+* Weight (in pounds) at last menstruaal period (LWT)
+* Ethnicity, 1 means White, 2 means African American, 3 meaans other (ETH)
+* Smoking status, 1 means current smoker, 0 means not smoking during pregnancy (SMK)
+* History of premature labbour, values 0, 1, 2... (PTL)
+* History of hypertension, 1 is yes, 0 is no (HT)
+* Uterine irritability, 1 is yes, 0 is no (UI)
+* First trimester visits, values 0, 1, 2... (FTV)
+* Third trimster visits, values 0, 1, 2... (TTV)
+* Birth weight (BWT)
+
+
+
+
 #### 2a) 
 
 Does smoking influence the birth weight of a baby? 
 
-Make a histogram and a box plot, and find the median and mean for birth weight in grams (`bwt`) for 
+Make a histogram and a box plot, and find the median and mean for birth weight in grams (`BWT`) for the two groups of mothers: group 1 that smokes, and group 2 that does not smoke durinng the pregnancy. (Hint: use variable `SMK` for this task)
+
+
+#### 2b)
+
+Are the distributions for the two groups normal? Can we conclude that smoking has an effect on the weight of a newborn? Use a t-test.
+
+
+#### 2c)
+
+Do mothers of hypertension have a tendency to have babies with a lower birth weight? (The variable for hypertension is `HT`)
+
+Make a histogram of birth weight for the two groups of mothers with and without hypertension. What do you observe?
+
+
+
+
+
+
+
+
+
 
 
 
