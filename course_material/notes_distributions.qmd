@@ -1,0 +1,247 @@
+---
+title: "Probability Distributions"
+format: html
+editor: visual
+---
+
+Topics:
+
+-   Discrete probability distributions
+
+-   Binomial trials and binomial distribution
+
+-   Continuous probability distributions
+
+-   Normal distribution
+
+-   Normal approximation to binomial distribution
+
+Books and resources:
+
+-   Aalen 4, 5
+
+-   Kirkwood and Sterne 5, 6, 15.1-15.2
+
+## Discrete probability distribution
+
+Here we deal with stochastic trials where the set of all possible outcomes is countable and known.
+
+A **discrete random variable** maps each of the trial outcomes to a numeric value.
+
+A **discrete probability distribution** assigns a probability for each of the possible outcomes.
+
+::: {.callout-note collapse="true"}
+#### Example: Dice Trowing
+
+Trowing a dice has 6 possible outcomes with equal probability. We can define a random variable $X$ that maps each of the outcomes to the values 1,2,3,4,5,6. The probability distribution $P(X=x)$ assign the following probabilities to each value $X=x$:
+
+| $x$      | 1   | 2   | 3   | 4   | 5   | 6   |
+|----------|-----|-----|-----|-----|-----|-----|
+| $P(X=x)$ | 1/6 | 1/6 | 1/6 | 1/6 | 1/6 | 1/6 |
+:::
+
+### Bernoulli trials
+
+Often a process has two outcomes.
+
+-   Coin tossing: outcomes are **head or tail**.
+
+-   HIV test looks for the **presence or absence** of antibodies in the blood.
+
+-   A child is born with **a certain condition or not**.
+
+Or from a stochastic trial with multiple outcomes, there are two outcomes of interest:
+
+-   throw a dice, you are only interested in whether you **get a 6 or not**.
+
+-   A child is born **with a weight lower than 2500 grams or not**.
+
+### Binomial trials
+
+A bionomial trial consist of a **series of random trials** that satisfy tbe following:
+
+-   In each trial, we can record whether certain event $A$ occurs or not.
+
+-   The probability of A, $P(A)$ is the same in each trial, it is denoted by $p$.
+
+-   All trials are independent.
+
+Suppose we carry out n trials, looking for an event A in each trial. As a result we obtain a sequence:
+
+$$A, \bar{A}, A, A, \bar{A}, ..., A$$
+
+Say that $A$ takes place $x$ times. This means $\bar{A}$ takes place $n-x$ times.
+
+What is the probability for a certain sequence?
+
+Recall that probabilities for independent events can be multiplied.
+
+$$P(sequence) = p \times (1-p) \times p ...$$
+
+For $x$ number of $p$ and $n-x$ number of $1-p$,
+
+$$P(sequence) = p^{x} (1-p)^{n-x}$$
+
+The order of the sequence does not matter. The number of occurence matters. The number of ways that $x$ objects can be chosen from a total of $n$ objects, regardless of order is given by the bionomical coefficient.
+
+### Binomial coefficient
+
+We want to find the number of ways that $x$ objects can be chosen from a total of $n$ objects, regardless of order
+
+Binomial coefficient: $\binom nx$
+
+$$\binom nx = \frac{n!}{x!(n-x)!}$$
+
+"x factorial": $x! = x \times (x-1) \times ... 2 \times 1$
+
+Example: $\binom 4 3 = \frac{4\times 3 \times 2 \times 1}{3 \times 2 \times 1 \times 1} = 4$
+
+## Binomial distribution
+
+The probability that $A$ occurs exact $x$ times is given by
+
+$$P(X = x) = \binom n x p^{x}(1-p)^{n-x}$$
+
+i.e. the number of distributing $x$ events in a sequence of length $n$, times the probability that one particular sequence with $x$ events occurs.
+
+::: callout-important
+#### Explain
+
+Explain what it means to multiply these two components, and how it is related to frequency
+:::
+
+### Examples
+
+::: callout-note
+#### Example, derivation
+
+Blood type example. Demonstrate counting, and how it leads to binomial distribution with 4 outcomes
+:::
+
+::: callout-note
+#### Example
+
+Family with 4 kids, 2 boys. Compare theoretical and real-life percentage
+:::
+
+::: callout-note
+#### Example
+
+Multiple choice exam
+:::
+
+\### Visualize binomial distribution
+
+::: callout-important
+\#### Explain (might put it in another section)
+
+Revisit the definition of mean variance, and relation to descriptive summary statistics
+
+Demo computation on a few different parameters
+:::
+
+\# Normal distribution
+
+\## Probability distribution revisited
+
+Probability mass and density. Compare binomial and a continuous dist visually
+
+::: callout-important
+\#### Explain
+
+Revisit the previous section on discrete variables
+:::
+
+\## Normal distribution
+
+Important distribution:
+
+\- application 1
+
+\- application 2
+
+Probability density function
+
+\$\$f(x) = \\frac{1}{\\sigma \\sqrt{2\\pi}} exp(- \\frac{(x-\\mu)\^2}{2\\sigma\^2})\$\$
+
+\- \$\\mu\$ is the mean
+
+\- \$\\sigma\$ is the standard deviation
+
+\- \$exp(x) = e\^{x}\$
+
+!\[\](figures/Figur5-4.png)
+
+\### Properties
+
+\- Symmetric, bell-shape
+
+\- \$\\mu\$ and \$\\sigma\$ define the location and variation
+
+\- From the center (mean), going two standard deviations each way covers approximately 95% of the distribution
+
+::: callout-note
+\#### Examples
+
+Some other parameters
+:::
+
+\### Standard normal distribution
+
+A normal distribution \$N(\\mu, \\sigma)\$ with \$\\mu = 0, \\sigma = 1\$
+
+Any normal disribution can be transformed into a standard normal distribution \$N(0, 1)\$: if \$X \\sim N(\\mu, \\sigma)\$, then
+
+\$\$Y = \\frac{X-\\mu}{\\sigma} \\sim N(0, 1)\$\$
+
+Standard normal distribution probabilities are commonly presented in tables, so people can check them easily.
+
+::: callout-note
+\#### Examples
+
+birthweight, compute proportions
+:::
+
+\## Normal approximation to the binomial distribution
+
+Recall the binomial distribution,
+
+\$\$P(X = x) = \\binom nx p\^x (1-p)\^{n-x}\$\$
+
+where \$\\binom nx = \\frac{n!}{x!(n-x)!}\$, and \$\\binom n 0 = 1\$
+
+For large \$n\$, use the normal distribution.
+
+!\[\](figures/Figur5-6.png)
+
+\### Normal vs binomial
+
+Fit a normal distribution to approximate a binomial distribution
+
+\- \$\\mu = np\$
+
+\- \$\\sigma = \\sqrt{np(1-p)}\$
+
+::: callout-note
+\#### Example
+
+number of boys out of 20 new borns
+:::
+
+!\[\](figures/Figur5-7.png)
+
+\### Central limit theorem CLT
+
+CLT in simple words: the distribution of \*\*sample mean\*\* will be nearly normal regardless of what distribution the variable in the population is, as long as the sample size is large enough.
+
+::: callout-important
+\#### Explain
+
+Point out that the observed proportion of boys can be considered as a mean
+
+and the rule of thumb
+:::
+
+\$\$Binom(n, p) \\rightarrow N(\\mu, \\sigma)\\quad \\text{for} \\quad n \\rightarrow \\infty\$\$
+
+if \$np \\geq 5\$ and \$n(1-p) \\geq 5\$
