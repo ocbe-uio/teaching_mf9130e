@@ -116,9 +116,17 @@ ul.task-list{list-style: none;}
   <li><a href="#binomial-trials" id="toc-binomial-trials" class="nav-link" data-scroll-target="#binomial-trials">Binomial trials</a></li>
   <li><a href="#binomial-coefficient" id="toc-binomial-coefficient" class="nav-link" data-scroll-target="#binomial-coefficient">Binomial coefficient</a></li>
   </ul></li>
-  <li><a href="#binomial-distribution" id="toc-binomial-distribution" class="nav-link" data-scroll-target="#binomial-distribution">Binomial distribution</a>
+  <li><a href="#binomial-distribution" id="toc-binomial-distribution" class="nav-link" data-scroll-target="#binomial-distribution">Binomial distribution</a></li>
+  <li><a href="#continuous-probability-distribution" id="toc-continuous-probability-distribution" class="nav-link" data-scroll-target="#continuous-probability-distribution">Continuous probability distribution</a></li>
+  <li><a href="#normal-distribution" id="toc-normal-distribution" class="nav-link" data-scroll-target="#normal-distribution">Normal distribution</a>
   <ul class="collapse">
-  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#properties-of-the-normal-distribution" id="toc-properties-of-the-normal-distribution" class="nav-link" data-scroll-target="#properties-of-the-normal-distribution">Properties of the normal distribution</a></li>
+  <li><a href="#standard-normal-distribution" id="toc-standard-normal-distribution" class="nav-link" data-scroll-target="#standard-normal-distribution">Standard normal distribution</a></li>
+  </ul></li>
+  <li><a href="#normal-approximation-to-the-binomial-distribution" id="toc-normal-approximation-to-the-binomial-distribution" class="nav-link" data-scroll-target="#normal-approximation-to-the-binomial-distribution">Normal approximation to the binomial distribution</a>
+  <ul class="collapse">
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#central-limit-theorem-clt" id="toc-central-limit-theorem-clt" class="nav-link" data-scroll-target="#central-limit-theorem-clt">Central limit theorem CLT</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -144,9 +152,9 @@ ul.task-list{list-style: none;}
 
 <p>Topics:</p>
 <ul>
-<li><p>Discrete probability distributions</p></li>
-<li><p>Binomial trials and binomial distribution</p></li>
-<li><p>Continuous probability distributions</p></li>
+<li><p>Discrete probability distribution</p></li>
+<li><p>Binomial distribution</p></li>
+<li><p>Continuous probability distribution</p></li>
 <li><p>Normal distribution</p></li>
 <li><p>Normal approximation to binomial distribution</p></li>
 </ul>
@@ -159,7 +167,8 @@ ul.task-list{list-style: none;}
 <h2 class="anchored" data-anchor-id="discrete-probability-distribution">Discrete probability distribution</h2>
 <p>Here we deal with stochastic trials where the set of all possible outcomes is countable and known.</p>
 <p>A <strong>discrete random variable</strong> maps each of the trial outcomes to a numeric value.</p>
-<p>A <strong>discrete probability distribution</strong> assigns a probability for each of the possible outcomes.</p>
+<p>A <strong>discrete probability distribution</strong> assigns a probability for each of the possible numeric values representing the outcomes.</p>
+<p>All possible outcomes for a probability distribution should sum to 1.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -172,7 +181,7 @@ Example: Dice Trowing
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Trowing a dice has 6 possible outcomes with equal probability. We can define a random variable <span class="math inline">\(X\)</span> that maps each of the outcomes to the values 1,2,3,4,5,6. The probability distribution <span class="math inline">\(P(X=x)\)</span> assign the following probabilities to each value <span class="math inline">\(X=x\)</span>:</p>
+<p>Trowing a dice has 6 possible outcomes with equal probability. We can define a random variable <span class="math inline">\(X\)</span> that maps each of the outcomes when trowing a dice to the numeric values 1,2,3,4,5,6. The probability distribution <span class="math inline">\(P(X=x)\)</span> assigns the following probabilities to each value <span class="math inline">\(X=x\)</span>:</p>
 <table class="table">
 <thead>
 <tr class="header">
@@ -216,7 +225,7 @@ Example: Dice Trowing
 </section>
 <section id="binomial-trials" class="level3">
 <h3 class="anchored" data-anchor-id="binomial-trials">Binomial trials</h3>
-<p>A bionomial trial consist of a <strong>series of random trials</strong> that satisfy tbe following:</p>
+<p>A bionomial trial consist of a <strong>series of Bernoulli trials</strong> that satisfy the following:</p>
 <ul>
 <li><p>In each trial, we can record whether certain event <span class="math inline">\(A\)</span> occurs or not.</p></li>
 <li><p>The probability of A, <span class="math inline">\(P(A)\)</span> is the same in each trial, it is denoted by <span class="math inline">\(p\)</span>.</p></li>
@@ -227,7 +236,7 @@ Example: Dice Trowing
 <p>Say that <span class="math inline">\(A\)</span> takes place <span class="math inline">\(x\)</span> times. This means <span class="math inline">\(\bar{A}\)</span> takes place <span class="math inline">\(n-x\)</span> times.</p>
 <p>What is the probability for a certain sequence?</p>
 <p>Recall that probabilities for independent events can be multiplied.</p>
-<p><span class="math display">\[P(sequence) = p \times (1-p) \times p ...\]</span></p>
+<p><span class="math display">\[P(sequence) = p \times (1-p) \times p ... \times p\]</span></p>
 <p>For <span class="math inline">\(x\)</span> number of <span class="math inline">\(p\)</span> and <span class="math inline">\(n-x\)</span> number of <span class="math inline">\(1-p\)</span>,</p>
 <p><span class="math display">\[P(sequence) = p^{x} (1-p)^{n-x}\]</span></p>
 <p>The order of the sequence does not matter. The number of occurence matters. The number of ways that <span class="math inline">\(x\)</span> objects can be chosen from a total of <span class="math inline">\(n\)</span> objects, regardless of order is given by the bionomical coefficient.</p>
@@ -246,184 +255,252 @@ Example: Dice Trowing
 <p>The probability that <span class="math inline">\(A\)</span> occurs exact <span class="math inline">\(x\)</span> times is given by</p>
 <p><span class="math display">\[P(X = x) = \binom n x p^{x}(1-p)^{n-x}\]</span></p>
 <p>i.e.&nbsp;the number of distributing <span class="math inline">\(x\)</span> events in a sequence of length <span class="math inline">\(n\)</span>, times the probability that one particular sequence with <span class="math inline">\(x\)</span> events occurs.</p>
-<div class="callout-important callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Explain
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Explain what it means to multiply these two components, and how it is related to frequency</p>
-</div>
-</div>
-<section id="examples" class="level3">
-<h3 class="anchored" data-anchor-id="examples">Examples</h3>
+<p>For a binomial distribution, the mean (or expected value) is <span class="math inline">\(np\)</span> and the variance is <span class="math inline">\(np(1-p)\)</span>.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Example, derivation
+Example: Number of positive tests
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Blood type example. Demonstrate counting, and how it leads to binomial distribution with 4 outcomes</p>
+<p>Let’s say <span class="math inline">\(p=0.15\)</span> is the probability that a person taking a test for a certain disease get a positive result. A certain day, we are going to do <span class="math inline">\(n=8\)</span> such tests. The number of positive test in a sequence of of 8 test is random variable that is binomially distributed, often written Bin(8,0.15). This binomial distribution can be represented as below.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/binomial_n=8_p=015-01.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Bin(8,0.15)</figcaption><p></p>
+</figure>
 </div>
+<ul>
+<li>What is the probability that you get 2 or more positives?</li>
+<li>What is the expected number of positive tests (the mean)?</li>
+<li>What is the variance and the standard deviation?</li>
+</ul>
 </div>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Example
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Family with 4 kids, 2 boys. Compare theoretical and real-life percentage</p>
 </div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Example
+Example: Family with four kids
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Multiple choice exam</p>
+<p>We consider a family with 4 kids, with no monozygotic twins, so the gender of the kids are approximately independent. The probability of getting a boy in Norway is approximately 0.514. Using the formula for the binomial distribution we can compute the probability that that out of the 4 kids the number of boys is 0, 1, 2, 3 or 4 as follwos:</p>
+<p>$$ P(X=0)= 0 0.514^0 ^4 = 0.0557</p>
+<p><span class="math display">\[ \]</span></p>
+<p>P(X=1)= 1 0.51^1 ^3 = 0.2360 $$</p>
+<p>$$ P(X=2)= 2 0.51^2 ^2 = 0.3744</p>
+<p><span class="math display">\[ \]</span></p>
+<p>P(X=3)= 3 0.51^3 ^1 = 0.2639</p>
+<p><span class="math display">\[ \]</span></p>
+<p>P(X=4)= 4 0.51^4 ^0 = 0.0697 $$</p>
+<p>In the following table we compare our theoretical estimates with real-life percentage distribution in 7745 American families with 4 kids.</p>
+<table class="table">
+<caption>Source: Aalen et al.</caption>
+<colgroup>
+<col style="width: 27%">
+<col style="width: 35%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Number of boys</th>
+<th>Binomial distribution (<span class="math inline">\(\%\)</span>)</th>
+<th>Observed distribution (<span class="math inline">\(\%\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>5.6</td>
+<td>5.3</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>23.6</td>
+<td>22.9</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>37.4</td>
+<td>38.3</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>26.4</td>
+<td>26.5</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>7.0</td>
+<td>6.9</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-<p>### Visualize binomial distribution</p>
-<div class="callout-important callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
-Important
+</section>
+<section id="continuous-probability-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="continuous-probability-distribution">Continuous probability distribution</h2>
+<p>Here we deal with <strong>continuous stochastic variables</strong>. In contrast to counting variables, continuous variables can take any (of the infinite) values within a given range. For instance, height, cholesterol and annual salary can be considered continuous variables.</p>
+<p>A probability distribution (or density) for a continuous variable <span class="math inline">\(X\)</span> is a function <span class="math inline">\(f\)</span> satistying the following:</p>
+<ul>
+<li><span class="math inline">\(f(x)\geq 0~~\text{for all}~~x~~\text{in}~~X\)</span>.</li>
+<li>The total area under the curve of <span class="math inline">\(f\)</span> is 1.</li>
+<li>The probability that <span class="math inline">\(x\)</span> is between two values <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, denoted <span class="math inline">\(P(a\leq x \leq b)\)</span> equals the area under the curve from <span class="math inline">\(a\)</span> to <span class="math inline">\(b\)</span>.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/prob_density_cont_variable.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Probability density for a continuous variable</figcaption><p></p>
+</figure>
 </div>
+</section>
+<section id="normal-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="normal-distribution">Normal distribution</h2>
+<p>This is the most important probability distribution in statistics. It will be widely used in this course.</p>
+<p>Probability density function of the normal distribution has this formula:</p>
+<p><span class="math display">\[f(x) = \frac{1}{\sigma \sqrt{2\pi}} \text{exp}(- \frac{(x-\mu)^2}{2\sigma^2})\]</span></p>
+<ul>
+<li><p><span class="math inline">\(\mu\)</span> is the mean</p></li>
+<li><p><span class="math inline">\(\sigma\)</span> is the standard deviation</p></li>
+<li><p><span class="math inline">\(\text{exp}(x) = e^{x}\)</span></p></li>
+</ul>
+<section id="properties-of-the-normal-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="properties-of-the-normal-distribution">Properties of the normal distribution</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/properties_normal_dist.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
-<div class="callout-body-container callout-body">
-<p>#### Explain (might put it in another section)</p>
-<p>Revisit the definition of mean variance, and relation to descriptive summary statistics</p>
-<p>Demo computation on a few different parameters</p>
-</div>
-</div>
-<p># Normal distribution</p>
-<p>## Probability distribution revisited</p>
-<p>Probability mass and density. Compare binomial and a continuous dist visually</p>
-<div class="callout-important callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>#### Explain</p>
-<p>Revisit the previous section on discrete variables</p>
-</div>
-</div>
-<p>## Normal distribution</p>
-<p>Important distribution:</p>
-<p>- application 1</p>
-<p>- application 2</p>
-<p>Probability density function</p>
-<p>$$f(x) = \frac{1}{\sigma \sqrt{2\pi}} exp(- \frac{(x-\mu)^2}{2\sigma^2})$$</p>
-<p>- $\mu$ is the mean</p>
-<p>- $\sigma$ is the standard deviation</p>
-<p>- $exp(x) = e^{x}$</p>
-<p>![](figures/Figur5-4.png)</p>
-<p>### Properties</p>
-<p>- Symmetric, bell-shape</p>
-<p>- $\mu$ and $\sigma$ define the location and variation</p>
-<p>- From the center (mean), going two standard deviations each way covers approximately 95% of the distribution</p>
+<ul>
+<li><p>Symmetric, bell-shape</p></li>
+<li><p><span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> define the location and variation</p></li>
+<li><p>From the center (mean), going two standard deviations each way covers approximately 95% of the distribution</p></li>
+</ul>
 <div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Note
+Examples: location <span class="math inline">\(\mu\)</span>, variation <span class="math inline">\(\sigma\)</span>
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>#### Examples</p>
-<p>Some other parameters</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/normal_dist_examples.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
-<p>### Standard normal distribution</p>
-<p>A normal distribution $N(\mu, \sigma)$ with $\mu = 0, \sigma = 1$</p>
-<p>Any normal disribution can be transformed into a standard normal distribution $N(0, 1)$: if $X \sim N(\mu, \sigma)$, then</p>
-<p>$$Y = \frac{X-\mu}{\sigma} \sim N(0, 1)$$</p>
-<p>Standard normal distribution probabilities are commonly presented in tables, so people can check them easily.</p>
+</div>
+</div>
+</section>
+<section id="standard-normal-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="standard-normal-distribution">Standard normal distribution</h3>
+<p>A normal distribution <span class="math inline">\(N(\mu, \sigma)\)</span> with <span class="math inline">\(\mu = 0, \sigma = 1\)</span></p>
+<p>Any normal disribution can be transformed into a standard normal distribution <span class="math inline">\(N(0, 1)\)</span> by substracting the meand and dividing by the standard deviation:</p>
+<p>if <span class="math inline">\(X \sim N(\mu, \sigma)\)</span>, then <span class="math inline">\(Y = \frac{X-\mu}{\sigma} \sim N(0, 1)\)</span>.</p>
+<p>Standard normal distribution probabilities are commonly presented in tables, so people can check them easily. But in this course we will learn how to compute them with R.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Note
+Examples: Birthweight
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>#### Examples</p>
-<p>birthweight, compute proportions</p>
+<p>This figure shows the brithweight of 189 newborns</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/birthweight_example_normal.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<ul>
+<li><p>Estimates of $\mu$ and $\sigma$ are, respectively, 2945g and 729g</p></li>
+<li><p>How can we compute the proportion of weights larger than 4000g?</p></li>
+</ul>
+<p>We can either compute it directly in R as we will see in the R lab, or we can use the normal tables as follows:</p>
+<p><span class="math display">\[
+P(Y&gt;4000) = 1- P(X \leq 4000) = 1 - P(\frac{X-2945}{729} \leq 1.45)
+\]</span></p>
+<p>As the variable <span class="math inline">\(\frac{X-2945}{729}\)</span> is distributed according to the standard normal distribution, the probability <span class="math inline">\(P(\frac{X-2945}{729} \leq 1.45)\)</span> can be found in the tables, see Aalen p.328.</p>
+<p><span class="math display">\[
+\begin{aligned}
+P(Y&gt;4000) &amp; = 1- P(X \leq 4000) = 1 - P(\frac{X-2945}{729} \leq 1.45)\\
+          &amp; = 1 - 0.9265 = 0.0735
+\end{aligned}
+\]</span></p>
 </div>
 </div>
-<p>## Normal approximation to the binomial distribution</p>
+</div>
+</section>
+</section>
+<section id="normal-approximation-to-the-binomial-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="normal-approximation-to-the-binomial-distribution">Normal approximation to the binomial distribution</h2>
 <p>Recall the binomial distribution,</p>
-<p>$$P(X = x) = \binom nx p^x (1-p)^{n-x}$$</p>
-<p>where $\binom nx = \frac{n!}{x!(n-x)!}$, and $\binom n 0 = 1$</p>
-<p>For large $n$, use the normal distribution.</p>
-<p>![](figures/Figur5-6.png)</p>
-<p>### Normal vs binomial</p>
-<p>Fit a normal distribution to approximate a binomial distribution</p>
-<p>- $\mu = np$</p>
-<p>- $\sigma = \sqrt{np(1-p)}$</p>
+<p><span class="math display">\[P(X = x) = \binom nx p^x (1-p)^{n-x}\]</span></p>
+<p>where <span class="math inline">\(\binom nx = \frac{n!}{x!(n-x)!}\)</span>, and <span class="math inline">\(\binom n 0 = 1\)</span></p>
+<p>For large <span class="math inline">\(n\)</span>, the binomial distribution can be approximated by the normal distribution.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/binomial_and_normal_approx.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Histograms of the binomial distribution with p=0.2 and different n.</figcaption><p></p>
+</figure>
+</div>
+<section id="section" class="level3">
+<h3 class="anchored" data-anchor-id="section"></h3>
+<p>To approximate a binomial distribution we use a normal distribution with:</p>
+<ul>
+<li><p><span class="math inline">\(\mu = np\)</span></p></li>
+<li><p><span class="math inline">\(\sigma = \sqrt{np(1-p)}\)</span></p></li>
+</ul>
 <div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Note
+Example: Number of boys out of 20 new borns
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>#### Example</p>
-<p>number of boys out of 20 new borns</p>
+<ul>
+<li><p><span class="math inline">\(n=20\)</span>, <span class="math inline">\(p=0.514\)</span></p></li>
+<li><p><span class="math inline">\(\mu=np=20 \cdot 0.514 = 10.28\)</span></p></li>
+<li><p><span class="math inline">\(\sigma = \sqrt{np(1-p)} = \sqrt{20 \cdot 0.514 \cdot 0.486} = 2.24\)</span></p></li>
+<li><p><span class="math inline">\(N(10.28,2.24)\)</span></p>
+<p><img src="images/example_binomial_normal.png" class="img-fluid"></p></li>
+</ul>
 </div>
 </div>
-<p>![](figures/Figur5-7.png)</p>
-<p>### Central limit theorem CLT</p>
-<p>CLT in simple words: the distribution of **sample mean** will be nearly normal regardless of what distribution the variable in the population is, as long as the sample size is large enough.</p>
-<div class="callout-important callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>#### Explain</p>
-<p>Point out that the observed proportion of boys can be considered as a mean</p>
-<p>and the rule of thumb</p>
-</div>
-</div>
-<p>$$Binom(n, p) \rightarrow N(\mu, \sigma)\quad \text{for} \quad n \rightarrow \infty$$</p>
-<p>if $np \geq 5$ and $n(1-p) \geq 5$</p>
+<p>Rule of thumb:</p>
+<p><span class="math inline">\(Binom(n, p) \rightarrow N(\mu, \sigma)\quad \text{for} \quad n \rightarrow \infty\)</span> if <span class="math inline">\(np \geq 5\)</span> and <span class="math inline">\(n(1-p) \geq 5\)</span></p>
+</section>
+<section id="central-limit-theorem-clt" class="level3">
+<h3 class="anchored" data-anchor-id="central-limit-theorem-clt">Central limit theorem CLT</h3>
+<p>CLT in simple words: the distribution of <strong>sample mean</strong> will be nearly normal regardless of what distribution the variable in the population is, as long as the sample size is large enough.</p>
 
 
 </section>
