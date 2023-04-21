@@ -8,6 +8,9 @@ format:
 editor: source
 ---
 
+
+------------------
+
 # Examples (exercises with solution)
 
 

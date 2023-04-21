@@ -8,6 +8,9 @@ format:
 editor: source
 ---
 
+
+------------------
+
 Might be useful to have an outline and study goals
 
 ## Data structure (use `penguins_mini` data as example)

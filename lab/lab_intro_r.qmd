@@ -1,6 +1,6 @@
 ---
 title: "Introduction to R"
-description: "data types, data import ant export"
+description: "Basic commands, data types, data import ant export"
 format: 
   html:
     code-fold: false
@@ -8,11 +8,13 @@ format:
 editor: source
 ---
 
+------------------
+
+
 R is a language and environment for statistical computing, data analysis, visualisation and graphics and many more. It is a free and open source software, under the terms of GNU General Public License. 
 
 R runs on a wide variety of platforms, including Windows, Linux and MacOS. 
 
-The latest R version is 4.2.3 (2023-03-15), "Shortstop Beagle".
 
 
 
@@ -20,7 +22,7 @@ The latest R version is 4.2.3 (2023-03-15), "Shortstop Beagle".
 ## Getting help 
 
 * Use Google well! There are a lot of discussions in forums such as StackOverflow
-* Cheatsheets made by Posit and community
+* [Cheatsheets](https://posit.co/resources/cheatsheets/?type=posit-cheatsheets/) made by Posit and community
 * Type `?functionName` in the console 
 * Package vignettes (longer format of documentation)
 :::
@@ -37,7 +39,9 @@ In R, there are a few types of variables. The ones you will interact with are:
 * character (strings): "male", "female"
 * logical (binary, 1/0): True or False
 
-To create a variable, you type `variable_name <- variable_value` in the console. Note that code that start with `#` are **comments**, and are not evaluated.
+To create a variable, you type `variable_name <- variable_value` in the console. 
+
+Note that code that start with `#` are **comments**, and are not evaluated.
 
 ```{r}
 #| label: create variables

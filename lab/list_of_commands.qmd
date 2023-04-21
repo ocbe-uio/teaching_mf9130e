@@ -18,8 +18,16 @@ editor: source
 
 
 
-#### visualisation
 
+#### Visualisation
+
+We let `x, y` be two continuous variables. To create **histogram, boxplot, scatterplot**, you can use the following commands,
+
+```
+hist(x)
+boxplot(x)
+plot(x,y)
+```
 
 
 
@@ -31,12 +39,15 @@ editor: source
 #### chi-square tests
 
 
+
+--------------
+
+(Content for *Week 2* will come soon!)
+
 #### non-parametric tests
 
 
 # Regression
-
-#### Correlation
 
 
 #### Linear regression

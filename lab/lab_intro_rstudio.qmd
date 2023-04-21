@@ -8,6 +8,9 @@ format:
 editor: source
 ---
 
+------------------
+
+
 ## RStudio and Posit
 
 RStudio is a free and open-source IDE (integrated development environment). RStudio IDE is developed by Posit, previously RStudio PBC. 
