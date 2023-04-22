@@ -212,7 +212,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="logistic-regression" class="level1">
 <h1>Logistic regression</h1>
 <p>(Dataset <code>birth</code> might be switched out)</p>
-<div class="cell">
+<div class="cell" data-hash="lab_regression_cache/html/birth example_e812f04c9f83b5a47dcf4ed7645eaaac">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>birth_data <span class="ot">&lt;-</span> haven<span class="sc">::</span><span class="fu">read_dta</span>(<span class="st">'data/birth.dta'</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -233,7 +233,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <section id="fit-a-logistic-regression-model-for-low-and-age" class="level3">
 <h3 class="anchored" data-anchor-id="fit-a-logistic-regression-model-for-low-and-age">Fit a logistic regression model for <code>low</code> and <code>age</code></h3>
-<div class="cell">
+<div class="cell" data-hash="lab_regression_cache/html/birth example (2)_f77c3d2cdf6d495af4837ccf8d328e2d">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># low ~ age </span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>lr_low_age <span class="ot">&lt;-</span> <span class="fu">glm</span>(low <span class="sc">~</span> age, <span class="at">data =</span> birth_data, <span class="at">family =</span> <span class="st">'binomial'</span>)</span>
@@ -261,7 +261,7 @@ AIC: 235.91
 Number of Fisher Scoring iterations: 4</code></pre>
 </div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="lab_regression_cache/html/birth example (3)_c437ef769e356de18eee0b96bf6be2e8">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the result regresssion coefficient is not odds ratio</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>lr_low_age<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -284,7 +284,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
 age         -0.1150799 0.008986436</code></pre>
 </div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="lab_regression_cache/html/birth example (4)_21de9e3a0d2d26bb09887432c51e72d2">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to get odds ratio, exponentiate </span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(lr_low_age))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">

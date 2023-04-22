@@ -216,7 +216,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>Melanoma</h1>
 <p>(This is the example 2 in the exercises)</p>
 <p>First we load the dataset, and check what columns are there.</p>
-<div class="cell">
+<div class="cell" data-hash="lab_survival_cache/html/melanoma-1_bcfad7bcc7d5e0516546db4fc20bb2ff">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survival)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>melanoma <span class="ot">&lt;-</span> haven<span class="sc">::</span><span class="fu">read_dta</span>(<span class="st">'data/melanoma.dta'</span>)</span>
@@ -249,7 +249,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="a-recode-variable" class="level3">
 <h3 class="anchored" data-anchor-id="a-recode-variable">a) Recode variable</h3>
 <p>We only need “death from melanoma” or else, hence we need to recode the <code>status</code> variable which originally had three categories.</p>
-<div class="cell">
+<div class="cell" data-hash="lab_survival_cache/html/melanoma-a1_8ccd9431a433b5e0688f7219d470da24">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if status == 1, code 1; otherwise, code 0</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># this indicates whether deaths from melanoma</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>death <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(melanoma<span class="sc">$</span>status <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
@@ -272,7 +272,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="b-kaplan-meier-plot" class="level3">
 <h3 class="anchored" data-anchor-id="b-kaplan-meier-plot">b) Kaplan-Meier plot</h3>
-<div class="cell">
+<div class="cell" data-hash="lab_survival_cache/html/melanoma-b1_9e14659841b37a1b4dd21607a432e7fb">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># take lifetime variable</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>lifetime <span class="ot">&lt;-</span> melanoma<span class="sc">$</span>lifetime</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -289,7 +289,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p>Now we check only time 1, 2, 5.</p>
-<div class="cell">
+<div class="cell" data-hash="lab_survival_cache/html/melanoma-b2_ea4e4a1a098cf6dc71bb5e8fb8d90f4b">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># time 1, 2, 5</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>tme <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">5</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(km_fit, <span class="at">times =</span> tme)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -305,7 +305,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="c-compare-two-genders" class="level3">
 <h3 class="anchored" data-anchor-id="c-compare-two-genders">c) Compare two genders</h3>
-<div class="cell">
+<div class="cell" data-hash="lab_survival_cache/html/melanoma-c1_d59e55d224b4eccb36e3e35b398ef99f">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># gender == 1: female; gender == 2: male</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>gender <span class="ot">&lt;-</span> melanoma<span class="sc">$</span>gender</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -326,7 +326,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p>Now we test the difference with log-rank test</p>
-<div class="cell">
+<div class="cell" data-hash="lab_survival_cache/html/melanoma-c2_24b0fc0dc81f801859e1eea1b4b6d19e">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># test difference with logrank test </span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">survdiff</span>(<span class="fu">Surv</span>(lifetime, death) <span class="sc">~</span> gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -344,7 +344,7 @@ gender=2  79       29     19.9      4.21      6.47
 <section id="d-compare-tumor-thickness" class="level3">
 <h3 class="anchored" data-anchor-id="d-compare-tumor-thickness">d) Compare tumor thickness</h3>
 <p>First we do some data processing</p>
-<div class="cell">
+<div class="cell" data-hash="lab_survival_cache/html/melanoma-d1_7db59dd58fa96e027919ca86c2887e1e">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the original data type </span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>melanoma<span class="sc">$</span>grouped_tumor_thickness</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -382,7 +382,7 @@ Labels:
 </div>
 </div>
 <p>Now we plot the KM plot, and carry out a log-rank test</p>
-<div class="cell">
+<div class="cell" data-hash="lab_survival_cache/html/melanoma-d2_af525be89338a50ab4761876eccd4b61">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>km_fit_tumor <span class="ot">&lt;-</span> <span class="fu">survfit</span>(<span class="fu">Surv</span>(lifetime, death) <span class="sc">~</span> grouped_tumor_thickness)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(km_fit_tumor, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">'blue'</span>, <span class="st">'red'</span>, <span class="st">'forestgreen'</span>))</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -417,7 +417,7 @@ grouped_tumor_thickness=5+ mm   32       14     6.86      7.42      8.45
 <section id="length-of-hospital-stay" class="level1">
 <h1>Length of hospital stay</h1>
 <p>(This is the exercise 3 from the exercise for day 7)</p>
-<div class="cell">
+<div class="cell" data-hash="lab_survival_cache/html/liggetid_523074d3799199b2954baf4858d8ad56">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>liggetid <span class="ot">&lt;-</span> haven<span class="sc">::</span><span class="fu">read_dta</span>(<span class="st">'data/liggetid.dta'</span>)</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(liggetid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -446,7 +446,7 @@ grouped_tumor_thickness=5+ mm   32       14     6.86      7.42      8.45
 </div>
 <section id="a-length-of-stay-vs-gender" class="level3">
 <h3 class="anchored" data-anchor-id="a-length-of-stay-vs-gender">a) Length of stay vs gender</h3>
-<div class="cell">
+<div class="cell" data-hash="lab_survival_cache/html/liggetid-a1_551ac88e361f8c3c711019831dbd6c81">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># length of stay (los) vs gender</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>los <span class="ot">&lt;-</span> liggetid<span class="sc">$</span>liggetid</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(los)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -485,7 +485,7 @@ Labels:
 </div>
 </div>
 <p>Now we do log-rank test</p>
-<div class="cell">
+<div class="cell" data-hash="lab_survival_cache/html/liggetid-a2_008c40f5466b47072aa19d6b414193c5">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># log rank test </span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">survdiff</span>(<span class="fu">Surv</span>(los, status) <span class="sc">~</span> gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -504,7 +504,7 @@ gender=1 424      424      339     21.36      31.9
 </section>
 <section id="b-length-of-stay-vs-stroke" class="level3">
 <h3 class="anchored" data-anchor-id="b-length-of-stay-vs-stroke">b) Length of stay vs stroke</h3>
-<div class="cell">
+<div class="cell" data-hash="lab_survival_cache/html/liggetid-b1_d796cd3abc19249716b8669cb7e59ec0">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># length of stay vs stroke</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># slag == 1: yes, slag == 2: no</span></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>stroke <span class="ot">&lt;-</span> liggetid<span class="sc">$</span>slag</span>
@@ -527,7 +527,7 @@ gender=1 424      424      339     21.36      31.9
 <p><img src="lab_survival_files/figure-html/liggetid-b1-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="lab_survival_cache/html/liggetid-b2_21a8b04482d661c73fb5a6a0756e2dae">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># log rank test</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">survdiff</span>(<span class="fu">Surv</span>(los, status) <span class="sc">~</span> stroke)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">

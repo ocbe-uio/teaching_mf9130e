@@ -37,7 +37,7 @@ Total population: $P+N$
 Prevalence (of the condition) is defined as: $\frac{P}{P+N}$
 
 |                       | Predicted Positive           | Predicted Negative             | **Total**     |
-|--------------------|--------------------|-----------------------|------------------|
+|------------------|------------------|-------------------|------------------|
 | **With condition**    | True Positive TP             | False Negative FN              | $P = TP + FN$ |
 | **Without condition** | False Positive FP            | True Negative TN               | $N=FP + TN$   |
 | **Total**             | $P_{\text{predicted}}=TP+FP$ | $N_{\text{predicted}}=FN + TN$ |               |
@@ -107,44 +107,40 @@ Exercise: Try to derive the formula for $NPV$ in a similar way.
 ::: {.callout-note collapse="true"}
 #### Example: HIV testing
 
-We want to test for antibodies of the HIV virus.
+In a test for the HIV virus, the result can be:
 
--   Positive result: test shows antibodies
--   Negative result: test does not show antibodies
+-   Positive: the test shows antibodies.
+-   Negative: the test does not show antibodies.
 
-The test result may be wrong.
+But the test result may be wrong:
 
-A **false positive** might come from antibodies from related virus, but not HIV. The probability of error is 0.2%.
+-   A **false positive** might come from antibodies from related virus, but not HIV.
 
-A **false negative** might be that antibodies are not yet produced in sufficient quantity, hence are not detected by the test. The probability of error is 2%.
+-   A **false negative** might be due to the fact that antibodies are not yet produced in sufficient quantity, hence are not detected by the test.
 
-Assume that prevalence of HIV is 0.1%.
+We know that the **sensitivity** of the HIV test is 98%. We know that the **specificity** of the HIV test is 99.8%. We assume that the **prevalence** of HIV in a given population is 0.1%.
 
 What is the probability of a person **having HIV, if he got a positive test result**?
 
-What is the probability of a person **not having HIV, if he got a negative test result**?
-
-Recall the relation between sensitivity and false negative, and between specificity with false positive.
-
-We know the following information about the test:
-
--   false negative rate $FNR = 2\%$: sensitivity $\text{sens} = 1-2\% = 98\%$
--   false positive rate $FPR = 0.2\%$: specificity $\text{spec} = 1-0.2\% = 99.8\%$
-
-For 100 000 persons,
-
--   Number of HIV infected (positive condition): $100000 \times 0.001 = 100$
--   True positives: $100 \times 0.98 = 98$
--   False negatives: 2
--   Number of not HIV infected (negative condition): $100000-100 = 99900$
--   False positives: $99900 \times 0.002 = 199.8$, say $200$
--   True negatives: $99900 \times 0.998 = 99700$
--   Positive predictive value, $PPV = TP/(TP+FP) = 98/(98+200)= 0.329$
--   Negative predictive value, $NPV = TN/(TN+FN) = 99700/(99700+2) = 0.9999$
-
 $PPV = \frac{\text{sens} \cdot \text{prev}}{\text{sens} \cdot \text{prev} + (1-\text{spes}) \cdot (1-\text{prev})} = \frac{0.98 \times 0.001}{0.98 \times 0.001 + 0.002 \times 0.999} = 0.329$
+
+What is the probability of a person **not having HIV, if he got a negative test result**?
 
 $NPV = \frac{\text{spes} \cdot (1-\text{prev}) }{(1-\text{sens}) \cdot \text{prev} + \text{spes} \cdot (1-\text{prev})} = \frac{0.998 \times 0.999}{0.98 \times 0.001 + 0.998 \times 0.999} = 0.999$
 
-We can also use the formula as follows:
+Let us see from 100 000 persons, what are the theoretical results of the test?
+
+-   Number of HIV infected (positive condition): $100000 \times 0.001 = 100$
+
+-   True positives: $100 \times 0.98 = 98$
+
+-   False negatives: 2
+
+-   Number of not HIV infected (negative condition): $100000-100 = 99900$
+
+-   True negatives: $99900 \times 0.998 = 99700$
+
+-   False positives: $99900 \times 0.002 = 199.8$, say $200$
+
+Note that from 298 positive tests, only 98 persons have HIV. How would these numbers change if the prevalence would be lower? and if it would be higher?
 :::
