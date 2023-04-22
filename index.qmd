@@ -4,65 +4,52 @@ title: "MF9130E - Introductory course in Statistics"
 
 **This website is under construction. Stay tuned!**
 
-------------------
-
+------------------------------------------------------------------------
 
 # Welcome!
 
 You are on the course website for MF9130E - Introductory Course in Statistics.
 
-
 -   The course is intended for students and researchers who are interested in statistics and R programming, with applications in medical and healthcare data. No previous programming experience is required to participate in this course.
--   This website is developed by the instructors of the course, hosted for free and public access on Github. The course github repository can be accessed [here](https://github.com/ocbe-uio/teaching_mf9130e). 
--   You can check the [course page by UiO](https://www.uio.no/studier/emner/medisin/med/MF9130E/) for information related to applications, evaluations and other administrative matters. 
+-   This website is developed by the instructors of the course, hosted for free and public access on Github. The course github repository can be accessed [here](https://github.com/ocbe-uio/teaching_mf9130e).
+-   You can check the [course page by UiO](https://www.uio.no/studier/emner/medisin/med/MF9130E/) for information related to applications, evaluations and other administrative matters.
 
-
-### Preparation 
+### Preparation
 
 You should have a <u>working solution of R</u> (either installed on your own laptop, or using Posit cloud) before the course.
 
-It would also be helpful if you <u>familiarize yourself with the course website</u>. 
+It would also be helpful if you <u>familiarize yourself with the course website</u>.
 
-* [Get Started](https://ocbe-uio.github.io/teaching_mf9130e/get_started/get_started.html) provides some information about software installation, where to download data and code, and some resources.
-* [Course material](https://ocbe-uio.github.io/teaching_mf9130e/course_material/course_material_overview.html) provides an overview and links for the topics we will cover.
-* [R Lab and Code](https://ocbe-uio.github.io/teaching_mf9130e/lab/overview.html) hosts the lab session notes. 
+-   [Get Started](https://ocbe-uio.github.io/teaching_mf9130e/get_started/get_started.html) provides some information about software installation, where to download data and code, and some resources.
+-   [Course material](https://ocbe-uio.github.io/teaching_mf9130e/course_material/course_material_overview.html) provides an overview and links for the topics we will cover.
+-   [R Lab and Code](https://ocbe-uio.github.io/teaching_mf9130e/lab/overview.html) hosts the lab session notes.
 
-
-
-
-# Schedule 
+# Schedule
 
 You can find the **official course schedule** provided by University of Oslo [here](https://www.uio.no/studier/emner/medisin/med/MF9130E/v23/timeplan/index.html). If there is an error in the time and place on this page, please refer to the official schedule.
 
 ### Week 1
 
-| Date |  Time   |   Topic                  |  Place        |
-|:----:|:-------:|:------------------------:|:-------------:|
-| Apr 24 |12:45-16:00 | Lecture: **course introduction, data and descriptive statistics** | DME, Lille auditorium|
-| Apr 25 | 08:30-11:45 | Guided lab session | DME, Auditorium 13|
-| Apr 25 | 12:45-16:00 | Lecture: **probability, Bayes law, diagnostic tests, distributions** | DME, Auditorium 13|
-| Apr 26 | 08:30-11:45 | Guided lab session | DME, Store auditorium|
-| Apr 26 | 12:45-16:00 | Lecture: **statistical inference, hypothesis testing, confidence intervals, t-tests** | DME, Store auditorium|
-| Apr 27 | 08:30-11:45 | Guided lab session | DME, Runde auditorium R105|
-| Apr 27 | 12:45-16:00 | Lecture: **categorical data analysis** | DME, Runde auditorium R105|
-| Apr 28 | 08:30-11:45 | Guided lab session | DME, Store Auditorium|
-
+|  Date  |    Time     |                                         Topic                                         |           Place            |
+|:------:|:-----------:|:-------------------------------------------------------------------------------------:|:--------------------------:|
+| Apr 24 | 12:45-16:00 |           Lecture: **course introduction, data and descriptive statistics**           |   DME, Lille auditorium    |
+| Apr 25 | 08:30-11:45 |                                  Guided lab session                                   |     DME, Auditorium 13     |
+| Apr 25 | 12:45-16:00 |         Lecture: **probability, Bayes law, diagnostic tests, distributions**          |     DME, Auditorium 13     |
+| Apr 26 | 08:30-11:45 |                                  Guided lab session                                   |   DME, Store auditorium    |
+| Apr 26 | 12:45-16:00 | Lecture: **statistical inference, hypothesis testing, confidence intervals, t-tests** |   DME, Store auditorium    |
+| Apr 27 | 08:30-11:45 |                                  Guided lab session                                   | DME, Runde auditorium R105 |
+| Apr 27 | 12:45-16:00 |                        Lecture: **categorical data analysis**                         | DME, Runde auditorium R105 |
+| Apr 28 | 08:30-11:45 |                                  Guided lab session                                   |   DME, Store Auditorium    |
 
 ### Week 2
 
-| Date |  Time   |   Topic                  |  Place        |
-|:----:|:-------:|:------------------------:|:-------------:|
-| May 8 |08:30-11:45 | Lecture and lab: **exploratory data analysis, transformation, non-parametric methods** | DME, Lille auditorium|
-| May 8 | 12:45-16:00 | Lecture and lab: **sample size, statistical power** | DME, Lille auditorium|
-| May 9 | 08:30-11:45 | Lecture: **study designs, principle of clinical trials** | Helga Engs hus Auditorium 3|
-| May 9 | 12:45-16:00 | Lecture and lab: **regression I** | Helga Engs hus Auditorium 3|
-| May 10 | 08:30-11:45 | Lecture: **regression II** | DME, Auditorium 13|
-| May 10 | 12:45-16:00 | Lecture and lab: regression II | DME, Auditorium 13|
-| May 11 | 08:30-11:45  | Lecture and lab: **regression III** | DME, Auditorium 13|
-| May 11 | 12:45-16:00 | Lecture and lab: **survival analysis, course summary** | DME, Auditorium 13|
-
-
-
-
-
-
+|  Date  |    Time     |                                         Topic                                          |            Place            |
+|:------:|:-----------:|:--------------------------------------------------------------------------------------:|:---------------------------:|
+| May 8  | 08:30-11:45 | Lecture and lab: **exploratory data analysis, transformation, non-parametric methods** |    DME, Lille auditorium    |
+| May 8  | 12:45-16:00 |                  Lecture and lab: **sample size, statistical power**                   |    DME, Lille auditorium    |
+| May 9  | 08:30-11:45 |                Lecture: **study designs, principle of clinical trials**                | Helga Engs hus Auditorium 3 |
+| May 9  | 12:45-16:00 |                           Lecture and lab: **regression I**                            | Helga Engs hus Auditorium 3 |
+| May 10 | 08:30-11:45 |                               Lecture: **regression II**                               |     DME, Auditorium 13      |
+| May 10 | 12:45-16:00 |                             Lecture and lab: regression II                             |     DME, Auditorium 13      |
+| May 11 | 08:30-11:45 |                          Lecture and lab: **regression III**                           |     DME, Auditorium 13      |
+| May 11 | 12:45-16:00 |                 Lecture and lab: **survival analysis, course summary**                 |     DME, Auditorium 13      |

@@ -20,7 +20,7 @@ Book and resources:
 
 # Diagnostic tests
 
-A test screens people for a disease, such as the PCR or antigen tests for COVID-19.
+A diagnostic test screens people for a disease, such as the PCR or antigen tests for COVID-19.
 
 -   Each person taking the test either have, or not have the disease.
 -   The test result can be **positive**: classifying the person as having the disease,
@@ -36,11 +36,11 @@ Total population: $P+N$
 
 Prevalence (of the condition) is defined as: $\frac{P}{P+N}$
 
-|                           | Predicted Positive    | Predicted Negative    |**Total**   |
-|---------------------------|-----------------------|-----------------------|------------|
-| **With condition**        | True Positive TP      | False Negative FN     |    $P$     |
-| **Without condition**     | False Positive FP     | True Negative TN      |    $N$     |
-| **Total**                  |$P_{\text{predicted}}$  | $N_{\text{predicted}}$|
+|                       | Predicted Positive           | Predicted Negative             | **Total**     |
+|--------------------|--------------------|-----------------------|------------------|
+| **With condition**    | True Positive TP             | False Negative FN              | $P = TP + FN$ |
+| **Without condition** | False Positive FP            | True Negative TN               | $N=FP + TN$   |
+| **Total**             | $P_{\text{predicted}}=TP+FP$ | $N_{\text{predicted}}=FN + TN$ |               |
 
 **Sensitivity** of a diagnostic test is the probability of revealing that a person has the condition. It is also known as **true positive rate** (TPR), as it is the proportion of true positives.
 
@@ -57,7 +57,6 @@ $$PPV = \frac{TP}{P_{predicted}} = \frac{TP}{TP + FP}$$
 **Negative predictive value (NPV)**: probability that the person without the condition (i.e. healthy) was give a negative test result.
 
 $$NPV = \frac{TN}{N_{predicted}} = \frac{TN}{TN + FN}$$
-
 
 ::: {.callout-note collapse="true"}
 #### Example: Mammography
@@ -85,37 +84,25 @@ Negative predictive value: $331/(331+3) = 0.99$
 The concepts in diagnostic testing can be formulated in the form of conditional probabilities:
 
 -   Sensitivity: $P(\text{pos}|\text{ill})$
--   Specificity: $P(\text{neg}|\text{well})$
+-   Specificity: $P(\text{neg}|\text{healthy})$
 -   Positive predictive value: $P(\text{ill}|\text{pos})$
--   Negative predictive value: $P(\text{well}|\text{neg})$
+-   Negative predictive value: $P(\text{healthy}|\text{neg})$
 
 Bayes' theorem can be applied to compute **PPV and NPV** from **sensitivity, specificity and prevalence**:
-
 
 $$PPV = \frac{\text{sens} \cdot \text{prev}}{\text{sens} \cdot \text{prev} + (1-\text{spes}) \cdot (1-\text{prev})}$$
 
 $$NPV = \frac{\text{spes} \cdot (1-\text{prev}) }{(1-\text{sens}) \cdot \text{prev} + \text{spes} \cdot (1-\text{prev})}$$
 
-
-
-
 ::: {.callout-note collapse="true"}
 #### Derivation of the PPV formula using Bayes' law
 
 $$
-\begin{aligned}
-PPV = P(\text{ill}|\text{pos}) & = \frac{P(\text{pos}|\text{ill}) \cdot P(\text{ill})}{P(\text{pos})}\\
-                               & = \frac{P(\text{pos}|\text{ill}) \cdot P(\text{ill})}{P(\text{pos}|\text{ill}) \cdot P(\text{ill}) +  P(\text{pos}|\text{well}) \cdot P(\text{well})}\\
-
- & =\frac{\text{sens} \cdot \text{prev}}{\text{sens} \cdot \text{prev} + (1-\text{spes}) \cdot (1-\text{prev})}
-\end{aligned}
+\begin{aligned}PPV = P(\text{ill}|\text{pos}) & = \frac{P(\text{pos}|\text{ill}) \cdot P(\text{ill})}{P(\text{pos})}\\                               & = \frac{P(\text{pos}|\text{ill}) \cdot P(\text{ill})}{P(\text{pos}|\text{ill}) \cdot P(\text{ill}) +  P(\text{pos}|\text{healthy}) \cdot P(\text{healthy})}\\ & =\frac{\text{sens} \cdot \text{prev}}{\text{sens} \cdot \text{prev} + (1-\text{spes}) \cdot (1-\text{prev})}\end{aligned}
 $$
+
 Exercise: Try to derive the formula for $NPV$ in a similar way.
-
 :::
-
-
-
 
 ::: {.callout-note collapse="true"}
 #### Example: HIV testing
@@ -160,17 +147,4 @@ $PPV = \frac{\text{sens} \cdot \text{prev}}{\text{sens} \cdot \text{prev} + (1-\
 $NPV = \frac{\text{spes} \cdot (1-\text{prev}) }{(1-\text{sens}) \cdot \text{prev} + \text{spes} \cdot (1-\text{prev})} = \frac{0.998 \times 0.999}{0.98 \times 0.001 + 0.998 \times 0.999} = 0.999$
 
 We can also use the formula as follows:
-
 :::
-
-### False positive, PPV and revalence
-
-As can be seen from the HIV example, PPV (i.e. the probability of detecting an actual condition, when the test is positive) depends on **prevalence**.
-
--   When prevalence is 1/10000, 1/1000, 1/100, 1/10
--   Corresponding PPV: 5%, 33%, 83%, 98%
-
-The risk of getting false positives is greater for **rare** diseases, and smaller for more common diseases.
-
-False positives are problematic in mass screening for disease. It is possible that the majority of the positives (test results) are false positives.
-

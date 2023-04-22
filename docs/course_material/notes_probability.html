@@ -116,9 +116,9 @@ ul.task-list{list-style: none;}
   <li><a href="#two-definitions-of-probability" id="toc-two-definitions-of-probability" class="nav-link" data-scroll-target="#two-definitions-of-probability">Two definitions of probability</a></li>
   <li><a href="#law-of-large-numbers" id="toc-law-of-large-numbers" class="nav-link" data-scroll-target="#law-of-large-numbers">Law of Large Numbers</a></li>
   </ul></li>
-  <li><a href="#probability-calculation" id="toc-probability-calculation" class="nav-link" data-scroll-target="#probability-calculation">Probability calculation</a>
+  <li><a href="#probability-calculations" id="toc-probability-calculations" class="nav-link" data-scroll-target="#probability-calculations">Probability calculations</a>
   <ul class="collapse">
-  <li><a href="#events-and-sample-space-stochastic-trial" id="toc-events-and-sample-space-stochastic-trial" class="nav-link" data-scroll-target="#events-and-sample-space-stochastic-trial">Events and sample space, stochastic trial</a></li>
+  <li><a href="#stochastic-trial-events-and-sample-space." id="toc-stochastic-trial-events-and-sample-space." class="nav-link" data-scroll-target="#stochastic-trial-events-and-sample-space.">Stochastic trial, events and sample space.</a></li>
   <li><a href="#venn-diagram" id="toc-venn-diagram" class="nav-link" data-scroll-target="#venn-diagram">Venn diagram</a></li>
   <li><a href="#probability-calculation-rules" id="toc-probability-calculation-rules" class="nav-link" data-scroll-target="#probability-calculation-rules">Probability calculation rules</a></li>
   </ul></li>
@@ -284,15 +284,15 @@ Example: Births in Norway
 </div>
 </section>
 </section>
-<section id="probability-calculation" class="level2">
-<h2 class="anchored" data-anchor-id="probability-calculation">Probability calculation</h2>
-<section id="events-and-sample-space-stochastic-trial" class="level3">
-<h3 class="anchored" data-anchor-id="events-and-sample-space-stochastic-trial">Events and sample space, stochastic trial</h3>
+<section id="probability-calculations" class="level2">
+<h2 class="anchored" data-anchor-id="probability-calculations">Probability calculations</h2>
+<section id="stochastic-trial-events-and-sample-space." class="level3">
+<h3 class="anchored" data-anchor-id="stochastic-trial-events-and-sample-space.">Stochastic trial, events and sample space.</h3>
 <p>A stochastic trial is characterized by an <strong>uncertain outcome</strong>.</p>
 <p>All possible outcomes in a stochastic trial make up the <strong>sample space</strong>.</p>
-<p>Each outcome has a probability of ocurrence between 0 and 1. A probability equal to 0 means that the event can never occur, and equal to 1 means that the event is certeinly occuring.</p>
-<p>The sum of all probabilities in a sample space equals 1.</p>
 <p>An <strong>event</strong> can be a single outcome, or a collection of single outcomes.</p>
+<p>Each event has a probability of ocurrence between 0 and 1. A probability equal to 0 means that the event can never occur, and equal to 1 means that the event is certeinly occuring.</p>
+<p>The sum of all probabilities in a sample space equals 1.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -337,7 +337,7 @@ Examples: Stochastic trials
 </section>
 <section id="venn-diagram" class="level3">
 <h3 class="anchored" data-anchor-id="venn-diagram">Venn diagram</h3>
-<p>Venn diagrams are often used to illustrate events, like the events A and B below within the sample space S.</p>
+<p>Venn diagrams are often used to illustrate events. In the figures below A and B represent different events and S is the sample space.</p>
 <table class="table">
 <colgroup>
 <col style="width: 50%">
@@ -383,11 +383,11 @@ Examples: Stochastic trials
 </section>
 <section id="probability-calculation-rules" class="level3">
 <h3 class="anchored" data-anchor-id="probability-calculation-rules">Probability calculation rules</h3>
-<p>The probability of event <span class="math inline">\(A\)</span> is denoted by <span class="math inline">\(P(A)\)</span>. It has a value between 0 and 1. The probability over the whole sample space equals 1.</p>
+<p>The probability of an event <span class="math inline">\(A\)</span> is denoted by <span class="math inline">\(P(A)\)</span>. It has a value between 0 and 1. The probability over the whole sample space equals 1.</p>
 <p><strong>Complement rule</strong></p>
 <p><span class="math display">\[P(A) + P(\bar{A}) = 1\]</span></p>
 <p><strong>Additive rule</strong></p>
-<p>The occurrence of at least one of the events <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span> is <span class="math display">\[P(A \cup B) = P(A) + P(B) - P(A \cap B)\]</span> For <strong>disjunct</strong> events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, <span class="math inline">\(P(A \cap B) = 0\)</span>. Hence <span class="math display">\[P(A \cup B) = P(A) + P(B)\]</span></p>
+<p>The occurrence of at least one of the events <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span> is <span class="math display">\[P(A \cup B) = P(A) + P(B) - P(A \cap B)\]</span> For <strong>disjoint</strong> events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, <span class="math inline">\(P(A \cap B) = 0\)</span>. Hence <span class="math display">\[P(A \cup B) = P(A) + P(B)\]</span></p>
 <p><strong>Multiplicative rule</strong></p>
 <p>Probability of independent events can be multiplied</p>
 <p><span class="math display">\[P(A \cap B) = P(A) \times P(B)\]</span></p>
@@ -429,25 +429,25 @@ Examples: Tossing two dices
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>What is the probability of getting 6 in the first AND the second throw? What is the probability of getting at least one 6 in two throws? What is the probability of not getting any 6 in two throws?</p>
 <ul>
 <li><p>The two throws are independent events.</p></li>
 <li><p>There are 36 equally possible outcomes.</p></li>
-<li><p>Only one outcome corresponds to the double 6 event.</p>
-<p><span class="math display">\[P(\text{6 in the first AND the second throw}) = 1/6 \times 1/6 = 1/36\]</span></p>
-<p><span class="math display">\[
+<li><p>Only one outcome corresponds to the double 6 event.</p></li>
+</ul>
+<p>What is the probability of getting 6 in the first AND the second throw? $$ P() = 1/6 /6 = 1/36</p>
+<p>$$</p>
+<p>What is the probability of getting at least one 6 in two throws? <span class="math display">\[
 \begin{aligned}
-P(\text{at least one 6 in 2 trows}) &amp;=P(\text{6 in the first}) + P(\text{6 in the second}) - P(\text{6 in both})\\
-&amp;=1/6 +1/6 - 1/36 =0.31
+    P(\text{at least one 6 in 2 trows}) &amp;=P(\text{6 in the first}) +         P(\text{6 in the second}) - P(\text{6 in both})\\
+    &amp;=1/6 +1/6 - 1/36 =0.31
 \end{aligned}
 \]</span></p>
-<p><span class="math display">\[
-\begin{aligned}
-P(\text{not getting any 6 in 2 trows}) &amp;= 1 - P(\text{at least one 6 in 2 trows})\\
-&amp;= 1 - 0.31 = 0.69
-\end{aligned}
-\]</span></p></li>
-</ul>
+What is the probability of not getting any 6 in two throws? $$
+<span class="math display">\[\begin{aligned}
+    P(\text{not getting any 6 in 2 trows}) &amp;= 1 - P(\text{at least one 6 in 2 trows})\\
+    &amp;= 1 - 0.31 = 0.69
+\end{aligned}\]</span>
+<p>$$</p>
 </div>
 </div>
 </div>
@@ -470,14 +470,14 @@ Exercise: Weather forecast
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>This table contains the frequency of joint weather forecast and actual weather events.</p>
+<p>This table contains the frequency of joint events: weather forecast and actual weather.</p>
 <table class="table">
 <tbody>
 <tr class="odd">
 <td></td>
 <td>sunny forecast</td>
 <td>cloudy forecast</td>
-<td>fainy forecast</td>
+<td>rainy forecast</td>
 </tr>
 <tr class="even">
 <td>sunny weather</td>
@@ -502,7 +502,7 @@ Exercise: Weather forecast
 <ul>
 <li><p>Which is the probability of a sunny day?</p></li>
 <li><p>Which is the probability that the forecast is wrong?</p></li>
-<li><p>Which is the probability of rain when the forecast is sunny?+</p></li>
+<li><p>Which is the probability of rain when the forecast is sunny?</p></li>
 </ul>
 <p>Hint: remember to use the special case of the additive rule, holding when A and B are disjoint, <span class="math inline">\(P(A \cup B) = P(A) + P(B)\)</span></p>
 </div>
@@ -510,10 +510,8 @@ Exercise: Weather forecast
 </div>
 <section id="stochastic-independence" class="level3">
 <h3 class="anchored" data-anchor-id="stochastic-independence">Stochastic independence</h3>
-<p>The events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if</p>
-<p><span class="math display">\[
-P(A|B) = P(A)
-\]</span> Interpretation: probability of A is the same if we also know that B has occurred.</p>
+<p>The events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if <span class="math inline">\(P(A|B) = P(A)\)</span></p>
+<p>Interpretation: probability of <span class="math inline">\(A\)</span> is the same if we also know that <span class="math inline">\(B\)</span> has occurred.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -528,8 +526,8 @@ Examples: independence
 <div class="callout-body-container callout-body">
 <p>Consider the following:</p>
 <ul>
-<li>A: Probability of me having the condition</li>
-<li>B: Probability of my partner having the same condition</li>
+<li><span class="math inline">\(A\)</span>: Probability of me having the condition</li>
+<li><span class="math inline">\(B\)</span>: Probability of my partner having the same condition</li>
 </ul>
 <p>Condition 1: Diabetes, <span class="math inline">\(P(A|B) = P(A)\)</span></p>
 <p>Condition 2: COVID-19, <span class="math inline">\(P(A|B) \neq P(A)\)</span></p>
@@ -537,12 +535,8 @@ Examples: independence
 </div>
 </div>
 <p>Probability calculations can be simplified if there is stochastic independence:</p>
-<p><span class="math display">\[
-P(A|B) = \frac{P(A \cap B)}{P(B)} = P(A)
-\]</span></p>
-<p><span class="math display">\[
-P(A \cap B) = P(A) \times P(B)
-\]</span></p>
+<p><span class="math display">\[P(A|B) = \frac{P(A \cap B)}{P(B)} = P(A)\]</span></p>
+<p><span class="math display">\[P(A \cap B) = P(A) \times P(B)\]</span></p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -556,14 +550,12 @@ Example: Child birth (revisited)
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Two children are born, which is the probability that genders are different?</p>
-<p><span class="math display">\[
-\begin{aligned}
+<span class="math display">\[\begin{aligned}
 P(\text{girl and boy}) &amp; =P(\text{girl then boy}) + P(\text{boy then girl})\\
 &amp; = P(\text{first is girl}) \times P(\text{second is boy}) +\\
 &amp;~~~~+ P(\text{first is boy}) \times P(\text{second is girl})\\
 &amp; = 1/2 \times 1/2 + 1^/2 \times 1/2 = 0.50
-\end{aligned}
-\]</span></p>
+\end{aligned}\]</span>
 </div>
 </div>
 </div>
@@ -580,9 +572,7 @@ Example: Dices (revisited)
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Three dices are tossed, which is the probability of all showing sixes?</p>
-<p><span class="math display">\[
-P(\text{three 6})=1/6 + 1/6 + 1/6 = 1/216 = 0.004
-\]</span></p>
+<p><span class="math display">\[P(\text{three 6})=1/6 + 1/6 + 1/6 = 1/216 = 0.004\]</span></p>
 </div>
 </div>
 </div>
@@ -608,9 +598,7 @@ Exercise: Side effects of medication
 <section id="total-probability" class="level2">
 <h2 class="anchored" data-anchor-id="total-probability">Total probability</h2>
 <p>The law of total probability expresses the probability of an outcome, <span class="math inline">\(P(A)\)</span>, which can be realized via two distinct events <span class="math inline">\(B\)</span> and <span class="math inline">\(\bar{B}\)</span>:</p>
-<p><span class="math display">\[
-P(A) = P(A|B)P(B) + P(A| \bar{B})P( \bar{B})
-\]</span></p>
+<p><span class="math display">\[P(A) = P(A|B)P(B) + P(A| \bar{B})P( \bar{B})\]</span></p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -624,13 +612,12 @@ Derivation of the law of total probability
 <div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Any event <span class="math inline">\(A\)</span> can be divided in two with regard to another event <span class="math inline">\(B\)</span>:</p>
-<p><span class="math display">\[
-A = (A \cap B) \cup (A \cap \bar{B})
-\]</span> <img src="images/Venn_diagrams_eventA-01.png" class="img-fluid" style="width:15cm"></p>
+<p><span class="math display">\[A = (A \cap B) \cup (A \cap \bar{B})\]</span> <img src="images/Venn_diagrams_eventA-01.png" class="img-fluid" style="width:15cm"></p>
 <p>Becase the two events <span class="math inline">\((A \cap B)\)</span> and <span class="math inline">\((A \cap \bar{B})\)</span> are disjunct, we can write:</p>
 <p><span class="math display">\[
 P(A) = P(A \cap B) + P(A \cap \bar{B})
-\]</span> Using the multiplicative rule, we get the <strong>law of total probability</strong>:</p>
+\]</span></p>
+<p>Using the multiplicative rule, we get the <strong>law of total probability</strong>:</p>
 <p><span class="math display">\[
 P(A) = P(A|B)P(B) + P(A| \bar{B})P( \bar{B})
 \]</span></p>
@@ -652,7 +639,7 @@ Example: Gender of twins
 <ul>
 <li>We want to find the <strong>probability of two twins having the same gender</strong>.</li>
 <li><strong>Monozygotic</strong> twins have the same gender, while dizygotic twins are like any other siblings.</li>
-<li>We have to take into condieration if the twins are monozygotic or not. For that we use the law of total probability.</li>
+<li>We have to take into consideration if the twins are monozygotic or not. For that we use the law of total probability.</li>
 </ul>
 <p><span class="math inline">\(A\)</span> = Both twins have the same gender <span class="math inline">\(B\)</span> = The twins are monozygotic</p>
 <ul>
@@ -708,14 +695,10 @@ Example Gender of twins (revisited)
 <p>What if we want to find the probability that two twins of the same gender are monozygotic?</p>
 <p>In other words, what is <span class="math inline">\(P(B|A)\)</span>?</p>
 <p>We can use Bayes’ law and the law of total probability</p>
-<p>$$</p>
-<span class="math display">\[\begin{aligned}
-P(B|A) &amp; =\frac{P(A|B)P(B)}{P(A)}\\
-       &amp; =\frac{P(A|B)P(B)}{P(A|B)P(B) + P(A| \bar{B})P( \bar{B})}\\
-       &amp; = \frac{1 \cdot 1/3}{1 \cdot 1/3 + 1/2 \cdot 2/3} = 0.5
-
-\end{aligned}\]</span>
-<p>$$</p>
+<p><span class="math display">\[
+\begin{aligned}P(B|A) &amp; =\frac{P(A|B)P(B)}{P(A)}\\       &amp; =\frac{P(A|B)P(B)}{P(A|B)P(B) + P(A| \bar{B})P( \bar{B})}\\       &amp; = \frac{1 \cdot 1/3}{1 \cdot 1/3 + 1/2 \cdot 2/3} = 0.5
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 </div>

@@ -14,7 +14,7 @@ Topics:
 
 -   Normal distribution
 
--   Normal approximation to binomial distribution
+-   Normal approximation to a binomial distribution
 
 Books and resources:
 
@@ -267,13 +267,8 @@ To approximate a binomial distribution we use a normal distribution with:
 
 Rule of thumb:
 
-$Binom(n, p) \rightarrow N(\mu, \sigma)\quad \text{for} \quad n \rightarrow \infty$
-if $np \geq 5$ and $n(1-p) \geq 5$
-
+$Binom(n, p) \rightarrow N(\mu, \sigma)\quad \text{for} \quad n \rightarrow \infty$ if $np \geq 5$ and $n(1-p) \geq 5$
 
 ### Central limit theorem CLT
 
 CLT in simple words: the distribution of **sample mean** will be nearly normal regardless of what distribution the variable in the population is, as long as the sample size is large enough.
-
-
-
