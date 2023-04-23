@@ -32,6 +32,50 @@ R runs on a wide variety of platforms, including Windows, Linux and MacOS.
 
 # Create variables
 
+## Create a numeric variable 
+
+To create a variable, you type `variable_name <- variable_value` in the console. 
+
+```{r}
+#| label: create numeric variable
+#| warning: false
+#| echo: true
+
+# create a numeric variable number_1
+a <- 3
+a
+```
+
+You can carry out **mathematical calculation8* on numeric variables, such as exponentiate, addition, division and many more.
+
+```{r}
+#| label: basic calculation
+#| warning: false
+#| echo: true
+
+# assign values to variables a, b, c
+a <- 3
+b <- 4
+c <- 7
+
+# calculate the average of a,b,c
+# output directly
+(a+b+c)/3
+
+# or, save into a new variable d
+d <- (a+b+c)/3
+d
+
+# e to the power of a (e = 2.7182)
+exp(a)
+```
+
+
+
+
+
+## Data types
+
 In R, there are a few types of variables. The ones you will interact with are:
 
 * numeric (real numbers): 1.2, -5
@@ -39,12 +83,11 @@ In R, there are a few types of variables. The ones you will interact with are:
 * character (strings): "male", "female"
 * logical (binary, 1/0): True or False
 
-To create a variable, you type `variable_name <- variable_value` in the console. 
 
 Note that code that start with `#` are **comments**, and are not evaluated.
 
 ```{r}
-#| label: create variables
+#| label: data types
 #| warning: false
 #| echo: true
 
@@ -98,6 +141,10 @@ Avoid the following:
 :::
 
 
+
+
+
+
 # Data structure
 
 ## Vectors
@@ -141,8 +188,7 @@ rep(1, 5) # repeat 1 for 5 times
 # character
 # char_vector <- c('student_a', 'student_b', 'student_c')
 char_vector <- paste0('student_', c('a', 'b', 'c'))
-
-
+char_vector
 ```
 
 
@@ -248,7 +294,7 @@ mini_data
 
 
 
-# Data manipulation primer
+# Basic data manipulation
 
 
 ## Dimension of your data
@@ -308,7 +354,7 @@ For a **vector**, you can access
 * multiple elements at given positions  
 * elements beyond, or below a certain element
 
-Sometimes you might need to combine previous knowledge to get what you want (e.g. to know how many elements in total there are). But not required now.
+Sometimes you might need to combine previous knowledge to get what you want (e.g. to know how many elements in total there are). 
 
 ```{r}
 #| label: indexing vector 1
@@ -370,15 +416,51 @@ mini_data[1, ]
 # second col
 mini_data[, 2]
 
-# via column name 
+# via column name using $
 mini_data$age
+
+# alternatively, 
 mini_data['age']
 ```
 
 
 
+::: callout-tip
+## Filter data based on criteria
 
-## Modify existing data
+You might have a task where you need to filter elements based on another variable: for example, select the `age` based on `sex`. This task is done in 2 steps: 
+
+* create a logical (binary, true or false) variable on `sex`, call it `sex_indicator`
+* select the elements in `age` vector, corresponding to `sex_ind == TRUE`. (The operator `==` evaluates whether the criteria is met)
+
+The following example illustrates this process. You will use this a few times in the course, for example to select the height measured for men and women.
+:::
+
+```{r}
+#| label: filter a vector
+#| warning: false
+#| echo: true
+
+age <- c(55, 60, 65)
+sex <- c('Male', 'Female', 'Male')
+
+# select age for only female
+# first create a variable indicating 'sex == Female'
+# i.e. if the element is Female, returns T; otherwise, F
+
+sex_indicator <- sex == 'Female'
+sex_indicator
+# next combine age with sex_indicator, this only selects the 2nd element
+age[sex_indicator] 
+
+# you can skip the middle step:
+age[sex == 'Female']
+```
+
+
+
+
+## Modify existing data (optional)
 
 ::: callout-note
 ## Keep your original data safe!
@@ -417,56 +499,47 @@ mini_data
 
 
 
-# Functions and packages
+# Import data
 
+Before importing a dataset, you need to know where it is, and how to tell R to find it in your file system.
 
-**just at abstract level for now (in the lecture), students can learn after seeing many examples**
+## Working directory, R project
 
-**in this document, would still be useful to include links so they can read on their own**
+You can think of the working directory as the folder where R looks for (and saves) your scripts *by default*. 
 
-## Basic calculations
-
-r as calculator (**use console first; use script AFTER project and workspace mgmt!**)
-
-exp, division
+You can check where your working directory by running the following command.
 
 ```{r}
-#| label: basic calculation
+#| label: working directory
 #| warning: false
 #| echo: true
 
-# assign values to variables a, b, c
-a <- 3
-b <- 4
-c <- 7
-
-# calculate the average of a,b,c
-# output directly
-(a+b+c)/3
-
-# or, save into a new variable d
-d <- (a+b+c)/3
-d
+getwd()
 ```
 
+You can manually set this to a folder of your choosing by `setwd(path)`. 
+
+It is recommanded to use **R project**. It sets a folder just for the current tasks you work on, so that you do not need to set the working directory every time you open RStudio. Read more about [how to create an R project](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_intro_rstudio.html).
 
 
-
-# Data import and export 
-
-project management 
-
-set work directory
+## Import data
 
 
-import data of different formats (txt, csv, xlsx, rda...)
+Data exist in different formats, 
+
+* `csv` is one of the most commonly used data format for tabular data. If possible, it is a good idea to use this data format as it is readable by different languages and softwares
+* `xlsx` is also good for storing tabular data; however it is slightly more complicated than `csv`.
+* `rda` can be used to store R data (such as lists, higher dimensional arrays);
+* Some formats are data created by foreign softwares (such as `dta` created by STATA), and they would require some specific R packages to load in. 
+
+It is difficult to summarise all the data formats here, so you should check the documentation on how to import and write (save) data of different types.
 
 ```{r}
 #| label: load-data-penguins-mini
 #| warning: false
 #| echo: true
 
-# need to load the data in this page again. DO NOT SHOW
+# read a csv file
 penguins_mini <- read.csv('data/penguins_mini.csv', sep = ',')
 
 penguins_mini

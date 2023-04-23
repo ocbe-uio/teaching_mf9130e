@@ -10,23 +10,142 @@ editor: source
 
 # Data 
 
-#### Data import
+### Data import
+
+```{r}
+#| label: load-data-penguins-mini
+#| echo: true
+#| eval: false
+
+read.csv('data/your_data.csv', sep = ',')
+```
+
+### Create variables
+
+Create a numeric variable
 
 
+```{r}
+#| label: create numeric var
+#| echo: true
+#| eval: false
 
-#### Data manipulation and exploration
+a <- 3
+a  # return the value in console
+return(a)
+```
+
+Numeric, character, logical variables
+
+```{r}
+#| label: create other variables
+#| echo: true
+#| eval: false
+
+class(a)
+
+b <- 'hadley'
+class(b)
+
+c <- TRUE
+class(c)
+```
 
 
+### Data structure (vector, matrix)
+
+Create vectors and matrices
+
+```{r}
+#| label: create vector and matrix
+#| echo: true
+#| eval: false
+
+num_vector <- c(1, 2, 3, 4, 5)
+char_vector <- c('student_a', 'student_b', 'student_c')
+logical_vector <- c(T, F, T, F)
+
+# matrix
+matrix_1 <- matrix(data = c(1, 2, 3, 4), nrow = 2, ncol = 2, byrow = T)
+
+# matrix by combining vectors
+vec1 <- c(1, 2)
+vec2 <- c(3, 4)
+
+matrix_c <- cbind(vec1, vec2) # bind by columnn
+matrix_r <- rbind(vec2, vec2) # bind by row
+```
 
 
-#### Visualisation
+# Data exploration of a `data.frame` 
+
+Create a `data.frame`
+
+```{r}
+#| label: create dataframe
+#| echo: true
+#| eval: false
+
+mini_data <- data.frame(
+  age = c(20, 50, 32), 
+  sex = c('male', 'female', 'male'), 
+  has_covid = c(T, T, F)
+)
+```
+
+Get the column (feature) names, dimension, number of rows (observation) and columns
+
+```{r}
+#| label: basic information
+#| echo: true
+#| eval: false
+
+colnames(mini_data)
+dim(mini_data)
+nrow(mini_data)
+ncol(mini_data)
+```
+
+Select a variable (`age`) from the data
+
+```{r}
+#| label: select variable
+#| echo: true
+#| eval: false
+
+mini_data$age
+mini_data['age']
+mini_data[, 1] # first column, which is 'age'
+```
+
+Filter a variable based on another (for example, `age` for females (`sex == 'female'`))
+
+```{r}
+#| label: filter variable
+#| echo: true
+#| eval: false
+
+mini_data$age[mini_data$sex == 'female']
+
+# you can also break down the process:
+age <- mini_data$age
+sex <- mini_data$sex
+age[sex == 'female']
+```
+
+
+# Visualisation
 
 We let `x, y` be two continuous variables. To create **histogram, boxplot, scatterplot**, you can use the following commands,
 
-```
-hist(x)
-boxplot(x)
-plot(x,y)
+```{r}
+#| label: visualisation
+#| echo: true
+#| eval: false
+
+hist(x) # histogram
+boxplot(x) # boxplot 
+plot(x,y)  # scatter plot of x, y
 ```
 
 

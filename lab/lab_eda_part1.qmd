@@ -76,6 +76,10 @@ Generate a variable named `weight`, with the following measurements:
 ```
 
 ```{r}
+#| label: eda-1a
+#| warning: false
+#| echo: true
+
 weight <- c(50, 75, 70, 74, 95, 
             83, 65, 94, 66, 65, 
             65, 75, 84, 55, 73, 

@@ -55,16 +55,15 @@ To help you with the exercises and homework, we have created this [list of comma
 | Lab notes   |  Topics             | Exercises |
 |:---------------:|:----------:|:------------------:|
 | [Getting started in Rstudio](lab_intro_rstudio.qmd) | Create new project, workspace navigation  |  |
-| [Introduction to R](lab_intro_r.qmd) | Create variable, data types, data import and export  |  |
-| [EDA I](lab_eda_part1.qmd) | Exploring a dataset, basic data manipulation, descriptive statistics | [exercise](ex_eda_part1.qmd), code |
-| [EDA II](lab_eda_part2.qmd)| (Week 2) More on data manipulation, visualisation| exercise |
-| [Statistical inference](lab_inf_ci.qmd)| Confidence interval, hypothesis testing | |
-| [t-test](lab_ttest.qmd)| One sample, two sample t-tests | [exercise](ex_ttest.qmd), code |
-| [Categorical data analysis](lab_categorical.qmd)| Proportions, contingency table, chi-square test | [exercise](ex_categorical.qmd), code|
-| [Non-parametric tests](lab_nonpara.qmd)|Wilcoxon signed test, rank sum test | exercise, code|
-| [Sample size, power](lab_samplesize.qmd)| Sample size, power calculation | |
-| [Regression analysis](lab_regression.qmd)| Linear regression, logistic regression | exercise|
-| [Survival analysis](lab_survival.qmd)|Kaplan-Meier curve, log rank tests | |
+| [Introduction to R](lab_intro_r.qmd) | Create variable, data types, data import and export  | [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/1_intro_r.R) |
+| [EDA I](lab_eda_part1.qmd) | Exploring a dataset, basic data manipulation, descriptive statistics | [exercise](ex_eda_part1.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/2_eda_part1.R) |
+| [EDA II](lab_eda_part2.qmd)| (Week 2) More on data manipulation, visualisation|  |
+| [t-test](lab_ttest.qmd)| One sample, two sample t-tests | [exercise](ex_ttest.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/4_ttest.R) |
+| [Categorical data analysis](lab_categorical.qmd)| Proportions, contingency table, chi-square test | [exercise](ex_categorical.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/5_categorical.R)|
+| Non-parametric tests|Wilcoxon signed test, rank sum test | |
+| Sample size, power| Sample size, power calculation | |
+| Regression analysis| Linear regression, logistic regression | |
+| Survival analysis|Kaplan-Meier curve, log rank tests | |
 
 (EDA: exploratory data analysis)
 
