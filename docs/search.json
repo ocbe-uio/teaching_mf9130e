@@ -368,7 +368,7 @@
     "href": "lab/list_of_commands.html",
     "title": "List of commands",
     "section": "",
-    "text": "Data\n\nData import\n\n\nData manipulation and exploration\n\n\nVisualisation\nWe let x, y be two continuous variables. To create histogram, boxplot, scatterplot, you can use the following commands,\nhist(x)\nboxplot(x)\nplot(x,y)\n\n\n\nHypothesis tests\n\nt-test\n\n\nchi-square tests\n\n\nnon-parametric tests\n\n\n\nRegression\n\nCorrelation\n\n\nLinear regression\n\n\nLogistic regression\n\n\nSurvival analysis"
+    "text": "Data\n\nData import\n\n\nData manipulation and exploration\n\n\nVisualisation\nWe let x, y be two continuous variables. To create histogram, boxplot, scatterplot, you can use the following commands,\nhist(x)\nboxplot(x)\nplot(x,y)\n\n\n\nHypothesis tests\n\nt-test\n\n\nchi-square tests\n\n(Content for Week 2 will come soon!)\n\n\nnon-parametric tests\n\n\n\nRegression\n\nLinear regression\n\n\nLogistic regression\n\n\nSurvival analysis"
   },
   {
     "objectID": "lab/lab_categorical.html",
