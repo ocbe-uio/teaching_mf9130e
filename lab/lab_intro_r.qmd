@@ -1,6 +1,6 @@
 ---
 title: "Introduction to R"
-description: "Basic commands, data types, data import ant export"
+description: "Create a variable, data types, data structure, basic data manipulation, import data"
 format: 
   html:
     code-fold: false

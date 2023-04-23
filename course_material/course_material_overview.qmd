@@ -40,7 +40,7 @@ For the exercises and lab notes we use during the lab sessions, please check the
 | May 8 AM  | Exploratory data analysis, transformation | | | |
 |                  | Non-parametric methods | | | |
 | May 8 PM | Sample size, statistical power          | | | | |
-| May 9 AM | Study design, principles of clinical trials          | | NA | |
+| May 9 AM | Study design, principles of clinical trials          | |  | |
 | May 9 PM | Linear regression I        | |  | |
 | May 10 AM | Linear regression II          | |  | |
 | May 10 PM | Survival analysis          | |  | |

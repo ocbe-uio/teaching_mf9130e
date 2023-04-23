@@ -1,6 +1,6 @@
 ---
 title: "Exploratory data analysis (Part I)"
-description: "Exploring a dataset, basic data manipulation, descriptive statistics"
+description: "Exploring a dataset, descriptive statistics"
 format: 
   html:
     code-fold: false
@@ -8,56 +8,222 @@ format:
 editor: source
 ---
 
+Datasets
+
+* `penguins_complete.csv` ([link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/penguins_complete.csv))
+* `PEFH98-english.csv` ([link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.csv))
+
+R script ([link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/2_eda_part1.R))
 
 ------------------
 
-Might be useful to have an outline and study goals
 
-## Data structure (use `penguins_mini` data as example)
+# Explore a dataset
 
-**Bec student background, it is not necessary to go into too much details**
+In this section, we will introduce some frequently used commands when you first load a dataset. 
 
-**MUST: concept of scalar, vector, matrix and data frame** (dataset exploration put to descriptive and eda)
+We use `penguins` data as an example.
 
-**MUST: numeric, factor, character, logical**
+```{r}
+#| label: load-data-penguins-mini
+#| warning: false
+#| echo: true
 
-## Exploring a dataset
+# read a csv file
+penguins <- read.csv('data/penguins_complete.csv', sep = ',')
+```
 
-head()
+You *can* type `penguins` in the console to print the data; but you will see that it gets hard to read. This is usually the case: you have lots of data that is hard to fit in your screen. 
 
-View()
+Therefore, it is useful to
 
-str()
+* print out a few rows (head of the data);
+* have a list of column names 
+* know the dimension of the dataset (number of observations and features/measurements)
+* produce some summary statistics
 
-colnames()
+We extract the **head** (first several, by default 6) rows of your data. Similarly, you can get the last several rows using `tail()`
 
-dim()
+```{r}
+#| label: summary of dataset
+#| warning: false
+#| echo: true
 
-nrow(), ncol()
+head(penguins)
 
-length() of a vector
+# this is essentially giving the first 6 rows of your data
+# penguins[1:6, ]
+# head(penguins, 10)  gives first 10 rows
+# tail(penguins)
+```
 
-## Basic data manipulation
+In RStudio, you can also use `View()` command to look at your dataset in a tabular form.
 
-only cover base R here; if needed, tidyverse put to eda
+To know what measurements (or feature, variable, parameter) are in the data, you can extract the **column names**. 
 
-by index, \[row, col\]
+```{r}
+#| label: summary of dataset 2
+#| warning: false
+#| echo: true
 
-## Descriptive statistics
+colnames(penguins)
+ncol(penguins)
+```
 
-min, max, median
+To know **how many subjects** are in a dataset, there are a few options. You can find the dimension of the dataset; or find how many rows are in the data. 
 
-IQR
+Alternatively, if you have one variable (say `species`), you can also use `length(species)`.
 
-summary table () of a categorical vector
+```{r}
+#| label: summary of dataset 3
+#| warning: false
+#| echo: true
 
-## Visualisation (only intro, details later)
+dim(penguins)
+nrow(penguins)
+length(penguins$species) # length() gives the size of a vector
+```
 
-focus on baseR solutions 
+Sometimes it is also useful to know what **types of data** it is for each variable. You can either use `str()` (structure) on the dataset; or use `class()` on the variable you are interested in.
+
+```{r}
+#| label: summary of dataset 4
+#| warning: false
+#| echo: true
+
+str(penguins)
+class(penguins$species)
+class(penguins$bill_length_mm)
+```
 
 
 
 
+# Descriptive statistics
+
+### Continuous variable
+
+A continuous variable can take values in a continuous range. Height and weight are examples of this type. Usually the data type in R is `numeric`; if not, you might need to convert it first.
+
+Common summary statistics for continuous variables are 
+
+* extremes (minimum, maximum)
+* average and central tendency (mean, median)
+* quantiles (top 1 percent, bottom 5 percent, IQR - interquartile range)
+
+Let us focus on one continuous variable, `bill_length_mm`. 
+
+```{r}
+#| label: descriptive stat 1
+#| warning: false
+#| echo: true
+
+# create a variable called bill
+bill <- penguins$bill_length_mm
+
+# use the command summary on a continuous variable
+summary(bill)
+```
+
+You see that there are some `NA's`. This means the data is missing for 2 subjects. If we do not remove them before (or tell the functions to remove it), the results will be affected.
+
+```{r}
+#| label: descriptive stat 2
+#| warning: false
+#| echo: true
+
+# compute the min
+min(bill)
+min(bill, na.rm = T) # remove NA
+```
+
+Now we compute the maximum, mean, median, bottom and top 5 percent quantile.
+
+```{r}
+#| label: descriptive stat 3
+#| warning: false
+#| echo: true
+
+max(bill, na.rm = T)
+mean(bill, na.rm = T) 
+median(bill, na.rm = T)
+quantile(bill, 0.05, na.rm = T)
+quantile(bill, 0.95, na.rm = T)
+```
+
+### Categorical variable
+
+Categorical variables take discrete values, such as sex (male and female), smoking habit (frequent smoker or not), age groups.
+
+For categorical variables, the metrics above (mean and median, max and min, quantiles) do not make much sense. We use **counts** and **percentages** instead.
+
+We use the variable `species` and `island` from the penguin data.
+
+```{r}
+#| label: descriptive stat 4
+#| warning: false
+#| echo: true
+
+species <- penguins$species
+island <- penguins$island
+
+# for one variable
+table(species)
+
+# for two variables
+table(species, island)
+
+# to create percentage, divide by number of subjects
+table(species)/length(species)
+```
+
+
+
+
+# Visualization
+
+### Histogram
+
+```{r}
+#| label: histogram
+#| warning: false
+#| echo: true
+
+hist(bill)
+```
+
+
+### Box plot
+
+A boxplot gives the position of 
+
+* median (50th percentile; second quartile)
+* 25th and 75th percentile (first and third quartile)
+* maximum and minimum
+* outliers
+
+```{r}
+#| label: boxplot
+#| warning: false
+#| echo: true
+
+boxplot(bill)
+
+# multiple boxplot together
+boxplot(bill_length_mm ~ species, data = penguins)
+```
+
+
+
+### Scatterplot of two continuous variables
+
+```{r}
+#| label: scatter
+#| warning: false
+#| echo: true
+
+plot(penguins$bill_length_mm, penguins$bill_depth_mm)
+```
 
 
 
@@ -65,6 +231,9 @@ focus on baseR solutions
 
 
 # Examples (exercises with solution)
+
+(Exercises without solution can be found [here](ex_eda_part1.qmd))
+
 ## Exercise 1 (weight)
 
 ### 1a 
@@ -95,6 +264,10 @@ Make a simple descriptive analysis of the variable, what are the mean, median, m
 How to interpret the data?
 
 ```{r}
+#| label: eda-1b
+#| warning: false
+#| echo: true
+
 mean(weight)
 median(weight)
 max(weight)
@@ -110,6 +283,10 @@ summary(weight)
 Make a histogram.
 
 ```{r}
+#| label: eda-1c
+#| warning: false
+#| echo: true
+
 hist(weight)
 ```
 
@@ -118,8 +295,22 @@ hist(weight)
 Make a boxplot. What do the two dots on the top represent?
 
 ```{r}
+#| label: eda-1d
+#| warning: false
+#| echo: true
+
 boxplot(weight)
 ```
+
+They are the largest two points in the dataset. These are outliers in this data. 
+
+
+::: {.callout-tip collapse="true"}
+## (Optional) Outliers in box plot
+
+There are different ways to define outliers. The default box plot in R determines points beyond $Q_1 - 1.5\times IQR$ and $Q_3 + 1.5\times IQR$ are outliers. You can check the values of quartiles using `summary()`, and read up the documentation `?boxplot()`.
+:::
+
 
 
 
@@ -149,11 +340,16 @@ If you have problem with `.dta` data format, you can also use `PEFH98-english.cs
 Pay attention to how `gender` is coded. We might have to modify it. 
 
 ```{r}
+#| label: eda-2a
+#| warning: false
+#| echo: true
+
 # locate your datafile, set the path to your data
-lung_data <- haven::read_dta('data/PEFH98-english.dta')
+# lung_data <- haven::read_dta('data/PEFH98-english.dta')
+lung_data <- read.csv('data/PEFH98-english.csv', sep = ',')
 head(lung_data)
 
-# gender is coded as 1 and 2, but it looks like it's not a category but a 'double' (number)
+# gender is coded as 1 and 2, but it looks like it's not a category but an integer (number)
 # we code it explicitly fo readability
 lung_data$gender <- factor(lung_data$gender, 
                            levels = c('1','2'),
@@ -167,6 +363,10 @@ head(lung_data)
 How many observations are there (number of subjects)? How do you get a list of variable names from your dataset?
 
 ```{r}
+#| label: eda-2b
+#| warning: false
+#| echo: true
+
 nrow(lung_data)
 colnames(lung_data)
 ```
@@ -182,12 +382,20 @@ pefstam
 ```
 
 ```{r}
+#| label: eda-2b2
+#| warning: false
+#| echo: true
+
 hist(lung_data$height)
 ```
 
 We repeat it for the other 4 variables. We can put them more compactly,
 
 ```{r}
+#| label: eda-2b3
+#| warning: false
+#| echo: true
+
 par(mfrow = c(2, 2)) 
 # we use this line to display (2 rows 2 columns)
 # by default it is 1 row 1 column
@@ -210,6 +418,10 @@ Make histograms for the variables `height` and `pefmean` for men and women separ
 What conclusion can you draw? 
 
 ```{r}
+#| label: eda-2c
+#| warning: false
+#| echo: true
+
 height_f <- lung_data$height[lung_data$gender == 'female']
 height_m <- lung_data$height[lung_data$gender == 'male']
 
@@ -229,6 +441,10 @@ hist(height_m, main = 'Height: male', xlab = 'Height (cm)',
 Similarly, histogram for `pefmean` can be done in the same way.
 
 ```{r}
+#| label: eda-2c2
+#| warning: false
+#| echo: true
+
 pefmean_f <- lung_data$pefmean[lung_data$gender == 'female']
 pefmean_m <- lung_data$pefmean[lung_data$gender == 'male']
 
@@ -240,6 +456,10 @@ hist(pefmean_m)
 Now we can make some boxplots
 
 ```{r}
+#| label: eda-2c3
+#| warning: false
+#| echo: true
+
 par(mfrow = c(1, 2))
 boxplot(height ~ gender, data = lung_data, main = 'Height vs Gender')
 
@@ -258,6 +478,10 @@ Make three scatterplots to compare
 What association do you see?
 
 ```{r}
+#| label: eda-2d
+#| warning: false
+#| echo: true
+
 # pefmean height
 plot(lung_data$pefmean, lung_data$height)
 
@@ -273,6 +497,10 @@ plot(lung_data$pefmean, lung_data$height,
 
 
 ```{r}
+#| label: eda-2d2
+#| warning: false
+#| echo: true
+
 par(mfrow = c(1, 2))
 # pefmean weight
 plot(lung_data$pefmean, lung_data$weight, 

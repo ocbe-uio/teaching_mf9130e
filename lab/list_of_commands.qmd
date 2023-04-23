@@ -134,9 +134,45 @@ age[sex == 'female']
 ```
 
 
+# Descriptive statistics
+
+Continuous variables
+
+```{r}
+#| label: summary stat 1
+#| echo: true
+#| eval: false
+
+# continuous variable x
+summary(x)
+min(x)
+max(x)
+mean(x)
+median(x)
+quantile(x, 0.95)
+IQR(x) # interquartile range
+```
+
+Categorical variables: count and percentage
+
+```{r}
+#| label: summary stat 2
+#| echo: true
+#| eval: false
+
+# continuous variable z
+# subjects per category in x
+table(x)
+# percentage
+table(x)/length(x) 
+```
+
+
+
+
 # Visualisation
 
-We let `x, y` be two continuous variables. To create **histogram, boxplot, scatterplot**, you can use the following commands,
+We let `x, y` be two continuous variables, and `z` be categorical. To create **histogram, boxplot, scatterplot**, you can use the following commands,
 
 ```{r}
 #| label: visualisation
@@ -145,6 +181,7 @@ We let `x, y` be two continuous variables. To create **histogram, boxplot, scatt
 
 hist(x) # histogram
 boxplot(x) # boxplot 
+boxplot(x ~ z, data = data) # boxplot for two variables, where z is categorical
 plot(x,y)  # scatter plot of x, y
 ```
 

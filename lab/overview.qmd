@@ -52,12 +52,12 @@ To help you with the exercises and homework, we have created this [list of comma
 
 
 
-| Lab notes   |  Topics             | Exercises |
+| Lab notes   |  Topics             | Links |
 |:---------------:|:----------:|:------------------:|
 | [Getting started in Rstudio](lab_intro_rstudio.qmd) | Create new project, workspace navigation  |  |
-| [Introduction to R](lab_intro_r.qmd) | Create variable, data types, data import and export  | [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/1_intro_r.R) |
-| [EDA I](lab_eda_part1.qmd) | Exploring a dataset, basic data manipulation, descriptive statistics | [exercise](ex_eda_part1.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/2_eda_part1.R) |
-| [EDA II](lab_eda_part2.qmd)| (Week 2) More on data manipulation, visualisation|  |
+| [Introduction to R](lab_intro_r.qmd) | Create a variable, data types, data structure, basic data manipulation, import data  | [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/1_intro_r.R) |
+| [EDA I](lab_eda_part1.qmd) | Exploring a dataset, descriptive statistics | [exercise](ex_eda_part1.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/2_eda_part1.R) |
+| EDA II | (Week 2) More on data manipulation, visualisation|  |
 | [t-test](lab_ttest.qmd)| One sample, two sample t-tests | [exercise](ex_ttest.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/4_ttest.R) |
 | [Categorical data analysis](lab_categorical.qmd)| Proportions, contingency table, chi-square test | [exercise](ex_categorical.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/5_categorical.R)|
 | Non-parametric tests|Wilcoxon signed test, rank sum test | |

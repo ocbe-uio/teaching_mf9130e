@@ -1,5 +1,72 @@
 # Exploratory data analysis (part 1, part2)
-# some content
+
+# set the path to your data first
+penguins <- read.csv('data/penguins_complete.csv', sep = ',')
+
+
+# explore a dataset -----
+head(penguins)
+# penguins[1:6, ]
+# head(penguins, 10)  gives first 10 rows
+# tail(penguins)
+
+colnames(penguins)
+ncol(penguins)
+
+dim(penguins)
+nrow(penguins)
+length(penguins$species) # length() gives the size of a vector
+
+
+
+str(penguins)
+class(penguins$species)
+class(penguins$bill_length_mm)
+
+
+# descriptive statistics ----
+# create a variable called bill
+bill <- penguins$bill_length_mm
+
+# use the command summary on a continuous variable
+summary(bill)
+
+# compute the min
+min(bill)
+min(bill, na.rm = T) # remove NA
+
+
+
+max(bill, na.rm = T)
+mean(bill, na.rm = T) 
+median(bill, na.rm = T)
+quantile(bill, 0.05, na.rm = T)
+quantile(bill, 0.95, na.rm = T)
+
+
+
+species <- penguins$species
+island <- penguins$island
+
+# for one variable
+table(species)
+
+# for two variables
+table(species, island)
+
+# to create percentage, divide by number of subjects
+table(species)/length(species)
+
+
+# visualisation ----
+hist(bill)
+
+boxplot(bill)
+
+# multiple boxplot together
+boxplot(bill_length_mm ~ species, data = penguins)
+
+plot(penguins$bill_length_mm, penguins$bill_depth_mm)
 
 
 
