@@ -1,14 +1,11 @@
 ---
-title: "Diagnostic tests"
-description: "bla bla"
+title: "Sensitivity and Specificity of COVID-19 test"
 format: 
   html:
     code-fold: false
     code-tools: true
 editor: source
 ---
-
-# Sensitivity and Specificity of COVID-19 test
 
 In this R lab we will practice with the concepts of sensitivity and specificity of COVID-19 test. The actual sensitivity and specificity values can be very different for different types of tests (for example **RT-PCR** vs **rapid antigent tests**). Besides the technical performance of the test, other aspects like changes in viral load along the disease course and between individuals can also play a large roles. For this exercise, we will assume the following values:
 
@@ -25,6 +22,8 @@ spec_pcr=0.99 #specificity of the RT-PCR test
 sens_ant=0.75 #sensitivity of the rapid antigen test
 spec_ant=0.98 #specificity of the rapid antigen test
 ```
+
+## Calculation of PPV and NPV
 
 Next, we will compute **PPV** and **NPV** for both COVID-19 test types. We can use the formulas obtained using Bayes' law, but besides the values of sensitivity and specificity of each test, we will need the prevalence of the population that we are testing.
 
@@ -116,11 +115,16 @@ Generate the same plot as above for the rapid antigen test.
 
 ## Visualization using personograph
 
-In this section we will use a package called personograph to further visualize the influence of sensitivity, specificity and prevalence on the interpretetion of COVID-19 test results. To install the package run the following commands.
+In this section we will use a package called personograph to further visualize the influence of sensitivity, specificity and prevalence on the interpretetion of COVID-19 test results. To install the package run the following commands
+
+`install.packages("devtools")`
+
+if succesful continue with this one
+
+`devtools::install_github("joelkuiper/personograph")`.
 
 ```{r}
-#install.packages("devtools")
-#devtools::install_github("joelkuiper/personograph")
+# if the package personnograph is correctly installed, you can load it with the following command
 library(personograph)
 ```
 
@@ -140,7 +144,7 @@ colorlist = list(FN = "darkred", TP = "red", FP = "darkgreen", TN = "green")
 
 ```
 
-Next, we use the command personograph calling the list
+Next, we call the command personograph using the two lists we generated before as inputs. In addition, we specify the number of person incons to be displayed, the x and y dimensions of the plot and a figure title.
 
 ```{r}
 suppressWarnings(

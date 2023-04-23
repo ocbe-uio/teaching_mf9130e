@@ -63,7 +63,7 @@ The frequentist view of probability interprets the frequency of an event in a la
 Giving birth to a girl or a boy is perceived as a random event. This table contains the frequencies of occurrence of the event "giving birth to a girl" in Norway during 2019-2022
 
 | Year | Total number of births | Number of boys | Number of girls | Percentage of girls |
-|---------------|---------------|---------------|---------------|---------------|
+|------|------------------------|----------------|-----------------|---------------------|
 | 2022 | 51480                  | 26445          | 25035           | 48.6                |
 | 2021 | 56060                  | 28684          | 27376           | 48.8                |
 | 2020 | 52979                  | 27063          | 25916           | 48.9                |
@@ -125,7 +125,7 @@ Diastolic blood pressure
 Venn diagrams are often used to illustrate events. In the figures below A and B represent different events and S is the sample space.
 
 |                                                    |                                                    |
-|------------------------------------|------------------------------------|
+|----------------------------------------------------|----------------------------------------------------|
 | ![](images/Venn_diagrams_eventA.png){width="25cm"} | ![](images/Venn_diagrams_eventB.png){width="25cm"} |
 
 Operators on events:
@@ -137,11 +137,11 @@ Operators on events:
 -   Complement: $\bar{A}$
 
 |                                                          |                                                                   |
-|-----------------------------------|-------------------------------------|
+|----------------------------------------------------------|-------------------------------------------------------------------|
 | ![](images/Venn_diagrams_AandB-02.png) Union: $A \cup B$ | ![](images/Venn_diagrams_AinterB-01.png) Intersection: $A \cap B$ |
 
 |                                                                    |                                                                                          |
-|----------------------------------|--------------------------------------|
+|--------------------------------------------------------------------|------------------------------------------------------------------------------------------|
 | ![](images/Venn_diagrams_Acomplement-01.png) Complement: $\bar{A}$ | ![](images/Venn_diagrams_AinterBcomplement-01.png) Combining operators: $A \cap \bar{B}$ |
 
 ### Probability calculation rules
@@ -266,12 +266,14 @@ $$P(A \cap B) = P(A) \times P(B)$$
 
 Two children are born, which is the probability that genders are different?
 
+```{=tex}
 \begin{aligned}
 P(\text{girl and boy}) & =P(\text{girl then boy}) + P(\text{boy then girl})\\
 & = P(\text{first is girl}) \times P(\text{second is boy}) +\\
 &~~~~+ P(\text{first is boy}) \times P(\text{second is girl})\\
 & = 1/2 \times 1/2 + 1^/2 \times 1/2 = 0.50
 \end{aligned}
+```
 :::
 
 ::: {.callout-note collapse="true"}
@@ -307,8 +309,7 @@ Becase the two events $(A \cap B)$ and $(A \cap \bar{B})$ are disjunct, we can w
 
 $$
 P(A) = P(A \cap B) + P(A \cap \bar{B})
-$$ 
-Using the multiplicative rule, we get the **law of total probability**:
+$$ Using the multiplicative rule, we get the **law of total probability**:
 
 $$
 P(A) = P(A|B)P(B) + P(A| \bar{B})P( \bar{B})

@@ -111,9 +111,9 @@ For a binomial distribution, the mean (or expected value) is $np$ and the varian
 ::: {.callout-note collapse="true"}
 #### Example: Number of positive tests
 
-Let's say $p=0.15$ is the probability that a person taking a test for a certain disease get a positive result. A certain day, we are going to do $n=8$ such tests. The number of positive test in a sequence of of 8 test is random variable that is binomially distributed, often written Bin(8,0.15). This binomial distribution can be represented as below.
+Let's say $p=0.15$ is the probability that a person taking a test for a certain disease get a positive result. A certain day, we are going to do $n=8$ such tests. The number of positive test in a sequence of of 8 test is random variable that is binomially distributed, often written Binom(8,0.15). This binomial distribution can be represented as below.
 
-![Bin(8,0.15)](images/binomial_n=8_p=015-01.png){fig-align="center"}
+![Binom(8,0.15)](images/binomial_n=8_p=015-01.png){fig-align="center"}
 
 -   What is the probability that you get 2 or more positives?
 -   What is the expected number of positive tests (the mean)?
