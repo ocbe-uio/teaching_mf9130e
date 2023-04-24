@@ -23,7 +23,7 @@ You should have a <u>working solution of R</u> (either installed on your own lap
 It would also be helpful if you <u>familiarize yourself with the course website</u>. 
 
 * [Get Started](https://ocbe-uio.github.io/teaching_mf9130e/get_started/get_started.html) provides some information about software installation, where to download data and code, and some resources.
-* [Course material](course_material/course_material_overview.html) provides an overview of the material and corresponding links for the topics we will cover.
+* [Course material](course_material/course_material_overview.html) provides an overview of the material and corresponding links for each session.
 * [R Lab and Code](https://ocbe-uio.github.io/teaching_mf9130e/lab/overview.html) hosts the lab session notes. 
 
 
