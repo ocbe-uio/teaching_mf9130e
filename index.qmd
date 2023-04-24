@@ -23,7 +23,7 @@ You should have a <u>working solution of R</u> (either installed on your own lap
 It would also be helpful if you <u>familiarize yourself with the course website</u>. 
 
 * [Get Started](https://ocbe-uio.github.io/teaching_mf9130e/get_started/get_started.html) provides some information about software installation, where to download data and code, and some resources.
-* [Course material](https://ocbe-uio.github.io/teaching_mf9130e/course_material/course_material_overview.html) provides an overview and links for the topics we will cover.
+* [Course material](course_material/course_material_overview.html) provides an overview of the material and corresponding links for the topics we will cover.
 * [R Lab and Code](https://ocbe-uio.github.io/teaching_mf9130e/lab/overview.html) hosts the lab session notes. 
 
 
@@ -38,7 +38,7 @@ You can find the **official course schedule** provided by University of Oslo [he
 | Date |  Time   |   Topic                  |  Place        |
 |:----:|:-------:|:------------------------:|:-------------:|
 | Apr 24 |12:45-16:00 | Lecture: **course introduction, data and descriptive statistics** | DME, Lille auditorium|
-| Apr 25 | 08:30-11:45 | Guided lab session | DME, Auditorium 13|
+| Apr 25 | 08:30-11:45 | Guided lab session: **introduction to R, descriptive statistics with R** | DME, Auditorium 13|
 | Apr 25 | 12:45-16:00 | Lecture: **probability, Bayes law, diagnostic tests, distributions** | DME, Auditorium 13|
 | Apr 26 | 08:30-11:45 | Guided lab session | DME, Store auditorium|
 | Apr 26 | 12:45-16:00 | Lecture: **statistical inference, hypothesis testing, confidence intervals, t-tests** | DME, Store auditorium|
