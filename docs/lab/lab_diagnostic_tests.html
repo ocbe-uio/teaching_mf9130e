@@ -177,6 +177,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#effect-of-prevalence" id="toc-effect-of-prevalence" class="nav-link" data-scroll-target="#effect-of-prevalence">Effect of Prevalence</a></li>
   <li><a href="#exercise-prevalence-plot-for-rapid-antigen-test" id="toc-exercise-prevalence-plot-for-rapid-antigen-test" class="nav-link" data-scroll-target="#exercise-prevalence-plot-for-rapid-antigen-test">Exercise: Prevalence plot for rapid antigen test</a></li>
   <li><a href="#visualization-using-personograph" id="toc-visualization-using-personograph" class="nav-link" data-scroll-target="#visualization-using-personograph">Visualization using personograph</a></li>
+  <li><a href="#exercise-personograph-plots-for-rapid-antigen-test" id="toc-exercise-personograph-plots-for-rapid-antigen-test" class="nav-link" data-scroll-target="#exercise-personograph-plots-for-rapid-antigen-test">Exercise: Personograph plots for rapid antigen test</a></li>
+  <li><a href="#exercise-hiv-testing" id="toc-exercise-hiv-testing" class="nav-link" data-scroll-target="#exercise-hiv-testing">Exercise: HIV testing</a></li>
   </ul>
 </nav>
     </div>
@@ -199,12 +201,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>In this R lab we will practice with the concepts of sensitivity and specificity of COVID-19 test. The actual sensitivity and specificity values can be very different for different types of tests (for example <strong>RT-PCR</strong> vs <strong>rapid antigent tests</strong>). Besides the technical performance of the test, other aspects like changes in viral load along the disease course and between individuals can also play a large roles. For this exercise, we will assume the following values:</p>
+<p>In this R lab we will practice with the concepts of sensitivity and specificity of COVID-19 test. The actual sensitivity and specificity values can be very different for different types of tests (for example <strong>RT-PCR</strong> vs <strong>rapid antigent tests</strong>). Besides the technical performance of the test, other aspects like changes in viral load along the disease course and between individuals can also play large roles. For this exercise, we will assume the following values:</p>
 <ul>
 <li><p>RT-PCR test: sensitivity 95% and specificity 99%.</p></li>
-<li><p>Rapid antigen test: sensitivity 75% and specificity of 98%.</p></li>
+<li><p>Rapid antigen test: sensitivity 75% and specificity 98%.</p></li>
 </ul>
-<p>We start by saving these values in variables</p>
+<p>We start by saving these values in variables.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>sens_pcr<span class="ot">=</span><span class="fl">0.95</span> <span class="co">#sensitivity of the RT-PCR test</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>spec_pcr<span class="ot">=</span><span class="fl">0.99</span> <span class="co">#specificity of the RT-PCR test</span></span>
@@ -216,10 +218,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="calculation-of-ppv-and-npv">Calculation of PPV and NPV</h2>
 <p>Next, we will compute <strong>PPV</strong> and <strong>NPV</strong> for both COVID-19 test types. We can use the formulas obtained using Bayes’ law, but besides the values of sensitivity and specificity of each test, we will need the prevalence of the population that we are testing.</p>
 <p><span class="math display">\[
-PPV = \frac{\text{sens} \cdot \text{prev}}{\text{sens} \cdot \text{prev} + (1-\text{spes}) \cdot (1-\text{prev})}
+PPV = \frac{\text{sens} \cdot \text{prev}}{\text{sens} \cdot \text{prev} + (1-\text{spec}) \cdot (1-\text{prev})}
 \]</span></p>
 <p><span class="math display">\[
-NPV = \frac{\text{spes} \cdot (1-\text{prev}) }{(1-\text{sens}) \cdot \text{prev} + \text{spes} \cdot (1-\text{prev})}
+NPV = \frac{\text{spec} \cdot (1-\text{prev}) }{(1-\text{sens}) \cdot \text{prev} + \text{spec} \cdot (1-\text{prev})}
 \]</span></p>
 <p>Let us first assume a relatively high COVID-19 prevalence of 10% and compute PPV and NPV for the RT-PCR test.</p>
 <div class="cell">
@@ -269,7 +271,7 @@ NPV = \frac{\text{spes} \cdot (1-\text{prev}) }{(1-\text{sens}) \cdot \text{prev
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## RT-PCR test</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># vector containing different prevalence values</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>prev_vector<span class="ot">=</span><span class="fu">c</span>(<span class="fl">0.001</span>,<span class="fl">0.005</span>,<span class="fl">0.01</span>,<span class="fl">0.025</span>,<span class="fl">0.05</span>,<span class="fl">0.075</span>,<span class="fl">0.1</span>) </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>prev_vector<span class="ot">=</span><span class="fu">c</span>(<span class="fl">0.001</span>,<span class="fl">0.005</span>,<span class="fl">0.01</span>,<span class="fl">0.025</span>,<span class="fl">0.05</span>,<span class="fl">0.075</span>,<span class="fl">0.1</span>,<span class="fl">0.2</span>) </span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#compute PPV for RT-PCR test</span></span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>PPV_pcr<span class="ot">=</span>(sens_pcr <span class="sc">*</span> prev_vector)<span class="sc">/</span>(sens_pcr<span class="sc">*</span>prev_vector <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>spec_pcr)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev_vector))  </span>
@@ -278,31 +280,36 @@ NPV = \frac{\text{spes} \cdot (1-\text{prev}) }{(1-\text{sens}) \cdot \text{prev
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(PPV_pcr) <span class="co">#print PPV for RT-PCR test</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.08683729 0.32312925 0.48969072 0.70895522 0.83333333 0.88509317 0.91346154</code></pre>
+<pre><code>[1] 0.08683729 0.32312925 0.48969072 0.70895522 0.83333333 0.88509317 0.91346154
+[8] 0.95959596</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(NPV_pcr) <span class="co">#print NPV for RT-PCR test</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9999494 0.9997463 0.9994901 0.9987067 0.9973489 0.9959217 0.9944196</code></pre>
+<pre><code>[1] 0.9999494 0.9997463 0.9994901 0.9987067 0.9973489 0.9959217 0.9944196
+[8] 0.9875312</code></pre>
 </div>
 </div>
 <p>Note that the outputs are vectors containing all the PPV and NPV values for different prevalences. We can easily make a plot to observe how the PPV value changes with the prevalence.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(prev_vector, PPV_pcr, </span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"RT-PCR test"</span>, </span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Prevalence"</span>, </span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"PPV"</span>,</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">type=</span><span class="st">'o'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(prev_vector, PPV_pcr,</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="co">#set the y axis range between 0 and 1</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"RT-PCR test"</span>, </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Prevalence"</span>, </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"PPV"</span>,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">type=</span><span class="st">'o'</span>)  <span class="co"># plot the data points with circles and joint them with lines</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="lab_diagnostic_tests_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<p>We see that for low prevalence, PPV becomes very low. This can be a problem in mass COVID-19 screening as the majority of test lead to false positives.</p>
 <p>Next, we do a plot to observe how the NPV changes with the prevalence</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(prev_vector, NPV_pcr, </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"RT-PCR test"</span>, </span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Prevalence"</span>, </span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"NPV"</span>,</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">type=</span><span class="st">'o'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="co">#set the y axis range between 0 and 1</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"RT-PCR test"</span>, </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Prevalence"</span>, </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"NPV"</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">type=</span><span class="st">'o'</span>) <span class="co"># plot the data points with circles and joint them with lines</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="lab_diagnostic_tests_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -314,11 +321,13 @@ NPV = \frac{\text{spes} \cdot (1-\text{prev}) }{(1-\text{sens}) \cdot \text{prev
 </section>
 <section id="visualization-using-personograph" class="level2">
 <h2 class="anchored" data-anchor-id="visualization-using-personograph">Visualization using personograph</h2>
-<p>In this section we will use a package called personograph to further visualize the influence of sensitivity, specificity and prevalence on the interpretetion of COVID-19 test results. To install the package run the following commands.</p>
+<p>In this section we will use a package called <code>personograph</code> to further visualize the influence of sensitivity, specificity and prevalence on the interpretation of COVID-19 test results. To install the package run the following command:</p>
+<p><code>install.packages("devtools")</code></p>
+<p>If successful, continue with this command:</p>
+<p><code>devtools::install_github("joelkuiper/personograph")</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("devtools")</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#devtools::install_github("joelkuiper/personograph")</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(personograph)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if the package personnograph is correctly installed, you can load it with the following command</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(personograph)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: grImport</code></pre>
 </div>
@@ -330,46 +339,120 @@ NPV = \frac{\text{spes} \cdot (1-\text{prev}) }{(1-\text{sens}) \cdot \text{prev
 </div>
 </div>
 <p>If successful, you can continue and generate the plots. But if you run into problems installing the package, you have to try solving those before.</p>
-<p>The input to the package personograph are two lists, one containing the number of false negatives (FN), true positives (TP), false positive (FP) and true negatives (TN); The second list contain the colors of FN, TP, FP and TN. In the next chunck we generate both list</p>
+<p>The inputs to the package personograph are two lists, one containing the number of false negatives (FN), true positives (TP), false positive (FP) and true negatives (TN); The second list contain the colors we want to use to plot FN, TP, FP and TN. In the next code chunk, we define the prevalence, compute PPV, NPV and generate both lists:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>prev<span class="ot">=</span><span class="fl">0.2</span> <span class="co">#prevalence value</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># building a list with the values of FN, TP, FP and TN</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">list</span>(<span class="at">FN =</span> (<span class="dv">1</span><span class="sc">-</span>sens_pcr)<span class="sc">*</span>prev, <span class="at">TP =</span> sens_pcr<span class="sc">*</span>prev, <span class="at">FP =</span> (<span class="dv">1</span><span class="sc">-</span>spec_pcr)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev), <span class="at">TN =</span> spec_pcr<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev))</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># bulding a list containing the colors that we want to plot FN, TP, FP and TN </span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>colorlist <span class="ot">=</span> <span class="fu">list</span>(<span class="at">FN =</span> <span class="st">"darkred"</span>, <span class="at">TP =</span> <span class="st">"red"</span>, <span class="at">FP =</span> <span class="st">"darkgreen"</span>, <span class="at">TN =</span> <span class="st">"green"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co">#compute PPV for RT-PCR test</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>PPV_pcr<span class="ot">=</span>(sens_pcr <span class="sc">*</span> prev)<span class="sc">/</span>(sens_pcr<span class="sc">*</span>prev <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>spec_pcr)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev))  </span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co">#compute NPV for RT-PCR test</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>NPV_pcr<span class="ot">=</span>(spec_pcr <span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span> prev))<span class="sc">/</span>((<span class="dv">1</span><span class="sc">-</span>sens_pcr)<span class="sc">*</span>prev <span class="sc">+</span> spec_pcr<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev)) </span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co"># building a list with the values of FN, TP, FP and TN</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">list</span>(<span class="at">FN =</span> (<span class="dv">1</span><span class="sc">-</span>sens_pcr)<span class="sc">*</span>prev, <span class="at">TP =</span> sens_pcr<span class="sc">*</span>prev, <span class="at">FP =</span> (<span class="dv">1</span><span class="sc">-</span>spec_pcr)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev), <span class="at">TN =</span> spec_pcr<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev))</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="co"># bulding a list containing the colors that we want to plot FN, TP, FP and TN </span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>colorlist <span class="ot">=</span> <span class="fu">list</span>(<span class="at">FN =</span> <span class="st">"darkred"</span>, <span class="at">TP =</span> <span class="st">"red"</span>, <span class="at">FP =</span> <span class="st">"darkgreen"</span>, <span class="at">TN =</span> <span class="st">"green"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Next, we call the command personograph using the two lists we generated before as inputs. In addition, we specify the number of person incons to be displayed, the x and y dimensions of the plot and a figure title.</p>
+<p>Next, we run the command <code>personograph</code> using the two lists we generated before as inputs. In addition, we specify the total number of person icons to be displayed, the x and y dimensions of the plot and a figure title.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressWarnings</span>(</span>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressWarnings</span>( <span class="co"># we use this command to suppress an output warning</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">personograph</span>(data, </span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">colors =</span> colorlist, </span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">fig.title =</span> <span class="fu">paste0</span>(<span class="st">"PPV = "</span>, <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>PPV_pcr), <span class="st">"%, NPV = "</span>, <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>NPV_pcr), <span class="st">"%"</span>),</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">n.icons =</span> <span class="dv">400</span>, </span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">dimensions =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">20</span>))</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">n.icons =</span> <span class="dv">400</span>, </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">dimensions =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">20</span>),</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">fig.title =</span> <span class="fu">paste0</span>(<span class="st">"PPV = "</span>, <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>PPV_pcr), <span class="st">"%, NPV = "</span>, <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>NPV_pcr), <span class="st">"%"</span>)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>             )</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="lab_diagnostic_tests_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<p>We repeat the plot with a lower prevalence of 1%.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>prev<span class="ot">=</span><span class="fl">0.05</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">list</span>(<span class="at">FN =</span> (<span class="dv">1</span><span class="sc">-</span>sens_ant)<span class="sc">*</span>prev, <span class="at">TP =</span> sens_ant<span class="sc">*</span>prev, <span class="at">FP =</span> (<span class="dv">1</span><span class="sc">-</span>spec_ant)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev), <span class="at">TN =</span> spec_ant<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev))</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>colorlist <span class="ot">=</span> <span class="fu">list</span>(<span class="at">FN =</span> <span class="st">"darkred"</span>, <span class="at">TP =</span> <span class="st">"red"</span>, <span class="at">FP =</span> <span class="st">"darkgreen"</span>, <span class="at">TN =</span> <span class="st">"green"</span>)</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressWarnings</span>(</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="fu">personograph</span>(data, </span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">colors =</span> colorlist, </span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">fig.title =</span> <span class="fu">paste0</span>(<span class="st">"PPV = "</span>, <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>PPV_ant), <span class="st">"%, NPV = "</span>, <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>NPV_ant), <span class="st">"%"</span>),</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>             <span class="at">n.icons =</span> <span class="dv">400</span>, </span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>             <span class="at">dimensions =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">20</span>)</span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>prev<span class="ot">=</span><span class="fl">0.01</span> <span class="co">#prevalence value</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">#compute PPV for RT-PCR test</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>PPV_pcr<span class="ot">=</span>(sens_pcr <span class="sc">*</span> prev)<span class="sc">/</span>(sens_pcr<span class="sc">*</span>prev <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>spec_pcr)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev))  </span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co">#compute NPV for RT-PCR test</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>NPV_pcr<span class="ot">=</span>(spec_pcr <span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span> prev))<span class="sc">/</span>((<span class="dv">1</span><span class="sc">-</span>sens_pcr)<span class="sc">*</span>prev <span class="sc">+</span> spec_pcr<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev)) </span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="co"># building a list with the values of FN, TP, FP and TN</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">list</span>(<span class="at">FN =</span> (<span class="dv">1</span><span class="sc">-</span>sens_pcr)<span class="sc">*</span>prev, <span class="at">TP =</span> sens_pcr<span class="sc">*</span>prev, <span class="at">FP =</span> (<span class="dv">1</span><span class="sc">-</span>spec_pcr)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev), <span class="at">TN =</span> spec_pcr<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev))</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="co"># bulding a list containing the colors that we want to plot FN, TP, FP and TN </span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>colorlist <span class="ot">=</span> <span class="fu">list</span>(<span class="at">FN =</span> <span class="st">"darkred"</span>, <span class="at">TP =</span> <span class="st">"red"</span>, <span class="at">FP =</span> <span class="st">"darkgreen"</span>, <span class="at">TN =</span> <span class="st">"green"</span>)</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressWarnings</span>( <span class="co"># we use this command to suppress an output warning</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="fu">personograph</span>(data, </span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>             <span class="at">colors =</span> colorlist, </span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>             <span class="at">n.icons =</span> <span class="dv">400</span>, </span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>             <span class="at">dimensions =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">20</span>),</span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>             <span class="at">fig.title =</span> <span class="fu">paste0</span>(<span class="st">"PPV = "</span>, <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>PPV_pcr), <span class="st">"%, NPV = "</span>, <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>NPV_pcr), <span class="st">"%"</span>)</span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>             )</span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="lab_diagnostic_tests_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+</section>
+<section id="exercise-personograph-plots-for-rapid-antigen-test" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-personograph-plots-for-rapid-antigen-test">Exercise: Personograph plots for rapid antigen test</h2>
+<p>Generate the same plots as above for the rapid antigen test.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>prev<span class="ot">=</span><span class="fl">0.2</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">list</span>(<span class="at">FN =</span> (<span class="dv">1</span><span class="sc">-</span>sens_ant)<span class="sc">*</span>prev, <span class="at">TP =</span> sens_ant<span class="sc">*</span>prev, <span class="at">FP =</span> (<span class="dv">1</span><span class="sc">-</span>spec_ant)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev), <span class="at">TN =</span> spec_ant<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev))</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>colorlist <span class="ot">=</span> <span class="fu">list</span>(<span class="at">FN =</span> <span class="st">"darkred"</span>, <span class="at">TP =</span> <span class="st">"red"</span>, <span class="at">FP =</span> <span class="st">"darkgreen"</span>, <span class="at">TN =</span> <span class="st">"green"</span>)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co">#compute PPV for RT-PCR test</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>PPV_ant<span class="ot">=</span>(sens_ant <span class="sc">*</span> prev)<span class="sc">/</span>(sens_ant<span class="sc">*</span>prev <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>spec_ant)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev))  </span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co">#compute NPV for RT-PCR test</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>NPV_ant<span class="ot">=</span>(spec_ant <span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span> prev))<span class="sc">/</span>((<span class="dv">1</span><span class="sc">-</span>sens_ant)<span class="sc">*</span>prev <span class="sc">+</span> spec_ant<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev)) </span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressWarnings</span>( <span class="co"># we use this to suppress a output warning</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="fu">personograph</span>(data, </span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>             <span class="at">colors =</span> colorlist,</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>             <span class="at">n.icons =</span> <span class="dv">400</span>, </span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>             <span class="at">dimensions =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">20</span>),</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>             <span class="at">fig.title =</span> <span class="fu">paste0</span>(<span class="st">"PPV = "</span>, <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>PPV_ant), <span class="st">"%, NPV = "</span>, <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>NPV_ant), <span class="st">"%"</span>)</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>             </span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab_diagnostic_tests_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>prev<span class="ot">=</span><span class="fl">0.01</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">list</span>(<span class="at">FN =</span> (<span class="dv">1</span><span class="sc">-</span>sens_ant)<span class="sc">*</span>prev, <span class="at">TP =</span> sens_ant<span class="sc">*</span>prev, <span class="at">FP =</span> (<span class="dv">1</span><span class="sc">-</span>spec_ant)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev), <span class="at">TN =</span> spec_ant<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev))</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>colorlist <span class="ot">=</span> <span class="fu">list</span>(<span class="at">FN =</span> <span class="st">"darkred"</span>, <span class="at">TP =</span> <span class="st">"red"</span>, <span class="at">FP =</span> <span class="st">"darkgreen"</span>, <span class="at">TN =</span> <span class="st">"green"</span>)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co">#compute PPV for RT-PCR test</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>PPV_ant<span class="ot">=</span>(sens_ant <span class="sc">*</span> prev)<span class="sc">/</span>(sens_ant<span class="sc">*</span>prev <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>spec_ant)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev))  </span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="co">#compute NPV for RT-PCR test</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>NPV_ant<span class="ot">=</span>(spec_ant <span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span> prev))<span class="sc">/</span>((<span class="dv">1</span><span class="sc">-</span>sens_ant)<span class="sc">*</span>prev <span class="sc">+</span> spec_ant<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev)) </span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressWarnings</span>( <span class="co"># we use this to suppress a output warning</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="fu">personograph</span>(data, </span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>             <span class="at">colors =</span> colorlist,</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>             <span class="at">n.icons =</span> <span class="dv">400</span>, </span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>             <span class="at">dimensions =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">20</span>),</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>             <span class="at">fig.title =</span> <span class="fu">paste0</span>(<span class="st">"PPV = "</span>, <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>PPV_ant), <span class="st">"%, NPV = "</span>, <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>NPV_ant), <span class="st">"%"</span>)</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>             </span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab_diagnostic_tests_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="exercise-hiv-testing" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-hiv-testing">Exercise: HIV testing</h2>
+<p>Repeat the whole analysis done for COVID-19 tests for a HIV test with sensitivity 98% and specificity 99.8% (see example in notes about Evaluation of Diagnostic Tests).</p>
 
 
 <!-- -->
@@ -525,173 +608,253 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb23" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Sensitivity and Specificity of COVID-19 test"</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: false</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> source</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>In this R lab we will practice with the concepts of sensitivity and specificity of COVID-19 test. The actual sensitivity and specificity values can be very different for different types of tests (for example **RT-PCR** vs **rapid antigent tests**). Besides the technical performance of the test, other aspects like changes in viral load along the disease course and between individuals can also play a large roles. For this exercise, we will assume the following values:</span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>RT-PCR test: sensitivity 95% and specificity 99%.</span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Rapid antigen test: sensitivity 75% and specificity of 98%.</span>
-<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>We start by saving these values in variables</span>
-<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>sens_pcr<span class="ot">=</span><span class="fl">0.95</span> <span class="co">#sensitivity of the RT-PCR test</span></span>
-<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>spec_pcr<span class="ot">=</span><span class="fl">0.99</span> <span class="co">#specificity of the RT-PCR test</span></span>
-<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>sens_ant<span class="ot">=</span><span class="fl">0.75</span> <span class="co">#sensitivity of the rapid antigen test</span></span>
-<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>spec_ant<span class="ot">=</span><span class="fl">0.98</span> <span class="co">#specificity of the rapid antigen test</span></span>
-<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## Calculation of PPV and NPV</span></span>
-<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a>Next, we will compute **PPV** and **NPV** for both COVID-19 test types. We can use the formulas obtained using Bayes' law, but besides the values of sensitivity and specificity of each test, we will need the prevalence of the population that we are testing.</span>
-<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a>PPV = \frac{\text{sens} \cdot \text{prev}}{\text{sens} \cdot \text{prev} + (1-\text{spes}) \cdot (1-\text{prev})}</span>
-<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb23-35"><a href="#cb23-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-36"><a href="#cb23-36" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb23-37"><a href="#cb23-37" aria-hidden="true" tabindex="-1"></a>NPV = \frac{\text{spes} \cdot (1-\text{prev}) }{(1-\text{sens}) \cdot \text{prev} + \text{spes} \cdot (1-\text{prev})}</span>
-<span id="cb23-38"><a href="#cb23-38" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb23-39"><a href="#cb23-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-40"><a href="#cb23-40" aria-hidden="true" tabindex="-1"></a>Let us first assume a relatively high COVID-19 prevalence of 10% and compute PPV and NPV for the RT-PCR test.</span>
-<span id="cb23-41"><a href="#cb23-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-44"><a href="#cb23-44" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb23-45"><a href="#cb23-45" aria-hidden="true" tabindex="-1"></a><span class="do">## RT-PCR test</span></span>
-<span id="cb23-46"><a href="#cb23-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-47"><a href="#cb23-47" aria-hidden="true" tabindex="-1"></a>prev<span class="ot">=</span><span class="fl">0.1</span> <span class="co">#prevalence</span></span>
-<span id="cb23-48"><a href="#cb23-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-49"><a href="#cb23-49" aria-hidden="true" tabindex="-1"></a><span class="co">#compute PPV for RT-PCR test</span></span>
-<span id="cb23-50"><a href="#cb23-50" aria-hidden="true" tabindex="-1"></a>PPV_pcr<span class="ot">=</span>(sens_pcr <span class="sc">*</span> prev)<span class="sc">/</span>(sens_pcr<span class="sc">*</span>prev <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>spec_pcr)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev))  </span>
-<span id="cb23-51"><a href="#cb23-51" aria-hidden="true" tabindex="-1"></a><span class="co">#compute NPV for RT-PCR test</span></span>
-<span id="cb23-52"><a href="#cb23-52" aria-hidden="true" tabindex="-1"></a>NPV_pcr<span class="ot">=</span>(spec_pcr <span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span> prev))<span class="sc">/</span>((<span class="dv">1</span><span class="sc">-</span>sens_pcr)<span class="sc">*</span>prev <span class="sc">+</span> spec_pcr<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev)) </span>
-<span id="cb23-53"><a href="#cb23-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-54"><a href="#cb23-54" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(PPV_pcr) <span class="co">#print PPV for RT-PCR test</span></span>
-<span id="cb23-55"><a href="#cb23-55" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(NPV_pcr) <span class="co">#print NPV for RT-PCR test</span></span>
-<span id="cb23-56"><a href="#cb23-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-57"><a href="#cb23-57" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb23-58"><a href="#cb23-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-59"><a href="#cb23-59" aria-hidden="true" tabindex="-1"></a>Next, we assume the same prevalence and compute PPV and NPV for the rapid antigen test.</span>
-<span id="cb23-60"><a href="#cb23-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-63"><a href="#cb23-63" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb23-64"><a href="#cb23-64" aria-hidden="true" tabindex="-1"></a><span class="do">## Rapid antigen test</span></span>
-<span id="cb23-65"><a href="#cb23-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-66"><a href="#cb23-66" aria-hidden="true" tabindex="-1"></a>prev<span class="ot">=</span><span class="fl">0.1</span> <span class="co">#prevalence</span></span>
-<span id="cb23-67"><a href="#cb23-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-68"><a href="#cb23-68" aria-hidden="true" tabindex="-1"></a><span class="co">#compute PPV for RT-PCR test</span></span>
-<span id="cb23-69"><a href="#cb23-69" aria-hidden="true" tabindex="-1"></a>PPV_ant<span class="ot">=</span>(sens_ant <span class="sc">*</span> prev)<span class="sc">/</span>(sens_ant<span class="sc">*</span>prev <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>spec_ant)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev))  </span>
-<span id="cb23-70"><a href="#cb23-70" aria-hidden="true" tabindex="-1"></a><span class="co">#compute NPV for RT-PCR test</span></span>
-<span id="cb23-71"><a href="#cb23-71" aria-hidden="true" tabindex="-1"></a>NPV_ant<span class="ot">=</span>(spec_ant <span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span> prev))<span class="sc">/</span>((<span class="dv">1</span><span class="sc">-</span>sens_ant)<span class="sc">*</span>prev <span class="sc">+</span> spec_ant<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev)) </span>
-<span id="cb23-72"><a href="#cb23-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-73"><a href="#cb23-73" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(PPV_ant) <span class="co">#print PPV for RT-PCR test</span></span>
-<span id="cb23-74"><a href="#cb23-74" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(NPV_ant) <span class="co">#print NPV for RT-PCR test</span></span>
-<span id="cb23-75"><a href="#cb23-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-76"><a href="#cb23-76" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb23-77"><a href="#cb23-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-78"><a href="#cb23-78" aria-hidden="true" tabindex="-1"></a><span class="fu">## Effect of Prevalence</span></span>
-<span id="cb23-79"><a href="#cb23-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-80"><a href="#cb23-80" aria-hidden="true" tabindex="-1"></a>COVID-19 prevalence oscillated very much during the pandemic and was very different depending on the specific locations. It is interesting to see how PPV and NPV depend on the prevalence. For that, we define a vector of different prevalences and apply the previous formulas to obtain PPV and NPV for all the prevalences in that vector.</span>
-<span id="cb23-81"><a href="#cb23-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-84"><a href="#cb23-84" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb23-85"><a href="#cb23-85" aria-hidden="true" tabindex="-1"></a><span class="do">## RT-PCR test</span></span>
-<span id="cb23-86"><a href="#cb23-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-87"><a href="#cb23-87" aria-hidden="true" tabindex="-1"></a><span class="co"># vector containing different prevalence values</span></span>
-<span id="cb23-88"><a href="#cb23-88" aria-hidden="true" tabindex="-1"></a>prev_vector<span class="ot">=</span><span class="fu">c</span>(<span class="fl">0.001</span>,<span class="fl">0.005</span>,<span class="fl">0.01</span>,<span class="fl">0.025</span>,<span class="fl">0.05</span>,<span class="fl">0.075</span>,<span class="fl">0.1</span>) </span>
-<span id="cb23-89"><a href="#cb23-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-90"><a href="#cb23-90" aria-hidden="true" tabindex="-1"></a><span class="co">#compute PPV for RT-PCR test</span></span>
-<span id="cb23-91"><a href="#cb23-91" aria-hidden="true" tabindex="-1"></a>PPV_pcr<span class="ot">=</span>(sens_pcr <span class="sc">*</span> prev_vector)<span class="sc">/</span>(sens_pcr<span class="sc">*</span>prev_vector <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>spec_pcr)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev_vector))  </span>
-<span id="cb23-92"><a href="#cb23-92" aria-hidden="true" tabindex="-1"></a><span class="co">#compute NPV for RT-PCR test</span></span>
-<span id="cb23-93"><a href="#cb23-93" aria-hidden="true" tabindex="-1"></a>NPV_pcr<span class="ot">=</span>(spec_pcr <span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span> prev_vector))<span class="sc">/</span>((<span class="dv">1</span><span class="sc">-</span>sens_pcr)<span class="sc">*</span>prev_vector <span class="sc">+</span> spec_pcr<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev_vector)) </span>
-<span id="cb23-94"><a href="#cb23-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-95"><a href="#cb23-95" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(PPV_pcr) <span class="co">#print PPV for RT-PCR test</span></span>
-<span id="cb23-96"><a href="#cb23-96" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(NPV_pcr) <span class="co">#print NPV for RT-PCR test</span></span>
-<span id="cb23-97"><a href="#cb23-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-98"><a href="#cb23-98" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb23-99"><a href="#cb23-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-100"><a href="#cb23-100" aria-hidden="true" tabindex="-1"></a>Note that the outputs are vectors containing all the PPV and NPV values for different prevalences. We can easily make a plot to observe how the PPV value changes with the prevalence.</span>
-<span id="cb23-101"><a href="#cb23-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-104"><a href="#cb23-104" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb23-105"><a href="#cb23-105" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(prev_vector, PPV_pcr, </span>
-<span id="cb23-106"><a href="#cb23-106" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"RT-PCR test"</span>, </span>
-<span id="cb23-107"><a href="#cb23-107" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Prevalence"</span>, </span>
-<span id="cb23-108"><a href="#cb23-108" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"PPV"</span>,</span>
-<span id="cb23-109"><a href="#cb23-109" aria-hidden="true" tabindex="-1"></a>     <span class="at">type=</span><span class="st">'o'</span>) </span>
-<span id="cb23-110"><a href="#cb23-110" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb23-111"><a href="#cb23-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-112"><a href="#cb23-112" aria-hidden="true" tabindex="-1"></a>Next, we do a plot to observe how the NPV changes with the prevalence</span>
-<span id="cb23-113"><a href="#cb23-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-116"><a href="#cb23-116" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb23-117"><a href="#cb23-117" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(prev_vector, NPV_pcr, </span>
-<span id="cb23-118"><a href="#cb23-118" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"RT-PCR test"</span>, </span>
-<span id="cb23-119"><a href="#cb23-119" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Prevalence"</span>, </span>
-<span id="cb23-120"><a href="#cb23-120" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"NPV"</span>,</span>
-<span id="cb23-121"><a href="#cb23-121" aria-hidden="true" tabindex="-1"></a>     <span class="at">type=</span><span class="st">'o'</span>)</span>
-<span id="cb23-122"><a href="#cb23-122" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb23-123"><a href="#cb23-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-124"><a href="#cb23-124" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise: Prevalence plot for rapid antigen test</span></span>
-<span id="cb23-125"><a href="#cb23-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-126"><a href="#cb23-126" aria-hidden="true" tabindex="-1"></a>Generate the same plot as above for the rapid antigen test.</span>
-<span id="cb23-127"><a href="#cb23-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-128"><a href="#cb23-128" aria-hidden="true" tabindex="-1"></a><span class="fu">## Visualization using personograph</span></span>
-<span id="cb23-129"><a href="#cb23-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-130"><a href="#cb23-130" aria-hidden="true" tabindex="-1"></a>In this section we will use a package called personograph to further visualize the influence of sensitivity, specificity and prevalence on the interpretetion of COVID-19 test results. To install the package run the following commands.</span>
-<span id="cb23-131"><a href="#cb23-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-134"><a href="#cb23-134" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb23-135"><a href="#cb23-135" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("devtools")</span></span>
-<span id="cb23-136"><a href="#cb23-136" aria-hidden="true" tabindex="-1"></a><span class="co">#devtools::install_github("joelkuiper/personograph")</span></span>
-<span id="cb23-137"><a href="#cb23-137" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(personograph)</span>
-<span id="cb23-138"><a href="#cb23-138" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb23-139"><a href="#cb23-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-140"><a href="#cb23-140" aria-hidden="true" tabindex="-1"></a>If successful, you can continue and generate the plots. But if you run into problems installing the package, you have to try solving those before.</span>
-<span id="cb23-141"><a href="#cb23-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-142"><a href="#cb23-142" aria-hidden="true" tabindex="-1"></a>The input to the package personograph are two lists, one containing the number of false negatives (FN), true positives (TP), false positive (FP) and true negatives (TN); The second list contain the colors of FN, TP, FP and TN. In the next chunck we generate both list</span>
-<span id="cb23-143"><a href="#cb23-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-146"><a href="#cb23-146" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb23-147"><a href="#cb23-147" aria-hidden="true" tabindex="-1"></a>prev<span class="ot">=</span><span class="fl">0.2</span> <span class="co">#prevalence value</span></span>
-<span id="cb23-148"><a href="#cb23-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-149"><a href="#cb23-149" aria-hidden="true" tabindex="-1"></a><span class="co"># building a list with the values of FN, TP, FP and TN</span></span>
-<span id="cb23-150"><a href="#cb23-150" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">list</span>(<span class="at">FN =</span> (<span class="dv">1</span><span class="sc">-</span>sens_pcr)<span class="sc">*</span>prev, <span class="at">TP =</span> sens_pcr<span class="sc">*</span>prev, <span class="at">FP =</span> (<span class="dv">1</span><span class="sc">-</span>spec_pcr)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev), <span class="at">TN =</span> spec_pcr<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev))</span>
-<span id="cb23-151"><a href="#cb23-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-152"><a href="#cb23-152" aria-hidden="true" tabindex="-1"></a><span class="co"># bulding a list containing the colors that we want to plot FN, TP, FP and TN </span></span>
-<span id="cb23-153"><a href="#cb23-153" aria-hidden="true" tabindex="-1"></a>colorlist <span class="ot">=</span> <span class="fu">list</span>(<span class="at">FN =</span> <span class="st">"darkred"</span>, <span class="at">TP =</span> <span class="st">"red"</span>, <span class="at">FP =</span> <span class="st">"darkgreen"</span>, <span class="at">TN =</span> <span class="st">"green"</span>)</span>
-<span id="cb23-154"><a href="#cb23-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-155"><a href="#cb23-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-156"><a href="#cb23-156" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb23-157"><a href="#cb23-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-158"><a href="#cb23-158" aria-hidden="true" tabindex="-1"></a>Next, we call the command personograph using the two lists we generated before as inputs. In addition, we specify the number of person incons to be displayed, the x and y dimensions of the plot and a figure title.</span>
-<span id="cb23-159"><a href="#cb23-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-162"><a href="#cb23-162" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb23-163"><a href="#cb23-163" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressWarnings</span>(</span>
-<span id="cb23-164"><a href="#cb23-164" aria-hidden="true" tabindex="-1"></a><span class="fu">personograph</span>(data, </span>
-<span id="cb23-165"><a href="#cb23-165" aria-hidden="true" tabindex="-1"></a>             <span class="at">colors =</span> colorlist, </span>
-<span id="cb23-166"><a href="#cb23-166" aria-hidden="true" tabindex="-1"></a>             <span class="at">fig.title =</span> <span class="fu">paste0</span>(<span class="st">"PPV = "</span>, <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>PPV_pcr), <span class="st">"%, NPV = "</span>, <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>NPV_pcr), <span class="st">"%"</span>),</span>
-<span id="cb23-167"><a href="#cb23-167" aria-hidden="true" tabindex="-1"></a>             <span class="at">n.icons =</span> <span class="dv">400</span>, </span>
-<span id="cb23-168"><a href="#cb23-168" aria-hidden="true" tabindex="-1"></a>             <span class="at">dimensions =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">20</span>))</span>
-<span id="cb23-169"><a href="#cb23-169" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb23-170"><a href="#cb23-170" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb23-171"><a href="#cb23-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-174"><a href="#cb23-174" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb23-175"><a href="#cb23-175" aria-hidden="true" tabindex="-1"></a>prev<span class="ot">=</span><span class="fl">0.05</span></span>
-<span id="cb23-176"><a href="#cb23-176" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">list</span>(<span class="at">FN =</span> (<span class="dv">1</span><span class="sc">-</span>sens_ant)<span class="sc">*</span>prev, <span class="at">TP =</span> sens_ant<span class="sc">*</span>prev, <span class="at">FP =</span> (<span class="dv">1</span><span class="sc">-</span>spec_ant)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev), <span class="at">TN =</span> spec_ant<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev))</span>
-<span id="cb23-177"><a href="#cb23-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-178"><a href="#cb23-178" aria-hidden="true" tabindex="-1"></a>colorlist <span class="ot">=</span> <span class="fu">list</span>(<span class="at">FN =</span> <span class="st">"darkred"</span>, <span class="at">TP =</span> <span class="st">"red"</span>, <span class="at">FP =</span> <span class="st">"darkgreen"</span>, <span class="at">TN =</span> <span class="st">"green"</span>)</span>
-<span id="cb23-179"><a href="#cb23-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-180"><a href="#cb23-180" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressWarnings</span>(</span>
-<span id="cb23-181"><a href="#cb23-181" aria-hidden="true" tabindex="-1"></a><span class="fu">personograph</span>(data, </span>
-<span id="cb23-182"><a href="#cb23-182" aria-hidden="true" tabindex="-1"></a>             <span class="at">colors =</span> colorlist, </span>
-<span id="cb23-183"><a href="#cb23-183" aria-hidden="true" tabindex="-1"></a>             <span class="at">fig.title =</span> <span class="fu">paste0</span>(<span class="st">"PPV = "</span>, <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>PPV_ant), <span class="st">"%, NPV = "</span>, <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>NPV_ant), <span class="st">"%"</span>),</span>
-<span id="cb23-184"><a href="#cb23-184" aria-hidden="true" tabindex="-1"></a>             <span class="at">n.icons =</span> <span class="dv">400</span>, </span>
-<span id="cb23-185"><a href="#cb23-185" aria-hidden="true" tabindex="-1"></a>             <span class="at">dimensions =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">20</span>)</span>
-<span id="cb23-186"><a href="#cb23-186" aria-hidden="true" tabindex="-1"></a>))</span>
-<span id="cb23-187"><a href="#cb23-187" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<div class="sourceCode" id="cb25" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Sensitivity and Specificity of COVID-19 test"</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: false</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> source</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>In this R lab we will practice with the concepts of sensitivity and specificity of COVID-19 test. The actual sensitivity and specificity values can be very different for different types of tests (for example **RT-PCR** vs **rapid antigent tests**). Besides the technical performance of the test, other aspects like changes in viral load along the disease course and between individuals can also play large roles. For this exercise, we will assume the following values:</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>RT-PCR test: sensitivity 95% and specificity 99%.</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Rapid antigen test: sensitivity 75% and specificity 98%.</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>We start by saving these values in variables.</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>sens_pcr<span class="ot">=</span><span class="fl">0.95</span> <span class="co">#sensitivity of the RT-PCR test</span></span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>spec_pcr<span class="ot">=</span><span class="fl">0.99</span> <span class="co">#specificity of the RT-PCR test</span></span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>sens_ant<span class="ot">=</span><span class="fl">0.75</span> <span class="co">#sensitivity of the rapid antigen test</span></span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>spec_ant<span class="ot">=</span><span class="fl">0.98</span> <span class="co">#specificity of the rapid antigen test</span></span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## Calculation of PPV and NPV</span></span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a>Next, we will compute **PPV** and **NPV** for both COVID-19 test types. We can use the formulas obtained using Bayes' law, but besides the values of sensitivity and specificity of each test, we will need the prevalence of the population that we are testing.</span>
+<span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a>PPV = \frac{\text{sens} \cdot \text{prev}}{\text{sens} \cdot \text{prev} + (1-\text{spec}) \cdot (1-\text{prev})}</span>
+<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb25-35"><a href="#cb25-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-36"><a href="#cb25-36" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb25-37"><a href="#cb25-37" aria-hidden="true" tabindex="-1"></a>NPV = \frac{\text{spec} \cdot (1-\text{prev}) }{(1-\text{sens}) \cdot \text{prev} + \text{spec} \cdot (1-\text{prev})}</span>
+<span id="cb25-38"><a href="#cb25-38" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb25-39"><a href="#cb25-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-40"><a href="#cb25-40" aria-hidden="true" tabindex="-1"></a>Let us first assume a relatively high COVID-19 prevalence of 10% and compute PPV and NPV for the RT-PCR test.</span>
+<span id="cb25-41"><a href="#cb25-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-44"><a href="#cb25-44" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-45"><a href="#cb25-45" aria-hidden="true" tabindex="-1"></a><span class="do">## RT-PCR test</span></span>
+<span id="cb25-46"><a href="#cb25-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-47"><a href="#cb25-47" aria-hidden="true" tabindex="-1"></a>prev<span class="ot">=</span><span class="fl">0.1</span> <span class="co">#prevalence</span></span>
+<span id="cb25-48"><a href="#cb25-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-49"><a href="#cb25-49" aria-hidden="true" tabindex="-1"></a><span class="co">#compute PPV for RT-PCR test</span></span>
+<span id="cb25-50"><a href="#cb25-50" aria-hidden="true" tabindex="-1"></a>PPV_pcr<span class="ot">=</span>(sens_pcr <span class="sc">*</span> prev)<span class="sc">/</span>(sens_pcr<span class="sc">*</span>prev <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>spec_pcr)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev))  </span>
+<span id="cb25-51"><a href="#cb25-51" aria-hidden="true" tabindex="-1"></a><span class="co">#compute NPV for RT-PCR test</span></span>
+<span id="cb25-52"><a href="#cb25-52" aria-hidden="true" tabindex="-1"></a>NPV_pcr<span class="ot">=</span>(spec_pcr <span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span> prev))<span class="sc">/</span>((<span class="dv">1</span><span class="sc">-</span>sens_pcr)<span class="sc">*</span>prev <span class="sc">+</span> spec_pcr<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev)) </span>
+<span id="cb25-53"><a href="#cb25-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-54"><a href="#cb25-54" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(PPV_pcr) <span class="co">#print PPV for RT-PCR test</span></span>
+<span id="cb25-55"><a href="#cb25-55" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(NPV_pcr) <span class="co">#print NPV for RT-PCR test</span></span>
+<span id="cb25-56"><a href="#cb25-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-57"><a href="#cb25-57" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-58"><a href="#cb25-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-59"><a href="#cb25-59" aria-hidden="true" tabindex="-1"></a>Next, we assume the same prevalence and compute PPV and NPV for the rapid antigen test.</span>
+<span id="cb25-60"><a href="#cb25-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-63"><a href="#cb25-63" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-64"><a href="#cb25-64" aria-hidden="true" tabindex="-1"></a><span class="do">## Rapid antigen test</span></span>
+<span id="cb25-65"><a href="#cb25-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-66"><a href="#cb25-66" aria-hidden="true" tabindex="-1"></a>prev<span class="ot">=</span><span class="fl">0.1</span> <span class="co">#prevalence</span></span>
+<span id="cb25-67"><a href="#cb25-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-68"><a href="#cb25-68" aria-hidden="true" tabindex="-1"></a><span class="co">#compute PPV for RT-PCR test</span></span>
+<span id="cb25-69"><a href="#cb25-69" aria-hidden="true" tabindex="-1"></a>PPV_ant<span class="ot">=</span>(sens_ant <span class="sc">*</span> prev)<span class="sc">/</span>(sens_ant<span class="sc">*</span>prev <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>spec_ant)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev))  </span>
+<span id="cb25-70"><a href="#cb25-70" aria-hidden="true" tabindex="-1"></a><span class="co">#compute NPV for RT-PCR test</span></span>
+<span id="cb25-71"><a href="#cb25-71" aria-hidden="true" tabindex="-1"></a>NPV_ant<span class="ot">=</span>(spec_ant <span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span> prev))<span class="sc">/</span>((<span class="dv">1</span><span class="sc">-</span>sens_ant)<span class="sc">*</span>prev <span class="sc">+</span> spec_ant<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev)) </span>
+<span id="cb25-72"><a href="#cb25-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-73"><a href="#cb25-73" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(PPV_ant) <span class="co">#print PPV for RT-PCR test</span></span>
+<span id="cb25-74"><a href="#cb25-74" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(NPV_ant) <span class="co">#print NPV for RT-PCR test</span></span>
+<span id="cb25-75"><a href="#cb25-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-76"><a href="#cb25-76" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-77"><a href="#cb25-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-78"><a href="#cb25-78" aria-hidden="true" tabindex="-1"></a><span class="fu">## Effect of Prevalence</span></span>
+<span id="cb25-79"><a href="#cb25-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-80"><a href="#cb25-80" aria-hidden="true" tabindex="-1"></a>COVID-19 prevalence oscillated very much during the pandemic and was very different depending on the specific locations. It is interesting to see how PPV and NPV depend on the prevalence. For that, we define a vector of different prevalences and apply the previous formulas to obtain PPV and NPV for all the prevalences in that vector.</span>
+<span id="cb25-81"><a href="#cb25-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-84"><a href="#cb25-84" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-85"><a href="#cb25-85" aria-hidden="true" tabindex="-1"></a><span class="do">## RT-PCR test</span></span>
+<span id="cb25-86"><a href="#cb25-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-87"><a href="#cb25-87" aria-hidden="true" tabindex="-1"></a><span class="co"># vector containing different prevalence values</span></span>
+<span id="cb25-88"><a href="#cb25-88" aria-hidden="true" tabindex="-1"></a>prev_vector<span class="ot">=</span><span class="fu">c</span>(<span class="fl">0.001</span>,<span class="fl">0.005</span>,<span class="fl">0.01</span>,<span class="fl">0.025</span>,<span class="fl">0.05</span>,<span class="fl">0.075</span>,<span class="fl">0.1</span>,<span class="fl">0.2</span>) </span>
+<span id="cb25-89"><a href="#cb25-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-90"><a href="#cb25-90" aria-hidden="true" tabindex="-1"></a><span class="co">#compute PPV for RT-PCR test</span></span>
+<span id="cb25-91"><a href="#cb25-91" aria-hidden="true" tabindex="-1"></a>PPV_pcr<span class="ot">=</span>(sens_pcr <span class="sc">*</span> prev_vector)<span class="sc">/</span>(sens_pcr<span class="sc">*</span>prev_vector <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>spec_pcr)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev_vector))  </span>
+<span id="cb25-92"><a href="#cb25-92" aria-hidden="true" tabindex="-1"></a><span class="co">#compute NPV for RT-PCR test</span></span>
+<span id="cb25-93"><a href="#cb25-93" aria-hidden="true" tabindex="-1"></a>NPV_pcr<span class="ot">=</span>(spec_pcr <span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span> prev_vector))<span class="sc">/</span>((<span class="dv">1</span><span class="sc">-</span>sens_pcr)<span class="sc">*</span>prev_vector <span class="sc">+</span> spec_pcr<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev_vector)) </span>
+<span id="cb25-94"><a href="#cb25-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-95"><a href="#cb25-95" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(PPV_pcr) <span class="co">#print PPV for RT-PCR test</span></span>
+<span id="cb25-96"><a href="#cb25-96" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(NPV_pcr) <span class="co">#print NPV for RT-PCR test</span></span>
+<span id="cb25-97"><a href="#cb25-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-98"><a href="#cb25-98" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-99"><a href="#cb25-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-100"><a href="#cb25-100" aria-hidden="true" tabindex="-1"></a>Note that the outputs are vectors containing all the PPV and NPV values for different prevalences. We can easily make a plot to observe how the PPV value changes with the prevalence.</span>
+<span id="cb25-101"><a href="#cb25-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-104"><a href="#cb25-104" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-105"><a href="#cb25-105" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(prev_vector, PPV_pcr,</span>
+<span id="cb25-106"><a href="#cb25-106" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="co">#set the y axis range between 0 and 1</span></span>
+<span id="cb25-107"><a href="#cb25-107" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"RT-PCR test"</span>, </span>
+<span id="cb25-108"><a href="#cb25-108" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Prevalence"</span>, </span>
+<span id="cb25-109"><a href="#cb25-109" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"PPV"</span>,</span>
+<span id="cb25-110"><a href="#cb25-110" aria-hidden="true" tabindex="-1"></a>     <span class="at">type=</span><span class="st">'o'</span>)  <span class="co"># plot the data points with circles and joint them with lines</span></span>
+<span id="cb25-111"><a href="#cb25-111" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-112"><a href="#cb25-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-113"><a href="#cb25-113" aria-hidden="true" tabindex="-1"></a>We see that for low prevalence, PPV becomes very low. This can be a problem in mass COVID-19 screening as the majority of test lead to false positives.</span>
+<span id="cb25-114"><a href="#cb25-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-115"><a href="#cb25-115" aria-hidden="true" tabindex="-1"></a>Next, we do a plot to observe how the NPV changes with the prevalence</span>
+<span id="cb25-116"><a href="#cb25-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-119"><a href="#cb25-119" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-120"><a href="#cb25-120" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(prev_vector, NPV_pcr, </span>
+<span id="cb25-121"><a href="#cb25-121" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="co">#set the y axis range between 0 and 1</span></span>
+<span id="cb25-122"><a href="#cb25-122" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"RT-PCR test"</span>, </span>
+<span id="cb25-123"><a href="#cb25-123" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Prevalence"</span>, </span>
+<span id="cb25-124"><a href="#cb25-124" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"NPV"</span>,</span>
+<span id="cb25-125"><a href="#cb25-125" aria-hidden="true" tabindex="-1"></a>     <span class="at">type=</span><span class="st">'o'</span>) <span class="co"># plot the data points with circles and joint them with lines</span></span>
+<span id="cb25-126"><a href="#cb25-126" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-127"><a href="#cb25-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-128"><a href="#cb25-128" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise: Prevalence plot for rapid antigen test</span></span>
+<span id="cb25-129"><a href="#cb25-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-130"><a href="#cb25-130" aria-hidden="true" tabindex="-1"></a>Generate the same plot as above for the rapid antigen test.</span>
+<span id="cb25-131"><a href="#cb25-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-132"><a href="#cb25-132" aria-hidden="true" tabindex="-1"></a><span class="fu">## Visualization using personograph</span></span>
+<span id="cb25-133"><a href="#cb25-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-134"><a href="#cb25-134" aria-hidden="true" tabindex="-1"></a>In this section we will use a package called <span class="in">`personograph`</span> to further visualize the influence of sensitivity, specificity and prevalence on the interpretation of COVID-19 test results. To install the package run the following command:</span>
+<span id="cb25-135"><a href="#cb25-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-136"><a href="#cb25-136" aria-hidden="true" tabindex="-1"></a><span class="in">`install.packages("devtools")`</span></span>
+<span id="cb25-137"><a href="#cb25-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-138"><a href="#cb25-138" aria-hidden="true" tabindex="-1"></a>If successful, continue with this command:</span>
+<span id="cb25-139"><a href="#cb25-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-140"><a href="#cb25-140" aria-hidden="true" tabindex="-1"></a><span class="in">`devtools::install_github("joelkuiper/personograph")`</span>.</span>
+<span id="cb25-141"><a href="#cb25-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-144"><a href="#cb25-144" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-145"><a href="#cb25-145" aria-hidden="true" tabindex="-1"></a><span class="co"># if the package personnograph is correctly installed, you can load it with the following command</span></span>
+<span id="cb25-146"><a href="#cb25-146" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(personograph)</span>
+<span id="cb25-147"><a href="#cb25-147" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-148"><a href="#cb25-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-149"><a href="#cb25-149" aria-hidden="true" tabindex="-1"></a>If successful, you can continue and generate the plots. But if you run into problems installing the package, you have to try solving those before.</span>
+<span id="cb25-150"><a href="#cb25-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-151"><a href="#cb25-151" aria-hidden="true" tabindex="-1"></a>The inputs to the package personograph are two lists, one containing the number of false negatives (FN), true positives (TP), false positive (FP) and true negatives (TN); The second list contain the colors we want to use to plot FN, TP, FP and TN. In the next code chunk, we define the prevalence, compute PPV, NPV and generate both lists:</span>
+<span id="cb25-152"><a href="#cb25-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-155"><a href="#cb25-155" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-156"><a href="#cb25-156" aria-hidden="true" tabindex="-1"></a>prev<span class="ot">=</span><span class="fl">0.2</span> <span class="co">#prevalence value</span></span>
+<span id="cb25-157"><a href="#cb25-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-158"><a href="#cb25-158" aria-hidden="true" tabindex="-1"></a><span class="co">#compute PPV for RT-PCR test</span></span>
+<span id="cb25-159"><a href="#cb25-159" aria-hidden="true" tabindex="-1"></a>PPV_pcr<span class="ot">=</span>(sens_pcr <span class="sc">*</span> prev)<span class="sc">/</span>(sens_pcr<span class="sc">*</span>prev <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>spec_pcr)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev))  </span>
+<span id="cb25-160"><a href="#cb25-160" aria-hidden="true" tabindex="-1"></a><span class="co">#compute NPV for RT-PCR test</span></span>
+<span id="cb25-161"><a href="#cb25-161" aria-hidden="true" tabindex="-1"></a>NPV_pcr<span class="ot">=</span>(spec_pcr <span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span> prev))<span class="sc">/</span>((<span class="dv">1</span><span class="sc">-</span>sens_pcr)<span class="sc">*</span>prev <span class="sc">+</span> spec_pcr<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev)) </span>
+<span id="cb25-162"><a href="#cb25-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-163"><a href="#cb25-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-164"><a href="#cb25-164" aria-hidden="true" tabindex="-1"></a><span class="co"># building a list with the values of FN, TP, FP and TN</span></span>
+<span id="cb25-165"><a href="#cb25-165" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">list</span>(<span class="at">FN =</span> (<span class="dv">1</span><span class="sc">-</span>sens_pcr)<span class="sc">*</span>prev, <span class="at">TP =</span> sens_pcr<span class="sc">*</span>prev, <span class="at">FP =</span> (<span class="dv">1</span><span class="sc">-</span>spec_pcr)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev), <span class="at">TN =</span> spec_pcr<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev))</span>
+<span id="cb25-166"><a href="#cb25-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-167"><a href="#cb25-167" aria-hidden="true" tabindex="-1"></a><span class="co"># bulding a list containing the colors that we want to plot FN, TP, FP and TN </span></span>
+<span id="cb25-168"><a href="#cb25-168" aria-hidden="true" tabindex="-1"></a>colorlist <span class="ot">=</span> <span class="fu">list</span>(<span class="at">FN =</span> <span class="st">"darkred"</span>, <span class="at">TP =</span> <span class="st">"red"</span>, <span class="at">FP =</span> <span class="st">"darkgreen"</span>, <span class="at">TN =</span> <span class="st">"green"</span>)</span>
+<span id="cb25-169"><a href="#cb25-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-170"><a href="#cb25-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-171"><a href="#cb25-171" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-172"><a href="#cb25-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-173"><a href="#cb25-173" aria-hidden="true" tabindex="-1"></a>Next, we run the command <span class="in">`personograph`</span> using the two lists we generated before as inputs. In addition, we specify the total number of person icons to be displayed, the x and y dimensions of the plot and a figure title.</span>
+<span id="cb25-174"><a href="#cb25-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-177"><a href="#cb25-177" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-178"><a href="#cb25-178" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressWarnings</span>( <span class="co"># we use this command to suppress an output warning</span></span>
+<span id="cb25-179"><a href="#cb25-179" aria-hidden="true" tabindex="-1"></a><span class="fu">personograph</span>(data, </span>
+<span id="cb25-180"><a href="#cb25-180" aria-hidden="true" tabindex="-1"></a>             <span class="at">colors =</span> colorlist, </span>
+<span id="cb25-181"><a href="#cb25-181" aria-hidden="true" tabindex="-1"></a>             <span class="at">n.icons =</span> <span class="dv">400</span>, </span>
+<span id="cb25-182"><a href="#cb25-182" aria-hidden="true" tabindex="-1"></a>             <span class="at">dimensions =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">20</span>),</span>
+<span id="cb25-183"><a href="#cb25-183" aria-hidden="true" tabindex="-1"></a>             <span class="at">fig.title =</span> <span class="fu">paste0</span>(<span class="st">"PPV = "</span>, <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>PPV_pcr), <span class="st">"%, NPV = "</span>, <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>NPV_pcr), <span class="st">"%"</span>)</span>
+<span id="cb25-184"><a href="#cb25-184" aria-hidden="true" tabindex="-1"></a>             )</span>
+<span id="cb25-185"><a href="#cb25-185" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb25-186"><a href="#cb25-186" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-187"><a href="#cb25-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-188"><a href="#cb25-188" aria-hidden="true" tabindex="-1"></a>We repeat the plot with a lower prevalence of 1%.</span>
+<span id="cb25-189"><a href="#cb25-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-192"><a href="#cb25-192" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-193"><a href="#cb25-193" aria-hidden="true" tabindex="-1"></a>prev<span class="ot">=</span><span class="fl">0.01</span> <span class="co">#prevalence value</span></span>
+<span id="cb25-194"><a href="#cb25-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-195"><a href="#cb25-195" aria-hidden="true" tabindex="-1"></a><span class="co">#compute PPV for RT-PCR test</span></span>
+<span id="cb25-196"><a href="#cb25-196" aria-hidden="true" tabindex="-1"></a>PPV_pcr<span class="ot">=</span>(sens_pcr <span class="sc">*</span> prev)<span class="sc">/</span>(sens_pcr<span class="sc">*</span>prev <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>spec_pcr)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev))  </span>
+<span id="cb25-197"><a href="#cb25-197" aria-hidden="true" tabindex="-1"></a><span class="co">#compute NPV for RT-PCR test</span></span>
+<span id="cb25-198"><a href="#cb25-198" aria-hidden="true" tabindex="-1"></a>NPV_pcr<span class="ot">=</span>(spec_pcr <span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span> prev))<span class="sc">/</span>((<span class="dv">1</span><span class="sc">-</span>sens_pcr)<span class="sc">*</span>prev <span class="sc">+</span> spec_pcr<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev)) </span>
+<span id="cb25-199"><a href="#cb25-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-200"><a href="#cb25-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-201"><a href="#cb25-201" aria-hidden="true" tabindex="-1"></a><span class="co"># building a list with the values of FN, TP, FP and TN</span></span>
+<span id="cb25-202"><a href="#cb25-202" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">list</span>(<span class="at">FN =</span> (<span class="dv">1</span><span class="sc">-</span>sens_pcr)<span class="sc">*</span>prev, <span class="at">TP =</span> sens_pcr<span class="sc">*</span>prev, <span class="at">FP =</span> (<span class="dv">1</span><span class="sc">-</span>spec_pcr)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev), <span class="at">TN =</span> spec_pcr<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev))</span>
+<span id="cb25-203"><a href="#cb25-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-204"><a href="#cb25-204" aria-hidden="true" tabindex="-1"></a><span class="co"># bulding a list containing the colors that we want to plot FN, TP, FP and TN </span></span>
+<span id="cb25-205"><a href="#cb25-205" aria-hidden="true" tabindex="-1"></a>colorlist <span class="ot">=</span> <span class="fu">list</span>(<span class="at">FN =</span> <span class="st">"darkred"</span>, <span class="at">TP =</span> <span class="st">"red"</span>, <span class="at">FP =</span> <span class="st">"darkgreen"</span>, <span class="at">TN =</span> <span class="st">"green"</span>)</span>
+<span id="cb25-206"><a href="#cb25-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-207"><a href="#cb25-207" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressWarnings</span>( <span class="co"># we use this command to suppress an output warning</span></span>
+<span id="cb25-208"><a href="#cb25-208" aria-hidden="true" tabindex="-1"></a><span class="fu">personograph</span>(data, </span>
+<span id="cb25-209"><a href="#cb25-209" aria-hidden="true" tabindex="-1"></a>             <span class="at">colors =</span> colorlist, </span>
+<span id="cb25-210"><a href="#cb25-210" aria-hidden="true" tabindex="-1"></a>             <span class="at">n.icons =</span> <span class="dv">400</span>, </span>
+<span id="cb25-211"><a href="#cb25-211" aria-hidden="true" tabindex="-1"></a>             <span class="at">dimensions =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">20</span>),</span>
+<span id="cb25-212"><a href="#cb25-212" aria-hidden="true" tabindex="-1"></a>             <span class="at">fig.title =</span> <span class="fu">paste0</span>(<span class="st">"PPV = "</span>, <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>PPV_pcr), <span class="st">"%, NPV = "</span>, <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>NPV_pcr), <span class="st">"%"</span>)</span>
+<span id="cb25-213"><a href="#cb25-213" aria-hidden="true" tabindex="-1"></a>             )</span>
+<span id="cb25-214"><a href="#cb25-214" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb25-215"><a href="#cb25-215" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-216"><a href="#cb25-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-217"><a href="#cb25-217" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise: Personograph plots for rapid antigen test</span></span>
+<span id="cb25-218"><a href="#cb25-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-219"><a href="#cb25-219" aria-hidden="true" tabindex="-1"></a>Generate the same plots as above for the rapid antigen test.</span>
+<span id="cb25-220"><a href="#cb25-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-223"><a href="#cb25-223" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-224"><a href="#cb25-224" aria-hidden="true" tabindex="-1"></a>prev<span class="ot">=</span><span class="fl">0.2</span></span>
+<span id="cb25-225"><a href="#cb25-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-226"><a href="#cb25-226" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">list</span>(<span class="at">FN =</span> (<span class="dv">1</span><span class="sc">-</span>sens_ant)<span class="sc">*</span>prev, <span class="at">TP =</span> sens_ant<span class="sc">*</span>prev, <span class="at">FP =</span> (<span class="dv">1</span><span class="sc">-</span>spec_ant)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev), <span class="at">TN =</span> spec_ant<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev))</span>
+<span id="cb25-227"><a href="#cb25-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-228"><a href="#cb25-228" aria-hidden="true" tabindex="-1"></a>colorlist <span class="ot">=</span> <span class="fu">list</span>(<span class="at">FN =</span> <span class="st">"darkred"</span>, <span class="at">TP =</span> <span class="st">"red"</span>, <span class="at">FP =</span> <span class="st">"darkgreen"</span>, <span class="at">TN =</span> <span class="st">"green"</span>)</span>
+<span id="cb25-229"><a href="#cb25-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-230"><a href="#cb25-230" aria-hidden="true" tabindex="-1"></a><span class="co">#compute PPV for RT-PCR test</span></span>
+<span id="cb25-231"><a href="#cb25-231" aria-hidden="true" tabindex="-1"></a>PPV_ant<span class="ot">=</span>(sens_ant <span class="sc">*</span> prev)<span class="sc">/</span>(sens_ant<span class="sc">*</span>prev <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>spec_ant)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev))  </span>
+<span id="cb25-232"><a href="#cb25-232" aria-hidden="true" tabindex="-1"></a><span class="co">#compute NPV for RT-PCR test</span></span>
+<span id="cb25-233"><a href="#cb25-233" aria-hidden="true" tabindex="-1"></a>NPV_ant<span class="ot">=</span>(spec_ant <span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span> prev))<span class="sc">/</span>((<span class="dv">1</span><span class="sc">-</span>sens_ant)<span class="sc">*</span>prev <span class="sc">+</span> spec_ant<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev)) </span>
+<span id="cb25-234"><a href="#cb25-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-235"><a href="#cb25-235" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressWarnings</span>( <span class="co"># we use this to suppress a output warning</span></span>
+<span id="cb25-236"><a href="#cb25-236" aria-hidden="true" tabindex="-1"></a><span class="fu">personograph</span>(data, </span>
+<span id="cb25-237"><a href="#cb25-237" aria-hidden="true" tabindex="-1"></a>             <span class="at">colors =</span> colorlist,</span>
+<span id="cb25-238"><a href="#cb25-238" aria-hidden="true" tabindex="-1"></a>             <span class="at">n.icons =</span> <span class="dv">400</span>, </span>
+<span id="cb25-239"><a href="#cb25-239" aria-hidden="true" tabindex="-1"></a>             <span class="at">dimensions =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">20</span>),</span>
+<span id="cb25-240"><a href="#cb25-240" aria-hidden="true" tabindex="-1"></a>             <span class="at">fig.title =</span> <span class="fu">paste0</span>(<span class="st">"PPV = "</span>, <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>PPV_ant), <span class="st">"%, NPV = "</span>, <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>NPV_ant), <span class="st">"%"</span>)</span>
+<span id="cb25-241"><a href="#cb25-241" aria-hidden="true" tabindex="-1"></a>             </span>
+<span id="cb25-242"><a href="#cb25-242" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb25-243"><a href="#cb25-243" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-244"><a href="#cb25-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-247"><a href="#cb25-247" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-248"><a href="#cb25-248" aria-hidden="true" tabindex="-1"></a>prev<span class="ot">=</span><span class="fl">0.01</span></span>
+<span id="cb25-249"><a href="#cb25-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-250"><a href="#cb25-250" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">list</span>(<span class="at">FN =</span> (<span class="dv">1</span><span class="sc">-</span>sens_ant)<span class="sc">*</span>prev, <span class="at">TP =</span> sens_ant<span class="sc">*</span>prev, <span class="at">FP =</span> (<span class="dv">1</span><span class="sc">-</span>spec_ant)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev), <span class="at">TN =</span> spec_ant<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev))</span>
+<span id="cb25-251"><a href="#cb25-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-252"><a href="#cb25-252" aria-hidden="true" tabindex="-1"></a>colorlist <span class="ot">=</span> <span class="fu">list</span>(<span class="at">FN =</span> <span class="st">"darkred"</span>, <span class="at">TP =</span> <span class="st">"red"</span>, <span class="at">FP =</span> <span class="st">"darkgreen"</span>, <span class="at">TN =</span> <span class="st">"green"</span>)</span>
+<span id="cb25-253"><a href="#cb25-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-254"><a href="#cb25-254" aria-hidden="true" tabindex="-1"></a><span class="co">#compute PPV for RT-PCR test</span></span>
+<span id="cb25-255"><a href="#cb25-255" aria-hidden="true" tabindex="-1"></a>PPV_ant<span class="ot">=</span>(sens_ant <span class="sc">*</span> prev)<span class="sc">/</span>(sens_ant<span class="sc">*</span>prev <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>spec_ant)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev))  </span>
+<span id="cb25-256"><a href="#cb25-256" aria-hidden="true" tabindex="-1"></a><span class="co">#compute NPV for RT-PCR test</span></span>
+<span id="cb25-257"><a href="#cb25-257" aria-hidden="true" tabindex="-1"></a>NPV_ant<span class="ot">=</span>(spec_ant <span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span> prev))<span class="sc">/</span>((<span class="dv">1</span><span class="sc">-</span>sens_ant)<span class="sc">*</span>prev <span class="sc">+</span> spec_ant<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>prev)) </span>
+<span id="cb25-258"><a href="#cb25-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-259"><a href="#cb25-259" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressWarnings</span>( <span class="co"># we use this to suppress a output warning</span></span>
+<span id="cb25-260"><a href="#cb25-260" aria-hidden="true" tabindex="-1"></a><span class="fu">personograph</span>(data, </span>
+<span id="cb25-261"><a href="#cb25-261" aria-hidden="true" tabindex="-1"></a>             <span class="at">colors =</span> colorlist,</span>
+<span id="cb25-262"><a href="#cb25-262" aria-hidden="true" tabindex="-1"></a>             <span class="at">n.icons =</span> <span class="dv">400</span>, </span>
+<span id="cb25-263"><a href="#cb25-263" aria-hidden="true" tabindex="-1"></a>             <span class="at">dimensions =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">20</span>),</span>
+<span id="cb25-264"><a href="#cb25-264" aria-hidden="true" tabindex="-1"></a>             <span class="at">fig.title =</span> <span class="fu">paste0</span>(<span class="st">"PPV = "</span>, <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>PPV_ant), <span class="st">"%, NPV = "</span>, <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>NPV_ant), <span class="st">"%"</span>)</span>
+<span id="cb25-265"><a href="#cb25-265" aria-hidden="true" tabindex="-1"></a>             </span>
+<span id="cb25-266"><a href="#cb25-266" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb25-267"><a href="#cb25-267" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-268"><a href="#cb25-268" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-269"><a href="#cb25-269" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise:  HIV testing</span></span>
+<span id="cb25-270"><a href="#cb25-270" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-271"><a href="#cb25-271" aria-hidden="true" tabindex="-1"></a>Repeat the whole analysis done for COVID-19 tests for a HIV test with sensitivity 98% and specificity 99.8% (see example in notes about Evaluation of Diagnostic Tests).</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

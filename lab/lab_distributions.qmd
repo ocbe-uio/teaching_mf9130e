@@ -58,7 +58,7 @@ N=100
 # we draw N samples from a binomial distribution with parameters n and p and store them in variable binom_sim
 binom_sim = rbinom(N,n,p)
 
-# we compute the frequency distribution of the samples and store them in variable data
+# we compute the frequency distribution of the samples and store them in a variable
 data = table(binom_sim)
 print(data)
 
@@ -81,7 +81,7 @@ barplot(binom_sim_relfreq,ylab="relative frequency")
 
 ## Normal distribution
 
-The probability density function of the normal distribution $X \sim \text{N}(\mu,\sigma)$, where $\mu$ is the mean and $\sigma$ is the standard deviation, is given by:
+The probability density function of the normal distribution $X \sim \text{N}(\mu,\sigma)$, where $\mu$ denotes the mean and $\sigma$ the standard deviation, is given by:
 
 $$
 f(x) = \frac{1}{\sigma \sqrt{2\pi}} \text{exp}(- \frac{(x-\mu)^2}{2\sigma^2})
@@ -96,7 +96,7 @@ sigma=1
 
 # next, we define the function f
 f_norm=function(x){(1/(sigma*sqrt(2*pi))) * exp((-(x-mu)^2)/(2*sigma^2))}
-#note that this function is already define in R as dnorm(x), we could use this instead
+#note that this function is already defined in R as dnorm(x), we could use that instead
 
 # we plot the function f
 curve(f_norm,
@@ -145,9 +145,9 @@ It is important to remember where the value 1.96 comes from, we will see it late
 To simulate samples of the normal distribution in R, we use the command `rnorm(N, mean, sd)`. If we want to simulate samples of the standard normal distribution $N(0,1)$, we can simply use the command `rnorm(N)`.
 
 ```{r}
-norm_sim=rnorm(1000)
+norm_sim=rnorm(500)
 hist(norm_sim, 
-     freq = FALSE,
+     freq = FALSE, #This is needed to plot the relative frequencies instead of the frequencies, so that the total area of the histogram is one.
      main= "Histrogram of normal data",
      xlab="X values")
 ```
@@ -166,7 +166,7 @@ Here we will compute the probability density function of binomial distributions 
 p=0.3
 
 par(mfrow=c(2,2))    # set the plotting area into a 2*2 matrix
-#first plot with n=5
+#first plot with n=2
 x = 0:2
 barplot(names= x,
         height = dbinom(x,2,p),
@@ -174,7 +174,7 @@ barplot(names= x,
         xlab='X',
         ylab='Probability')
 
-#second plot with n=15
+#second plot with n=5
 x = 0:5
 barplot(names= x,
         height = dbinom(x,5,p),
@@ -182,7 +182,7 @@ barplot(names= x,
         xlab='X',
         ylab='Probability')
 
-#third plot with n=25
+#third plot with n=15
 x = 0:15
 barplot(names= x,
         height = dbinom(x,15,p),
@@ -190,7 +190,7 @@ barplot(names= x,
         xlab='X',
         ylab='Probability')
 
-#fourth plot with n=35
+#fourth plot with n=30
 x = 0:30
 barplot(names= x,
         height = dbinom(x,30,p),
@@ -210,4 +210,19 @@ sigma=sqrt(30*0.3*0.7)
 pnorm(10.5,mu,sigma) - pnorm(9.5,mu,sigma)
 ```
 
+## Exercise: When the normal distribution won't work
+Check if a Binomial distribution with $p=0.01$ and $n=30$ can be approximated by a normal distribution. Why?
+
+
 ## Central Limit Theorem
+We will simulate 1000 samples of size $N=100$ of the binomial distribution with parameters $p=0.01$ and $n=30$ (it could be any other distribution). We will compute the mean of each sample and see that the sample mean is a random variable that is normally distributed.
+
+```{r}
+sample_means=replicate(n = 1000, mean(rbinom(100,30,0.01)))
+hist(sample_means, breaks=20)
+qqnorm(sample_means)
+
+```
+
+## Exercise: Sample mean with small sample size
+Repeat the previous simulations, but this time take a very small sample size. Is the sample mean also normally distributed? Why?

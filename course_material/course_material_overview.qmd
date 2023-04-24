@@ -19,7 +19,7 @@ On this page you'll find a list of **lecture notes**, **R lab notes** and other 
 |             |                Descriptive statistics                 |                                                                                     |     |       |
 | April 25 PM |            Probability, diagnosistic tests            | [Probability](notes_probability.qmd) [Diagnostic tests](notes_diagnostic_tests.qmd) |     |       |
 |             |               Statistical distributions               |                      [Distributions](notes_distributions.qmd)                       |     |       |
-| April 26 AM |                      Lab session                      |                   [COVID-19 tests](lab_diagnostic_tests.qmd)                                                                  |     |       |
+| April 26 AM |                      Lab session                      |                   [COVID-19 tests](lab_diagnostic_tests.qmd)   [Simulations](lab_distributions.qmd)                                                               |     |       |
 | April 26 PM | Statistical inference, tests and confidence intervals |                                                                                     |     |       |
 |             |                        t-tests                        |                                                                                     |     |       |
 | April 27 AM |                      Lab session                      |                                                                                     |     |       |
