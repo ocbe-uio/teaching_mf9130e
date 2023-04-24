@@ -232,11 +232,11 @@ Example: Births in Norway
 <table class="table">
 <caption>Source: Statistisk sentralbyrå</caption>
 <colgroup>
+<col style="width: 7%">
+<col style="width: 28%">
+<col style="width: 19%">
 <col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
+<col style="width: 25%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -358,8 +358,8 @@ Examples: Stochastic trials
 </ul>
 <table class="table">
 <colgroup>
-<col style="width: 48%">
-<col style="width: 51%">
+<col style="width: 46%">
+<col style="width: 53%">
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -370,8 +370,8 @@ Examples: Stochastic trials
 </table>
 <table class="table">
 <colgroup>
-<col style="width: 47%">
-<col style="width: 52%">
+<col style="width: 43%">
+<col style="width: 56%">
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -389,7 +389,7 @@ Examples: Stochastic trials
 <p><strong>Additive rule</strong></p>
 <p>The occurrence of at least one of the events <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span> is <span class="math display">\[P(A \cup B) = P(A) + P(B) - P(A \cap B)\]</span> For <strong>disjoint</strong> events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, <span class="math inline">\(P(A \cap B) = 0\)</span>. Hence <span class="math display">\[P(A \cup B) = P(A) + P(B)\]</span></p>
 <p><strong>Multiplicative rule</strong></p>
-<p>Probability of independent events can be multiplied</p>
+<p>Probability of independent events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> can be multiplied</p>
 <p><span class="math display">\[P(A \cap B) = P(A) \times P(B)\]</span></p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
@@ -423,31 +423,35 @@ P(\text{at least one girl}) &amp; =P(\text{1st child is girl}) + P(\text{2nd chi
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Examples: Tossing two dices
+Example: Tossing two dices
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><p>The two throws are independent events.</p></li>
+<li><p>The two tosses are independent events.</p></li>
 <li><p>There are 36 equally possible outcomes.</p></li>
 <li><p>Only one outcome corresponds to the double 6 event.</p></li>
 </ul>
-<p>What is the probability of getting 6 in the first AND the second throw? $$ P() = 1/6 /6 = 1/36</p>
-<p>$$</p>
-<p>What is the probability of getting at least one 6 in two throws? <span class="math display">\[
+<p>What is the probability of getting 6 in the first AND the second throw?</p>
+<p><span class="math display">\[
+P(\text{6 in the first AND the second throw}) = 1/6 \times 1/6 = 1/36
+\]</span></p>
+<p>What is the probability of getting at least one 6 in two throws?</p>
+<p><span class="math display">\[
 \begin{aligned}
     P(\text{at least one 6 in 2 trows}) &amp;=P(\text{6 in the first}) +         P(\text{6 in the second}) - P(\text{6 in both})\\
     &amp;=1/6 +1/6 - 1/36 =0.31
 \end{aligned}
 \]</span></p>
-What is the probability of not getting any 6 in two throws? $$
-<span class="math display">\[\begin{aligned}
+<p>What is the probability of not getting any 6 in two throws?</p>
+<p><span class="math display">\[
+\begin{aligned}
     P(\text{not getting any 6 in 2 trows}) &amp;= 1 - P(\text{at least one 6 in 2 trows})\\
     &amp;= 1 - 0.31 = 0.69
-\end{aligned}\]</span>
-<p>$$</p>
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 </div>
@@ -612,7 +616,8 @@ Derivation of the law of total probability
 <div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Any event <span class="math inline">\(A\)</span> can be divided in two with regard to another event <span class="math inline">\(B\)</span>:</p>
-<p><span class="math display">\[A = (A \cap B) \cup (A \cap \bar{B})\]</span> <img src="images/Venn_diagrams_eventA-01.png" class="img-fluid" style="width:15cm"></p>
+<p><span class="math display">\[A = (A \cap B) \cup (A \cap \bar{B})\]</span></p>
+<p><img src="images/Venn_diagrams_eventA-01.png" class="img-fluid" style="width:15cm"></p>
 <p>Becase the two events <span class="math inline">\((A \cap B)\)</span> and <span class="math inline">\((A \cap \bar{B})\)</span> are disjunct, we can write:</p>
 <p><span class="math display">\[
 P(A) = P(A \cap B) + P(A \cap \bar{B})
@@ -641,11 +646,12 @@ Example: Gender of twins
 <li><strong>Monozygotic</strong> twins have the same gender, while dizygotic twins are like any other siblings.</li>
 <li>We have to take into consideration if the twins are monozygotic or not. For that we use the law of total probability.</li>
 </ul>
-<p><span class="math inline">\(A\)</span> = Both twins have the same gender <span class="math inline">\(B\)</span> = The twins are monozygotic</p>
+<p><span class="math inline">\(A\)</span> = Both twins have the same gender.</p>
+<p><span class="math inline">\(B\)</span> = The twins are monozygotic.</p>
 <ul>
 <li>We want to find <span class="math inline">\(P(A)\)</span></li>
-<li>The probability of twins being monozygotic, <span class="math inline">\(P(B)\)</span>, is 1/3.</li>
-<li>The las of total probability give us:</li>
+<li>We assume that the probability of twins being monozygotic, <span class="math inline">\(P(B)\)</span>, is 1/3.</li>
+<li>The law of total probability give us:</li>
 </ul>
 <p><span class="math display">\[
 \begin{aligned}

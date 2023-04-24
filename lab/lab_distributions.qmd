@@ -44,7 +44,7 @@ We can plot those probabilities with the `barplot` command to see the probabilit
 ```{r}
 barplot(names= x,
         height = binom_prob,
-        main = "PDF of X~Binom(5,0.5)",
+        main = "PDF of X~Binom(5,0.2)",
         xlab='X',
         ylab='Probability')
 ```
@@ -81,7 +81,7 @@ barplot(binom_sim_relfreq,ylab="relative frequency")
 
 ## Normal distribution
 
-The probability density function of the normal distribution with mean $\mu$ and standard deviation $\sigma$ is given by:
+The probability density function of the normal distribution $X \sim \text{N}(\mu,\sigma)$, where $\mu$ is the mean and $\sigma$ is the standard deviation, is given by:
 
 $$
 f(x) = \frac{1}{\sigma \sqrt{2\pi}} \text{exp}(- \frac{(x-\mu)^2}{2\sigma^2})
@@ -138,7 +138,7 @@ Let us verify that $P(-1.96\leq X\leq 1.96) = 0.95$.
 pnorm(1.96,0,1) - pnorm(-1.96,0,1)
 ```
 
-It is important to remember where the value of 1.96 comes from, we will see it later in the course!
+It is important to remember where the value 1.96 comes from, we will see it later in the course!
 
 ## Simulations of the normal distribution
 
@@ -152,12 +152,62 @@ hist(norm_sim,
      xlab="X values")
 ```
 
-The histogram would look closer to a bell shape the larger the number of samples. We can also check if our data are normally distributed using the command `qqnorm(data)` that generates a QQPlot. These plots display the data quantiles against the theoretical quantiles of the normal distribution. Therefore, normally distributed data should lie close to the identity line $y=x$.
+The larger the number of samples, the the closer the histogram would look to a bell shape. We can also check if our data are normally distributed using the command `qqnorm(data)` that generates a QQPlot. These plots display the data quantiles against the theoretical quantiles of the normal distribution. Therefore, normally distributed data should lie close to the identity line $y=x$.
 
 ```{r}
 qqnorm(norm_sim) # we generate the QQPlot for the data simulated data
 ```
 
 ## Approximation of the binomial distribution
+
+Here we will compute the probability density function of binomial distributions with parameters $p=0.2$ and parameter $n$ variying from 2 to 30.
+
+```{r}
+p=0.3
+
+par(mfrow=c(2,2))    # set the plotting area into a 2*2 matrix
+#first plot with n=5
+x = 0:2
+barplot(names= x,
+        height = dbinom(x,2,p),
+        main = "PDF of X~Binom(2,0.3)",
+        xlab='X',
+        ylab='Probability')
+
+#second plot with n=15
+x = 0:5
+barplot(names= x,
+        height = dbinom(x,5,p),
+        main = "PDF of X~Binom(5,0.3)",
+        xlab='X',
+        ylab='Probability')
+
+#third plot with n=25
+x = 0:15
+barplot(names= x,
+        height = dbinom(x,15,p),
+        main = "PDF of X~Binom(15,0.3)",
+        xlab='X',
+        ylab='Probability')
+
+#fourth plot with n=35
+x = 0:30
+barplot(names= x,
+        height = dbinom(x,30,p),
+        main = "PDF of X~Binom(30,0.3)",
+        xlab='X',
+        ylab='Probability')
+
+```
+
+We observe that the higher $n$ is, the closer the PDF of the binomial distribution looks to a bell shape. From the graphs above, it seems that $X_1 \sim \text{Binom}(30,0.3)$ can be approximated by a normal distribution $X_2 \sim \text{N}(30*0.3,\sqrt{30*0.3*0.7})$. But do the probabilities of anologous events also match? Next, we compare $P(X_1 = 10)$ and $P(9.5 \leq X_2 \leq 10.5)$.
+
+```{r}
+dbinom(x=10,30,0.3)
+
+mu=30*0.3
+sigma=sqrt(30*0.3*0.7) 
+pnorm(10.5,mu,sigma) - pnorm(9.5,mu,sigma)
+```
 
 ## Central Limit Theorem

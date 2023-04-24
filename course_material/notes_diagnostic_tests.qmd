@@ -26,7 +26,7 @@ A diagnostic test screens people for a disease, such as the PCR or antigen tests
 -   The test result can be **positive**: classifying the person as having the disease,
 -   or **negative**: classifying the person as not having the disease.
 
-The **test result** may, or may not match the person's **actual status**.
+However, the **test result** may, or may not match the person's **actual status**.
 
 ## Confusion matrix
 
@@ -34,7 +34,7 @@ Denote the subjects with the condition as $P$, and subjects without the conditio
 
 Total population: $P+N$
 
-Prevalence (of the condition) is defined as: $\frac{P}{P+N}$
+**Prevalence** (of the condition) is defined as: $\frac{P}{P+N}$
 
 |                       | Predicted Positive           | Predicted Negative             | **Total**     |
 |------------------|------------------|-------------------|------------------|
@@ -46,7 +46,7 @@ Prevalence (of the condition) is defined as: $\frac{P}{P+N}$
 
 $$\text{Sensitivity}= \frac{TP}{P} = \frac{TP}{TP+FN}$$
 
-**Specificity** is the probability of revealing that a person does not have the condition (i.e. healthy). It is also known as **true negative rate**.
+**Specificity** is the probability of revealing that a person does not have the condition (i.e. healthy). It is also known as **true negative rate** (TNR), as it is the proportion of true negatives.
 
 $$\text{Specificity} = \frac{TN}{N} = \frac{TN}{TN + FP}$$
 
@@ -61,14 +61,14 @@ $$NPV = \frac{TN}{N_{predicted}} = \frac{TN}{TN + FN}$$
 ::: {.callout-note collapse="true"}
 #### Example: Mammography
 
-(From the Norwegian Medical Journal, 1990) 372 women with a lump in the breast have been referred to a surgical clinic.
+(From the Norwegian Medical Journal, 1990) 372 women with a lump in the breast initially classified as malign or benign were referred to a surgical clinic for a final diagnosis.
 
 |                        | Mammography malign | Mammography benign |
 |------------------------|--------------------|--------------------|
 | Final diagnosis malign | 22                 | 3                  |
 | Final diagnosis benign | 16                 | 331                |
 
-Identify the positive test result (Mammography malign), and positive condition (Final diagnosis malign).
+We  identify the positive test result (mammography malign), and the positive condition (final diagnosis malign). Then we can compute the four following probabilities from the table:
 
 Sensitivity: $22/(22+3) = 0.88$
 
@@ -88,17 +88,17 @@ The concepts in diagnostic testing can be formulated in the form of conditional 
 -   Positive predictive value: $P(\text{ill}|\text{pos})$
 -   Negative predictive value: $P(\text{healthy}|\text{neg})$
 
-Bayes' theorem can be applied to compute **PPV and NPV** from **sensitivity, specificity and prevalence**:
+**Bayes' theorem** can be applied to compute **PPV and NPV from sensitivity, specificity and prevalence**:
 
-$$PPV = \frac{\text{sens} \cdot \text{prev}}{\text{sens} \cdot \text{prev} + (1-\text{spes}) \cdot (1-\text{prev})}$$
+$$PPV = \frac{\text{sens} \cdot \text{prev}}{\text{sens} \cdot \text{prev} + (1-\text{spec}) \cdot (1-\text{prev})}$$
 
-$$NPV = \frac{\text{spes} \cdot (1-\text{prev}) }{(1-\text{sens}) \cdot \text{prev} + \text{spes} \cdot (1-\text{prev})}$$
+$$NPV = \frac{\text{spec} \cdot (1-\text{prev}) }{(1-\text{sens}) \cdot \text{prev} + \text{spec} \cdot (1-\text{prev})}$$
 
 ::: {.callout-note collapse="true"}
 #### Derivation of the PPV formula using Bayes' law
 
 $$
-\begin{aligned}PPV = P(\text{ill}|\text{pos}) & = \frac{P(\text{pos}|\text{ill}) \cdot P(\text{ill})}{P(\text{pos})}\\                               & = \frac{P(\text{pos}|\text{ill}) \cdot P(\text{ill})}{P(\text{pos}|\text{ill}) \cdot P(\text{ill}) +  P(\text{pos}|\text{healthy}) \cdot P(\text{healthy})}\\ & =\frac{\text{sens} \cdot \text{prev}}{\text{sens} \cdot \text{prev} + (1-\text{spes}) \cdot (1-\text{prev})}\end{aligned}
+\begin{aligned}PPV = P(\text{ill}|\text{pos}) & = \frac{P(\text{pos}|\text{ill}) \cdot P(\text{ill})}{P(\text{pos})}\\                               & = \frac{P(\text{pos}|\text{ill}) \cdot P(\text{ill})}{P(\text{pos}|\text{ill}) \cdot P(\text{ill}) +  P(\text{pos}|\text{healthy}) \cdot P(\text{healthy})}\\ & =\frac{\text{sens} \cdot \text{prev}}{\text{sens} \cdot \text{prev} + (1-\text{spec}) \cdot (1-\text{prev})}\end{aligned}
 $$
 
 Exercise: Try to derive the formula for $NPV$ in a similar way.
@@ -118,15 +118,15 @@ But the test result may be wrong:
 
 -   A **false negative** might be due to the fact that antibodies are not yet produced in sufficient quantity, hence are not detected by the test.
 
-We know that the **sensitivity** of the HIV test is 98%. We know that the **specificity** of the HIV test is 99.8%. We assume that the **prevalence** of HIV in a given population is 0.1%.
+We assume that the **sensitivity** of the HIV test is 98%. We know that the **specificity** of the HIV test is 99.8%. We assume that the **prevalence** of HIV in a given population is 0.1%.
 
 What is the probability of a person **having HIV, if he got a positive test result**?
 
-$PPV = \frac{\text{sens} \cdot \text{prev}}{\text{sens} \cdot \text{prev} + (1-\text{spes}) \cdot (1-\text{prev})} = \frac{0.98 \times 0.001}{0.98 \times 0.001 + 0.002 \times 0.999} = 0.329$
+$PPV = \frac{\text{sens} \cdot \text{prev}}{\text{sens} \cdot \text{prev} + (1-\text{spec}) \cdot (1-\text{prev})} = \frac{0.98 \times 0.001}{0.98 \times 0.001 + 0.002 \times 0.999} = 0.329$
 
 What is the probability of a person **not having HIV, if he got a negative test result**?
 
-$NPV = \frac{\text{spes} \cdot (1-\text{prev}) }{(1-\text{sens}) \cdot \text{prev} + \text{spes} \cdot (1-\text{prev})} = \frac{0.998 \times 0.999}{0.98 \times 0.001 + 0.998 \times 0.999} = 0.999$
+$NPV = \frac{\text{spec} \cdot (1-\text{prev}) }{(1-\text{sens}) \cdot \text{prev} + \text{spec} \cdot (1-\text{prev})} = \frac{0.998 \times 0.999}{0.98 \times 0.001 + 0.998 \times 0.999} = 0.999$
 
 Let us see from 100 000 persons, what are the theoretical results of the test?
 
@@ -140,7 +140,7 @@ Let us see from 100 000 persons, what are the theoretical results of the test?
 
 -   True negatives: $99900 \times 0.998 = 99700$
 
--   False positives: $99900 \times 0.002 = 199.8$, say $200$
+-   False positives: $200$
 
 Note that from 298 positive tests, only 98 persons have HIV. How would these numbers change if the prevalence would be lower? and if it would be higher?
 :::

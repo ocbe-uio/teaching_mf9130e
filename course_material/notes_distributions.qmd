@@ -16,6 +16,8 @@ Topics:
 
 -   Normal approximation to a binomial distribution
 
+-   Central Limit Theorem
+
 Books and resources:
 
 -   Aalen 4, 5
@@ -100,24 +102,47 @@ Example: $\binom 4 3 = \frac{4\times 3 \times 2 \times 1}{3 \times 2 \times 1 \t
 
 ## Binomial distribution
 
-The probability that $A$ occurs exact $x$ times is given by
+The probability that the event $A$ occurs exact $x$ times is given by:
 
 $$P(X = x) = \binom n x p^{x}(1-p)^{n-x}$$
 
-i.e. the number of distributing $x$ events in a sequence of length $n$, times the probability that one particular sequence with $x$ events occurs.
+i.e. the number of distributing $x$ events $A$ in a sequence of length $n$, times the probability that one particular sequence with $x$ events $A$ occurs.
 
 For a binomial distribution, the mean (or expected value) is $np$ and the variance is $np(1-p)$.
 
 ::: {.callout-note collapse="true"}
 #### Example: Number of positive tests
 
-Let's say $p=0.15$ is the probability that a person taking a test for a certain disease get a positive result. A certain day, we are going to do $n=8$ such tests. The number of positive test in a sequence of of 8 test is random variable that is binomially distributed, often written Binom(8,0.15). This binomial distribution can be represented as below.
+Let's say $p=0.15$ is the probability that a person taking a test for a certain disease gets a positive result. A certain day, we are going to do $n=8$ such tests. The number of positive test in a sequence of of 8 test is random variable that is binomially distributed, often written Binom(8,0.15). This binomial distribution is represented below.
 
 ![Binom(8,0.15)](images/binomial_n=8_p=015-01.png){fig-align="center"}
 
--   What is the probability that you get 2 or more positives?
+-   What is the probability that you get 2 or more positives out of 8?
+
+
+\begin{aligned}
+P(2\text{ or more}) &= 1 - P(0 \text{ or } 1) = 1- (P(X=0) + P(X=1)) = \\
+                    &= 1- (\binom 8 0 \cdot 0.15^0 \cdot 0.85^8 + \binom 8 1 \cdot 0.15^1 \cdot 0.85^7) =\\
+                    &= 1- (1 \cdot 1 \cdot 0.27 + 8 \cdot 0.15 \cdot 0.32 ) = 0.346
+                
+\end{aligned}
+
+
 -   What is the expected number of positive tests (the mean)?
+
+$$
+\text{mean} = 8*0.15 =1.2
+$$
+
 -   What is the variance and the standard deviation?
+
+$$
+\text{variance} = 8*0.15-0.85=1.02
+$$
+
+$$
+\text{sd} = \sqrt{1.02}=1.01
+$$
 :::
 
 ::: {.callout-note collapse="true"}
@@ -126,17 +151,22 @@ Let's say $p=0.15$ is the probability that a person taking a test for a certain 
 We consider a family with 4 kids, with no monozygotic twins, so the gender of the kids are approximately independent. The probability of getting a boy in Norway is approximately 0.514. Using the formula for the binomial distribution we can compute the probability that that out of the 4 kids the number of boys is 0, 1, 2, 3 or 4 as follwos:
 
 $$
-P(X=0)=\binom 4 0 0.514^0 \cdot 0.486^4 = 0.0557
-$$ $$
-P(X=1)=\binom 4 1 0.51^1 \cdot 0.49^3 = 0.2360
+P(X=0)=\binom 4 0 0.51^0 \cdot 0.486^4 = 0.0557
+$$ 
+
+$$
+P(X=1)=\binom 4 1 \cdot 0.51^1 \cdot 0.49^3 = 0.2360
 $$
 
 $$
-P(X=2)=\binom 4 2 0.51^2 \cdot 0.49^2 = 0.3744
-$$ $$
-P(X=3)=\binom 4 3 0.51^3 \cdot 0.49^1 = 0.2639
-$$ $$
-P(X=4)=\binom 4 4 0.51^4 \cdot 0.49^0 = 0.0697
+P(X=2)=\binom 4 2 \cdot 0.51^2 \cdot 0.49^2 = 0.3744
+$$ 
+
+$$
+P(X=3)=\binom 4 3 \cdot 0.51^3 \cdot 0.49^1 = 0.2639
+$$ 
+$$
+P(X=4)=\binom 4 4 \cdot 0.51^4 \cdot 0.49^0 = 0.0697
 $$
 
 In the following table we compare our theoretical estimates with real-life percentage distribution in 7745 American families with 4 kids.
@@ -207,11 +237,11 @@ Standard normal distribution probabilities are commonly presented in tables, so 
 ::: {.callout-note collapse="true"}
 #### Examples: Birthweight
 
-This figure shows the brithweight of 189 newborns
+This figure shows the birthweight of 189 newborns
 
 ![](images/birthweight_example_normal.png){fig-align="center"}
 
--   Estimates of \$\\mu\$ and \$\\sigma\$ are, respectively, 2945g and 729g
+-   Estimates of $\mu$ and $\sigma$ are, respectively, 2945g and 729g.
 
 -   How can we compute the proportion of weights larger than 4000g?
 

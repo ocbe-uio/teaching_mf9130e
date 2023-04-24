@@ -158,7 +158,7 @@ The occurrence of at least one of the events $A$ or $B$ is $$P(A \cup B) = P(A) 
 
 **Multiplicative rule**
 
-Probability of independent events can be multiplied
+Probability of independent events $A$ and $B$ can be multiplied
 
 $$P(A \cap B) = P(A) \times P(B)$$
 
@@ -180,26 +180,29 @@ $$
 :::
 
 ::: {.callout-note collapse="true"}
-#### Examples: Tossing two dices
+#### Example: Tossing two dices
 
--   The two throws are independent events.
+-   The two tosses are independent events.
 
 -   There are 36 equally possible outcomes.
 
 -   Only one outcome corresponds to the double 6 event.
 
-What is the probability of getting 6 in the first AND the second throw? $$
+What is the probability of getting 6 in the first AND the second throw? 
+$$
 P(\text{6 in the first AND the second throw}) = 1/6 \times 1/6 = 1/36
 $$
 
-What is the probability of getting at least one 6 in two throws? $$
+What is the probability of getting at least one 6 in two throws? 
+$$
 \begin{aligned}
     P(\text{at least one 6 in 2 trows}) &=P(\text{6 in the first}) +         P(\text{6 in the second}) - P(\text{6 in both})\\
     &=1/6 +1/6 - 1/36 =0.31
 \end{aligned}
 $$
 
-What is the probability of not getting any 6 in two throws? $$
+What is the probability of not getting any 6 in two throws? 
+$$
 \begin{aligned}
     P(\text{not getting any 6 in 2 trows}) &= 1 - P(\text{at least one 6 in 2 trows})\\
     &= 1 - 0.31 = 0.69
@@ -303,13 +306,16 @@ $$P(A) = P(A|B)P(B) + P(A| \bar{B})P( \bar{B})$$
 
 Any event $A$ can be divided in two with regard to another event $B$:
 
-$$A = (A \cap B) \cup (A \cap \bar{B})$$ ![](images/Venn_diagrams_eventA-01.png){width="15cm"}
+$$A = (A \cap B) \cup (A \cap \bar{B})$$ 
+
+![](images/Venn_diagrams_eventA-01.png){width="15cm"}
 
 Becase the two events $(A \cap B)$ and $(A \cap \bar{B})$ are disjunct, we can write:
 
 $$
 P(A) = P(A \cap B) + P(A \cap \bar{B})
-$$ Using the multiplicative rule, we get the **law of total probability**:
+$$
+Using the multiplicative rule, we get the **law of total probability**:
 
 $$
 P(A) = P(A|B)P(B) + P(A| \bar{B})P( \bar{B})
@@ -323,11 +329,13 @@ $$
 -   **Monozygotic** twins have the same gender, while dizygotic twins are like any other siblings.
 -   We have to take into consideration if the twins are monozygotic or not. For that we use the law of total probability.
 
-$A$ = Both twins have the same gender $B$ = The twins are monozygotic
+$A$ = Both twins have the same gender.
+
+$B$ = The twins are monozygotic.
 
 -   We want to find $P(A)$
--   The probability of twins being monozygotic, $P(B)$, is 1/3.
--   The las of total probability give us:
+-   We assume that the probability of twins being monozygotic, $P(B)$, is 1/3.
+-   The law of total probability give us:
 
 $$
 \begin{aligned}

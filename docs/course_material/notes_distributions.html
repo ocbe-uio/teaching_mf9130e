@@ -157,6 +157,7 @@ ul.task-list{list-style: none;}
 <li><p>Continuous probability distribution</p></li>
 <li><p>Normal distribution</p></li>
 <li><p>Normal approximation to a binomial distribution</p></li>
+<li><p>Central Limit Theorem</p></li>
 </ul>
 <p>Books and resources:</p>
 <ul>
@@ -252,9 +253,9 @@ Example: Dice Trowing
 </section>
 <section id="binomial-distribution" class="level2">
 <h2 class="anchored" data-anchor-id="binomial-distribution">Binomial distribution</h2>
-<p>The probability that <span class="math inline">\(A\)</span> occurs exact <span class="math inline">\(x\)</span> times is given by</p>
+<p>The probability that the event <span class="math inline">\(A\)</span> occurs exact <span class="math inline">\(x\)</span> times is given by:</p>
 <p><span class="math display">\[P(X = x) = \binom n x p^{x}(1-p)^{n-x}\]</span></p>
-<p>i.e.&nbsp;the number of distributing <span class="math inline">\(x\)</span> events in a sequence of length <span class="math inline">\(n\)</span>, times the probability that one particular sequence with <span class="math inline">\(x\)</span> events occurs.</p>
+<p>i.e.&nbsp;the number of distributing <span class="math inline">\(x\)</span> events <span class="math inline">\(A\)</span> in a sequence of length <span class="math inline">\(n\)</span>, times the probability that one particular sequence with <span class="math inline">\(x\)</span> events <span class="math inline">\(A\)</span> occurs.</p>
 <p>For a binomial distribution, the mean (or expected value) is <span class="math inline">\(np\)</span> and the variance is <span class="math inline">\(np(1-p)\)</span>.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
@@ -268,18 +269,37 @@ Example: Number of positive tests
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Let’s say <span class="math inline">\(p=0.15\)</span> is the probability that a person taking a test for a certain disease get a positive result. A certain day, we are going to do <span class="math inline">\(n=8\)</span> such tests. The number of positive test in a sequence of of 8 test is random variable that is binomially distributed, often written Bin(8,0.15). This binomial distribution can be represented as below.</p>
+<p>Let’s say <span class="math inline">\(p=0.15\)</span> is the probability that a person taking a test for a certain disease gets a positive result. A certain day, we are going to do <span class="math inline">\(n=8\)</span> such tests. The number of positive test in a sequence of of 8 test is random variable that is binomially distributed, often written Binom(8,0.15). This binomial distribution is represented below.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/binomial_n=8_p=015-01.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Bin(8,0.15)</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Binom(8,0.15)</figcaption><p></p>
 </figure>
 </div>
 <ul>
-<li>What is the probability that you get 2 or more positives?</li>
+<li>What is the probability that you get 2 or more positives out of 8?</li>
+</ul>
+<span class="math display">\[\begin{aligned}
+P(2\text{ or more}) &amp;= 1 - P(0 \text{ or } 1) = 1- (P(X=0) + P(X=1)) = \\
+                    &amp;= 1- (\binom 8 0 \cdot 0.15^0 \cdot 0.85^8 + \binom 8 1 \cdot 0.15^1 \cdot 0.85^7) =\\
+                    &amp;= 1- (1 \cdot 1 \cdot 0.27 + 8 \cdot 0.15 \cdot 0.32 ) = 0.346
+                
+\end{aligned}\]</span>
+<ul>
 <li>What is the expected number of positive tests (the mean)?</li>
+</ul>
+<p><span class="math display">\[
+\text{mean} = 8*0.15 =1.2
+\]</span></p>
+<ul>
 <li>What is the variance and the standard deviation?</li>
 </ul>
+<p><span class="math display">\[
+\text{variance} = 8*0.15-0.85=1.02
+\]</span></p>
+<p><span class="math display">\[
+\text{sd} = \sqrt{1.02}=1.01
+\]</span></p>
 </div>
 </div>
 </div>
@@ -296,14 +316,21 @@ Example: Family with four kids
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>We consider a family with 4 kids, with no monozygotic twins, so the gender of the kids are approximately independent. The probability of getting a boy in Norway is approximately 0.514. Using the formula for the binomial distribution we can compute the probability that that out of the 4 kids the number of boys is 0, 1, 2, 3 or 4 as follwos:</p>
-<p>$$ P(X=0)= 0 0.514^0 ^4 = 0.0557</p>
-<p><span class="math display">\[ \]</span></p>
-<p>P(X=1)= 1 0.51^1 ^3 = 0.2360 $$</p>
-<p>$$ P(X=2)= 2 0.51^2 ^2 = 0.3744</p>
-<p><span class="math display">\[ \]</span></p>
-<p>P(X=3)= 3 0.51^3 ^1 = 0.2639</p>
-<p><span class="math display">\[ \]</span></p>
-<p>P(X=4)= 4 0.51^4 ^0 = 0.0697 $$</p>
+<p><span class="math display">\[
+P(X=0)=\binom 4 0 0.51^0 \cdot 0.486^4 = 0.0557
+\]</span></p>
+<p><span class="math display">\[
+P(X=1)=\binom 4 1 \cdot 0.51^1 \cdot 0.49^3 = 0.2360
+\]</span></p>
+<p><span class="math display">\[
+P(X=2)=\binom 4 2 \cdot 0.51^2 \cdot 0.49^2 = 0.3744
+\]</span></p>
+<p><span class="math display">\[
+P(X=3)=\binom 4 3 \cdot 0.51^3 \cdot 0.49^1 = 0.2639
+\]</span></p>
+<p><span class="math display">\[
+P(X=4)=\binom 4 4 \cdot 0.51^4 \cdot 0.49^0 = 0.0697
+\]</span></p>
 <p>In the following table we compare our theoretical estimates with real-life percentage distribution in 7745 American families with 4 kids.</p>
 <table class="table">
 <caption>Source: Aalen et al.</caption>
@@ -428,14 +455,14 @@ Examples: Birthweight
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>This figure shows the brithweight of 189 newborns</p>
+<p>This figure shows the birthweight of 189 newborns</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/birthweight_example_normal.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 <ul>
-<li><p>Estimates of $\mu$ and $\sigma$ are, respectively, 2945g and 729g</p></li>
+<li><p>Estimates of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> are, respectively, 2945g and 729g</p></li>
 <li><p>How can we compute the proportion of weights larger than 4000g?</p></li>
 </ul>
 <p>We can either compute it directly in R as we will see in the R lab, or we can use the normal tables as follows:</p>
