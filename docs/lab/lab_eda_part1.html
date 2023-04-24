@@ -262,7 +262,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="a">1a</h3>
 <p>Generate a variable named <code>weight</code>, with the following measurements:</p>
 <pre><code>50 75 70 74 95 83 65 94 66 65 65 75 84 55 73 68 72 67 53 65</code></pre>
-<div class="cell">
+<div class="cell" data-hash="lab_eda_part1_cache/html/unnamed-chunk-1_eb865521347162d95640925522e8ee22">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">75</span>, <span class="dv">70</span>, <span class="dv">74</span>, <span class="dv">95</span>, </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>            <span class="dv">83</span>, <span class="dv">65</span>, <span class="dv">94</span>, <span class="dv">66</span>, <span class="dv">65</span>, </span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>            <span class="dv">65</span>, <span class="dv">75</span>, <span class="dv">84</span>, <span class="dv">55</span>, <span class="dv">73</span>, </span>
@@ -273,7 +273,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="b">1b</h3>
 <p>Make a simple descriptive analysis of the variable, what are the mean, median, maximum, minimum and quantiles?</p>
 <p>How to interpret the data?</p>
-<div class="cell">
+<div class="cell" data-hash="lab_eda_part1_cache/html/unnamed-chunk-2_d41ff471acbf56da9f9ebbe39420d193">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(weight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 70.7</code></pre>
@@ -301,7 +301,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="c" class="level3">
 <h3 class="anchored" data-anchor-id="c">1c</h3>
 <p>Make a histogram.</p>
-<div class="cell">
+<div class="cell" data-hash="lab_eda_part1_cache/html/unnamed-chunk-3_67e5d51757c750212bc1860dba2f839a">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(weight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="lab_eda_part1_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
@@ -311,7 +311,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="d" class="level3">
 <h3 class="anchored" data-anchor-id="d">1d</h3>
 <p>Make a boxplot. What do the two dots on the top represent?</p>
-<div class="cell">
+<div class="cell" data-hash="lab_eda_part1_cache/html/unnamed-chunk-4_516cfa7288edc78fdf54375c301aafb0">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(weight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="lab_eda_part1_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
@@ -339,7 +339,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Download and open <code>PEFH98-english.dta</code> into R.</p>
 <p>If you have problem with <code>.dta</code> data format, you can also use <code>PEFH98-english.csv</code>.</p>
 <p>Pay attention to how <code>gender</code> is coded. We might have to modify it.</p>
-<div class="cell">
+<div class="cell" data-hash="lab_eda_part1_cache/html/unnamed-chunk-5_f39971ed43a865a86837913811c99ce7">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># locate your datafile, set the path to your data</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>lung_data <span class="ot">&lt;-</span> haven<span class="sc">::</span><span class="fu">read_dta</span>(<span class="st">'data/PEFH98-english.dta'</span>)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lung_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -378,7 +378,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="b-1" class="level3">
 <h3 class="anchored" data-anchor-id="b-1">2b)</h3>
 <p>How many observations are there (number of subjects)? How do you get a list of variable names from your dataset?</p>
-<div class="cell">
+<div class="cell" data-hash="lab_eda_part1_cache/html/unnamed-chunk-6_ceee8af6be9c4bd5d582a7859dacf081">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(lung_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 106</code></pre>
@@ -395,14 +395,14 @@ weight
 age
 pefsitm
 pefstam</code></pre>
-<div class="cell">
+<div class="cell" data-hash="lab_eda_part1_cache/html/unnamed-chunk-7_2f28004878f15a2b74d8e5e0452d6313">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lung_data<span class="sc">$</span>height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="lab_eda_part1_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>We repeat it for the other 4 variables. We can put them more compactly,</p>
-<div class="cell">
+<div class="cell" data-hash="lab_eda_part1_cache/html/unnamed-chunk-8_1b09e38b77cdffdfd9cebfd8cd61418d">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) </span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># we use this line to display (2 rows 2 columns)</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># by default it is 1 row 1 column</span></span>
@@ -421,7 +421,7 @@ pefstam</code></pre>
 <h3 class="anchored" data-anchor-id="c-1">2c)</h3>
 <p>Make histograms for the variables <code>height</code> and <code>pefmean</code> for men and women separately. Also try to make boxplots.</p>
 <p>What conclusion can you draw?</p>
-<div class="cell">
+<div class="cell" data-hash="lab_eda_part1_cache/html/unnamed-chunk-9_d62ac30ed79d1525cfe1deae8f388e2a">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>height_f <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>height[lung_data<span class="sc">$</span>gender <span class="sc">==</span> <span class="st">'female'</span>]</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>height_m <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>height[lung_data<span class="sc">$</span>gender <span class="sc">==</span> <span class="st">'male'</span>]</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -443,7 +443,7 @@ pefstam</code></pre>
 </div>
 </div>
 <p>Similarly, histogram for <code>pefmean</code> can be done in the same way.</p>
-<div class="cell">
+<div class="cell" data-hash="lab_eda_part1_cache/html/unnamed-chunk-10_348051c6f3b8a171c4aa476392b127fd">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>pefmean_f <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>pefmean[lung_data<span class="sc">$</span>gender <span class="sc">==</span> <span class="st">'female'</span>]</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>pefmean_m <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>pefmean[lung_data<span class="sc">$</span>gender <span class="sc">==</span> <span class="st">'male'</span>]</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -455,7 +455,7 @@ pefstam</code></pre>
 </div>
 </div>
 <p>Now we can make some boxplots</p>
-<div class="cell">
+<div class="cell" data-hash="lab_eda_part1_cache/html/unnamed-chunk-11_a9eff7a1e0e2016a3f2456c58a9cfc9a">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(height <span class="sc">~</span> gender, <span class="at">data =</span> lung_data, <span class="at">main =</span> <span class="st">'Height vs Gender'</span>)</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -475,7 +475,7 @@ pefstam</code></pre>
 <li><code>pefmean</code> with <code>age</code></li>
 </ul>
 <p>What association do you see?</p>
-<div class="cell">
+<div class="cell" data-hash="lab_eda_part1_cache/html/unnamed-chunk-12_83d5cacd9138bb9bebcdc65bda55381b">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pefmean height</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lung_data<span class="sc">$</span>pefmean, lung_data<span class="sc">$</span>height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -492,7 +492,7 @@ pefstam</code></pre>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pch: plotting symbols</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>pch = 20</code> is setting the symbol to small solid dots. You can try different values, from 0 to 25. <a href="http://www.sthda.com/english/wiki/r-plot-pch-symbols-the-different-point-shapes-available-in-r">Read more</a></p>
-<div class="cell">
+<div class="cell" data-hash="lab_eda_part1_cache/html/unnamed-chunk-13_216d0e3bb6d7c3a71987d5daa471b360">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># pefmean weight</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lung_data<span class="sc">$</span>pefmean, lung_data<span class="sc">$</span>weight, </span>

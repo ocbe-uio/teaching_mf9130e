@@ -231,7 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="a" class="level3">
 <h3 class="anchored" data-anchor-id="a">1a)</h3>
 <p>We investigate whether having a high value of <code>pefmean</code> is associated with <code>gender</code>. First, create a new variable <strong>highpef</strong> that indicates whether <code>pefmean</code> is above 500.</p>
-<div class="cell">
+<div class="cell" data-hash="lab_categorical_cache/html/unnamed-chunk-1_83f8a1060232b41ebdca172e5fd3b125">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>lung_data <span class="ot">&lt;-</span> haven<span class="sc">::</span><span class="fu">read_dta</span>(<span class="st">'data/PEFH98-english.dta'</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># recode gender: female, male</span></span>
@@ -250,7 +250,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>There are multiple ways to do it. Here we show two of them.</p>
 <p>In option 1, we use the function <code>ifelse()</code>. It will create a binary vector, and fill in different output based on whether the condition was true or not.</p>
-<div class="cell">
+<div class="cell" data-hash="lab_categorical_cache/html/unnamed-chunk-2_2941c0784da3fc560a53a0749bf85ca7">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># option 1</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># code new variable: highpef with cutoff = 500</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this is a binary variable, 1 means yes (higher than 500), 0 means no</span></span>
@@ -267,7 +267,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p>In option 2, we create a vector with a pre-specified value, then replace the elements for given indices.</p>
-<div class="cell">
+<div class="cell" data-hash="lab_categorical_cache/html/unnamed-chunk-3_2cf5e5fc34d9cafad8cc5270775d0475">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># option 2 </span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># create a vector with all '0's</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># then set the elements above 500 in 'pefmean' as '1'</span></span>
@@ -285,7 +285,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="b" class="level3">
 <h3 class="anchored" data-anchor-id="b">1b)</h3>
 <p>We investigate the association between these two variables via an appropriate table analysis. Make a table of <code>highpef</code> vs <code>gender</code>, and carry out a chi-square analysis. Interpret your results.</p>
-<div class="cell">
+<div class="cell" data-hash="lab_categorical_cache/html/unnamed-chunk-4_4d0b6068940d89bdd0ecca535cc04df5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># take out gender variable so we don't need to use $ any more</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>gender <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>gender</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -314,7 +314,7 @@ gender    0  1
 </div>
 </div>
 <p>We do a chi-square test with <code>chisq.test()</code> function. To read more about what is required as input, you can use <code>?chisq.test()</code> to get the documentation.</p>
-<div class="cell">
+<div class="cell" data-hash="lab_categorical_cache/html/unnamed-chunk-5_e7fef215b7b4d4e4f68f7bf6e367ea7f">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># note: </span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># we have not distinguished between exposure and outcome</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># by default, 'table' function puts the first input in rows (gender)</span></span>
@@ -343,7 +343,7 @@ Chi-square test measures strength of association
 <p>This is why you should always be clear in your mind what is your exposure and outcome, and report risk ratio and/or odds ratio.</p>
 </div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="lab_categorical_cache/html/unnamed-chunk-6_bfaaf718bcb79860bf50117a6e782df6">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reverse the order of the two variables</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>table_highpef_gender <span class="ot">&lt;-</span> <span class="fu">table</span>(highpef, gender)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(table_highpef_gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -419,7 +419,7 @@ Risk ratio and odds ratio
 </tr>
 </tbody>
 </table>
-<div class="cell">
+<div class="cell" data-hash="lab_categorical_cache/html/unnamed-chunk-7_054aed1af2700c19453505c5c5b9b99d">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first use formula (only point estimates)</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># risk ratio (relative risk)</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># risk in exposed / risk in unexposed</span></span>
@@ -462,7 +462,7 @@ Be careful with the input format when using packages
 </div>
 </div>
 <p>The first function we use is <code>epitab</code> from <code>epitools</code> package.</p>
-<div class="cell">
+<div class="cell" data-hash="lab_categorical_cache/html/unnamed-chunk-8_a5052f44f34d6d10ca6ac29d3d1378d3">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages('epitools')</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># match the expected data format</span></span>
@@ -474,7 +474,7 @@ Be careful with the input format when using packages
 <span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="co">#epitools::epitab(tb1, method = 'oddsratio')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The second function we use is <code>epi.2by2</code> from <code>epiR</code> package.</p>
-<div class="cell">
+<div class="cell" data-hash="lab_categorical_cache/html/unnamed-chunk-9_c92ace1cbc07c6958a0b0303c66bd9b6">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages('epiR')</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># match the expected data format</span></span>

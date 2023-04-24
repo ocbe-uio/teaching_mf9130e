@@ -253,7 +253,7 @@ Getting help
 <li>logical (binary, 1/0): True or False</li>
 </ul>
 <p>To create a variable, you type <code>variable_name &lt;- variable_value</code> in the console. Note that code that start with <code>#</code> are <strong>comments</strong>, and are not evaluated.</p>
-<div class="cell">
+<div class="cell" data-hash="lab_intro_r_cache/html/create variables_f2e72491b8314c0ad0d01b1d8d65fb6b">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a numeric variable number_1</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>number_1 <span class="ot">&lt;-</span> <span class="fl">1.2</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -264,7 +264,7 @@ Getting help
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>true_or_false <span class="ot">&lt;-</span> T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>To evaluate (or return) the variable you have created, you can either type the name of the variable, or <code>print()</code> with the variable name inside the bracket.</p>
-<div class="cell">
+<div class="cell" data-hash="lab_intro_r_cache/html/return variables_8f952265cda2879c22f8c0043991ba3e">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>number_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.2</code></pre>
@@ -275,7 +275,7 @@ Getting help
 </div>
 </div>
 <p>You can check the variable type using <code>class(variable_name)</code>:</p>
-<div class="cell">
+<div class="cell" data-hash="lab_intro_r_cache/html/check variable type_aef0c17a222df92ae2f1822b48d5050a">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(number_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "numeric"</code></pre>
@@ -320,7 +320,7 @@ Name your variable
 <h2 class="anchored" data-anchor-id="vectors">Vectors</h2>
 <p>A <strong>vector</strong> is a list of values; it can be numeric, and also characters and logical.</p>
 <p>To create a vector, use function <code>c()</code>.</p>
-<div class="cell">
+<div class="cell" data-hash="lab_intro_r_cache/html/create a vector_9078b340b41e6f3e38224a241820836a">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numeric</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>num_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>num_vector</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -341,7 +341,7 @@ Name your variable
 </div>
 </div>
 <p>There are some shortcuts to <strong>create a sequence of values</strong>; not required to learn, but very useful.</p>
-<div class="cell">
+<div class="cell" data-hash="lab_intro_r_cache/html/create a vector shortcut_3b333ff5856da98f754761f692b26605">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numeric</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># num_vector &lt;- c(1, 2, 3, 4, 5)</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>num_vector <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span> <span class="co"># from 1 to 5</span></span>
@@ -379,7 +379,7 @@ Types of elements in a vector
 <section id="combine-multiple-vectors" class="level3">
 <h3 class="anchored" data-anchor-id="combine-multiple-vectors">Combine multiple vectors</h3>
 <p>You can combine multiple vectors using <code>c()</code>. For example, <code>vec1</code> has 3 elements, <code>vec2</code> has 2 elements (assuming that they are of the same type), combining them gives 5 elements.</p>
-<div class="cell">
+<div class="cell" data-hash="lab_intro_r_cache/html/combine vectors_afecb960a5eaa948ac704005b7b37889">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>vec1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>vec2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">101</span>)</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(vec1, vec2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -401,7 +401,7 @@ Types of elements in a vector
 <p>A matrix can be thought of as a stack of vectors. When you collect data from <span class="math inline">\(n\)</span> patients (or subjects), you measure a few aspects on each patient such as age, sex, height and smoking. Let’s say you have measured <span class="math inline">\(p\)</span> aspects. This forms a matrix of size <span class="math inline">\(n \times p\)</span>.</p>
 <p>You might not need to create a matrix from scratch in R (because the focus of this course is data analysis); but it is helpful to understand some basic data manipulation commands.</p>
 <p>You can create a matrix using <code>matrix()</code>, with some parameters:</p>
-<div class="cell">
+<div class="cell" data-hash="lab_intro_r_cache/html/create matrix 1_892f2f57ef1b291626a3412004fbc4a8">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>matrix_1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> T)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>matrix_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -411,7 +411,7 @@ Types of elements in a vector
 </div>
 </div>
 <p>You can also create a matrix by combining two vectors of the same size, using <code>cbind()</code> or <code>rbind()</code>, which stands for “column bind” and “rowbind”.</p>
-<div class="cell">
+<div class="cell" data-hash="lab_intro_r_cache/html/create matrix 2_b37200fc5fe449df2be4570ad907dba1">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>vec1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>vec2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>)</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -444,7 +444,7 @@ vec2    3    4</code></pre>
 <li>Subject 3 is a 32 years-old male who does not have covid</li>
 </ul>
 <p>This is how you can present the dataframe, where each column has a different data type.</p>
-<div class="cell">
+<div class="cell" data-hash="lab_intro_r_cache/html/create dataframe_eea0d427d182b309bbd2e1c3ba293fe9">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>mini_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">50</span>, <span class="dv">32</span>), </span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">sex =</span> <span class="fu">c</span>(<span class="st">'male'</span>, <span class="st">'female'</span>, <span class="st">'male'</span>), </span>
@@ -466,7 +466,7 @@ vec2    3    4</code></pre>
 <h2 class="anchored" data-anchor-id="dimension-of-your-data">Dimension of your data</h2>
 <p>You can find the size of a <strong>vector</strong> with <code>length()</code>.</p>
 <p>For a matrix or dataframe, you can use <code>dim()</code>. It will return <code>nrow ncol</code>, number of rows and number of columns.</p>
-<div class="cell">
+<div class="cell" data-hash="lab_intro_r_cache/html/dimension of data 1_376febce06fb2beeffdca98b01efc014">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>vec1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(vec1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -500,7 +500,7 @@ vec2    3    4</code></pre>
 </div>
 </div>
 <p>You can also use <code>nrow()</code>, <code>ncol()</code> to get the number of rows and columns explicitly.</p>
-<div class="cell">
+<div class="cell" data-hash="lab_intro_r_cache/html/dimension of data 2_b1c47bc858f943ca21c32920fd6ca3fc">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ncol, nrow</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co"># dim(mini_data)</span></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(mini_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -523,7 +523,7 @@ vec2    3    4</code></pre>
 <li>elements beyond, or below a certain element</li>
 </ul>
 <p>Sometimes you might need to combine previous knowledge to get what you want (e.g.&nbsp;to know how many elements in total there are). But not required now.</p>
-<div class="cell">
+<div class="cell" data-hash="lab_intro_r_cache/html/indexing vector 1_585d5a9a2bf4ec6c66f52256ef92fcef">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>letters <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>, <span class="st">'d'</span>, <span class="st">'e'</span>, <span class="st">'f'</span>, <span class="st">'g'</span>, <span class="st">'h'</span>)</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 3rd letter</span></span>
@@ -547,7 +547,7 @@ vec2    3    4</code></pre>
 <li><code>matrix[r, c]</code> to get the element on <span class="math inline">\(r\)</span>-th row, <span class="math inline">\(c\)</span>-th column.</li>
 <li><code>matrix[r, ]</code>, <code>matrix[, c]</code> to get all the elements on <span class="math inline">\(r\)</span>-th row or <span class="math inline">\(c\)</span>-th column</li>
 </ul>
-<div class="cell">
+<div class="cell" data-hash="lab_intro_r_cache/html/indexing matrix_c0d7e8ca110b0697da926037c6760ccf">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>mat_3by3 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">byrow =</span> T)</span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>mat_3by3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -573,7 +573,7 @@ vec2    3    4</code></pre>
 <li>use <code>data$column_name</code>, or <code>data['column_name']</code> to access the entire <strong>column</strong></li>
 </ul>
 <p>Conventionally, each row is a subject, and each columnn is a variable (or aspect of measurement, feature, characteristic, risk factor etc).</p>
-<div class="cell">
+<div class="cell" data-hash="lab_intro_r_cache/html/indexing dataframe_d45da93d7ffb0f67ca930d27035d5aaa">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>mini_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  age    sex has_covid
@@ -623,7 +623,7 @@ Keep your original data safe!
 <p>Version control is a good skill to learn.</p>
 </div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="lab_intro_r_cache/html/modify data_cb565f15789b9ab462a98280e9fe0ca8">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vector</span></span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="co"># make e into E </span></span>
 <span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>letters[<span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="st">'E'</span></span>
@@ -673,7 +673,7 @@ Keep your original data safe!
 <h2 class="anchored" data-anchor-id="basic-calculations">Basic calculations</h2>
 <p>r as calculator (<strong>use console first; use script AFTER project and workspace mgmt!</strong>)</p>
 <p>exp, division</p>
-<div class="cell">
+<div class="cell" data-hash="lab_intro_r_cache/html/basic calculation_d36441e93760edb70a89f0ede438d618">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># assign values to variables a, b, c</span></span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">3</span></span>
 <span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">4</span></span>
@@ -699,7 +699,7 @@ Keep your original data safe!
 <p>project management</p>
 <p>set work directory</p>
 <p>import data of different formats (txt, csv, xlsx, rda…)</p>
-<div class="cell">
+<div class="cell" data-hash="lab_intro_r_cache/html/load-data-penguins-mini_6d00b8b3b5a7c5107922c6443dfb39d0">
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># need to load the data in this page again. DO NOT SHOW</span></span>
 <span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>penguins_mini <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/penguins_mini.csv'</span>, <span class="at">sep =</span> <span class="st">','</span>)</span>
 <span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a></span>

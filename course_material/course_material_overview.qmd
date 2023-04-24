@@ -7,44 +7,33 @@ format:
 editor: source
 ---
 
-
-
 On this page you'll find a list of **lecture notes**, **R lab notes** and other material used in this course.
-
 
 ## Week 1
 
-|     Time      |                  Topic                   |   Notes    |  Lab | Other |
-|:-------------:|:-----------------------------------------:|:---------:|:----:|:-----:|
-| April 24 PM  | Course introduction | | N/A | |
-|              | Descriptive statistics| [Example pdf notes](example.pdf)| N/A | |
-| April 25 AM  | Introduction to R | | | |
-|              | Descriptive statistics | | | |
-| April 25 PM  |  Probability, diagnosistic tests  | [Probability](notes_probability.qmd) [Diagnostic tests](notes_diagnostic_tests.qmd) [Distributions](notes_distributions.qmd) |  | |
-|              |  Statistical distributions        |  |  | |
-| April 26 AM |  Lab session          |  |  | |
-| April 26 PM |  Statistical inference, tests and confidence intervals         |  |  | |
-|             |  t-tests         |  |  | |
-| April 27 AM |  Lab session         |  |  | |
-| April 27 PM |  Categorical data, table analysis        |  |  | |
-| April 28 AM |  Lab session        |  |  | |
-
-
+|    Time     |                         Topic                         |                                        Notes                                        | Lab | Other |
+|:---------:|:---------------------------:|:---------:|:---------:|:---------:|
+| April 24 PM |                  Course introduction                  |                                                                                     | N/A |       |
+|             |                Descriptive statistics                 |                          [Example pdf notes](example.pdf)                           | N/A |       |
+| April 25 AM |                   Introduction to R                   |                                                                                     |     |       |
+|             |                Descriptive statistics                 |                                                                                     |     |       |
+| April 25 PM |            Probability, diagnosistic tests            | [Probability](notes_probability.qmd) [Diagnostic tests](notes_diagnostic_tests.qmd) |     |       |
+|             |               Statistical distributions               |                      [Distributions](notes_distributions.qmd)                       |     |       |
+| April 26 AM |                      Lab session                      |                   [COVID-19 tests](lab_diagnostic_tests.qmd)   [Simulations](lab_distributions.qmd)                                                               |     |       |
+| April 26 PM | Statistical inference, tests and confidence intervals |                                                                                     |     |       |
+|             |                        t-tests                        |                                                                                     |     |       |
+| April 27 AM |                      Lab session                      |                                                                                     |     |       |
+| April 27 PM |           Categorical data, table analysis            |                                                                                     |     |       |
+| April 28 AM |                      Lab session                      |                                                                                     |     |       |
 
 ## Week 2
 
-
-|     Time      |                  Topic                   |   Notes     |  Lab session |
-|:-------------:|:-----------------------------------------:|:-------------:|:-------------:|
-| May 8 AM  | Exploratory data analysis, transformation | | |
-|                  | Non-parametric methods | | |
-| May 8 PM | Sample size, statistical power          | | [Code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/5_samplesize.R) |
-| May 9 AM | Study design, principles of clinical trials          | | NA |
-| May 9 PM | Linear regression I        | |  |
-| May 10 AM | Linear regression II          | |  |
-| May 10 PM | Survival analysis          | | [Lab](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_survival.html), [Code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/7_survival.R) |
-
-
-
-
-
+|   Time    |                    Topic                    | Notes |                                                                          Lab session                                                                           |
+|:------------:|:----------------------------:|:------------:|:------------:|
+| May 8 AM  |  Exploratory data analysis, transformation  |       |                                                                                                                                                                |
+|           |           Non-parametric methods            |       |                                                                                                                                                                |
+| May 8 PM  |       Sample size, statistical power        |       |                                     [Code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/5_samplesize.R)                                     |
+| May 9 AM  | Study design, principles of clinical trials |       |                                                                               NA                                                                               |
+| May 9 PM  |             Linear regression I             |       |                                                                                                                                                                |
+| May 10 AM |            Linear regression II             |       |                                                                                                                                                                |
+| May 10 PM |              Survival analysis              |       | [Lab](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_survival.html), [Code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/7_survival.R) |
