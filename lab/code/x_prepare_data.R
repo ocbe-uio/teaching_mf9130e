@@ -133,4 +133,17 @@ str(tt)
 # looks like it'll need some recoding on gender anyway
 
 
+# liggetid ----
+liggetid <- haven::read_dta('./lab/data/liggetid.dta')
+liggetid
+
+write.csv(liggetid, file = './lab/data/liggetid.csv', 
+          row.names = F)
+
+tt <- read.csv('./lab/data/liggetid.csv', sep = ',')
+t
+tt
+
+
+
 

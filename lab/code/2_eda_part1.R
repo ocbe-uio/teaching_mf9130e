@@ -97,6 +97,10 @@ summary(weight)
 # make a hihstogram
 hist(weight)
 
+# different breaks
+hist(weight, breaks = 3) 
+hist(weight, breaks = 8)
+
 
 # 1d) ----
 # make a boxplot
@@ -204,6 +208,21 @@ plot(lung_data$pefmean, lung_data$age)
 
 
 
+
+
+# optional: liggetid ----
+# this dataset shows skewed data
+# as is often the case in time data
+liggetid <- read.csv('./lab/data/liggetid.csv', sep = ',')
+head(liggetid)
+
+los <- liggetid$liggetid
+summary(los)
+hist(los)
+hist(los, breaks = 30)  # more breaks, smaller bins
+
+abline(v = mean(los), col = 'red', lwd = 2)
+abline(v = median(los), col = 'red', lty = 'dashed', lwd = 2)
 
 
 
