@@ -13,15 +13,15 @@ For the exercises and lab notes we use during the lab sessions, please check the
 
 ## Week 1
 
-|     Time      |                  Topic                   |   Notes    |  Lab | Other |
+|     Time      |                  Topic                   |   Lecture notes    |  Lab | Other |
 |:-------------:|:-----------------------------------------:|:---------:|:----:|:-----:|
 | April 24 PM  | Course introduction | [Slides](Module1-Part1-Course_introduction.pdf) |  | |
 |              | Descriptive statistics| [Slides](Module1-Part2-Data_and_descriptive_statistics_full.pdf), K&S chapter 2-4, Aalen chapter 1-2  |  | [Paper 1](Gerstung_2015.pdf), [Paper 2](Kristiansen_2022.pdf), [Paper 3](PreventADALL_2022.pdf) |
-| April 25 AM  | Introduction to R | | | |
-|              | Lab session | | | |
-| April 25 PM | Probability, diagnosistic tests  | [Probability](notes_probability.qmd) [Diagnostic tests](notes_diagnostic_tests.qmd) |     |       |
+| April 25 AM  | Introduction to R and Rstudio | | [Intro to RStudio](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_intro_rstudio.html), [Intro to R](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_intro_r.html) | |
+|              | Lab session | | [Descriptive statistics (EDA I)](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_eda_part1.html) | |
+| April 25 PM | Probability, diagnosistic tests  | [Probability](notes_probability.qmd), [Diagnostic tests](notes_diagnostic_tests.qmd) |     |       |
 |             |  Statistical distributions   |  [Distributions](notes_distributions.qmd)  |     |       |
-| April 26 AM |  Lab session  |  [COVID-19 tests](lab_diagnostic_tests.qmd)   [Simulations](lab_distributions.qmd)  |     | |
+| April 26 AM |  Lab session  | | [COVID-19 tests](lab_diagnostic_tests.qmd),  [Simulations](lab_distributions.qmd)  |  |
 | April 26 PM |  Statistical inference, tests and confidence intervals         |  |  | |
 |             |  t-tests         |  |  | |
 | April 27 AM |  Lab session         |  |  | |
@@ -33,7 +33,7 @@ For the exercises and lab notes we use during the lab sessions, please check the
 ## Week 2
 
 
-|     Time      |                  Topic                   |   Notes     |  Lab | Other |
+|     Time      |                  Topic                   |   Lecture notes     |  Lab | Other |
 |:-------------:|:----------------------------------------:|:--------:|:-------------:|:--------:|
 | May 8 AM  | Exploratory data analysis, transformation | | | |
 |                  | Non-parametric methods | | | |
