@@ -8,6 +8,9 @@ format:
 editor: source
 ---
 
+
+------------------
+
 # Examples (exercises with solution)
 
 
@@ -202,10 +205,10 @@ The first function we use is `epitab` from `epitools` package.
 # match the expected data format
 # col: outcome -, outcome +
 # row: exposure -, exposure +
-#tb1 <- matrix(c(48, 5, 6, 46), byrow = T, ncol = 2)
-#tb1
-#epitools::epitab(tb1, method = 'riskratio')
-#epitools::epitab(tb1, method = 'oddsratio')
+tb1 <- matrix(c(48, 5, 6, 46), byrow = T, ncol = 2)
+tb1
+epitools::epitab(tb1, method = 'riskratio')
+epitools::epitab(tb1, method = 'oddsratio')
 ```
 
 
