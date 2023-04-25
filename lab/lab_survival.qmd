@@ -8,7 +8,19 @@ format:
 editor: source
 ---
 
-# Melanoma 
+Datasets
+
+* Exercise 1: `melanoma`([rda link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/melanoma.rda), [csv link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/melanoma.csv))
+* Exercise 2: `liggetid` ([csv link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/melanoma.csv))
+
+[R script](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/4_ttest.R)
+
+------------------
+
+
+
+
+# Exercise 1: Melanoma 
 
 (This is the example 2 in the exercises)
 

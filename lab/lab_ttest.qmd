@@ -8,6 +8,13 @@ format:
 editor: source
 ---
 
+Datasets
+
+* Exercise 1: no data needed, we type in data directly.
+* Exercise 2: `PEFH98-english` ([rda link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.rda), [csv link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.csv))
+
+[R script](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/4_ttest.R)
+
 ------------------
 
 
@@ -182,7 +189,7 @@ The variables are
 ::: {.callout-tip}
 ## Lung function data
 
-This is the same dataset we have used in EDA (part I) from two days ago. You can use either `PEFH98-english.dta`, or `PEFH98-english.csv` data. 
+This is the same dataset we have used in EDA (part I) from two days ago. You can use either `PEFH98-english.rda`, or `PEFH98-english.csv` data. 
 
 If you forgot how to load the data, you can refresh your knowledge by reading these [notes](lab_eda_part1.qmd) (Example 2)
 :::
@@ -190,22 +197,20 @@ If you forgot how to load the data, you can refresh your knowledge by reading th
 
 ### 2a) 
 
-Open `PEFH98-english.dta` (or `PEFH98-english.csv`) into R. 
-
-Pay attention to how `gender` is coded. We might have to modify it. 
+Open `PEFH98-english` (in either `csv` or `rda` format) into R. 
 
 Determine the mean height for **females**. Calculate the standard deviation and a 95% confidence interval. How would you comment on this result?
 
 Do the same for **males**.
 
 ```{r}
-lung_data <- haven::read_dta('data/PEFH98-english.dta')
+# if you use rda data file: 
+# load('./lab/data/PEFH98-english.rda')
 
-# recode gender: female, male
-lung_data$gender <- factor(lung_data$gender, 
-                           levels = c('1','2'),
-                           labels = c('female','male')) 
-# head(lung_data)
+# if you use csv: 
+lung_data <- read.csv('data/PEFH98-english.csv', sep = ',')
+head(lung_data)
+
 # we can focus on height and gender variable only
 head(lung_data[, c('height', 'gender')], 10)
 ```

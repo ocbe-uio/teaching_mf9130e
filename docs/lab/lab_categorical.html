@@ -224,6 +224,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
+<p>Datasets</p>
+<ul>
+<li>Exercise 1: <code>PEFH98-english</code> (<a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.rda">rda link</a>, <a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.csv">csv link</a>)</li>
+<li>Exercise 2: <code>birth</code> (<a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/birth.rda">rda link</a>, <a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/birth.csv">csv link</a>)</li>
+</ul>
+<p><a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/5_categorical.R">R Script</a></p>
 <hr>
 <section id="examples-exercises-with-solution" class="level1">
 <h1>Examples (exercises with solution)</h1>
@@ -246,18 +252,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="a">1a)</h3>
 <p>We investigate whether having a high value of <code>pefmean</code> is associated with <code>gender</code>. First, create a new variable <strong>highpef</strong> that indicates whether <code>pefmean</code> is above 500.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>lung_data <span class="ot">&lt;-</span> haven<span class="sc">::</span><span class="fu">read_dta</span>(<span class="st">'data/PEFH98-english.dta'</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># recode gender: female, male</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>lung_data<span class="sc">$</span>gender <span class="ot">&lt;-</span> <span class="fu">factor</span>(lung_data<span class="sc">$</span>gender, </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">'1'</span>,<span class="st">'2'</span>),</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                           <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">'female'</span>,<span class="st">'male'</span>)) </span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># head(lung_data)</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># examine variable pefmean</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># visualise the distribution</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lung_data<span class="sc">$</span>pefmean)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">500</span>, <span class="at">col =</span> <span class="st">'red'</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if you use rda data file: </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># load('./lab/data/PEFH98-english.rda')</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># if you use csv: </span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>lung_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/PEFH98-english.csv'</span>, <span class="at">sep =</span> <span class="st">','</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># head(lung_data)</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># examine variable pefmean</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># visualise the distribution</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lung_data<span class="sc">$</span>pefmean)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">500</span>, <span class="at">col =</span> <span class="st">'red'</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="lab_categorical_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
 </div>

@@ -10,11 +10,11 @@ editor: source
 
 Datasets
 
-* `penguins_complete.csv` ([link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/penguins_complete.csv))
-* `PEFH98-english.csv` ([link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.csv))
-* `liggetid.csv` ([link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/liggetid.csv))
+* Explore a dataset: `penguins_complete` ([csv link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/penguins_complete.csv))
+* Exercise 1: no data, we type in data directly
+* Exercise 2: `PEFH98-english` ([rda link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.rda), [csv link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.csv))
 
-R script ([link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/2_eda_part1.R))
+[R script](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/2_eda_part1.R)
 
 ------------------
 
@@ -346,15 +346,11 @@ Pay attention to how `gender` is coded. We might have to modify it.
 #| echo: true
 
 # locate your datafile, set the path to your data
-# lung_data <- haven::read_dta('data/PEFH98-english.dta')
-lung_data <- read.csv('data/PEFH98-english.csv', sep = ',')
-head(lung_data)
+# if you use rda data file: 
+# load('./lab/data/PEFH98-english.rda')
 
-# gender is coded as 1 and 2, but it looks like it's not a category but an integer (number)
-# we code it explicitly fo readability
-lung_data$gender <- factor(lung_data$gender, 
-                           levels = c('1','2'),
-                           labels = c('female','male')) 
+# if you use csv: 
+lung_data <- read.csv('data/PEFH98-english.csv', sep = ',')
 head(lung_data)
 ```
 
