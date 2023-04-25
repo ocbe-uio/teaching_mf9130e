@@ -12,6 +12,7 @@ Datasets
 
 * `penguins_complete.csv` ([link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/penguins_complete.csv))
 * `PEFH98-english.csv` ([link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.csv))
+* `liggetid.csv` ([link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/liggetid.csv))
 
 R script ([link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/2_eda_part1.R))
 

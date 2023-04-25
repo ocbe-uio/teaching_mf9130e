@@ -116,6 +116,8 @@ summary(hosp_narrow$n_hospital_main_cause)
 lung_data <- haven::read_dta('./lab/data/PEFH98-english.dta')
 lung_data
 
+save(lung_data, file = './lab/data/PEFH98-english.rda')
+
 # 1 is female, 2 is male  
 # here just to make it consistent with original dataset
 lung_data$gender <- factor(lung_data$gender, 
@@ -131,6 +133,19 @@ tt
 
 str(tt)
 # looks like it'll need some recoding on gender anyway
+
+
+# liggetid ----
+liggetid <- haven::read_dta('./lab/data/liggetid.dta')
+liggetid
+
+write.csv(liggetid, file = './lab/data/liggetid.csv', 
+          row.names = F)
+
+tt <- read.csv('./lab/data/liggetid.csv', sep = ',')
+t
+tt
+
 
 
 
