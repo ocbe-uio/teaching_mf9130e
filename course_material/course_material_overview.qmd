@@ -19,7 +19,7 @@ For the exercises and lab notes we use during the lab sessions, please check the
 |              | Descriptive statistics| [Slides](Module1-Part2-Data_and_descriptive_statistics_full.pdf), K&S chapter 2-4, Aalen chapter 1-2  |  | [Paper 1](Gerstung_2015.pdf), [Paper 2](Kristiansen_2022.pdf), [Paper 3](PreventADALL_2022.pdf) |
 | April 25 AM  | Introduction to R | | | |
 |              | Lab session | | | |
-| April 25 PM | Probability, diagnosistic tests  | [Probability](notes_probability.qmd) [Diagnostic tests](notes_diagnostic_tests.qmd) |     |       |
+| April 25 PM | Probability, diagnosistic tests  | [Intro slides](Slides_intro_probability_diagnostic_tests.pdf) [Probability](notes_probability.qmd) [Diagnostic tests](notes_diagnostic_tests.qmd) |     |       |
 |             |  Statistical distributions   |  [Distributions](notes_distributions.qmd)  |     |       |
 | April 26 AM |  Lab session  |  [COVID-19 tests](lab_diagnostic_tests.qmd)   [Simulations](lab_distributions.qmd)  |     | |
 | April 26 PM |  Statistical inference, tests and confidence intervals         |  |  | |
