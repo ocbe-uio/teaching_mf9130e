@@ -22,11 +22,10 @@ For the exercises and lab notes we use during the lab sessions, please check the
 | April 25 PM | Probability, diagnosistic tests  | [Intro slides](Slides_intro_probability_diagnostic_tests.pdf) [Probability](notes_probability.qmd) [Diagnostic tests](notes_diagnostic_tests.qmd) |     |       |
 |             |  Statistical distributions   |  [Distributions](notes_distributions.qmd)  |     |       |
 | April 26 AM |  Lab session  | | [COVID-19 tests](lab_diagnostic_tests.qmd),  [Simulations](lab_distributions.qmd)  |  |
-| April 26 PM |  Statistical inference, tests and confidence intervals         |  |  | |
-|             |  t-tests         |  |  | |
-| April 27 AM |  Lab session         |  |  | |
-| April 27 PM |  Categorical data, table analysis        |  |  | |
-| April 28 AM |  Lab session        |  |  | |
+| April 26 PM |  Statistical inference, confidence intervals, t-test         |[Overview](day3/Module3-PartI-IntroLecture.pdf), [Sample mean](day3/Module3-PartI-key_concept_1.pdf), [Confidence interval](day3/Module3-PartI-key_concept_3.pdf), [Hypothesis testing](day3/Module3-PartI-key_concept_3.pdf)  |  | |
+| April 27 AM |  Lab session         |  | [t-test](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_ttest.html) | |
+| April 27 PM |  Categorical data, proportions, table analysis        |[Overview](day4/Module3-PartII-IntroLecture.pdf), [Proportions](day4/Module3-PartII-key_concept_1.pdf), [Compare proportions](day4/Module3-PartII-key_concept_2.pdf),  [Table analysis](day4/Module3-PartII-key_concept_3.pdf) |  | |
+| April 28 AM |  Lab session        |  | [Categorical data analysis](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_categorical.html) | |
 
 
 
