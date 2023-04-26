@@ -1,6 +1,6 @@
 ---
 title: "t-test"
-description: "Compare two continuous variables"
+description: "Hypothesis testing, confidence interval, comparing continous variables"
 format: 
   html:
     code-fold: false
@@ -177,7 +177,7 @@ Lung function has been measured on 106 medical students. Peak expiratory flow ra
 The variables are 
 
 * Age (years)
-* Gender (1 is female, 2 is male)
+* Gender (female, male)
 * Height (cm)
 * Weight (kg)
 * PEF measured three times in a sitting position (pefsit1, pefsit2, pefsit3)
