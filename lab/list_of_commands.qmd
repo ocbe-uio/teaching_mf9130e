@@ -191,6 +191,32 @@ plot(x,y)  # scatter plot of x, y
 
 #### t-test
 
+```{r}
+#| label: t-test
+#| echo: true
+#| eval: false
+
+# one sample (default tests against 0, conf.level 0.95)
+t.test(x)
+
+# one sample
+t.test(x, mu = your_value, conf.level = 0.95)
+
+# paired samples
+t.test(x1, x2, paired = T, conf.level = 0.95)
+t.test(x1-x2, conf.level = 0.95) # equivalent to one sample
+
+# two independent samples
+t.test(x, y, conf.level = 0.95)
+
+# check normal assumption
+qqnorm(x)
+qqline(x)
+```
+
+
+
+
 
 #### chi-square tests
 

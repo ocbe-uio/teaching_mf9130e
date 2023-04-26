@@ -100,12 +100,8 @@ t.test(heart, mu = 11.5, conf.level = 0.95)
 # ___________ ----
 # exercise 2 (lung function) ----
 
-lung_data <- haven::read_dta('./lab/data/PEFH98-english.dta')
+lung_data <- read.csv('./lab/data/PEFH98-english.csv')
 
-# recode gender: female, male
-lung_data$gender <- factor(lung_data$gender, 
-                           levels = c('1','2'),
-                           labels = c('female','male')) 
 head(lung_data)
 
 
@@ -124,6 +120,12 @@ mean(height_f) # 169.57
 sd(height_f) # 5.69
 # se_f <- sd(height_f)/sqrt(54) 0.774
 
+
+# histogram for height_f
+hist(height_f, main = 'Histogram of height (female)', xlab = 'Height (cm)')
+abline(v = mean(height_f), lwd = 4, col = 'red')
+abline(v = 167, lwd = 4, col = 'forestgreen')
+
 # quantile for t distribution 
 t975 <- qt(p = 0.975, df = nf-1) # 2.005
 
@@ -131,7 +133,14 @@ t975 <- qt(p = 0.975, df = nf-1) # 2.005
 ci_upper_f <- mean(height_f) + t975 * sd(height_f)/sqrt(nf) # 171.1277
 ci_lower_f <- mean(height_f) - t975 * sd(height_f)/sqrt(nf) # 168.0204
 c(ci_lower_f, ci_upper_f)
-  
+
+# add CI on top of the plot  
+abline(v = ci_lower_f, lwd = 2, col = 'red', lty = 'dashed')
+abline(v = ci_upper_f, lwd = 2, col = 'red', lty = 'dashed')
+
+# if my xbar is normally distributed,  
+# why is t.test returning a CI based on t distribution?
+
 
 
 # height for male 

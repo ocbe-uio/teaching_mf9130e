@@ -17,6 +17,99 @@ Datasets
 
 ------------------
 
+# Short summary 
+
+### Properties of the sample mean
+
+The **sample mean** of a continuous variable $X$ is defined as  
+$\bar{X} = \frac{\sum_{i=1}^n X_i}{n}$.
+
+* Expectation of the sample mean: $E(\bar{X}) = \mu$ 
+* Variance of the sample mean: $Var(\bar{X}) = \frac{\sigma^2}{n}$
+* Standard error (standard deviation of the sample mean): $\frac{\sigma}{\sqrt{n}}$
+
+The distribution of the sample mean: $\bar{X} \sim N(\mu, \frac{\sigma}{\sqrt{n}})$
+
+::: {.callout-tip}
+## Population vs sample
+
+Note that $\sigma$ and $\mu$ are parameters for the *population*: which are unknown in practice! That is why we need to *estimate* them based on samples we have collected.
+:::
+
+### Confidence interval for sample mean
+
+#### Known population standard deviation (sd)
+
+When the population standard deviation $\sigma$ (or variance $\sigma^2$) is known, $\frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \sim N(0,1)$
+
+95% confidence interval for the sample mean $\bar{X}$ is 
+
+$(\bar{X} - 1.96 \times \frac{\sigma}{\sqrt{n}}, \bar{X} + 1.96 \times \frac{\sigma}{\sqrt{n}})$
+
+#### Unknown sd: use empirical sd and t-distribution
+
+However, in practice it's hard to know $\sigma$ because we do not measure every subject in the population. Instead, we replace $\sigma$ with the empirical standard deviation $s$. Instead of normal distribution, this quantity is Student t-distributed with $n-1$ degrees of freedom:
+
+$\frac{\bar{X} - \mu}{s/\sqrt{n}} \sim t_{n-1}$
+
+The more samples you have (i.e. $n$ becomes larger), the closer t-distribution is to the standard normal distribution $N(0,1)$.
+
+95% confidence interval for the sample mean $\bar{X}$ is then
+
+$(\bar{X} - t' \times \frac{s}{\sqrt{n}}, \bar{X} + t' \times \frac{s}{\sqrt{n}})$
+
+::: {.callout-tip collapse="true"}
+## Quantile for t-distribution using R
+
+For 0.05 significance level (95% confidence interval), you can find different values of $t'$ using R by `qt(p = 0.975, df = n-1)`. For example, $t' = 2.09$ when your sample size is 20, and $t' = 1.97$ when your sample size is 200 (close to normal distribution: 1.96).
+
+:::
+
+
+### Hypothesis testing for sample mean
+
+One sample t-test: tests whether sample mean equals to a certain value.
+
+t-test for paired samples: can be transformed into a one-sample t-test, by taking the differences between each pair. 
+
+t-test for two independent samples: tests whether the sample means for two groups equal.
+
+```{r}
+#| label: t-test commands
+#| echo: true
+#| eval: false
+
+# one sample (default tests against 0, conf.level 0.95)
+t.test(x)
+
+# one sample
+t.test(x, mu = your_value, conf.level = 0.95)
+
+# paired samples
+t.test(x1, x2, paired = T, conf.level = 0.95)
+t.test(x1-x2, conf.level = 0.95) # equivalent to one sample
+
+# two independent samples
+t.test(x, y, conf.level = 0.95)
+
+# check normal assumption
+qqnorm(x)
+qqline(x)
+```
+
+
+
+#### Assumptions
+
+* Independent individuals
+* Sample mean is normally distributed
+  * either observations are normally distributed
+  * or large sample so that averages become normally distributed
+
+For t-test of two independent samples, in addition to above:
+
+* Equality of population standard deviation for both samples
+* if not: Welch test or Fisher-Behrens test
 
 # Examples (exercises with solution)
 
@@ -42,6 +135,10 @@ The mean of data $X = (x_1, x_2, ... x_n)$, $\bar{x} = \frac{1}{n}\sum_{i = 1}^N
 
 
 ```{r}
+#| label: ttest-1a-1
+#| echo: true
+#| eval: true
+
 # enter the data
 heart <- c(11.5, 14.75, 13.75, 10.5, 14.75,
            13.5, 10.75, 9.5, 11.75, 12, 
@@ -49,56 +146,73 @@ heart <- c(11.5, 14.75, 13.75, 10.5, 14.75,
            11, 14, 15, 11.5, 10.25)
 ```
 
-
+You can either compute the sample mean by summing each data point, and divide by sample size; or use R command `mean()`.
 
 ```{r}
+#| label: ttest-1a-2
+#| echo: true
+#| eval: true
+
 # compute the mean
 sum_heart <- 11.5 + 14.75 + 13.75 + 10.5 + 14.75 + 
   13.5 + 10.75 + 9.5 + 11.75 + 12 + 
   10.5 + 11.75 + 10 + 14.5 + 12 + 
   11 + 14 + 15 + 11.5 + 10.25
 
-n <- 20 # length(heart)
-
+# this is the sum 
 sum_heart
-sum_heart/20
+
+# sample size: 20
+n <- 20
+# if we do not know the size, can find out with length(heart)
+sum_heart/n
 
 # formula: sum(heart)/length(heart)
-mean(heart)  # 12.162
+mean(heart)  # should be the same as above
 ```
 
 
 
 ### 1b) 
 
-Compute the 95% confidence interval for the mean. Verify your computed confidence interval with R function `t.test(heart)`.
+Go through the procedure of computing the 95% confidence interval for the sample mean from the formula. Verify the computed confidence interval with R function `t.test(heart)`.
 
-::: {.callout-tip}
+::: {.callout-tip collapse="true"}
 ## Formula: confidence interval for the mean
 
+95% confidence interval for the sample mean $\bar{X}$ is
 
+$(\bar{X} - t' \times \frac{s}{\sqrt{n}}, \bar{X} + t' \times \frac{s}{\sqrt{n}})$
+
+where $s$ is the (empirical) standard deviation, $s^2 = \frac{\sum_{i=1}^n (X_i - \bar{X})^2}{n-1}$
+
+($t' = 2.09$ for $n = 20$)
 :::
 
 
 ```{r}
-# standard deviation, 95% confidence interval
+#| label: ttest-1b-1
+#| echo: true
+#| eval: true
 
-# formula (sd): sqrt(1/(n-1) * (sum(xi - xbar)^2))
-# translate into format that R can understand:
-
+# sample size n of this data
 n <- 20  # length(heart)
+
+# 1. compute (empirical) standard deviation
+# formula (sd): sqrt(1/(n-1) * (sum(xi - xbar)^2))
+
 sqrt(1/(n-1) * (sum((heart - mean(heart))^2))) # be careful with brackets
 
+# alternatively, use sd() function. these two numbers should match
 sd(heart) # 1.779
 
-
-# 95% CI (quantile from t-distribution)
+# 2. 95% CI (quantile from t-distribution)
 # formula: CI = xbar +- t(n-1, alpha/2) * sd/sqrt(n)
 # translate into format R can understand:
 
 t025 <- qt(p = 0.025, df = n-1) # -2.09
 t975 <- qt(p = 0.975, df = n-1) # 2.09
-c(t025, t975) # symmetric around 0
+c(t025, t975) # symmetric around 0, so can pick any one
 
 # plug in the formula
 ci_lower <- mean(heart) - t975 * sd(heart)/sqrt(n)
@@ -121,7 +235,11 @@ by visualization. You can try to use histogram, Q-Q plot and boxplot, and compar
 What can you conclude?
 
 ```{r}
-par(mfrow = c(1, 2))
+#| label: ttest-1c-1
+#| echo: true
+#| eval: true
+
+par(mfrow = c(1, 2)) # this code puts two plots side by side
 # histogram
 hist(heart, breaks = 10, main = 'Histogram of heart data')
 abline(v = mean(heart), col = 'red', lwd = 2)
@@ -136,6 +254,10 @@ qqline(heart, lwd = 2)
 
 
 ```{r}
+#| label: ttest-1c-2
+#| echo: true
+#| eval: true
+
 # boxplot 
 par(mfrow = c(1, 2))
 # compare with 11
@@ -160,6 +282,10 @@ Formulate hypothesis tests. Decide whether you need one-sided or two-sided test,
 
 
 ```{r}
+#| label: ttest-1d-1
+#| echo: true
+#| eval: true
+
 # H0: mu = 11; H1: mu != 11
 t.test(heart, mu = 11, conf.level = 0.95)
 
@@ -199,11 +325,15 @@ If you forgot how to load the data, you can refresh your knowledge by reading th
 
 Open `PEFH98-english` (in either `csv` or `rda` format) into R. 
 
-Determine the mean height for **females**. Calculate the standard deviation and a 95% confidence interval. How would you comment on this result?
+Determine the mean height for **females**. Calculate the standard deviation and a 95% confidence interval.
 
 Do the same for **males**.
 
 ```{r}
+#| label: ttest-2a-1
+#| echo: true
+#| eval: true
+
 # if you use rda data file: 
 # load('./lab/data/PEFH98-english.rda')
 
@@ -218,6 +348,10 @@ head(lung_data[, c('height', 'gender')], 10)
 Now we need to separate the `height` data for based on `gender`. First, we do it for `gender == 'female'`. 
 
 ```{r}
+#| label: ttest-2a-2
+#| echo: true
+#| eval: true
+
 # for convenience, we create a variable names 'gender'
 gender <- lung_data$gender
 # height for female
@@ -229,6 +363,10 @@ You should always check whether your newly created variable is correct: for exam
 Another useful thing to do is to check how many data poinnts have been selected. 
 
 ```{r}
+#| label: ttest-2a-3
+#| echo: true
+#| eval: true
+
 # check the first few values, is it only selecting female heights?
 head(height_f)
 
@@ -240,6 +378,10 @@ nf
 Now we can compute the **mean** and **confidence interval** on the newly created variable, `height_f`.
 
 ```{r}
+#| label: ttest-2a-4
+#| echo: true
+#| eval: true
+
 mean(height_f) # 169.57
 sd(height_f) # 5.69
 # se_f <- sd(height_f)/sqrt(54) 0.774
@@ -256,10 +398,16 @@ c(ci_lower_f, ci_upper_f)
 t.test(height_f)
 ```
 
+Based on our calculation, the mean height for females is 169.57 cm (95% confidence interval (168.02, 171.13)). 
+
 For `gender == 'male'`, we can do the same thing. Pay attention to the different degrees of freedom, because the sample size has changed.
 
 
 ```{r}
+#| label: ttest-2a-5
+#| echo: true
+#| eval: true
+
 # height for male 
 height_m <- lung_data$height[gender == 'male']
 # number of males
@@ -280,6 +428,9 @@ c(ci_lower_m, ci_upper_m)
 t.test(height_m)
 ```
 
+Based on our calculation, the mean height for males is 181.87 cm (95% confidence interval (180.28, 183.44)). 
+
+
 
 ### 2b)
 
@@ -287,27 +438,49 @@ Assume that the average height for female students a few years ago was 167 cm. D
 
 Formulate a null hypothesis, calculate a test statistic and p-value. 
 
+Let $\mu_F$ indicate the average height for the female students. We test the hypothesis
+
+$H_0: \mu_F = 167$ against $H_a: \mu_F \neq = 167$ (two sided test).
+
 ```{r}
+#| label: ttest-2b-1
+#| echo: true
+#| eval: true
+
 # use t.test command
 t.test(height_f, mu = 167)
+```
 
-# alternatively, 
-# calculate by hand
+We can conclude that the average height for female students differ significantly from 167 (p = 0.0016). We reject the null hypothesis. 
+
+If you want to verify the p-value by hand: follow the procedure below. 
+
+```{r}
+#| label: ttest-2b-2
+#| echo: true
+#| eval: true
+
+# (optional) calculate from the formula
 t_stat <- (mean(height_f) - 167)/(sd(height_f)/sqrt(nf))
 t_stat  # 3.323
 
 # compare this with t distribution with nf-1 degrees of freedom
 pval_twosided <- pt(q = t_stat, df = nf-1, lower.tail = F)*2
 pval_twosided
-
 ```
+
 
 ### 2c)
 
 Do the values `pefsit1` and `pefsit2` differ significantly? Calculate a test statistic, the mean difference, and the 95% confidence interval, and formulate a conclusion. Interpret the results.
 
+Here we use paired t-test, because these two measurements are on the same subject. 
 
 ```{r}
+#| label: ttest-2c
+#| echo: true
+#| eval: true
+
 pefsit1 <- lung_data$pefsit1
 pefsit2 <- lung_data$pefsit2
 # hist(pefsit1)
@@ -320,18 +493,28 @@ diff_sit1_sit2 <- pefsit1 - pefsit2
 t.test(diff_sit1_sit2, mu = 0)
 ```
 
+We can conclude that there is no significant difference (p = 0.12) between the first and second pef measurement.
+
+
 ### 2d)
 
 Carry out a t-test to decide whether `pefsitm` annd `pefstam` are significantly different.
 
+We still use paired test as both measurements are on the same subject.
 
 ```{r}
+#| label: ttest-2d
+#| echo: true
+#| eval: true
+
 # compare pefsitm, pefstam (paired t-test)
 pefsitm <- lung_data$pefsitm
 pefstam <- lung_data$pefstam
 
 t.test(pefsitm, pefstam, paired = T)
 ```
+
+We can conclude that that there is a significant difference (p < 0.001) between pef measured in a sitting and standing position. 
 
 ### 2e)
 
@@ -347,6 +530,10 @@ You can create a new variable called `difference` by `difference <- pefsitm - pe
 
 
 ```{r}
+#| label: ttest-2e
+#| echo: true
+#| eval: true
+
 # create a variable
 diff_sitm_stam <- pefsitm - pefstam
 qqnorm(diff_sitm_stam, pch = 20)
@@ -354,32 +541,60 @@ qqline(diff_sitm_stam, col = 'red', lwd = 2)
 
 ```
 
+When a Q-Q plot looks like this, we can say that the normality assumption is reasonably fulfilled. 
 
 ### 2f) 
 
-Carry out a t-test to evaluate whether `pefmean` is signinficantly different for men and women. 
+Carry out a t-test to evaluate whether `pefmean` is significantly different for men and women. 
 
 Interpret the results, and formulate a conclusion including p-value and confidence interval.
 
 ```{r}
+#| label: ttest-2f
+#| echo: true
+#| eval: true
+
 # this is independent two samples t-test
 # we need two variables: pefmean for men, pefmean for women
 
 pefmean_f <- lung_data$pefmean[gender == 'female']
 pefmean_m <- lung_data$pefmean[gender == 'male']
 
-
 # visually spot whether there is a difference
-# NOTE: there is a NA in pefmean_f
+# NOTE: there is a NA in pefmean_f; use na.rm = T to remove it 
 par(mfrow = c(1, 2))
 hist(pefmean_f, main = 'pefmean (F)')
 abline(v = mean(pefmean_f, na.rm = T), col = 'red', lwd = 2)
 hist(pefmean_m, main = 'pefmean (M)')
 abline(v = mean(pefmean_m), col = 'red', lwd = 2)
-
-# two sample t-test 
-t.test(pefmean_f, pefmean_m, paired = F)
 ```
+
+From the histogram for female and male students, it can be seen that the difference between the two mean pef measurements differ. We can test it using t-test for two independent samples. 
+
+::: {.callout-tip collapse="true"}
+## Equal variance assumption
+
+For two sample t-test, there is an assumption of equal variance in two groups. In R, `t.test()` automatically checks whether this is fulfilled. If not, it returns result from Welch's t-test. 
+
+If you want to force `t.test()` to use equal variance, specify `var.equal = T`. 
+
+The ways to interpret results are the same.
+:::
+
+
+```{r}
+#| label: ttest-2f-2
+#| echo: true
+#| eval: true
+
+# two sample t-test (Welch)
+t.test(pefmean_f, pefmean_m, paired = F)
+
+# force equal variance
+t.test(pefmean_f, pefmean_m, paired = F, var.equal = T)
+```
+From both results you can see that the difference in means between two genders is very big. The p-values are very small (p < 0.001), can reject the null hypothesis that the sample means from two groups are equal.
+
 
 ### 2g)
 
@@ -387,6 +602,10 @@ Are the assumptions fulfilled in the previous test (`pefmean` vs `gender`)?
 
  
 ```{r}
+#| label: ttest-2g
+#| echo: true
+#| eval: true
+
 par(mfrow = c(1, 2))
 qqnorm(pefmean_f, pch = 20, main = 'Q-Q plot: pefmean (F)')
 qqline(pefmean_f, col = 'red', lwd = 2)
@@ -396,7 +615,7 @@ qqline(pefmean_m, col = 'red', lwd = 2)
 
 ```
 
-
+The normality assumption is fulfilled.
 
 
 
