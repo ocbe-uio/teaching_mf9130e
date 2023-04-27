@@ -440,7 +440,7 @@ Formulate a null hypothesis, calculate a test statistic and p-value.
 
 Let $\mu_F$ indicate the average height for the female students. We test the hypothesis
 
-$H_0: \mu_F = 167$ against $H_a: \mu_F \neq = 167$ (two sided test).
+$H_0: \mu_F = 167$ against $H_a: \mu_F \neq 167$ (two sided test).
 
 ```{r}
 #| label: ttest-2b-1
@@ -476,6 +476,18 @@ Do the values `pefsit1` and `pefsit2` differ significantly? Calculate a test sta
 
 Here we use paired t-test, because these two measurements are on the same subject. 
 
+::: {.callout-tip collapse="true"}
+## Missing data in `pefsit2`
+
+When you run `mean(lung_data$pefsit2)`, it might return NA as a result. This is caused by missing values in this variable. You can check this from the data (click on lung_data in your environment)(row 66)
+
+This does not affect `t.test()` as it will remove NA automatically. However this might affect other functions, such as `mean()`.
+
+You can do `mean(pefsit2, na.rm = T)` (remove NA). This does not remove NA from your data forever; but only for your mean computation.
+
+You should check whether there are NA in your data. One option is `summary(pefsit2)`. 
+:::
+
 ```{r}
 #| label: ttest-2c
 #| echo: true
@@ -485,7 +497,16 @@ pefsit1 <- lung_data$pefsit1
 pefsit2 <- lung_data$pefsit2
 # hist(pefsit1)
 # hist(pefsit2)
+# compute mean:
+mean(pefsit1)
+mean(pefsit2) # this returns NA, bec subject 66 has missing data
+lung_data[66, ]
+# to remove this when computing mean by mean(): 
+mean(pefsit2, na.rm = T) # remove NA when computing mean
+# (how to check if my data has NA: is.na(pefsit2); summary(pefsit2))
+summary(pefsit2)
 
+# t-test will automatically remove NA 
 t.test(pefsit1, pefsit2, paired = T)
 
 # alternatively, you can test whether the difference is equal to 0

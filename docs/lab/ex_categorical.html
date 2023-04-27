@@ -166,7 +166,7 @@ ul.task-list li input[type="checkbox"] {
 <p>The variables are</p>
 <ul>
 <li>Age (years)</li>
-<li>Gender (1 is female, 2 is male)</li>
+<li>Gender (female, male)</li>
 <li>Height (cm)</li>
 <li>Weight (kg)</li>
 <li>PEF measured three times in a sitting position (pefsit1, pefsit2, pefsit3)</li>
@@ -182,11 +182,11 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="b" class="level4">
 <h4 class="anchored" data-anchor-id="b">1b)</h4>
-<p>We investigate the association between these two variables via an appropriate table analysis. Make a table of <code>highpef</code> vs <code>gender</code>, and carry out a chi-square analysis. Interpret your results.</p>
+<p>We investigate the association between these two variables via an appropriate table analysis. Make a table of <code>highpef</code> vs <code>gender</code>, which counts the number of subjects having each one of the four combinations in a 2 by 2 contingency table.</p>
 </section>
 <section id="c" class="level4">
 <h4 class="anchored" data-anchor-id="c">1c)</h4>
-<p>Compute risk ratio and odds ratio (only the point estimates). Here the exposure is <code>gender</code> (we assume that the reference group is <em>female</em>: unexposed), and outcome is <code>highpef</code>. Interpret your results.</p>
+<p>Compute <strong>risk ratio</strong> and <strong>odds ratio</strong> (only the point estimates, no confidence interval). Here the exposure is <code>gender</code> (we assume that the reference group is <em>female</em>: unexposed), and outcome is <code>highpef</code>. Interpret your results.</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -226,6 +226,10 @@ Risk ratio and odds ratio
 </div>
 </div>
 </section>
+<section id="d" class="level4">
+<h4 class="anchored" data-anchor-id="d">1d)</h4>
+<p>Carry out a chi-square analysis to assess the strength of association. Interpret your results.</p>
+</section>
 </section>
 <section id="exercise-2-birth-data" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-2-birth-data">Exercise 2 (birth data)</h2>
@@ -233,7 +237,7 @@ Risk ratio and odds ratio
 <p>The variables of the study are</p>
 <ul>
 <li>Identification number (ID)</li>
-<li>Low birth weight, 1 means <span class="math inline">\(BWT \leq 2500g\)</span>, 0 means <span class="math inline">\(BWT &gt; 2500g\)</span> (LOW)</li>
+<li>Low birth weight</li>
 <li>Age of the mother (AGE)</li>
 <li>Weight (in pounds) at last menstruaal period (LWT)</li>
 <li>Ethnicity, 1 means White, 2 means African American, 3 meaans other (ETH)</li>
@@ -248,7 +252,7 @@ Risk ratio and odds ratio
 <section id="a-1" class="level4">
 <h4 class="anchored" data-anchor-id="a-1">2a)</h4>
 <p>Does smoking influence the birth weight of a baby?</p>
-<p>Make a histogram and a box plot, and find the median and mean for birth weight in grams (<code>BWT</code>) for the two groups of mothers: group 1 that smokes, and group 2 that does not smoke durinng the pregnancy. (Hint: use variable <code>SMK</code> for this task)</p>
+<p>Make a histogram and a box plot, and find the median and mean for birth weight in grams (<code>bwt</code>) for the two groups of mothers: one group that smokes, and one that does not smoke durinng the pregnancy. (Hint: use variable <code>smk</code> for this task)</p>
 </section>
 <section id="b-1" class="level4">
 <h4 class="anchored" data-anchor-id="b-1">2b)</h4>
@@ -256,8 +260,14 @@ Risk ratio and odds ratio
 </section>
 <section id="c-1" class="level4">
 <h4 class="anchored" data-anchor-id="c-1">2c)</h4>
-<p>Do mothers of hypertension have a tendency to have babies with a lower birth weight? (The variable for hypertension is <code>HT</code>)</p>
+<p>Do mothers of hypertension have a tendency to have babies with a lower birth weight? (The variable for hypertension is <code>ht</code>)</p>
 <p>Make a histogram of birth weight for the two groups of mothers with and without hypertension. What do you observe?</p>
+</section>
+<section id="d-1" class="level4">
+<h4 class="anchored" data-anchor-id="d-1">2d)</h4>
+<p>Analyse the effect of smoking on birth weight in a table (categorical analysis): compute the relative risk (risk ratio) and carry out a test to assess the strength of association.</p>
+<p>Also do it for hypertension (instead of smoking).</p>
+<p>What can you conclude?</p>
 
 
 </section>
