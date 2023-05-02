@@ -8,4 +8,11 @@ format:
 editor: source
 ---
 
-## Inference and testing
+## select multiple columns 
+
+
+## some advanced visualisation (ggplot2)
+
+## missing data
+
+

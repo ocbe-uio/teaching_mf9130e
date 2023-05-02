@@ -1,6 +1,6 @@
 ---
-title: "Regression analysis"
-description: "Linear regression, logistic regression"
+title: "Logistic regression"
+description: "Logistic regression"
 format: 
   html:
     code-fold: false
@@ -8,9 +8,16 @@ format:
 editor: source
 ---
 
-# Linear regression 
+Datasets
 
-TBC
+* Exercise 1: `birth` ([rda link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/birth.rda), [csv link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/birth.csv))
+
+* Exercise 2: `framingham` 
+
+
+[R Script]
+
+------------------
 
 
 # Logistic regression

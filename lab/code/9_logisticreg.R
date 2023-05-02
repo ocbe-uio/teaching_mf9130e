@@ -1,8 +1,6 @@
 
-# LOGISTIC REGRESSION ----
-
-# ____ birth ____ ----
-birth_data <- haven::read_dta('./lab/data/birth.dta')
+# ____ ex1: birth ____ ----
+birth_data <- read.csv('./lab/data/birth.csv')
 birth_data
 
 # low ~ age ----
@@ -46,11 +44,11 @@ birth_data$eth
 
 # multivariate ----
 
-# ______ framingham _____ ----
+# ______ ex 2: framingham _____ ----
 
 # need to transform firstchild, smoking into categorical
 
-framingham <- haven::read_dta('./lab/data/framingham.dta')
+framingham <- read.csv('./lab/data/framingham.csv')
 framingham
 
 summary(framingham)

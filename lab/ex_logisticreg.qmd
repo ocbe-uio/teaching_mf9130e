@@ -1,78 +1,103 @@
 ---
-title: "Regression analysis"
-description: "Linear regression, logistic regression"
+title: "Logistic regression"
+description: "Logistic regression"
 format: 
   html:
     code-fold: false
-    code-tools: true
+    code-tools: false
 editor: source
 ---
 
-# Linear regression 
+Datasets
 
-TBC
+* Exercise 1: `birth` ([rda link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/birth.rda), [csv link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/birth.csv))
+
+* Exercise 2: `framingham` ([rda link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/framingham.rda), [csv link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/framingham.csv))
+
+
+
+[R Script](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/9_logisticreg.R)
+
+------------------
 
 
 # Logistic regression
 
+## Exercise 1 (birth)
+
+We shall analyse the data set given in the file `birth.dta`. In a study in Massachusetts, USA, birth weight was measured for the children of 189 women. The main variable in the study was birth weight, `BWT`, which is an important indicator of the condition of a newborn child. Low birth weight (below 2500 g) may be a medical risk factor. A major question is whether smoking during pregnancy influences the birth weight. One has also studied whether a number of other factors are related to birth weight, such as hypertension in the mother. 
+
+The variables of the study are
+
+* Identification number (ID)
+* Low birth weight 
+* Age of the mother (AGE)
+* Weight (in pounds) at last menstruaal period (LWT)
+* Ethnicity, 1 means White, 2 means African American, 3 meaans other (ETH)
+* Smoking status, 1 means current smoker, 0 means not smoking during pregnancy (SMK)
+* History of premature labbour, values 0, 1, 2... (PTL)
+* History of hypertension, 1 is yes, 0 is no (HT)
+* Uterine irritability, 1 is yes, 0 is no (UI)
+* First trimester visits, values 0, 1, 2... (FTV)
+* Third trimster visits, values 0, 1, 2... (TTV)
+* Birth weight (BWT)
 
 
-(Dataset `birth` might be switched out)
+#### 1a) 
 
-```{r}
-#| label: birth example
-#| warning: false
-#| echo: true
+Perform a logistic regression analysis with `low` as dependent variable, and `age` as independent variable. Interpret the results.
 
+#### 1b) 
 
-# load data
-birth_data <- haven::read_dta('data/birth.dta')
-
-# print the first rows of the data set
-head(birth_data)
+Perform a logistic regression analysis with `low` as dependent variable and `smk` as independent variable. 
 
 
+#### 1c) 
 
-```
+Perform a logistic regression with `low` as dependent variable, and `eth` as independent variable. Be careful with the reference category.
 
-### Fit a logistic regression model for `low` and `age`
+#### 1d)
 
-```{r}
-#| label: birth example (2)
-#| warning: false
-#| echo: true
-
-# low ~ age 
-
-lr_low_age <- glm(low ~ age, data = birth_data, family = 'binomial')
-summary(lr_low_age)
-
-```
+Perform a logistic regression with `low` as dependent variable, and `age`,`smk` and `eth` as independent variables.
 
 
-```{r}
-#| label: birth example (3)
-#| warning: false
-#| echo: true
+#### 1e) 
 
-# the result regresssion coefficient is not odds ratio
-lr_low_age$coefficients
+Based on the above analysis, set up a result table which reports:
 
-# regression coefficients can also be extracted in this way:
-coefficients(lr_low_age)
-# coef(lr_low_age)
+* odds ratios OR (unadjusted, and adjusted)
+* 95% confidence intervals for OR
+* p-values for OR
 
-# confidence interval for age and intercept
-confint(lr_low_age)
-```
+Make sure you know how to interpret the table. 
 
-```{r}
-#| label: birth example (4)
-#| warning: false
-#| echo: true
 
-# to get odds ratio, exponentiate 
-exp(coef(lr_low_age))
-exp(confint(lr_low_age))
+## Exercise 2 (framingham)
 
-```
+We use the data from the Framingham study, `framingham`. The dataset contains a selection of n = 500 men aged 31 to 65 years. 
+
+The response variable is FIRSTCHD, and this is equal to 1 if the individual has coronary heart disease and 0 otherwise. 
+
+We have four explanatory variables: 
+
+* MEANSBP, the average systolic blood pressure (mmHg) of two blood pressure measurements; 
+* SMOKE which is smoking (1 = yes, 0 = no);
+* CHOLESTEROL which is serum cholesterol in mg/dl;
+* AGE (age in years). 
+
+
+#### 2a)
+
+Analyse the relationship between `firstchd` and `smoke` in a logistic regression model.
+
+
+#### 2b)
+
+Analyse the relationship between `firstchd` and `meansbp` in a logistic regression model.
+
+#### 2c)
+
+Include also the other two explanatory variables in a logisic regression model. Interpret the results. 
+
+
+

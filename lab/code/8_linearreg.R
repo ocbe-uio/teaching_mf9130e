@@ -1,12 +1,9 @@
 # material for regression 
 
-# LINEAR REGRESSION ----
-# this part links to the exercises from previous years 
-
 
 # ____ lung funnction PEF ____ ----
 
-lung_data <- haven::read_dta('./lab/data/PEFH98-english.dta')
+lung_data <- read.csv('./lab/data/PEFH98-english.csv')
 
 head(lung_data)
 

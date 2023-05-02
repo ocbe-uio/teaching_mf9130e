@@ -181,6 +181,18 @@ write.csv(birth, file = './lab/data/birth.csv', row.names = F)
 
 # _______ week 2 ______ -----
 
+# bp ----
+
+bp
+
+# save two copies
+save(bp, file = './lab/data/bp.rda')
+write.csv(bp, file = './lab/data/bp.csv', row.names = F)
+
+
+
+
+
 # melanoma ----
 
 melanoma <- haven::read_dta('./lab/data/melanoma.dta')
@@ -225,15 +237,31 @@ liggetid$kjoenn <- factor(liggetid$kjoenn,
                           labels = c('kvinne', 'mann'))
 
 
+head(liggetid)
 write.csv(liggetid, file = './lab/data/liggetid.csv', 
           row.names = F)
 
 
-tt <- read.csv('./lab/data/PEFH98-english.csv', sep = ',')
-tt
+tt <- read.csv('./lab/data/liggetid.csv', sep = ',')
+head(tt)
 
 
 
 # framingham ----
+head(framingham)
+framingham$firstchd
 
+framingham$smoke <- factor(framingham$smoke, 
+                          levels = c('0', '1'), 
+                          labels = c('non-smoking', 'smoking'))
+
+
+framingham$firstchd <- factor(framingham$firstchd, 
+                           levels = c('0', '1'), 
+                           labels = c('no-evidence', 'evidence'))
+
+
+write.csv(framingham, file = './lab/data/framingham.csv', 
+          row.names = F)
+save(framingham, file = './lab/data/framingham.rda')
 

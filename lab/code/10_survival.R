@@ -4,10 +4,10 @@
 library(survival)
 
 
-# ex 2: melanoma ----
+# ex 1: melanoma ----
 # effect on survival on the patient's gender and tumor thickness
 
-melanoma <- haven::read_dta('./lab/data/melanoma.dta')
+melanoma <- read.csv('./lab/data/melanoma.csv')
 head(melanoma)
 
 colnames(melanoma)
@@ -116,7 +116,7 @@ survdiff(Surv(lifetime, death) ~ grouped_tumor_thickness)
 
 # ex3: length of hospital stay ----
 
-liggetid <- haven::read_dta('./lab/data/liggetid.dta')
+liggetid <- read.csv('./lab/data/liggetid.csv')
 head(liggetid)
 
 # all status are 1 

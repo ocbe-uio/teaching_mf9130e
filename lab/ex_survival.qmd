@@ -11,9 +11,10 @@ editor: source
 Datasets
 
 * Exercise 1: `melanoma`([rda link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/melanoma.rda), [csv link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/melanoma.csv))
-* Exercise 2: `liggetid` ([csv link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/melanoma.csv))
+* Exercise 2: `liggetid` ([rda link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/liggetid.rda), [csv link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/liggetid.csv))
 
-[R script](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/4_ttest.R)
+
+[R script](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/10_survival.R)
 
 ------------------
 
@@ -22,267 +23,80 @@ Datasets
 
 # Exercise 1: Melanoma 
 
-(This is the example 2 in the exercises)
+The data concern 205 patients with malignant melanoma who were operated at the university hospital in Odense, Denmark, in the period 1962-77. The patients were followed up to death or censored at the end of the study. We shall study the effect on survival of the patient’s gender and tumor thickness.
 
-First we load the dataset, and check what columns are there.
+The variables included in the dataset are:
 
-```{r}
-#| label: melanoma-1
-#| warning: false
-#| echo: true
-library(survival)
+* status (1=death from disease, 2=censored, 4=death from other causes) 
+* lifetime (years) from operation
+* ulceration of tumor (1=yes, 2=no)
+* tumor thickness in 1/100 mm
+* gender (f=1, m=2)
+* age at operation in years
+* grouped tumor thickness (1: 0-1 mm, 2: 2-5 mm, 3: 5+ mm) 
+* logarithm of tumor thickness
 
-melanoma <- haven::read_dta('data/melanoma.dta')
 
-head(melanoma)
-colnames(melanoma)
-```
+### 1a) 
 
-### a) Recode variable
+The “event of interest” is defined as “death from disease”. Pre-process the variables that R will use for basic survival analysis as shown in class.
 
-We only need "death from melanoma" or else, hence we need to recode the `status` variable which originally had three categories.
 
-```{r}
-#| label: melanoma-a1
-#| warning: false
-#| echo: true
+### 1b) 
 
-# if status == 1, code 1; otherwise, code 0
-# this indicates whether deaths from melanoma
-death <- ifelse(melanoma$status == 1, 1, 0)
+Make a Kaplan-Meier plot of the survival curve. What are the estimated probabilities of surviving 1 year, 2 years, 5 years?
 
-# check if the labels are correct
-table(death)
-table(melanoma$status)
+### 1c) 
 
-```
+Compare survival according to gender. Test the difference with a logrank test.
 
-You can see that the category `melanoma$status == 1` should match `death == 1`, and `melanoma$status` of 2 and 4 are merged together and coded as `death == 0`. 
 
-### b) Kaplan-Meier plot 
+### 1d)
 
+Study survival according to grouped tumor thickness by comparing survival curves in each group and test with a logrank test.
 
-```{r}
-#| label: melanoma-b1
-#| warning: false
-#| echo: true
 
-# take lifetime variable
-lifetime <- melanoma$lifetime
 
+# Exercise 2: length of hospital stay 
 
-km_fit <- survfit(Surv(lifetime, death) ~ 1)
-plot(km_fit)
+The data was collected at the Geriatric Department at Ullevål Sykehus. Below is a description of the data set `liggetid`. The file includes the following variables:
 
-# add title and text
-title(main = 'Kaplan-Meier survival estimate', 
-      xlab = 'Time', 
-      ylab = 'Survival probability')
+- Year of birth (faar)
+- Month of birth (fmaan)
+- Day of birth (fdag)
+- Year of hospital admission (innaar)
+- Month of admission (innmaan)
+- Day of admission (inndag)
+- Year of discharge from hospital (utaar)
+- Month of discharge (utmaan)
+- Day of discharge (utdag)
+- Gender, where 1 = male and 0 = female (kjoenn)
+- Admission from, where 1 = home, 2 = Div. of Medicine, 3 =
+Div. of Surgery, 4 = Other division, 5 = Other hospital, 6 =
+Nursing home (kom_fra)
+- Stroke, where 1 = yes, 0 = no (slag)
+- Age (alder)
+- Hospital stay, in days (liggetid)
+- Logarithm of hospital stay (lnliggti)
+- Comes from Div. of Medicine (kom_fra2)
+- Comes from Div. of Surgery (kom_fra3)
+- Comes from Other division (kom_fra4)
+- Comes from Other hospital (kom_fra5)
+- Comes from Nursing home (kom_fra6)
+- Censoring variable (censor)
 
-```
+The variable `liggetid` time is calculated from the `innaar`, `innmaan`, `inndag`, `utaar`, `utmaan` and `utdag` variables. 
 
+### 2a) 
 
-Now we check only time 1, 2, 5. 
+Analyze the relationship between the variables `liggetid` and `kjoenn` with a Kaplan-Meier plot. Test the difference with a log-rank test.
 
-```{r}
-#| label: melanoma-b2
-#| warning: false
-#| echo: true
 
-# time 1, 2, 5
-tme <- c(1, 2, 5)
-summary(km_fit, times = tme)
-```
+### 2b) 
 
+Analyze the relationship between the variables `liggetid` and `slag` with a Kaplan-Meier plot. Test the difference with a log-rank test.
 
-### c) Compare two genders 
 
-```{r}
-#| label: melanoma-c1
-#| warning: false
-#| echo: true
 
-# gender == 1: female; gender == 2: male
-gender <- melanoma$gender
 
 
-km_fit_gender <- survfit(Surv(lifetime, death) ~ gender)
-plot(km_fit_gender, col = c('blue', 'red'))
-title(main = 'Kaplan-Meier survival estimate: stratify by gender', 
-      xlab = 'Time', 
-      ylab = 'Survial probability')
-
-# add legend
-legend( 'bottomleft', 
-       legend = c('Female', 'Male'), 
-       lty = c('solid', 'solid'), 
-       col = c('blue','red'))
-
-```
-
-Now we test the difference with log-rank test
-
-```{r}
-#| label: melanoma-c2
-#| warning: false
-#| echo: true
-
-# test difference with logrank test 
-survdiff(Surv(lifetime, death) ~ gender)
-```
-
-
-### d) Compare tumor thickness
-
-First we do some data processing
-
-```{r}
-#| label: melanoma-d1
-#| warning: false
-#| echo: true
-
-# check the original data type 
-melanoma$grouped_tumor_thickness
-
-# you can code them so that the data is more readable
-grouped_tumor_thickness <- factor(melanoma$grouped_tumor_thickness, 
-                           levels = c('1','2', '3'),
-                           labels = c('0-2 mm', '2-5 mm', '5+ mm'))
-
-# check if it is coded correctly
-table(grouped_tumor_thickness)
-table(melanoma$grouped_tumor_thickness)
-
-```
-
-
-Now we plot the KM plot, and carry out a log-rank test
-```{r}
-#| label: melanoma-d2
-#| warning: false
-#| echo: true
-
-km_fit_tumor <- survfit(Surv(lifetime, death) ~ grouped_tumor_thickness)
-plot(km_fit_tumor, col = c('blue', 'red', 'forestgreen'))
-
-title(main = 'Kaplan-Meier survival estimate: stratify by tumor thickness', 
-      xlab = 'Time', 
-      ylab = 'Survial probability')
-
-# add legend
-legend( 'bottomleft', 
-        legend = c('0-2 mm', '2-5 mm', '5+ mm'), 
-        lty = c('solid', 'solid', 'solid'), 
-        col = c('blue','red', 'forestgreen'))
-
-
-# test difference with logrank test 
-survdiff(Surv(lifetime, death) ~ grouped_tumor_thickness)
-
-```
-
-
-
-
-# Length of hospital stay 
-
-(This is the exercise 3 from the exercise for day 7)
-
-
-```{r}
-#| label: liggetid
-#| warning: false
-#| echo: true
-
-liggetid <- haven::read_dta('data/liggetid.dta')
-head(liggetid)
-colnames(liggetid)
-
-# all status are 1 
-status <- liggetid$status
-```
-
-
-### a) Length of stay vs gender
-
-```{r}
-#| label: liggetid-a1
-#| warning: false
-#| echo: true
-
-# length of stay (los) vs gender
-los <- liggetid$liggetid
-head(los)
-
-# can choose to recode; or leave as it is;
-# gender == 0: female; gender == 1: male
-gender <- liggetid$kjoenn
-head(gender)
-
-# fit km 
-km_liggetid_gender <- survfit(Surv(los, status) ~ gender)
-
-plot(km_liggetid_gender, col = c('blue', 'red'))
-
-title(main = 'Kaplan-Meier survival estimate: stratify by gender', 
-      xlab = 'Time', 
-      ylab = 'Survial probability')
-
-# add legend
-legend( 'topright', 
-        legend = c('Female', 'Male'), 
-        lty = c('solid', 'solid'), 
-        col = c('blue','red'))
-
-```
-
-Now we do log-rank test
-
-```{r}
-#| label: liggetid-a2
-#| warning: false
-#| echo: true
-
-# log rank test 
-survdiff(Surv(los, status) ~ gender)
-```
-
-
-### b) Length of stay vs stroke 
-
-```{r}
-#| label: liggetid-b1
-#| warning: false
-#| echo: true
-
-
-# length of stay vs stroke
-# slag == 1: yes, slag == 2: no
-stroke <- liggetid$slag
-
-# fit km 
-km_liggetid_stroke <- survfit(Surv(los, status) ~ stroke)
-
-plot(km_liggetid_stroke, col = c('blue', 'red'))
-
-title(main = 'Kaplan-Meier survival estimate: stratify by stroke', 
-      xlab = 'Time', 
-      ylab = 'Survial probability')
-
-# add legend
-legend( 'topright', 
-        legend = c('Stroke: yes', 'Stroke: no'), 
-        lty = c('solid', 'solid'), 
-        col = c('blue','red'))
-
-```
-
-
-```{r}
-#| label: liggetid-b2
-#| warning: false
-#| echo: true
-
-# log rank test
-survdiff(Surv(los, status) ~ stroke)
-```
