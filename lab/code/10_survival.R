@@ -1,4 +1,6 @@
 # survival analysis 
+# first install and load package 
+# install.packages("survival")
 library(survival)
 
 
