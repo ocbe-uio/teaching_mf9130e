@@ -1,5 +1,5 @@
 ---
-title: "Survival analysis"
+title: "Exercises - Survival analysis"
 description: "Kaplan-Meier curve, log rank tests"
 format: 
   html:
@@ -87,7 +87,7 @@ Nursing home (kom_fra)
 
 The variable `liggetid` time is calculated from the `innaar`, `innmaan`, `inndag`, `utaar`, `utmaan` and `utdag` variables. 
 
-### 2a) 
+### 2a) 
 
 Analyze the relationship between the variables `liggetid` and `kjoenn` with a Kaplan-Meier plot. Test the difference with a log-rank test.
 

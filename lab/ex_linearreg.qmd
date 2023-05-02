@@ -1,5 +1,5 @@
 ---
-title: "Linear regression"
+title: "Exercises - Linear regression"
 description: "Linear regression, correlation"
 format: 
   html:
@@ -27,7 +27,7 @@ Datasets
 
 
 
-# Linear regression 
+
 
 
 ## Exercise 1 (blood pressure)

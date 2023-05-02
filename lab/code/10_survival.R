@@ -82,19 +82,16 @@ survdiff(Surv(lifetime, death) ~ gender)
 
 # d) ----
 # tumor thickness
-# check the original data type 
+# take out the variable
 melanoma$grouped_tumor_thickness
 
-grouped_tumor_thickness <- factor(melanoma$grouped_tumor_thickness, 
-                           levels = c('1','2', '3'),
-                           labels = c('0-2 mm', '2-5 mm', '5+ mm'))
+grouped_tumor_thickness <- melanoma$grouped_tumor_thickness
 
-# check if it is coded correctly 
+# how many in each category
 table(grouped_tumor_thickness)
-table(melanoma$grouped_tumor_thickness)
-# looks ok 
+ 
 
-
+# fit km 
 km_fit_tumor <- survfit(Surv(lifetime, death) ~ grouped_tumor_thickness)
 plot(km_fit_tumor, col = c('blue', 'red', 'forestgreen'))
 
@@ -176,10 +173,5 @@ legend( 'topright',
 
 # log rank test
 survdiff(Surv(los, status) ~ stroke)
-
-
-
-
-
 
 

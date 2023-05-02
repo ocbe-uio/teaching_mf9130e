@@ -203,9 +203,11 @@ colnames(melanoma)
 
 melanoma$status <- factor(melanoma$status, 
                     levels = c('1','2','4'),
-                    labels = c('Death from disease',
-                               'Censored', 
-                               'Deatth from other causes')) 
+                    labels = c('1', '2', '4')
+                    # labels = c('Death from disease',
+                     #          'Censored', 
+                    #           'Deatth from other causes')
+                    ) 
 
 melanoma$ulceration <- factor(melanoma$ulceration, 
                               levels = c('1', '2'), 

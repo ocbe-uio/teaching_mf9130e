@@ -11,16 +11,17 @@ editor: source
 Datasets
 
 * Exercise 1: `melanoma`([rda link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/melanoma.rda), [csv link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/melanoma.csv))
-* Exercise 2: `liggetid` ([csv link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/melanoma.csv))
+* Exercise 2: `liggetid` ([rda link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/liggetid.rda), [csv link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/liggetid.csv))
 
-[R script](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/4_ttest.R)
+[R script](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/10_survival.R)
 
 ------------------
 
 
+# Examples (exercises with solution)
 
 
-# Exercise 1: Melanoma 
+## Exercise 1: Melanoma 
 
 The data concern 205 patients with malignant melanoma who were operated at the university hospital in Odense, Denmark, in the period 1962-77. The patients were followed up to death or censored at the end of the study. We shall study the effect on survival of the patient’s gender and tumor thickness.
 
@@ -42,9 +43,12 @@ First we load the dataset, and check what columns are there.
 #| label: melanoma-1
 #| warning: false
 #| echo: true
+
+# if you do not have survival package, install it by 
+# install.packages('survival')
 library(survival)
 
-melanoma <- haven::read_dta('data/melanoma.dta')
+melanoma <- read.csv('data/melanoma.csv')
 
 head(melanoma)
 colnames(melanoma)
@@ -68,7 +72,6 @@ death <- ifelse(melanoma$status == 1, 1, 0)
 # check if the labels are correct
 table(death)
 table(melanoma$status)
-
 ```
 
 You can see that the category `melanoma$status == 1` should match `death == 1`, and `melanoma$status` of 2 and 4 are merged together and coded as `death == 0`. 
@@ -85,7 +88,6 @@ Make a Kaplan-Meier plot of the survival curve. What are the estimated probabili
 
 # take lifetime variable
 lifetime <- melanoma$lifetime
-
 
 km_fit <- survfit(Surv(lifetime, death) ~ 1)
 plot(km_fit)
@@ -124,7 +126,6 @@ Compare survival according to gender. Test the difference with a logrank test.
 # gender == 1: female; gender == 2: male
 gender <- melanoma$gender
 
-
 km_fit_gender <- survfit(Surv(lifetime, death) ~ gender)
 plot(km_fit_gender, col = c('blue', 'red'))
 title(main = 'Kaplan-Meier survival estimate: stratify by gender', 
@@ -162,18 +163,11 @@ First we do some data processing
 #| warning: false
 #| echo: true
 
-# check the original data type 
-melanoma$grouped_tumor_thickness
+# take out the variable
+grouped_tumor_thickness <- melanoma$grouped_tumor_thickness
 
-# you can code them so that the data is more readable
-grouped_tumor_thickness <- factor(melanoma$grouped_tumor_thickness, 
-                           levels = c('1','2', '3'),
-                           labels = c('0-2 mm', '2-5 mm', '5+ mm'))
-
-# check if it is coded correctly
+# get an idea how many categories
 table(grouped_tumor_thickness)
-table(melanoma$grouped_tumor_thickness)
-
 ```
 
 
@@ -199,13 +193,12 @@ legend( 'bottomleft',
 
 # test difference with logrank test 
 survdiff(Surv(lifetime, death) ~ grouped_tumor_thickness)
-
 ```
 
 
 
 
-# Exercise 2: Length of hospital stay 
+## Exercise 2: Length of hospital stay 
 
 The data was collected at the Geriatric Department at Ullevål Sykehus. Below is a description of the data set `liggetid`. The file includes the following variables:
 
@@ -241,7 +234,7 @@ The variable `liggetid` time is calculated from the `innaar`, `innmaan`, `inndag
 #| warning: false
 #| echo: true
 
-liggetid <- haven::read_dta('data/liggetid.dta')
+liggetid <- read.csv('data/liggetid.csv')
 head(liggetid)
 colnames(liggetid)
 
@@ -264,8 +257,7 @@ Analyze the relationship between the variables `liggetid` and `kjoenn` with a Ka
 los <- liggetid$liggetid
 head(los)
 
-# can choose to recode; or leave as it is;
-# gender == 0: female; gender == 1: male
+# take out gender variable
 gender <- liggetid$kjoenn
 head(gender)
 

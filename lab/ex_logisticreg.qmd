@@ -1,5 +1,5 @@
 ---
-title: "Logistic regression"
+title: "Exercises - Logistic regression"
 description: "Logistic regression"
 format: 
   html:
@@ -21,7 +21,6 @@ Datasets
 ------------------
 
 
-# Logistic regression
 
 ## Exercise 1 (birth)
 

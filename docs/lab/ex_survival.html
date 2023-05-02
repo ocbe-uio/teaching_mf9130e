@@ -8,7 +8,7 @@
 
 <meta name="description" content="Kaplan-Meier curve, log rank tests">
 
-<title>MF9130E - V23 - Survival analysis</title>
+<title>MF9130E - V23 - Exercises - Survival analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -194,6 +194,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </ul></li>
   <li><a href="#exercise-2-length-of-hospital-stay" id="toc-exercise-2-length-of-hospital-stay" class="nav-link" data-scroll-target="#exercise-2-length-of-hospital-stay">Exercise 2: length of hospital stay</a>
   <ul class="collapse">
+  <li><a href="#a-1" id="toc-a-1" class="nav-link" data-scroll-target="#a-1">2a)</a></li>
   <li><a href="#b-1" id="toc-b-1" class="nav-link" data-scroll-target="#b-1">2b)</a></li>
   </ul></li>
   </ul>
@@ -204,7 +205,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Survival analysis</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Exercises - Survival analysis</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 <div>
@@ -289,8 +290,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Censoring variable (censor)</li>
 </ul>
 <p>The variable <code>liggetid</code> time is calculated from the <code>innaar</code>, <code>innmaan</code>, <code>inndag</code>, <code>utaar</code>, <code>utmaan</code> and <code>utdag</code> variables.</p>
-<p>###&nbsp;2a)</p>
+<section id="a-1" class="level3">
+<h3 class="anchored" data-anchor-id="a-1">2a)</h3>
 <p>Analyze the relationship between the variables <code>liggetid</code> and <code>kjoenn</code> with a Kaplan-Meier plot. Test the difference with a log-rank test.</p>
+</section>
 <section id="b-1" class="level3">
 <h3 class="anchored" data-anchor-id="b-1">2b)</h3>
 <p>Analyze the relationship between the variables <code>liggetid</code> and <code>slag</code> with a Kaplan-Meier plot. Test the difference with a log-rank test.</p>
@@ -487,7 +490,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Survival analysis"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Exercises - Survival analysis"</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Kaplan-Meier curve, log rank tests"</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
@@ -575,7 +578,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>The variable <span class="in">`liggetid`</span> time is calculated from the <span class="in">`innaar`</span>, <span class="in">`innmaan`</span>, <span class="in">`inndag`</span>, <span class="in">`utaar`</span>, <span class="in">`utmaan`</span> and <span class="in">`utdag`</span> variables. </span>
 <span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a><span class="fu">###&nbsp;2a) </span></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2a) </span></span>
 <span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>Analyze the relationship between the variables <span class="in">`liggetid`</span> and <span class="in">`kjoenn`</span> with a Kaplan-Meier plot. Test the difference with a log-rank test.</span>
 <span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a></span>
