@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Linear regression, logistic regression">
+<meta name="description" content="Linear regression, correlation">
 
 <title>MF9130E - V23 - Regression analysis</title>
 <style>
@@ -185,10 +185,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link active" data-scroll-target="#linear-regression">Linear regression</a></li>
-  <li><a href="#logistic-regression" id="toc-logistic-regression" class="nav-link" data-scroll-target="#logistic-regression">Logistic regression</a>
+  <li><a href="#examples-exercises-with-solution" id="toc-examples-exercises-with-solution" class="nav-link active" data-scroll-target="#examples-exercises-with-solution">Examples (exercises with solution)</a>
   <ul class="collapse">
-  <li><a href="#fit-a-logistic-regression-model-for-low-and-age" id="toc-fit-a-logistic-regression-model-for-low-and-age" class="nav-link" data-scroll-target="#fit-a-logistic-regression-model-for-low-and-age">Fit a logistic regression model for <code>low</code> and <code>age</code></a></li>
+  <li><a href="#exercise-1-blood-pressure" id="toc-exercise-1-blood-pressure" class="nav-link" data-scroll-target="#exercise-1-blood-pressure">Exercise 1 (blood pressure)</a></li>
+  <li><a href="#exercise-2-lung-function" id="toc-exercise-2-lung-function" class="nav-link" data-scroll-target="#exercise-2-lung-function">Exercise 2 (lung function)</a></li>
+  <li><a href="#exercise-3-length-of-hospital-stay" id="toc-exercise-3-length-of-hospital-stay" class="nav-link" data-scroll-target="#exercise-3-length-of-hospital-stay">Exercise 3 (length of hospital stay)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -203,7 +204,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div>
   <div class="description">
-    Linear regression, logistic regression
+    Linear regression, correlation
   </div>
 </div>
 
@@ -218,103 +219,554 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="linear-regression" class="level1">
-<h1>Linear regression</h1>
-<p>TBC</p>
-</section>
-<section id="logistic-regression" class="level1">
-<h1>Logistic regression</h1>
-<p>(Dataset <code>birth</code> might be switched out)</p>
+<p>Datasets</p>
+<ul>
+<li>Exercise 1: <code>bp</code> (<a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/bp.rda">rda link</a>, <a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/bp.csv">csv link</a>)</li>
+<li>Exercise 2: <code>PEFH98-english</code> (<a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.rda">rda link</a>, <a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.csv">csv link</a>)</li>
+<li>Exercise 3: <code>liggetid</code> (<a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/liggetid.rda">rda link</a>, <a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/liggetid.csv">csv link</a>)</li>
+</ul>
+<p><a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/8_linearreg.R">R Script</a></p>
+<hr>
+<section id="examples-exercises-with-solution" class="level1">
+<h1>Examples (exercises with solution)</h1>
+<section id="exercise-1-blood-pressure" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-1-blood-pressure">Exercise 1 (blood pressure)</h2>
+<p>The dataset <code>bp</code> contains data on 20 healthy adults on two variables, <code>Age</code> and <code>Blood pressure</code>. We will explore the relationship between these two variables.</p>
+<section id="a" class="level4">
+<h4 class="anchored" data-anchor-id="a">1a)</h4>
+<p>Load the dataset. Find the correlation between age and blood pressure, and test if it is significant. Compute a 95% confidence interval for the regresion parameter.</p>
+<p>Also find the squared correlation coefficient between age and blood pressure. What does it mean?</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>birth_data <span class="ot">&lt;-</span> haven<span class="sc">::</span><span class="fu">read_dta</span>(<span class="st">'data/birth.dta'</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># print the first rows of the data set</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(birth_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>bp <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/bp.csv'</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(bp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 12
-     id low            age   lwt eth       smk   ptl ht      ui        fvt   ttv
-  &lt;dbl&gt; &lt;dbl+lbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl+l&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl&gt; &lt;dbl&gt;
-1     4 1 [bwt &lt; 25…    28   120 3 [oth…     1     1 0 [no]  1 [yes]     0     0
-2    10 1 [bwt &lt; 25…    29   130 1 [whi…     0     0 0 [no]  1 [yes]     2     0
-3    11 1 [bwt &lt; 25…    34   187 2 [bla…     1     0 1 [yes] 0 [no]      0     0
-4    13 1 [bwt &lt; 25…    25   105 3 [oth…     0     1 1 [yes] 0 [no]      0     0
-5    15 1 [bwt &lt; 25…    25    85 3 [oth…     0     0 0 [no]  1 [yes]     0     4
-6    16 1 [bwt &lt; 25…    27   150 3 [oth…     0     0 0 [no]  0 [no]      0     5
-# … with 1 more variable: bwt &lt;dbl&gt;</code></pre>
+<pre><code>  Age bloodpressure
+1  20           120
+2  43           128
+3  63           141
+4  26           126
+5  53           134
+6  31           128</code></pre>
 </div>
 </div>
-<section id="fit-a-logistic-regression-model-for-low-and-age" class="level3">
-<h3 class="anchored" data-anchor-id="fit-a-logistic-regression-model-for-low-and-age">Fit a logistic regression model for <code>low</code> and <code>age</code></h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># low ~ age </span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>lr_low_age <span class="ot">&lt;-</span> <span class="fu">glm</span>(low <span class="sc">~</span> age, <span class="at">data =</span> birth_data, <span class="at">family =</span> <span class="st">'binomial'</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lr_low_age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># correlation age vs bp</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(bp<span class="sc">$</span>Age, bp<span class="sc">$</span>bloodpressure)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.966699</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or,</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(bp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                   Age bloodpressure
+Age           1.000000      0.966699
+bloodpressure 0.966699      1.000000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 95% CI, p-value</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(bp<span class="sc">$</span>Age, bp<span class="sc">$</span>bloodpressure) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's product-moment correlation
+
+data:  bp$Age and bp$bloodpressure
+t = 16.026, df = 18, p-value = 4.239e-12
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.9160501 0.9869976
+sample estimates:
+     cor 
+0.966699 </code></pre>
+</div>
+</div>
+</section>
+<section id="b" class="level4">
+<h4 class="anchored" data-anchor-id="b">1b)</h4>
+<p>What is the blood pressure for a person at age 40? For a person at age 75? Comment.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fit a linear regression model</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>model_age_bp <span class="ot">&lt;-</span> <span class="fu">lm</span>(bloodpressure <span class="sc">~</span> Age, <span class="at">data =</span> bp)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_age_bp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
-glm(formula = low ~ age, family = "binomial", data = birth_data)
+lm(formula = bloodpressure ~ Age, data = bp)
 
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--1.0402  -0.9018  -0.7754   1.4119   1.7800  
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.7908 -1.2777  0.1688  1.8725  2.7816 
 
 Coefficients:
-            Estimate Std. Error z value Pr(&gt;|z|)
-(Intercept)  0.38458    0.73212   0.525    0.599
-age         -0.05115    0.03151  -1.623    0.105
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 112.31666    1.28744   87.24  &lt; 2e-16 ***
+Age           0.44509    0.02777   16.03 4.24e-12 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-(Dispersion parameter for binomial family taken to be 1)
+Residual standard error: 2.12 on 18 degrees of freedom
+Multiple R-squared:  0.9345,    Adjusted R-squared:  0.9309 
+F-statistic: 256.8 on 1 and 18 DF,  p-value: 4.239e-12</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to predict (insert x), you need to put data in a data frame</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(model_age_bp, </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">Age =</span> <span class="fu">c</span>(<span class="dv">40</span>, <span class="dv">75</span>)), </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">interval =</span> <span class="st">'prediction'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       fit      lwr      upr
+1 130.1202 125.5531 134.6873
+2 145.6983 140.7698 150.6268</code></pre>
+</div>
+</div>
+<p>Can also visualize the relationship.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> bp<span class="sc">$</span>Age, <span class="at">y =</span> bp<span class="sc">$</span>bloodpressure, </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">'Age versus Blood Pressure'</span>, </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">'Age'</span>, <span class="at">ylab =</span> <span class="st">'Blood pressure'</span>, </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">20</span>, </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">80</span>))</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># add the regression line on top</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(bloodpressure <span class="sc">~</span> Age, <span class="at">data =</span> bp), </span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">'blue'</span>, <span class="at">lwd =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab_linearreg_files/figure-html/linear-1b-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="exercise-2-lung-function" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2-lung-function">Exercise 2 (lung function)</h2>
+<p>Lung function has been measured on 106 medical students. Peak expiratory flow rate (PEF, measured in liters per minute) was measured three times in a sittinng position, and three times in a standing position.</p>
+<p>The variables are</p>
+<ul>
+<li>Age (years)</li>
+<li>Gender (female, male)</li>
+<li>Height (cm)</li>
+<li>Weight (kg)</li>
+<li>PEF measured three times in a sitting position (pefsit1, pefsit2, pefsit3)</li>
+<li>PEF measured three times in a standing position (pefsta1, pefsta2, pefsta3)</li>
+<li>Mean of the three measurements made in a sitting position (pefsitm)</li>
+<li>Mean of the three measurements made in a standing position (pefstam)</li>
+<li>Mean of all six PEF values (pefmean)</li>
+</ul>
+<section id="a-1" class="level4">
+<h4 class="anchored" data-anchor-id="a-1">2a)</h4>
+<p>Make a scatter plot of <code>pefsit2</code> versus <code>pefsit1</code>; and make a separate scatter plot of <code>pefsit1</code> versus <code>weight</code>. Insert a regression line on top of the scatterplots.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>lung_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/PEFH98-english.csv'</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># head(lung_data)</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># assign variables (not strictly necessary)</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>pefsit1 <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>pefsit1</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>pefsit2 <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>pefsit2</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>weight <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>weight</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="co"># make plots in 1 row 2 col</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plot: pefsit2 vs pefsit1</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> pefsit1, <span class="at">y =</span> pefsit2, </span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">'PEF sit1 vs PEF sit2'</span>, </span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">'pefsit1'</span>, <span class="at">ylab =</span> <span class="st">'pefsit2'</span>, </span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">20</span>)</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(pefsit2 <span class="sc">~</span> pefsit1, <span class="at">data =</span> lung_data), </span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">'blue'</span>, <span class="at">lwd =</span> <span class="dv">3</span>)</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plot: pefsit1 vs weight</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> weight, <span class="at">y =</span> pefsit1, </span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">'Weight vs pefsit1'</span>, </span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">'Weight'</span>, <span class="at">ylab =</span> <span class="st">'pefsit1'</span>, </span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">20</span>)</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(pefsit1 <span class="sc">~</span> weight, <span class="at">data =</span> lung_data), </span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">'blue'</span>, <span class="at">lwd =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab_linearreg_files/figure-html/linear-2a-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="b-1" class="level4">
+<h4 class="anchored" data-anchor-id="b-1">2b)</h4>
+<p>Compute the correlation between <code>pefsit1</code> and <code>pefsit2</code>; and between <code>pefsit1</code> and <code>weight</code>.</p>
+<p>Why is the correlation between the first pair closer to 1 than the second pair?</p>
+<p>(You can get the pair-wise correlation between many other pairs of variables using <code>cor(your_data)</code>).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(pefsit2, pefsit1) <span class="co"># need to remove NA here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(<span class="fu">is.na</span>(pefsit1)) <span class="co"># no missing</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>integer(0)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(<span class="fu">is.na</span>(pefsit2)) <span class="co"># 66th missing</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 66</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># option 1: cor() removes NA for you </span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># specify use complete observations</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(pefsit2, pefsit1, <span class="at">use =</span> <span class="st">'complete.obs'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9693111</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># option 2: you process (remove) the row of missing </span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># from both variables (remove element 66)</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>pefsit2_narm <span class="ot">&lt;-</span> pefsit2[<span class="sc">!</span><span class="fu">is.na</span>(pefsit2)]</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>pefsit1_narm <span class="ot">&lt;-</span> pefsit1[<span class="sc">!</span><span class="fu">is.na</span>(pefsit2)]</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co"># use pefsit2_narm instead of pefsit2 to compute cor</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co"># should be the same</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(pefsit2_narm, pefsit1_narm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9693111</code></pre>
+</div>
+</div>
+<p>For <code>pefsit1</code> and <code>weight</code> it is straightforward, as there is not missing data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pefsit1, weight</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(pefsit1, weight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7055166</code></pre>
+</div>
+</div>
+<p>To compute the correlation between multiple pairs, you need to select a few variables first.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pairwise for multiple pairs </span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># use age, height, weight, pefsit1, pefsit2, pefsit3, pefmean</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># select a smaller dataset </span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>lungdata2 <span class="ot">&lt;-</span> lung_data[, <span class="fu">c</span>(<span class="st">'age'</span>, <span class="st">'height'</span>, <span class="st">'weight'</span>, <span class="st">'pefsit1'</span>, </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>                           <span class="st">'pefsit2'</span>, <span class="st">'pefsit3'</span>, <span class="st">'pefmean'</span>)]</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lungdata2, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  age height weight pefsit1 pefsit2 pefsit3  pefmean
+1  20    165     50     400     400     410 405.0000
+2  20    185     75     480     460     510 491.6667
+3  21    178     70     490     540     560 505.0000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># produce correlation matrix for all the variables here</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co"># round(1.2345, digits = 2) gives 1.23</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">cor</span>(lungdata2, <span class="at">use =</span> <span class="st">'complete.obs'</span>), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          age height weight pefsit1 pefsit2 pefsit3 pefmean
+age      1.00  -0.15  -0.18   -0.02   -0.02   -0.01   -0.03
+height  -0.15   1.00   0.83    0.68    0.68    0.67    0.69
+weight  -0.18   0.83   1.00    0.71    0.70    0.67    0.70
+pefsit1 -0.02   0.68   0.71    1.00    0.97    0.96    0.98
+pefsit2 -0.02   0.68   0.70    0.97    1.00    0.98    0.99
+pefsit3 -0.01   0.67   0.67    0.96    0.98    1.00    0.98
+pefmean -0.03   0.69   0.70    0.98    0.99    0.98    1.00</code></pre>
+</div>
+</div>
+</section>
+<section id="c" class="level4">
+<h4 class="anchored" data-anchor-id="c">2c)</h4>
+<p>Carry out two regression analysis:</p>
+<ul>
+<li><code>pefsit2</code> as dependent variable, <code>pefsit1</code> as independent variable;</li>
+<li><code>pefsit1</code> as dependent variable, <code>weight</code> as independent variable.</li>
+</ul>
+<p>Interpret the results in relation to the scatter plots.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pef2 vs pef 1</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>lm_pef2_pef1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(pefsit2 <span class="sc">~</span> pefsit1, <span class="at">data =</span> lung_data)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_pef2_pef1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = pefsit2 ~ pefsit1, data = lung_data)
 
-    Null deviance: 234.67  on 188  degrees of freedom
-Residual deviance: 231.91  on 187  degrees of freedom
-AIC: 235.91
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-101.136  -13.458   -2.588    9.009   75.816 
 
-Number of Fisher Scoring iterations: 4</code></pre>
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 11.73107   12.75039    0.92     0.36    
+pefsit1      0.98549    0.02463   40.02   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 28.66 on 103 degrees of freedom
+  (1 observation deleted due to missingness)
+Multiple R-squared:  0.9396,    Adjusted R-squared:  0.939 
+F-statistic:  1601 on 1 and 103 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the result regresssion coefficient is not odds ratio</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>lr_low_age<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pef1 vs weight </span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>lm_pef1_weight <span class="ot">&lt;-</span> <span class="fu">lm</span>(pefsit1 <span class="sc">~</span> weight, <span class="at">data =</span> lung_data)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_pef1_weight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>(Intercept)         age 
- 0.38458192 -0.05115294 </code></pre>
+<pre><code>
+Call:
+lm(formula = pefsit1 ~ weight, data = lung_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-145.025  -53.081   -6.085   41.587  259.269 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -30.0819    53.2502  -0.565    0.573    
+weight        7.8587     0.7741  10.152   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 80.96 on 104 degrees of freedom
+Multiple R-squared:  0.4978,    Adjusted R-squared:  0.4929 
+F-statistic: 103.1 on 1 and 104 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># regression coefficients can also be extracted in this way:</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coefficients</span>(lr_low_age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>(Intercept)         age 
- 0.38458192 -0.05115294 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># coef(lr_low_age)</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># confidence interval for age and intercept</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(lr_low_age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="d" class="level4">
+<h4 class="anchored" data-anchor-id="d">2d)</h4>
+<p>Make residual analysis for the analyses you did before. Interpret the results.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) <span class="co"># plot 2 by 2</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm_pef2_pef1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab_linearreg_files/figure-html/linear-2d-1-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm_pef1_weight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab_linearreg_files/figure-html/linear-2d-1-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="e" class="level4">
+<h4 class="anchored" data-anchor-id="e">2e)</h4>
+<p>Make a regression analysis with <code>pefsit1</code> as dependent variable, and <code>sex</code> and <code>weight</code> as independent variables. Assess the model fit. Interpret the results.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pefsit1 vs (weight, gender)</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co"># note that we converted gender into categorical</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>lm_pef1_weight_gender <span class="ot">&lt;-</span> <span class="fu">lm</span>(pefsit1 <span class="sc">~</span> weight <span class="sc">+</span> gender, </span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>                            <span class="at">data =</span> lung_data)</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co"># lm_pef1_weight_gender</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_pef1_weight_gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                 2.5 %      97.5 %
-(Intercept) -1.0336270 1.847399861
-age         -0.1150799 0.008986436</code></pre>
+<pre><code>
+Call:
+lm(formula = pefsit1 ~ weight + gender, data = lung_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-132.141  -46.988   -0.877   45.971  180.290 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  224.143     60.453   3.708 0.000339 ***
+weight         3.204      0.985   3.253 0.001544 ** 
+gendermale   127.280     20.017   6.359 5.67e-09 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 68.94 on 103 degrees of freedom
+Multiple R-squared:  0.6393,    Adjusted R-squared:  0.6323 
+F-statistic: 91.29 on 2 and 103 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</section>
+<section id="f" class="level4">
+<h4 class="anchored" data-anchor-id="f">2f)</h4>
+<p>Make a regression analysis with <code>pefmean</code> as dependent variable, and try out <strong>combinations</strong> of <code>sex</code>, <code>height</code>, <code>weight</code> as independent variables.</p>
+<p>Which variables would you include in your final analysis? How much variation is explained? Assess the model fit, and interpret the results.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can try two sets</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. height weight gender</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>lm_pefm_height_weight_gen <span class="ot">&lt;-</span> <span class="fu">lm</span>(pefmean <span class="sc">~</span> height <span class="sc">+</span> weight <span class="sc">+</span> gender, </span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>                                <span class="at">data =</span> lung_data)</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_pefm_height_weight_gen)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = pefmean ~ height + weight + gender, data = lung_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-178.443  -42.347   -4.134   50.155  172.662 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  -68.931    225.291  -0.306    0.760    
+height         2.213      1.571   1.409    0.162    
+weight         1.956      1.301   1.504    0.136    
+gendermale   122.597     21.555   5.688 1.26e-07 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 70.37 on 101 degrees of freedom
+  (1 observation deleted due to missingness)
+Multiple R-squared:  0.6423,    Adjusted R-squared:  0.6317 
+F-statistic: 60.46 on 3 and 101 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to get odds ratio, exponentiate </span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(lr_low_age))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. weight gender</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>lm_pefm_weight_gen <span class="ot">&lt;-</span> <span class="fu">lm</span>(pefmean <span class="sc">~</span> weight <span class="sc">+</span> gender, </span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>                                <span class="at">data =</span> lung_data)</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_pefm_weight_gen)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>(Intercept)         age 
-  1.4690000   0.9501333 </code></pre>
+<pre><code>
+Call:
+lm(formula = pefmean ~ weight + gender, data = lung_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-172.872  -41.467    0.706   46.601  168.533 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  236.214     62.242   3.795 0.000251 ***
+weight         3.114      1.013   3.076 0.002697 ** 
+gendermale   132.260     20.533   6.441 3.95e-09 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 70.71 on 102 degrees of freedom
+  (1 observation deleted due to missingness)
+Multiple R-squared:  0.6353,    Adjusted R-squared:  0.6281 
+F-statistic: 88.84 on 2 and 102 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">confint</span>(lr_low_age))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="exercise-3-length-of-hospital-stay" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-3-length-of-hospital-stay">Exercise 3 (length of hospital stay)</h2>
+<p>The data was collected at the Geriatric Department at Ullevål Sykehus. Below is a description of the data set <code>liggetid</code>. The file includes the following variables:</p>
+<ul>
+<li>Year of birth (faar)</li>
+<li>Month of birth (fmaan)</li>
+<li>Day of birth (fdag)</li>
+<li>Year of hospital admission (innaar)</li>
+<li>Month of admission (innmaan)</li>
+<li>Day of admission (inndag)</li>
+<li>Year of discharge from hospital (utaar)</li>
+<li>Month of discharge (utmaan)</li>
+<li>Day of discharge (utdag)</li>
+<li>Gender, where 1 = male and 0 = female (kjoenn)</li>
+<li>Admission from, where 1 = home, 2 = Div. of Medicine, 3 = Div. of Surgery, 4 = Other division, 5 = Other hospital, 6 = Nursing home (kom_fra)</li>
+<li>Stroke, where 1 = yes, 0 = no (slag)</li>
+<li>Age (alder)</li>
+<li>Hospital stay, in days (liggetid)</li>
+<li>Logarithm of hospital stay (lnliggti)</li>
+<li>Comes from Div. of Medicine (kom_fra2)</li>
+<li>Comes from Div. of Surgery (kom_fra3)</li>
+<li>Comes from Other division (kom_fra4)</li>
+<li>Comes from Other hospital (kom_fra5)</li>
+<li>Comes from Nursing home (kom_fra6)</li>
+<li>Censoring variable (censor)</li>
+</ul>
+<p>The variable <code>liggetid</code> time is calculated from the <code>innaar</code>, <code>innmaan</code>, <code>inndag</code>, <code>utaar</code>, <code>utmaan</code> and <code>utdag</code> variables.</p>
+<section id="a-2" class="level4">
+<h4 class="anchored" data-anchor-id="a-2">3a)</h4>
+<p>Create a box plot for length of hospital stay for men and women.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>liggetid <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/liggetid.csv'</span>)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(liggetid, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                2.5 %   97.5 %
-(Intercept) 0.3557144 6.343305
-age         0.8912949 1.009027</code></pre>
+<pre><code>  faar fmaan fdag innaar innmaan inndag utaar utmaan utdag kjoenn kom_fra slag
+1 1906     3    4   1987       3      5    87      3    18 kvinne       1    0
+2 1891     4    3   1987       3      6    87      3    23 kvinne       1    0
+3 1908     9    6   1987       3     10    87      3    16 kvinne       1    0
+  alder liggetid lnliggti kom_fra2 kom_fra3 kom_fra4 kom_fra5 kom_fra6 status
+1    81       13 2.564949        0        0        0        0        0      1
+2    96       17 2.833213        0        0        0        0        0      1
+3    79        6 1.791759        0        0        0        0        0      1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># boxplot</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(liggetid <span class="sc">~</span> kjoenn, <span class="at">data =</span> liggetid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab_linearreg_files/figure-html/linear-3a-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="b-2" class="level4">
+<h4 class="anchored" data-anchor-id="b-2">3b)</h4>
+<p>We want to explain the variation in lengths of hospital stay. We will look at the independent variables <code>kjoenn</code> (gender) and <code>slag</code> (stroke).</p>
+<p>Run a regression analysis using the dependent variable <code>liggetid</code>. Also perform a residual analysis. What do you think about this analysis?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># response (dep): liggetid</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co"># predictor (indep): kjoenn, slag</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>lm_ligge <span class="ot">&lt;-</span> <span class="fu">lm</span>(liggetid <span class="sc">~</span> slag <span class="sc">+</span> kjoenn, </span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">data =</span> liggetid)</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_ligge)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = liggetid ~ slag + kjoenn, data = liggetid)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-175.3 -111.7  -59.7    1.3 1072.3 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  142.702      8.174  17.457  &lt; 2e-16 ***
+slag          34.557     17.194   2.010   0.0447 *  
+kjoennmann   -72.002     12.865  -5.597 2.79e-08 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 201.4 on 1050 degrees of freedom
+  (86 observations deleted due to missingness)
+Multiple R-squared:  0.03137,   Adjusted R-squared:  0.02953 
+F-statistic:    17 on 2 and 1050 DF,  p-value: 5.398e-08</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># visualize the residual</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm_ligge)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab_linearreg_files/figure-html/linear-3b-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="c-1" class="level4">
+<h4 class="anchored" data-anchor-id="c-1">3c)</h4>
+<p>Do the same analysis, but on the log-transformed data. The transformed variable already exists in the dataset, <code>lnliggti</code>. Comment on the results.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># response (dep): log transformed (lnliggti)</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="co"># predictor (indep): kjoenn, slag</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>lm_logligge <span class="ot">&lt;-</span> <span class="fu">lm</span>(lnliggti <span class="sc">~</span> slag <span class="sc">+</span> kjoenn, </span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> liggetid)</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_logligge)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = lnliggti ~ slag + kjoenn, data = liggetid)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.9560 -0.8650 -0.1474  0.8281  3.2469 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  3.95601    0.05470  72.327  &lt; 2e-16 ***
+slag         0.40896    0.11496   3.557 0.000391 ***
+kjoennmann  -0.41282    0.08604  -4.798 1.83e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.346 on 1049 degrees of freedom
+  (87 observations deleted due to missingness)
+Multiple R-squared:  0.03099,   Adjusted R-squared:  0.02915 
+F-statistic: 16.78 on 2 and 1049 DF,  p-value: 6.733e-08</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm_logligge)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab_linearreg_files/figure-html/linear-3c-2-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 
 
 <!-- -->
 
+</section>
 </section>
 </section>
 
@@ -503,84 +955,428 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb15" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Regression analysis"</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Linear regression, logistic regression"</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: false</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> source</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu"># Linear regression </span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>TBC</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="fu"># Logistic regression</span></span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>(Dataset <span class="in">`birth`</span> might be switched out)</span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: birth example</span></span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
-<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>birth_data <span class="ot">&lt;-</span> haven<span class="sc">::</span><span class="fu">read_dta</span>(<span class="st">'data/birth.dta'</span>)</span>
-<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a><span class="co"># print the first rows of the data set</span></span>
-<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(birth_data)</span>
-<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a><span class="fu">### Fit a logistic regression model for `low` and `age`</span></span>
-<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: birth example (2)</span></span>
-<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a><span class="co"># low ~ age </span></span>
-<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-51"><a href="#cb15-51" aria-hidden="true" tabindex="-1"></a>lr_low_age <span class="ot">&lt;-</span> <span class="fu">glm</span>(low <span class="sc">~</span> age, <span class="at">data =</span> birth_data, <span class="at">family =</span> <span class="st">'binomial'</span>)</span>
-<span id="cb15-52"><a href="#cb15-52" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lr_low_age)</span>
-<span id="cb15-53"><a href="#cb15-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-54"><a href="#cb15-54" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-55"><a href="#cb15-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-56"><a href="#cb15-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-59"><a href="#cb15-59" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-60"><a href="#cb15-60" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: birth example (3)</span></span>
-<span id="cb15-61"><a href="#cb15-61" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb15-62"><a href="#cb15-62" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb15-63"><a href="#cb15-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-64"><a href="#cb15-64" aria-hidden="true" tabindex="-1"></a><span class="co"># the result regresssion coefficient is not odds ratio</span></span>
-<span id="cb15-65"><a href="#cb15-65" aria-hidden="true" tabindex="-1"></a>lr_low_age<span class="sc">$</span>coefficients</span>
-<span id="cb15-66"><a href="#cb15-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-67"><a href="#cb15-67" aria-hidden="true" tabindex="-1"></a><span class="co"># regression coefficients can also be extracted in this way:</span></span>
-<span id="cb15-68"><a href="#cb15-68" aria-hidden="true" tabindex="-1"></a><span class="fu">coefficients</span>(lr_low_age)</span>
-<span id="cb15-69"><a href="#cb15-69" aria-hidden="true" tabindex="-1"></a><span class="co"># coef(lr_low_age)</span></span>
-<span id="cb15-70"><a href="#cb15-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-71"><a href="#cb15-71" aria-hidden="true" tabindex="-1"></a><span class="co"># confidence interval for age and intercept</span></span>
-<span id="cb15-72"><a href="#cb15-72" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(lr_low_age)</span>
-<span id="cb15-73"><a href="#cb15-73" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-74"><a href="#cb15-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-77"><a href="#cb15-77" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-78"><a href="#cb15-78" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: birth example (4)</span></span>
-<span id="cb15-79"><a href="#cb15-79" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb15-80"><a href="#cb15-80" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb15-81"><a href="#cb15-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-82"><a href="#cb15-82" aria-hidden="true" tabindex="-1"></a><span class="co"># to get odds ratio, exponentiate </span></span>
-<span id="cb15-83"><a href="#cb15-83" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(lr_low_age))</span>
-<span id="cb15-84"><a href="#cb15-84" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">confint</span>(lr_low_age))</span>
-<span id="cb15-85"><a href="#cb15-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-86"><a href="#cb15-86" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<div class="sourceCode" id="cb52" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Regression analysis"</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Linear regression, correlation"</span></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: false</span></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> source</span></span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a>Datasets</span>
+<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Exercise 1: <span class="in">`bp`</span> (<span class="co">[</span><span class="ot">rda link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/bp.rda)</span>, <span class="co">[</span><span class="ot">csv link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/bp.csv)</span>)</span>
+<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Exercise 2: <span class="in">`PEFH98-english`</span> (<span class="co">[</span><span class="ot">rda link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.rda)</span>, <span class="co">[</span><span class="ot">csv link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.csv)</span>)</span>
+<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Exercise 3: <span class="in">`liggetid`</span> (<span class="co">[</span><span class="ot">rda link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/liggetid.rda)</span>, <span class="co">[</span><span class="ot">csv link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/liggetid.csv)</span>)</span>
+<span id="cb52-17"><a href="#cb52-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-18"><a href="#cb52-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-19"><a href="#cb52-19" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">R Script</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/8_linearreg.R)</span></span>
+<span id="cb52-20"><a href="#cb52-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-21"><a href="#cb52-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-22"><a href="#cb52-22" aria-hidden="true" tabindex="-1"></a>------------------</span>
+<span id="cb52-23"><a href="#cb52-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-24"><a href="#cb52-24" aria-hidden="true" tabindex="-1"></a><span class="fu"># Examples (exercises with solution)</span></span>
+<span id="cb52-25"><a href="#cb52-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-26"><a href="#cb52-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-27"><a href="#cb52-27" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 1 (blood pressure)</span></span>
+<span id="cb52-28"><a href="#cb52-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-29"><a href="#cb52-29" aria-hidden="true" tabindex="-1"></a>The dataset <span class="in">`bp`</span> contains data on 20 healthy adults on two variables, <span class="in">`Age`</span> and <span class="in">`Blood pressure`</span>. We will explore the relationship between these two variables.</span>
+<span id="cb52-30"><a href="#cb52-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-31"><a href="#cb52-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-32"><a href="#cb52-32" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 1a)</span></span>
+<span id="cb52-33"><a href="#cb52-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-34"><a href="#cb52-34" aria-hidden="true" tabindex="-1"></a>Load the dataset. Find the correlation between age and blood pressure, and test if it is significant. Compute a 95% confidence interval for the regresion parameter.  </span>
+<span id="cb52-35"><a href="#cb52-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-36"><a href="#cb52-36" aria-hidden="true" tabindex="-1"></a>Also find the squared correlation coefficient between age and blood pressure. What does it mean?</span>
+<span id="cb52-37"><a href="#cb52-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-38"><a href="#cb52-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-41"><a href="#cb52-41" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb52-42"><a href="#cb52-42" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: linear-1a-1</span></span>
+<span id="cb52-43"><a href="#cb52-43" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb52-44"><a href="#cb52-44" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb52-45"><a href="#cb52-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-46"><a href="#cb52-46" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
+<span id="cb52-47"><a href="#cb52-47" aria-hidden="true" tabindex="-1"></a>bp <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/bp.csv'</span>)</span>
+<span id="cb52-48"><a href="#cb52-48" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(bp)</span>
+<span id="cb52-49"><a href="#cb52-49" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb52-50"><a href="#cb52-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-51"><a href="#cb52-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-54"><a href="#cb52-54" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb52-55"><a href="#cb52-55" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: linear-1a-2</span></span>
+<span id="cb52-56"><a href="#cb52-56" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb52-57"><a href="#cb52-57" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb52-58"><a href="#cb52-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-59"><a href="#cb52-59" aria-hidden="true" tabindex="-1"></a><span class="co"># correlation age vs bp</span></span>
+<span id="cb52-60"><a href="#cb52-60" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(bp<span class="sc">$</span>Age, bp<span class="sc">$</span>bloodpressure)</span>
+<span id="cb52-61"><a href="#cb52-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-62"><a href="#cb52-62" aria-hidden="true" tabindex="-1"></a><span class="co"># or,</span></span>
+<span id="cb52-63"><a href="#cb52-63" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(bp)</span>
+<span id="cb52-64"><a href="#cb52-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-65"><a href="#cb52-65" aria-hidden="true" tabindex="-1"></a><span class="co"># 95% CI, p-value</span></span>
+<span id="cb52-66"><a href="#cb52-66" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(bp<span class="sc">$</span>Age, bp<span class="sc">$</span>bloodpressure) </span>
+<span id="cb52-67"><a href="#cb52-67" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb52-68"><a href="#cb52-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-69"><a href="#cb52-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-70"><a href="#cb52-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-71"><a href="#cb52-71" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 1b)</span></span>
+<span id="cb52-72"><a href="#cb52-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-73"><a href="#cb52-73" aria-hidden="true" tabindex="-1"></a>What is the blood pressure for a person at age 40? For a person at age 75? Comment.</span>
+<span id="cb52-74"><a href="#cb52-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-77"><a href="#cb52-77" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb52-78"><a href="#cb52-78" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: linear-1b-1</span></span>
+<span id="cb52-79"><a href="#cb52-79" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb52-80"><a href="#cb52-80" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb52-81"><a href="#cb52-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-82"><a href="#cb52-82" aria-hidden="true" tabindex="-1"></a><span class="co"># fit a linear regression model</span></span>
+<span id="cb52-83"><a href="#cb52-83" aria-hidden="true" tabindex="-1"></a>model_age_bp <span class="ot">&lt;-</span> <span class="fu">lm</span>(bloodpressure <span class="sc">~</span> Age, <span class="at">data =</span> bp)</span>
+<span id="cb52-84"><a href="#cb52-84" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_age_bp)</span>
+<span id="cb52-85"><a href="#cb52-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-86"><a href="#cb52-86" aria-hidden="true" tabindex="-1"></a><span class="co"># to predict (insert x), you need to put data in a data frame</span></span>
+<span id="cb52-87"><a href="#cb52-87" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(model_age_bp, </span>
+<span id="cb52-88"><a href="#cb52-88" aria-hidden="true" tabindex="-1"></a>        <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">Age =</span> <span class="fu">c</span>(<span class="dv">40</span>, <span class="dv">75</span>)), </span>
+<span id="cb52-89"><a href="#cb52-89" aria-hidden="true" tabindex="-1"></a>        <span class="at">interval =</span> <span class="st">'prediction'</span>)</span>
+<span id="cb52-90"><a href="#cb52-90" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb52-91"><a href="#cb52-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-92"><a href="#cb52-92" aria-hidden="true" tabindex="-1"></a>Can also visualize the relationship.</span>
+<span id="cb52-93"><a href="#cb52-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-96"><a href="#cb52-96" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb52-97"><a href="#cb52-97" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: linear-1b-2</span></span>
+<span id="cb52-98"><a href="#cb52-98" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb52-99"><a href="#cb52-99" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb52-100"><a href="#cb52-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-101"><a href="#cb52-101" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> bp<span class="sc">$</span>Age, <span class="at">y =</span> bp<span class="sc">$</span>bloodpressure, </span>
+<span id="cb52-102"><a href="#cb52-102" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">'Age versus Blood Pressure'</span>, </span>
+<span id="cb52-103"><a href="#cb52-103" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">'Age'</span>, <span class="at">ylab =</span> <span class="st">'Blood pressure'</span>, </span>
+<span id="cb52-104"><a href="#cb52-104" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">20</span>, </span>
+<span id="cb52-105"><a href="#cb52-105" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">80</span>))</span>
+<span id="cb52-106"><a href="#cb52-106" aria-hidden="true" tabindex="-1"></a><span class="co"># add the regression line on top</span></span>
+<span id="cb52-107"><a href="#cb52-107" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(bloodpressure <span class="sc">~</span> Age, <span class="at">data =</span> bp), </span>
+<span id="cb52-108"><a href="#cb52-108" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">'blue'</span>, <span class="at">lwd =</span> <span class="dv">3</span>)</span>
+<span id="cb52-109"><a href="#cb52-109" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb52-110"><a href="#cb52-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-111"><a href="#cb52-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-112"><a href="#cb52-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-113"><a href="#cb52-113" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 2 (lung function)</span></span>
+<span id="cb52-114"><a href="#cb52-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-115"><a href="#cb52-115" aria-hidden="true" tabindex="-1"></a>Lung function has been measured on 106 medical students. Peak expiratory flow rate (PEF, measured in liters per minute) was measured three times in a sittinng position, and three times in a standing position.</span>
+<span id="cb52-116"><a href="#cb52-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-117"><a href="#cb52-117" aria-hidden="true" tabindex="-1"></a>The variables are </span>
+<span id="cb52-118"><a href="#cb52-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-119"><a href="#cb52-119" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Age (years)</span>
+<span id="cb52-120"><a href="#cb52-120" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Gender (female, male)</span>
+<span id="cb52-121"><a href="#cb52-121" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Height (cm)</span>
+<span id="cb52-122"><a href="#cb52-122" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Weight (kg)</span>
+<span id="cb52-123"><a href="#cb52-123" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>PEF measured three times in a sitting position (pefsit1, pefsit2, pefsit3)</span>
+<span id="cb52-124"><a href="#cb52-124" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>PEF measured three times in a standing position (pefsta1, pefsta2, pefsta3)</span>
+<span id="cb52-125"><a href="#cb52-125" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Mean of the three measurements made in a sitting position (pefsitm)</span>
+<span id="cb52-126"><a href="#cb52-126" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Mean of the three measurements made in a standing position (pefstam)</span>
+<span id="cb52-127"><a href="#cb52-127" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Mean of all six PEF values (pefmean)</span>
+<span id="cb52-128"><a href="#cb52-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-129"><a href="#cb52-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-130"><a href="#cb52-130" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 2a) </span></span>
+<span id="cb52-131"><a href="#cb52-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-132"><a href="#cb52-132" aria-hidden="true" tabindex="-1"></a>Make a scatter plot of <span class="in">`pefsit2`</span> versus <span class="in">`pefsit1`</span>; and make a separate scatter plot of <span class="in">`pefsit1`</span> versus <span class="in">`weight`</span>. Insert a regression line on top of the scatterplots. </span>
+<span id="cb52-133"><a href="#cb52-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-134"><a href="#cb52-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-137"><a href="#cb52-137" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb52-138"><a href="#cb52-138" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: linear-2a-1</span></span>
+<span id="cb52-139"><a href="#cb52-139" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb52-140"><a href="#cb52-140" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb52-141"><a href="#cb52-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-142"><a href="#cb52-142" aria-hidden="true" tabindex="-1"></a>lung_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/PEFH98-english.csv'</span>)</span>
+<span id="cb52-143"><a href="#cb52-143" aria-hidden="true" tabindex="-1"></a><span class="co"># head(lung_data)</span></span>
+<span id="cb52-144"><a href="#cb52-144" aria-hidden="true" tabindex="-1"></a><span class="co"># assign variables (not strictly necessary)</span></span>
+<span id="cb52-145"><a href="#cb52-145" aria-hidden="true" tabindex="-1"></a>pefsit1 <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>pefsit1</span>
+<span id="cb52-146"><a href="#cb52-146" aria-hidden="true" tabindex="-1"></a>pefsit2 <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>pefsit2</span>
+<span id="cb52-147"><a href="#cb52-147" aria-hidden="true" tabindex="-1"></a>weight <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>weight</span>
+<span id="cb52-148"><a href="#cb52-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-149"><a href="#cb52-149" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="co"># make plots in 1 row 2 col</span></span>
+<span id="cb52-150"><a href="#cb52-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-151"><a href="#cb52-151" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plot: pefsit2 vs pefsit1</span></span>
+<span id="cb52-152"><a href="#cb52-152" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> pefsit1, <span class="at">y =</span> pefsit2, </span>
+<span id="cb52-153"><a href="#cb52-153" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">'PEF sit1 vs PEF sit2'</span>, </span>
+<span id="cb52-154"><a href="#cb52-154" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">'pefsit1'</span>, <span class="at">ylab =</span> <span class="st">'pefsit2'</span>, </span>
+<span id="cb52-155"><a href="#cb52-155" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">20</span>)</span>
+<span id="cb52-156"><a href="#cb52-156" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(pefsit2 <span class="sc">~</span> pefsit1, <span class="at">data =</span> lung_data), </span>
+<span id="cb52-157"><a href="#cb52-157" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">'blue'</span>, <span class="at">lwd =</span> <span class="dv">3</span>)</span>
+<span id="cb52-158"><a href="#cb52-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-159"><a href="#cb52-159" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plot: pefsit1 vs weight</span></span>
+<span id="cb52-160"><a href="#cb52-160" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> weight, <span class="at">y =</span> pefsit1, </span>
+<span id="cb52-161"><a href="#cb52-161" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">'Weight vs pefsit1'</span>, </span>
+<span id="cb52-162"><a href="#cb52-162" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">'Weight'</span>, <span class="at">ylab =</span> <span class="st">'pefsit1'</span>, </span>
+<span id="cb52-163"><a href="#cb52-163" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">20</span>)</span>
+<span id="cb52-164"><a href="#cb52-164" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(pefsit1 <span class="sc">~</span> weight, <span class="at">data =</span> lung_data), </span>
+<span id="cb52-165"><a href="#cb52-165" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">'blue'</span>, <span class="at">lwd =</span> <span class="dv">3</span>)</span>
+<span id="cb52-166"><a href="#cb52-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-167"><a href="#cb52-167" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb52-168"><a href="#cb52-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-169"><a href="#cb52-169" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 2b) </span></span>
+<span id="cb52-170"><a href="#cb52-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-171"><a href="#cb52-171" aria-hidden="true" tabindex="-1"></a>Compute the correlation between <span class="in">`pefsit1`</span> and <span class="in">`pefsit2`</span>; and between <span class="in">`pefsit1`</span> and <span class="in">`weight`</span>. </span>
+<span id="cb52-172"><a href="#cb52-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-173"><a href="#cb52-173" aria-hidden="true" tabindex="-1"></a>Why is the correlation between the first pair closer to 1 than the second pair?</span>
+<span id="cb52-174"><a href="#cb52-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-175"><a href="#cb52-175" aria-hidden="true" tabindex="-1"></a>(You can get the pair-wise correlation between many other pairs of variables using <span class="in">`cor(your_data)`</span>). </span>
+<span id="cb52-176"><a href="#cb52-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-179"><a href="#cb52-179" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb52-180"><a href="#cb52-180" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: linear-2b-1</span></span>
+<span id="cb52-181"><a href="#cb52-181" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb52-182"><a href="#cb52-182" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb52-183"><a href="#cb52-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-184"><a href="#cb52-184" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(pefsit2, pefsit1) <span class="co"># need to remove NA here</span></span>
+<span id="cb52-185"><a href="#cb52-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-186"><a href="#cb52-186" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(<span class="fu">is.na</span>(pefsit1)) <span class="co"># no missing</span></span>
+<span id="cb52-187"><a href="#cb52-187" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(<span class="fu">is.na</span>(pefsit2)) <span class="co"># 66th missing</span></span>
+<span id="cb52-188"><a href="#cb52-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-189"><a href="#cb52-189" aria-hidden="true" tabindex="-1"></a><span class="co"># option 1: cor() removes NA for you </span></span>
+<span id="cb52-190"><a href="#cb52-190" aria-hidden="true" tabindex="-1"></a><span class="co"># specify use complete observations</span></span>
+<span id="cb52-191"><a href="#cb52-191" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(pefsit2, pefsit1, <span class="at">use =</span> <span class="st">'complete.obs'</span>)</span>
+<span id="cb52-192"><a href="#cb52-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-193"><a href="#cb52-193" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb52-194"><a href="#cb52-194" aria-hidden="true" tabindex="-1"></a><span class="co"># option 2: you process (remove) the row of missing </span></span>
+<span id="cb52-195"><a href="#cb52-195" aria-hidden="true" tabindex="-1"></a><span class="co"># from both variables (remove element 66)</span></span>
+<span id="cb52-196"><a href="#cb52-196" aria-hidden="true" tabindex="-1"></a>pefsit2_narm <span class="ot">&lt;-</span> pefsit2[<span class="sc">!</span><span class="fu">is.na</span>(pefsit2)]</span>
+<span id="cb52-197"><a href="#cb52-197" aria-hidden="true" tabindex="-1"></a>pefsit1_narm <span class="ot">&lt;-</span> pefsit1[<span class="sc">!</span><span class="fu">is.na</span>(pefsit2)]</span>
+<span id="cb52-198"><a href="#cb52-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-199"><a href="#cb52-199" aria-hidden="true" tabindex="-1"></a><span class="co"># use pefsit2_narm instead of pefsit2 to compute cor</span></span>
+<span id="cb52-200"><a href="#cb52-200" aria-hidden="true" tabindex="-1"></a><span class="co"># should be the same</span></span>
+<span id="cb52-201"><a href="#cb52-201" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(pefsit2_narm, pefsit1_narm)</span>
+<span id="cb52-202"><a href="#cb52-202" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb52-203"><a href="#cb52-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-204"><a href="#cb52-204" aria-hidden="true" tabindex="-1"></a>For <span class="in">`pefsit1`</span> and <span class="in">`weight`</span> it is straightforward, as there is not missing data. </span>
+<span id="cb52-205"><a href="#cb52-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-208"><a href="#cb52-208" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb52-209"><a href="#cb52-209" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: linear-2b-2</span></span>
+<span id="cb52-210"><a href="#cb52-210" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb52-211"><a href="#cb52-211" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb52-212"><a href="#cb52-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-213"><a href="#cb52-213" aria-hidden="true" tabindex="-1"></a><span class="co"># pefsit1, weight</span></span>
+<span id="cb52-214"><a href="#cb52-214" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(pefsit1, weight)</span>
+<span id="cb52-215"><a href="#cb52-215" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb52-216"><a href="#cb52-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-217"><a href="#cb52-217" aria-hidden="true" tabindex="-1"></a>To compute the correlation between multiple pairs, you need to select a few variables first.</span>
+<span id="cb52-218"><a href="#cb52-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-221"><a href="#cb52-221" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb52-222"><a href="#cb52-222" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: linear-2b-3</span></span>
+<span id="cb52-223"><a href="#cb52-223" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb52-224"><a href="#cb52-224" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb52-225"><a href="#cb52-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-226"><a href="#cb52-226" aria-hidden="true" tabindex="-1"></a><span class="co"># pairwise for multiple pairs </span></span>
+<span id="cb52-227"><a href="#cb52-227" aria-hidden="true" tabindex="-1"></a><span class="co"># use age, height, weight, pefsit1, pefsit2, pefsit3, pefmean</span></span>
+<span id="cb52-228"><a href="#cb52-228" aria-hidden="true" tabindex="-1"></a><span class="co"># select a smaller dataset </span></span>
+<span id="cb52-229"><a href="#cb52-229" aria-hidden="true" tabindex="-1"></a>lungdata2 <span class="ot">&lt;-</span> lung_data[, <span class="fu">c</span>(<span class="st">'age'</span>, <span class="st">'height'</span>, <span class="st">'weight'</span>, <span class="st">'pefsit1'</span>, </span>
+<span id="cb52-230"><a href="#cb52-230" aria-hidden="true" tabindex="-1"></a>                           <span class="st">'pefsit2'</span>, <span class="st">'pefsit3'</span>, <span class="st">'pefmean'</span>)]</span>
+<span id="cb52-231"><a href="#cb52-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-232"><a href="#cb52-232" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lungdata2, <span class="dv">3</span>)</span>
+<span id="cb52-233"><a href="#cb52-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-234"><a href="#cb52-234" aria-hidden="true" tabindex="-1"></a><span class="co"># produce correlation matrix for all the variables here</span></span>
+<span id="cb52-235"><a href="#cb52-235" aria-hidden="true" tabindex="-1"></a><span class="co"># round(1.2345, digits = 2) gives 1.23</span></span>
+<span id="cb52-236"><a href="#cb52-236" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">cor</span>(lungdata2, <span class="at">use =</span> <span class="st">'complete.obs'</span>), <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb52-237"><a href="#cb52-237" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb52-238"><a href="#cb52-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-239"><a href="#cb52-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-240"><a href="#cb52-240" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 2c) </span></span>
+<span id="cb52-241"><a href="#cb52-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-242"><a href="#cb52-242" aria-hidden="true" tabindex="-1"></a>Carry out two regression analysis: </span>
+<span id="cb52-243"><a href="#cb52-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-244"><a href="#cb52-244" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`pefsit2`</span> as dependent variable, <span class="in">`pefsit1`</span> as independent variable;</span>
+<span id="cb52-245"><a href="#cb52-245" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`pefsit1`</span> as dependent variable, <span class="in">`weight`</span> as independent variable.</span>
+<span id="cb52-246"><a href="#cb52-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-247"><a href="#cb52-247" aria-hidden="true" tabindex="-1"></a>Interpret the results in relation to the scatter plots.</span>
+<span id="cb52-248"><a href="#cb52-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-251"><a href="#cb52-251" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb52-252"><a href="#cb52-252" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: linear-2c-1</span></span>
+<span id="cb52-253"><a href="#cb52-253" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb52-254"><a href="#cb52-254" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb52-255"><a href="#cb52-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-256"><a href="#cb52-256" aria-hidden="true" tabindex="-1"></a><span class="co"># pef2 vs pef 1</span></span>
+<span id="cb52-257"><a href="#cb52-257" aria-hidden="true" tabindex="-1"></a>lm_pef2_pef1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(pefsit2 <span class="sc">~</span> pefsit1, <span class="at">data =</span> lung_data)</span>
+<span id="cb52-258"><a href="#cb52-258" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_pef2_pef1)</span>
+<span id="cb52-259"><a href="#cb52-259" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb52-260"><a href="#cb52-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-261"><a href="#cb52-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-262"><a href="#cb52-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-265"><a href="#cb52-265" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb52-266"><a href="#cb52-266" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: linear-2c-2</span></span>
+<span id="cb52-267"><a href="#cb52-267" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb52-268"><a href="#cb52-268" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb52-269"><a href="#cb52-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-270"><a href="#cb52-270" aria-hidden="true" tabindex="-1"></a><span class="co"># pef1 vs weight </span></span>
+<span id="cb52-271"><a href="#cb52-271" aria-hidden="true" tabindex="-1"></a>lm_pef1_weight <span class="ot">&lt;-</span> <span class="fu">lm</span>(pefsit1 <span class="sc">~</span> weight, <span class="at">data =</span> lung_data)</span>
+<span id="cb52-272"><a href="#cb52-272" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_pef1_weight)</span>
+<span id="cb52-273"><a href="#cb52-273" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb52-274"><a href="#cb52-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-275"><a href="#cb52-275" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 2d) </span></span>
+<span id="cb52-276"><a href="#cb52-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-277"><a href="#cb52-277" aria-hidden="true" tabindex="-1"></a>Make residual analysis for the analyses you did before. Interpret the results.</span>
+<span id="cb52-278"><a href="#cb52-278" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-281"><a href="#cb52-281" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb52-282"><a href="#cb52-282" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: linear-2d-1</span></span>
+<span id="cb52-283"><a href="#cb52-283" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb52-284"><a href="#cb52-284" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb52-285"><a href="#cb52-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-286"><a href="#cb52-286" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) <span class="co"># plot 2 by 2</span></span>
+<span id="cb52-287"><a href="#cb52-287" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm_pef2_pef1)</span>
+<span id="cb52-288"><a href="#cb52-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-289"><a href="#cb52-289" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm_pef1_weight)</span>
+<span id="cb52-290"><a href="#cb52-290" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb52-291"><a href="#cb52-291" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-292"><a href="#cb52-292" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 2e)</span></span>
+<span id="cb52-293"><a href="#cb52-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-294"><a href="#cb52-294" aria-hidden="true" tabindex="-1"></a>Make a regression analysis with <span class="in">`pefsit1`</span> as dependent variable, and <span class="in">`sex`</span> and <span class="in">`weight`</span> as independent variables. Assess the model fit. Interpret the results.</span>
+<span id="cb52-295"><a href="#cb52-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-298"><a href="#cb52-298" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb52-299"><a href="#cb52-299" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: linear-2e-1</span></span>
+<span id="cb52-300"><a href="#cb52-300" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb52-301"><a href="#cb52-301" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb52-302"><a href="#cb52-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-303"><a href="#cb52-303" aria-hidden="true" tabindex="-1"></a><span class="co"># pefsit1 vs (weight, gender)</span></span>
+<span id="cb52-304"><a href="#cb52-304" aria-hidden="true" tabindex="-1"></a><span class="co"># note that we converted gender into categorical</span></span>
+<span id="cb52-305"><a href="#cb52-305" aria-hidden="true" tabindex="-1"></a>lm_pef1_weight_gender <span class="ot">&lt;-</span> <span class="fu">lm</span>(pefsit1 <span class="sc">~</span> weight <span class="sc">+</span> gender, </span>
+<span id="cb52-306"><a href="#cb52-306" aria-hidden="true" tabindex="-1"></a>                            <span class="at">data =</span> lung_data)</span>
+<span id="cb52-307"><a href="#cb52-307" aria-hidden="true" tabindex="-1"></a><span class="co"># lm_pef1_weight_gender</span></span>
+<span id="cb52-308"><a href="#cb52-308" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_pef1_weight_gender)</span>
+<span id="cb52-309"><a href="#cb52-309" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb52-310"><a href="#cb52-310" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-311"><a href="#cb52-311" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 2f)</span></span>
+<span id="cb52-312"><a href="#cb52-312" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-313"><a href="#cb52-313" aria-hidden="true" tabindex="-1"></a>Make a regression analysis with <span class="in">`pefmean`</span> as dependent variable, and try out **combinations** of <span class="in">`sex`</span>, <span class="in">`height`</span>, <span class="in">`weight`</span> as independent variables.</span>
+<span id="cb52-314"><a href="#cb52-314" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-315"><a href="#cb52-315" aria-hidden="true" tabindex="-1"></a>Which variables would you include in your final analysis? How much variation is explained? Assess the model fit, and interpret the results. </span>
+<span id="cb52-316"><a href="#cb52-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-319"><a href="#cb52-319" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb52-320"><a href="#cb52-320" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: linear-2f-1</span></span>
+<span id="cb52-321"><a href="#cb52-321" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb52-322"><a href="#cb52-322" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb52-323"><a href="#cb52-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-324"><a href="#cb52-324" aria-hidden="true" tabindex="-1"></a><span class="co"># we can try two sets</span></span>
+<span id="cb52-325"><a href="#cb52-325" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. height weight gender</span></span>
+<span id="cb52-326"><a href="#cb52-326" aria-hidden="true" tabindex="-1"></a>lm_pefm_height_weight_gen <span class="ot">&lt;-</span> <span class="fu">lm</span>(pefmean <span class="sc">~</span> height <span class="sc">+</span> weight <span class="sc">+</span> gender, </span>
+<span id="cb52-327"><a href="#cb52-327" aria-hidden="true" tabindex="-1"></a>                                <span class="at">data =</span> lung_data)</span>
+<span id="cb52-328"><a href="#cb52-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-329"><a href="#cb52-329" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_pefm_height_weight_gen)</span>
+<span id="cb52-330"><a href="#cb52-330" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb52-331"><a href="#cb52-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-332"><a href="#cb52-332" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-335"><a href="#cb52-335" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb52-336"><a href="#cb52-336" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: linear-2f-2</span></span>
+<span id="cb52-337"><a href="#cb52-337" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb52-338"><a href="#cb52-338" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb52-339"><a href="#cb52-339" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-340"><a href="#cb52-340" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. weight gender</span></span>
+<span id="cb52-341"><a href="#cb52-341" aria-hidden="true" tabindex="-1"></a>lm_pefm_weight_gen <span class="ot">&lt;-</span> <span class="fu">lm</span>(pefmean <span class="sc">~</span> weight <span class="sc">+</span> gender, </span>
+<span id="cb52-342"><a href="#cb52-342" aria-hidden="true" tabindex="-1"></a>                                <span class="at">data =</span> lung_data)</span>
+<span id="cb52-343"><a href="#cb52-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-344"><a href="#cb52-344" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_pefm_weight_gen)</span>
+<span id="cb52-345"><a href="#cb52-345" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb52-346"><a href="#cb52-346" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-347"><a href="#cb52-347" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-348"><a href="#cb52-348" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 3 (length of hospital stay)</span></span>
+<span id="cb52-349"><a href="#cb52-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-350"><a href="#cb52-350" aria-hidden="true" tabindex="-1"></a>The data was collected at the Geriatric Department at Ullevål Sykehus. Below is a description of the data set <span class="in">`liggetid`</span>. The file includes the following variables:</span>
+<span id="cb52-351"><a href="#cb52-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-352"><a href="#cb52-352" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Year of birth (faar)</span>
+<span id="cb52-353"><a href="#cb52-353" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Month of birth (fmaan)</span>
+<span id="cb52-354"><a href="#cb52-354" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Day of birth (fdag)</span>
+<span id="cb52-355"><a href="#cb52-355" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Year of hospital admission (innaar)</span>
+<span id="cb52-356"><a href="#cb52-356" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Month of admission (innmaan)</span>
+<span id="cb52-357"><a href="#cb52-357" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Day of admission (inndag)</span>
+<span id="cb52-358"><a href="#cb52-358" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Year of discharge from hospital (utaar)</span>
+<span id="cb52-359"><a href="#cb52-359" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Month of discharge (utmaan)</span>
+<span id="cb52-360"><a href="#cb52-360" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Day of discharge (utdag)</span>
+<span id="cb52-361"><a href="#cb52-361" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Gender, where 1 = male and 0 = female (kjoenn)</span>
+<span id="cb52-362"><a href="#cb52-362" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Admission from, where 1 = home, 2 = Div. of Medicine, 3 =</span>
+<span id="cb52-363"><a href="#cb52-363" aria-hidden="true" tabindex="-1"></a>Div. of Surgery, 4 = Other division, 5 = Other hospital, 6 =</span>
+<span id="cb52-364"><a href="#cb52-364" aria-hidden="true" tabindex="-1"></a>Nursing home (kom_fra)</span>
+<span id="cb52-365"><a href="#cb52-365" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Stroke, where 1 = yes, 0 = no (slag)</span>
+<span id="cb52-366"><a href="#cb52-366" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Age (alder)</span>
+<span id="cb52-367"><a href="#cb52-367" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Hospital stay, in days (liggetid)</span>
+<span id="cb52-368"><a href="#cb52-368" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Logarithm of hospital stay (lnliggti)</span>
+<span id="cb52-369"><a href="#cb52-369" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Comes from Div. of Medicine (kom_fra2)</span>
+<span id="cb52-370"><a href="#cb52-370" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Comes from Div. of Surgery (kom_fra3)</span>
+<span id="cb52-371"><a href="#cb52-371" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Comes from Other division (kom_fra4)</span>
+<span id="cb52-372"><a href="#cb52-372" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Comes from Other hospital (kom_fra5)</span>
+<span id="cb52-373"><a href="#cb52-373" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Comes from Nursing home (kom_fra6)</span>
+<span id="cb52-374"><a href="#cb52-374" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Censoring variable (censor)</span>
+<span id="cb52-375"><a href="#cb52-375" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-376"><a href="#cb52-376" aria-hidden="true" tabindex="-1"></a>The variable <span class="in">`liggetid`</span> time is calculated from the <span class="in">`innaar`</span>, <span class="in">`innmaan`</span>, <span class="in">`inndag`</span>, <span class="in">`utaar`</span>, <span class="in">`utmaan`</span> and <span class="in">`utdag`</span> variables. </span>
+<span id="cb52-377"><a href="#cb52-377" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-378"><a href="#cb52-378" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 3a)</span></span>
+<span id="cb52-379"><a href="#cb52-379" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-380"><a href="#cb52-380" aria-hidden="true" tabindex="-1"></a>Create a box plot for length of hospital stay for men and women.</span>
+<span id="cb52-381"><a href="#cb52-381" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-384"><a href="#cb52-384" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb52-385"><a href="#cb52-385" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: linear-3a-1</span></span>
+<span id="cb52-386"><a href="#cb52-386" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb52-387"><a href="#cb52-387" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb52-388"><a href="#cb52-388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-389"><a href="#cb52-389" aria-hidden="true" tabindex="-1"></a>liggetid <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/liggetid.csv'</span>)</span>
+<span id="cb52-390"><a href="#cb52-390" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(liggetid, <span class="dv">3</span>)</span>
+<span id="cb52-391"><a href="#cb52-391" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-392"><a href="#cb52-392" aria-hidden="true" tabindex="-1"></a><span class="co"># boxplot</span></span>
+<span id="cb52-393"><a href="#cb52-393" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(liggetid <span class="sc">~</span> kjoenn, <span class="at">data =</span> liggetid)</span>
+<span id="cb52-394"><a href="#cb52-394" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb52-395"><a href="#cb52-395" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-396"><a href="#cb52-396" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-397"><a href="#cb52-397" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 3b) </span></span>
+<span id="cb52-398"><a href="#cb52-398" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-399"><a href="#cb52-399" aria-hidden="true" tabindex="-1"></a>We want to explain the variation in lengths of hospital stay. We will look at the independent variables <span class="in">`kjoenn`</span> (gender) and <span class="in">`slag`</span> (stroke). </span>
+<span id="cb52-400"><a href="#cb52-400" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-401"><a href="#cb52-401" aria-hidden="true" tabindex="-1"></a>Run a regression analysis using the dependent variable <span class="in">`liggetid`</span>. Also perform a residual analysis. What do you think about this analysis?</span>
+<span id="cb52-402"><a href="#cb52-402" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-405"><a href="#cb52-405" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb52-406"><a href="#cb52-406" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: linear-3b-1</span></span>
+<span id="cb52-407"><a href="#cb52-407" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb52-408"><a href="#cb52-408" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb52-409"><a href="#cb52-409" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-410"><a href="#cb52-410" aria-hidden="true" tabindex="-1"></a><span class="co"># response (dep): liggetid</span></span>
+<span id="cb52-411"><a href="#cb52-411" aria-hidden="true" tabindex="-1"></a><span class="co"># predictor (indep): kjoenn, slag</span></span>
+<span id="cb52-412"><a href="#cb52-412" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-413"><a href="#cb52-413" aria-hidden="true" tabindex="-1"></a>lm_ligge <span class="ot">&lt;-</span> <span class="fu">lm</span>(liggetid <span class="sc">~</span> slag <span class="sc">+</span> kjoenn, </span>
+<span id="cb52-414"><a href="#cb52-414" aria-hidden="true" tabindex="-1"></a>               <span class="at">data =</span> liggetid)</span>
+<span id="cb52-415"><a href="#cb52-415" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_ligge)</span>
+<span id="cb52-416"><a href="#cb52-416" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb52-417"><a href="#cb52-417" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-420"><a href="#cb52-420" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb52-421"><a href="#cb52-421" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: linear-3b-2</span></span>
+<span id="cb52-422"><a href="#cb52-422" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb52-423"><a href="#cb52-423" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb52-424"><a href="#cb52-424" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-425"><a href="#cb52-425" aria-hidden="true" tabindex="-1"></a><span class="co"># visualize the residual</span></span>
+<span id="cb52-426"><a href="#cb52-426" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb52-427"><a href="#cb52-427" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm_ligge)</span>
+<span id="cb52-428"><a href="#cb52-428" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb52-429"><a href="#cb52-429" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-430"><a href="#cb52-430" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-431"><a href="#cb52-431" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 3c) </span></span>
+<span id="cb52-432"><a href="#cb52-432" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-433"><a href="#cb52-433" aria-hidden="true" tabindex="-1"></a>Do the same analysis, but on the log-transformed data. The transformed variable already exists in the dataset, <span class="in">`lnliggti`</span>. Comment on the results.</span>
+<span id="cb52-434"><a href="#cb52-434" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-437"><a href="#cb52-437" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb52-438"><a href="#cb52-438" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: linear-3c-1</span></span>
+<span id="cb52-439"><a href="#cb52-439" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb52-440"><a href="#cb52-440" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb52-441"><a href="#cb52-441" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-442"><a href="#cb52-442" aria-hidden="true" tabindex="-1"></a><span class="co"># response (dep): log transformed (lnliggti)</span></span>
+<span id="cb52-443"><a href="#cb52-443" aria-hidden="true" tabindex="-1"></a><span class="co"># predictor (indep): kjoenn, slag</span></span>
+<span id="cb52-444"><a href="#cb52-444" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-445"><a href="#cb52-445" aria-hidden="true" tabindex="-1"></a>lm_logligge <span class="ot">&lt;-</span> <span class="fu">lm</span>(lnliggti <span class="sc">~</span> slag <span class="sc">+</span> kjoenn, </span>
+<span id="cb52-446"><a href="#cb52-446" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> liggetid)</span>
+<span id="cb52-447"><a href="#cb52-447" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_logligge)</span>
+<span id="cb52-448"><a href="#cb52-448" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb52-449"><a href="#cb52-449" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-450"><a href="#cb52-450" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-453"><a href="#cb52-453" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb52-454"><a href="#cb52-454" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: linear-3c-2</span></span>
+<span id="cb52-455"><a href="#cb52-455" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb52-456"><a href="#cb52-456" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb52-457"><a href="#cb52-457" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-458"><a href="#cb52-458" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb52-459"><a href="#cb52-459" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm_logligge)</span>
+<span id="cb52-460"><a href="#cb52-460" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
