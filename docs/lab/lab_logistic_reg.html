@@ -187,7 +187,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#examples-exercises-with-solution" id="toc-examples-exercises-with-solution" class="nav-link active" data-scroll-target="#examples-exercises-with-solution">Examples (exercises with solution)</a>
   <ul class="collapse">
-  <li><a href="#fit-a-logistic-regression-model-for-low-and-age" id="toc-fit-a-logistic-regression-model-for-low-and-age" class="nav-link" data-scroll-target="#fit-a-logistic-regression-model-for-low-and-age">Fit a logistic regression model for <code>low</code> and <code>age</code></a></li>
+  <li><a href="#exercise-1-birth" id="toc-exercise-1-birth" class="nav-link" data-scroll-target="#exercise-1-birth">Exercise 1 (birth)</a>
+  <ul class="collapse">
+  <li><a href="#a" id="toc-a" class="nav-link" data-scroll-target="#a">1a)</a></li>
+  <li><a href="#b" id="toc-b" class="nav-link" data-scroll-target="#b">1b)</a></li>
+  <li><a href="#c" id="toc-c" class="nav-link" data-scroll-target="#c">1c)</a></li>
+  <li><a href="#d" id="toc-d" class="nav-link" data-scroll-target="#d">1d)</a></li>
+  <li><a href="#e" id="toc-e" class="nav-link" data-scroll-target="#e">1e)</a></li>
+  </ul></li>
+  <li><a href="#exercise-2-framingham" id="toc-exercise-2-framingham" class="nav-link" data-scroll-target="#exercise-2-framingham">Exercise 2 (framingham)</a>
+  <ul class="collapse">
+  <li><a href="#a-1" id="toc-a-1" class="nav-link" data-scroll-target="#a-1">2a)</a></li>
+  <li><a href="#b-1" id="toc-b-1" class="nav-link" data-scroll-target="#b-1">2b)</a></li>
+  <li><a href="#c-1" id="toc-c-1" class="nav-link" data-scroll-target="#c-1">2c)</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -219,44 +232,98 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <p>Datasets</p>
 <ul>
-<li><p>Exercise 1: <code>birth</code> (<a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/birth.rda">rda link</a>, <a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/birth.csv">csv link</a>)</p></li>
-<li><p>Exercise 2: <code>framingham</code> (<a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/framingham.rda">rda link</a>, <a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/framingham.csv">csv link</a>)</p></li>
+<li>Exercise 1: <code>birth</code> (<a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/birth.rda">rda link</a>, <a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/birth.csv">csv link</a>)</li>
+<li>Exercise 2: <code>framingham</code> (<a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/framingham.rda">rda link</a>, <a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/framingham.csv">csv link</a>)</li>
 </ul>
 <p><a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/9_logisticreg.R">R Script</a></p>
 <hr>
 <section id="examples-exercises-with-solution" class="level1">
 <h1>Examples (exercises with solution)</h1>
-<p>(Dataset <code>birth</code> might be switched out)</p>
+<section id="exercise-1-birth" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-1-birth">Exercise 1 (birth)</h2>
+<p>We shall analyse the data set given in the file <code>birth.dta</code>. In a study in Massachusetts, USA, birth weight was measured for the children of 189 women. The main variable in the study was birth weight, <code>BWT</code>, which is an important indicator of the condition of a newborn child. Low birth weight (below 2500 g) may be a medical risk factor. A major question is whether smoking during pregnancy influences the birth weight. One has also studied whether a number of other factors are related to birth weight, such as hypertension in the mother.</p>
+<p>The variables of the study are</p>
+<ul>
+<li>Identification number (ID)</li>
+<li>Low birth weight (LOW)</li>
+<li>Age of the mother (AGE)</li>
+<li>Weight (in pounds) at last menstruaal period (LWT)</li>
+<li>Ethnicity, 1 means White, 2 means African American, 3 meaans other (ETH)</li>
+<li>Smoking status, 1 means current smoker, 0 means not smoking during pregnancy (SMK)</li>
+<li>History of premature labbour, values 0, 1, 2… (PTL)</li>
+<li>History of hypertension, 1 is yes, 0 is no (HT)</li>
+<li>Uterine irritability, 1 is yes, 0 is no (UI)</li>
+<li>First trimester visits, values 0, 1, 2… (FTV)</li>
+<li>Third trimster visits, values 0, 1, 2… (TTV)</li>
+<li>Birth weight (BWT)</li>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>birth_data <span class="ot">&lt;-</span> haven<span class="sc">::</span><span class="fu">read_dta</span>(<span class="st">'data/birth.dta'</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>birth_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/birth.csv'</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># print the first rows of the data set</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(birth_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 12
-     id low            age   lwt eth       smk   ptl ht      ui        fvt   ttv
-  &lt;dbl&gt; &lt;dbl+lbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl+l&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl&gt; &lt;dbl&gt;
-1     4 1 [bwt &lt; 25…    28   120 3 [oth…     1     1 0 [no]  1 [yes]     0     0
-2    10 1 [bwt &lt; 25…    29   130 1 [whi…     0     0 0 [no]  1 [yes]     2     0
-3    11 1 [bwt &lt; 25…    34   187 2 [bla…     1     0 1 [yes] 0 [no]      0     0
-4    13 1 [bwt &lt; 25…    25   105 3 [oth…     0     1 1 [yes] 0 [no]      0     0
-5    15 1 [bwt &lt; 25…    25    85 3 [oth…     0     0 0 [no]  1 [yes]     0     4
-6    16 1 [bwt &lt; 25…    27   150 3 [oth…     0     0 0 [no]  0 [no]      0     5
-# … with 1 more variable: bwt &lt;dbl&gt;</code></pre>
+<pre><code>  id         low age lwt   eth       smk ptl  ht  ui fvt ttv  bwt
+1  4 bwt &lt;= 2500  28 120 other    smoker   1  no yes   0   0  709
+2 10 bwt &lt;= 2500  29 130 white nonsmoker   0  no yes   2   0 1021
+3 11 bwt &lt;= 2500  34 187 black    smoker   0 yes  no   0   0 1135
+4 13 bwt &lt;= 2500  25 105 other nonsmoker   1 yes  no   0   0 1330
+5 15 bwt &lt;= 2500  25  85 other nonsmoker   0  no yes   0   4 1474
+6 16 bwt &lt;= 2500  27 150 other nonsmoker   0  no  no   0   5 1588</code></pre>
 </div>
 </div>
-<section id="fit-a-logistic-regression-model-for-low-and-age" class="level3">
-<h3 class="anchored" data-anchor-id="fit-a-logistic-regression-model-for-low-and-age">Fit a logistic regression model for <code>low</code> and <code>age</code></h3>
+<section id="a" class="level3">
+<h3 class="anchored" data-anchor-id="a">1a)</h3>
+<p>Perform a logistic regression analysis with <code>low</code> as dependent variable, and <code>age</code> as independent variable. Interpret the results.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Recode <code>low</code> as <code>is_low_bwt</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>With logistic regression (glm()), you need to specify the outcome variable as</p>
+<ul>
+<li>either 0 or 1 (numeric values)</li>
+<li>or a factor (ordered so that it matches 0 or 1 category)</li>
+</ul>
+<p>In the example we should the first option (numeric 0 or 1)</p>
+<p>It could be a good practice to create another variable, <code>is_low_bwt</code>, so that you keep the original <code>low</code> variable untouched; this is useful in case you want to double check if the coding is correct or need to start over.</p>
+</div>
+</div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># low ~ age </span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>lr_low_age <span class="ot">&lt;-</span> <span class="fu">glm</span>(low <span class="sc">~</span> age, <span class="at">data =</span> birth_data, <span class="at">family =</span> <span class="st">'binomial'</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lr_low_age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># be careful with the levels: bwt&lt;= 2500 is the cases (code as 1)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(birth_data<span class="sc">$</span>low)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+bwt &lt;= 2500  bwt &gt; 2500 
+         59         130 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># recode low variable (numeric 1 and 0)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>birth_data<span class="sc">$</span>is_low_bwt <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(birth_data<span class="sc">$</span>low <span class="sc">==</span> <span class="st">'bwt &lt;= 2500'</span>,<span class="dv">1</span>,<span class="dv">0</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># check each category</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(birth_data<span class="sc">$</span>is_low_bwt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  0   1 
+130  59 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fit lr (using is_low_bwt)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>lr_low_age <span class="ot">&lt;-</span> <span class="fu">glm</span>(is_low_bwt <span class="sc">~</span> age, </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> birth_data, </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="st">'binomial'</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lr_low_age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
-glm(formula = low ~ age, family = "binomial", data = birth_data)
+glm(formula = is_low_bwt ~ age, family = "binomial", data = birth_data)
 
 Deviance Residuals: 
     Min       1Q   Median       3Q      Max  
@@ -275,48 +342,415 @@ AIC: 235.91
 
 Number of Fisher Scoring iterations: 4</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># double check whether 0/1 categories are correct</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(lr_low_age<span class="sc">$</span>y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  0   1 
+130  59 </code></pre>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the result regresssion coefficient is not odds ratio</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>lr_low_age<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the result regresssion coefficient is not odds ratio</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>lr_low_age<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(Intercept)         age 
  0.38458192 -0.05115294 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># regression coefficients can also be extracted in this way:</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coefficients</span>(lr_low_age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>(Intercept)         age 
- 0.38458192 -0.05115294 </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># coef(lr_low_age)</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># confidence interval for age and intercept</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(lr_low_age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                 2.5 %      97.5 %
-(Intercept) -1.0336270 1.847399861
-age         -0.1150799 0.008986436</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to get odds ratio, exponentiate </span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(lr_low_age))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># equivalently,</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># coefficients(lr_low_age)</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># coef(lr_low_age)</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># confidence interval for beta:</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># confint(lr_low_age)</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co"># to get odds ratio, exponentiate </span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(lr_low_age)) <span class="co"># OR</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(Intercept)         age 
   1.4690000   0.9501333 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">confint</span>(lr_low_age))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">confint</span>(lr_low_age)) <span class="co"># CI for OR</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                2.5 %   97.5 %
 (Intercept) 0.3557144 6.343305
 age         0.8912949 1.009027</code></pre>
 </div>
 </div>
+</section>
+<section id="b" class="level3">
+<h3 class="anchored" data-anchor-id="b">1b)</h3>
+<p>Perform a logistic regression analysis with <code>low</code> as dependent variable and <code>smk</code> as independent variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># low ~ smk </span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>lr_low_smk <span class="ot">&lt;-</span> <span class="fu">glm</span>(is_low_bwt <span class="sc">~</span> smk, </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> birth_data, </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="st">'binomial'</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lr_low_smk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = is_low_bwt ~ smk, family = "binomial", data = birth_data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.0197  -0.7623  -0.7623   1.3438   1.6599  
+
+Coefficients:
+            Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)  -1.0871     0.2147  -5.062 4.14e-07 ***
+smksmoker     0.7041     0.3196   2.203   0.0276 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 234.67  on 188  degrees of freedom
+Residual deviance: 229.80  on 187  degrees of freedom
+AIC: 233.8
+
+Number of Fisher Scoring iterations: 4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># odds ratio </span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(lr_low_smk))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(Intercept)   smksmoker 
+  0.3372093   2.0219436 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">confint</span>(lr_low_smk))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                2.5 %    97.5 %
+(Intercept) 0.2177709 0.5070199
+smksmoker   1.0818724 3.8005817</code></pre>
+</div>
+</div>
+</section>
+<section id="c" class="level3">
+<h3 class="anchored" data-anchor-id="c">1c)</h3>
+<p>Perform a logistic regression with <code>low</code> as dependent variable, and <code>eth</code> as independent variable. Be careful with the reference category.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># low ~ eth </span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ethnicity needs to be factorised</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># baseline: white</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>birth_data<span class="sc">$</span>eth <span class="ot">&lt;-</span> eth <span class="ot">&lt;-</span> <span class="fu">factor</span>(birth_data<span class="sc">$</span>eth, </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">'white'</span>, <span class="st">'black'</span>, <span class="st">'other'</span>), </span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">'white'</span>, <span class="st">'black'</span>, <span class="st">'other'</span>))</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(birth_data<span class="sc">$</span>eth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] other white black other other other
+Levels: white black other</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fit lr </span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>lr_low_eth <span class="ot">&lt;-</span> <span class="fu">glm</span>(is_low_bwt <span class="sc">~</span> eth, </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> birth_data, </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="st">'binomial'</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lr_low_eth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = is_low_bwt ~ eth, family = "binomial", data = birth_data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.0489  -0.9665  -0.7401   1.4042   1.6905  
+
+Coefficients:
+            Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)  -1.1550     0.2391  -4.830 1.36e-06 ***
+ethblack      0.8448     0.4634   1.823   0.0683 .  
+ethother      0.6362     0.3478   1.829   0.0674 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 234.67  on 188  degrees of freedom
+Residual deviance: 229.66  on 186  degrees of freedom
+AIC: 235.66
+
+Number of Fisher Scoring iterations: 4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># odds ratio </span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(lr_low_eth))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(Intercept)    ethblack    ethother 
+  0.3150685   2.3275362   1.8892340 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">confint</span>(lr_low_eth))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                2.5 %    97.5 %
+(Intercept) 0.1929856 0.4950281
+ethblack    0.9255511 5.7746995
+ethother    0.9565420 3.7578709</code></pre>
+</div>
+</div>
+</section>
+<section id="d" class="level3">
+<h3 class="anchored" data-anchor-id="d">1d)</h3>
+<p>Perform a logistic regression with <code>low</code> as dependent variable, and <code>age</code>,<code>smk</code> and <code>eth</code> as independent variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>lr_low_all <span class="ot">&lt;-</span> <span class="fu">glm</span>(is_low_bwt <span class="sc">~</span> age <span class="sc">+</span> smk <span class="sc">+</span> eth, </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> birth_data, </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="st">'binomial'</span>)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lr_low_all)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = is_low_bwt ~ age + smk + eth, family = "binomial", 
+    data = birth_data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.4211  -0.9171  -0.5687   1.3687   2.0707  
+
+Coefficients:
+            Estimate Std. Error z value Pr(&gt;|z|)   
+(Intercept) -1.00755    0.86166  -1.169  0.24228   
+age         -0.03488    0.03340  -1.044  0.29634   
+smksmoker    1.10055    0.37195   2.959  0.00309 **
+ethblack     1.01141    0.49342   2.050  0.04039 * 
+ethother     1.05673    0.40596   2.603  0.00924 **
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 234.67  on 188  degrees of freedom
+Residual deviance: 218.86  on 184  degrees of freedom
+AIC: 228.86
+
+Number of Fisher Scoring iterations: 4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># odds ratio </span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(lr_low_all))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(Intercept)         age   smksmoker    ethblack    ethother 
+  0.3651110   0.9657186   3.0058203   2.7494834   2.8769483 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">confint</span>(lr_low_all))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 2.5 %   97.5 %
+(Intercept) 0.06601379 1.967972
+age         0.90303360 1.029955
+smksmoker   1.47208358 6.378576
+ethblack    1.03958814 7.308152
+ethother    1.31818618 6.531492</code></pre>
+</div>
+</div>
+</section>
+<section id="e" class="level3">
+<h3 class="anchored" data-anchor-id="e">1e)</h3>
+<p>Based on the above analysis, set up a result table which reports:</p>
+<ul>
+<li>odds ratios OR (unadjusted, and adjusted)</li>
+<li>95% confidence intervals for OR</li>
+<li>p-values for OR</li>
+</ul>
+<p>Make sure you know how to interpret the table.</p>
+</section>
+</section>
+<section id="exercise-2-framingham" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2-framingham">Exercise 2 (framingham)</h2>
+<p>We use the data from the Framingham study, <code>framingham</code>. The dataset contains a selection of n = 500 men aged 31 to 65 years.</p>
+<p>The response variable is FIRSTCHD, and this is equal to 1 if the individual has coronary heart disease and 0 otherwise.</p>
+<p>We have four explanatory variables:</p>
+<ul>
+<li>MEANSBP, the average systolic blood pressure (mmHg) of two blood pressure measurements;</li>
+<li>SMOKE which is smoking (1 = yes, 0 = no);</li>
+<li>CHOLESTEROL which is serum cholesterol in mg/dl;</li>
+<li>AGE (age in years).</li>
+</ul>
+<section id="a-1" class="level3">
+<h3 class="anchored" data-anchor-id="a-1">2a)</h3>
+<p>Analyse the relationship between <code>firstchd</code> and <code>smoke</code> in a logistic regression model.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>framingham <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/framingham.csv'</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(framingham)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  obsno age       smoke cholesterol    firstchd meansbp
+1     2  38     smoking         211 no-evidence   122.0
+2     6  43     smoking         192 no-evidence   129.0
+3    15  42     smoking         205 no-evidence   129.5
+4    22  57     smoking         196 no-evidence    77.5
+5    24  38     smoking         167 no-evidence   133.5
+6    26  48 non-smoking         347 no-evidence   133.0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the outcome variable</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co"># evidence is 1, no-evidence is 0</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(framingham<span class="sc">$</span>firstchd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   evidence no-evidence 
+         37         463 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># code into 1 and 0 (numeric)</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>framingham<span class="sc">$</span>firstchd_coded <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(framingham<span class="sc">$</span>firstchd <span class="sc">==</span> <span class="st">'evidence'</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co"># check if correct</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(framingham<span class="sc">$</span>firstchd_coded)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  0   1 
+463  37 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># firstchd, smoke </span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>lr_chd_smk <span class="ot">&lt;-</span> <span class="fu">glm</span>(firstchd_coded <span class="sc">~</span> smoke, </span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> framingham, </span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="st">'binomial'</span>)</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co"># double check if category is correct</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(lr_chd_smk<span class="sc">$</span>y)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  0   1 
+463  37 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lr_chd_smk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = firstchd_coded ~ smoke, family = "binomial", data = framingham)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-0.4001  -0.4001  -0.4001  -0.3668   2.3378  
+
+Coefficients:
+             Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)   -2.6655     0.3656  -7.290  3.1e-13 ***
+smokesmoking   0.1806     0.4136   0.437    0.662    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 263.86  on 499  degrees of freedom
+Residual deviance: 263.67  on 498  degrees of freedom
+AIC: 267.67
+
+Number of Fisher Scoring iterations: 5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># odds ratio </span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(lr_chd_smk))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> (Intercept) smokesmoking 
+  0.06956522   1.19791667 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">confint</span>(lr_chd_smk))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                  2.5 %   97.5 %
+(Intercept)  0.03120555 0.133367
+smokesmoking 0.55661970 2.876730</code></pre>
+</div>
+</div>
+</section>
+<section id="b-1" class="level3">
+<h3 class="anchored" data-anchor-id="b-1">2b)</h3>
+<p>Analyse the relationship between <code>firstchd</code> and <code>meansbp</code> in a logistic regression model.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># firstchd, meansbp</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>lr_chd_bp <span class="ot">&lt;-</span> <span class="fu">glm</span>(firstchd_coded <span class="sc">~</span> meansbp, </span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> framingham, </span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">family =</span> <span class="st">'binomial'</span>)</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lr_chd_bp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = firstchd_coded ~ meansbp, family = "binomial", 
+    data = framingham)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.0472  -0.4033  -0.3500  -0.3070   2.4813  
+
+Coefficients:
+             Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept) -5.846488   1.020563  -5.729 1.01e-08 ***
+meansbp      0.024479   0.007178   3.410 0.000649 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 263.86  on 499  degrees of freedom
+Residual deviance: 253.36  on 498  degrees of freedom
+AIC: 257.36
+
+Number of Fisher Scoring iterations: 5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># odds ratio </span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(lr_chd_bp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(Intercept)     meansbp 
+ 0.00289003  1.02478099 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">confint</span>(lr_chd_bp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                   2.5 %     97.5 %
+(Intercept) 0.0003828574 0.02159271
+meansbp     1.0100963603 1.03921069</code></pre>
+</div>
+</div>
+</section>
+<section id="c-1" class="level3">
+<h3 class="anchored" data-anchor-id="c-1">2c)</h3>
+<p>Include also the other two explanatory variables in a logisic regression model. Interpret the results.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>lr_chd_all <span class="ot">&lt;-</span> <span class="fu">glm</span>(firstchd_coded <span class="sc">~</span> meansbp <span class="sc">+</span> smoke <span class="sc">+</span> cholesterol <span class="sc">+</span> age, </span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> framingham, </span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="st">'binomial'</span>)</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lr_chd_all)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = firstchd_coded ~ meansbp + smoke + cholesterol + 
+    age, family = "binomial", data = framingham)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.0103  -0.4300  -0.3098  -0.2310   2.6946  
+
+Coefficients:
+               Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)  -10.097386   1.719736  -5.871 4.32e-09 ***
+meansbp        0.016815   0.007698   2.184  0.02893 *  
+smokesmoking   0.408227   0.432310   0.944  0.34502    
+cholesterol    0.007685   0.003764   2.042  0.04115 *  
+age            0.066512   0.022283   2.985  0.00284 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 263.86  on 499  degrees of freedom
+Residual deviance: 240.25  on 495  degrees of freedom
+AIC: 250.25
+
+Number of Fisher Scoring iterations: 6</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># odds ratio </span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">exp</span>(<span class="fu">coef</span>(lr_chd_all)), <span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> (Intercept)      meansbp smokesmoking  cholesterol          age 
+       0.000        1.017        1.504        1.008        1.069 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">exp</span>(<span class="fu">confint</span>(lr_chd_all)), <span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             2.5 % 97.5 %
+(Intercept)  0.000  0.001
+meansbp      1.001  1.032
+smokesmoking 0.674  3.743
+cholesterol  1.000  1.015
+age          1.024  1.118</code></pre>
+</div>
+</div>
 
 
 <!-- -->
 
+</section>
 </section>
 </section>
 
@@ -505,92 +939,318 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb15" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Logistic regression"</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Logistic regression"</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: false</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> source</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>Datasets</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Exercise 1: <span class="in">`birth`</span> (<span class="co">[</span><span class="ot">rda link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/birth.rda)</span>, <span class="co">[</span><span class="ot">csv link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/birth.csv)</span>)</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Exercise 2: <span class="in">`framingham`</span> (<span class="co">[</span><span class="ot">rda link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/framingham.rda)</span>, <span class="co">[</span><span class="ot">csv link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/framingham.csv)</span>)</span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">R Script</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/9_logisticreg.R)</span></span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>------------------</span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a><span class="fu"># Examples (exercises with solution)</span></span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>(Dataset <span class="in">`birth`</span> might be switched out)</span>
-<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: birth example</span></span>
-<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
-<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>birth_data <span class="ot">&lt;-</span> haven<span class="sc">::</span><span class="fu">read_dta</span>(<span class="st">'data/birth.dta'</span>)</span>
-<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a><span class="co"># print the first rows of the data set</span></span>
-<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(birth_data)</span>
-<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a><span class="fu">### Fit a logistic regression model for `low` and `age`</span></span>
-<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-52"><a href="#cb15-52" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-53"><a href="#cb15-53" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: birth example (2)</span></span>
-<span id="cb15-54"><a href="#cb15-54" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb15-55"><a href="#cb15-55" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb15-56"><a href="#cb15-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-57"><a href="#cb15-57" aria-hidden="true" tabindex="-1"></a><span class="co"># low ~ age </span></span>
-<span id="cb15-58"><a href="#cb15-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-59"><a href="#cb15-59" aria-hidden="true" tabindex="-1"></a>lr_low_age <span class="ot">&lt;-</span> <span class="fu">glm</span>(low <span class="sc">~</span> age, <span class="at">data =</span> birth_data, <span class="at">family =</span> <span class="st">'binomial'</span>)</span>
-<span id="cb15-60"><a href="#cb15-60" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lr_low_age)</span>
-<span id="cb15-61"><a href="#cb15-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-62"><a href="#cb15-62" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-63"><a href="#cb15-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-64"><a href="#cb15-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-67"><a href="#cb15-67" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-68"><a href="#cb15-68" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: birth example (3)</span></span>
-<span id="cb15-69"><a href="#cb15-69" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb15-70"><a href="#cb15-70" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb15-71"><a href="#cb15-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-72"><a href="#cb15-72" aria-hidden="true" tabindex="-1"></a><span class="co"># the result regresssion coefficient is not odds ratio</span></span>
-<span id="cb15-73"><a href="#cb15-73" aria-hidden="true" tabindex="-1"></a>lr_low_age<span class="sc">$</span>coefficients</span>
-<span id="cb15-74"><a href="#cb15-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-75"><a href="#cb15-75" aria-hidden="true" tabindex="-1"></a><span class="co"># regression coefficients can also be extracted in this way:</span></span>
-<span id="cb15-76"><a href="#cb15-76" aria-hidden="true" tabindex="-1"></a><span class="fu">coefficients</span>(lr_low_age)</span>
-<span id="cb15-77"><a href="#cb15-77" aria-hidden="true" tabindex="-1"></a><span class="co"># coef(lr_low_age)</span></span>
-<span id="cb15-78"><a href="#cb15-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-79"><a href="#cb15-79" aria-hidden="true" tabindex="-1"></a><span class="co"># confidence interval for age and intercept</span></span>
-<span id="cb15-80"><a href="#cb15-80" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(lr_low_age)</span>
-<span id="cb15-81"><a href="#cb15-81" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-82"><a href="#cb15-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-85"><a href="#cb15-85" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-86"><a href="#cb15-86" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: birth example (4)</span></span>
-<span id="cb15-87"><a href="#cb15-87" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb15-88"><a href="#cb15-88" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb15-89"><a href="#cb15-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-90"><a href="#cb15-90" aria-hidden="true" tabindex="-1"></a><span class="co"># to get odds ratio, exponentiate </span></span>
-<span id="cb15-91"><a href="#cb15-91" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(lr_low_age))</span>
-<span id="cb15-92"><a href="#cb15-92" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">confint</span>(lr_low_age))</span>
-<span id="cb15-93"><a href="#cb15-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-94"><a href="#cb15-94" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<div class="sourceCode" id="cb63" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Logistic regression"</span></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Logistic regression"</span></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: false</span></span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> source</span></span>
+<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-11"><a href="#cb63-11" aria-hidden="true" tabindex="-1"></a>Datasets</span>
+<span id="cb63-12"><a href="#cb63-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-13"><a href="#cb63-13" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Exercise 1: <span class="in">`birth`</span> (<span class="co">[</span><span class="ot">rda link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/birth.rda)</span>, <span class="co">[</span><span class="ot">csv link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/birth.csv)</span>)</span>
+<span id="cb63-14"><a href="#cb63-14" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Exercise 2: <span class="in">`framingham`</span> (<span class="co">[</span><span class="ot">rda link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/framingham.rda)</span>, <span class="co">[</span><span class="ot">csv link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/framingham.csv)</span>)</span>
+<span id="cb63-15"><a href="#cb63-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-16"><a href="#cb63-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-17"><a href="#cb63-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-18"><a href="#cb63-18" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">R Script</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/9_logisticreg.R)</span></span>
+<span id="cb63-19"><a href="#cb63-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-20"><a href="#cb63-20" aria-hidden="true" tabindex="-1"></a>------------------</span>
+<span id="cb63-21"><a href="#cb63-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-22"><a href="#cb63-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-23"><a href="#cb63-23" aria-hidden="true" tabindex="-1"></a><span class="fu"># Examples (exercises with solution)</span></span>
+<span id="cb63-24"><a href="#cb63-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-25"><a href="#cb63-25" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 1 (birth)</span></span>
+<span id="cb63-26"><a href="#cb63-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-27"><a href="#cb63-27" aria-hidden="true" tabindex="-1"></a>We shall analyse the data set given in the file <span class="in">`birth.dta`</span>. In a study in Massachusetts, USA, birth weight was measured for the children of 189 women. The main variable in the study was birth weight, <span class="in">`BWT`</span>, which is an important indicator of the condition of a newborn child. Low birth weight (below 2500 g) may be a medical risk factor. A major question is whether smoking during pregnancy influences the birth weight. One has also studied whether a number of other factors are related to birth weight, such as hypertension in the mother. </span>
+<span id="cb63-28"><a href="#cb63-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-29"><a href="#cb63-29" aria-hidden="true" tabindex="-1"></a>The variables of the study are</span>
+<span id="cb63-30"><a href="#cb63-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-31"><a href="#cb63-31" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Identification number (ID)</span>
+<span id="cb63-32"><a href="#cb63-32" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Low birth weight (LOW)</span>
+<span id="cb63-33"><a href="#cb63-33" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Age of the mother (AGE)</span>
+<span id="cb63-34"><a href="#cb63-34" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Weight (in pounds) at last menstruaal period (LWT)</span>
+<span id="cb63-35"><a href="#cb63-35" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Ethnicity, 1 means White, 2 means African American, 3 meaans other (ETH)</span>
+<span id="cb63-36"><a href="#cb63-36" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Smoking status, 1 means current smoker, 0 means not smoking during pregnancy (SMK)</span>
+<span id="cb63-37"><a href="#cb63-37" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>History of premature labbour, values 0, 1, 2... (PTL)</span>
+<span id="cb63-38"><a href="#cb63-38" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>History of hypertension, 1 is yes, 0 is no (HT)</span>
+<span id="cb63-39"><a href="#cb63-39" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Uterine irritability, 1 is yes, 0 is no (UI)</span>
+<span id="cb63-40"><a href="#cb63-40" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>First trimester visits, values 0, 1, 2... (FTV)</span>
+<span id="cb63-41"><a href="#cb63-41" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Third trimster visits, values 0, 1, 2... (TTV)</span>
+<span id="cb63-42"><a href="#cb63-42" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Birth weight (BWT)</span>
+<span id="cb63-43"><a href="#cb63-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-44"><a href="#cb63-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-47"><a href="#cb63-47" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb63-48"><a href="#cb63-48" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: lr-1a-1</span></span>
+<span id="cb63-49"><a href="#cb63-49" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb63-50"><a href="#cb63-50" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb63-51"><a href="#cb63-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-52"><a href="#cb63-52" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
+<span id="cb63-53"><a href="#cb63-53" aria-hidden="true" tabindex="-1"></a>birth_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/birth.csv'</span>)</span>
+<span id="cb63-54"><a href="#cb63-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-55"><a href="#cb63-55" aria-hidden="true" tabindex="-1"></a><span class="co"># print the first rows of the data set</span></span>
+<span id="cb63-56"><a href="#cb63-56" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(birth_data)</span>
+<span id="cb63-57"><a href="#cb63-57" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb63-58"><a href="#cb63-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-59"><a href="#cb63-59" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1a)</span></span>
+<span id="cb63-60"><a href="#cb63-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-61"><a href="#cb63-61" aria-hidden="true" tabindex="-1"></a>Perform a logistic regression analysis with <span class="in">`low`</span> as dependent variable, and <span class="in">`age`</span> as independent variable. Interpret the results.</span>
+<span id="cb63-62"><a href="#cb63-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-63"><a href="#cb63-63" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb63-64"><a href="#cb63-64" aria-hidden="true" tabindex="-1"></a><span class="fu">## Recode `low` as `is_low_bwt`</span></span>
+<span id="cb63-65"><a href="#cb63-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-66"><a href="#cb63-66" aria-hidden="true" tabindex="-1"></a>With logistic regression (glm()), you need to specify the outcome variable as </span>
+<span id="cb63-67"><a href="#cb63-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-68"><a href="#cb63-68" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>either 0 or 1 (numeric values)</span>
+<span id="cb63-69"><a href="#cb63-69" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>or a factor (ordered so that it matches 0 or 1 category)</span>
+<span id="cb63-70"><a href="#cb63-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-71"><a href="#cb63-71" aria-hidden="true" tabindex="-1"></a>In the example we should the first option (numeric 0 or 1)</span>
+<span id="cb63-72"><a href="#cb63-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-73"><a href="#cb63-73" aria-hidden="true" tabindex="-1"></a>It could be a good practice to create another variable, <span class="in">`is_low_bwt`</span>, so that you keep the original <span class="in">`low`</span> variable untouched; this is useful in case you want to double check if the coding is correct or need to start over.</span>
+<span id="cb63-74"><a href="#cb63-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-75"><a href="#cb63-75" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb63-76"><a href="#cb63-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-77"><a href="#cb63-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-78"><a href="#cb63-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-81"><a href="#cb63-81" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb63-82"><a href="#cb63-82" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: lr-1a-2</span></span>
+<span id="cb63-83"><a href="#cb63-83" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb63-84"><a href="#cb63-84" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb63-85"><a href="#cb63-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-86"><a href="#cb63-86" aria-hidden="true" tabindex="-1"></a><span class="co"># be careful with the levels: bwt&lt;= 2500 is the cases (code as 1)</span></span>
+<span id="cb63-87"><a href="#cb63-87" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(birth_data<span class="sc">$</span>low)</span>
+<span id="cb63-88"><a href="#cb63-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-89"><a href="#cb63-89" aria-hidden="true" tabindex="-1"></a><span class="co"># recode low variable (numeric 1 and 0)</span></span>
+<span id="cb63-90"><a href="#cb63-90" aria-hidden="true" tabindex="-1"></a>birth_data<span class="sc">$</span>is_low_bwt <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(birth_data<span class="sc">$</span>low <span class="sc">==</span> <span class="st">'bwt &lt;= 2500'</span>,<span class="dv">1</span>,<span class="dv">0</span>)</span>
+<span id="cb63-91"><a href="#cb63-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-92"><a href="#cb63-92" aria-hidden="true" tabindex="-1"></a><span class="co"># check each category</span></span>
+<span id="cb63-93"><a href="#cb63-93" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(birth_data<span class="sc">$</span>is_low_bwt)</span>
+<span id="cb63-94"><a href="#cb63-94" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb63-95"><a href="#cb63-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-96"><a href="#cb63-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-99"><a href="#cb63-99" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb63-100"><a href="#cb63-100" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: lr-1a-3</span></span>
+<span id="cb63-101"><a href="#cb63-101" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb63-102"><a href="#cb63-102" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb63-103"><a href="#cb63-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-104"><a href="#cb63-104" aria-hidden="true" tabindex="-1"></a><span class="co"># fit lr (using is_low_bwt)</span></span>
+<span id="cb63-105"><a href="#cb63-105" aria-hidden="true" tabindex="-1"></a>lr_low_age <span class="ot">&lt;-</span> <span class="fu">glm</span>(is_low_bwt <span class="sc">~</span> age, </span>
+<span id="cb63-106"><a href="#cb63-106" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> birth_data, </span>
+<span id="cb63-107"><a href="#cb63-107" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="st">'binomial'</span>)</span>
+<span id="cb63-108"><a href="#cb63-108" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lr_low_age)</span>
+<span id="cb63-109"><a href="#cb63-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-110"><a href="#cb63-110" aria-hidden="true" tabindex="-1"></a><span class="co"># double check whether 0/1 categories are correct</span></span>
+<span id="cb63-111"><a href="#cb63-111" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(lr_low_age<span class="sc">$</span>y)</span>
+<span id="cb63-112"><a href="#cb63-112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb63-113"><a href="#cb63-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-116"><a href="#cb63-116" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb63-117"><a href="#cb63-117" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: lr-1a-4</span></span>
+<span id="cb63-118"><a href="#cb63-118" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb63-119"><a href="#cb63-119" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb63-120"><a href="#cb63-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-121"><a href="#cb63-121" aria-hidden="true" tabindex="-1"></a><span class="co"># the result regresssion coefficient is not odds ratio</span></span>
+<span id="cb63-122"><a href="#cb63-122" aria-hidden="true" tabindex="-1"></a>lr_low_age<span class="sc">$</span>coefficients</span>
+<span id="cb63-123"><a href="#cb63-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-124"><a href="#cb63-124" aria-hidden="true" tabindex="-1"></a><span class="co"># equivalently,</span></span>
+<span id="cb63-125"><a href="#cb63-125" aria-hidden="true" tabindex="-1"></a><span class="co"># coefficients(lr_low_age)</span></span>
+<span id="cb63-126"><a href="#cb63-126" aria-hidden="true" tabindex="-1"></a><span class="co"># coef(lr_low_age)</span></span>
+<span id="cb63-127"><a href="#cb63-127" aria-hidden="true" tabindex="-1"></a><span class="co"># confidence interval for beta:</span></span>
+<span id="cb63-128"><a href="#cb63-128" aria-hidden="true" tabindex="-1"></a><span class="co"># confint(lr_low_age)</span></span>
+<span id="cb63-129"><a href="#cb63-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-130"><a href="#cb63-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-131"><a href="#cb63-131" aria-hidden="true" tabindex="-1"></a><span class="co"># to get odds ratio, exponentiate </span></span>
+<span id="cb63-132"><a href="#cb63-132" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(lr_low_age)) <span class="co"># OR</span></span>
+<span id="cb63-133"><a href="#cb63-133" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">confint</span>(lr_low_age)) <span class="co"># CI for OR</span></span>
+<span id="cb63-134"><a href="#cb63-134" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb63-135"><a href="#cb63-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-136"><a href="#cb63-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-137"><a href="#cb63-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-138"><a href="#cb63-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-139"><a href="#cb63-139" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1b) </span></span>
+<span id="cb63-140"><a href="#cb63-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-141"><a href="#cb63-141" aria-hidden="true" tabindex="-1"></a>Perform a logistic regression analysis with <span class="in">`low`</span> as dependent variable and <span class="in">`smk`</span> as independent variable. </span>
+<span id="cb63-142"><a href="#cb63-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-145"><a href="#cb63-145" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb63-146"><a href="#cb63-146" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: lr-1b-1</span></span>
+<span id="cb63-147"><a href="#cb63-147" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb63-148"><a href="#cb63-148" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb63-149"><a href="#cb63-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-150"><a href="#cb63-150" aria-hidden="true" tabindex="-1"></a><span class="co"># low ~ smk </span></span>
+<span id="cb63-151"><a href="#cb63-151" aria-hidden="true" tabindex="-1"></a>lr_low_smk <span class="ot">&lt;-</span> <span class="fu">glm</span>(is_low_bwt <span class="sc">~</span> smk, </span>
+<span id="cb63-152"><a href="#cb63-152" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> birth_data, </span>
+<span id="cb63-153"><a href="#cb63-153" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="st">'binomial'</span>)</span>
+<span id="cb63-154"><a href="#cb63-154" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lr_low_smk)</span>
+<span id="cb63-155"><a href="#cb63-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-156"><a href="#cb63-156" aria-hidden="true" tabindex="-1"></a><span class="co"># odds ratio </span></span>
+<span id="cb63-157"><a href="#cb63-157" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(lr_low_smk))</span>
+<span id="cb63-158"><a href="#cb63-158" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">confint</span>(lr_low_smk))</span>
+<span id="cb63-159"><a href="#cb63-159" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb63-160"><a href="#cb63-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-161"><a href="#cb63-161" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1c) </span></span>
+<span id="cb63-162"><a href="#cb63-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-163"><a href="#cb63-163" aria-hidden="true" tabindex="-1"></a>Perform a logistic regression with <span class="in">`low`</span> as dependent variable, and <span class="in">`eth`</span> as independent variable. Be careful with the reference category.</span>
+<span id="cb63-164"><a href="#cb63-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-165"><a href="#cb63-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-168"><a href="#cb63-168" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb63-169"><a href="#cb63-169" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: lr-1c-1</span></span>
+<span id="cb63-170"><a href="#cb63-170" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb63-171"><a href="#cb63-171" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb63-172"><a href="#cb63-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-173"><a href="#cb63-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-174"><a href="#cb63-174" aria-hidden="true" tabindex="-1"></a><span class="co"># low ~ eth </span></span>
+<span id="cb63-175"><a href="#cb63-175" aria-hidden="true" tabindex="-1"></a><span class="co"># ethnicity needs to be factorised</span></span>
+<span id="cb63-176"><a href="#cb63-176" aria-hidden="true" tabindex="-1"></a><span class="co"># baseline: white</span></span>
+<span id="cb63-177"><a href="#cb63-177" aria-hidden="true" tabindex="-1"></a>birth_data<span class="sc">$</span>eth <span class="ot">&lt;-</span> eth <span class="ot">&lt;-</span> <span class="fu">factor</span>(birth_data<span class="sc">$</span>eth, </span>
+<span id="cb63-178"><a href="#cb63-178" aria-hidden="true" tabindex="-1"></a>              <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">'white'</span>, <span class="st">'black'</span>, <span class="st">'other'</span>), </span>
+<span id="cb63-179"><a href="#cb63-179" aria-hidden="true" tabindex="-1"></a>              <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">'white'</span>, <span class="st">'black'</span>, <span class="st">'other'</span>))</span>
+<span id="cb63-180"><a href="#cb63-180" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(birth_data<span class="sc">$</span>eth)</span>
+<span id="cb63-181"><a href="#cb63-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-182"><a href="#cb63-182" aria-hidden="true" tabindex="-1"></a><span class="co"># fit lr </span></span>
+<span id="cb63-183"><a href="#cb63-183" aria-hidden="true" tabindex="-1"></a>lr_low_eth <span class="ot">&lt;-</span> <span class="fu">glm</span>(is_low_bwt <span class="sc">~</span> eth, </span>
+<span id="cb63-184"><a href="#cb63-184" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> birth_data, </span>
+<span id="cb63-185"><a href="#cb63-185" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="st">'binomial'</span>)</span>
+<span id="cb63-186"><a href="#cb63-186" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lr_low_eth)</span>
+<span id="cb63-187"><a href="#cb63-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-188"><a href="#cb63-188" aria-hidden="true" tabindex="-1"></a><span class="co"># odds ratio </span></span>
+<span id="cb63-189"><a href="#cb63-189" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(lr_low_eth))</span>
+<span id="cb63-190"><a href="#cb63-190" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">confint</span>(lr_low_eth))</span>
+<span id="cb63-191"><a href="#cb63-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-192"><a href="#cb63-192" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb63-193"><a href="#cb63-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-194"><a href="#cb63-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-195"><a href="#cb63-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-196"><a href="#cb63-196" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1d)</span></span>
+<span id="cb63-197"><a href="#cb63-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-198"><a href="#cb63-198" aria-hidden="true" tabindex="-1"></a>Perform a logistic regression with <span class="in">`low`</span> as dependent variable, and <span class="in">`age`</span>,<span class="in">`smk`</span> and <span class="in">`eth`</span> as independent variables.</span>
+<span id="cb63-199"><a href="#cb63-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-200"><a href="#cb63-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-201"><a href="#cb63-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-204"><a href="#cb63-204" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb63-205"><a href="#cb63-205" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: lr-1d-1</span></span>
+<span id="cb63-206"><a href="#cb63-206" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb63-207"><a href="#cb63-207" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb63-208"><a href="#cb63-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-209"><a href="#cb63-209" aria-hidden="true" tabindex="-1"></a>lr_low_all <span class="ot">&lt;-</span> <span class="fu">glm</span>(is_low_bwt <span class="sc">~</span> age <span class="sc">+</span> smk <span class="sc">+</span> eth, </span>
+<span id="cb63-210"><a href="#cb63-210" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> birth_data, </span>
+<span id="cb63-211"><a href="#cb63-211" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="st">'binomial'</span>)</span>
+<span id="cb63-212"><a href="#cb63-212" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lr_low_all)</span>
+<span id="cb63-213"><a href="#cb63-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-214"><a href="#cb63-214" aria-hidden="true" tabindex="-1"></a><span class="co"># odds ratio </span></span>
+<span id="cb63-215"><a href="#cb63-215" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(lr_low_all))</span>
+<span id="cb63-216"><a href="#cb63-216" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">confint</span>(lr_low_all))</span>
+<span id="cb63-217"><a href="#cb63-217" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb63-218"><a href="#cb63-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-219"><a href="#cb63-219" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1e) </span></span>
+<span id="cb63-220"><a href="#cb63-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-221"><a href="#cb63-221" aria-hidden="true" tabindex="-1"></a>Based on the above analysis, set up a result table which reports:</span>
+<span id="cb63-222"><a href="#cb63-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-223"><a href="#cb63-223" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>odds ratios OR (unadjusted, and adjusted)</span>
+<span id="cb63-224"><a href="#cb63-224" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>95% confidence intervals for OR</span>
+<span id="cb63-225"><a href="#cb63-225" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>p-values for OR</span>
+<span id="cb63-226"><a href="#cb63-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-227"><a href="#cb63-227" aria-hidden="true" tabindex="-1"></a>Make sure you know how to interpret the table. </span>
+<span id="cb63-228"><a href="#cb63-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-229"><a href="#cb63-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-230"><a href="#cb63-230" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 2 (framingham)</span></span>
+<span id="cb63-231"><a href="#cb63-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-232"><a href="#cb63-232" aria-hidden="true" tabindex="-1"></a>We use the data from the Framingham study, <span class="in">`framingham`</span>. The dataset contains a selection of n = 500 men aged 31 to 65 years. </span>
+<span id="cb63-233"><a href="#cb63-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-234"><a href="#cb63-234" aria-hidden="true" tabindex="-1"></a>The response variable is FIRSTCHD, and this is equal to 1 if the individual has coronary heart disease and 0 otherwise. </span>
+<span id="cb63-235"><a href="#cb63-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-236"><a href="#cb63-236" aria-hidden="true" tabindex="-1"></a>We have four explanatory variables: </span>
+<span id="cb63-237"><a href="#cb63-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-238"><a href="#cb63-238" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>MEANSBP, the average systolic blood pressure (mmHg) of two blood pressure measurements; </span>
+<span id="cb63-239"><a href="#cb63-239" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>SMOKE which is smoking (1 = yes, 0 = no);</span>
+<span id="cb63-240"><a href="#cb63-240" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>CHOLESTEROL which is serum cholesterol in mg/dl;</span>
+<span id="cb63-241"><a href="#cb63-241" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>AGE (age in years). </span>
+<span id="cb63-242"><a href="#cb63-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-243"><a href="#cb63-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-244"><a href="#cb63-244" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2a)</span></span>
+<span id="cb63-245"><a href="#cb63-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-246"><a href="#cb63-246" aria-hidden="true" tabindex="-1"></a>Analyse the relationship between <span class="in">`firstchd`</span> and <span class="in">`smoke`</span> in a logistic regression model.</span>
+<span id="cb63-247"><a href="#cb63-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-250"><a href="#cb63-250" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb63-251"><a href="#cb63-251" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: lr-2a-1</span></span>
+<span id="cb63-252"><a href="#cb63-252" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb63-253"><a href="#cb63-253" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb63-254"><a href="#cb63-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-255"><a href="#cb63-255" aria-hidden="true" tabindex="-1"></a>framingham <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/framingham.csv'</span>)</span>
+<span id="cb63-256"><a href="#cb63-256" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(framingham)</span>
+<span id="cb63-257"><a href="#cb63-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-258"><a href="#cb63-258" aria-hidden="true" tabindex="-1"></a><span class="co"># check the outcome variable</span></span>
+<span id="cb63-259"><a href="#cb63-259" aria-hidden="true" tabindex="-1"></a><span class="co"># evidence is 1, no-evidence is 0</span></span>
+<span id="cb63-260"><a href="#cb63-260" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(framingham<span class="sc">$</span>firstchd)</span>
+<span id="cb63-261"><a href="#cb63-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-262"><a href="#cb63-262" aria-hidden="true" tabindex="-1"></a><span class="co"># code into 1 and 0 (numeric)</span></span>
+<span id="cb63-263"><a href="#cb63-263" aria-hidden="true" tabindex="-1"></a>framingham<span class="sc">$</span>firstchd_coded <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(framingham<span class="sc">$</span>firstchd <span class="sc">==</span> <span class="st">'evidence'</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb63-264"><a href="#cb63-264" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-265"><a href="#cb63-265" aria-hidden="true" tabindex="-1"></a><span class="co"># check if correct</span></span>
+<span id="cb63-266"><a href="#cb63-266" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(framingham<span class="sc">$</span>firstchd_coded)</span>
+<span id="cb63-267"><a href="#cb63-267" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb63-268"><a href="#cb63-268" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-271"><a href="#cb63-271" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb63-272"><a href="#cb63-272" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: lr-2a-2</span></span>
+<span id="cb63-273"><a href="#cb63-273" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb63-274"><a href="#cb63-274" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb63-275"><a href="#cb63-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-276"><a href="#cb63-276" aria-hidden="true" tabindex="-1"></a><span class="co"># firstchd, smoke </span></span>
+<span id="cb63-277"><a href="#cb63-277" aria-hidden="true" tabindex="-1"></a>lr_chd_smk <span class="ot">&lt;-</span> <span class="fu">glm</span>(firstchd_coded <span class="sc">~</span> smoke, </span>
+<span id="cb63-278"><a href="#cb63-278" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> framingham, </span>
+<span id="cb63-279"><a href="#cb63-279" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="st">'binomial'</span>)</span>
+<span id="cb63-280"><a href="#cb63-280" aria-hidden="true" tabindex="-1"></a><span class="co"># double check if category is correct</span></span>
+<span id="cb63-281"><a href="#cb63-281" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(lr_chd_smk<span class="sc">$</span>y)  </span>
+<span id="cb63-282"><a href="#cb63-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-283"><a href="#cb63-283" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lr_chd_smk)</span>
+<span id="cb63-284"><a href="#cb63-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-285"><a href="#cb63-285" aria-hidden="true" tabindex="-1"></a><span class="co"># odds ratio </span></span>
+<span id="cb63-286"><a href="#cb63-286" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(lr_chd_smk))</span>
+<span id="cb63-287"><a href="#cb63-287" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">confint</span>(lr_chd_smk))</span>
+<span id="cb63-288"><a href="#cb63-288" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb63-289"><a href="#cb63-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-290"><a href="#cb63-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-291"><a href="#cb63-291" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2b)</span></span>
+<span id="cb63-292"><a href="#cb63-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-293"><a href="#cb63-293" aria-hidden="true" tabindex="-1"></a>Analyse the relationship between <span class="in">`firstchd`</span> and <span class="in">`meansbp`</span> in a logistic regression model.</span>
+<span id="cb63-294"><a href="#cb63-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-297"><a href="#cb63-297" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb63-298"><a href="#cb63-298" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: lr-2b-1</span></span>
+<span id="cb63-299"><a href="#cb63-299" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb63-300"><a href="#cb63-300" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb63-301"><a href="#cb63-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-302"><a href="#cb63-302" aria-hidden="true" tabindex="-1"></a><span class="co"># firstchd, meansbp</span></span>
+<span id="cb63-303"><a href="#cb63-303" aria-hidden="true" tabindex="-1"></a>lr_chd_bp <span class="ot">&lt;-</span> <span class="fu">glm</span>(firstchd_coded <span class="sc">~</span> meansbp, </span>
+<span id="cb63-304"><a href="#cb63-304" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> framingham, </span>
+<span id="cb63-305"><a href="#cb63-305" aria-hidden="true" tabindex="-1"></a>                 <span class="at">family =</span> <span class="st">'binomial'</span>)</span>
+<span id="cb63-306"><a href="#cb63-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-307"><a href="#cb63-307" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lr_chd_bp)</span>
+<span id="cb63-308"><a href="#cb63-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-309"><a href="#cb63-309" aria-hidden="true" tabindex="-1"></a><span class="co"># odds ratio </span></span>
+<span id="cb63-310"><a href="#cb63-310" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(lr_chd_bp))</span>
+<span id="cb63-311"><a href="#cb63-311" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">confint</span>(lr_chd_bp))</span>
+<span id="cb63-312"><a href="#cb63-312" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb63-313"><a href="#cb63-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-314"><a href="#cb63-314" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2c)</span></span>
+<span id="cb63-315"><a href="#cb63-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-316"><a href="#cb63-316" aria-hidden="true" tabindex="-1"></a>Include also the other two explanatory variables in a logisic regression model. Interpret the results. </span>
+<span id="cb63-317"><a href="#cb63-317" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-320"><a href="#cb63-320" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb63-321"><a href="#cb63-321" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: lr-2c-1</span></span>
+<span id="cb63-322"><a href="#cb63-322" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb63-323"><a href="#cb63-323" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb63-324"><a href="#cb63-324" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-325"><a href="#cb63-325" aria-hidden="true" tabindex="-1"></a>lr_chd_all <span class="ot">&lt;-</span> <span class="fu">glm</span>(firstchd_coded <span class="sc">~</span> meansbp <span class="sc">+</span> smoke <span class="sc">+</span> cholesterol <span class="sc">+</span> age, </span>
+<span id="cb63-326"><a href="#cb63-326" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> framingham, </span>
+<span id="cb63-327"><a href="#cb63-327" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="st">'binomial'</span>)</span>
+<span id="cb63-328"><a href="#cb63-328" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lr_chd_all)</span>
+<span id="cb63-329"><a href="#cb63-329" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-330"><a href="#cb63-330" aria-hidden="true" tabindex="-1"></a><span class="co"># odds ratio </span></span>
+<span id="cb63-331"><a href="#cb63-331" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">exp</span>(<span class="fu">coef</span>(lr_chd_all)), <span class="at">digits =</span> <span class="dv">3</span>)</span>
+<span id="cb63-332"><a href="#cb63-332" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">exp</span>(<span class="fu">confint</span>(lr_chd_all)), <span class="at">digits =</span> <span class="dv">3</span>)</span>
+<span id="cb63-333"><a href="#cb63-333" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb63-334"><a href="#cb63-334" aria-hidden="true" tabindex="-1"></a></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
