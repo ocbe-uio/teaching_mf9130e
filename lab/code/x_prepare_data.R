@@ -181,6 +181,30 @@ write.csv(birth, file = './lab/data/birth.csv', row.names = F)
 
 # _______ week 2 ______ -----
 
+# antibody ----
+
+antibody
+
+# remove diff
+antibody <- antibody[, 1:2]
+head(antibody)
+
+# save
+save(antibody, file = './lab/data/antibody.rda')
+write.csv(antibody, file = './lab/data/antibody.csv', row.names = F)
+
+
+# nausea ----
+
+head(nausea)
+
+# save 
+save(nausea, file = './lab/data/nausea.rda')
+write.csv(nausea, file = './lab/data/nausea.csv', row.names = F)
+
+
+
+
 # bp ----
 
 bp

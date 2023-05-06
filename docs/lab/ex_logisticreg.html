@@ -165,7 +165,7 @@ ul.task-list li input[type="checkbox"] {
 <p>The variables of the study are</p>
 <ul>
 <li>Identification number (ID)</li>
-<li>Low birth weight</li>
+<li>Low birth weight (LOW)</li>
 <li>Age of the mother (AGE)</li>
 <li>Weight (in pounds) at last menstruaal period (LWT)</li>
 <li>Ethnicity, 1 means White, 2 means African American, 3 meaans other (ETH)</li>
@@ -180,6 +180,25 @@ ul.task-list li input[type="checkbox"] {
 <section id="a" class="level4">
 <h4 class="anchored" data-anchor-id="a">1a)</h4>
 <p>Perform a logistic regression analysis with <code>low</code> as dependent variable, and <code>age</code> as independent variable. Interpret the results.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Recode <code>low</code> as <code>is_low_bwt</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>With logistic regression (glm()), you need to specify the outcome variable as</p>
+<ul>
+<li>either 0 or 1 (numeric values)</li>
+<li>or a factor (ordered so that it matches 0 or 1 category)</li>
+</ul>
+<p>In the solutions we should the first option (numeric 0 or 1)</p>
+<p>It could be a good practice to name another variable, <code>is_low_bwt</code>, so that you keep the original <code>low</code> variable untouched; this is useful in case you want to double check if the coding is correct or need to start over.</p>
+</div>
+</div>
 </section>
 <section id="b" class="level4">
 <h4 class="anchored" data-anchor-id="b">1b)</h4>

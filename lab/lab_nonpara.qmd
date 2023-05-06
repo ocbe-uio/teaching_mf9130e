@@ -5,8 +5,502 @@ format:
   html:
     code-fold: false
     code-tools: true
-editor: visual
+editor: source
 ---
 
-## Inference and testing 
+# Short summary
 
+
+# Examples (exercises with solution)
+
+
+## Exercise 1 (lung function)
+
+Lung function has been measured on 106 medical students. Peak expiratory flow rate (PEF, measured in liters per minute) was measured three times in a sittinng position, and three times in a standing position.
+
+The variables are 
+
+* Age (years)
+* Gender (female, 2 male)
+* Height (cm)
+* Weight (kg)
+* PEF measured three times in a sitting position (pefsit1, pefsit2, pefsit3)
+* PEF measured three times in a standing position (pefsta1, pefsta2, pefsta3)
+* Mean of the three measurements made in a sitting position (pefsitm)
+* Mean of the three measurements made in a standing position (pefstam)
+* Mean of all six PEF values (pefmean)
+
+
+#### 1a) 
+
+We shall consider the difference betweenn PEF measured in a sitting position and in a standing position, i.e. we look at `diff_pef = pefstam - pefsitm`.  First compute this variable. 
+
+
+```{r}
+#| label: nonpara-1a-1
+#| echo: true
+#| eval: true
+
+lung_data <- read.csv('data/PEFH98-english.csv')
+head(lung_data, 3)
+
+# compute diff_pef
+diff_pef <- lung_data$pefstam - lung_data$pefsitm
+```
+
+
+#### 1b) 
+
+Make a histogram and Q-Q plot for the differences. 
+
+```{r}
+#| label: nonpara-1b-1
+#| echo: true
+#| eval: true
+
+par(mfrow = c(1, 2))
+hist(diff_pef)
+
+# qqplot 
+qqnorm(diff_pef)
+qqline(diff_pef)
+```
+
+
+#### 1c) 
+
+Do a non-parametric test to decide whether `pefsitm` and `pefstam` are significantly different.
+
+```{r}
+#| label: nonpara-1c-1
+#| echo: true
+#| eval: true
+
+# one sample (signed rank test)
+wilcox.test(diff_pef)
+```
+
+
+
+```{r}
+#| label: nonpara-1c-2
+#| echo: true
+#| eval: true
+
+# alternatively
+pefstam <- lung_data$pefstam
+pefsitm <- lung_data$pefsitm
+
+wilcox.test(pefstam, pefsitm, paired = T) # paired 
+```
+
+
+```{r}
+#| label: nonpara-1c-3
+#| echo: true
+#| eval: true
+
+# the data is not severly skewed, can also use t-test 
+t.test(pefstam, pefsitm, paired = T)
+```
+
+
+
+
+## Exercise 2 (length of hospital stay)
+
+The data was collected at the Geriatric Department at Ullevål Sykehus. Below is a description of the data set `liggetid`. The file includes the following variables:
+
+- Year of birth (faar)
+- Month of birth (fmaan)
+- Day of birth (fdag)
+- Year of hospital admission (innaar)
+- Month of admission (innmaan)
+- Day of admission (inndag)
+- Year of discharge from hospital (utaar)
+- Month of discharge (utmaan)
+- Day of discharge (utdag)
+- Gender, where 1 = male and 0 = female (kjoenn)
+- Admission from, where 1 = home, 2 = Div. of Medicine, 3 =
+Div. of Surgery, 4 = Other division, 5 = Other hospital, 6 =
+Nursing home (kom_fra)
+- Stroke, where 1 = yes, 0 = no (slag)
+- Age (alder)
+- Hospital stay, in days (liggetid)
+- Logarithm of hospital stay (lnliggti)
+- Comes from Div. of Medicine (kom_fra2)
+- Comes from Div. of Surgery (kom_fra3)
+- Comes from Other division (kom_fra4)
+- Comes from Other hospital (kom_fra5)
+- Comes from Nursing home (kom_fra6)
+- Censoring variable (censor)
+
+The variable `liggetid` time is calculated from the `innaar`, `innmaan`, `inndag`, `utaar`, `utmaan` and `utdag` variables. 
+
+
+
+#### 2a)
+
+We want to compare the **length of hospital stay** for patients with and without **stroke**. First get a better understanding of the data. Start with computing some summary (descriptive) statistics for these two variables: 
+
+* **mean, median, min, max, 75-th percentile** for length of hospital stay (`liggetid`);
+* **count** of how many patient have stroke, and do not have stroke (`slag == 1` or `0`)
+
+Visualize the variable `liggetid` using histogram and Q-Q plot, is the requirement for t-test met?
+
+
+```{r}
+#| label: nonpara-2a-1
+#| echo: true
+#| eval: true
+
+liggetid <- read.csv('data/liggetid.csv')
+head(liggetid, 3)
+```
+
+
+
+```{r}
+#| label: nonpara-2a-2
+#| echo: true
+#| eval: true
+
+# liggetid (length of stay: los)
+los <- liggetid$liggetid
+stroke <- liggetid$slag
+
+summary(los)
+
+table(stroke)
+summary(stroke) # this shows 85 missing
+sum(is.na(stroke)) # 85
+```
+
+
+
+```{r}
+#| label: nonpara-2a-3
+#| echo: true
+#| eval: true
+
+par(mfrow = c(1, 2))
+# visualize length of hospital stay (los)
+hist(los, breaks = 25)
+# check normality
+qqnorm(los, pch = 20, main = 'Q-Q plot for length of stay')
+qqline(los, col = 'red', lwd = 2)
+```
+
+
+
+
+#### 2b) 
+
+Since we want to compare the length of hospital stay for two groups, we need to separate the length of stay data into two groups, based on whether patients have stroke or not. Create two variables, `ligt_s1` and `ligt_s0`. 
+
+Do an appropriate non-parametric test. What is the difference between this test and the one you did in Exercise 1?
+
+
+::: {.callout-tip collapse="true"}
+## Separate one variable via index and `which()`
+
+Previously, we showed how to separate one variable based on another,
+
+* Exercise 2c) in [EDA I](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_eda_part1.html)
+* Exercise 2a) in [Categorical data analysis](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_categorical.html)
+
+You can try to use this method here as well; but you might notice that there are some NA in the results. This is because when you do `stroke == 0` on NA, instead of giving you `T` or `F`, it gives `NA`; so the result of filtering `liggetid` keeps both `T` and `NA`. 
+
+These NAs can be removed post-hoc; but a clearer solution is to set 2 conditions inside the square bracket, and combine with `&`. 
+
+* `!is.na(stroke)` means stroke variable not NA
+* `stroke == 1` means stroke variable equals to 1
+* `which()` identifies the indices for stroke where the conditions were met, e.g. the 4th, 22th elements.
+
+:::
+
+
+```{r}
+#| label: nonpara-2b-1
+#| echo: true
+#| eval: true
+
+
+# separate los 
+ligt_s1 <- los[which(!is.na(stroke) & stroke == 1)]
+ligt_s0 <- los[which(!is.na(stroke) & stroke == 0)]
+
+# mean, median 
+c(mean(ligt_s1), median(ligt_s1))
+c(mean(ligt_s0), median(ligt_s0))
+```
+
+
+
+```{r}
+#| label: nonpara-2b-2
+#| echo: true
+#| eval: true
+
+# visualize
+par(mfrow = c(2,2))
+
+# s1
+hist(ligt_s1, main = 'Length of hospital stay, stroke yes', 
+     xlab = 'mean: 145; median: 58', 
+     xlim = c(0, 1300))
+abline(v = mean(ligt_s1), col = 'blue', lwd = 2)
+abline(v = median(ligt_s1), col = 'blue', lwd = 2, lty = 'dashed')
+# qqplot
+qqnorm(ligt_s1, pch = 20, main = 'Q-Q plot for length of stay, stroke yes')
+qqline(ligt_s1, col = 'red', lwd = 2)
+
+# s0
+hist(ligt_s0, main = 'Length of hospital stay, stroke no', 
+     xlab = 'mean: 116; median: 40', 
+     xlim = c(0, 1300))
+abline(v = mean(ligt_s0), col = 'blue', lwd = 2)
+abline(v = median(ligt_s0), col = 'blue', lwd = 2, lty = 'dashed')
+# qqplot
+qqnorm(ligt_s0, pch = 20, main = 'Q-Q plot for length of stay, stroke no')
+qqline(ligt_s0, col = 'red', lwd = 2)
+```
+
+
+```{r}
+#| label: nonpara-2b-3
+#| echo: true
+#| eval: true
+
+# non parametric test
+# not matched; independent samples
+# wilcoxon rank sum 
+wilcox.test(ligt_s1, ligt_s0)
+
+```
+
+::: {.callout-caution}
+## Compare with t-test
+
+If you do a t-test (inappropriately) instead of Mann-Whitney U test, you'll have different results!
+
+:::
+
+```{r}
+#| label: nonpara-2b-4
+#| echo: true
+#| eval: true
+
+# t-test on skewed data
+t.test(ligt_s1, ligt_s0)
+```
+
+
+#### 2c)
+
+
+Do the same analysis with a t-test on the logarithm-transformed data. The transformed variable already exists in the data set as `lnliggti`.
+
+
+```{r}
+#| label: nonpara-2c-1
+#| echo: true
+#| eval: true
+
+
+# use log transformed 
+loglos <- liggetid$lnliggti
+hist(loglos, main = 'Log transformed length of stay')
+qqnorm(loglos, pch = 20, main = 'Q-Q plot for log(length of stay)')
+qqline(loglos, col = 'red', lwd = 2)
+
+# separate data
+logligt_s1 <- loglos[which(!is.na(stroke) & stroke == 1)]
+logligt_s0 <- loglos[which(!is.na(stroke) & stroke == 0)]
+
+t.test(logligt_s1, logligt_s0, paired = F)
+```
+
+
+
+## Exercise 3 (antibody)
+
+(Baker et al., 1980) We have data on concentration of antibody of Type III Group B Streptococcus (GBS) in 20 volunteers before and after immunization. The dataset is `antibody`. 
+
+#### 3a) 
+
+The comparison of the antibody levels was summarized in the report of this study as '$t = 1.8; P > 0.05$'. Comment on the result. 
+
+
+```{r}
+#| label: nonpara-3a-1
+#| echo: true
+#| eval: true
+
+antibody <- read.csv('data/antibody.csv')
+head(antibody)
+
+before <- antibody$before
+after <- antibody$after
+```
+
+Compute some summary statistics for the two variables, and then reproduce the result by the t-test.
+
+```{r}
+#| label: nonpara-3a-2
+#| echo: true
+#| eval: true
+
+# some summary stat of the data
+summary(before)
+summary(after)
+
+# reproduce the result from t-test
+t.test(antibody$before, antibody$after, paired = T)
+```
+
+#### (Optional)
+
+We can visually get an understanding of whether this result makes sense.
+
+```{r}
+#| label: nonpara-3a-3
+#| echo: true
+#| eval: true
+
+# long format data (requires tidyr package)
+antibody_longdata <- tidyr::pivot_longer(antibody, 
+                                         cols = tidyr::everything(), 
+                                         names_to = 'group', 
+                                         values_to = 'measurements')
+head(antibody_longdata)
+```
+
+
+
+```{r}
+#| label: nonpara-3a-4
+#| echo: true
+#| eval: true
+
+par(mfrow = c(1, 2))
+boxplot(measurements ~ group, 
+        data = antibody_longdata, 
+        horizontal = T, 
+        main = 'Before and after measurements')
+
+# limit the y axis (horizontal x axis)
+boxplot(measurements ~ group, 
+        data = antibody_longdata, 
+        horizontal = T, 
+        ylim = c(0, 4),
+        main = 'Limit the measurement range')
+
+```
+
+
+```{r}
+#| label: nonpara-3a-5
+#| echo: true
+#| eval: true
+
+par(mfrow = c(2,2))
+# histogram 
+hist(before, main = 'Measurements: before')
+qqnorm(before, pch = 20, main = 'Q-Q plot for measurements: before')
+qqline(before, col = 'red', lwd = 2)
+
+hist(after, main = 'Measurements: after')
+qqnorm(after, pch = 20, main = 'Q-Q plot for measurements: after')
+qqline(after, col = 'red', lwd = 2)
+```
+
+
+```{r}
+#| label: nonpara-3a-6
+#| echo: true
+#| eval: true
+
+# histogram for the difference s
+hist(after - before, main = 'Difference (after - before)')
+```
+
+#### 3b)
+
+Analyse the data with an appropriate test. Justify your choice. 
+
+```{r}
+#| label: nonpara-3b-1
+#| echo: true
+#| eval: true
+
+# matched data (paired)
+# one-sample test (signed rank)
+
+wilcox.test(before, after, paired = T)
+# the error means there are ties (no change)
+```
+
+::: {.callout-caution}
+## Paired vs independent data
+
+You can try to do a test treating the data as independent. The conclusion could be different! Be careful with what you are testing.
+
+:::
+
+```{r}
+#| label: nonpara-3b-2
+#| echo: true
+#| eval: true
+
+# what happens if you use independent two-samples test?
+wilcox.test(before, after, paired = F) # p = 0.14
+```
+
+## Exercise 4 (nausea) 
+
+(Williams et al., 1989) Patients receiving chemotherapy as outpatients were randomized to receive either an active antiemetic treatment or placebo. The following table shows measurements (in mm) on a 100mm linear analogue self-assessment scale for nausea. The dataset is `nausea`. 
+
+* group: `1` is active (treatment), and `2` is placebo.
+
+#### 4a)
+
+Choose an appropriate test for comparing the treatment and placebo groups. Justify your choice. 
+
+```{r}
+#| label: nonpara-4a-1
+#| echo: true
+#| eval: true
+
+nausea <- read.csv('data/nausea.csv')
+head(nausea)
+
+treatment <- nausea$value[nausea$group == 1]
+placebo <- nausea$value[nausea$group == 2]
+
+summary(treatment)
+summary(placebo)
+```
+
+
+```{r}
+#| label: nonpara-4a-2
+#| echo: true
+#| eval: true
+
+# these samples are not matched: two sample independent test
+
+# boxplot
+boxplot(value ~ group, data = nausea, 
+        main = 'Nausea: treatment vs placebo')
+
+```
+
+
+```{r}
+#| label: nonpara-4a-3
+#| echo: true
+#| eval: true
+
+wilcox.test(treatment, placebo, paired = F)
+```
