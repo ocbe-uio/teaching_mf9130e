@@ -59,10 +59,10 @@ To help you with the exercises and homework, we have created this [list of comma
 | [Diagnostic tests](lab_diagnostic_tests.qmd) | Evaluation of diagnostic tests, sensitivity, specificity  |  |
 | [Statistical distributions](lab_distributions.qmd) | Statistical distributions  |  |
 | [EDA I](lab_eda_part1.qmd) | Exploring a dataset, descriptive statistics | [exercise](ex_eda_part1.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/2_eda_part1.R) |
-| EDA II | (Week 2) More on data manipulation, visualisation|  |
+| [EDA II](lab_eda_part2.qmd) | (Week 2) More on data manipulation, visualisation|[code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/5_eda_part2.R)  |
 | [t-test](lab_ttest.qmd)| One sample, two sample t-tests | [exercise](ex_ttest.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/3_ttest.R) |
 | [Categorical data analysis](lab_categorical.qmd)| Proportions, contingency table, chi-square test | [exercise](ex_categorical.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/4_categorical.R)|
-| Non-parametric tests|Wilcoxon signed test, rank sum test | |
+| [Non-parametric tests](lab_nonpara.qmd) |Wilcoxon signed test, rank sum test | [exercise](ex_nonpara.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/6_nonpara.R) |
 | Sample size, power| Sample size, power calculation | |
 | [Linear regression](lab_linearreg.qmd)| Linear regression, correlation | [exercise](ex_linearreg.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/8_linearreg.R)|
 | [Logistic regression](lab_logistic_reg.qmd)| Logistic regression |[exercise](ex_logisticreg.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/9_logisticreg.R) |

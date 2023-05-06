@@ -18,7 +18,7 @@
     "href": "course_material/course_material_overview.html#week-2",
     "title": "Course material",
     "section": "Week 2",
-    "text": "Week 2\n\n\n\nTime\nTopic\nLecture notes\nLab\nOther\n\n\n\n\nMay 8 AM\nExploratory data analysis, transformation\n\n\n\n\n\n\nNon-parametric methods\n\n\n\n\n\nMay 8 PM\nSample size, statistical power\n\n\n\n\n\nMay 9 AM\nStudy design, principles of clinical trials\n\n\n\n\n\nMay 9 PM\nLinear regression\n\nLab notes\n\n\n\nMay 10 AM\nLogistic regression\n\nLab notes\n\n\n\nMay 10 PM\nSurvival analysis\n\nLab notes"
+    "text": "Week 2\n\n\n\nTime\nTopic\nLecture notes\nLab\nOther\n\n\n\n\nMay 8 AM\nExploratory data analysis, transformation\n\nLab notes\n\n\n\n\nNon-parametric methods\n\nLab notes\n\n\n\nMay 8 PM\nSample size, statistical power\n\n\n\n\n\nMay 9 AM\nStudy design, principles of clinical trials\n\n\n\n\n\nMay 9 PM\nLinear regression\n\nLab notes\n\n\n\nMay 10 AM\nLogistic regression\n\nLab notes\n\n\n\nMay 10 PM\nSurvival analysis\n\nLab notes"
   },
   {
     "objectID": "lab/lab_eda_part1.html",
@@ -480,7 +480,7 @@
     "href": "lab/ex_nonpara.html#exercise-4-nausea",
     "title": "Exercise - Non-parametric tests",
     "section": "Exercise 4 (nausea)",
-    "text": "Exercise 4 (nausea)\n(Williams et al., 1989) Patients receiving chemotherapy as outpatients were randomized to receive either an active antiemetic treatment or placebo. The following table shows measurements (in mm) on a 100mm linear analogue self-assessment scale for nausea. The dataset is nausea.\n\n4a)\nChoose an appropriate test for comparing the treatment annd placebo groups. Justify your choice."
+    "text": "Exercise 4 (nausea)\n(Williams et al., 1989) Patients receiving chemotherapy as outpatients were randomized to receive either an active antiemetic treatment or placebo. The following table shows measurements (in mm) on a 100mm linear analogue self-assessment scale for nausea. The dataset is nausea.\n\ngroup: 1 is active (treatment), and 2 is placebo.\n\n\n4a)\nChoose an appropriate test for comparing the treatment and placebo groups. Justify your choice."
   },
   {
     "objectID": "lab/lab_nonpara.html#exercise-1-lung-function",
