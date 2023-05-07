@@ -64,6 +64,40 @@ qqnorm(los, pch = 20, main = 'Q-Q plot for length of stay')
 qqline(los, col = 'red', lwd = 2)
 
 
+# try to get median for los 
+# compute from formula:
+# lower: n/2 - 1.96*(sqrt(n)/2)
+# upper: 1 + n/2 + 1.96*(sqrt(n)/2)
+
+n <- length(los)
+n
+lwr_rank <- n/2 - 1.96*(sqrt(n)/2)
+upr_rank <- 1 + n/2 + 1.96*(sqrt(n)/2)
+c(lwr_rank, upr_rank)
+c(quantile(los, lwr_rank/n), quantile(los, upr_rank/n))
+
+# from package:
+# install.packages('DescTools')
+DescTools::MedianCI(los, conf.level = 0.95)
+
+
+mu <- mean(los)
+# t.test(los)
+muci <- c(105.55, 128.60)
+
+med <- median(los)
+medci <- c(38, 46)
+
+# plot mean ci, median ci
+hist(los, breaks = 25, main = 'Histogram for length of stay', 
+     xlab = 'Mean: 121.46; median: 42')
+abline(v = mu, col = 'red', lwd = 2)
+abline(v = muci, col = 'red', lwd = 2, lty = 'dashed')
+abline(v = med, col = 'blue', lwd = 2)
+abline(v = medci, col = 'blue', lwd = 2, lty = 'dashed')
+
+
+
 # 2b) ----
 # separate los 
 

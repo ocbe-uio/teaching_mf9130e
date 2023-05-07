@@ -246,11 +246,23 @@ chisq.test(tb)
 ```
 
 
---------------
 
-(Content for *Week 2* will come soon!)
+#### non-parametric methods
 
-#### non-parametric tests
+```{r}
+#| label: nonpara
+#| echo: true
+#| eval: false
+
+# median ci (with descTools package)
+DescTools::MedianCI(x, conf.level = 0.95)
+
+# one sample (paired samples) wilcoxon test (signed rank)
+wilcox.test(x1, x2, paired = T)
+
+# two sample (independent) wilcoxon test (rank sum)
+wilcox.test(x, y, paired = F)
+```
 
 
 # Regression

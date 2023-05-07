@@ -34,8 +34,8 @@ For the exercises and lab notes we use during the lab sessions, please check the
 
 |     Time      |                  Topic                   |   Lecture notes     |  Lab | Other |
 |:-------------:|:----------------------------------------:|:--------:|:-------------:|:--------:|
-| May 8 AM  | Exploratory data analysis, transformation | |[Lab notes](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_eda_part2.html) | |
-|                  | Non-parametric methods | |[Lab notes](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_nonpara.html) | |
+| May 8 AM  | Exploratory data analysis (part II) | [Lecture](day5/lecture_eda2.pdf)|[Lab notes](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_eda_part2.html) | |
+|                  | Non-parametric methods |[Lecture](day5/lecture_nonpara.pdf) |[Lab notes](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_nonpara.html) | |
 | May 8 PM | Sample size, statistical power          | | | | |
 | May 9 AM | Study design, principles of clinical trials          | |  | |
 | May 9 PM | Linear regression        | | [Lab notes](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_linearreg.html) | |
