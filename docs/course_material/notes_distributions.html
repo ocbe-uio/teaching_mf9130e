@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.242">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>MF9130E - V23 - Probability Distributions</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">MF9130E - V23</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../get_started/get_started.html">
+ <span class="menu-text">Get Started</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../course_material/course_material_overview.html">
+ <span class="menu-text">Course material</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../lab/overview.html">
+ <span class="menu-text">R Lab and Code</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html">
+ <span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ocbe-uio/teaching_mf9130e"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#discrete-probability-distribution" id="toc-discrete-probability-distribution" class="nav-link active" data-scroll-target="#discrete-probability-distribution">Discrete probability distribution</a>
+  <ul class="collapse">
+  <li><a href="#bernoulli-trials" id="toc-bernoulli-trials" class="nav-link" data-scroll-target="#bernoulli-trials">Bernoulli trials</a></li>
+  <li><a href="#binomial-trials" id="toc-binomial-trials" class="nav-link" data-scroll-target="#binomial-trials">Binomial trials</a></li>
+  <li><a href="#binomial-coefficient" id="toc-binomial-coefficient" class="nav-link" data-scroll-target="#binomial-coefficient">Binomial coefficient</a></li>
+  </ul></li>
+  <li><a href="#binomial-distribution" id="toc-binomial-distribution" class="nav-link" data-scroll-target="#binomial-distribution">Binomial distribution</a></li>
+  <li><a href="#continuous-probability-distribution" id="toc-continuous-probability-distribution" class="nav-link" data-scroll-target="#continuous-probability-distribution">Continuous probability distribution</a></li>
+  <li><a href="#normal-distribution" id="toc-normal-distribution" class="nav-link" data-scroll-target="#normal-distribution">Normal distribution</a>
+  <ul class="collapse">
+  <li><a href="#properties-of-the-normal-distribution" id="toc-properties-of-the-normal-distribution" class="nav-link" data-scroll-target="#properties-of-the-normal-distribution">Properties of the normal distribution</a></li>
+  <li><a href="#standard-normal-distribution" id="toc-standard-normal-distribution" class="nav-link" data-scroll-target="#standard-normal-distribution">Standard normal distribution</a></li>
+  </ul></li>
+  <li><a href="#normal-approximation-to-the-binomial-distribution" id="toc-normal-approximation-to-the-binomial-distribution" class="nav-link" data-scroll-target="#normal-approximation-to-the-binomial-distribution">Normal approximation to the binomial distribution</a>
+  <ul class="collapse">
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#central-limit-theorem-clt" id="toc-central-limit-theorem-clt" class="nav-link" data-scroll-target="#central-limit-theorem-clt">Central limit theorem CLT</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Probability Distributions</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Topics:</p>
+<ul>
+<li><p>Discrete probability distribution</p></li>
+<li><p>Binomial distribution</p></li>
+<li><p>Continuous probability distribution</p></li>
+<li><p>Normal distribution</p></li>
+<li><p>Normal approximation to a binomial distribution</p></li>
+<li><p>Central Limit Theorem</p></li>
+</ul>
+<p>Books and resources:</p>
+<ul>
+<li><p>Aalen 4, 5</p></li>
+<li><p>Kirkwood and Sterne 5, 6, 15.1-15.2</p></li>
+</ul>
+<section id="discrete-probability-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="discrete-probability-distribution">Discrete probability distribution</h2>
+<p>Here we deal with stochastic trials where the set of all possible outcomes is countable and known.</p>
+<p>A <strong>discrete random variable</strong> maps each of the trial outcomes to a numeric value.</p>
+<p>A <strong>discrete probability distribution</strong> assigns a probability for each of the possible numeric values representing the outcomes.</p>
+<p>All possible outcomes for a probability distribution should sum to 1.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Example: Dice Trowing
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Trowing a dice has 6 possible outcomes with equal probability. We can define a random variable <span class="math inline">\(X\)</span> that maps each of the outcomes when trowing a dice to the numeric values 1,2,3,4,5,6. The probability distribution <span class="math inline">\(P(X=x)\)</span> assigns the following probabilities to each value <span class="math inline">\(X=x\)</span>:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th><span class="math inline">\(x\)</span></th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(P(X=x)\)</span></td>
+<td>1/6</td>
+<td>1/6</td>
+<td>1/6</td>
+<td>1/6</td>
+<td>1/6</td>
+<td>1/6</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<section id="bernoulli-trials" class="level3">
+<h3 class="anchored" data-anchor-id="bernoulli-trials">Bernoulli trials</h3>
+<p>Often a process has two outcomes.</p>
+<ul>
+<li><p>Coin tossing: outcomes are <strong>head or tail</strong>.</p></li>
+<li><p>HIV test looks for the <strong>presence or absence</strong> of antibodies in the blood.</p></li>
+<li><p>A child is born with <strong>a certain condition or not</strong>.</p></li>
+</ul>
+<p>Or from a stochastic trial with multiple outcomes, there are two outcomes of interest:</p>
+<ul>
+<li><p>throw a dice, you are only interested in whether you <strong>get a 6 or not</strong>.</p></li>
+<li><p>A child is born <strong>with a weight lower than 2500 grams or not</strong>.</p></li>
+</ul>
+</section>
+<section id="binomial-trials" class="level3">
+<h3 class="anchored" data-anchor-id="binomial-trials">Binomial trials</h3>
+<p>A bionomial trial consist of a <strong>series of Bernoulli trials</strong> that satisfy the following:</p>
+<ul>
+<li><p>In each trial, we can record whether certain event <span class="math inline">\(A\)</span> occurs or not.</p></li>
+<li><p>The probability of A, <span class="math inline">\(P(A)\)</span> is the same in each trial, it is denoted by <span class="math inline">\(p\)</span>.</p></li>
+<li><p>All trials are independent.</p></li>
+</ul>
+<p>Suppose we carry out n trials, looking for an event A in each trial. As a result we obtain a sequence:</p>
+<p><span class="math display">\[A, \bar{A}, A, A, \bar{A}, ..., A\]</span></p>
+<p>Say that <span class="math inline">\(A\)</span> takes place <span class="math inline">\(x\)</span> times. This means <span class="math inline">\(\bar{A}\)</span> takes place <span class="math inline">\(n-x\)</span> times.</p>
+<p>What is the probability for a certain sequence?</p>
+<p>Recall that probabilities for independent events can be multiplied.</p>
+<p><span class="math display">\[P(sequence) = p \times (1-p) \times p ... \times p\]</span></p>
+<p>For <span class="math inline">\(x\)</span> number of <span class="math inline">\(p\)</span> and <span class="math inline">\(n-x\)</span> number of <span class="math inline">\(1-p\)</span>,</p>
+<p><span class="math display">\[P(sequence) = p^{x} (1-p)^{n-x}\]</span></p>
+<p>The order of the sequence does not matter. The number of occurence matters. The number of ways that <span class="math inline">\(x\)</span> objects can be chosen from a total of <span class="math inline">\(n\)</span> objects, regardless of order is given by the bionomical coefficient.</p>
+</section>
+<section id="binomial-coefficient" class="level3">
+<h3 class="anchored" data-anchor-id="binomial-coefficient">Binomial coefficient</h3>
+<p>We want to find the number of ways that <span class="math inline">\(x\)</span> objects can be chosen from a total of <span class="math inline">\(n\)</span> objects, regardless of order</p>
+<p>Binomial coefficient: <span class="math inline">\(\binom nx\)</span></p>
+<p><span class="math display">\[\binom nx = \frac{n!}{x!(n-x)!}\]</span></p>
+<p>“x factorial”: <span class="math inline">\(x! = x \times (x-1) \times ... 2 \times 1\)</span></p>
+<p>Example: <span class="math inline">\(\binom 4 3 = \frac{4\times 3 \times 2 \times 1}{3 \times 2 \times 1 \times 1} = 4\)</span></p>
+</section>
+</section>
+<section id="binomial-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="binomial-distribution">Binomial distribution</h2>
+<p>The probability that the event <span class="math inline">\(A\)</span> occurs exact <span class="math inline">\(x\)</span> times is given by:</p>
+<p><span class="math display">\[P(X = x) = \binom n x p^{x}(1-p)^{n-x}\]</span></p>
+<p>i.e.&nbsp;the number of distributing <span class="math inline">\(x\)</span> events <span class="math inline">\(A\)</span> in a sequence of length <span class="math inline">\(n\)</span>, times the probability that one particular sequence with <span class="math inline">\(x\)</span> events <span class="math inline">\(A\)</span> occurs.</p>
+<p>For a binomial distribution, the mean (or expected value) is <span class="math inline">\(np\)</span> and the variance is <span class="math inline">\(np(1-p)\)</span>.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Example: Number of positive tests
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Let’s say <span class="math inline">\(p=0.15\)</span> is the probability that a person taking a test for a certain disease gets a positive result. A certain day, we are going to do <span class="math inline">\(n=8\)</span> such tests. The number of positive test in a sequence of of 8 test is random variable that is binomially distributed, often written Binom(8,0.15). This binomial distribution is represented below.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/binomial_n=8_p=015-01.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Binom(8,0.15)</figcaption><p></p>
+</figure>
+</div>
+<ul>
+<li>What is the probability that you get 2 or more positives out of 8?</li>
+</ul>
+<span class="math display">\[\begin{aligned}
+P(2\text{ or more}) &amp;= 1 - P(0 \text{ or } 1) = 1- (P(X=0) + P(X=1)) = \\
+                    &amp;= 1- (\binom 8 0 \cdot 0.15^0 \cdot 0.85^8 + \binom 8 1 \cdot 0.15^1 \cdot 0.85^7) =\\
+                    &amp;= 1- (1 \cdot 1 \cdot 0.27 + 8 \cdot 0.15 \cdot 0.32 ) = 0.346
+                
+\end{aligned}\]</span>
+<ul>
+<li>What is the expected number of positive tests (the mean)?</li>
+</ul>
+<p><span class="math display">\[
+\text{mean} = 8*0.15 =1.2
+\]</span></p>
+<ul>
+<li>What is the variance and the standard deviation?</li>
+</ul>
+<p><span class="math display">\[
+\text{variance} = 8*0.15-0.85=1.02
+\]</span></p>
+<p><span class="math display">\[
+\text{sd} = \sqrt{1.02}=1.01
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Example: Family with four kids
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We consider a family with 4 kids, with no monozygotic twins, so the gender of the kids are approximately independent. The probability of getting a boy in Norway is approximately 0.514. Using the formula for the binomial distribution we can compute the probability that that out of the 4 kids the number of boys is 0, 1, 2, 3 or 4 as follwos:</p>
+<p><span class="math display">\[
+P(X=0)=\binom 4 0 0.51^0 \cdot 0.486^4 = 0.0557
+\]</span></p>
+<p><span class="math display">\[
+P(X=1)=\binom 4 1 \cdot 0.51^1 \cdot 0.49^3 = 0.2360
+\]</span></p>
+<p><span class="math display">\[
+P(X=2)=\binom 4 2 \cdot 0.51^2 \cdot 0.49^2 = 0.3744
+\]</span></p>
+<p><span class="math display">\[
+P(X=3)=\binom 4 3 \cdot 0.51^3 \cdot 0.49^1 = 0.2639
+\]</span> <span class="math display">\[
+P(X=4)=\binom 4 4 \cdot 0.51^4 \cdot 0.49^0 = 0.0697
+\]</span></p>
+<p>In the following table we compare our theoretical estimates with real-life percentage distribution in 7745 American families with 4 kids.</p>
+<table class="table">
+<caption>Source: Aalen et al.</caption>
+<colgroup>
+<col style="width: 27%">
+<col style="width: 35%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Number of boys</th>
+<th>Binomial distribution (<span class="math inline">\(\%\)</span>)</th>
+<th>Observed distribution (<span class="math inline">\(\%\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>5.6</td>
+<td>5.3</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>23.6</td>
+<td>22.9</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>37.4</td>
+<td>38.3</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>26.4</td>
+<td>26.5</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>7.0</td>
+<td>6.9</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="continuous-probability-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="continuous-probability-distribution">Continuous probability distribution</h2>
+<p>Here we deal with <strong>continuous stochastic variables</strong>. In contrast to counting variables, continuous variables can take any (of the infinite) values within a given range. For instance, height, cholesterol and annual salary can be considered continuous variables.</p>
+<p>A probability distribution (or density) for a continuous variable <span class="math inline">\(X\)</span> is a function <span class="math inline">\(f\)</span> satistying the following:</p>
+<ul>
+<li><span class="math inline">\(f(x)\geq 0~~\text{for all}~~x~~\text{in}~~X\)</span>.</li>
+<li>The total area under the curve of <span class="math inline">\(f\)</span> is 1.</li>
+<li>The probability that <span class="math inline">\(x\)</span> is between two values <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, denoted <span class="math inline">\(P(a\leq x \leq b)\)</span> equals the area under the curve from <span class="math inline">\(a\)</span> to <span class="math inline">\(b\)</span>.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/prob_density_cont_variable.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Probability density for a continuous variable</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="normal-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="normal-distribution">Normal distribution</h2>
+<p>This is the most important probability distribution in statistics. It will be widely used in this course.</p>
+<p>Probability density function of the normal distribution has this formula:</p>
+<p><span class="math display">\[f(x) = \frac{1}{\sigma \sqrt{2\pi}} \text{exp}(- \frac{(x-\mu)^2}{2\sigma^2})\]</span></p>
+<ul>
+<li><p><span class="math inline">\(\mu\)</span> is the mean</p></li>
+<li><p><span class="math inline">\(\sigma\)</span> is the standard deviation</p></li>
+<li><p><span class="math inline">\(\text{exp}(x) = e^{x}\)</span></p></li>
+</ul>
+<section id="properties-of-the-normal-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="properties-of-the-normal-distribution">Properties of the normal distribution</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/properties_normal_dist.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<ul>
+<li><p>Symmetric, bell-shape</p></li>
+<li><p><span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> define the location and variation</p></li>
+<li><p>From the center (mean), going two standard deviations each way covers approximately 95% of the distribution</p></li>
+</ul>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Examples: location <span class="math inline">\(\mu\)</span>, variation <span class="math inline">\(\sigma\)</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/normal_dist_examples.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="standard-normal-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="standard-normal-distribution">Standard normal distribution</h3>
+<p>A normal distribution <span class="math inline">\(N(\mu, \sigma)\)</span> with <span class="math inline">\(\mu = 0, \sigma = 1\)</span></p>
+<p>Any normal disribution can be transformed into a standard normal distribution <span class="math inline">\(N(0, 1)\)</span> by substracting the meand and dividing by the standard deviation:</p>
+<p>if <span class="math inline">\(X \sim N(\mu, \sigma)\)</span>, then <span class="math inline">\(Y = \frac{X-\mu}{\sigma} \sim N(0, 1)\)</span>.</p>
+<p>Standard normal distribution probabilities are commonly presented in tables, so people can check them easily. But in this course we will learn how to compute them with R.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Examples: Birthweight
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This figure shows the birthweight of 189 newborns</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/birthweight_example_normal.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<ul>
+<li><p>Estimates of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> are, respectively, 2945g and 729g.</p></li>
+<li><p>How can we compute the proportion of weights larger than 4000g?</p></li>
+</ul>
+<p>We can either compute it directly in R as we will see in the R lab, or we can use the normal tables as follows:</p>
+<p><span class="math display">\[
+P(Y&gt;4000) = 1- P(X \leq 4000) = 1 - P(\frac{X-2945}{729} \leq 1.45)
+\]</span></p>
+<p>As the variable <span class="math inline">\(\frac{X-2945}{729}\)</span> is distributed according to the standard normal distribution, the probability <span class="math inline">\(P(\frac{X-2945}{729} \leq 1.45)\)</span> can be found in the tables, see Aalen p.328.</p>
+<p><span class="math display">\[
+\begin{aligned}
+P(Y&gt;4000) &amp; = 1- P(X \leq 4000) = 1 - P(\frac{X-2945}{729} \leq 1.45)\\
+          &amp; = 1 - 0.9265 = 0.0735
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="normal-approximation-to-the-binomial-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="normal-approximation-to-the-binomial-distribution">Normal approximation to the binomial distribution</h2>
+<p>Recall the binomial distribution,</p>
+<p><span class="math display">\[P(X = x) = \binom nx p^x (1-p)^{n-x}\]</span></p>
+<p>where <span class="math inline">\(\binom nx = \frac{n!}{x!(n-x)!}\)</span>, and <span class="math inline">\(\binom n 0 = 1\)</span></p>
+<p>For large <span class="math inline">\(n\)</span>, the binomial distribution can be approximated by the normal distribution.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/binomial_and_normal_approx.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Histograms of the binomial distribution with p=0.2 and different n.</figcaption><p></p>
+</figure>
+</div>
+<section id="section" class="level3">
+<h3 class="anchored" data-anchor-id="section"></h3>
+<p>To approximate a binomial distribution we use a normal distribution with:</p>
+<ul>
+<li><p><span class="math inline">\(\mu = np\)</span></p></li>
+<li><p><span class="math inline">\(\sigma = \sqrt{np(1-p)}\)</span></p></li>
+</ul>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Example: Number of boys out of 20 new borns
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><p><span class="math inline">\(n=20\)</span>, <span class="math inline">\(p=0.514\)</span></p></li>
+<li><p><span class="math inline">\(\mu=np=20 \cdot 0.514 = 10.28\)</span></p></li>
+<li><p><span class="math inline">\(\sigma = \sqrt{np(1-p)} = \sqrt{20 \cdot 0.514 \cdot 0.486} = 2.24\)</span></p></li>
+<li><p><span class="math inline">\(N(10.28,2.24)\)</span></p>
+<p><img src="images/example_binomial_normal.png" class="img-fluid"></p></li>
+</ul>
+</div>
+</div>
+</div>
+<p>Rule of thumb:</p>
+<p><span class="math inline">\(Binom(n, p) \rightarrow N(\mu, \sigma)\quad \text{for} \quad n \rightarrow \infty\)</span> if <span class="math inline">\(np \geq 5\)</span> and <span class="math inline">\(n(1-p) \geq 5\)</span></p>
+</section>
+<section id="central-limit-theorem-clt" class="level3">
+<h3 class="anchored" data-anchor-id="central-limit-theorem-clt">Central limit theorem CLT</h3>
+<p>CLT in simple words: the distribution of <strong>sample mean</strong> will be nearly normal regardless of what distribution the variable in the population is, as long as the sample size is large enough.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

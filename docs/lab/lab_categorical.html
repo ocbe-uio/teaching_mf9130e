@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.2.242">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Contingency table, chi-square test, proportions">
+<meta name="description" content="Proportions, contingency table, chi-square test">
 
 <title>MF9130E - V23 - Categorical data analysis</title>
 <style>
@@ -186,15 +186,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#examples-exercises-with-solution" id="toc-examples-exercises-with-solution" class="nav-link active" data-scroll-target="#examples-exercises-with-solution">Examples (exercises with solution)</a>
+  <li><a href="#short-summary" id="toc-short-summary" class="nav-link active" data-scroll-target="#short-summary">Short summary</a>
+  <ul class="collapse">
+  <li><a href="#proportions-for-one-group" id="toc-proportions-for-one-group" class="nav-link" data-scroll-target="#proportions-for-one-group">Proportions for one group</a></li>
+  <li><a href="#compare-two-proportions" id="toc-compare-two-proportions" class="nav-link" data-scroll-target="#compare-two-proportions">Compare two proportions</a></li>
+  <li><a href="#strength-of-association-statistical-tests" id="toc-strength-of-association-statistical-tests" class="nav-link" data-scroll-target="#strength-of-association-statistical-tests">Strength of association (statistical tests)</a></li>
+  </ul></li>
+  <li><a href="#examples-exercises-with-solution" id="toc-examples-exercises-with-solution" class="nav-link" data-scroll-target="#examples-exercises-with-solution">Examples (exercises with solution)</a>
   <ul class="collapse">
   <li><a href="#exercise-1-lung-function" id="toc-exercise-1-lung-function" class="nav-link" data-scroll-target="#exercise-1-lung-function">Exercise 1 (lung function)</a>
   <ul class="collapse">
   <li><a href="#a" id="toc-a" class="nav-link" data-scroll-target="#a">1a)</a></li>
   <li><a href="#b" id="toc-b" class="nav-link" data-scroll-target="#b">1b)</a></li>
   <li><a href="#c" id="toc-c" class="nav-link" data-scroll-target="#c">1c)</a></li>
-  <li><a href="#optional" id="toc-optional" class="nav-link" data-scroll-target="#optional">Optional</a></li>
+  <li><a href="#d" id="toc-d" class="nav-link" data-scroll-target="#d">1d)</a></li>
+  <li><a href="#optional-use-r-package-to-compute-rr-and-or" id="toc-optional-use-r-package-to-compute-rr-and-or" class="nav-link" data-scroll-target="#optional-use-r-package-to-compute-rr-and-or">Optional: use R package to compute RR and OR</a></li>
   </ul></li>
+  <li><a href="#exercise-2-birth-data" id="toc-exercise-2-birth-data" class="nav-link" data-scroll-target="#exercise-2-birth-data">Exercise 2 (birth data)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -209,7 +217,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div>
   <div class="description">
-    Contingency table, chi-square test, proportions
+    Proportions, contingency table, chi-square test
   </div>
 </div>
 
@@ -224,7 +232,132 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
+<p>Datasets</p>
+<ul>
+<li>Exercise 1: <code>PEFH98-english</code> (<a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.rda">rda link</a>, <a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.csv">csv link</a>)</li>
+<li>Exercise 2: <code>birth</code> (<a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/birth.rda">rda link</a>, <a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/birth.csv">csv link</a>)</li>
+</ul>
+<p><a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/5_categorical.R">R Script</a></p>
 <hr>
+<section id="short-summary" class="level1">
+<h1>Short summary</h1>
+<section id="proportions-for-one-group" class="level3">
+<h3 class="anchored" data-anchor-id="proportions-for-one-group">Proportions for one group</h3>
+<p>Sample proportion <span class="math inline">\(p = d/n\)</span></p>
+<ul>
+<li><span class="math inline">\(d\)</span> is the number who experience the outcome of interest (e.g.&nbsp;disease)</li>
+<li><span class="math inline">\(n\)</span> is the sample size.</li>
+</ul>
+<p>95% confidence interval for the population proportion:</p>
+<p><span class="math inline">\((p - 1.96 \times \sqrt{\frac{p (1-p)}{n}}, p + 1.96 \times \sqrt{\frac{p (1-p)}{n}})\)</span></p>
+<p>Hypothesis test for one proportion (equal to a pre-specified value): <strong>z-test</strong></p>
+</section>
+<section id="compare-two-proportions" class="level3">
+<h3 class="anchored" data-anchor-id="compare-two-proportions">Compare two proportions</h3>
+<p>Outcome: whether the subjects experience the outcome of interest</p>
+<p>Exposure:</p>
+<ul>
+<li>exposed to a risk factor; or treatment group (in clinical trials)</li>
+<li>unexposed to a risk factor; or placebo/control group</li>
+</ul>
+<p><strong>Contingency table</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 28%">
+<col style="width: 26%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Outcome (yes)</th>
+<th>Outcome (no)</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Exposed (group 1)</td>
+<td><strong>d1</strong> (d1/n1)</td>
+<td><strong>h1</strong> (h1/n1)</td>
+<td>n1</td>
+</tr>
+<tr class="even">
+<td>Unexposed (group 0)</td>
+<td><strong>d0</strong> (d0/n0)</td>
+<td><strong>h0</strong> (h0/n0)</td>
+<td>n0</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td>d</td>
+<td>h</td>
+<td>n</td>
+</tr>
+</tbody>
+</table>
+<p>Measures:</p>
+<ul>
+<li>Risk difference: difference of the risks (not commonly used)</li>
+<li><strong>Relative risk</strong> (risk ratio): ratio between <strong>risks</strong> of experiencing the outcome among exposed group, and unexposed group, <span class="math inline">\(\frac{d1/n1}{d0/n0} = \frac{d1/(d1+h1)}{d0/(d0+h0)}\)</span></li>
+<li><strong>Odds ratio</strong>: ratio between <strong>odds</strong> of experiencing the outcome, <span class="math inline">\(\frac{d1/h1}{d0/h0} = \frac{d1 \times h0}{d0 \times h1}\)</span></li>
+</ul>
+<p>Each has a confidence interval (not required to compute from formula).</p>
+</section>
+<section id="strength-of-association-statistical-tests" class="level3">
+<h3 class="anchored" data-anchor-id="strength-of-association-statistical-tests">Strength of association (statistical tests)</h3>
+<p><strong>Chi-squared test</strong> (pronounce: kai)</p>
+<ul>
+<li>Test statistic: <span class="math inline">\(\chi^2 = \sum_i \frac{(O_i - E_i)^2}{E_i}, d.f. = 1\)</span></li>
+<li><span class="math inline">\(O_i, E_i\)</span>: observed and expected values in <span class="math inline">\(i\)</span>th cell of the table</li>
+<li>Only returns a p-value (and test statistic); you should report effect estimates as well</li>
+<li>Check validity
+<ul>
+<li>overall total more than 40</li>
+<li>or, overall between 20 to 40, and all expected values are at least 5</li>
+</ul></li>
+</ul>
+<p>Exact test (for small dataset)</p>
+<ul>
+<li>Recommended when total less than 20; or smallest cell has expected number less than 5</li>
+</ul>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Chi-square test measures strength of association
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Chi-squared test does not distinguish between exposure and outcome variables. If you reverse the variable order, the test-statistic and p-value is exactly the same.</p>
+<p>Report risk ratio and/or odds ratio with confidence interval, along with p-value.</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># test proportion: whether 123 success in 1000 equals prob = 0.15</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> <span class="dv">123</span>, <span class="at">n =</span> <span class="dv">1000</span>, <span class="at">p =</span> <span class="fl">0.15</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">binom.test</span>(<span class="at">x =</span> <span class="dv">123</span>, <span class="at">n =</span> <span class="dv">1000</span>, <span class="at">p =</span> <span class="fl">0.15</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># create binary variable</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># compare your continuous values against threshold</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># assign "yes" to those higher; otherwise, assign "no"</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>high_value <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(your_values <span class="sc">&gt;</span> threshold, <span class="st">"yes"</span>, <span class="st">"no"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># count each category</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(x) <span class="co"># x is categorical! </span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># cross tabulation (2 variables)</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(x,y) <span class="co"># x, y are categorical</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># chi.squared test</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># tb is a 2 by 2 table (matrix) with counts</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(tb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
 <section id="examples-exercises-with-solution" class="level1">
 <h1>Examples (exercises with solution)</h1>
 <section id="exercise-1-lung-function" class="level2">
@@ -233,7 +366,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The variables are</p>
 <ul>
 <li>Age (years)</li>
-<li>Gender (1 is female, 2 is male)</li>
+<li>Gender (female, male)</li>
 <li>Height (cm)</li>
 <li>Weight (kg)</li>
 <li>PEF measured three times in a sitting position (pefsit1, pefsit2, pefsit3)</li>
@@ -246,51 +379,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="a">1a)</h3>
 <p>We investigate whether having a high value of <code>pefmean</code> is associated with <code>gender</code>. First, create a new variable <strong>highpef</strong> that indicates whether <code>pefmean</code> is above 500.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>lung_data <span class="ot">&lt;-</span> haven<span class="sc">::</span><span class="fu">read_dta</span>(<span class="st">'data/PEFH98-english.dta'</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># recode gender: female, male</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>lung_data<span class="sc">$</span>gender <span class="ot">&lt;-</span> <span class="fu">factor</span>(lung_data<span class="sc">$</span>gender, </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">'1'</span>,<span class="st">'2'</span>),</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                           <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">'female'</span>,<span class="st">'male'</span>)) </span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># head(lung_data)</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># examine variable pefmean</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># visualise the distribution</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lung_data<span class="sc">$</span>pefmean)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">500</span>, <span class="at">col =</span> <span class="st">'red'</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if you use rda data file: </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># load('./data/PEFH98-english.rda')</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># if you use csv: </span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>lung_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/PEFH98-english.csv'</span>, <span class="at">sep =</span> <span class="st">','</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># head(lung_data)</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># examine variable pefmean</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># visualise the distribution</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lung_data<span class="sc">$</span>pefmean)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">500</span>, <span class="at">col =</span> <span class="st">'red'</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="lab_categorical_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+<p><img src="lab_categorical_files/figure-html/cate-1a-1-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>There are multiple ways to do it. Here we show two of them.</p>
 <p>In option 1, we use the function <code>ifelse()</code>. It will create a binary vector, and fill in different output based on whether the condition was true or not.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># option 1</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># code new variable: highpef with cutoff = 500</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this is a binary variable, 1 means yes (higher than 500), 0 means no</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>highpef <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(lung_data<span class="sc">$</span>pefmean <span class="sc">&gt;</span> <span class="dv">500</span>, <span class="st">'1'</span>, <span class="st">'0'</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># check if it makes sense</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lung_data<span class="sc">$</span>pefmean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># option 1</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># code new variable: highpef with cutoff = 500</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this is a binary variable, 1 means yes (higher than 500), 0 means no</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>highpef <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(lung_data<span class="sc">$</span>pefmean <span class="sc">&gt;</span> <span class="dv">500</span>, <span class="st">'1'</span>, <span class="st">'0'</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># check if it makes sense</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lung_data<span class="sc">$</span>pefmean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 405.0000 491.6667 505.0000 513.3333 725.0000 602.5000</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(highpef)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(highpef)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "0" "0" "1" "1" "1" "1"</code></pre>
 </div>
 </div>
 <p>In option 2, we create a vector with a pre-specified value, then replace the elements for given indices.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># option 2 </span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># create a vector with all '0's</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># then set the elements above 500 in 'pefmean' as '1'</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># (replacement with index)</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(lung_data<span class="sc">$</span>pefmean) <span class="co"># 106</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>highpef_alt <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">'0'</span>, n) <span class="co"># repeat '0' 106 times</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>highpef_alt[lung_data<span class="sc">$</span>pefmean <span class="sc">&gt;</span> <span class="dv">500</span>] <span class="ot">&lt;-</span> <span class="st">'1'</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(highpef_alt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># option 2 </span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># create a vector with all '0's</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># then set the elements above 500 in 'pefmean' as '1'</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># (replacement with index)</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(lung_data<span class="sc">$</span>pefmean) <span class="co"># 106</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>highpef_alt <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">'0'</span>, n) <span class="co"># repeat '0' 106 times</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>highpef_alt[lung_data<span class="sc">$</span>pefmean <span class="sc">&gt;</span> <span class="dv">500</span>] <span class="ot">&lt;-</span> <span class="st">'1'</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(highpef_alt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "0" "0" "1" "1" "1" "1"</code></pre>
 </div>
@@ -298,28 +430,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="b" class="level3">
 <h3 class="anchored" data-anchor-id="b">1b)</h3>
-<p>We investigate the association between these two variables via an appropriate table analysis. Make a table of <code>highpef</code> vs <code>gender</code>, and carry out a chi-square analysis. Interpret your results.</p>
+<p>We investigate the association between these two variables via an appropriate table analysis. Make a table of <code>highpef</code> vs <code>gender</code>, which counts the number of subjects having each one of the four combinations in a 2 by 2 contingency table.</p>
+<p>You can do this with <code>table()</code> command: it counts how many observations equals to each unique value in the data. When the data takes 2 values (1/0, yes or no), <code>table()</code> counts the numbers in each category.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># take out gender variable so we don't need to use $ any more</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>gender <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>gender</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># we can count how many subjects are in each category for the two variables</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># put in two tables </span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># take out gender variable so we don't need to use $ any more</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>gender <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>gender</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># we can count how many subjects are in each category for the two variables</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>gender
 female   male 
     54     52 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(highpef)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(highpef)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>highpef
  0  1 
 54 51 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># now we count how many subjects are in the combinations </span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>table_gender_highpef <span class="ot">&lt;-</span> <span class="fu">table</span>(gender, highpef)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>table_gender_highpef</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Using <code>table()</code> for two variables produces the cross tabulation: <span class="math inline">\(2 \times 2\)</span> combinations. The first element is put as rows, and second element is put as columns.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># now we count how many subjects are in the combinations </span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>table_gender_highpef <span class="ot">&lt;-</span> <span class="fu">table</span>(gender, highpef)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>table_gender_highpef</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        highpef
 gender    0  1
@@ -327,54 +462,29 @@ gender    0  1
   male    6 46</code></pre>
 </div>
 </div>
-<p>We do a chi-square test with <code>chisq.test()</code> function. To read more about what is required as input, you can use <code>?chisq.test()</code> to get the documentation.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># note: </span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># we have not distinguished between exposure and outcome</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># by default, 'table' function puts the first input in rows (gender)</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># the order does not affect the result of chi-square test</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(table_gender_highpef)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Pearson's Chi-squared test with Yates' continuity correction
-
-data:  table_gender_highpef
-X-squared = 62.498, df = 1, p-value = 2.667e-15</code></pre>
-</div>
-</div>
 <div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Chi-square test measures strength of association
+Cross tabulation, order of exposure and outcome
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>It is worth pointing out that <code>chisq.test()</code> does not distinguish between exposure and outcome variables. If you reverse the variable order, the test-statistic and p-value is exactly the same.</p>
-<p>This is why you should always be clear in your mind what is your exposure and outcome, and report risk ratio and/or odds ratio.</p>
+<p>You should be aware that <code>table()</code> does not <em>automatically</em> produce the contingency table which puts exposed (group 1) for two outcomes at the first row; neither does it put positive outcome (outcome = yes) for exposed/unexposed group in the first column.</p>
+<p><code>table()</code> only counts the combination. It is up to you to make sense which numbers are <span class="math inline">\(d1, d0, h1, h0\)</span>!</p>
 </div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reverse the order of the two variables</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>table_highpef_gender <span class="ot">&lt;-</span> <span class="fu">table</span>(highpef, gender)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(table_highpef_gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Pearson's Chi-squared test with Yates' continuity correction
-
-data:  table_highpef_gender
-X-squared = 62.498, df = 1, p-value = 2.667e-15</code></pre>
 </div>
 </div>
 </section>
 <section id="c" class="level3">
 <h3 class="anchored" data-anchor-id="c">1c)</h3>
-<p>Compute risk ratio and odds ratio (only the point estimates). Here the exposure is <code>gender</code> (we assume that the reference group is <em>female</em>: unexposed), and outcome is <code>highpef</code>. Interpret your results.</p>
+<p>Compute <strong>risk ratio</strong> and <strong>odds ratio</strong> (only the point estimates, no confidence interval). Here the exposure is <code>gender</code> (we assume that the reference group is <em>female</em>: unexposed), and outcome is <code>highpef</code>. Interpret your results.</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -383,7 +493,7 @@ Risk ratio and odds ratio
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <table class="table">
 <thead>
@@ -396,18 +506,18 @@ Risk ratio and odds ratio
 <tbody>
 <tr class="odd">
 <td>Exposed</td>
-<td>a</td>
-<td>b</td>
+<td>d1</td>
+<td>h1</td>
 </tr>
 <tr class="even">
 <td>Unexposed</td>
-<td>c</td>
-<td>d</td>
+<td>d0</td>
+<td>h0</td>
 </tr>
 </tbody>
 </table>
-<p>Risk ratio: <span class="math inline">\(\frac{a/(a+b)}{c/(c+d)}\)</span></p>
-<p>Odds ratio: <span class="math inline">\(\frac{a/b}{c/d} = \frac{ad}{bc}\)</span></p>
+<p>Risk ratio: <span class="math inline">\(\frac{d1/(d1+h1)}{d0/(d0+h0)}\)</span></p>
+<p>Odds ratio: <span class="math inline">\(\frac{d1/h1}{d0/h0} = \frac{d1 \times h0}{d0 \times h1}\)</span></p>
 </div>
 </div>
 </div>
@@ -434,30 +544,96 @@ Risk ratio and odds ratio
 </tbody>
 </table>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first use formula (only point estimates)</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># risk ratio (relative risk)</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># risk in exposed / risk in unexposed</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>risk_exposed <span class="ot">&lt;-</span> <span class="dv">46</span><span class="sc">/</span>(<span class="dv">46</span><span class="sc">+</span><span class="dv">6</span>)  <span class="co"># 0.885</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>risk_unexposed <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">/</span>(<span class="dv">5</span><span class="sc">+</span><span class="dv">48</span>) <span class="co"># 0.094</span></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>rr <span class="ot">&lt;-</span> risk_exposed<span class="sc">/</span>risk_unexposed</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>rr  <span class="co"># 9.37</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first use formula (only point estimates)</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># risk ratio (relative risk)</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># risk in exposed / risk in unexposed</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>risk_exposed <span class="ot">&lt;-</span> <span class="dv">46</span><span class="sc">/</span>(<span class="dv">46</span><span class="sc">+</span><span class="dv">6</span>)  <span class="co"># 0.885</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>risk_unexposed <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">/</span>(<span class="dv">5</span><span class="sc">+</span><span class="dv">48</span>) <span class="co"># 0.094</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>rr <span class="ot">&lt;-</span> risk_exposed<span class="sc">/</span>risk_unexposed</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>rr  <span class="co"># 9.37</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 9.376923</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># odds ratio</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># odds of event in exposed group / odds of event in non-exposed group</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>odds_exposed <span class="ot">&lt;-</span> <span class="dv">46</span><span class="sc">/</span><span class="dv">6</span>  <span class="co"># 7.667</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>odds_unexposed <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">/</span><span class="dv">48</span>  <span class="co"># 0.104</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>or <span class="ot">&lt;-</span> odds_exposed<span class="sc">/</span>odds_unexposed</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>or <span class="co"># 73.6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># odds ratio</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># odds of event in exposed group / odds of event in non-exposed group</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>odds_exposed <span class="ot">&lt;-</span> <span class="dv">46</span><span class="sc">/</span><span class="dv">6</span>  <span class="co"># 7.667</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>odds_unexposed <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">/</span><span class="dv">48</span>  <span class="co"># 0.104</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>or <span class="ot">&lt;-</span> odds_exposed<span class="sc">/</span>odds_unexposed</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>or <span class="co"># 73.6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 73.6</code></pre>
 </div>
 </div>
 </section>
-<section id="optional" class="level3">
-<h3 class="anchored" data-anchor-id="optional">Optional</h3>
+<section id="d" class="level3">
+<h3 class="anchored" data-anchor-id="d">1d)</h3>
+<p>Carry out a chi-square analysis to assess the strength of association. Interpret your results.</p>
+<p>We do a chi-square test with <code>chisq.test()</code> function. To read more about what is required as input, you can use <code>?chisq.test()</code> to get the documentation.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># note: </span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># we have not distinguished between exposure and outcome</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># by default, 'table' function puts the first input in rows (gender)</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># the order does not affect the result of chi-square test</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(table_gender_highpef)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's Chi-squared test with Yates' continuity correction
+
+data:  table_gender_highpef
+X-squared = 62.498, df = 1, p-value = 2.667e-15</code></pre>
+</div>
+</div>
+<p>If you want to know what are the <strong>observed and expected numbers</strong> used for the chi-square test, you can create a variable (let us call it <code>ctest</code>), and access the elements using <code>$</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>ctest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(table_gender_highpef)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># you can extract elements of ctest using $</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>ctest<span class="sc">$</span>observed <span class="co"># observed data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        highpef
+gender    0  1
+  female 48  5
+  male    6 46</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>ctest<span class="sc">$</span>expected <span class="co"># expected data (under null, no association)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        highpef
+gender          0        1
+  female 27.25714 25.74286
+  male   26.74286 25.25714</code></pre>
+</div>
+</div>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Chi-square test measures strength of association
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It is worth pointing out that <code>chisq.test()</code> does not distinguish between exposure and outcome variables. If you reverse the variable order, the test-statistic and p-value is exactly the same.</p>
+<p>This is why you should always be clear in your mind what is your exposure and outcome, and report risk ratio and/or odds ratio.</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reverse the order of the two variables: highpef firsst, gender second</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>table_highpef_gender <span class="ot">&lt;-</span> <span class="fu">table</span>(highpef, gender)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(table_highpef_gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's Chi-squared test with Yates' continuity correction
+
+data:  table_highpef_gender
+X-squared = 62.498, df = 1, p-value = 2.667e-15</code></pre>
+</div>
+</div>
+</section>
+<section id="optional-use-r-package-to-compute-rr-and-or" class="level3">
+<h3 class="anchored" data-anchor-id="optional-use-r-package-to-compute-rr-and-or">Optional: use R package to compute RR and OR</h3>
+<p>(This is for people who are interested, and able to load additional R packages and read the documentations. If this is too much: skip it)</p>
 <p>You can verify if this is correct with some R packages that implement risk ratio and odds ratio.</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -477,19 +653,14 @@ Be careful with the input format when using packages
 </div>
 <p>The first function we use is <code>epitab</code> from <code>epitools</code> package.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages('epitools')</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># match the expected data format</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># col: outcome -, outcome +</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co"># row: exposure -, exposure +</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>tb1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">48</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">46</span>), <span class="at">byrow =</span> T, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>tb1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     [,1] [,2]
-[1,]   48    5
-[2,]    6   46</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>epitools<span class="sc">::</span><span class="fu">epitab</span>(tb1, <span class="at">method =</span> <span class="st">'riskratio'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages('epitools')</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># match the expected data format</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># col: outcome -, outcome +</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="co"># row: exposure -, exposure +</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>tb1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">48</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">46</span>), <span class="at">byrow =</span> T, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co"># tb1</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>epitools<span class="sc">::</span><span class="fu">epitab</span>(tb1, <span class="at">method =</span> <span class="st">'riskratio'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$tab
           Outcome
@@ -510,7 +681,7 @@ $conf.level
 $pvalue
 [1] "fisher.exact"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>epitools<span class="sc">::</span><span class="fu">epitab</span>(tb1, <span class="at">method =</span> <span class="st">'oddsratio'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>epitools<span class="sc">::</span><span class="fu">epitab</span>(tb1, <span class="at">method =</span> <span class="st">'oddsratio'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$tab
           Outcome
@@ -534,19 +705,14 @@ $pvalue
 </div>
 <p>The second function we use is <code>epi.2by2</code> from <code>epiR</code> package.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages('epiR')</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co"># match the expected data format</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># col: outcome +, outcome -</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="co"># row: exposure +, exposure -</span></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>tb2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">46</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">48</span>), <span class="at">byrow =</span> T, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>tb2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     [,1] [,2]
-[1,]   46    6
-[2,]    5   48</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>epiR<span class="sc">::</span><span class="fu">epi.2by2</span>(tb2, <span class="at">method =</span> <span class="st">'cohort.count'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages('epiR')</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># match the expected data format</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co"># col: outcome +, outcome -</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co"># row: exposure +, exposure -</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>tb2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">46</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">48</span>), <span class="at">byrow =</span> T, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co"># tb2</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>epiR<span class="sc">::</span><span class="fu">epi.2by2</span>(tb2, <span class="at">method =</span> <span class="st">'cohort.count'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             Outcome +    Outcome -      Total                 Inc risk *
 Exposed +           46            6         52     88.46 (76.56 to 95.65)
@@ -569,6 +735,327 @@ Fisher exact test that OR = 1: Pr&gt;chi2 = &lt;0.001
  * Outcomes per 100 population units </code></pre>
 </div>
 </div>
+</section>
+</section>
+<section id="exercise-2-birth-data" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2-birth-data">Exercise 2 (birth data)</h2>
+<p>We shall analyse the data set given in the file <code>birth.dta</code>. In a study in Massachusetts, USA, birth weight was measured for the children of 189 women. The main variable in the study was birth weight, <code>BWT</code>, which is an important indicator of the condition of a newborn child. Low birth weight (below 2500 g) may be a medical risk factor. A major question is whether smoking during pregnancy influences the birth weight. One has also studied whether a number of other factors are related to birth weight, such as hypertension in the mother.</p>
+<p>The variables of the study are</p>
+<ul>
+<li>Identification number (ID)</li>
+<li>Low birth weight</li>
+<li>Age of the mother (AGE)</li>
+<li>Weight (in pounds) at last menstruaal period (LWT)</li>
+<li>Ethnicity, 1 means White, 2 means African American, 3 meaans other (ETH)</li>
+<li>Smoking status, 1 means current smoker, 0 means not smoking during pregnancy (SMK)</li>
+<li>History of premature labbour, values 0, 1, 2… (PTL)</li>
+<li>History of hypertension, 1 is yes, 0 is no (HT)</li>
+<li>Uterine irritability, 1 is yes, 0 is no (UI)</li>
+<li>First trimester visits, values 0, 1, 2… (FTV)</li>
+<li>Third trimster visits, values 0, 1, 2… (TTV)</li>
+<li>Birth weight (BWT)</li>
+</ul>
+<section id="a-1" class="level4">
+<h4 class="anchored" data-anchor-id="a-1">2a)</h4>
+<p>Does smoking influence the birth weight of a baby?</p>
+<p>Make a histogram and a box plot, and find the median and mean for birth weight in grams (<code>bwt</code>) for the two groups of mothers: one group that smokes, and one that does not smoke durinng the pregnancy. (Hint: use variable <code>smk</code> for this task)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if you are using .rda: click on the data icon</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>birth <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/birth.csv'</span>, <span class="at">sep =</span> <span class="st">','</span>)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(birth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  id         low age lwt   eth       smk ptl  ht  ui fvt ttv  bwt
+1  4 bwt &lt;= 2500  28 120 other    smoker   1  no yes   0   0  709
+2 10 bwt &lt;= 2500  29 130 white nonsmoker   0  no yes   2   0 1021
+3 11 bwt &lt;= 2500  34 187 black    smoker   0 yes  no   0   0 1135
+4 13 bwt &lt;= 2500  25 105 other nonsmoker   1 yes  no   0   0 1330
+5 15 bwt &lt;= 2500  25  85 other nonsmoker   0  no yes   0   4 1474
+6 16 bwt &lt;= 2500  27 150 other nonsmoker   0  no  no   0   5 1588</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># take the variables</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>birthweight <span class="ot">&lt;-</span> birth<span class="sc">$</span>bwt</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>smoker <span class="ot">&lt;-</span> birth<span class="sc">$</span>smk</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co"># get to know how many smoker and non-smoker</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(smoker)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>smoker
+nonsmoker    smoker 
+      115        74 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># histogram for all (both categories together)</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(birthweight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab_categorical_files/figure-html/cate-2a-1-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># separate birthweight based on smoking</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>bw_smoker <span class="ot">&lt;-</span> birthweight[smoker <span class="sc">==</span> <span class="st">'smoker'</span>]</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>bw_nonsmoker <span class="ot">&lt;-</span> birthweight[smoker <span class="sc">==</span> <span class="st">'nonsmoker'</span>]</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="co"># can produce summary statistics</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(bw_smoker)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    709    2370    2776    2773    3246    4238 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(bw_nonsmoker)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   1021    2509    3100    3055    3622    4990 </code></pre>
+</div>
+</div>
+<p>Visualise with histogram and boxplot</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co"># histogram for smokers</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co"># (you can try to add sample means for each group)</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co"># set the range for axis limits so they look comparable</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(bw_smoker, <span class="at">main =</span> <span class="st">'birthweight: smoker mothers'</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">600</span>, <span class="dv">5000</span>))</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(bw_nonsmoker, <span class="at">main =</span> <span class="st">'birthweight: nonsmoker mothers'</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">600</span>, <span class="dv">5000</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab_categorical_files/figure-html/cate-2a-2-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># boxplot </span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(bw_smoker, <span class="at">main =</span> <span class="st">'birthweight: smoker mothers'</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">600</span>, <span class="dv">5000</span>))</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(bw_nonsmoker, <span class="at">main =</span> <span class="st">'birthweight: nonsmoker mothers'</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">600</span>, <span class="dv">5000</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab_categorical_files/figure-html/cate-2a-2-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>From the histograms and boxplots, you can spot that there seems to be slightly smaller values of baby birth weight for smoker mothers; although we can not draw a concrete conclusion by looking at the graphs. Therefore, you should carry out a hypothesis test to be more certain.</p>
+</section>
+<section id="b-1" class="level4">
+<h4 class="anchored" data-anchor-id="b-1">2b)</h4>
+<p>Are the distributions for the two groups normal? Can we conclude that smoking has an effect on the weight of a newborn? Use a t-test.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(bw_smoker, <span class="at">main =</span> <span class="st">'QQplot: birthweight: smoker mothers'</span>)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(bw_smoker)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab_categorical_files/figure-html/cate-2b-1-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(bw_nonsmoker, <span class="at">main =</span> <span class="st">'QQplot: birthweight: smoker mothers'</span>)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(bw_nonsmoker)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab_categorical_files/figure-html/cate-2b-1-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># two samples t-test </span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(bw_smoker, bw_nonsmoker, <span class="at">paired =</span> F) <span class="co"># welch</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  bw_smoker and bw_nonsmoker
+t = -2.7095, df = 170, p-value = 0.00743
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -486.95979  -76.46677
+sample estimates:
+mean of x mean of y 
+ 2773.243  3054.957 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(bw_smoker, bw_nonsmoker, <span class="at">paired =</span> F, <span class="at">var.equal =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Two Sample t-test
+
+data:  bw_smoker and bw_nonsmoker
+t = -2.6336, df = 187, p-value = 0.009156
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -492.73382  -70.69274
+sample estimates:
+mean of x mean of y 
+ 2773.243  3054.957 </code></pre>
+</div>
+</div>
+<p>From the Q-Q plots, you can consider that the normality assumption is fulfilled.</p>
+<p>The t-test (either Welch’s two sample t-test; or two sample t-test for equal variances) indicates that there is significant difference between the two groups. Birth weight of babies from smoker mothers are significantly lower than those from non-smoker mothers (p=0.009 if using the second test).</p>
+</section>
+<section id="c-1" class="level4">
+<h4 class="anchored" data-anchor-id="c-1">2c)</h4>
+<p>Do mothers of <strong>hypertension</strong> have a tendency to have babies with a lower birth weight? (The variable for hypertension is <code>HT</code>)</p>
+<p>Make a histogram of birth weight for the two groups of mothers with and without hypertension. What do you observe?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># take out the variables</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="co"># head(birth)</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>hypertension <span class="ot">&lt;-</span> birth<span class="sc">$</span>ht</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="co"># separate birthweight based on hypertension</span></span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>bw_hypertension <span class="ot">&lt;-</span> birthweight[hypertension <span class="sc">==</span> <span class="st">'yes'</span>]</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>bw_nohypertension <span class="ot">&lt;-</span> birthweight[hypertension <span class="sc">==</span> <span class="st">'no'</span>]</span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a><span class="co"># can produce summary statistics</span></span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(bw_hypertension)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   1135    1775    2495    2537    3232    3790 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(bw_nohypertension)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    709    2424    2992    2972    3475    4990 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="co"># can set an x axis limit so they are comparable</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(bw_hypertension, <span class="at">main =</span> <span class="st">'birthweight: hypertension'</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">600</span>, <span class="dv">5000</span>))</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(bw_nohypertension, <span class="at">main =</span> <span class="st">'birthweight: no hypertension'</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">600</span>, <span class="dv">5000</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab_categorical_files/figure-html/cate-2c-1-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># boxplot </span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(bw_hypertension, <span class="at">main =</span> <span class="st">'birthweight: hypertension'</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">600</span>, <span class="dv">5000</span>))</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(bw_nohypertension, <span class="at">main =</span> <span class="st">'birthweight: no hypertension'</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">600</span>, <span class="dv">5000</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab_categorical_files/figure-html/cate-2c-1-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>You can read (from the y-axis of histograms) that baby birth weight for hypertension mother group have very few observations compared to those with no hypertension mothers. This can not be spotted in the boxplot.</p>
+<p><em>This suggests that when you carry out exploratory analysis, it’s always useful to do it in different ways.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check normality</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(bw_hypertension, <span class="at">main =</span> <span class="st">'birthweight: hypertension'</span>)</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(bw_hypertension)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab_categorical_files/figure-html/cate-2c-2-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(bw_nohypertension, <span class="at">main =</span> <span class="st">'birthweight: no hypertension'</span>)</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(bw_nohypertension)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab_categorical_files/figure-html/cate-2c-2-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># can check the standard deviation to see if you need welch or equal variance t-test</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">sd</span>(bw_hypertension), <span class="fu">sd</span>(bw_nohypertension))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 917.3405 709.2265</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># two samples t-test </span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="co"># t.test(bw_hypertension, bw_nohypertension, paired = F) # welch</span></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(bw_hypertension, bw_nohypertension, <span class="at">paired =</span> F, <span class="at">var.equal =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Two Sample t-test
+
+data:  bw_hypertension and bw_nohypertension
+t = -2.0192, df = 187, p-value = 0.04489
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -861.09734  -10.02413
+sample estimates:
+mean of x mean of y 
+ 2536.750  2972.311 </code></pre>
+</div>
+</div>
+<p>The data in hypertension group (even though scarce) fall roughly on the straight line in the QQ plot. The data on the no hyper tension group (much more data) also fall on the straight line; this suggests that the normal assumption can be assumed to be fulfilled.</p>
+<p>We have checked whether the variances between the two groups are very different (rule of thumb: twice standard deviation). We can see that they do not differ by that much; so we can use the t-test with equal variance.</p>
+</section>
+<section id="d-1" class="level4">
+<h4 class="anchored" data-anchor-id="d-1">2d)</h4>
+<p>Analyse the effect of smoking on birth weight in a table (categorical analysis): compute the relative risk (risk ratio) and carry out a test to assess the strength of association.</p>
+<p>Also do it for hypertension (instead of smoking).</p>
+<p>What can you conclude?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># smoking on birth weight</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="co"># cross tabulation</span></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>low_bw <span class="ot">&lt;-</span> birth<span class="sc">$</span>low</span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(low_bw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>low_bw
+bwt &lt;= 2500  bwt &gt; 2500 
+         59         130 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># distinguish case/non case, exposed/unexposed on your own!</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>tb_bw_smk <span class="ot">&lt;-</span> <span class="fu">table</span>(smoker, low_bw)</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>tb_bw_smk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           low_bw
+smoker      bwt &lt;= 2500 bwt &gt; 2500
+  nonsmoker          29         86
+  smoker             30         44</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute your risk ratio!</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(tb_bw_smk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's Chi-squared test with Yates' continuity correction
+
+data:  tb_bw_smk
+X-squared = 4.2359, df = 1, p-value = 0.03958</code></pre>
+</div>
+</div>
+<p>Exposure variable is smoker, and outcome is low birth weight of baby.</p>
+<p>Risk in exposed group (smoker): 30/(30+44) = 0.405</p>
+<p>Risk in unexposed group (nonsmoker): 29/(29+86) = 0.252</p>
+<p>Relative risk (risk ratio): 0.405/0.252 = 1.61</p>
+<p>With the chi-square test which has a p value of 0.03, you can say that there is evidence that smoking during preganancy affects the risk of low birth weight. (We have not computed the confidence interval here, but you should report them. Use an R package)</p>
+<hr>
+<p>(Optional)</p>
+<p>The situation for hypertension is slightly tricker.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># hypertension</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(hypertension)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>hypertension
+ no yes 
+177  12 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cross tabulation</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="co"># distinguish case/non case, exposed/unexposed on your own!</span></span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>tb_bw_ht <span class="ot">&lt;-</span> <span class="fu">table</span>(hypertension, low_bw)</span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>tb_bw_ht</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            low_bw
+hypertension bwt &lt;= 2500 bwt &gt; 2500
+         no           52        125
+         yes           7          5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute your risk ratio!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Exposure variable is hypertension, and outcome is low birth weight of baby.</p>
+<p>Risk in exposed group (hypertension): 7/(7+5) = 0.583</p>
+<p>Risk in unexposed group (no hypertension): 52/(52+125) = 0.293</p>
+<p>Relative risk (risk ratio): 0.405/0.252 = 1.99</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># carry out a chi-square test</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(tb_bw_ht)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in chisq.test(tb_bw_ht): Chi-squared approximation may be incorrect</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's Chi-squared test with Yates' continuity correction
+
+data:  tb_bw_ht
+X-squared = 3.1431, df = 1, p-value = 0.07625</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># can specify the computation: </span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(tb_bw_ht, <span class="at">correct =</span> F) <span class="co"># remove the continuity correction</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in chisq.test(tb_bw_ht, correct = F): Chi-squared approximation may be
+incorrect</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's Chi-squared test
+
+data:  tb_bw_ht
+X-squared = 4.388, df = 1, p-value = 0.03619</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(tb_bw_ht, <span class="at">simulate.p.value =</span> T) <span class="co"># simulate p values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's Chi-squared test with simulated p-value (based on 2000
+    replicates)
+
+data:  tb_bw_ht
+X-squared = 4.388, df = NA, p-value = 0.05197</code></pre>
+</div>
+</div>
+<p>You can see that the conclusion for this chi-square test is problematic, as the data is very imbalanced. The p-value is around 0.05, so you are not able to reject the null hypothesis (of no association) with full confidence. You should report your confidence interval along with the point estimate, and also report your p-value even if it is not significantly small.</p>
+<p>You should also double check with results computed in R packages that have implemented relative risk.</p>
 
 
 </section>

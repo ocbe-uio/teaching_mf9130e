@@ -111,26 +111,183 @@ summary(hosp_narrow$n_hospital_main_cause)
 
 
 
-# lung data ----
+# _______ week 1 _____ ----
+# PEFH98 ----
 # prepare a csv version
 lung_data <- haven::read_dta('./lab/data/PEFH98-english.dta')
 lung_data
+
 
 # 1 is female, 2 is male  
 # here just to make it consistent with original dataset
 lung_data$gender <- factor(lung_data$gender, 
                            levels = c('1','2'),
-                           labels = c('1', '2')) 
+                           labels = c('female', 'male')) 
 
+lung_data <- as.data.frame(lung_data)
+lung_data
+save(lung_data, file = './lab/data/PEFH98-english.rda')
 
-write.csv(lung_data, file = './lab/data/PEFH98-english.csv', 
-          row.names = F)
+load('./lab/data/PEFH98-english.rda')
+
+write.csv(lung_data, file = './lab/data/PEFH98-english.csv', row.names = F)
 
 tt <- read.csv('./lab/data/PEFH98-english.csv', sep = ',')
 tt
 
 str(tt)
-# looks like it'll need some recoding on gender anyway
 
 
+# birth ----
+
+birth <- haven::read_dta('./lab/data/birth.dta')
+head(birth)
+tail(birth)
+
+
+# some processing 
+birth$low <- factor(birth$low, 
+                    levels = c('0','1'),
+                    labels = c('bwt > 2500', 'bwt <= 2500')) 
+
+birth$eth <- factor(birth$eth, 
+                    levels = c('1','2','3'),
+                    labels = c('white', 'black', 'other')) 
+
+
+birth$smk <- factor(birth$smk, 
+                    levels = c(0, 1), 
+                    labels = c('nonsmoker', 'smoker'))
+
+
+birth$ht <- factor(birth$ht, 
+                   levels = c(0, 1), 
+                   labels = c('no', 'yes'))
+
+
+birth$ui <- factor(birth$ui, 
+                   levels = c(0, 1), 
+                   labels = c('no', 'yes'))
+
+birth <- as.data.frame(birth)
+birth
+
+
+# save two copies
+save(birth, file = './lab/data/birth.rda')
+write.csv(birth, file = './lab/data/birth.csv', row.names = F)
+
+
+
+# _______ week 2 ______ -----
+
+# antibody ----
+
+antibody
+
+# remove diff
+antibody <- antibody[, 1:2]
+head(antibody)
+
+# save
+save(antibody, file = './lab/data/antibody.rda')
+write.csv(antibody, file = './lab/data/antibody.csv', row.names = F)
+
+
+# nausea ----
+
+head(nausea)
+
+# save 
+save(nausea, file = './lab/data/nausea.rda')
+write.csv(nausea, file = './lab/data/nausea.csv', row.names = F)
+
+
+
+
+# bp ----
+
+bp
+
+# save two copies
+save(bp, file = './lab/data/bp.rda')
+write.csv(bp, file = './lab/data/bp.csv', row.names = F)
+
+
+
+
+
+# melanoma ----
+
+melanoma <- haven::read_dta('./lab/data/melanoma.dta')
+# melanoma <- melanoma[, 1:8]
+
+head(melanoma)
+colnames(melanoma)
+
+melanoma$status <- factor(melanoma$status, 
+                    levels = c('1','2','4'),
+                    labels = c('1', '2', '4')
+                    # labels = c('Death from disease',
+                     #          'Censored', 
+                    #           'Deatth from other causes')
+                    ) 
+
+melanoma$ulceration <- factor(melanoma$ulceration, 
+                              levels = c('1', '2'), 
+                              labels = c('Yes', 'No'))
+
+
+melanoma$gender <- factor(melanoma$gender, 
+                          levels = c('1', '2'), 
+                          labels = c('f', 'm'))
+
+melanoma$grouped_tumor_thickness <- factor(melanoma$grouped_tumor_thickness, 
+                                           levels = c('1', '2', '3'),
+                                           labels = c('0-2 mm', '2-5 mm', '5+ mm'))
+
+head(melanoma)
+save(melanoma, file = './lab/data/melanoma.rda')
+write.csv(melanoma, file = './lab/data/melanoma.csv', row.names = F)
+
+
+
+# haven::read_dta('./lab/data/framingham.dta')
+# liggetid ----
+liggetid <- haven::read_dta('./lab/data/liggetid.dta')
+liggetid
+
+
+liggetid$kjoenn <- factor(liggetid$kjoenn, 
+                          levels = c('0', '1'), 
+                          labels = c('kvinne', 'mann'))
+
+
+head(liggetid)
+write.csv(liggetid, file = './lab/data/liggetid.csv', 
+          row.names = F)
+
+
+tt <- read.csv('./lab/data/liggetid.csv', sep = ',')
+head(tt)
+
+
+
+# framingham ----
+head(framingham)
+framingham$firstchd
+
+framingham$smoke <- factor(framingham$smoke, 
+                          levels = c('0', '1'), 
+                          labels = c('non-smoking', 'smoking'))
+
+
+framingham$firstchd <- factor(framingham$firstchd, 
+                           levels = c('0', '1'), 
+                           labels = c('no-evidence', 'evidence'))
+
+
+write.csv(framingham, file = './lab/data/framingham.csv', 
+          row.names = F)
+save(framingham, file = './lab/data/framingham.rda')
 

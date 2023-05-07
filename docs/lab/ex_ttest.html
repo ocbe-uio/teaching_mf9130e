@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.2.242">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -21,6 +21,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -153,6 +216,13 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p>Datasets</p>
+<ul>
+<li>Exercise 1: no data needed, we type in data directly.</li>
+<li>Exercise 2: <code>PEFH98-english</code> (<a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.rda">rda link</a>, <a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.csv">csv link</a>)</li>
+</ul>
+<p><a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/4_ttest.R">R script</a></p>
+<hr>
 <section id="exercise-1-heart" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-1-heart">Exercise 1 (heart)</h2>
 <p>The weight of the hearts of 20 men with age between 25 and 55 years have been evaluated, and is given below (in ounces, 1 ounce = 28g)</p>
@@ -177,19 +247,54 @@ Formula: mean
 </section>
 <section id="b" class="level4">
 <h4 class="anchored" data-anchor-id="b">1b)</h4>
-<p>Compute the 95% confidence interval for the mean. Verify your computed confidence interval with R function <code>t.test(heart)</code>.</p>
+<p>Go through the procedure of computing the 95% confidence interval for the sample mean from the formula. Verify the computed confidence interval with R function <code>t.test(heart)</code>.</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
 Formula: confidence interval for the mean
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-
+<p>95% confidence interval for the sample mean <span class="math inline">\(\bar{X}\)</span> is</p>
+<p><span class="math inline">\((\bar{X} - t' \times \frac{s}{\sqrt{n}}, \bar{X} + t' \times \frac{s}{\sqrt{n}})\)</span></p>
+<p>where <span class="math inline">\(s\)</span> is the (empirical) standard deviation, <span class="math inline">\(s^2 = \frac{\sum_{i=1}^n (X_i - \bar{X})^2}{n-1}\)</span></p>
+<p>(<span class="math inline">\(t' = 2.09\)</span> for <span class="math inline">\(n = 20\)</span>)</p>
 </div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sample size n of this data</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">20</span>  <span class="co"># length(heart)</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. compute (empirical) standard deviation</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># formula (sd): sqrt(1/(n-1) * (sum(xi - xbar)^2))</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">1</span><span class="sc">/</span>(n<span class="dv">-1</span>) <span class="sc">*</span> (<span class="fu">sum</span>((heart <span class="sc">-</span> <span class="fu">mean</span>(heart))<span class="sc">^</span><span class="dv">2</span>))) <span class="co"># be careful with brackets</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># alternatively, use sd() function. these two numbers should match</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(heart) <span class="co"># 1.779</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. 95% CI (quantile from t-distribution)</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># formula: CI = xbar +- t(n-1, alpha/2) * sd/sqrt(n)</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># translate into format R can understand:</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>t025 <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="at">p =</span> <span class="fl">0.025</span>, <span class="at">df =</span> n<span class="dv">-1</span>) <span class="co"># -2.09</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>t975 <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="at">p =</span> <span class="fl">0.975</span>, <span class="at">df =</span> n<span class="dv">-1</span>) <span class="co"># 2.09</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(t025, t975) <span class="co"># symmetric around 0, so can pick any one</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># plug in the formula</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>ci_lower <span class="ot">&lt;-</span> <span class="fu">mean</span>(heart) <span class="sc">-</span> t975 <span class="sc">*</span> <span class="fu">sd</span>(heart)<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>ci_upper <span class="ot">&lt;-</span> <span class="fu">mean</span>(heart) <span class="sc">+</span> t975 <span class="sc">*</span> <span class="fu">sd</span>(heart)<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(ci_lower, ci_upper)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="co"># verify by doing a one-sample t-test</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co"># by default, it tests whether mean is 0</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(heart)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="c" class="level4">
@@ -228,15 +333,14 @@ Lung function data
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This is the same dataset we have used in EDA (part I) from two days ago. You can use either <code>PEFH98-english.dta</code>, or <code>PEFH98-english.csv</code> data.</p>
+<p>This is the same dataset we have used in EDA (part I) from two days ago. You can use either <code>PEFH98-english.rda</code>, or <code>PEFH98-english.csv</code> data.</p>
 <p>If you forgot how to load the data, you can refresh your knowledge by reading these <a href="../lab/lab_eda_part1.html">notes</a> (Example 2)</p>
 </div>
 </div>
 <section id="a-1" class="level4">
 <h4 class="anchored" data-anchor-id="a-1">2a)</h4>
-<p>Open <code>PEFH98-english.dta</code> (or <code>PEFH98-english.csv</code>) into R.</p>
-<p>Pay attention to how <code>gender</code> is coded. We might have to modify it.</p>
-<p>Determine the mean height for females. Calculate the standard deviation and a 95% confidence interval. How would you comment on this result?</p>
+<p>Open <code>PEFH98-english</code> (in either <code>csv</code> or <code>rda</code> format) into R.</p>
+<p>Determine the mean height for females. Calculate the standard deviation and a 95% confidence interval.</p>
 <p>Do the same for males.</p>
 </section>
 <section id="b-1" class="level4">
@@ -275,7 +379,7 @@ Expand to read hint
 </section>
 <section id="f" class="level4">
 <h4 class="anchored" data-anchor-id="f">2f)</h4>
-<p>Carry out a t-test to evaluate whether <code>pefmean</code> is signinficantly different for men and women.</p>
+<p>Carry out a t-test to evaluate whether <code>pefmean</code> is significantly different for men and women.</p>
 <p>Interpret the results, and formulate a conclusion including p-value and confidence interval.</p>
 </section>
 <section id="g" class="level4">

@@ -191,9 +191,59 @@ plot(x,y)  # scatter plot of x, y
 
 #### t-test
 
+```{r}
+#| label: t-test
+#| echo: true
+#| eval: false
 
-#### chi-square tests
+# one sample (default tests against 0, conf.level 0.95)
+t.test(x)
 
+# one sample
+t.test(x, mu = your_value, conf.level = 0.95)
+
+# paired samples
+t.test(x1, x2, paired = T, conf.level = 0.95)
+t.test(x1-x2, conf.level = 0.95) # equivalent to one sample
+
+# two independent samples
+t.test(x, y, conf.level = 0.95)
+
+# check normal assumption
+qqnorm(x)
+qqline(x)
+```
+
+
+
+
+
+#### z-test, chi-square tests and table analysis
+
+```{r}
+#| label: proportion, chisq
+#| echo: true
+#| eval: false
+
+# test proportion: whether 123 success in 1000 equals prob = 0.15
+prop.test(x = 123, n = 1000, p = 0.15)
+binom.test(x = 123, n = 1000, p = 0.15)
+
+# create binary variable
+# compare your continuous values against threshold
+# assign "yes" to those higher; otherwise, assign "no"
+high_value <- ifelse(your_values > threshold, "yes", "no")
+
+# count each category
+table(x) # x is categorical! 
+
+# cross tabulation (2 variables)
+table(x,y) # x, y are categorical
+
+# chi.squared test
+# tb is a 2 by 2 table (matrix) with counts
+chisq.test(tb)
+```
 
 
 --------------

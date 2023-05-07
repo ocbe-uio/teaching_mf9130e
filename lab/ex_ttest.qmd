@@ -8,6 +8,16 @@ format:
 editor: source
 ---
 
+Datasets
+
+* Exercise 1: no data needed, we type in data directly.
+* Exercise 2: `PEFH98-english` ([rda link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.rda), [csv link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.csv))
+
+[R script](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/4_ttest.R)
+
+------------------
+
+
 ## Exercise 1 (heart)
 
 The weight of the hearts of 20 men with age between 25 and 55 years have been evaluated, and is given below (in ounces, 1 ounce = 28g) 
@@ -31,14 +41,53 @@ The mean of data $X = (x_1, x_2, ... x_n)$, $\bar{x} = \frac{1}{n}\sum_{i = 1}^N
 
 #### 1b) 
 
-Compute the 95% confidence interval for the mean. Verify your computed confidence interval with R function `t.test(heart)`.
+Go through the procedure of computing the 95% confidence interval for the sample mean from the formula. Verify the computed confidence interval with R function `t.test(heart)`.
 
-::: {.callout-tip}
+::: {.callout-tip collapse="true"}
 ## Formula: confidence interval for the mean
 
+95% confidence interval for the sample mean $\bar{X}$ is
 
+$(\bar{X} - t' \times \frac{s}{\sqrt{n}}, \bar{X} + t' \times \frac{s}{\sqrt{n}})$
+
+where $s$ is the (empirical) standard deviation, $s^2 = \frac{\sum_{i=1}^n (X_i - \bar{X})^2}{n-1}$
+
+($t' = 2.09$ for $n = 20$)
 :::
 
+```{r}
+#| label: ttest-1b-1ex
+#| echo: true
+#| eval: false
+
+# sample size n of this data
+n <- 20  # length(heart)
+
+# 1. compute (empirical) standard deviation
+# formula (sd): sqrt(1/(n-1) * (sum(xi - xbar)^2))
+
+sqrt(1/(n-1) * (sum((heart - mean(heart))^2))) # be careful with brackets
+
+# alternatively, use sd() function. these two numbers should match
+sd(heart) # 1.779
+
+# 2. 95% CI (quantile from t-distribution)
+# formula: CI = xbar +- t(n-1, alpha/2) * sd/sqrt(n)
+# translate into format R can understand:
+
+t025 <- qt(p = 0.025, df = n-1) # -2.09
+t975 <- qt(p = 0.975, df = n-1) # 2.09
+c(t025, t975) # symmetric around 0, so can pick any one
+
+# plug in the formula
+ci_lower <- mean(heart) - t975 * sd(heart)/sqrt(n)
+ci_upper <- mean(heart) + t975 * sd(heart)/sqrt(n)
+c(ci_lower, ci_upper)
+
+# verify by doing a one-sample t-test
+# by default, it tests whether mean is 0
+t.test(heart)
+```
 
 
 #### 1c)
@@ -79,7 +128,7 @@ The variables are
 ::: {.callout-tip}
 ## Lung function data
 
-This is the same dataset we have used in EDA (part I) from two days ago. You can use either `PEFH98-english.dta`, or `PEFH98-english.csv` data. 
+This is the same dataset we have used in EDA (part I) from two days ago. You can use either `PEFH98-english.rda`, or `PEFH98-english.csv` data. 
 
 If you forgot how to load the data, you can refresh your knowledge by reading these [notes](lab_eda_part1.qmd) (Example 2)
 :::
@@ -87,11 +136,9 @@ If you forgot how to load the data, you can refresh your knowledge by reading th
 
 #### 2a) 
 
-Open `PEFH98-english.dta` (or `PEFH98-english.csv`) into R. 
+Open `PEFH98-english` (in either `csv` or `rda` format) into R. 
 
-Pay attention to how `gender` is coded. We might have to modify it. 
-
-Determine the mean height for females. Calculate the standard deviation and a 95% confidence interval. How would you comment on this result?
+Determine the mean height for females. Calculate the standard deviation and a 95% confidence interval. 
 
 Do the same for males.
 
@@ -124,7 +171,7 @@ You can create a new variable called `difference` by `difference <- pefsitm - pe
 
 #### 2f) 
 
-Carry out a t-test to evaluate whether `pefmean` is signinficantly different for men and women. 
+Carry out a t-test to evaluate whether `pefmean` is significantly different for men and women. 
 
 Interpret the results, and formulate a conclusion including p-value and confidence interval.
 

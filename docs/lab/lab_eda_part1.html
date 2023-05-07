@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.2.242">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -245,10 +245,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <p>Datasets</p>
 <ul>
-<li><code>penguins_complete.csv</code> (<a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/penguins_complete.csv">link</a>)</li>
-<li><code>PEFH98-english.csv</code> (<a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.csv">link</a>)</li>
+<li>Explore a dataset: <code>penguins_complete</code> (<a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/penguins_complete.csv">csv link</a>)</li>
+<li>Exercise 1: no data, we type in data directly</li>
+<li>Exercise 2: <code>PEFH98-english</code> (<a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.rda">rda link</a>, <a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.csv">csv link</a>)</li>
 </ul>
-<p>R script (<a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/2_eda_part1.R">link</a>)</p>
+<p><a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/2_eda_part1.R">R script</a></p>
 <hr>
 <section id="explore-a-dataset" class="level1">
 <h1>Explore a dataset</h1>
@@ -587,31 +588,12 @@ species     Biscoe Dream Torgersen
 <p>Pay attention to how <code>gender</code> is coded. We might have to modify it.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># locate your datafile, set the path to your data</span></span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="co"># lung_data &lt;- haven::read_dta('data/PEFH98-english.dta')</span></span>
-<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>lung_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/PEFH98-english.csv'</span>, <span class="at">sep =</span> <span class="st">','</span>)</span>
-<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lung_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  age gender height weight pefsit1 pefsit2 pefsit3 pefsta1 pefsta2 pefsta3
-1  20      1    165     50     400     400     410     410     410     400
-2  20      2    185     75     480     460     510     520     500     480
-3  21      2    178     70     490     540     560     470     500     470
-4  21      2    179     74     520     530     540     480     510     500
-5  20      2    196     95     740     750     750     700     710     700
-6  20      2    189     83     600     575     600     600     600     640
-   pefsitm  pefstam  pefmean
-1 403.3333 406.6667 405.0000
-2 483.3333 500.0000 491.6667
-3 530.0000 480.0000 505.0000
-4 530.0000 496.6667 513.3333
-5 746.6667 703.3333 725.0000
-6 591.6667 613.3333 602.5000</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># gender is coded as 1 and 2, but it looks like it's not a category but an integer (number)</span></span>
-<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="co"># we code it explicitly fo readability</span></span>
-<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>lung_data<span class="sc">$</span>gender <span class="ot">&lt;-</span> <span class="fu">factor</span>(lung_data<span class="sc">$</span>gender, </span>
-<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">'1'</span>,<span class="st">'2'</span>),</span>
-<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">'female'</span>,<span class="st">'male'</span>)) </span>
-<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lung_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="co"># if you use rda data file: </span></span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="co"># load('./lab/data/PEFH98-english.rda')</span></span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a><span class="co"># if you use csv: </span></span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>lung_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/PEFH98-english.csv'</span>, <span class="at">sep =</span> <span class="st">','</span>)</span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lung_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  age gender height weight pefsit1 pefsit2 pefsit3 pefsta1 pefsta2 pefsta3
 1  20 female    165     50     400     400     410     410     410     400
@@ -634,11 +616,11 @@ species     Biscoe Dream Torgersen
 <h3 class="anchored" data-anchor-id="b-1">2b)</h3>
 <p>How many observations are there (number of subjects)? How do you get a list of variable names from your dataset?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(lung_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(lung_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 106</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(lung_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(lung_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "age"     "gender"  "height"  "weight"  "pefsit1" "pefsit2" "pefsit3"
  [8] "pefsta1" "pefsta2" "pefsta3" "pefsitm" "pefstam" "pefmean"</code></pre>
@@ -651,22 +633,22 @@ age
 pefsitm
 pefstam</code></pre>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lung_data<span class="sc">$</span>height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lung_data<span class="sc">$</span>height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="lab_eda_part1_files/figure-html/eda-2b2-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>We repeat it for the other 4 variables. We can put them more compactly,</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) </span>
-<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="co"># we use this line to display (2 rows 2 columns)</span></span>
-<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="co"># by default it is 1 row 1 column</span></span>
-<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="co"># run this line to set it back to default:</span></span>
-<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="co"># par(mfrow = c(1, 1))</span></span>
-<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lung_data<span class="sc">$</span>weight)</span>
-<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lung_data<span class="sc">$</span>age)</span>
-<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lung_data<span class="sc">$</span>pefsitm)</span>
-<span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lung_data<span class="sc">$</span>pefstam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) </span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="co"># we use this line to display (2 rows 2 columns)</span></span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="co"># by default it is 1 row 1 column</span></span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="co"># run this line to set it back to default:</span></span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="co"># par(mfrow = c(1, 1))</span></span>
+<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lung_data<span class="sc">$</span>weight)</span>
+<span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lung_data<span class="sc">$</span>age)</span>
+<span id="cb69-8"><a href="#cb69-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lung_data<span class="sc">$</span>pefsitm)</span>
+<span id="cb69-9"><a href="#cb69-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lung_data<span class="sc">$</span>pefstam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="lab_eda_part1_files/figure-html/eda-2b3-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -677,45 +659,45 @@ pefstam</code></pre>
 <p>Make histograms for the variables <code>height</code> and <code>pefmean</code> for men and women separately. Also try to make boxplots.</p>
 <p>What conclusion can you draw?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>height_f <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>height[lung_data<span class="sc">$</span>gender <span class="sc">==</span> <span class="st">'female'</span>]</span>
-<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>height_m <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>height[lung_data<span class="sc">$</span>gender <span class="sc">==</span> <span class="st">'male'</span>]</span>
-<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) <span class="co"># plot in parallel</span></span>
-<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(height_f)</span>
-<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(height_m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>height_f <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>height[lung_data<span class="sc">$</span>gender <span class="sc">==</span> <span class="st">'female'</span>]</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>height_m <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>height[lung_data<span class="sc">$</span>gender <span class="sc">==</span> <span class="st">'male'</span>]</span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) <span class="co"># plot in parallel</span></span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(height_f)</span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(height_m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="lab_eda_part1_files/figure-html/eda-2c-1.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can make it more customized</span></span>
-<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="co"># add axis limit, title and xaxis name</span></span>
-<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) <span class="co"># plot in parallel</span></span>
-<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(height_f, <span class="at">main =</span> <span class="st">'Height: female'</span>, <span class="at">xlab =</span> <span class="st">'Height (cm)'</span>,</span>
-<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">150</span>, <span class="dv">200</span>))</span>
-<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(height_m, <span class="at">main =</span> <span class="st">'Height: male'</span>, <span class="at">xlab =</span> <span class="st">'Height (cm)'</span>,</span>
-<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">150</span>, <span class="dv">200</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can make it more customized</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="co"># add axis limit, title and xaxis name</span></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) <span class="co"># plot in parallel</span></span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(height_f, <span class="at">main =</span> <span class="st">'Height: female'</span>, <span class="at">xlab =</span> <span class="st">'Height (cm)'</span>,</span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">150</span>, <span class="dv">200</span>))</span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(height_m, <span class="at">main =</span> <span class="st">'Height: male'</span>, <span class="at">xlab =</span> <span class="st">'Height (cm)'</span>,</span>
+<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">150</span>, <span class="dv">200</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="lab_eda_part1_files/figure-html/eda-2c-2.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Similarly, histogram for <code>pefmean</code> can be done in the same way.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>pefmean_f <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>pefmean[lung_data<span class="sc">$</span>gender <span class="sc">==</span> <span class="st">'female'</span>]</span>
-<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>pefmean_m <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>pefmean[lung_data<span class="sc">$</span>gender <span class="sc">==</span> <span class="st">'male'</span>]</span>
-<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) <span class="co"># plot in parallel</span></span>
-<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(pefmean_f)</span>
-<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(pefmean_m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>pefmean_f <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>pefmean[lung_data<span class="sc">$</span>gender <span class="sc">==</span> <span class="st">'female'</span>]</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>pefmean_m <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>pefmean[lung_data<span class="sc">$</span>gender <span class="sc">==</span> <span class="st">'male'</span>]</span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) <span class="co"># plot in parallel</span></span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(pefmean_f)</span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(pefmean_m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="lab_eda_part1_files/figure-html/eda-2c2-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Now we can make some boxplots</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(height <span class="sc">~</span> gender, <span class="at">data =</span> lung_data, <span class="at">main =</span> <span class="st">'Height vs Gender'</span>)</span>
-<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a><span class="co"># it is also possible to remove the frame</span></span>
-<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(pefmean <span class="sc">~</span> gender, <span class="at">data =</span> lung_data, <span class="at">frame =</span> F, <span class="at">main =</span> <span class="st">'PEFmean vs gender'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(height <span class="sc">~</span> gender, <span class="at">data =</span> lung_data, <span class="at">main =</span> <span class="st">'Height vs Gender'</span>)</span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a><span class="co"># it is also possible to remove the frame</span></span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(pefmean <span class="sc">~</span> gender, <span class="at">data =</span> lung_data, <span class="at">frame =</span> F, <span class="at">main =</span> <span class="st">'PEFmean vs gender'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="lab_eda_part1_files/figure-html/eda-2c3-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -731,35 +713,35 @@ pefstam</code></pre>
 </ul>
 <p>What association do you see?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pefmean height</span></span>
-<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lung_data<span class="sc">$</span>pefmean, lung_data<span class="sc">$</span>height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pefmean height</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lung_data<span class="sc">$</span>pefmean, lung_data<span class="sc">$</span>height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="lab_eda_part1_files/figure-html/eda-2d-1.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># it is possible to customize </span></span>
-<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lung_data<span class="sc">$</span>pefmean, lung_data<span class="sc">$</span>height, </span>
-<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">'PEF mean vs height'</span>, </span>
-<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">'PEF mean'</span>, <span class="at">ylab =</span> <span class="st">'Height'</span>,</span>
-<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># it is possible to customize </span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lung_data<span class="sc">$</span>pefmean, lung_data<span class="sc">$</span>height, </span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">'PEF mean vs height'</span>, </span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">'PEF mean'</span>, <span class="at">ylab =</span> <span class="st">'Height'</span>,</span>
+<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="lab_eda_part1_files/figure-html/eda-2d-2.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pch: plotting symbols</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pch: plotting symbols</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>pch = 20</code> is setting the symbol to small solid dots. You can try different values, from 0 to 25. <a href="http://www.sthda.com/english/wiki/r-plot-pch-symbols-the-different-point-shapes-available-in-r">Read more</a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="co"># pefmean weight</span></span>
-<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lung_data<span class="sc">$</span>pefmean, lung_data<span class="sc">$</span>weight, </span>
-<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">'PEF mean vs weight'</span>, </span>
-<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">'PEF mean'</span>, <span class="at">ylab =</span> <span class="st">'Weight'</span>,</span>
-<span id="cb79-6"><a href="#cb79-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">20</span>)</span>
-<span id="cb79-7"><a href="#cb79-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-8"><a href="#cb79-8" aria-hidden="true" tabindex="-1"></a><span class="co"># pefmean age</span></span>
-<span id="cb79-9"><a href="#cb79-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lung_data<span class="sc">$</span>pefmean, lung_data<span class="sc">$</span>age, </span>
-<span id="cb79-10"><a href="#cb79-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">'PEF mean vs age'</span>, </span>
-<span id="cb79-11"><a href="#cb79-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">'PEF mean'</span>, <span class="at">ylab =</span> <span class="st">'Age'</span>,</span>
-<span id="cb79-12"><a href="#cb79-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="co"># pefmean weight</span></span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lung_data<span class="sc">$</span>pefmean, lung_data<span class="sc">$</span>weight, </span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">'PEF mean vs weight'</span>, </span>
+<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">'PEF mean'</span>, <span class="at">ylab =</span> <span class="st">'Weight'</span>,</span>
+<span id="cb77-6"><a href="#cb77-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">20</span>)</span>
+<span id="cb77-7"><a href="#cb77-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-8"><a href="#cb77-8" aria-hidden="true" tabindex="-1"></a><span class="co"># pefmean age</span></span>
+<span id="cb77-9"><a href="#cb77-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lung_data<span class="sc">$</span>pefmean, lung_data<span class="sc">$</span>age, </span>
+<span id="cb77-10"><a href="#cb77-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">'PEF mean vs age'</span>, </span>
+<span id="cb77-11"><a href="#cb77-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">'PEF mean'</span>, <span class="at">ylab =</span> <span class="st">'Age'</span>,</span>
+<span id="cb77-12"><a href="#cb77-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="lab_eda_part1_files/figure-html/eda-2d2-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -957,523 +939,520 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb80" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Exploratory data analysis (Part I)"</span></span>
-<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Exploring a dataset, descriptive statistics"</span></span>
-<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
-<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb80-6"><a href="#cb80-6" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: false</span></span>
-<span id="cb80-7"><a href="#cb80-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb80-8"><a href="#cb80-8" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> source</span></span>
-<span id="cb80-9"><a href="#cb80-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb80-10"><a href="#cb80-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-11"><a href="#cb80-11" aria-hidden="true" tabindex="-1"></a>Datasets</span>
-<span id="cb80-12"><a href="#cb80-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-13"><a href="#cb80-13" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`penguins_complete.csv`</span> (<span class="co">[</span><span class="ot">link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/penguins_complete.csv)</span>)</span>
-<span id="cb80-14"><a href="#cb80-14" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`PEFH98-english.csv`</span> (<span class="co">[</span><span class="ot">link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.csv)</span>)</span>
-<span id="cb80-15"><a href="#cb80-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-16"><a href="#cb80-16" aria-hidden="true" tabindex="-1"></a>R script (<span class="co">[</span><span class="ot">link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/2_eda_part1.R)</span>)</span>
-<span id="cb80-17"><a href="#cb80-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-18"><a href="#cb80-18" aria-hidden="true" tabindex="-1"></a>------------------</span>
-<span id="cb80-19"><a href="#cb80-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-20"><a href="#cb80-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-21"><a href="#cb80-21" aria-hidden="true" tabindex="-1"></a><span class="fu"># Explore a dataset</span></span>
-<span id="cb80-22"><a href="#cb80-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-23"><a href="#cb80-23" aria-hidden="true" tabindex="-1"></a>In this section, we will introduce some frequently used commands when you first load a dataset. </span>
-<span id="cb80-24"><a href="#cb80-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-25"><a href="#cb80-25" aria-hidden="true" tabindex="-1"></a>We use <span class="in">`penguins`</span> data as an example.</span>
-<span id="cb80-26"><a href="#cb80-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-29"><a href="#cb80-29" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb80-30"><a href="#cb80-30" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: load-data-penguins-mini</span></span>
-<span id="cb80-31"><a href="#cb80-31" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb80-32"><a href="#cb80-32" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb80-33"><a href="#cb80-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-34"><a href="#cb80-34" aria-hidden="true" tabindex="-1"></a><span class="co"># read a csv file</span></span>
-<span id="cb80-35"><a href="#cb80-35" aria-hidden="true" tabindex="-1"></a>penguins <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/penguins_complete.csv'</span>, <span class="at">sep =</span> <span class="st">','</span>)</span>
-<span id="cb80-36"><a href="#cb80-36" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb80-37"><a href="#cb80-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-38"><a href="#cb80-38" aria-hidden="true" tabindex="-1"></a>You *can* type <span class="in">`penguins`</span> in the console to print the data; but you will see that it gets hard to read. This is usually the case: you have lots of data that is hard to fit in your screen. </span>
-<span id="cb80-39"><a href="#cb80-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-40"><a href="#cb80-40" aria-hidden="true" tabindex="-1"></a>Therefore, it is useful to</span>
-<span id="cb80-41"><a href="#cb80-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-42"><a href="#cb80-42" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>print out a few rows (head of the data);</span>
-<span id="cb80-43"><a href="#cb80-43" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>have a list of column names </span>
-<span id="cb80-44"><a href="#cb80-44" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>know the dimension of the dataset (number of observations and features/measurements)</span>
-<span id="cb80-45"><a href="#cb80-45" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>produce some summary statistics</span>
-<span id="cb80-46"><a href="#cb80-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-47"><a href="#cb80-47" aria-hidden="true" tabindex="-1"></a>We extract the **head** (first several, by default 6) rows of your data. Similarly, you can get the last several rows using <span class="in">`tail()`</span></span>
-<span id="cb80-48"><a href="#cb80-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-51"><a href="#cb80-51" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb80-52"><a href="#cb80-52" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: summary of dataset</span></span>
-<span id="cb80-53"><a href="#cb80-53" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb80-54"><a href="#cb80-54" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb80-55"><a href="#cb80-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-56"><a href="#cb80-56" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(penguins)</span>
-<span id="cb80-57"><a href="#cb80-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-58"><a href="#cb80-58" aria-hidden="true" tabindex="-1"></a><span class="co"># this is essentially giving the first 6 rows of your data</span></span>
-<span id="cb80-59"><a href="#cb80-59" aria-hidden="true" tabindex="-1"></a><span class="co"># penguins[1:6, ]</span></span>
-<span id="cb80-60"><a href="#cb80-60" aria-hidden="true" tabindex="-1"></a><span class="co"># head(penguins, 10)  gives first 10 rows</span></span>
-<span id="cb80-61"><a href="#cb80-61" aria-hidden="true" tabindex="-1"></a><span class="co"># tail(penguins)</span></span>
-<span id="cb80-62"><a href="#cb80-62" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb80-63"><a href="#cb80-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-64"><a href="#cb80-64" aria-hidden="true" tabindex="-1"></a>In RStudio, you can also use <span class="in">`View()`</span> command to look at your dataset in a tabular form.</span>
-<span id="cb80-65"><a href="#cb80-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-66"><a href="#cb80-66" aria-hidden="true" tabindex="-1"></a>To know what measurements (or feature, variable, parameter) are in the data, you can extract the **column names**. </span>
-<span id="cb80-67"><a href="#cb80-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-70"><a href="#cb80-70" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb80-71"><a href="#cb80-71" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: summary of dataset 2</span></span>
-<span id="cb80-72"><a href="#cb80-72" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb80-73"><a href="#cb80-73" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb80-74"><a href="#cb80-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-75"><a href="#cb80-75" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(penguins)</span>
-<span id="cb80-76"><a href="#cb80-76" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(penguins)</span>
-<span id="cb80-77"><a href="#cb80-77" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb80-78"><a href="#cb80-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-79"><a href="#cb80-79" aria-hidden="true" tabindex="-1"></a>To know **how many subjects** are in a dataset, there are a few options. You can find the dimension of the dataset; or find how many rows are in the data. </span>
-<span id="cb80-80"><a href="#cb80-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-81"><a href="#cb80-81" aria-hidden="true" tabindex="-1"></a>Alternatively, if you have one variable (say <span class="in">`species`</span>), you can also use <span class="in">`length(species)`</span>.</span>
-<span id="cb80-82"><a href="#cb80-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-85"><a href="#cb80-85" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb80-86"><a href="#cb80-86" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: summary of dataset 3</span></span>
-<span id="cb80-87"><a href="#cb80-87" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb80-88"><a href="#cb80-88" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb80-89"><a href="#cb80-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-90"><a href="#cb80-90" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(penguins)</span>
-<span id="cb80-91"><a href="#cb80-91" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(penguins)</span>
-<span id="cb80-92"><a href="#cb80-92" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(penguins<span class="sc">$</span>species) <span class="co"># length() gives the size of a vector</span></span>
-<span id="cb80-93"><a href="#cb80-93" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb80-94"><a href="#cb80-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-95"><a href="#cb80-95" aria-hidden="true" tabindex="-1"></a>Sometimes it is also useful to know what **types of data** it is for each variable. You can either use <span class="in">`str()`</span> (structure) on the dataset; or use <span class="in">`class()`</span> on the variable you are interested in.</span>
-<span id="cb80-96"><a href="#cb80-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-99"><a href="#cb80-99" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb80-100"><a href="#cb80-100" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: summary of dataset 4</span></span>
-<span id="cb80-101"><a href="#cb80-101" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb80-102"><a href="#cb80-102" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb80-103"><a href="#cb80-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-104"><a href="#cb80-104" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(penguins)</span>
-<span id="cb80-105"><a href="#cb80-105" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(penguins<span class="sc">$</span>species)</span>
-<span id="cb80-106"><a href="#cb80-106" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(penguins<span class="sc">$</span>bill_length_mm)</span>
-<span id="cb80-107"><a href="#cb80-107" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb80-108"><a href="#cb80-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-109"><a href="#cb80-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-110"><a href="#cb80-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-111"><a href="#cb80-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-112"><a href="#cb80-112" aria-hidden="true" tabindex="-1"></a><span class="fu"># Descriptive statistics</span></span>
-<span id="cb80-113"><a href="#cb80-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-114"><a href="#cb80-114" aria-hidden="true" tabindex="-1"></a><span class="fu">### Continuous variable</span></span>
-<span id="cb80-115"><a href="#cb80-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-116"><a href="#cb80-116" aria-hidden="true" tabindex="-1"></a>A continuous variable can take values in a continuous range. Height and weight are examples of this type. Usually the data type in R is <span class="in">`numeric`</span>; if not, you might need to convert it first.</span>
-<span id="cb80-117"><a href="#cb80-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-118"><a href="#cb80-118" aria-hidden="true" tabindex="-1"></a>Common summary statistics for continuous variables are </span>
-<span id="cb80-119"><a href="#cb80-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-120"><a href="#cb80-120" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>extremes (minimum, maximum)</span>
-<span id="cb80-121"><a href="#cb80-121" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>average and central tendency (mean, median)</span>
-<span id="cb80-122"><a href="#cb80-122" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>quantiles (top 1 percent, bottom 5 percent, IQR - interquartile range)</span>
-<span id="cb80-123"><a href="#cb80-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-124"><a href="#cb80-124" aria-hidden="true" tabindex="-1"></a>Let us focus on one continuous variable, <span class="in">`bill_length_mm`</span>. </span>
-<span id="cb80-125"><a href="#cb80-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-128"><a href="#cb80-128" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb80-129"><a href="#cb80-129" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: descriptive stat 1</span></span>
-<span id="cb80-130"><a href="#cb80-130" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb80-131"><a href="#cb80-131" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb80-132"><a href="#cb80-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-133"><a href="#cb80-133" aria-hidden="true" tabindex="-1"></a><span class="co"># create a variable called bill</span></span>
-<span id="cb80-134"><a href="#cb80-134" aria-hidden="true" tabindex="-1"></a>bill <span class="ot">&lt;-</span> penguins<span class="sc">$</span>bill_length_mm</span>
-<span id="cb80-135"><a href="#cb80-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-136"><a href="#cb80-136" aria-hidden="true" tabindex="-1"></a><span class="co"># use the command summary on a continuous variable</span></span>
-<span id="cb80-137"><a href="#cb80-137" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(bill)</span>
-<span id="cb80-138"><a href="#cb80-138" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb80-139"><a href="#cb80-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-140"><a href="#cb80-140" aria-hidden="true" tabindex="-1"></a>You see that there are some <span class="in">`NA's`</span>. This means the data is missing for 2 subjects. If we do not remove them before (or tell the functions to remove it), the results will be affected.</span>
-<span id="cb80-141"><a href="#cb80-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-144"><a href="#cb80-144" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb80-145"><a href="#cb80-145" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: descriptive stat 2</span></span>
-<span id="cb80-146"><a href="#cb80-146" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb80-147"><a href="#cb80-147" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb80-148"><a href="#cb80-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-149"><a href="#cb80-149" aria-hidden="true" tabindex="-1"></a><span class="co"># compute the min</span></span>
-<span id="cb80-150"><a href="#cb80-150" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(bill)</span>
-<span id="cb80-151"><a href="#cb80-151" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(bill, <span class="at">na.rm =</span> T) <span class="co"># remove NA</span></span>
-<span id="cb80-152"><a href="#cb80-152" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb80-153"><a href="#cb80-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-154"><a href="#cb80-154" aria-hidden="true" tabindex="-1"></a>Now we compute the maximum, mean, median, bottom and top 5 percent quantile.</span>
-<span id="cb80-155"><a href="#cb80-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-158"><a href="#cb80-158" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb80-159"><a href="#cb80-159" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: descriptive stat 3</span></span>
-<span id="cb80-160"><a href="#cb80-160" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb80-161"><a href="#cb80-161" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb80-162"><a href="#cb80-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-163"><a href="#cb80-163" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(bill, <span class="at">na.rm =</span> T)</span>
-<span id="cb80-164"><a href="#cb80-164" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(bill, <span class="at">na.rm =</span> T) </span>
-<span id="cb80-165"><a href="#cb80-165" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(bill, <span class="at">na.rm =</span> T)</span>
-<span id="cb80-166"><a href="#cb80-166" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(bill, <span class="fl">0.05</span>, <span class="at">na.rm =</span> T)</span>
-<span id="cb80-167"><a href="#cb80-167" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(bill, <span class="fl">0.95</span>, <span class="at">na.rm =</span> T)</span>
-<span id="cb80-168"><a href="#cb80-168" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb80-169"><a href="#cb80-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-170"><a href="#cb80-170" aria-hidden="true" tabindex="-1"></a><span class="fu">### Categorical variable</span></span>
-<span id="cb80-171"><a href="#cb80-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-172"><a href="#cb80-172" aria-hidden="true" tabindex="-1"></a>Categorical variables take discrete values, such as sex (male and female), smoking habit (frequent smoker or not), age groups.</span>
-<span id="cb80-173"><a href="#cb80-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-174"><a href="#cb80-174" aria-hidden="true" tabindex="-1"></a>For categorical variables, the metrics above (mean and median, max and min, quantiles) do not make much sense. We use **counts** and **percentages** instead.</span>
-<span id="cb80-175"><a href="#cb80-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-176"><a href="#cb80-176" aria-hidden="true" tabindex="-1"></a>We use the variable <span class="in">`species`</span> and <span class="in">`island`</span> from the penguin data.</span>
-<span id="cb80-177"><a href="#cb80-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-180"><a href="#cb80-180" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb80-181"><a href="#cb80-181" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: descriptive stat 4</span></span>
-<span id="cb80-182"><a href="#cb80-182" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb80-183"><a href="#cb80-183" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb80-184"><a href="#cb80-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-185"><a href="#cb80-185" aria-hidden="true" tabindex="-1"></a>species <span class="ot">&lt;-</span> penguins<span class="sc">$</span>species</span>
-<span id="cb80-186"><a href="#cb80-186" aria-hidden="true" tabindex="-1"></a>island <span class="ot">&lt;-</span> penguins<span class="sc">$</span>island</span>
-<span id="cb80-187"><a href="#cb80-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-188"><a href="#cb80-188" aria-hidden="true" tabindex="-1"></a><span class="co"># for one variable</span></span>
-<span id="cb80-189"><a href="#cb80-189" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(species)</span>
-<span id="cb80-190"><a href="#cb80-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-191"><a href="#cb80-191" aria-hidden="true" tabindex="-1"></a><span class="co"># for two variables</span></span>
-<span id="cb80-192"><a href="#cb80-192" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(species, island)</span>
-<span id="cb80-193"><a href="#cb80-193" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-194"><a href="#cb80-194" aria-hidden="true" tabindex="-1"></a><span class="co"># to create percentage, divide by number of subjects</span></span>
-<span id="cb80-195"><a href="#cb80-195" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(species)<span class="sc">/</span><span class="fu">length</span>(species)</span>
-<span id="cb80-196"><a href="#cb80-196" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb80-197"><a href="#cb80-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-198"><a href="#cb80-198" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-199"><a href="#cb80-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-200"><a href="#cb80-200" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-201"><a href="#cb80-201" aria-hidden="true" tabindex="-1"></a><span class="fu"># Visualization</span></span>
-<span id="cb80-202"><a href="#cb80-202" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-203"><a href="#cb80-203" aria-hidden="true" tabindex="-1"></a><span class="fu">### Histogram</span></span>
-<span id="cb80-204"><a href="#cb80-204" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-207"><a href="#cb80-207" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb80-208"><a href="#cb80-208" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: histogram</span></span>
-<span id="cb80-209"><a href="#cb80-209" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb80-210"><a href="#cb80-210" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb80-211"><a href="#cb80-211" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-212"><a href="#cb80-212" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(bill)</span>
-<span id="cb80-213"><a href="#cb80-213" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb80-214"><a href="#cb80-214" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-215"><a href="#cb80-215" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-216"><a href="#cb80-216" aria-hidden="true" tabindex="-1"></a><span class="fu">### Box plot</span></span>
-<span id="cb80-217"><a href="#cb80-217" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-218"><a href="#cb80-218" aria-hidden="true" tabindex="-1"></a>A boxplot gives the position of </span>
-<span id="cb80-219"><a href="#cb80-219" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-220"><a href="#cb80-220" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>median (50th percentile; second quartile)</span>
-<span id="cb80-221"><a href="#cb80-221" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>25th and 75th percentile (first and third quartile)</span>
-<span id="cb80-222"><a href="#cb80-222" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>maximum and minimum</span>
-<span id="cb80-223"><a href="#cb80-223" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>outliers</span>
-<span id="cb80-224"><a href="#cb80-224" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-227"><a href="#cb80-227" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb80-228"><a href="#cb80-228" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: boxplot</span></span>
-<span id="cb80-229"><a href="#cb80-229" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb80-230"><a href="#cb80-230" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb80-231"><a href="#cb80-231" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-232"><a href="#cb80-232" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(bill)</span>
-<span id="cb80-233"><a href="#cb80-233" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-234"><a href="#cb80-234" aria-hidden="true" tabindex="-1"></a><span class="co"># multiple boxplot together</span></span>
-<span id="cb80-235"><a href="#cb80-235" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(bill_length_mm <span class="sc">~</span> species, <span class="at">data =</span> penguins)</span>
-<span id="cb80-236"><a href="#cb80-236" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb80-237"><a href="#cb80-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-238"><a href="#cb80-238" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-239"><a href="#cb80-239" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-240"><a href="#cb80-240" aria-hidden="true" tabindex="-1"></a><span class="fu">### Scatterplot of two continuous variables</span></span>
-<span id="cb80-241"><a href="#cb80-241" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-244"><a href="#cb80-244" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb80-245"><a href="#cb80-245" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: scatter</span></span>
-<span id="cb80-246"><a href="#cb80-246" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb80-247"><a href="#cb80-247" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb80-248"><a href="#cb80-248" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-249"><a href="#cb80-249" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(penguins<span class="sc">$</span>bill_length_mm, penguins<span class="sc">$</span>bill_depth_mm)</span>
-<span id="cb80-250"><a href="#cb80-250" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb80-251"><a href="#cb80-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-252"><a href="#cb80-252" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-253"><a href="#cb80-253" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-254"><a href="#cb80-254" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-255"><a href="#cb80-255" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-256"><a href="#cb80-256" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-257"><a href="#cb80-257" aria-hidden="true" tabindex="-1"></a><span class="fu"># Examples (exercises with solution)</span></span>
-<span id="cb80-258"><a href="#cb80-258" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-259"><a href="#cb80-259" aria-hidden="true" tabindex="-1"></a>(Exercises without solution can be found <span class="co">[</span><span class="ot">here</span><span class="co">](ex_eda_part1.qmd)</span>)</span>
-<span id="cb80-260"><a href="#cb80-260" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-261"><a href="#cb80-261" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 1 (weight)</span></span>
-<span id="cb80-262"><a href="#cb80-262" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-263"><a href="#cb80-263" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1a </span></span>
-<span id="cb80-264"><a href="#cb80-264" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-265"><a href="#cb80-265" aria-hidden="true" tabindex="-1"></a>Generate a variable named <span class="in">`weight`</span>, with the following measurements:</span>
-<span id="cb80-266"><a href="#cb80-266" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-267"><a href="#cb80-267" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb80-268"><a href="#cb80-268" aria-hidden="true" tabindex="-1"></a><span class="in">50 75 70 74 95 83 65 94 66 65 65 75 84 55 73 68 72 67 53 65</span></span>
-<span id="cb80-269"><a href="#cb80-269" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb80-270"><a href="#cb80-270" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-273"><a href="#cb80-273" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb80-274"><a href="#cb80-274" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda-1a</span></span>
-<span id="cb80-275"><a href="#cb80-275" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb80-276"><a href="#cb80-276" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb80-277"><a href="#cb80-277" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-278"><a href="#cb80-278" aria-hidden="true" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">75</span>, <span class="dv">70</span>, <span class="dv">74</span>, <span class="dv">95</span>, </span>
-<span id="cb80-279"><a href="#cb80-279" aria-hidden="true" tabindex="-1"></a>            <span class="dv">83</span>, <span class="dv">65</span>, <span class="dv">94</span>, <span class="dv">66</span>, <span class="dv">65</span>, </span>
-<span id="cb80-280"><a href="#cb80-280" aria-hidden="true" tabindex="-1"></a>            <span class="dv">65</span>, <span class="dv">75</span>, <span class="dv">84</span>, <span class="dv">55</span>, <span class="dv">73</span>, </span>
-<span id="cb80-281"><a href="#cb80-281" aria-hidden="true" tabindex="-1"></a>            <span class="dv">68</span>, <span class="dv">72</span>, <span class="dv">67</span>, <span class="dv">53</span>, <span class="dv">65</span>)</span>
-<span id="cb80-282"><a href="#cb80-282" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-283"><a href="#cb80-283" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb80-284"><a href="#cb80-284" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-285"><a href="#cb80-285" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-286"><a href="#cb80-286" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1b</span></span>
-<span id="cb80-287"><a href="#cb80-287" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-288"><a href="#cb80-288" aria-hidden="true" tabindex="-1"></a>Make a simple descriptive analysis of the variable, what are the mean, median, maximum, minimum and quantiles?</span>
-<span id="cb80-289"><a href="#cb80-289" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-290"><a href="#cb80-290" aria-hidden="true" tabindex="-1"></a>How to interpret the data?</span>
-<span id="cb80-291"><a href="#cb80-291" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-294"><a href="#cb80-294" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb80-295"><a href="#cb80-295" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda-1b</span></span>
-<span id="cb80-296"><a href="#cb80-296" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb80-297"><a href="#cb80-297" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb80-298"><a href="#cb80-298" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-299"><a href="#cb80-299" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(weight)</span>
-<span id="cb80-300"><a href="#cb80-300" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(weight)</span>
-<span id="cb80-301"><a href="#cb80-301" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(weight)</span>
-<span id="cb80-302"><a href="#cb80-302" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(weight)</span>
-<span id="cb80-303"><a href="#cb80-303" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-304"><a href="#cb80-304" aria-hidden="true" tabindex="-1"></a><span class="co"># alternatively, </span></span>
-<span id="cb80-305"><a href="#cb80-305" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(weight)</span>
-<span id="cb80-306"><a href="#cb80-306" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb80-307"><a href="#cb80-307" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-308"><a href="#cb80-308" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-309"><a href="#cb80-309" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1c</span></span>
-<span id="cb80-310"><a href="#cb80-310" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-311"><a href="#cb80-311" aria-hidden="true" tabindex="-1"></a>Make a histogram.</span>
-<span id="cb80-312"><a href="#cb80-312" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-315"><a href="#cb80-315" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb80-316"><a href="#cb80-316" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda-1c</span></span>
-<span id="cb80-317"><a href="#cb80-317" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb80-318"><a href="#cb80-318" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb80-319"><a href="#cb80-319" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-320"><a href="#cb80-320" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(weight)</span>
-<span id="cb80-321"><a href="#cb80-321" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb80-322"><a href="#cb80-322" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-323"><a href="#cb80-323" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1d</span></span>
-<span id="cb80-324"><a href="#cb80-324" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-325"><a href="#cb80-325" aria-hidden="true" tabindex="-1"></a>Make a boxplot. What do the two dots on the top represent?</span>
-<span id="cb80-326"><a href="#cb80-326" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-329"><a href="#cb80-329" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb80-330"><a href="#cb80-330" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda-1d</span></span>
-<span id="cb80-331"><a href="#cb80-331" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb80-332"><a href="#cb80-332" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb80-333"><a href="#cb80-333" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-334"><a href="#cb80-334" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(weight)</span>
-<span id="cb80-335"><a href="#cb80-335" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb80-336"><a href="#cb80-336" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-337"><a href="#cb80-337" aria-hidden="true" tabindex="-1"></a>They are the largest two points in the dataset. These are outliers in this data. </span>
-<span id="cb80-338"><a href="#cb80-338" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-339"><a href="#cb80-339" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-340"><a href="#cb80-340" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip collapse="true"}</span>
-<span id="cb80-341"><a href="#cb80-341" aria-hidden="true" tabindex="-1"></a><span class="fu">## (Optional) Outliers in box plot</span></span>
-<span id="cb80-342"><a href="#cb80-342" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-343"><a href="#cb80-343" aria-hidden="true" tabindex="-1"></a>There are different ways to define outliers. The default box plot in R determines points beyond $Q_1 - 1.5\times IQR$ and $Q_3 + 1.5\times IQR$ are outliers. You can check the values of quartiles using <span class="in">`summary()`</span>, and read up the documentation <span class="in">`?boxplot()`</span>.</span>
-<span id="cb80-344"><a href="#cb80-344" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb80-345"><a href="#cb80-345" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-346"><a href="#cb80-346" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-347"><a href="#cb80-347" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-348"><a href="#cb80-348" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-349"><a href="#cb80-349" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-350"><a href="#cb80-350" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 2 (lung function)</span></span>
-<span id="cb80-351"><a href="#cb80-351" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-352"><a href="#cb80-352" aria-hidden="true" tabindex="-1"></a>Lung function has been measured on 106 medical students. Peak expiratory flow rate (PEF, measured in liters per minute) was measured three times in a sittinng position, and three times in a standing position.</span>
-<span id="cb80-353"><a href="#cb80-353" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-354"><a href="#cb80-354" aria-hidden="true" tabindex="-1"></a>The variables are </span>
-<span id="cb80-355"><a href="#cb80-355" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-356"><a href="#cb80-356" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Age (years)</span>
-<span id="cb80-357"><a href="#cb80-357" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Gender (1 is female, 2 is male)</span>
-<span id="cb80-358"><a href="#cb80-358" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Height (cm)</span>
-<span id="cb80-359"><a href="#cb80-359" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Weight (kg)</span>
-<span id="cb80-360"><a href="#cb80-360" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>PEF measured three times in a sitting position (pefsit1, pefsit2, pefsit3)</span>
-<span id="cb80-361"><a href="#cb80-361" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>PEF measured three times in a standing position (pefsta1, pefsta2, pefsta3)</span>
-<span id="cb80-362"><a href="#cb80-362" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Mean of the three measurements made in a sitting position (pefsitm)</span>
-<span id="cb80-363"><a href="#cb80-363" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Mean of the three measurements made in a standing position (pefstam)</span>
-<span id="cb80-364"><a href="#cb80-364" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Mean of all six PEF values (pefmean)</span>
-<span id="cb80-365"><a href="#cb80-365" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-366"><a href="#cb80-366" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2a) </span></span>
-<span id="cb80-367"><a href="#cb80-367" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-368"><a href="#cb80-368" aria-hidden="true" tabindex="-1"></a>Download and open <span class="in">`PEFH98-english.dta`</span> into R. </span>
-<span id="cb80-369"><a href="#cb80-369" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-370"><a href="#cb80-370" aria-hidden="true" tabindex="-1"></a>If you have problem with <span class="in">`.dta`</span> data format, you can also use <span class="in">`PEFH98-english.csv`</span>.</span>
-<span id="cb80-371"><a href="#cb80-371" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-372"><a href="#cb80-372" aria-hidden="true" tabindex="-1"></a>Pay attention to how <span class="in">`gender`</span> is coded. We might have to modify it. </span>
-<span id="cb80-373"><a href="#cb80-373" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-376"><a href="#cb80-376" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb80-377"><a href="#cb80-377" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda-2a</span></span>
-<span id="cb80-378"><a href="#cb80-378" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb80-379"><a href="#cb80-379" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb80-380"><a href="#cb80-380" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-381"><a href="#cb80-381" aria-hidden="true" tabindex="-1"></a><span class="co"># locate your datafile, set the path to your data</span></span>
-<span id="cb80-382"><a href="#cb80-382" aria-hidden="true" tabindex="-1"></a><span class="co"># lung_data &lt;- haven::read_dta('data/PEFH98-english.dta')</span></span>
-<span id="cb80-383"><a href="#cb80-383" aria-hidden="true" tabindex="-1"></a>lung_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/PEFH98-english.csv'</span>, <span class="at">sep =</span> <span class="st">','</span>)</span>
-<span id="cb80-384"><a href="#cb80-384" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lung_data)</span>
-<span id="cb80-385"><a href="#cb80-385" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-386"><a href="#cb80-386" aria-hidden="true" tabindex="-1"></a><span class="co"># gender is coded as 1 and 2, but it looks like it's not a category but an integer (number)</span></span>
-<span id="cb80-387"><a href="#cb80-387" aria-hidden="true" tabindex="-1"></a><span class="co"># we code it explicitly fo readability</span></span>
-<span id="cb80-388"><a href="#cb80-388" aria-hidden="true" tabindex="-1"></a>lung_data<span class="sc">$</span>gender <span class="ot">&lt;-</span> <span class="fu">factor</span>(lung_data<span class="sc">$</span>gender, </span>
-<span id="cb80-389"><a href="#cb80-389" aria-hidden="true" tabindex="-1"></a>                           <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">'1'</span>,<span class="st">'2'</span>),</span>
-<span id="cb80-390"><a href="#cb80-390" aria-hidden="true" tabindex="-1"></a>                           <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">'female'</span>,<span class="st">'male'</span>)) </span>
-<span id="cb80-391"><a href="#cb80-391" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lung_data)</span>
-<span id="cb80-392"><a href="#cb80-392" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb80-393"><a href="#cb80-393" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-394"><a href="#cb80-394" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-395"><a href="#cb80-395" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2b)</span></span>
-<span id="cb80-396"><a href="#cb80-396" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-397"><a href="#cb80-397" aria-hidden="true" tabindex="-1"></a>How many observations are there (number of subjects)? How do you get a list of variable names from your dataset?</span>
-<span id="cb80-398"><a href="#cb80-398" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-401"><a href="#cb80-401" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb80-402"><a href="#cb80-402" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda-2b</span></span>
-<span id="cb80-403"><a href="#cb80-403" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb80-404"><a href="#cb80-404" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb80-405"><a href="#cb80-405" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-406"><a href="#cb80-406" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(lung_data)</span>
-<span id="cb80-407"><a href="#cb80-407" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(lung_data)</span>
-<span id="cb80-408"><a href="#cb80-408" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb80-409"><a href="#cb80-409" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-410"><a href="#cb80-410" aria-hidden="true" tabindex="-1"></a>Make a histogram for each of the following variables. Compute means, and interpret the results.</span>
-<span id="cb80-411"><a href="#cb80-411" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-412"><a href="#cb80-412" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb80-413"><a href="#cb80-413" aria-hidden="true" tabindex="-1"></a><span class="in">height</span></span>
-<span id="cb80-414"><a href="#cb80-414" aria-hidden="true" tabindex="-1"></a><span class="in">weight</span></span>
-<span id="cb80-415"><a href="#cb80-415" aria-hidden="true" tabindex="-1"></a><span class="in">age</span></span>
-<span id="cb80-416"><a href="#cb80-416" aria-hidden="true" tabindex="-1"></a><span class="in">pefsitm</span></span>
-<span id="cb80-417"><a href="#cb80-417" aria-hidden="true" tabindex="-1"></a><span class="in">pefstam</span></span>
-<span id="cb80-418"><a href="#cb80-418" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb80-419"><a href="#cb80-419" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-422"><a href="#cb80-422" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb80-423"><a href="#cb80-423" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda-2b2</span></span>
-<span id="cb80-424"><a href="#cb80-424" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb80-425"><a href="#cb80-425" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb80-426"><a href="#cb80-426" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-427"><a href="#cb80-427" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lung_data<span class="sc">$</span>height)</span>
-<span id="cb80-428"><a href="#cb80-428" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb80-429"><a href="#cb80-429" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-430"><a href="#cb80-430" aria-hidden="true" tabindex="-1"></a>We repeat it for the other 4 variables. We can put them more compactly,</span>
-<span id="cb80-431"><a href="#cb80-431" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-434"><a href="#cb80-434" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb80-435"><a href="#cb80-435" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda-2b3</span></span>
-<span id="cb80-436"><a href="#cb80-436" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb80-437"><a href="#cb80-437" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb80-438"><a href="#cb80-438" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-439"><a href="#cb80-439" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) </span>
-<span id="cb80-440"><a href="#cb80-440" aria-hidden="true" tabindex="-1"></a><span class="co"># we use this line to display (2 rows 2 columns)</span></span>
-<span id="cb80-441"><a href="#cb80-441" aria-hidden="true" tabindex="-1"></a><span class="co"># by default it is 1 row 1 column</span></span>
-<span id="cb80-442"><a href="#cb80-442" aria-hidden="true" tabindex="-1"></a><span class="co"># run this line to set it back to default:</span></span>
-<span id="cb80-443"><a href="#cb80-443" aria-hidden="true" tabindex="-1"></a><span class="co"># par(mfrow = c(1, 1))</span></span>
-<span id="cb80-444"><a href="#cb80-444" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lung_data<span class="sc">$</span>weight)</span>
-<span id="cb80-445"><a href="#cb80-445" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lung_data<span class="sc">$</span>age)</span>
-<span id="cb80-446"><a href="#cb80-446" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lung_data<span class="sc">$</span>pefsitm)</span>
-<span id="cb80-447"><a href="#cb80-447" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lung_data<span class="sc">$</span>pefstam)</span>
-<span id="cb80-448"><a href="#cb80-448" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb80-449"><a href="#cb80-449" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-450"><a href="#cb80-450" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-451"><a href="#cb80-451" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-452"><a href="#cb80-452" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-453"><a href="#cb80-453" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-454"><a href="#cb80-454" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2c)</span></span>
-<span id="cb80-455"><a href="#cb80-455" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-456"><a href="#cb80-456" aria-hidden="true" tabindex="-1"></a>Make histograms for the variables <span class="in">`height`</span> and <span class="in">`pefmean`</span> for men and women separately. Also try to make boxplots.</span>
-<span id="cb80-457"><a href="#cb80-457" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-458"><a href="#cb80-458" aria-hidden="true" tabindex="-1"></a>What conclusion can you draw? </span>
-<span id="cb80-459"><a href="#cb80-459" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-462"><a href="#cb80-462" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb80-463"><a href="#cb80-463" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda-2c</span></span>
-<span id="cb80-464"><a href="#cb80-464" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb80-465"><a href="#cb80-465" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb80-466"><a href="#cb80-466" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-467"><a href="#cb80-467" aria-hidden="true" tabindex="-1"></a>height_f <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>height[lung_data<span class="sc">$</span>gender <span class="sc">==</span> <span class="st">'female'</span>]</span>
-<span id="cb80-468"><a href="#cb80-468" aria-hidden="true" tabindex="-1"></a>height_m <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>height[lung_data<span class="sc">$</span>gender <span class="sc">==</span> <span class="st">'male'</span>]</span>
-<span id="cb80-469"><a href="#cb80-469" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-470"><a href="#cb80-470" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) <span class="co"># plot in parallel</span></span>
-<span id="cb80-471"><a href="#cb80-471" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(height_f)</span>
-<span id="cb80-472"><a href="#cb80-472" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(height_m)</span>
-<span id="cb80-473"><a href="#cb80-473" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-474"><a href="#cb80-474" aria-hidden="true" tabindex="-1"></a><span class="co"># we can make it more customized</span></span>
-<span id="cb80-475"><a href="#cb80-475" aria-hidden="true" tabindex="-1"></a><span class="co"># add axis limit, title and xaxis name</span></span>
-<span id="cb80-476"><a href="#cb80-476" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) <span class="co"># plot in parallel</span></span>
-<span id="cb80-477"><a href="#cb80-477" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(height_f, <span class="at">main =</span> <span class="st">'Height: female'</span>, <span class="at">xlab =</span> <span class="st">'Height (cm)'</span>,</span>
-<span id="cb80-478"><a href="#cb80-478" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">150</span>, <span class="dv">200</span>))</span>
-<span id="cb80-479"><a href="#cb80-479" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(height_m, <span class="at">main =</span> <span class="st">'Height: male'</span>, <span class="at">xlab =</span> <span class="st">'Height (cm)'</span>,</span>
-<span id="cb80-480"><a href="#cb80-480" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">150</span>, <span class="dv">200</span>))</span>
-<span id="cb80-481"><a href="#cb80-481" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb80-482"><a href="#cb80-482" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-483"><a href="#cb80-483" aria-hidden="true" tabindex="-1"></a>Similarly, histogram for <span class="in">`pefmean`</span> can be done in the same way.</span>
-<span id="cb80-484"><a href="#cb80-484" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-487"><a href="#cb80-487" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb80-488"><a href="#cb80-488" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda-2c2</span></span>
-<span id="cb80-489"><a href="#cb80-489" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb80-490"><a href="#cb80-490" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb80-491"><a href="#cb80-491" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-492"><a href="#cb80-492" aria-hidden="true" tabindex="-1"></a>pefmean_f <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>pefmean[lung_data<span class="sc">$</span>gender <span class="sc">==</span> <span class="st">'female'</span>]</span>
-<span id="cb80-493"><a href="#cb80-493" aria-hidden="true" tabindex="-1"></a>pefmean_m <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>pefmean[lung_data<span class="sc">$</span>gender <span class="sc">==</span> <span class="st">'male'</span>]</span>
-<span id="cb80-494"><a href="#cb80-494" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-495"><a href="#cb80-495" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) <span class="co"># plot in parallel</span></span>
-<span id="cb80-496"><a href="#cb80-496" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(pefmean_f)</span>
-<span id="cb80-497"><a href="#cb80-497" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(pefmean_m)</span>
-<span id="cb80-498"><a href="#cb80-498" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb80-499"><a href="#cb80-499" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-500"><a href="#cb80-500" aria-hidden="true" tabindex="-1"></a>Now we can make some boxplots</span>
-<span id="cb80-501"><a href="#cb80-501" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-504"><a href="#cb80-504" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb80-505"><a href="#cb80-505" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda-2c3</span></span>
-<span id="cb80-506"><a href="#cb80-506" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb80-507"><a href="#cb80-507" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb80-508"><a href="#cb80-508" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-509"><a href="#cb80-509" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb80-510"><a href="#cb80-510" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(height <span class="sc">~</span> gender, <span class="at">data =</span> lung_data, <span class="at">main =</span> <span class="st">'Height vs Gender'</span>)</span>
-<span id="cb80-511"><a href="#cb80-511" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-512"><a href="#cb80-512" aria-hidden="true" tabindex="-1"></a><span class="co"># it is also possible to remove the frame</span></span>
-<span id="cb80-513"><a href="#cb80-513" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(pefmean <span class="sc">~</span> gender, <span class="at">data =</span> lung_data, <span class="at">frame =</span> F, <span class="at">main =</span> <span class="st">'PEFmean vs gender'</span>)</span>
-<span id="cb80-514"><a href="#cb80-514" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb80-515"><a href="#cb80-515" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-516"><a href="#cb80-516" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2d)</span></span>
-<span id="cb80-517"><a href="#cb80-517" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-518"><a href="#cb80-518" aria-hidden="true" tabindex="-1"></a>Make three scatterplots to compare </span>
-<span id="cb80-519"><a href="#cb80-519" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-520"><a href="#cb80-520" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`pefmean`</span> with <span class="in">`height`</span></span>
-<span id="cb80-521"><a href="#cb80-521" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`pefmean`</span> with <span class="in">`weight`</span></span>
-<span id="cb80-522"><a href="#cb80-522" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`pefmean`</span> with <span class="in">`age`</span> </span>
-<span id="cb80-523"><a href="#cb80-523" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-524"><a href="#cb80-524" aria-hidden="true" tabindex="-1"></a>What association do you see?</span>
-<span id="cb80-525"><a href="#cb80-525" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-528"><a href="#cb80-528" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb80-529"><a href="#cb80-529" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda-2d</span></span>
-<span id="cb80-530"><a href="#cb80-530" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb80-531"><a href="#cb80-531" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb80-532"><a href="#cb80-532" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-533"><a href="#cb80-533" aria-hidden="true" tabindex="-1"></a><span class="co"># pefmean height</span></span>
-<span id="cb80-534"><a href="#cb80-534" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lung_data<span class="sc">$</span>pefmean, lung_data<span class="sc">$</span>height)</span>
-<span id="cb80-535"><a href="#cb80-535" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-536"><a href="#cb80-536" aria-hidden="true" tabindex="-1"></a><span class="co"># it is possible to customize </span></span>
-<span id="cb80-537"><a href="#cb80-537" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lung_data<span class="sc">$</span>pefmean, lung_data<span class="sc">$</span>height, </span>
-<span id="cb80-538"><a href="#cb80-538" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">'PEF mean vs height'</span>, </span>
-<span id="cb80-539"><a href="#cb80-539" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">'PEF mean'</span>, <span class="at">ylab =</span> <span class="st">'Height'</span>,</span>
-<span id="cb80-540"><a href="#cb80-540" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">20</span>)</span>
-<span id="cb80-541"><a href="#cb80-541" aria-hidden="true" tabindex="-1"></a><span class="co"># pch: plotting symbols</span></span>
-<span id="cb80-542"><a href="#cb80-542" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb80-543"><a href="#cb80-543" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-544"><a href="#cb80-544" aria-hidden="true" tabindex="-1"></a><span class="in">`pch = 20`</span> is setting the symbol to small solid dots. You can try different values, from 0 to 25. <span class="co">[</span><span class="ot">Read more</span><span class="co">](http://www.sthda.com/english/wiki/r-plot-pch-symbols-the-different-point-shapes-available-in-r)</span></span>
-<span id="cb80-545"><a href="#cb80-545" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-546"><a href="#cb80-546" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-549"><a href="#cb80-549" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb80-550"><a href="#cb80-550" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda-2d2</span></span>
-<span id="cb80-551"><a href="#cb80-551" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb80-552"><a href="#cb80-552" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb80-553"><a href="#cb80-553" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-554"><a href="#cb80-554" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb80-555"><a href="#cb80-555" aria-hidden="true" tabindex="-1"></a><span class="co"># pefmean weight</span></span>
-<span id="cb80-556"><a href="#cb80-556" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lung_data<span class="sc">$</span>pefmean, lung_data<span class="sc">$</span>weight, </span>
-<span id="cb80-557"><a href="#cb80-557" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">'PEF mean vs weight'</span>, </span>
-<span id="cb80-558"><a href="#cb80-558" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">'PEF mean'</span>, <span class="at">ylab =</span> <span class="st">'Weight'</span>,</span>
-<span id="cb80-559"><a href="#cb80-559" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">20</span>)</span>
-<span id="cb80-560"><a href="#cb80-560" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-561"><a href="#cb80-561" aria-hidden="true" tabindex="-1"></a><span class="co"># pefmean age</span></span>
-<span id="cb80-562"><a href="#cb80-562" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lung_data<span class="sc">$</span>pefmean, lung_data<span class="sc">$</span>age, </span>
-<span id="cb80-563"><a href="#cb80-563" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">'PEF mean vs age'</span>, </span>
-<span id="cb80-564"><a href="#cb80-564" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">'PEF mean'</span>, <span class="at">ylab =</span> <span class="st">'Age'</span>,</span>
-<span id="cb80-565"><a href="#cb80-565" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">20</span>)</span>
-<span id="cb80-566"><a href="#cb80-566" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb80-567"><a href="#cb80-567" aria-hidden="true" tabindex="-1"></a></span>
+<div class="sourceCode" id="cb78" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Exploratory data analysis (Part I)"</span></span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Exploring a dataset, descriptive statistics"</span></span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: false</span></span>
+<span id="cb78-7"><a href="#cb78-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb78-8"><a href="#cb78-8" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> source</span></span>
+<span id="cb78-9"><a href="#cb78-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb78-10"><a href="#cb78-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-11"><a href="#cb78-11" aria-hidden="true" tabindex="-1"></a>Datasets</span>
+<span id="cb78-12"><a href="#cb78-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-13"><a href="#cb78-13" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Explore a dataset: <span class="in">`penguins_complete`</span> (<span class="co">[</span><span class="ot">csv link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/penguins_complete.csv)</span>)</span>
+<span id="cb78-14"><a href="#cb78-14" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Exercise 1: no data, we type in data directly</span>
+<span id="cb78-15"><a href="#cb78-15" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Exercise 2: <span class="in">`PEFH98-english`</span> (<span class="co">[</span><span class="ot">rda link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.rda)</span>, <span class="co">[</span><span class="ot">csv link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.csv)</span>)</span>
+<span id="cb78-16"><a href="#cb78-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-17"><a href="#cb78-17" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">R script</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/2_eda_part1.R)</span></span>
+<span id="cb78-18"><a href="#cb78-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-19"><a href="#cb78-19" aria-hidden="true" tabindex="-1"></a>------------------</span>
+<span id="cb78-20"><a href="#cb78-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-21"><a href="#cb78-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-22"><a href="#cb78-22" aria-hidden="true" tabindex="-1"></a><span class="fu"># Explore a dataset</span></span>
+<span id="cb78-23"><a href="#cb78-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-24"><a href="#cb78-24" aria-hidden="true" tabindex="-1"></a>In this section, we will introduce some frequently used commands when you first load a dataset. </span>
+<span id="cb78-25"><a href="#cb78-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-26"><a href="#cb78-26" aria-hidden="true" tabindex="-1"></a>We use <span class="in">`penguins`</span> data as an example.</span>
+<span id="cb78-27"><a href="#cb78-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-30"><a href="#cb78-30" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb78-31"><a href="#cb78-31" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: load-data-penguins-mini</span></span>
+<span id="cb78-32"><a href="#cb78-32" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb78-33"><a href="#cb78-33" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb78-34"><a href="#cb78-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-35"><a href="#cb78-35" aria-hidden="true" tabindex="-1"></a><span class="co"># read a csv file</span></span>
+<span id="cb78-36"><a href="#cb78-36" aria-hidden="true" tabindex="-1"></a>penguins <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/penguins_complete.csv'</span>, <span class="at">sep =</span> <span class="st">','</span>)</span>
+<span id="cb78-37"><a href="#cb78-37" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb78-38"><a href="#cb78-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-39"><a href="#cb78-39" aria-hidden="true" tabindex="-1"></a>You *can* type <span class="in">`penguins`</span> in the console to print the data; but you will see that it gets hard to read. This is usually the case: you have lots of data that is hard to fit in your screen. </span>
+<span id="cb78-40"><a href="#cb78-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-41"><a href="#cb78-41" aria-hidden="true" tabindex="-1"></a>Therefore, it is useful to</span>
+<span id="cb78-42"><a href="#cb78-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-43"><a href="#cb78-43" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>print out a few rows (head of the data);</span>
+<span id="cb78-44"><a href="#cb78-44" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>have a list of column names </span>
+<span id="cb78-45"><a href="#cb78-45" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>know the dimension of the dataset (number of observations and features/measurements)</span>
+<span id="cb78-46"><a href="#cb78-46" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>produce some summary statistics</span>
+<span id="cb78-47"><a href="#cb78-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-48"><a href="#cb78-48" aria-hidden="true" tabindex="-1"></a>We extract the **head** (first several, by default 6) rows of your data. Similarly, you can get the last several rows using <span class="in">`tail()`</span></span>
+<span id="cb78-49"><a href="#cb78-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-52"><a href="#cb78-52" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb78-53"><a href="#cb78-53" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: summary of dataset</span></span>
+<span id="cb78-54"><a href="#cb78-54" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb78-55"><a href="#cb78-55" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb78-56"><a href="#cb78-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-57"><a href="#cb78-57" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(penguins)</span>
+<span id="cb78-58"><a href="#cb78-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-59"><a href="#cb78-59" aria-hidden="true" tabindex="-1"></a><span class="co"># this is essentially giving the first 6 rows of your data</span></span>
+<span id="cb78-60"><a href="#cb78-60" aria-hidden="true" tabindex="-1"></a><span class="co"># penguins[1:6, ]</span></span>
+<span id="cb78-61"><a href="#cb78-61" aria-hidden="true" tabindex="-1"></a><span class="co"># head(penguins, 10)  gives first 10 rows</span></span>
+<span id="cb78-62"><a href="#cb78-62" aria-hidden="true" tabindex="-1"></a><span class="co"># tail(penguins)</span></span>
+<span id="cb78-63"><a href="#cb78-63" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb78-64"><a href="#cb78-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-65"><a href="#cb78-65" aria-hidden="true" tabindex="-1"></a>In RStudio, you can also use <span class="in">`View()`</span> command to look at your dataset in a tabular form.</span>
+<span id="cb78-66"><a href="#cb78-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-67"><a href="#cb78-67" aria-hidden="true" tabindex="-1"></a>To know what measurements (or feature, variable, parameter) are in the data, you can extract the **column names**. </span>
+<span id="cb78-68"><a href="#cb78-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-71"><a href="#cb78-71" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb78-72"><a href="#cb78-72" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: summary of dataset 2</span></span>
+<span id="cb78-73"><a href="#cb78-73" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb78-74"><a href="#cb78-74" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb78-75"><a href="#cb78-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-76"><a href="#cb78-76" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(penguins)</span>
+<span id="cb78-77"><a href="#cb78-77" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(penguins)</span>
+<span id="cb78-78"><a href="#cb78-78" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb78-79"><a href="#cb78-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-80"><a href="#cb78-80" aria-hidden="true" tabindex="-1"></a>To know **how many subjects** are in a dataset, there are a few options. You can find the dimension of the dataset; or find how many rows are in the data. </span>
+<span id="cb78-81"><a href="#cb78-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-82"><a href="#cb78-82" aria-hidden="true" tabindex="-1"></a>Alternatively, if you have one variable (say <span class="in">`species`</span>), you can also use <span class="in">`length(species)`</span>.</span>
+<span id="cb78-83"><a href="#cb78-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-86"><a href="#cb78-86" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb78-87"><a href="#cb78-87" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: summary of dataset 3</span></span>
+<span id="cb78-88"><a href="#cb78-88" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb78-89"><a href="#cb78-89" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb78-90"><a href="#cb78-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-91"><a href="#cb78-91" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(penguins)</span>
+<span id="cb78-92"><a href="#cb78-92" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(penguins)</span>
+<span id="cb78-93"><a href="#cb78-93" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(penguins<span class="sc">$</span>species) <span class="co"># length() gives the size of a vector</span></span>
+<span id="cb78-94"><a href="#cb78-94" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb78-95"><a href="#cb78-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-96"><a href="#cb78-96" aria-hidden="true" tabindex="-1"></a>Sometimes it is also useful to know what **types of data** it is for each variable. You can either use <span class="in">`str()`</span> (structure) on the dataset; or use <span class="in">`class()`</span> on the variable you are interested in.</span>
+<span id="cb78-97"><a href="#cb78-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-100"><a href="#cb78-100" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb78-101"><a href="#cb78-101" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: summary of dataset 4</span></span>
+<span id="cb78-102"><a href="#cb78-102" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb78-103"><a href="#cb78-103" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb78-104"><a href="#cb78-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-105"><a href="#cb78-105" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(penguins)</span>
+<span id="cb78-106"><a href="#cb78-106" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(penguins<span class="sc">$</span>species)</span>
+<span id="cb78-107"><a href="#cb78-107" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(penguins<span class="sc">$</span>bill_length_mm)</span>
+<span id="cb78-108"><a href="#cb78-108" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb78-109"><a href="#cb78-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-110"><a href="#cb78-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-111"><a href="#cb78-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-112"><a href="#cb78-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-113"><a href="#cb78-113" aria-hidden="true" tabindex="-1"></a><span class="fu"># Descriptive statistics</span></span>
+<span id="cb78-114"><a href="#cb78-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-115"><a href="#cb78-115" aria-hidden="true" tabindex="-1"></a><span class="fu">### Continuous variable</span></span>
+<span id="cb78-116"><a href="#cb78-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-117"><a href="#cb78-117" aria-hidden="true" tabindex="-1"></a>A continuous variable can take values in a continuous range. Height and weight are examples of this type. Usually the data type in R is <span class="in">`numeric`</span>; if not, you might need to convert it first.</span>
+<span id="cb78-118"><a href="#cb78-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-119"><a href="#cb78-119" aria-hidden="true" tabindex="-1"></a>Common summary statistics for continuous variables are </span>
+<span id="cb78-120"><a href="#cb78-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-121"><a href="#cb78-121" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>extremes (minimum, maximum)</span>
+<span id="cb78-122"><a href="#cb78-122" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>average and central tendency (mean, median)</span>
+<span id="cb78-123"><a href="#cb78-123" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>quantiles (top 1 percent, bottom 5 percent, IQR - interquartile range)</span>
+<span id="cb78-124"><a href="#cb78-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-125"><a href="#cb78-125" aria-hidden="true" tabindex="-1"></a>Let us focus on one continuous variable, <span class="in">`bill_length_mm`</span>. </span>
+<span id="cb78-126"><a href="#cb78-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-129"><a href="#cb78-129" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb78-130"><a href="#cb78-130" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: descriptive stat 1</span></span>
+<span id="cb78-131"><a href="#cb78-131" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb78-132"><a href="#cb78-132" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb78-133"><a href="#cb78-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-134"><a href="#cb78-134" aria-hidden="true" tabindex="-1"></a><span class="co"># create a variable called bill</span></span>
+<span id="cb78-135"><a href="#cb78-135" aria-hidden="true" tabindex="-1"></a>bill <span class="ot">&lt;-</span> penguins<span class="sc">$</span>bill_length_mm</span>
+<span id="cb78-136"><a href="#cb78-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-137"><a href="#cb78-137" aria-hidden="true" tabindex="-1"></a><span class="co"># use the command summary on a continuous variable</span></span>
+<span id="cb78-138"><a href="#cb78-138" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(bill)</span>
+<span id="cb78-139"><a href="#cb78-139" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb78-140"><a href="#cb78-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-141"><a href="#cb78-141" aria-hidden="true" tabindex="-1"></a>You see that there are some <span class="in">`NA's`</span>. This means the data is missing for 2 subjects. If we do not remove them before (or tell the functions to remove it), the results will be affected.</span>
+<span id="cb78-142"><a href="#cb78-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-145"><a href="#cb78-145" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb78-146"><a href="#cb78-146" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: descriptive stat 2</span></span>
+<span id="cb78-147"><a href="#cb78-147" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb78-148"><a href="#cb78-148" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb78-149"><a href="#cb78-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-150"><a href="#cb78-150" aria-hidden="true" tabindex="-1"></a><span class="co"># compute the min</span></span>
+<span id="cb78-151"><a href="#cb78-151" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(bill)</span>
+<span id="cb78-152"><a href="#cb78-152" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(bill, <span class="at">na.rm =</span> T) <span class="co"># remove NA</span></span>
+<span id="cb78-153"><a href="#cb78-153" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb78-154"><a href="#cb78-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-155"><a href="#cb78-155" aria-hidden="true" tabindex="-1"></a>Now we compute the maximum, mean, median, bottom and top 5 percent quantile.</span>
+<span id="cb78-156"><a href="#cb78-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-159"><a href="#cb78-159" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb78-160"><a href="#cb78-160" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: descriptive stat 3</span></span>
+<span id="cb78-161"><a href="#cb78-161" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb78-162"><a href="#cb78-162" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb78-163"><a href="#cb78-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-164"><a href="#cb78-164" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(bill, <span class="at">na.rm =</span> T)</span>
+<span id="cb78-165"><a href="#cb78-165" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(bill, <span class="at">na.rm =</span> T) </span>
+<span id="cb78-166"><a href="#cb78-166" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(bill, <span class="at">na.rm =</span> T)</span>
+<span id="cb78-167"><a href="#cb78-167" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(bill, <span class="fl">0.05</span>, <span class="at">na.rm =</span> T)</span>
+<span id="cb78-168"><a href="#cb78-168" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(bill, <span class="fl">0.95</span>, <span class="at">na.rm =</span> T)</span>
+<span id="cb78-169"><a href="#cb78-169" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb78-170"><a href="#cb78-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-171"><a href="#cb78-171" aria-hidden="true" tabindex="-1"></a><span class="fu">### Categorical variable</span></span>
+<span id="cb78-172"><a href="#cb78-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-173"><a href="#cb78-173" aria-hidden="true" tabindex="-1"></a>Categorical variables take discrete values, such as sex (male and female), smoking habit (frequent smoker or not), age groups.</span>
+<span id="cb78-174"><a href="#cb78-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-175"><a href="#cb78-175" aria-hidden="true" tabindex="-1"></a>For categorical variables, the metrics above (mean and median, max and min, quantiles) do not make much sense. We use **counts** and **percentages** instead.</span>
+<span id="cb78-176"><a href="#cb78-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-177"><a href="#cb78-177" aria-hidden="true" tabindex="-1"></a>We use the variable <span class="in">`species`</span> and <span class="in">`island`</span> from the penguin data.</span>
+<span id="cb78-178"><a href="#cb78-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-181"><a href="#cb78-181" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb78-182"><a href="#cb78-182" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: descriptive stat 4</span></span>
+<span id="cb78-183"><a href="#cb78-183" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb78-184"><a href="#cb78-184" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb78-185"><a href="#cb78-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-186"><a href="#cb78-186" aria-hidden="true" tabindex="-1"></a>species <span class="ot">&lt;-</span> penguins<span class="sc">$</span>species</span>
+<span id="cb78-187"><a href="#cb78-187" aria-hidden="true" tabindex="-1"></a>island <span class="ot">&lt;-</span> penguins<span class="sc">$</span>island</span>
+<span id="cb78-188"><a href="#cb78-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-189"><a href="#cb78-189" aria-hidden="true" tabindex="-1"></a><span class="co"># for one variable</span></span>
+<span id="cb78-190"><a href="#cb78-190" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(species)</span>
+<span id="cb78-191"><a href="#cb78-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-192"><a href="#cb78-192" aria-hidden="true" tabindex="-1"></a><span class="co"># for two variables</span></span>
+<span id="cb78-193"><a href="#cb78-193" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(species, island)</span>
+<span id="cb78-194"><a href="#cb78-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-195"><a href="#cb78-195" aria-hidden="true" tabindex="-1"></a><span class="co"># to create percentage, divide by number of subjects</span></span>
+<span id="cb78-196"><a href="#cb78-196" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(species)<span class="sc">/</span><span class="fu">length</span>(species)</span>
+<span id="cb78-197"><a href="#cb78-197" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb78-198"><a href="#cb78-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-199"><a href="#cb78-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-200"><a href="#cb78-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-201"><a href="#cb78-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-202"><a href="#cb78-202" aria-hidden="true" tabindex="-1"></a><span class="fu"># Visualization</span></span>
+<span id="cb78-203"><a href="#cb78-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-204"><a href="#cb78-204" aria-hidden="true" tabindex="-1"></a><span class="fu">### Histogram</span></span>
+<span id="cb78-205"><a href="#cb78-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-208"><a href="#cb78-208" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb78-209"><a href="#cb78-209" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: histogram</span></span>
+<span id="cb78-210"><a href="#cb78-210" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb78-211"><a href="#cb78-211" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb78-212"><a href="#cb78-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-213"><a href="#cb78-213" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(bill)</span>
+<span id="cb78-214"><a href="#cb78-214" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb78-215"><a href="#cb78-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-216"><a href="#cb78-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-217"><a href="#cb78-217" aria-hidden="true" tabindex="-1"></a><span class="fu">### Box plot</span></span>
+<span id="cb78-218"><a href="#cb78-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-219"><a href="#cb78-219" aria-hidden="true" tabindex="-1"></a>A boxplot gives the position of </span>
+<span id="cb78-220"><a href="#cb78-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-221"><a href="#cb78-221" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>median (50th percentile; second quartile)</span>
+<span id="cb78-222"><a href="#cb78-222" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>25th and 75th percentile (first and third quartile)</span>
+<span id="cb78-223"><a href="#cb78-223" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>maximum and minimum</span>
+<span id="cb78-224"><a href="#cb78-224" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>outliers</span>
+<span id="cb78-225"><a href="#cb78-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-228"><a href="#cb78-228" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb78-229"><a href="#cb78-229" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: boxplot</span></span>
+<span id="cb78-230"><a href="#cb78-230" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb78-231"><a href="#cb78-231" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb78-232"><a href="#cb78-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-233"><a href="#cb78-233" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(bill)</span>
+<span id="cb78-234"><a href="#cb78-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-235"><a href="#cb78-235" aria-hidden="true" tabindex="-1"></a><span class="co"># multiple boxplot together</span></span>
+<span id="cb78-236"><a href="#cb78-236" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(bill_length_mm <span class="sc">~</span> species, <span class="at">data =</span> penguins)</span>
+<span id="cb78-237"><a href="#cb78-237" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb78-238"><a href="#cb78-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-239"><a href="#cb78-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-240"><a href="#cb78-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-241"><a href="#cb78-241" aria-hidden="true" tabindex="-1"></a><span class="fu">### Scatterplot of two continuous variables</span></span>
+<span id="cb78-242"><a href="#cb78-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-245"><a href="#cb78-245" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb78-246"><a href="#cb78-246" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: scatter</span></span>
+<span id="cb78-247"><a href="#cb78-247" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb78-248"><a href="#cb78-248" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb78-249"><a href="#cb78-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-250"><a href="#cb78-250" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(penguins<span class="sc">$</span>bill_length_mm, penguins<span class="sc">$</span>bill_depth_mm)</span>
+<span id="cb78-251"><a href="#cb78-251" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb78-252"><a href="#cb78-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-253"><a href="#cb78-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-254"><a href="#cb78-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-255"><a href="#cb78-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-256"><a href="#cb78-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-257"><a href="#cb78-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-258"><a href="#cb78-258" aria-hidden="true" tabindex="-1"></a><span class="fu"># Examples (exercises with solution)</span></span>
+<span id="cb78-259"><a href="#cb78-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-260"><a href="#cb78-260" aria-hidden="true" tabindex="-1"></a>(Exercises without solution can be found <span class="co">[</span><span class="ot">here</span><span class="co">](ex_eda_part1.qmd)</span>)</span>
+<span id="cb78-261"><a href="#cb78-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-262"><a href="#cb78-262" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 1 (weight)</span></span>
+<span id="cb78-263"><a href="#cb78-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-264"><a href="#cb78-264" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1a </span></span>
+<span id="cb78-265"><a href="#cb78-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-266"><a href="#cb78-266" aria-hidden="true" tabindex="-1"></a>Generate a variable named <span class="in">`weight`</span>, with the following measurements:</span>
+<span id="cb78-267"><a href="#cb78-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-268"><a href="#cb78-268" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb78-269"><a href="#cb78-269" aria-hidden="true" tabindex="-1"></a><span class="in">50 75 70 74 95 83 65 94 66 65 65 75 84 55 73 68 72 67 53 65</span></span>
+<span id="cb78-270"><a href="#cb78-270" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb78-271"><a href="#cb78-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-274"><a href="#cb78-274" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb78-275"><a href="#cb78-275" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda-1a</span></span>
+<span id="cb78-276"><a href="#cb78-276" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb78-277"><a href="#cb78-277" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb78-278"><a href="#cb78-278" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-279"><a href="#cb78-279" aria-hidden="true" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">75</span>, <span class="dv">70</span>, <span class="dv">74</span>, <span class="dv">95</span>, </span>
+<span id="cb78-280"><a href="#cb78-280" aria-hidden="true" tabindex="-1"></a>            <span class="dv">83</span>, <span class="dv">65</span>, <span class="dv">94</span>, <span class="dv">66</span>, <span class="dv">65</span>, </span>
+<span id="cb78-281"><a href="#cb78-281" aria-hidden="true" tabindex="-1"></a>            <span class="dv">65</span>, <span class="dv">75</span>, <span class="dv">84</span>, <span class="dv">55</span>, <span class="dv">73</span>, </span>
+<span id="cb78-282"><a href="#cb78-282" aria-hidden="true" tabindex="-1"></a>            <span class="dv">68</span>, <span class="dv">72</span>, <span class="dv">67</span>, <span class="dv">53</span>, <span class="dv">65</span>)</span>
+<span id="cb78-283"><a href="#cb78-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-284"><a href="#cb78-284" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb78-285"><a href="#cb78-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-286"><a href="#cb78-286" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-287"><a href="#cb78-287" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1b</span></span>
+<span id="cb78-288"><a href="#cb78-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-289"><a href="#cb78-289" aria-hidden="true" tabindex="-1"></a>Make a simple descriptive analysis of the variable, what are the mean, median, maximum, minimum and quantiles?</span>
+<span id="cb78-290"><a href="#cb78-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-291"><a href="#cb78-291" aria-hidden="true" tabindex="-1"></a>How to interpret the data?</span>
+<span id="cb78-292"><a href="#cb78-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-295"><a href="#cb78-295" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb78-296"><a href="#cb78-296" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda-1b</span></span>
+<span id="cb78-297"><a href="#cb78-297" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb78-298"><a href="#cb78-298" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb78-299"><a href="#cb78-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-300"><a href="#cb78-300" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(weight)</span>
+<span id="cb78-301"><a href="#cb78-301" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(weight)</span>
+<span id="cb78-302"><a href="#cb78-302" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(weight)</span>
+<span id="cb78-303"><a href="#cb78-303" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(weight)</span>
+<span id="cb78-304"><a href="#cb78-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-305"><a href="#cb78-305" aria-hidden="true" tabindex="-1"></a><span class="co"># alternatively, </span></span>
+<span id="cb78-306"><a href="#cb78-306" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(weight)</span>
+<span id="cb78-307"><a href="#cb78-307" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb78-308"><a href="#cb78-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-309"><a href="#cb78-309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-310"><a href="#cb78-310" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1c</span></span>
+<span id="cb78-311"><a href="#cb78-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-312"><a href="#cb78-312" aria-hidden="true" tabindex="-1"></a>Make a histogram.</span>
+<span id="cb78-313"><a href="#cb78-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-316"><a href="#cb78-316" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb78-317"><a href="#cb78-317" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda-1c</span></span>
+<span id="cb78-318"><a href="#cb78-318" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb78-319"><a href="#cb78-319" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb78-320"><a href="#cb78-320" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-321"><a href="#cb78-321" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(weight)</span>
+<span id="cb78-322"><a href="#cb78-322" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb78-323"><a href="#cb78-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-324"><a href="#cb78-324" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1d</span></span>
+<span id="cb78-325"><a href="#cb78-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-326"><a href="#cb78-326" aria-hidden="true" tabindex="-1"></a>Make a boxplot. What do the two dots on the top represent?</span>
+<span id="cb78-327"><a href="#cb78-327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-330"><a href="#cb78-330" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb78-331"><a href="#cb78-331" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda-1d</span></span>
+<span id="cb78-332"><a href="#cb78-332" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb78-333"><a href="#cb78-333" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb78-334"><a href="#cb78-334" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-335"><a href="#cb78-335" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(weight)</span>
+<span id="cb78-336"><a href="#cb78-336" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb78-337"><a href="#cb78-337" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-338"><a href="#cb78-338" aria-hidden="true" tabindex="-1"></a>They are the largest two points in the dataset. These are outliers in this data. </span>
+<span id="cb78-339"><a href="#cb78-339" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-340"><a href="#cb78-340" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-341"><a href="#cb78-341" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip collapse="true"}</span>
+<span id="cb78-342"><a href="#cb78-342" aria-hidden="true" tabindex="-1"></a><span class="fu">## (Optional) Outliers in box plot</span></span>
+<span id="cb78-343"><a href="#cb78-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-344"><a href="#cb78-344" aria-hidden="true" tabindex="-1"></a>There are different ways to define outliers. The default box plot in R determines points beyond $Q_1 - 1.5\times IQR$ and $Q_3 + 1.5\times IQR$ are outliers. You can check the values of quartiles using <span class="in">`summary()`</span>, and read up the documentation <span class="in">`?boxplot()`</span>.</span>
+<span id="cb78-345"><a href="#cb78-345" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb78-346"><a href="#cb78-346" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-347"><a href="#cb78-347" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-348"><a href="#cb78-348" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-349"><a href="#cb78-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-350"><a href="#cb78-350" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-351"><a href="#cb78-351" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 2 (lung function)</span></span>
+<span id="cb78-352"><a href="#cb78-352" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-353"><a href="#cb78-353" aria-hidden="true" tabindex="-1"></a>Lung function has been measured on 106 medical students. Peak expiratory flow rate (PEF, measured in liters per minute) was measured three times in a sittinng position, and three times in a standing position.</span>
+<span id="cb78-354"><a href="#cb78-354" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-355"><a href="#cb78-355" aria-hidden="true" tabindex="-1"></a>The variables are </span>
+<span id="cb78-356"><a href="#cb78-356" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-357"><a href="#cb78-357" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Age (years)</span>
+<span id="cb78-358"><a href="#cb78-358" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Gender (1 is female, 2 is male)</span>
+<span id="cb78-359"><a href="#cb78-359" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Height (cm)</span>
+<span id="cb78-360"><a href="#cb78-360" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Weight (kg)</span>
+<span id="cb78-361"><a href="#cb78-361" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>PEF measured three times in a sitting position (pefsit1, pefsit2, pefsit3)</span>
+<span id="cb78-362"><a href="#cb78-362" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>PEF measured three times in a standing position (pefsta1, pefsta2, pefsta3)</span>
+<span id="cb78-363"><a href="#cb78-363" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Mean of the three measurements made in a sitting position (pefsitm)</span>
+<span id="cb78-364"><a href="#cb78-364" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Mean of the three measurements made in a standing position (pefstam)</span>
+<span id="cb78-365"><a href="#cb78-365" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Mean of all six PEF values (pefmean)</span>
+<span id="cb78-366"><a href="#cb78-366" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-367"><a href="#cb78-367" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2a) </span></span>
+<span id="cb78-368"><a href="#cb78-368" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-369"><a href="#cb78-369" aria-hidden="true" tabindex="-1"></a>Download and open <span class="in">`PEFH98-english.dta`</span> into R. </span>
+<span id="cb78-370"><a href="#cb78-370" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-371"><a href="#cb78-371" aria-hidden="true" tabindex="-1"></a>If you have problem with <span class="in">`.dta`</span> data format, you can also use <span class="in">`PEFH98-english.csv`</span>.</span>
+<span id="cb78-372"><a href="#cb78-372" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-373"><a href="#cb78-373" aria-hidden="true" tabindex="-1"></a>Pay attention to how <span class="in">`gender`</span> is coded. We might have to modify it. </span>
+<span id="cb78-374"><a href="#cb78-374" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-377"><a href="#cb78-377" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb78-378"><a href="#cb78-378" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda-2a</span></span>
+<span id="cb78-379"><a href="#cb78-379" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb78-380"><a href="#cb78-380" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb78-381"><a href="#cb78-381" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-382"><a href="#cb78-382" aria-hidden="true" tabindex="-1"></a><span class="co"># locate your datafile, set the path to your data</span></span>
+<span id="cb78-383"><a href="#cb78-383" aria-hidden="true" tabindex="-1"></a><span class="co"># if you use rda data file: </span></span>
+<span id="cb78-384"><a href="#cb78-384" aria-hidden="true" tabindex="-1"></a><span class="co"># load('./lab/data/PEFH98-english.rda')</span></span>
+<span id="cb78-385"><a href="#cb78-385" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-386"><a href="#cb78-386" aria-hidden="true" tabindex="-1"></a><span class="co"># if you use csv: </span></span>
+<span id="cb78-387"><a href="#cb78-387" aria-hidden="true" tabindex="-1"></a>lung_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/PEFH98-english.csv'</span>, <span class="at">sep =</span> <span class="st">','</span>)</span>
+<span id="cb78-388"><a href="#cb78-388" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lung_data)</span>
+<span id="cb78-389"><a href="#cb78-389" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb78-390"><a href="#cb78-390" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-391"><a href="#cb78-391" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-392"><a href="#cb78-392" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2b)</span></span>
+<span id="cb78-393"><a href="#cb78-393" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-394"><a href="#cb78-394" aria-hidden="true" tabindex="-1"></a>How many observations are there (number of subjects)? How do you get a list of variable names from your dataset?</span>
+<span id="cb78-395"><a href="#cb78-395" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-398"><a href="#cb78-398" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb78-399"><a href="#cb78-399" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda-2b</span></span>
+<span id="cb78-400"><a href="#cb78-400" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb78-401"><a href="#cb78-401" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb78-402"><a href="#cb78-402" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-403"><a href="#cb78-403" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(lung_data)</span>
+<span id="cb78-404"><a href="#cb78-404" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(lung_data)</span>
+<span id="cb78-405"><a href="#cb78-405" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb78-406"><a href="#cb78-406" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-407"><a href="#cb78-407" aria-hidden="true" tabindex="-1"></a>Make a histogram for each of the following variables. Compute means, and interpret the results.</span>
+<span id="cb78-408"><a href="#cb78-408" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-409"><a href="#cb78-409" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb78-410"><a href="#cb78-410" aria-hidden="true" tabindex="-1"></a><span class="in">height</span></span>
+<span id="cb78-411"><a href="#cb78-411" aria-hidden="true" tabindex="-1"></a><span class="in">weight</span></span>
+<span id="cb78-412"><a href="#cb78-412" aria-hidden="true" tabindex="-1"></a><span class="in">age</span></span>
+<span id="cb78-413"><a href="#cb78-413" aria-hidden="true" tabindex="-1"></a><span class="in">pefsitm</span></span>
+<span id="cb78-414"><a href="#cb78-414" aria-hidden="true" tabindex="-1"></a><span class="in">pefstam</span></span>
+<span id="cb78-415"><a href="#cb78-415" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb78-416"><a href="#cb78-416" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-419"><a href="#cb78-419" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb78-420"><a href="#cb78-420" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda-2b2</span></span>
+<span id="cb78-421"><a href="#cb78-421" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb78-422"><a href="#cb78-422" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb78-423"><a href="#cb78-423" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-424"><a href="#cb78-424" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lung_data<span class="sc">$</span>height)</span>
+<span id="cb78-425"><a href="#cb78-425" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb78-426"><a href="#cb78-426" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-427"><a href="#cb78-427" aria-hidden="true" tabindex="-1"></a>We repeat it for the other 4 variables. We can put them more compactly,</span>
+<span id="cb78-428"><a href="#cb78-428" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-431"><a href="#cb78-431" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb78-432"><a href="#cb78-432" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda-2b3</span></span>
+<span id="cb78-433"><a href="#cb78-433" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb78-434"><a href="#cb78-434" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb78-435"><a href="#cb78-435" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-436"><a href="#cb78-436" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) </span>
+<span id="cb78-437"><a href="#cb78-437" aria-hidden="true" tabindex="-1"></a><span class="co"># we use this line to display (2 rows 2 columns)</span></span>
+<span id="cb78-438"><a href="#cb78-438" aria-hidden="true" tabindex="-1"></a><span class="co"># by default it is 1 row 1 column</span></span>
+<span id="cb78-439"><a href="#cb78-439" aria-hidden="true" tabindex="-1"></a><span class="co"># run this line to set it back to default:</span></span>
+<span id="cb78-440"><a href="#cb78-440" aria-hidden="true" tabindex="-1"></a><span class="co"># par(mfrow = c(1, 1))</span></span>
+<span id="cb78-441"><a href="#cb78-441" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lung_data<span class="sc">$</span>weight)</span>
+<span id="cb78-442"><a href="#cb78-442" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lung_data<span class="sc">$</span>age)</span>
+<span id="cb78-443"><a href="#cb78-443" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lung_data<span class="sc">$</span>pefsitm)</span>
+<span id="cb78-444"><a href="#cb78-444" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lung_data<span class="sc">$</span>pefstam)</span>
+<span id="cb78-445"><a href="#cb78-445" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb78-446"><a href="#cb78-446" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-447"><a href="#cb78-447" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-448"><a href="#cb78-448" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-449"><a href="#cb78-449" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-450"><a href="#cb78-450" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-451"><a href="#cb78-451" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2c)</span></span>
+<span id="cb78-452"><a href="#cb78-452" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-453"><a href="#cb78-453" aria-hidden="true" tabindex="-1"></a>Make histograms for the variables <span class="in">`height`</span> and <span class="in">`pefmean`</span> for men and women separately. Also try to make boxplots.</span>
+<span id="cb78-454"><a href="#cb78-454" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-455"><a href="#cb78-455" aria-hidden="true" tabindex="-1"></a>What conclusion can you draw? </span>
+<span id="cb78-456"><a href="#cb78-456" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-459"><a href="#cb78-459" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb78-460"><a href="#cb78-460" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda-2c</span></span>
+<span id="cb78-461"><a href="#cb78-461" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb78-462"><a href="#cb78-462" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb78-463"><a href="#cb78-463" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-464"><a href="#cb78-464" aria-hidden="true" tabindex="-1"></a>height_f <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>height[lung_data<span class="sc">$</span>gender <span class="sc">==</span> <span class="st">'female'</span>]</span>
+<span id="cb78-465"><a href="#cb78-465" aria-hidden="true" tabindex="-1"></a>height_m <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>height[lung_data<span class="sc">$</span>gender <span class="sc">==</span> <span class="st">'male'</span>]</span>
+<span id="cb78-466"><a href="#cb78-466" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-467"><a href="#cb78-467" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) <span class="co"># plot in parallel</span></span>
+<span id="cb78-468"><a href="#cb78-468" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(height_f)</span>
+<span id="cb78-469"><a href="#cb78-469" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(height_m)</span>
+<span id="cb78-470"><a href="#cb78-470" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-471"><a href="#cb78-471" aria-hidden="true" tabindex="-1"></a><span class="co"># we can make it more customized</span></span>
+<span id="cb78-472"><a href="#cb78-472" aria-hidden="true" tabindex="-1"></a><span class="co"># add axis limit, title and xaxis name</span></span>
+<span id="cb78-473"><a href="#cb78-473" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) <span class="co"># plot in parallel</span></span>
+<span id="cb78-474"><a href="#cb78-474" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(height_f, <span class="at">main =</span> <span class="st">'Height: female'</span>, <span class="at">xlab =</span> <span class="st">'Height (cm)'</span>,</span>
+<span id="cb78-475"><a href="#cb78-475" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">150</span>, <span class="dv">200</span>))</span>
+<span id="cb78-476"><a href="#cb78-476" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(height_m, <span class="at">main =</span> <span class="st">'Height: male'</span>, <span class="at">xlab =</span> <span class="st">'Height (cm)'</span>,</span>
+<span id="cb78-477"><a href="#cb78-477" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">150</span>, <span class="dv">200</span>))</span>
+<span id="cb78-478"><a href="#cb78-478" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb78-479"><a href="#cb78-479" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-480"><a href="#cb78-480" aria-hidden="true" tabindex="-1"></a>Similarly, histogram for <span class="in">`pefmean`</span> can be done in the same way.</span>
+<span id="cb78-481"><a href="#cb78-481" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-484"><a href="#cb78-484" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb78-485"><a href="#cb78-485" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda-2c2</span></span>
+<span id="cb78-486"><a href="#cb78-486" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb78-487"><a href="#cb78-487" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb78-488"><a href="#cb78-488" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-489"><a href="#cb78-489" aria-hidden="true" tabindex="-1"></a>pefmean_f <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>pefmean[lung_data<span class="sc">$</span>gender <span class="sc">==</span> <span class="st">'female'</span>]</span>
+<span id="cb78-490"><a href="#cb78-490" aria-hidden="true" tabindex="-1"></a>pefmean_m <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>pefmean[lung_data<span class="sc">$</span>gender <span class="sc">==</span> <span class="st">'male'</span>]</span>
+<span id="cb78-491"><a href="#cb78-491" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-492"><a href="#cb78-492" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) <span class="co"># plot in parallel</span></span>
+<span id="cb78-493"><a href="#cb78-493" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(pefmean_f)</span>
+<span id="cb78-494"><a href="#cb78-494" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(pefmean_m)</span>
+<span id="cb78-495"><a href="#cb78-495" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb78-496"><a href="#cb78-496" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-497"><a href="#cb78-497" aria-hidden="true" tabindex="-1"></a>Now we can make some boxplots</span>
+<span id="cb78-498"><a href="#cb78-498" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-501"><a href="#cb78-501" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb78-502"><a href="#cb78-502" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda-2c3</span></span>
+<span id="cb78-503"><a href="#cb78-503" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb78-504"><a href="#cb78-504" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb78-505"><a href="#cb78-505" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-506"><a href="#cb78-506" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb78-507"><a href="#cb78-507" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(height <span class="sc">~</span> gender, <span class="at">data =</span> lung_data, <span class="at">main =</span> <span class="st">'Height vs Gender'</span>)</span>
+<span id="cb78-508"><a href="#cb78-508" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-509"><a href="#cb78-509" aria-hidden="true" tabindex="-1"></a><span class="co"># it is also possible to remove the frame</span></span>
+<span id="cb78-510"><a href="#cb78-510" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(pefmean <span class="sc">~</span> gender, <span class="at">data =</span> lung_data, <span class="at">frame =</span> F, <span class="at">main =</span> <span class="st">'PEFmean vs gender'</span>)</span>
+<span id="cb78-511"><a href="#cb78-511" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb78-512"><a href="#cb78-512" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-513"><a href="#cb78-513" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2d)</span></span>
+<span id="cb78-514"><a href="#cb78-514" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-515"><a href="#cb78-515" aria-hidden="true" tabindex="-1"></a>Make three scatterplots to compare </span>
+<span id="cb78-516"><a href="#cb78-516" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-517"><a href="#cb78-517" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`pefmean`</span> with <span class="in">`height`</span></span>
+<span id="cb78-518"><a href="#cb78-518" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`pefmean`</span> with <span class="in">`weight`</span></span>
+<span id="cb78-519"><a href="#cb78-519" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`pefmean`</span> with <span class="in">`age`</span> </span>
+<span id="cb78-520"><a href="#cb78-520" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-521"><a href="#cb78-521" aria-hidden="true" tabindex="-1"></a>What association do you see?</span>
+<span id="cb78-522"><a href="#cb78-522" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-525"><a href="#cb78-525" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb78-526"><a href="#cb78-526" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda-2d</span></span>
+<span id="cb78-527"><a href="#cb78-527" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb78-528"><a href="#cb78-528" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb78-529"><a href="#cb78-529" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-530"><a href="#cb78-530" aria-hidden="true" tabindex="-1"></a><span class="co"># pefmean height</span></span>
+<span id="cb78-531"><a href="#cb78-531" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lung_data<span class="sc">$</span>pefmean, lung_data<span class="sc">$</span>height)</span>
+<span id="cb78-532"><a href="#cb78-532" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-533"><a href="#cb78-533" aria-hidden="true" tabindex="-1"></a><span class="co"># it is possible to customize </span></span>
+<span id="cb78-534"><a href="#cb78-534" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lung_data<span class="sc">$</span>pefmean, lung_data<span class="sc">$</span>height, </span>
+<span id="cb78-535"><a href="#cb78-535" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">'PEF mean vs height'</span>, </span>
+<span id="cb78-536"><a href="#cb78-536" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">'PEF mean'</span>, <span class="at">ylab =</span> <span class="st">'Height'</span>,</span>
+<span id="cb78-537"><a href="#cb78-537" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">20</span>)</span>
+<span id="cb78-538"><a href="#cb78-538" aria-hidden="true" tabindex="-1"></a><span class="co"># pch: plotting symbols</span></span>
+<span id="cb78-539"><a href="#cb78-539" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb78-540"><a href="#cb78-540" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-541"><a href="#cb78-541" aria-hidden="true" tabindex="-1"></a><span class="in">`pch = 20`</span> is setting the symbol to small solid dots. You can try different values, from 0 to 25. <span class="co">[</span><span class="ot">Read more</span><span class="co">](http://www.sthda.com/english/wiki/r-plot-pch-symbols-the-different-point-shapes-available-in-r)</span></span>
+<span id="cb78-542"><a href="#cb78-542" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-543"><a href="#cb78-543" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-546"><a href="#cb78-546" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb78-547"><a href="#cb78-547" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda-2d2</span></span>
+<span id="cb78-548"><a href="#cb78-548" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb78-549"><a href="#cb78-549" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb78-550"><a href="#cb78-550" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-551"><a href="#cb78-551" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb78-552"><a href="#cb78-552" aria-hidden="true" tabindex="-1"></a><span class="co"># pefmean weight</span></span>
+<span id="cb78-553"><a href="#cb78-553" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lung_data<span class="sc">$</span>pefmean, lung_data<span class="sc">$</span>weight, </span>
+<span id="cb78-554"><a href="#cb78-554" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">'PEF mean vs weight'</span>, </span>
+<span id="cb78-555"><a href="#cb78-555" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">'PEF mean'</span>, <span class="at">ylab =</span> <span class="st">'Weight'</span>,</span>
+<span id="cb78-556"><a href="#cb78-556" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">20</span>)</span>
+<span id="cb78-557"><a href="#cb78-557" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-558"><a href="#cb78-558" aria-hidden="true" tabindex="-1"></a><span class="co"># pefmean age</span></span>
+<span id="cb78-559"><a href="#cb78-559" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lung_data<span class="sc">$</span>pefmean, lung_data<span class="sc">$</span>age, </span>
+<span id="cb78-560"><a href="#cb78-560" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">'PEF mean vs age'</span>, </span>
+<span id="cb78-561"><a href="#cb78-561" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">'PEF mean'</span>, <span class="at">ylab =</span> <span class="st">'Age'</span>,</span>
+<span id="cb78-562"><a href="#cb78-562" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">20</span>)</span>
+<span id="cb78-563"><a href="#cb78-563" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb78-564"><a href="#cb78-564" aria-hidden="true" tabindex="-1"></a></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

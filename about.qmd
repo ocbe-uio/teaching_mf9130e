@@ -13,7 +13,7 @@ The aim of the course is to make the participants acquainted with basic statisti
 
 #### Contact
 
-* Manuela Zucknick: manuela.zucknick\@medisin.uio.no
-* Valeria Vitelli: valeria.vitelli\@medisin.uio.no
-* Alvaro Kohn Luque: a.k.luque\@medisin.uio.no
-* Chi Zhang: chi.zhang\@medisin.uio.no
+* Manuela Zucknick: [manuela.zucknick\@medisin.uio.no](mailto:manuela.zucknick@medisin.uio.no)
+* Valeria Vitelli: [valeria.vitelli\@medisin.uio.no](mailto:valeria.vitelli@medisin.uio.no)
+* Alvaro Kohn Luque: [a.k.luque\@medisin.uio.no](mailto:a.k.luque@medisin.uio.no)
+* Chi Zhang: [chi.zhang\@medisin.uio.no](mailto:chi.zhang@medisin.uio.no)

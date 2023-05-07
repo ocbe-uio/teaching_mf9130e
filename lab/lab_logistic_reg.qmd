@@ -1,0 +1,313 @@
+---
+title: "Logistic regression"
+description: "Logistic regression"
+format: 
+  html:
+    code-fold: false
+    code-tools: true
+editor: source
+---
+
+Datasets
+
+* Exercise 1: `birth` ([rda link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/birth.rda), [csv link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/birth.csv))
+* Exercise 2: `framingham` ([rda link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/framingham.rda), [csv link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/framingham.csv))
+
+
+
+[R Script](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/9_logisticreg.R)
+
+------------------
+
+
+# Examples (exercises with solution)
+
+## Exercise 1 (birth)
+
+We shall analyse the data set given in the file `birth.dta`. In a study in Massachusetts, USA, birth weight was measured for the children of 189 women. The main variable in the study was birth weight, `BWT`, which is an important indicator of the condition of a newborn child. Low birth weight (below 2500 g) may be a medical risk factor. A major question is whether smoking during pregnancy influences the birth weight. One has also studied whether a number of other factors are related to birth weight, such as hypertension in the mother. 
+
+The variables of the study are
+
+* Identification number (ID)
+* Low birth weight (LOW)
+* Age of the mother (AGE)
+* Weight (in pounds) at last menstruaal period (LWT)
+* Ethnicity, 1 means White, 2 means African American, 3 meaans other (ETH)
+* Smoking status, 1 means current smoker, 0 means not smoking during pregnancy (SMK)
+* History of premature labbour, values 0, 1, 2... (PTL)
+* History of hypertension, 1 is yes, 0 is no (HT)
+* Uterine irritability, 1 is yes, 0 is no (UI)
+* First trimester visits, values 0, 1, 2... (FTV)
+* Third trimster visits, values 0, 1, 2... (TTV)
+* Birth weight (BWT)
+
+
+```{r}
+#| label: lr-1a-1
+#| warning: false
+#| echo: true
+
+# load data
+birth_data <- read.csv('data/birth.csv')
+
+# print the first rows of the data set
+head(birth_data)
+```
+
+### 1a)
+
+Perform a logistic regression analysis with `low` as dependent variable, and `age` as independent variable. Interpret the results.
+
+::: {.callout-note}
+## Recode `low` as `is_low_bwt`
+
+With logistic regression (glm()), you need to specify the outcome variable as 
+
+* either 0 or 1 (numeric values)
+* or a factor (ordered so that it matches 0 or 1 category)
+
+In the example we should the first option (numeric 0 or 1)
+
+It could be a good practice to create another variable, `is_low_bwt`, so that you keep the original `low` variable untouched; this is useful in case you want to double check if the coding is correct or need to start over.
+
+:::
+
+
+
+```{r}
+#| label: lr-1a-2
+#| warning: false
+#| echo: true
+
+# be careful with the levels: bwt<= 2500 is the cases (code as 1)
+table(birth_data$low)
+
+# recode low variable (numeric 1 and 0)
+birth_data$is_low_bwt <- ifelse(birth_data$low == 'bwt <= 2500',1,0)
+
+# check each category
+table(birth_data$is_low_bwt)
+```
+
+
+```{r}
+#| label: lr-1a-3
+#| warning: false
+#| echo: true
+
+# fit lr (using is_low_bwt)
+lr_low_age <- glm(is_low_bwt ~ age, 
+                  data = birth_data, 
+                  family = 'binomial')
+summary(lr_low_age)
+
+# double check whether 0/1 categories are correct
+table(lr_low_age$y)
+```
+
+```{r}
+#| label: lr-1a-4
+#| warning: false
+#| echo: true
+
+# the result regresssion coefficient is not odds ratio
+lr_low_age$coefficients
+
+# equivalently,
+# coefficients(lr_low_age)
+# coef(lr_low_age)
+# confidence interval for beta:
+# confint(lr_low_age)
+
+
+# to get odds ratio, exponentiate 
+exp(coef(lr_low_age)) # OR
+exp(confint(lr_low_age)) # CI for OR
+```
+
+
+
+
+### 1b) 
+
+Perform a logistic regression analysis with `low` as dependent variable and `smk` as independent variable. 
+
+```{r}
+#| label: lr-1b-1
+#| warning: false
+#| echo: true
+
+# low ~ smk 
+lr_low_smk <- glm(is_low_bwt ~ smk, 
+                  data = birth_data, 
+                  family = 'binomial')
+summary(lr_low_smk)
+
+# odds ratio 
+exp(coef(lr_low_smk))
+exp(confint(lr_low_smk))
+```
+
+### 1c) 
+
+Perform a logistic regression with `low` as dependent variable, and `eth` as independent variable. Be careful with the reference category.
+
+
+```{r}
+#| label: lr-1c-1
+#| warning: false
+#| echo: true
+
+
+# low ~ eth 
+# ethnicity needs to be factorised
+# baseline: white
+birth_data$eth <- eth <- factor(birth_data$eth, 
+              levels = c('white', 'black', 'other'), 
+              labels = c('white', 'black', 'other'))
+head(birth_data$eth)
+
+# fit lr 
+lr_low_eth <- glm(is_low_bwt ~ eth, 
+                  data = birth_data, 
+                  family = 'binomial')
+summary(lr_low_eth)
+
+# odds ratio 
+exp(coef(lr_low_eth))
+exp(confint(lr_low_eth))
+
+```
+
+
+
+### 1d)
+
+Perform a logistic regression with `low` as dependent variable, and `age`,`smk` and `eth` as independent variables.
+
+
+
+```{r}
+#| label: lr-1d-1
+#| warning: false
+#| echo: true
+
+lr_low_all <- glm(is_low_bwt ~ age + smk + eth, 
+                  data = birth_data, 
+                  family = 'binomial')
+summary(lr_low_all)
+
+# odds ratio 
+exp(coef(lr_low_all))
+exp(confint(lr_low_all))
+```
+
+### 1e) 
+
+Based on the above analysis, set up a result table which reports:
+
+* odds ratios OR (unadjusted, and adjusted)
+* 95% confidence intervals for OR
+* p-values for OR
+
+Make sure you know how to interpret the table. 
+
+
+## Exercise 2 (framingham)
+
+We use the data from the Framingham study, `framingham`. The dataset contains a selection of n = 500 men aged 31 to 65 years. 
+
+The response variable is FIRSTCHD, and this is equal to 1 if the individual has coronary heart disease and 0 otherwise. 
+
+We have four explanatory variables: 
+
+* MEANSBP, the average systolic blood pressure (mmHg) of two blood pressure measurements; 
+* SMOKE which is smoking (1 = yes, 0 = no);
+* CHOLESTEROL which is serum cholesterol in mg/dl;
+* AGE (age in years). 
+
+
+### 2a)
+
+Analyse the relationship between `firstchd` and `smoke` in a logistic regression model.
+
+```{r}
+#| label: lr-2a-1
+#| warning: false
+#| echo: true
+
+framingham <- read.csv('data/framingham.csv')
+head(framingham)
+
+# check the outcome variable
+# evidence is 1, no-evidence is 0
+table(framingham$firstchd)
+
+# code into 1 and 0 (numeric)
+framingham$firstchd_coded <- ifelse(framingham$firstchd == 'evidence', 1, 0)
+
+# check if correct
+table(framingham$firstchd_coded)
+```
+
+```{r}
+#| label: lr-2a-2
+#| warning: false
+#| echo: true
+
+# firstchd, smoke 
+lr_chd_smk <- glm(firstchd_coded ~ smoke, 
+                  data = framingham, 
+                  family = 'binomial')
+# double check if category is correct
+table(lr_chd_smk$y)  
+
+summary(lr_chd_smk)
+
+# odds ratio 
+exp(coef(lr_chd_smk))
+exp(confint(lr_chd_smk))
+```
+
+
+### 2b)
+
+Analyse the relationship between `firstchd` and `meansbp` in a logistic regression model.
+
+```{r}
+#| label: lr-2b-1
+#| warning: false
+#| echo: true
+
+# firstchd, meansbp
+lr_chd_bp <- glm(firstchd_coded ~ meansbp, 
+                 data = framingham, 
+                 family = 'binomial')
+
+summary(lr_chd_bp)
+
+# odds ratio 
+exp(coef(lr_chd_bp))
+exp(confint(lr_chd_bp))
+```
+
+### 2c)
+
+Include also the other two explanatory variables in a logisic regression model. Interpret the results. 
+
+```{r}
+#| label: lr-2c-1
+#| warning: false
+#| echo: true
+
+lr_chd_all <- glm(firstchd_coded ~ meansbp + smoke + cholesterol + age, 
+                  data = framingham, 
+                  family = 'binomial')
+summary(lr_chd_all)
+
+# odds ratio 
+round(exp(coef(lr_chd_all)), digits = 3)
+round(exp(confint(lr_chd_all)), digits = 3)
+```
+
+

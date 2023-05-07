@@ -1,0 +1,422 @@
+---
+title: "Regression analysis"
+description: "Linear regression, correlation"
+format: 
+  html:
+    code-fold: false
+    code-tools: true
+editor: source
+---
+
+
+Datasets
+
+* Exercise 1: `bp` ([rda link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/bp.rda), [csv link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/bp.csv))
+* Exercise 2: `PEFH98-english` ([rda link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.rda), [csv link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.csv))
+* Exercise 3: `liggetid` ([rda link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/liggetid.rda), [csv link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/liggetid.csv))
+
+
+[R Script](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/8_linearreg.R)
+
+
+------------------
+
+# Examples (exercises with solution)
+
+
+## Exercise 1 (blood pressure)
+
+The dataset `bp` contains data on 20 healthy adults on two variables, `Age` and `Blood pressure`. We will explore the relationship between these two variables.
+
+
+#### 1a)
+
+Load the dataset. Find the correlation between age and blood pressure, and test if it is significant. Compute a 95% confidence interval for the regresion parameter.  
+
+Also find the squared correlation coefficient between age and blood pressure. What does it mean?
+
+
+```{r}
+#| label: linear-1a-1
+#| warning: false
+#| echo: true
+
+# load data
+bp <- read.csv('data/bp.csv')
+head(bp)
+```
+
+
+```{r}
+#| label: linear-1a-2
+#| warning: false
+#| echo: true
+
+# correlation age vs bp
+cor(bp$Age, bp$bloodpressure)
+
+# or,
+cor(bp)
+
+# 95% CI, p-value
+cor.test(bp$Age, bp$bloodpressure) 
+```
+
+
+
+#### 1b)
+
+What is the blood pressure for a person at age 40? For a person at age 75? Comment.
+
+```{r}
+#| label: linear-1b-1
+#| warning: false
+#| echo: true
+
+# fit a linear regression model
+model_age_bp <- lm(bloodpressure ~ Age, data = bp)
+summary(model_age_bp)
+
+# to predict (insert x), you need to put data in a data frame
+predict(model_age_bp, 
+        newdata = data.frame(Age = c(40, 75)), 
+        interval = 'prediction')
+```
+
+Can also visualize the relationship.
+
+```{r}
+#| label: linear-1b-2
+#| warning: false
+#| echo: true
+
+plot(x = bp$Age, y = bp$bloodpressure, 
+     main = 'Age versus Blood Pressure', 
+     xlab = 'Age', ylab = 'Blood pressure', 
+     pch = 20, 
+     xlim = c(15, 80))
+# add the regression line on top
+abline(lm(bloodpressure ~ Age, data = bp), 
+       col = 'blue', lwd = 3)
+```
+
+
+
+## Exercise 2 (lung function)
+
+Lung function has been measured on 106 medical students. Peak expiratory flow rate (PEF, measured in liters per minute) was measured three times in a sittinng position, and three times in a standing position.
+
+The variables are 
+
+* Age (years)
+* Gender (female, male)
+* Height (cm)
+* Weight (kg)
+* PEF measured three times in a sitting position (pefsit1, pefsit2, pefsit3)
+* PEF measured three times in a standing position (pefsta1, pefsta2, pefsta3)
+* Mean of the three measurements made in a sitting position (pefsitm)
+* Mean of the three measurements made in a standing position (pefstam)
+* Mean of all six PEF values (pefmean)
+
+
+#### 2a) 
+
+Make a scatter plot of `pefsit2` versus `pefsit1`; and make a separate scatter plot of `pefsit1` versus `weight`. Insert a regression line on top of the scatterplots. 
+
+
+```{r}
+#| label: linear-2a-1
+#| warning: false
+#| echo: true
+
+lung_data <- read.csv('data/PEFH98-english.csv')
+# head(lung_data)
+# assign variables (not strictly necessary)
+pefsit1 <- lung_data$pefsit1
+pefsit2 <- lung_data$pefsit2
+weight <- lung_data$weight
+
+par(mfrow = c(1, 2)) # make plots in 1 row 2 col
+
+# scatter plot: pefsit2 vs pefsit1
+plot(x = pefsit1, y = pefsit2, 
+     main = 'PEF sit1 vs PEF sit2', 
+     xlab = 'pefsit1', ylab = 'pefsit2', 
+     pch = 20)
+abline(lm(pefsit2 ~ pefsit1, data = lung_data), 
+       col = 'blue', lwd = 3)
+
+# scatter plot: pefsit1 vs weight
+plot(x = weight, y = pefsit1, 
+     main = 'Weight vs pefsit1', 
+     xlab = 'Weight', ylab = 'pefsit1', 
+     pch = 20)
+abline(lm(pefsit1 ~ weight, data = lung_data), 
+       col = 'blue', lwd = 3)
+
+```
+
+#### 2b) 
+
+Compute the correlation between `pefsit1` and `pefsit2`; and between `pefsit1` and `weight`. 
+
+Why is the correlation between the first pair closer to 1 than the second pair?
+
+(You can get the pair-wise correlation between many other pairs of variables using `cor(your_data)`). 
+
+```{r}
+#| label: linear-2b-1
+#| warning: false
+#| echo: true
+
+cor(pefsit2, pefsit1) # need to remove NA here
+
+which(is.na(pefsit1)) # no missing
+which(is.na(pefsit2)) # 66th missing
+
+# option 1: cor() removes NA for you 
+# specify use complete observations
+cor(pefsit2, pefsit1, use = 'complete.obs')
+
+ 
+# option 2: you process (remove) the row of missing 
+# from both variables (remove element 66)
+pefsit2_narm <- pefsit2[!is.na(pefsit2)]
+pefsit1_narm <- pefsit1[!is.na(pefsit2)]
+
+# use pefsit2_narm instead of pefsit2 to compute cor
+# should be the same
+cor(pefsit2_narm, pefsit1_narm)
+```
+
+For `pefsit1` and `weight` it is straightforward, as there is not missing data. 
+
+```{r}
+#| label: linear-2b-2
+#| warning: false
+#| echo: true
+
+# pefsit1, weight
+cor(pefsit1, weight)
+```
+
+To compute the correlation between multiple pairs, you need to select a few variables first.
+
+```{r}
+#| label: linear-2b-3
+#| warning: false
+#| echo: true
+
+# pairwise for multiple pairs 
+# use age, height, weight, pefsit1, pefsit2, pefsit3, pefmean
+# select a smaller dataset 
+lungdata2 <- lung_data[, c('age', 'height', 'weight', 'pefsit1', 
+                           'pefsit2', 'pefsit3', 'pefmean')]
+
+head(lungdata2, 3)
+
+# produce correlation matrix for all the variables here
+# round(1.2345, digits = 2) gives 1.23
+round(cor(lungdata2, use = 'complete.obs'), digits = 2)
+```
+
+
+#### 2c) 
+
+Carry out two regression analysis: 
+
+* `pefsit2` as dependent variable, `pefsit1` as independent variable;
+* `pefsit1` as dependent variable, `weight` as independent variable.
+
+Interpret the results in relation to the scatter plots.
+
+```{r}
+#| label: linear-2c-1
+#| warning: false
+#| echo: true
+
+# pef2 vs pef 1
+lm_pef2_pef1 <- lm(pefsit2 ~ pefsit1, data = lung_data)
+summary(lm_pef2_pef1)
+```
+
+
+
+```{r}
+#| label: linear-2c-2
+#| warning: false
+#| echo: true
+
+# pef1 vs weight 
+lm_pef1_weight <- lm(pefsit1 ~ weight, data = lung_data)
+summary(lm_pef1_weight)
+```
+
+#### 2d) 
+
+Make residual analysis for the analyses you did before. Interpret the results.
+
+```{r}
+#| label: linear-2d-1
+#| warning: false
+#| echo: true
+
+par(mfrow = c(2, 2)) # plot 2 by 2
+plot(lm_pef2_pef1)
+
+plot(lm_pef1_weight)
+```
+
+#### 2e)
+
+Make a regression analysis with `pefsit1` as dependent variable, and `sex` and `weight` as independent variables. Assess the model fit. Interpret the results.
+
+```{r}
+#| label: linear-2e-1
+#| warning: false
+#| echo: true
+
+# pefsit1 vs (weight, gender)
+# note that we converted gender into categorical
+lm_pef1_weight_gender <- lm(pefsit1 ~ weight + gender, 
+                            data = lung_data)
+# lm_pef1_weight_gender
+summary(lm_pef1_weight_gender)
+```
+
+#### 2f)
+
+Make a regression analysis with `pefmean` as dependent variable, and try out **combinations** of `sex`, `height`, `weight` as independent variables.
+
+Which variables would you include in your final analysis? How much variation is explained? Assess the model fit, and interpret the results. 
+
+```{r}
+#| label: linear-2f-1
+#| warning: false
+#| echo: true
+
+# we can try two sets
+# 1. height weight gender
+lm_pefm_height_weight_gen <- lm(pefmean ~ height + weight + gender, 
+                                data = lung_data)
+
+summary(lm_pefm_height_weight_gen)
+```
+
+
+```{r}
+#| label: linear-2f-2
+#| warning: false
+#| echo: true
+
+# 2. weight gender
+lm_pefm_weight_gen <- lm(pefmean ~ weight + gender, 
+                                data = lung_data)
+
+summary(lm_pefm_weight_gen)
+```
+
+
+## Exercise 3 (length of hospital stay)
+
+The data was collected at the Geriatric Department at Ullevål Sykehus. Below is a description of the data set `liggetid`. The file includes the following variables:
+
+- Year of birth (faar)
+- Month of birth (fmaan)
+- Day of birth (fdag)
+- Year of hospital admission (innaar)
+- Month of admission (innmaan)
+- Day of admission (inndag)
+- Year of discharge from hospital (utaar)
+- Month of discharge (utmaan)
+- Day of discharge (utdag)
+- Gender, where 1 = male and 0 = female (kjoenn)
+- Admission from, where 1 = home, 2 = Div. of Medicine, 3 =
+Div. of Surgery, 4 = Other division, 5 = Other hospital, 6 =
+Nursing home (kom_fra)
+- Stroke, where 1 = yes, 0 = no (slag)
+- Age (alder)
+- Hospital stay, in days (liggetid)
+- Logarithm of hospital stay (lnliggti)
+- Comes from Div. of Medicine (kom_fra2)
+- Comes from Div. of Surgery (kom_fra3)
+- Comes from Other division (kom_fra4)
+- Comes from Other hospital (kom_fra5)
+- Comes from Nursing home (kom_fra6)
+- Censoring variable (censor)
+
+The variable `liggetid` time is calculated from the `innaar`, `innmaan`, `inndag`, `utaar`, `utmaan` and `utdag` variables. 
+
+#### 3a)
+
+Create a box plot for length of hospital stay for men and women.
+
+```{r}
+#| label: linear-3a-1
+#| warning: false
+#| echo: true
+
+liggetid <- read.csv('data/liggetid.csv')
+head(liggetid, 3)
+
+# boxplot
+boxplot(liggetid ~ kjoenn, data = liggetid)
+```
+
+
+#### 3b) 
+
+We want to explain the variation in lengths of hospital stay. We will look at the independent variables `kjoenn` (gender) and `slag` (stroke). 
+
+Run a regression analysis using the dependent variable `liggetid`. Also perform a residual analysis. What do you think about this analysis?
+
+```{r}
+#| label: linear-3b-1
+#| warning: false
+#| echo: true
+
+# response (dep): liggetid
+# predictor (indep): kjoenn, slag
+
+lm_ligge <- lm(liggetid ~ slag + kjoenn, 
+               data = liggetid)
+summary(lm_ligge)
+```
+
+```{r}
+#| label: linear-3b-2
+#| warning: false
+#| echo: true
+
+# visualize the residual
+par(mfrow = c(2, 2))
+plot(lm_ligge)
+```
+
+
+#### 3c) 
+
+Do the same analysis, but on the log-transformed data. The transformed variable already exists in the dataset, `lnliggti`. Comment on the results.
+
+```{r}
+#| label: linear-3c-1
+#| warning: false
+#| echo: true
+
+# response (dep): log transformed (lnliggti)
+# predictor (indep): kjoenn, slag
+
+lm_logligge <- lm(lnliggti ~ slag + kjoenn, 
+                  data = liggetid)
+summary(lm_logligge)
+```
+
+
+```{r}
+#| label: linear-3c-2
+#| warning: false
+#| echo: true
+
+par(mfrow = c(2, 2))
+plot(lm_logligge)
+```
