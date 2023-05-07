@@ -166,7 +166,7 @@ In this section we will load the packages via `library(package_name)`.
 
 As tidyverse is a complex ecosystem for R packages, we are not going to cover the details; rather, we recommend that you try to install the packages and run the code in this section.
 
-To install an R package (such as `ggplot2`), type `install('ggplot2')` in the console. 
+To install an R package (such as `ggplot2`), type `install.packages('ggplot2')` in the console. 
 
 :::
 
