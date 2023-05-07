@@ -189,10 +189,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#short-summary" id="toc-short-summary" class="nav-link active" data-scroll-target="#short-summary">Short summary</a></li>
   <li><a href="#examples-exercises-with-solution" id="toc-examples-exercises-with-solution" class="nav-link" data-scroll-target="#examples-exercises-with-solution">Examples (exercises with solution)</a>
   <ul class="collapse">
-  <li><a href="#exercise-1-lung-function" id="toc-exercise-1-lung-function" class="nav-link" data-scroll-target="#exercise-1-lung-function">Exercise 1 (lung function)</a></li>
-  <li><a href="#exercise-2-length-of-hospital-stay" id="toc-exercise-2-length-of-hospital-stay" class="nav-link" data-scroll-target="#exercise-2-length-of-hospital-stay">Exercise 2 (length of hospital stay)</a></li>
-  <li><a href="#exercise-3-antibody" id="toc-exercise-3-antibody" class="nav-link" data-scroll-target="#exercise-3-antibody">Exercise 3 (antibody)</a></li>
-  <li><a href="#exercise-4-nausea" id="toc-exercise-4-nausea" class="nav-link" data-scroll-target="#exercise-4-nausea">Exercise 4 (nausea)</a></li>
+  <li><a href="#exercise-1-lung-function" id="toc-exercise-1-lung-function" class="nav-link" data-scroll-target="#exercise-1-lung-function">Exercise 1 (lung function)</a>
+  <ul class="collapse">
+  <li><a href="#a" id="toc-a" class="nav-link" data-scroll-target="#a">1a)</a></li>
+  <li><a href="#b" id="toc-b" class="nav-link" data-scroll-target="#b">1b)</a></li>
+  <li><a href="#c" id="toc-c" class="nav-link" data-scroll-target="#c">1c)</a></li>
+  </ul></li>
+  <li><a href="#exercise-2-length-of-hospital-stay" id="toc-exercise-2-length-of-hospital-stay" class="nav-link" data-scroll-target="#exercise-2-length-of-hospital-stay">Exercise 2 (length of hospital stay)</a>
+  <ul class="collapse">
+  <li><a href="#a-1" id="toc-a-1" class="nav-link" data-scroll-target="#a-1">2a)</a></li>
+  <li><a href="#b-1" id="toc-b-1" class="nav-link" data-scroll-target="#b-1">2b)</a></li>
+  <li><a href="#c-1" id="toc-c-1" class="nav-link" data-scroll-target="#c-1">2c)</a></li>
+  </ul></li>
+  <li><a href="#exercise-3-antibody" id="toc-exercise-3-antibody" class="nav-link" data-scroll-target="#exercise-3-antibody">Exercise 3 (antibody)</a>
+  <ul class="collapse">
+  <li><a href="#a-2" id="toc-a-2" class="nav-link" data-scroll-target="#a-2">3a)</a></li>
+  <li><a href="#optional" id="toc-optional" class="nav-link" data-scroll-target="#optional">(Optional)</a></li>
+  <li><a href="#b-2" id="toc-b-2" class="nav-link" data-scroll-target="#b-2">3b)</a></li>
+  </ul></li>
+  <li><a href="#exercise-4-nausea" id="toc-exercise-4-nausea" class="nav-link" data-scroll-target="#exercise-4-nausea">Exercise 4 (nausea)</a>
+  <ul class="collapse">
+  <li><a href="#a-3" id="toc-a-3" class="nav-link" data-scroll-target="#a-3">4a)</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -222,6 +240,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
+<p>Datasets</p>
+<ul>
+<li>Exercise 1: <code>PEFH98-english</code> (<a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.rda">rda link</a>, <a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.csv">csv link</a>)</li>
+<li>Exercise 2: <code>liggetid</code> (<a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/liggetid.rda">rda link</a>, <a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/liggetid.csv">csv link</a>)</li>
+<li>Exercise 3: <code>antibody</code> (<a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/antibody.rda">rda link</a>, <a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/antibody.csv">csv link</a>)</li>
+<li>Exercise 4: <code>nausea</code> (<a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/nausea.rda">rda link</a>, <a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/nausea.csv">csv link</a>)</li>
+</ul>
+<p><a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/6_nonpara.R">R script</a></p>
+<hr>
 <section id="short-summary" class="level1">
 <h1>Short summary</h1>
 </section>
@@ -242,8 +269,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Mean of the three measurements made in a standing position (pefstam)</li>
 <li>Mean of all six PEF values (pefmean)</li>
 </ul>
-<section id="a" class="level4">
-<h4 class="anchored" data-anchor-id="a">1a)</h4>
+<section id="a" class="level3">
+<h3 class="anchored" data-anchor-id="a">1a)</h3>
 <p>We shall consider the difference betweenn PEF measured in a sitting position and in a standing position, i.e.&nbsp;we look at <code>diff_pef = pefstam - pefsitm</code>. First compute this variable.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>lung_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/PEFH98-english.csv'</span>)</span>
@@ -262,8 +289,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>diff_pef <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>pefstam <span class="sc">-</span> lung_data<span class="sc">$</span>pefsitm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="b" class="level4">
-<h4 class="anchored" data-anchor-id="b">1b)</h4>
+<section id="b" class="level3">
+<h3 class="anchored" data-anchor-id="b">1b)</h3>
 <p>Make a histogram and Q-Q plot for the differences.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
@@ -277,8 +304,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="c" class="level4">
-<h4 class="anchored" data-anchor-id="c">1c)</h4>
+<section id="c" class="level3">
+<h3 class="anchored" data-anchor-id="c">1c)</h3>
 <p>Do a non-parametric test to decide whether <code>pefsitm</code> and <code>pefstam</code> are significantly different.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># one sample (signed rank test)</span></span>
@@ -353,8 +380,8 @@ mean difference
 <li>Censoring variable (censor)</li>
 </ul>
 <p>The variable <code>liggetid</code> time is calculated from the <code>innaar</code>, <code>innmaan</code>, <code>inndag</code>, <code>utaar</code>, <code>utmaan</code> and <code>utdag</code> variables.</p>
-<section id="a-1" class="level4">
-<h4 class="anchored" data-anchor-id="a-1">2a)</h4>
+<section id="a-1" class="level3">
+<h3 class="anchored" data-anchor-id="a-1">2a)</h3>
 <p>We want to compare the <strong>length of hospital stay</strong> for patients with and without <strong>stroke</strong>. First get a better understanding of the data. Start with computing some summary (descriptive) statistics for these two variables:</p>
 <ul>
 <li><strong>mean, median, min, max, 75-th percentile</strong> for length of hospital stay (<code>liggetid</code>);</li>
@@ -413,8 +440,8 @@ mean difference
 </div>
 </div>
 </section>
-<section id="b-1" class="level4">
-<h4 class="anchored" data-anchor-id="b-1">2b)</h4>
+<section id="b-1" class="level3">
+<h3 class="anchored" data-anchor-id="b-1">2b)</h3>
 <p>Since we want to compare the length of hospital stay for two groups, we need to separate the length of stay data into two groups, based on whether patients have stroke or not. Create two variables, <code>ligt_s1</code> and <code>ligt_s0</code>.</p>
 <p>Do an appropriate non-parametric test. What is the difference between this test and the one you did in Exercise 1?</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
@@ -531,8 +558,8 @@ mean of x mean of y
 </div>
 </div>
 </section>
-<section id="c-1" class="level4">
-<h4 class="anchored" data-anchor-id="c-1">2c)</h4>
+<section id="c-1" class="level3">
+<h3 class="anchored" data-anchor-id="c-1">2c)</h3>
 <p>Do the same analysis with a t-test on the logarithm-transformed data. The transformed variable already exists in the data set as <code>lnliggti</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use log transformed </span></span>
@@ -570,8 +597,8 @@ mean of x mean of y
 <section id="exercise-3-antibody" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-3-antibody">Exercise 3 (antibody)</h2>
 <p>(Baker et al., 1980) We have data on concentration of antibody of Type III Group B Streptococcus (GBS) in 20 volunteers before and after immunization. The dataset is <code>antibody</code>.</p>
-<section id="a-2" class="level4">
-<h4 class="anchored" data-anchor-id="a-2">3a)</h4>
+<section id="a-2" class="level3">
+<h3 class="anchored" data-anchor-id="a-2">3a)</h3>
 <p>The comparison of the antibody levels was summarized in the report of this study as ‘<span class="math inline">\(t = 1.8; P &gt; 0.05\)</span>’. Comment on the result.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>antibody <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/antibody.csv'</span>)</span>
@@ -618,8 +645,8 @@ mean difference
 </div>
 </div>
 </section>
-<section id="optional" class="level4">
-<h4 class="anchored" data-anchor-id="optional">(Optional)</h4>
+<section id="optional" class="level3">
+<h3 class="anchored" data-anchor-id="optional">(Optional)</h3>
 <p>We can visually get an understanding of whether this result makes sense.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># long format data (requires tidyr package)</span></span>
@@ -679,8 +706,8 @@ mean difference
 </div>
 </div>
 </section>
-<section id="b-2" class="level4">
-<h4 class="anchored" data-anchor-id="b-2">3b)</h4>
+<section id="b-2" class="level3">
+<h3 class="anchored" data-anchor-id="b-2">3b)</h3>
 <p>Analyse the data with an appropriate test. Justify your choice.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># matched data (paired)</span></span>
@@ -742,8 +769,8 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <ul>
 <li>group: <code>1</code> is active (treatment), and <code>2</code> is placebo.</li>
 </ul>
-<section id="a-3" class="level4">
-<h4 class="anchored" data-anchor-id="a-3">4a)</h4>
+<section id="a-3" class="level3">
+<h3 class="anchored" data-anchor-id="a-3">4a)</h3>
 <p>Choose an appropriate test for comparing the treatment and placebo groups. Justify your choice.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>nausea <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/nausea.csv'</span>)</span>
@@ -999,502 +1026,515 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb67-8"><a href="#cb67-8" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> source</span></span>
 <span id="cb67-9"><a href="#cb67-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb67-10"><a href="#cb67-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-11"><a href="#cb67-11" aria-hidden="true" tabindex="-1"></a><span class="fu"># Short summary</span></span>
+<span id="cb67-11"><a href="#cb67-11" aria-hidden="true" tabindex="-1"></a>Datasets</span>
 <span id="cb67-12"><a href="#cb67-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-13"><a href="#cb67-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-14"><a href="#cb67-14" aria-hidden="true" tabindex="-1"></a><span class="fu"># Examples (exercises with solution)</span></span>
-<span id="cb67-15"><a href="#cb67-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-16"><a href="#cb67-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-17"><a href="#cb67-17" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 1 (lung function)</span></span>
+<span id="cb67-13"><a href="#cb67-13" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Exercise 1: <span class="in">`PEFH98-english`</span> (<span class="co">[</span><span class="ot">rda link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.rda)</span>, <span class="co">[</span><span class="ot">csv link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.csv)</span>)</span>
+<span id="cb67-14"><a href="#cb67-14" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Exercise 2: <span class="in">`liggetid`</span> (<span class="co">[</span><span class="ot">rda link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/liggetid.rda)</span>, <span class="co">[</span><span class="ot">csv link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/liggetid.csv)</span>)</span>
+<span id="cb67-15"><a href="#cb67-15" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Exercise 3: <span class="in">`antibody`</span> (<span class="co">[</span><span class="ot">rda link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/antibody.rda)</span>, <span class="co">[</span><span class="ot">csv link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/antibody.csv)</span>)</span>
+<span id="cb67-16"><a href="#cb67-16" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Exercise 4: <span class="in">`nausea`</span> (<span class="co">[</span><span class="ot">rda link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/nausea.rda)</span>, <span class="co">[</span><span class="ot">csv link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/nausea.csv)</span>)</span>
+<span id="cb67-17"><a href="#cb67-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb67-18"><a href="#cb67-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-19"><a href="#cb67-19" aria-hidden="true" tabindex="-1"></a>Lung function has been measured on 106 medical students. Peak expiratory flow rate (PEF, measured in liters per minute) was measured three times in a sittinng position, and three times in a standing position.</span>
-<span id="cb67-20"><a href="#cb67-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-21"><a href="#cb67-21" aria-hidden="true" tabindex="-1"></a>The variables are </span>
-<span id="cb67-22"><a href="#cb67-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-23"><a href="#cb67-23" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Age (years)</span>
-<span id="cb67-24"><a href="#cb67-24" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Gender (female, 2 male)</span>
-<span id="cb67-25"><a href="#cb67-25" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Height (cm)</span>
-<span id="cb67-26"><a href="#cb67-26" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Weight (kg)</span>
-<span id="cb67-27"><a href="#cb67-27" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>PEF measured three times in a sitting position (pefsit1, pefsit2, pefsit3)</span>
-<span id="cb67-28"><a href="#cb67-28" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>PEF measured three times in a standing position (pefsta1, pefsta2, pefsta3)</span>
-<span id="cb67-29"><a href="#cb67-29" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Mean of the three measurements made in a sitting position (pefsitm)</span>
-<span id="cb67-30"><a href="#cb67-30" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Mean of the three measurements made in a standing position (pefstam)</span>
-<span id="cb67-31"><a href="#cb67-31" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Mean of all six PEF values (pefmean)</span>
-<span id="cb67-32"><a href="#cb67-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-19"><a href="#cb67-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-20"><a href="#cb67-20" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">R script</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/6_nonpara.R)</span></span>
+<span id="cb67-21"><a href="#cb67-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-22"><a href="#cb67-22" aria-hidden="true" tabindex="-1"></a>------------------</span>
+<span id="cb67-23"><a href="#cb67-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-24"><a href="#cb67-24" aria-hidden="true" tabindex="-1"></a><span class="fu"># Short summary</span></span>
+<span id="cb67-25"><a href="#cb67-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-26"><a href="#cb67-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-27"><a href="#cb67-27" aria-hidden="true" tabindex="-1"></a><span class="fu"># Examples (exercises with solution)</span></span>
+<span id="cb67-28"><a href="#cb67-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-29"><a href="#cb67-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-30"><a href="#cb67-30" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 1 (lung function)</span></span>
+<span id="cb67-31"><a href="#cb67-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-32"><a href="#cb67-32" aria-hidden="true" tabindex="-1"></a>Lung function has been measured on 106 medical students. Peak expiratory flow rate (PEF, measured in liters per minute) was measured three times in a sittinng position, and three times in a standing position.</span>
 <span id="cb67-33"><a href="#cb67-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-34"><a href="#cb67-34" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 1a) </span></span>
+<span id="cb67-34"><a href="#cb67-34" aria-hidden="true" tabindex="-1"></a>The variables are </span>
 <span id="cb67-35"><a href="#cb67-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-36"><a href="#cb67-36" aria-hidden="true" tabindex="-1"></a>We shall consider the difference betweenn PEF measured in a sitting position and in a standing position, i.e. we look at <span class="in">`diff_pef = pefstam - pefsitm`</span>.  First compute this variable. </span>
-<span id="cb67-37"><a href="#cb67-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-38"><a href="#cb67-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-41"><a href="#cb67-41" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb67-42"><a href="#cb67-42" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-1a-1</span></span>
-<span id="cb67-43"><a href="#cb67-43" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb67-44"><a href="#cb67-44" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb67-36"><a href="#cb67-36" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Age (years)</span>
+<span id="cb67-37"><a href="#cb67-37" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Gender (female, 2 male)</span>
+<span id="cb67-38"><a href="#cb67-38" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Height (cm)</span>
+<span id="cb67-39"><a href="#cb67-39" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Weight (kg)</span>
+<span id="cb67-40"><a href="#cb67-40" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>PEF measured three times in a sitting position (pefsit1, pefsit2, pefsit3)</span>
+<span id="cb67-41"><a href="#cb67-41" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>PEF measured three times in a standing position (pefsta1, pefsta2, pefsta3)</span>
+<span id="cb67-42"><a href="#cb67-42" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Mean of the three measurements made in a sitting position (pefsitm)</span>
+<span id="cb67-43"><a href="#cb67-43" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Mean of the three measurements made in a standing position (pefstam)</span>
+<span id="cb67-44"><a href="#cb67-44" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Mean of all six PEF values (pefmean)</span>
 <span id="cb67-45"><a href="#cb67-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-46"><a href="#cb67-46" aria-hidden="true" tabindex="-1"></a>lung_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/PEFH98-english.csv'</span>)</span>
-<span id="cb67-47"><a href="#cb67-47" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lung_data, <span class="dv">3</span>)</span>
+<span id="cb67-46"><a href="#cb67-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-47"><a href="#cb67-47" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1a) </span></span>
 <span id="cb67-48"><a href="#cb67-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-49"><a href="#cb67-49" aria-hidden="true" tabindex="-1"></a><span class="co"># compute diff_pef</span></span>
-<span id="cb67-50"><a href="#cb67-50" aria-hidden="true" tabindex="-1"></a>diff_pef <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>pefstam <span class="sc">-</span> lung_data<span class="sc">$</span>pefsitm</span>
-<span id="cb67-51"><a href="#cb67-51" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb67-52"><a href="#cb67-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-53"><a href="#cb67-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-54"><a href="#cb67-54" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 1b) </span></span>
-<span id="cb67-55"><a href="#cb67-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-56"><a href="#cb67-56" aria-hidden="true" tabindex="-1"></a>Make a histogram and Q-Q plot for the differences. </span>
-<span id="cb67-57"><a href="#cb67-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-60"><a href="#cb67-60" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb67-61"><a href="#cb67-61" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-1b-1</span></span>
-<span id="cb67-62"><a href="#cb67-62" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb67-63"><a href="#cb67-63" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb67-64"><a href="#cb67-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-65"><a href="#cb67-65" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb67-66"><a href="#cb67-66" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(diff_pef)</span>
-<span id="cb67-67"><a href="#cb67-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-68"><a href="#cb67-68" aria-hidden="true" tabindex="-1"></a><span class="co"># qqplot </span></span>
-<span id="cb67-69"><a href="#cb67-69" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(diff_pef)</span>
-<span id="cb67-70"><a href="#cb67-70" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(diff_pef)</span>
-<span id="cb67-71"><a href="#cb67-71" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb67-72"><a href="#cb67-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-73"><a href="#cb67-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-74"><a href="#cb67-74" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 1c) </span></span>
-<span id="cb67-75"><a href="#cb67-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-76"><a href="#cb67-76" aria-hidden="true" tabindex="-1"></a>Do a non-parametric test to decide whether <span class="in">`pefsitm`</span> and <span class="in">`pefstam`</span> are significantly different.</span>
+<span id="cb67-49"><a href="#cb67-49" aria-hidden="true" tabindex="-1"></a>We shall consider the difference betweenn PEF measured in a sitting position and in a standing position, i.e. we look at <span class="in">`diff_pef = pefstam - pefsitm`</span>.  First compute this variable. </span>
+<span id="cb67-50"><a href="#cb67-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-51"><a href="#cb67-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-54"><a href="#cb67-54" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb67-55"><a href="#cb67-55" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-1a-1</span></span>
+<span id="cb67-56"><a href="#cb67-56" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb67-57"><a href="#cb67-57" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb67-58"><a href="#cb67-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-59"><a href="#cb67-59" aria-hidden="true" tabindex="-1"></a>lung_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/PEFH98-english.csv'</span>)</span>
+<span id="cb67-60"><a href="#cb67-60" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lung_data, <span class="dv">3</span>)</span>
+<span id="cb67-61"><a href="#cb67-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-62"><a href="#cb67-62" aria-hidden="true" tabindex="-1"></a><span class="co"># compute diff_pef</span></span>
+<span id="cb67-63"><a href="#cb67-63" aria-hidden="true" tabindex="-1"></a>diff_pef <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>pefstam <span class="sc">-</span> lung_data<span class="sc">$</span>pefsitm</span>
+<span id="cb67-64"><a href="#cb67-64" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb67-65"><a href="#cb67-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-66"><a href="#cb67-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-67"><a href="#cb67-67" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1b) </span></span>
+<span id="cb67-68"><a href="#cb67-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-69"><a href="#cb67-69" aria-hidden="true" tabindex="-1"></a>Make a histogram and Q-Q plot for the differences. </span>
+<span id="cb67-70"><a href="#cb67-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-73"><a href="#cb67-73" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb67-74"><a href="#cb67-74" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-1b-1</span></span>
+<span id="cb67-75"><a href="#cb67-75" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb67-76"><a href="#cb67-76" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
 <span id="cb67-77"><a href="#cb67-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-80"><a href="#cb67-80" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb67-81"><a href="#cb67-81" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-1c-1</span></span>
-<span id="cb67-82"><a href="#cb67-82" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb67-83"><a href="#cb67-83" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb67-84"><a href="#cb67-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-85"><a href="#cb67-85" aria-hidden="true" tabindex="-1"></a><span class="co"># one sample (signed rank test)</span></span>
-<span id="cb67-86"><a href="#cb67-86" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(diff_pef)</span>
-<span id="cb67-87"><a href="#cb67-87" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb67-78"><a href="#cb67-78" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb67-79"><a href="#cb67-79" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(diff_pef)</span>
+<span id="cb67-80"><a href="#cb67-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-81"><a href="#cb67-81" aria-hidden="true" tabindex="-1"></a><span class="co"># qqplot </span></span>
+<span id="cb67-82"><a href="#cb67-82" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(diff_pef)</span>
+<span id="cb67-83"><a href="#cb67-83" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(diff_pef)</span>
+<span id="cb67-84"><a href="#cb67-84" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb67-85"><a href="#cb67-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-86"><a href="#cb67-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-87"><a href="#cb67-87" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1c) </span></span>
 <span id="cb67-88"><a href="#cb67-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-89"><a href="#cb67-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-89"><a href="#cb67-89" aria-hidden="true" tabindex="-1"></a>Do a non-parametric test to decide whether <span class="in">`pefsitm`</span> and <span class="in">`pefstam`</span> are significantly different.</span>
 <span id="cb67-90"><a href="#cb67-90" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb67-93"><a href="#cb67-93" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb67-94"><a href="#cb67-94" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-1c-2</span></span>
+<span id="cb67-94"><a href="#cb67-94" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-1c-1</span></span>
 <span id="cb67-95"><a href="#cb67-95" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
 <span id="cb67-96"><a href="#cb67-96" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
 <span id="cb67-97"><a href="#cb67-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-98"><a href="#cb67-98" aria-hidden="true" tabindex="-1"></a><span class="co"># alternatively</span></span>
-<span id="cb67-99"><a href="#cb67-99" aria-hidden="true" tabindex="-1"></a>pefstam <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>pefstam</span>
-<span id="cb67-100"><a href="#cb67-100" aria-hidden="true" tabindex="-1"></a>pefsitm <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>pefsitm</span>
+<span id="cb67-98"><a href="#cb67-98" aria-hidden="true" tabindex="-1"></a><span class="co"># one sample (signed rank test)</span></span>
+<span id="cb67-99"><a href="#cb67-99" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(diff_pef)</span>
+<span id="cb67-100"><a href="#cb67-100" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb67-101"><a href="#cb67-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-102"><a href="#cb67-102" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(pefstam, pefsitm, <span class="at">paired =</span> T) <span class="co"># paired </span></span>
-<span id="cb67-103"><a href="#cb67-103" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb67-104"><a href="#cb67-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-105"><a href="#cb67-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-108"><a href="#cb67-108" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb67-109"><a href="#cb67-109" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-1c-3</span></span>
-<span id="cb67-110"><a href="#cb67-110" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb67-111"><a href="#cb67-111" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb67-112"><a href="#cb67-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-113"><a href="#cb67-113" aria-hidden="true" tabindex="-1"></a><span class="co"># the data is not severly skewed, can also use t-test </span></span>
-<span id="cb67-114"><a href="#cb67-114" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(pefstam, pefsitm, <span class="at">paired =</span> T)</span>
-<span id="cb67-115"><a href="#cb67-115" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb67-116"><a href="#cb67-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-102"><a href="#cb67-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-103"><a href="#cb67-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-106"><a href="#cb67-106" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb67-107"><a href="#cb67-107" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-1c-2</span></span>
+<span id="cb67-108"><a href="#cb67-108" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb67-109"><a href="#cb67-109" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb67-110"><a href="#cb67-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-111"><a href="#cb67-111" aria-hidden="true" tabindex="-1"></a><span class="co"># alternatively</span></span>
+<span id="cb67-112"><a href="#cb67-112" aria-hidden="true" tabindex="-1"></a>pefstam <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>pefstam</span>
+<span id="cb67-113"><a href="#cb67-113" aria-hidden="true" tabindex="-1"></a>pefsitm <span class="ot">&lt;-</span> lung_data<span class="sc">$</span>pefsitm</span>
+<span id="cb67-114"><a href="#cb67-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-115"><a href="#cb67-115" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(pefstam, pefsitm, <span class="at">paired =</span> T) <span class="co"># paired </span></span>
+<span id="cb67-116"><a href="#cb67-116" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb67-117"><a href="#cb67-117" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb67-118"><a href="#cb67-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-119"><a href="#cb67-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-120"><a href="#cb67-120" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 2 (length of hospital stay)</span></span>
-<span id="cb67-121"><a href="#cb67-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-122"><a href="#cb67-122" aria-hidden="true" tabindex="-1"></a>The data was collected at the Geriatric Department at Ullevål Sykehus. Below is a description of the data set <span class="in">`liggetid`</span>. The file includes the following variables:</span>
-<span id="cb67-123"><a href="#cb67-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-124"><a href="#cb67-124" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Year of birth (faar)</span>
-<span id="cb67-125"><a href="#cb67-125" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Month of birth (fmaan)</span>
-<span id="cb67-126"><a href="#cb67-126" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Day of birth (fdag)</span>
-<span id="cb67-127"><a href="#cb67-127" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Year of hospital admission (innaar)</span>
-<span id="cb67-128"><a href="#cb67-128" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Month of admission (innmaan)</span>
-<span id="cb67-129"><a href="#cb67-129" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Day of admission (inndag)</span>
-<span id="cb67-130"><a href="#cb67-130" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Year of discharge from hospital (utaar)</span>
-<span id="cb67-131"><a href="#cb67-131" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Month of discharge (utmaan)</span>
-<span id="cb67-132"><a href="#cb67-132" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Day of discharge (utdag)</span>
-<span id="cb67-133"><a href="#cb67-133" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Gender, where 1 = male and 0 = female (kjoenn)</span>
-<span id="cb67-134"><a href="#cb67-134" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Admission from, where 1 = home, 2 = Div. of Medicine, 3 =</span>
-<span id="cb67-135"><a href="#cb67-135" aria-hidden="true" tabindex="-1"></a>Div. of Surgery, 4 = Other division, 5 = Other hospital, 6 =</span>
-<span id="cb67-136"><a href="#cb67-136" aria-hidden="true" tabindex="-1"></a>Nursing home (kom_fra)</span>
-<span id="cb67-137"><a href="#cb67-137" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Stroke, where 1 = yes, 0 = no (slag)</span>
-<span id="cb67-138"><a href="#cb67-138" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Age (alder)</span>
-<span id="cb67-139"><a href="#cb67-139" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Hospital stay, in days (liggetid)</span>
-<span id="cb67-140"><a href="#cb67-140" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Logarithm of hospital stay (lnliggti)</span>
-<span id="cb67-141"><a href="#cb67-141" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Comes from Div. of Medicine (kom_fra2)</span>
-<span id="cb67-142"><a href="#cb67-142" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Comes from Div. of Surgery (kom_fra3)</span>
-<span id="cb67-143"><a href="#cb67-143" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Comes from Other division (kom_fra4)</span>
-<span id="cb67-144"><a href="#cb67-144" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Comes from Other hospital (kom_fra5)</span>
-<span id="cb67-145"><a href="#cb67-145" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Comes from Nursing home (kom_fra6)</span>
-<span id="cb67-146"><a href="#cb67-146" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Censoring variable (censor)</span>
-<span id="cb67-147"><a href="#cb67-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-148"><a href="#cb67-148" aria-hidden="true" tabindex="-1"></a>The variable <span class="in">`liggetid`</span> time is calculated from the <span class="in">`innaar`</span>, <span class="in">`innmaan`</span>, <span class="in">`inndag`</span>, <span class="in">`utaar`</span>, <span class="in">`utmaan`</span> and <span class="in">`utdag`</span> variables. </span>
-<span id="cb67-149"><a href="#cb67-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-150"><a href="#cb67-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-151"><a href="#cb67-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-152"><a href="#cb67-152" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 2a)</span></span>
-<span id="cb67-153"><a href="#cb67-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-154"><a href="#cb67-154" aria-hidden="true" tabindex="-1"></a>We want to compare the **length of hospital stay** for patients with and without **stroke**. First get a better understanding of the data. Start with computing some summary (descriptive) statistics for these two variables: </span>
-<span id="cb67-155"><a href="#cb67-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-156"><a href="#cb67-156" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**mean, median, min, max, 75-th percentile** for length of hospital stay (<span class="in">`liggetid`</span>);</span>
-<span id="cb67-157"><a href="#cb67-157" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**count** of how many patient have stroke, and do not have stroke (<span class="in">`slag == 1`</span> or <span class="in">`0`</span>)</span>
-<span id="cb67-158"><a href="#cb67-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-159"><a href="#cb67-159" aria-hidden="true" tabindex="-1"></a>Visualize the variable <span class="in">`liggetid`</span> using histogram and Q-Q plot, is the requirement for t-test met?</span>
+<span id="cb67-121"><a href="#cb67-121" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb67-122"><a href="#cb67-122" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-1c-3</span></span>
+<span id="cb67-123"><a href="#cb67-123" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb67-124"><a href="#cb67-124" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb67-125"><a href="#cb67-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-126"><a href="#cb67-126" aria-hidden="true" tabindex="-1"></a><span class="co"># the data is not severly skewed, can also use t-test </span></span>
+<span id="cb67-127"><a href="#cb67-127" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(pefstam, pefsitm, <span class="at">paired =</span> T)</span>
+<span id="cb67-128"><a href="#cb67-128" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb67-129"><a href="#cb67-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-130"><a href="#cb67-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-131"><a href="#cb67-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-132"><a href="#cb67-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-133"><a href="#cb67-133" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 2 (length of hospital stay)</span></span>
+<span id="cb67-134"><a href="#cb67-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-135"><a href="#cb67-135" aria-hidden="true" tabindex="-1"></a>The data was collected at the Geriatric Department at Ullevål Sykehus. Below is a description of the data set <span class="in">`liggetid`</span>. The file includes the following variables:</span>
+<span id="cb67-136"><a href="#cb67-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-137"><a href="#cb67-137" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Year of birth (faar)</span>
+<span id="cb67-138"><a href="#cb67-138" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Month of birth (fmaan)</span>
+<span id="cb67-139"><a href="#cb67-139" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Day of birth (fdag)</span>
+<span id="cb67-140"><a href="#cb67-140" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Year of hospital admission (innaar)</span>
+<span id="cb67-141"><a href="#cb67-141" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Month of admission (innmaan)</span>
+<span id="cb67-142"><a href="#cb67-142" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Day of admission (inndag)</span>
+<span id="cb67-143"><a href="#cb67-143" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Year of discharge from hospital (utaar)</span>
+<span id="cb67-144"><a href="#cb67-144" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Month of discharge (utmaan)</span>
+<span id="cb67-145"><a href="#cb67-145" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Day of discharge (utdag)</span>
+<span id="cb67-146"><a href="#cb67-146" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Gender, where 1 = male and 0 = female (kjoenn)</span>
+<span id="cb67-147"><a href="#cb67-147" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Admission from, where 1 = home, 2 = Div. of Medicine, 3 =</span>
+<span id="cb67-148"><a href="#cb67-148" aria-hidden="true" tabindex="-1"></a>Div. of Surgery, 4 = Other division, 5 = Other hospital, 6 =</span>
+<span id="cb67-149"><a href="#cb67-149" aria-hidden="true" tabindex="-1"></a>Nursing home (kom_fra)</span>
+<span id="cb67-150"><a href="#cb67-150" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Stroke, where 1 = yes, 0 = no (slag)</span>
+<span id="cb67-151"><a href="#cb67-151" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Age (alder)</span>
+<span id="cb67-152"><a href="#cb67-152" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Hospital stay, in days (liggetid)</span>
+<span id="cb67-153"><a href="#cb67-153" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Logarithm of hospital stay (lnliggti)</span>
+<span id="cb67-154"><a href="#cb67-154" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Comes from Div. of Medicine (kom_fra2)</span>
+<span id="cb67-155"><a href="#cb67-155" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Comes from Div. of Surgery (kom_fra3)</span>
+<span id="cb67-156"><a href="#cb67-156" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Comes from Other division (kom_fra4)</span>
+<span id="cb67-157"><a href="#cb67-157" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Comes from Other hospital (kom_fra5)</span>
+<span id="cb67-158"><a href="#cb67-158" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Comes from Nursing home (kom_fra6)</span>
+<span id="cb67-159"><a href="#cb67-159" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Censoring variable (censor)</span>
 <span id="cb67-160"><a href="#cb67-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-161"><a href="#cb67-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-164"><a href="#cb67-164" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb67-165"><a href="#cb67-165" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-2a-1</span></span>
-<span id="cb67-166"><a href="#cb67-166" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb67-167"><a href="#cb67-167" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb67-161"><a href="#cb67-161" aria-hidden="true" tabindex="-1"></a>The variable <span class="in">`liggetid`</span> time is calculated from the <span class="in">`innaar`</span>, <span class="in">`innmaan`</span>, <span class="in">`inndag`</span>, <span class="in">`utaar`</span>, <span class="in">`utmaan`</span> and <span class="in">`utdag`</span> variables. </span>
+<span id="cb67-162"><a href="#cb67-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-163"><a href="#cb67-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-164"><a href="#cb67-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-165"><a href="#cb67-165" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2a)</span></span>
+<span id="cb67-166"><a href="#cb67-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-167"><a href="#cb67-167" aria-hidden="true" tabindex="-1"></a>We want to compare the **length of hospital stay** for patients with and without **stroke**. First get a better understanding of the data. Start with computing some summary (descriptive) statistics for these two variables: </span>
 <span id="cb67-168"><a href="#cb67-168" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-169"><a href="#cb67-169" aria-hidden="true" tabindex="-1"></a>liggetid <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/liggetid.csv'</span>)</span>
-<span id="cb67-170"><a href="#cb67-170" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(liggetid, <span class="dv">3</span>)</span>
-<span id="cb67-171"><a href="#cb67-171" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb67-172"><a href="#cb67-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-169"><a href="#cb67-169" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**mean, median, min, max, 75-th percentile** for length of hospital stay (<span class="in">`liggetid`</span>);</span>
+<span id="cb67-170"><a href="#cb67-170" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**count** of how many patient have stroke, and do not have stroke (<span class="in">`slag == 1`</span> or <span class="in">`0`</span>)</span>
+<span id="cb67-171"><a href="#cb67-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-172"><a href="#cb67-172" aria-hidden="true" tabindex="-1"></a>Visualize the variable <span class="in">`liggetid`</span> using histogram and Q-Q plot, is the requirement for t-test met?</span>
 <span id="cb67-173"><a href="#cb67-173" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb67-174"><a href="#cb67-174" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb67-177"><a href="#cb67-177" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb67-178"><a href="#cb67-178" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-2a-2</span></span>
+<span id="cb67-178"><a href="#cb67-178" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-2a-1</span></span>
 <span id="cb67-179"><a href="#cb67-179" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
 <span id="cb67-180"><a href="#cb67-180" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
 <span id="cb67-181"><a href="#cb67-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-182"><a href="#cb67-182" aria-hidden="true" tabindex="-1"></a><span class="co"># liggetid (length of stay: los)</span></span>
-<span id="cb67-183"><a href="#cb67-183" aria-hidden="true" tabindex="-1"></a>los <span class="ot">&lt;-</span> liggetid<span class="sc">$</span>liggetid</span>
-<span id="cb67-184"><a href="#cb67-184" aria-hidden="true" tabindex="-1"></a>stroke <span class="ot">&lt;-</span> liggetid<span class="sc">$</span>slag</span>
+<span id="cb67-182"><a href="#cb67-182" aria-hidden="true" tabindex="-1"></a>liggetid <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/liggetid.csv'</span>)</span>
+<span id="cb67-183"><a href="#cb67-183" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(liggetid, <span class="dv">3</span>)</span>
+<span id="cb67-184"><a href="#cb67-184" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb67-185"><a href="#cb67-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-186"><a href="#cb67-186" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(los)</span>
+<span id="cb67-186"><a href="#cb67-186" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb67-187"><a href="#cb67-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-188"><a href="#cb67-188" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(stroke)</span>
-<span id="cb67-189"><a href="#cb67-189" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(stroke) <span class="co"># this shows 85 missing</span></span>
-<span id="cb67-190"><a href="#cb67-190" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(stroke)) <span class="co"># 85</span></span>
-<span id="cb67-191"><a href="#cb67-191" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb67-192"><a href="#cb67-192" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-193"><a href="#cb67-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-190"><a href="#cb67-190" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb67-191"><a href="#cb67-191" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-2a-2</span></span>
+<span id="cb67-192"><a href="#cb67-192" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb67-193"><a href="#cb67-193" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
 <span id="cb67-194"><a href="#cb67-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-197"><a href="#cb67-197" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb67-198"><a href="#cb67-198" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-2a-3</span></span>
-<span id="cb67-199"><a href="#cb67-199" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb67-200"><a href="#cb67-200" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb67-201"><a href="#cb67-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-202"><a href="#cb67-202" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb67-203"><a href="#cb67-203" aria-hidden="true" tabindex="-1"></a><span class="co"># visualize length of hospital stay (los)</span></span>
-<span id="cb67-204"><a href="#cb67-204" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(los, <span class="at">breaks =</span> <span class="dv">25</span>)</span>
-<span id="cb67-205"><a href="#cb67-205" aria-hidden="true" tabindex="-1"></a><span class="co"># check normality</span></span>
-<span id="cb67-206"><a href="#cb67-206" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(los, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">main =</span> <span class="st">'Q-Q plot for length of stay'</span>)</span>
-<span id="cb67-207"><a href="#cb67-207" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(los, <span class="at">col =</span> <span class="st">'red'</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb67-208"><a href="#cb67-208" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb67-209"><a href="#cb67-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-210"><a href="#cb67-210" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-211"><a href="#cb67-211" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-212"><a href="#cb67-212" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-213"><a href="#cb67-213" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 2b) </span></span>
+<span id="cb67-195"><a href="#cb67-195" aria-hidden="true" tabindex="-1"></a><span class="co"># liggetid (length of stay: los)</span></span>
+<span id="cb67-196"><a href="#cb67-196" aria-hidden="true" tabindex="-1"></a>los <span class="ot">&lt;-</span> liggetid<span class="sc">$</span>liggetid</span>
+<span id="cb67-197"><a href="#cb67-197" aria-hidden="true" tabindex="-1"></a>stroke <span class="ot">&lt;-</span> liggetid<span class="sc">$</span>slag</span>
+<span id="cb67-198"><a href="#cb67-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-199"><a href="#cb67-199" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(los)</span>
+<span id="cb67-200"><a href="#cb67-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-201"><a href="#cb67-201" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(stroke)</span>
+<span id="cb67-202"><a href="#cb67-202" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(stroke) <span class="co"># this shows 85 missing</span></span>
+<span id="cb67-203"><a href="#cb67-203" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(stroke)) <span class="co"># 85</span></span>
+<span id="cb67-204"><a href="#cb67-204" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb67-205"><a href="#cb67-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-206"><a href="#cb67-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-207"><a href="#cb67-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-210"><a href="#cb67-210" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb67-211"><a href="#cb67-211" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-2a-3</span></span>
+<span id="cb67-212"><a href="#cb67-212" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb67-213"><a href="#cb67-213" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
 <span id="cb67-214"><a href="#cb67-214" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-215"><a href="#cb67-215" aria-hidden="true" tabindex="-1"></a>Since we want to compare the length of hospital stay for two groups, we need to separate the length of stay data into two groups, based on whether patients have stroke or not. Create two variables, <span class="in">`ligt_s1`</span> and <span class="in">`ligt_s0`</span>. </span>
-<span id="cb67-216"><a href="#cb67-216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-217"><a href="#cb67-217" aria-hidden="true" tabindex="-1"></a>Do an appropriate non-parametric test. What is the difference between this test and the one you did in Exercise 1?</span>
-<span id="cb67-218"><a href="#cb67-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-219"><a href="#cb67-219" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-220"><a href="#cb67-220" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip collapse="true"}</span>
-<span id="cb67-221"><a href="#cb67-221" aria-hidden="true" tabindex="-1"></a><span class="fu">## Separate one variable via index and `which()`</span></span>
+<span id="cb67-215"><a href="#cb67-215" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb67-216"><a href="#cb67-216" aria-hidden="true" tabindex="-1"></a><span class="co"># visualize length of hospital stay (los)</span></span>
+<span id="cb67-217"><a href="#cb67-217" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(los, <span class="at">breaks =</span> <span class="dv">25</span>)</span>
+<span id="cb67-218"><a href="#cb67-218" aria-hidden="true" tabindex="-1"></a><span class="co"># check normality</span></span>
+<span id="cb67-219"><a href="#cb67-219" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(los, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">main =</span> <span class="st">'Q-Q plot for length of stay'</span>)</span>
+<span id="cb67-220"><a href="#cb67-220" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(los, <span class="at">col =</span> <span class="st">'red'</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb67-221"><a href="#cb67-221" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb67-222"><a href="#cb67-222" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-223"><a href="#cb67-223" aria-hidden="true" tabindex="-1"></a>Previously, we showed how to separate one variable based on another,</span>
+<span id="cb67-223"><a href="#cb67-223" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb67-224"><a href="#cb67-224" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-225"><a href="#cb67-225" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Exercise 2c) in <span class="co">[</span><span class="ot">EDA I</span><span class="co">](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_eda_part1.html)</span></span>
-<span id="cb67-226"><a href="#cb67-226" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Exercise 2a) in <span class="co">[</span><span class="ot">Categorical data analysis</span><span class="co">](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_categorical.html)</span></span>
+<span id="cb67-225"><a href="#cb67-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-226"><a href="#cb67-226" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2b) </span></span>
 <span id="cb67-227"><a href="#cb67-227" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-228"><a href="#cb67-228" aria-hidden="true" tabindex="-1"></a>You can try to use this method here as well; but you might notice that there are some NA in the results. This is because when you do <span class="in">`stroke == 0`</span> on NA, instead of giving you <span class="in">`T`</span> or <span class="in">`F`</span>, it gives <span class="in">`NA`</span>; so the result of filtering <span class="in">`liggetid`</span> keeps both <span class="in">`T`</span> and <span class="in">`NA`</span>. </span>
+<span id="cb67-228"><a href="#cb67-228" aria-hidden="true" tabindex="-1"></a>Since we want to compare the length of hospital stay for two groups, we need to separate the length of stay data into two groups, based on whether patients have stroke or not. Create two variables, <span class="in">`ligt_s1`</span> and <span class="in">`ligt_s0`</span>. </span>
 <span id="cb67-229"><a href="#cb67-229" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-230"><a href="#cb67-230" aria-hidden="true" tabindex="-1"></a>These NAs can be removed post-hoc; but a clearer solution is to set 2 conditions inside the square bracket, and combine with <span class="in">`&amp;`</span>. </span>
+<span id="cb67-230"><a href="#cb67-230" aria-hidden="true" tabindex="-1"></a>Do an appropriate non-parametric test. What is the difference between this test and the one you did in Exercise 1?</span>
 <span id="cb67-231"><a href="#cb67-231" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-232"><a href="#cb67-232" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`!is.na(stroke)`</span> means stroke variable not NA</span>
-<span id="cb67-233"><a href="#cb67-233" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`stroke == 1`</span> means stroke variable equals to 1</span>
-<span id="cb67-234"><a href="#cb67-234" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`which()`</span> identifies the indices for stroke where the conditions were met, e.g. the 4th, 22th elements.</span>
+<span id="cb67-232"><a href="#cb67-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-233"><a href="#cb67-233" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip collapse="true"}</span>
+<span id="cb67-234"><a href="#cb67-234" aria-hidden="true" tabindex="-1"></a><span class="fu">## Separate one variable via index and `which()`</span></span>
 <span id="cb67-235"><a href="#cb67-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-236"><a href="#cb67-236" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb67-236"><a href="#cb67-236" aria-hidden="true" tabindex="-1"></a>Previously, we showed how to separate one variable based on another,</span>
 <span id="cb67-237"><a href="#cb67-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-238"><a href="#cb67-238" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-241"><a href="#cb67-241" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb67-242"><a href="#cb67-242" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-2b-1</span></span>
-<span id="cb67-243"><a href="#cb67-243" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb67-244"><a href="#cb67-244" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb67-245"><a href="#cb67-245" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-246"><a href="#cb67-246" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-247"><a href="#cb67-247" aria-hidden="true" tabindex="-1"></a><span class="co"># separate los </span></span>
-<span id="cb67-248"><a href="#cb67-248" aria-hidden="true" tabindex="-1"></a>ligt_s1 <span class="ot">&lt;-</span> los[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">is.na</span>(stroke) <span class="sc">&amp;</span> stroke <span class="sc">==</span> <span class="dv">1</span>)]</span>
-<span id="cb67-249"><a href="#cb67-249" aria-hidden="true" tabindex="-1"></a>ligt_s0 <span class="ot">&lt;-</span> los[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">is.na</span>(stroke) <span class="sc">&amp;</span> stroke <span class="sc">==</span> <span class="dv">0</span>)]</span>
+<span id="cb67-238"><a href="#cb67-238" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Exercise 2c) in <span class="co">[</span><span class="ot">EDA I</span><span class="co">](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_eda_part1.html)</span></span>
+<span id="cb67-239"><a href="#cb67-239" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Exercise 2a) in <span class="co">[</span><span class="ot">Categorical data analysis</span><span class="co">](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_categorical.html)</span></span>
+<span id="cb67-240"><a href="#cb67-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-241"><a href="#cb67-241" aria-hidden="true" tabindex="-1"></a>You can try to use this method here as well; but you might notice that there are some NA in the results. This is because when you do <span class="in">`stroke == 0`</span> on NA, instead of giving you <span class="in">`T`</span> or <span class="in">`F`</span>, it gives <span class="in">`NA`</span>; so the result of filtering <span class="in">`liggetid`</span> keeps both <span class="in">`T`</span> and <span class="in">`NA`</span>. </span>
+<span id="cb67-242"><a href="#cb67-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-243"><a href="#cb67-243" aria-hidden="true" tabindex="-1"></a>These NAs can be removed post-hoc; but a clearer solution is to set 2 conditions inside the square bracket, and combine with <span class="in">`&amp;`</span>. </span>
+<span id="cb67-244"><a href="#cb67-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-245"><a href="#cb67-245" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`!is.na(stroke)`</span> means stroke variable not NA</span>
+<span id="cb67-246"><a href="#cb67-246" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`stroke == 1`</span> means stroke variable equals to 1</span>
+<span id="cb67-247"><a href="#cb67-247" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`which()`</span> identifies the indices for stroke where the conditions were met, e.g. the 4th, 22th elements.</span>
+<span id="cb67-248"><a href="#cb67-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-249"><a href="#cb67-249" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb67-250"><a href="#cb67-250" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-251"><a href="#cb67-251" aria-hidden="true" tabindex="-1"></a><span class="co"># mean, median </span></span>
-<span id="cb67-252"><a href="#cb67-252" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">mean</span>(ligt_s1), <span class="fu">median</span>(ligt_s1))</span>
-<span id="cb67-253"><a href="#cb67-253" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">mean</span>(ligt_s0), <span class="fu">median</span>(ligt_s0))</span>
-<span id="cb67-254"><a href="#cb67-254" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb67-255"><a href="#cb67-255" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-256"><a href="#cb67-256" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-257"><a href="#cb67-257" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-260"><a href="#cb67-260" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb67-261"><a href="#cb67-261" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-2b-2</span></span>
-<span id="cb67-262"><a href="#cb67-262" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb67-263"><a href="#cb67-263" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb67-264"><a href="#cb67-264" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-265"><a href="#cb67-265" aria-hidden="true" tabindex="-1"></a><span class="co"># visualize</span></span>
-<span id="cb67-266"><a href="#cb67-266" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb67-267"><a href="#cb67-267" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-268"><a href="#cb67-268" aria-hidden="true" tabindex="-1"></a><span class="co"># s1</span></span>
-<span id="cb67-269"><a href="#cb67-269" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(ligt_s1, <span class="at">main =</span> <span class="st">'Length of hospital stay, stroke yes'</span>, </span>
-<span id="cb67-270"><a href="#cb67-270" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">'mean: 145; median: 58'</span>, </span>
-<span id="cb67-271"><a href="#cb67-271" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1300</span>))</span>
-<span id="cb67-272"><a href="#cb67-272" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(ligt_s1), <span class="at">col =</span> <span class="st">'blue'</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb67-273"><a href="#cb67-273" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">median</span>(ligt_s1), <span class="at">col =</span> <span class="st">'blue'</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="st">'dashed'</span>)</span>
-<span id="cb67-274"><a href="#cb67-274" aria-hidden="true" tabindex="-1"></a><span class="co"># qqplot</span></span>
-<span id="cb67-275"><a href="#cb67-275" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(ligt_s1, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">main =</span> <span class="st">'Q-Q plot for length of stay, stroke yes'</span>)</span>
-<span id="cb67-276"><a href="#cb67-276" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(ligt_s1, <span class="at">col =</span> <span class="st">'red'</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb67-251"><a href="#cb67-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-254"><a href="#cb67-254" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb67-255"><a href="#cb67-255" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-2b-1</span></span>
+<span id="cb67-256"><a href="#cb67-256" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb67-257"><a href="#cb67-257" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb67-258"><a href="#cb67-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-259"><a href="#cb67-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-260"><a href="#cb67-260" aria-hidden="true" tabindex="-1"></a><span class="co"># separate los </span></span>
+<span id="cb67-261"><a href="#cb67-261" aria-hidden="true" tabindex="-1"></a>ligt_s1 <span class="ot">&lt;-</span> los[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">is.na</span>(stroke) <span class="sc">&amp;</span> stroke <span class="sc">==</span> <span class="dv">1</span>)]</span>
+<span id="cb67-262"><a href="#cb67-262" aria-hidden="true" tabindex="-1"></a>ligt_s0 <span class="ot">&lt;-</span> los[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">is.na</span>(stroke) <span class="sc">&amp;</span> stroke <span class="sc">==</span> <span class="dv">0</span>)]</span>
+<span id="cb67-263"><a href="#cb67-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-264"><a href="#cb67-264" aria-hidden="true" tabindex="-1"></a><span class="co"># mean, median </span></span>
+<span id="cb67-265"><a href="#cb67-265" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">mean</span>(ligt_s1), <span class="fu">median</span>(ligt_s1))</span>
+<span id="cb67-266"><a href="#cb67-266" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">mean</span>(ligt_s0), <span class="fu">median</span>(ligt_s0))</span>
+<span id="cb67-267"><a href="#cb67-267" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb67-268"><a href="#cb67-268" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-269"><a href="#cb67-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-270"><a href="#cb67-270" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-273"><a href="#cb67-273" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb67-274"><a href="#cb67-274" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-2b-2</span></span>
+<span id="cb67-275"><a href="#cb67-275" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb67-276"><a href="#cb67-276" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
 <span id="cb67-277"><a href="#cb67-277" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-278"><a href="#cb67-278" aria-hidden="true" tabindex="-1"></a><span class="co"># s0</span></span>
-<span id="cb67-279"><a href="#cb67-279" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(ligt_s0, <span class="at">main =</span> <span class="st">'Length of hospital stay, stroke no'</span>, </span>
-<span id="cb67-280"><a href="#cb67-280" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">'mean: 116; median: 40'</span>, </span>
-<span id="cb67-281"><a href="#cb67-281" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1300</span>))</span>
-<span id="cb67-282"><a href="#cb67-282" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(ligt_s0), <span class="at">col =</span> <span class="st">'blue'</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb67-283"><a href="#cb67-283" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">median</span>(ligt_s0), <span class="at">col =</span> <span class="st">'blue'</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="st">'dashed'</span>)</span>
-<span id="cb67-284"><a href="#cb67-284" aria-hidden="true" tabindex="-1"></a><span class="co"># qqplot</span></span>
-<span id="cb67-285"><a href="#cb67-285" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(ligt_s0, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">main =</span> <span class="st">'Q-Q plot for length of stay, stroke no'</span>)</span>
-<span id="cb67-286"><a href="#cb67-286" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(ligt_s0, <span class="at">col =</span> <span class="st">'red'</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb67-287"><a href="#cb67-287" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb67-288"><a href="#cb67-288" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-289"><a href="#cb67-289" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-292"><a href="#cb67-292" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb67-293"><a href="#cb67-293" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-2b-3</span></span>
-<span id="cb67-294"><a href="#cb67-294" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb67-295"><a href="#cb67-295" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb67-296"><a href="#cb67-296" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-297"><a href="#cb67-297" aria-hidden="true" tabindex="-1"></a><span class="co"># non parametric test</span></span>
-<span id="cb67-298"><a href="#cb67-298" aria-hidden="true" tabindex="-1"></a><span class="co"># not matched; independent samples</span></span>
-<span id="cb67-299"><a href="#cb67-299" aria-hidden="true" tabindex="-1"></a><span class="co"># wilcoxon rank sum </span></span>
-<span id="cb67-300"><a href="#cb67-300" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(ligt_s1, ligt_s0)</span>
+<span id="cb67-278"><a href="#cb67-278" aria-hidden="true" tabindex="-1"></a><span class="co"># visualize</span></span>
+<span id="cb67-279"><a href="#cb67-279" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb67-280"><a href="#cb67-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-281"><a href="#cb67-281" aria-hidden="true" tabindex="-1"></a><span class="co"># s1</span></span>
+<span id="cb67-282"><a href="#cb67-282" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(ligt_s1, <span class="at">main =</span> <span class="st">'Length of hospital stay, stroke yes'</span>, </span>
+<span id="cb67-283"><a href="#cb67-283" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">'mean: 145; median: 58'</span>, </span>
+<span id="cb67-284"><a href="#cb67-284" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1300</span>))</span>
+<span id="cb67-285"><a href="#cb67-285" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(ligt_s1), <span class="at">col =</span> <span class="st">'blue'</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb67-286"><a href="#cb67-286" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">median</span>(ligt_s1), <span class="at">col =</span> <span class="st">'blue'</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="st">'dashed'</span>)</span>
+<span id="cb67-287"><a href="#cb67-287" aria-hidden="true" tabindex="-1"></a><span class="co"># qqplot</span></span>
+<span id="cb67-288"><a href="#cb67-288" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(ligt_s1, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">main =</span> <span class="st">'Q-Q plot for length of stay, stroke yes'</span>)</span>
+<span id="cb67-289"><a href="#cb67-289" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(ligt_s1, <span class="at">col =</span> <span class="st">'red'</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb67-290"><a href="#cb67-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-291"><a href="#cb67-291" aria-hidden="true" tabindex="-1"></a><span class="co"># s0</span></span>
+<span id="cb67-292"><a href="#cb67-292" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(ligt_s0, <span class="at">main =</span> <span class="st">'Length of hospital stay, stroke no'</span>, </span>
+<span id="cb67-293"><a href="#cb67-293" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">'mean: 116; median: 40'</span>, </span>
+<span id="cb67-294"><a href="#cb67-294" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1300</span>))</span>
+<span id="cb67-295"><a href="#cb67-295" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(ligt_s0), <span class="at">col =</span> <span class="st">'blue'</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb67-296"><a href="#cb67-296" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">median</span>(ligt_s0), <span class="at">col =</span> <span class="st">'blue'</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="st">'dashed'</span>)</span>
+<span id="cb67-297"><a href="#cb67-297" aria-hidden="true" tabindex="-1"></a><span class="co"># qqplot</span></span>
+<span id="cb67-298"><a href="#cb67-298" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(ligt_s0, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">main =</span> <span class="st">'Q-Q plot for length of stay, stroke no'</span>)</span>
+<span id="cb67-299"><a href="#cb67-299" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(ligt_s0, <span class="at">col =</span> <span class="st">'red'</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb67-300"><a href="#cb67-300" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb67-301"><a href="#cb67-301" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-302"><a href="#cb67-302" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb67-303"><a href="#cb67-303" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-304"><a href="#cb67-304" aria-hidden="true" tabindex="-1"></a>::: {.callout-caution}</span>
-<span id="cb67-305"><a href="#cb67-305" aria-hidden="true" tabindex="-1"></a><span class="fu">## Compare with t-test</span></span>
-<span id="cb67-306"><a href="#cb67-306" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-307"><a href="#cb67-307" aria-hidden="true" tabindex="-1"></a>If you do a t-test (inappropriately) instead of Mann-Whitney U test, you'll have different results!</span>
-<span id="cb67-308"><a href="#cb67-308" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-309"><a href="#cb67-309" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb67-310"><a href="#cb67-310" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-313"><a href="#cb67-313" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb67-314"><a href="#cb67-314" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-2b-4</span></span>
-<span id="cb67-315"><a href="#cb67-315" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb67-316"><a href="#cb67-316" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb67-317"><a href="#cb67-317" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-318"><a href="#cb67-318" aria-hidden="true" tabindex="-1"></a><span class="co"># t-test on skewed data</span></span>
-<span id="cb67-319"><a href="#cb67-319" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(ligt_s1, ligt_s0)</span>
-<span id="cb67-320"><a href="#cb67-320" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb67-302"><a href="#cb67-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-305"><a href="#cb67-305" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb67-306"><a href="#cb67-306" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-2b-3</span></span>
+<span id="cb67-307"><a href="#cb67-307" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb67-308"><a href="#cb67-308" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb67-309"><a href="#cb67-309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-310"><a href="#cb67-310" aria-hidden="true" tabindex="-1"></a><span class="co"># non parametric test</span></span>
+<span id="cb67-311"><a href="#cb67-311" aria-hidden="true" tabindex="-1"></a><span class="co"># not matched; independent samples</span></span>
+<span id="cb67-312"><a href="#cb67-312" aria-hidden="true" tabindex="-1"></a><span class="co"># wilcoxon rank sum </span></span>
+<span id="cb67-313"><a href="#cb67-313" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(ligt_s1, ligt_s0)</span>
+<span id="cb67-314"><a href="#cb67-314" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-315"><a href="#cb67-315" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb67-316"><a href="#cb67-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-317"><a href="#cb67-317" aria-hidden="true" tabindex="-1"></a>::: {.callout-caution}</span>
+<span id="cb67-318"><a href="#cb67-318" aria-hidden="true" tabindex="-1"></a><span class="fu">## Compare with t-test</span></span>
+<span id="cb67-319"><a href="#cb67-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-320"><a href="#cb67-320" aria-hidden="true" tabindex="-1"></a>If you do a t-test (inappropriately) instead of Mann-Whitney U test, you'll have different results!</span>
 <span id="cb67-321"><a href="#cb67-321" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-322"><a href="#cb67-322" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-323"><a href="#cb67-323" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 2c)</span></span>
-<span id="cb67-324"><a href="#cb67-324" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-325"><a href="#cb67-325" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-326"><a href="#cb67-326" aria-hidden="true" tabindex="-1"></a>Do the same analysis with a t-test on the logarithm-transformed data. The transformed variable already exists in the data set as <span class="in">`lnliggti`</span>.</span>
-<span id="cb67-327"><a href="#cb67-327" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-328"><a href="#cb67-328" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-331"><a href="#cb67-331" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb67-332"><a href="#cb67-332" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-2c-1</span></span>
-<span id="cb67-333"><a href="#cb67-333" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb67-334"><a href="#cb67-334" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb67-322"><a href="#cb67-322" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb67-323"><a href="#cb67-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-326"><a href="#cb67-326" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb67-327"><a href="#cb67-327" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-2b-4</span></span>
+<span id="cb67-328"><a href="#cb67-328" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb67-329"><a href="#cb67-329" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb67-330"><a href="#cb67-330" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-331"><a href="#cb67-331" aria-hidden="true" tabindex="-1"></a><span class="co"># t-test on skewed data</span></span>
+<span id="cb67-332"><a href="#cb67-332" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(ligt_s1, ligt_s0)</span>
+<span id="cb67-333"><a href="#cb67-333" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb67-334"><a href="#cb67-334" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb67-335"><a href="#cb67-335" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-336"><a href="#cb67-336" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-337"><a href="#cb67-337" aria-hidden="true" tabindex="-1"></a><span class="co"># use log transformed </span></span>
-<span id="cb67-338"><a href="#cb67-338" aria-hidden="true" tabindex="-1"></a>loglos <span class="ot">&lt;-</span> liggetid<span class="sc">$</span>lnliggti</span>
-<span id="cb67-339"><a href="#cb67-339" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(loglos, <span class="at">main =</span> <span class="st">'Log transformed length of stay'</span>)</span>
-<span id="cb67-340"><a href="#cb67-340" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(loglos, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">main =</span> <span class="st">'Q-Q plot for log(length of stay)'</span>)</span>
-<span id="cb67-341"><a href="#cb67-341" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(loglos, <span class="at">col =</span> <span class="st">'red'</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb67-342"><a href="#cb67-342" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-343"><a href="#cb67-343" aria-hidden="true" tabindex="-1"></a><span class="co"># separate data</span></span>
-<span id="cb67-344"><a href="#cb67-344" aria-hidden="true" tabindex="-1"></a>logligt_s1 <span class="ot">&lt;-</span> loglos[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">is.na</span>(stroke) <span class="sc">&amp;</span> stroke <span class="sc">==</span> <span class="dv">1</span>)]</span>
-<span id="cb67-345"><a href="#cb67-345" aria-hidden="true" tabindex="-1"></a>logligt_s0 <span class="ot">&lt;-</span> loglos[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">is.na</span>(stroke) <span class="sc">&amp;</span> stroke <span class="sc">==</span> <span class="dv">0</span>)]</span>
-<span id="cb67-346"><a href="#cb67-346" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-347"><a href="#cb67-347" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(logligt_s1, logligt_s0, <span class="at">paired =</span> F)</span>
-<span id="cb67-348"><a href="#cb67-348" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb67-336"><a href="#cb67-336" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2c)</span></span>
+<span id="cb67-337"><a href="#cb67-337" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-338"><a href="#cb67-338" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-339"><a href="#cb67-339" aria-hidden="true" tabindex="-1"></a>Do the same analysis with a t-test on the logarithm-transformed data. The transformed variable already exists in the data set as <span class="in">`lnliggti`</span>.</span>
+<span id="cb67-340"><a href="#cb67-340" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-341"><a href="#cb67-341" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-344"><a href="#cb67-344" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb67-345"><a href="#cb67-345" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-2c-1</span></span>
+<span id="cb67-346"><a href="#cb67-346" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb67-347"><a href="#cb67-347" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb67-348"><a href="#cb67-348" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb67-349"><a href="#cb67-349" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-350"><a href="#cb67-350" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-351"><a href="#cb67-351" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-352"><a href="#cb67-352" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 3 (antibody)</span></span>
-<span id="cb67-353"><a href="#cb67-353" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-354"><a href="#cb67-354" aria-hidden="true" tabindex="-1"></a>(Baker et al., 1980) We have data on concentration of antibody of Type III Group B Streptococcus (GBS) in 20 volunteers before and after immunization. The dataset is <span class="in">`antibody`</span>. </span>
+<span id="cb67-350"><a href="#cb67-350" aria-hidden="true" tabindex="-1"></a><span class="co"># use log transformed </span></span>
+<span id="cb67-351"><a href="#cb67-351" aria-hidden="true" tabindex="-1"></a>loglos <span class="ot">&lt;-</span> liggetid<span class="sc">$</span>lnliggti</span>
+<span id="cb67-352"><a href="#cb67-352" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(loglos, <span class="at">main =</span> <span class="st">'Log transformed length of stay'</span>)</span>
+<span id="cb67-353"><a href="#cb67-353" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(loglos, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">main =</span> <span class="st">'Q-Q plot for log(length of stay)'</span>)</span>
+<span id="cb67-354"><a href="#cb67-354" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(loglos, <span class="at">col =</span> <span class="st">'red'</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
 <span id="cb67-355"><a href="#cb67-355" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-356"><a href="#cb67-356" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 3a) </span></span>
-<span id="cb67-357"><a href="#cb67-357" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-358"><a href="#cb67-358" aria-hidden="true" tabindex="-1"></a>The comparison of the antibody levels was summarized in the report of this study as '$t = 1.8; P &gt; 0.05$'. Comment on the result. </span>
+<span id="cb67-356"><a href="#cb67-356" aria-hidden="true" tabindex="-1"></a><span class="co"># separate data</span></span>
+<span id="cb67-357"><a href="#cb67-357" aria-hidden="true" tabindex="-1"></a>logligt_s1 <span class="ot">&lt;-</span> loglos[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">is.na</span>(stroke) <span class="sc">&amp;</span> stroke <span class="sc">==</span> <span class="dv">1</span>)]</span>
+<span id="cb67-358"><a href="#cb67-358" aria-hidden="true" tabindex="-1"></a>logligt_s0 <span class="ot">&lt;-</span> loglos[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">is.na</span>(stroke) <span class="sc">&amp;</span> stroke <span class="sc">==</span> <span class="dv">0</span>)]</span>
 <span id="cb67-359"><a href="#cb67-359" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-360"><a href="#cb67-360" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-363"><a href="#cb67-363" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb67-364"><a href="#cb67-364" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-3a-1</span></span>
-<span id="cb67-365"><a href="#cb67-365" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb67-366"><a href="#cb67-366" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb67-367"><a href="#cb67-367" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-368"><a href="#cb67-368" aria-hidden="true" tabindex="-1"></a>antibody <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/antibody.csv'</span>)</span>
-<span id="cb67-369"><a href="#cb67-369" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(antibody)</span>
+<span id="cb67-360"><a href="#cb67-360" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(logligt_s1, logligt_s0, <span class="at">paired =</span> F)</span>
+<span id="cb67-361"><a href="#cb67-361" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb67-362"><a href="#cb67-362" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-363"><a href="#cb67-363" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-364"><a href="#cb67-364" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-365"><a href="#cb67-365" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 3 (antibody)</span></span>
+<span id="cb67-366"><a href="#cb67-366" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-367"><a href="#cb67-367" aria-hidden="true" tabindex="-1"></a>(Baker et al., 1980) We have data on concentration of antibody of Type III Group B Streptococcus (GBS) in 20 volunteers before and after immunization. The dataset is <span class="in">`antibody`</span>. </span>
+<span id="cb67-368"><a href="#cb67-368" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-369"><a href="#cb67-369" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3a) </span></span>
 <span id="cb67-370"><a href="#cb67-370" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-371"><a href="#cb67-371" aria-hidden="true" tabindex="-1"></a>before <span class="ot">&lt;-</span> antibody<span class="sc">$</span>before</span>
-<span id="cb67-372"><a href="#cb67-372" aria-hidden="true" tabindex="-1"></a>after <span class="ot">&lt;-</span> antibody<span class="sc">$</span>after</span>
-<span id="cb67-373"><a href="#cb67-373" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb67-374"><a href="#cb67-374" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-375"><a href="#cb67-375" aria-hidden="true" tabindex="-1"></a>Compute some summary statistics for the two variables, and then reproduce the result by the t-test.</span>
-<span id="cb67-376"><a href="#cb67-376" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-379"><a href="#cb67-379" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb67-380"><a href="#cb67-380" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-3a-2</span></span>
-<span id="cb67-381"><a href="#cb67-381" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb67-382"><a href="#cb67-382" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb67-371"><a href="#cb67-371" aria-hidden="true" tabindex="-1"></a>The comparison of the antibody levels was summarized in the report of this study as '$t = 1.8; P &gt; 0.05$'. Comment on the result. </span>
+<span id="cb67-372"><a href="#cb67-372" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-373"><a href="#cb67-373" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-376"><a href="#cb67-376" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb67-377"><a href="#cb67-377" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-3a-1</span></span>
+<span id="cb67-378"><a href="#cb67-378" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb67-379"><a href="#cb67-379" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb67-380"><a href="#cb67-380" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-381"><a href="#cb67-381" aria-hidden="true" tabindex="-1"></a>antibody <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/antibody.csv'</span>)</span>
+<span id="cb67-382"><a href="#cb67-382" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(antibody)</span>
 <span id="cb67-383"><a href="#cb67-383" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-384"><a href="#cb67-384" aria-hidden="true" tabindex="-1"></a><span class="co"># some summary stat of the data</span></span>
-<span id="cb67-385"><a href="#cb67-385" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(before)</span>
-<span id="cb67-386"><a href="#cb67-386" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(after)</span>
+<span id="cb67-384"><a href="#cb67-384" aria-hidden="true" tabindex="-1"></a>before <span class="ot">&lt;-</span> antibody<span class="sc">$</span>before</span>
+<span id="cb67-385"><a href="#cb67-385" aria-hidden="true" tabindex="-1"></a>after <span class="ot">&lt;-</span> antibody<span class="sc">$</span>after</span>
+<span id="cb67-386"><a href="#cb67-386" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb67-387"><a href="#cb67-387" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-388"><a href="#cb67-388" aria-hidden="true" tabindex="-1"></a><span class="co"># reproduce the result from t-test</span></span>
-<span id="cb67-389"><a href="#cb67-389" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(antibody<span class="sc">$</span>before, antibody<span class="sc">$</span>after, <span class="at">paired =</span> T)</span>
-<span id="cb67-390"><a href="#cb67-390" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb67-391"><a href="#cb67-391" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-392"><a href="#cb67-392" aria-hidden="true" tabindex="-1"></a><span class="fu">#### (Optional)</span></span>
-<span id="cb67-393"><a href="#cb67-393" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-394"><a href="#cb67-394" aria-hidden="true" tabindex="-1"></a>We can visually get an understanding of whether this result makes sense.</span>
-<span id="cb67-395"><a href="#cb67-395" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-398"><a href="#cb67-398" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb67-399"><a href="#cb67-399" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-3a-3</span></span>
-<span id="cb67-400"><a href="#cb67-400" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb67-401"><a href="#cb67-401" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb67-402"><a href="#cb67-402" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-403"><a href="#cb67-403" aria-hidden="true" tabindex="-1"></a><span class="co"># long format data (requires tidyr package)</span></span>
-<span id="cb67-404"><a href="#cb67-404" aria-hidden="true" tabindex="-1"></a>antibody_longdata <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(antibody, </span>
-<span id="cb67-405"><a href="#cb67-405" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">cols =</span> tidyr<span class="sc">::</span><span class="fu">everything</span>(), </span>
-<span id="cb67-406"><a href="#cb67-406" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">names_to =</span> <span class="st">'group'</span>, </span>
-<span id="cb67-407"><a href="#cb67-407" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">values_to =</span> <span class="st">'measurements'</span>)</span>
-<span id="cb67-408"><a href="#cb67-408" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(antibody_longdata)</span>
-<span id="cb67-409"><a href="#cb67-409" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb67-410"><a href="#cb67-410" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-411"><a href="#cb67-411" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-412"><a href="#cb67-412" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-415"><a href="#cb67-415" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb67-416"><a href="#cb67-416" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-3a-4</span></span>
-<span id="cb67-417"><a href="#cb67-417" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb67-418"><a href="#cb67-418" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb67-419"><a href="#cb67-419" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-420"><a href="#cb67-420" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb67-421"><a href="#cb67-421" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(measurements <span class="sc">~</span> group, </span>
-<span id="cb67-422"><a href="#cb67-422" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> antibody_longdata, </span>
-<span id="cb67-423"><a href="#cb67-423" aria-hidden="true" tabindex="-1"></a>        <span class="at">horizontal =</span> T, </span>
-<span id="cb67-424"><a href="#cb67-424" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">'Before and after measurements'</span>)</span>
+<span id="cb67-388"><a href="#cb67-388" aria-hidden="true" tabindex="-1"></a>Compute some summary statistics for the two variables, and then reproduce the result by the t-test.</span>
+<span id="cb67-389"><a href="#cb67-389" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-392"><a href="#cb67-392" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb67-393"><a href="#cb67-393" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-3a-2</span></span>
+<span id="cb67-394"><a href="#cb67-394" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb67-395"><a href="#cb67-395" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb67-396"><a href="#cb67-396" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-397"><a href="#cb67-397" aria-hidden="true" tabindex="-1"></a><span class="co"># some summary stat of the data</span></span>
+<span id="cb67-398"><a href="#cb67-398" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(before)</span>
+<span id="cb67-399"><a href="#cb67-399" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(after)</span>
+<span id="cb67-400"><a href="#cb67-400" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-401"><a href="#cb67-401" aria-hidden="true" tabindex="-1"></a><span class="co"># reproduce the result from t-test</span></span>
+<span id="cb67-402"><a href="#cb67-402" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(antibody<span class="sc">$</span>before, antibody<span class="sc">$</span>after, <span class="at">paired =</span> T)</span>
+<span id="cb67-403"><a href="#cb67-403" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb67-404"><a href="#cb67-404" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-405"><a href="#cb67-405" aria-hidden="true" tabindex="-1"></a><span class="fu">### (Optional)</span></span>
+<span id="cb67-406"><a href="#cb67-406" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-407"><a href="#cb67-407" aria-hidden="true" tabindex="-1"></a>We can visually get an understanding of whether this result makes sense.</span>
+<span id="cb67-408"><a href="#cb67-408" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-411"><a href="#cb67-411" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb67-412"><a href="#cb67-412" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-3a-3</span></span>
+<span id="cb67-413"><a href="#cb67-413" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb67-414"><a href="#cb67-414" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb67-415"><a href="#cb67-415" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-416"><a href="#cb67-416" aria-hidden="true" tabindex="-1"></a><span class="co"># long format data (requires tidyr package)</span></span>
+<span id="cb67-417"><a href="#cb67-417" aria-hidden="true" tabindex="-1"></a>antibody_longdata <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(antibody, </span>
+<span id="cb67-418"><a href="#cb67-418" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">cols =</span> tidyr<span class="sc">::</span><span class="fu">everything</span>(), </span>
+<span id="cb67-419"><a href="#cb67-419" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">names_to =</span> <span class="st">'group'</span>, </span>
+<span id="cb67-420"><a href="#cb67-420" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">values_to =</span> <span class="st">'measurements'</span>)</span>
+<span id="cb67-421"><a href="#cb67-421" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(antibody_longdata)</span>
+<span id="cb67-422"><a href="#cb67-422" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb67-423"><a href="#cb67-423" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-424"><a href="#cb67-424" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb67-425"><a href="#cb67-425" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-426"><a href="#cb67-426" aria-hidden="true" tabindex="-1"></a><span class="co"># limit the y axis (horizontal x axis)</span></span>
-<span id="cb67-427"><a href="#cb67-427" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(measurements <span class="sc">~</span> group, </span>
-<span id="cb67-428"><a href="#cb67-428" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> antibody_longdata, </span>
-<span id="cb67-429"><a href="#cb67-429" aria-hidden="true" tabindex="-1"></a>        <span class="at">horizontal =</span> T, </span>
-<span id="cb67-430"><a href="#cb67-430" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4</span>),</span>
-<span id="cb67-431"><a href="#cb67-431" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">'Limit the measurement range'</span>)</span>
+<span id="cb67-428"><a href="#cb67-428" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb67-429"><a href="#cb67-429" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-3a-4</span></span>
+<span id="cb67-430"><a href="#cb67-430" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb67-431"><a href="#cb67-431" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
 <span id="cb67-432"><a href="#cb67-432" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-433"><a href="#cb67-433" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb67-434"><a href="#cb67-434" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-435"><a href="#cb67-435" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-438"><a href="#cb67-438" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb67-439"><a href="#cb67-439" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-3a-5</span></span>
-<span id="cb67-440"><a href="#cb67-440" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb67-441"><a href="#cb67-441" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb67-442"><a href="#cb67-442" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-443"><a href="#cb67-443" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb67-444"><a href="#cb67-444" aria-hidden="true" tabindex="-1"></a><span class="co"># histogram </span></span>
-<span id="cb67-445"><a href="#cb67-445" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(before, <span class="at">main =</span> <span class="st">'Measurements: before'</span>)</span>
-<span id="cb67-446"><a href="#cb67-446" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(before, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">main =</span> <span class="st">'Q-Q plot for measurements: before'</span>)</span>
-<span id="cb67-447"><a href="#cb67-447" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(before, <span class="at">col =</span> <span class="st">'red'</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb67-433"><a href="#cb67-433" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb67-434"><a href="#cb67-434" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(measurements <span class="sc">~</span> group, </span>
+<span id="cb67-435"><a href="#cb67-435" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> antibody_longdata, </span>
+<span id="cb67-436"><a href="#cb67-436" aria-hidden="true" tabindex="-1"></a>        <span class="at">horizontal =</span> T, </span>
+<span id="cb67-437"><a href="#cb67-437" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">'Before and after measurements'</span>)</span>
+<span id="cb67-438"><a href="#cb67-438" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-439"><a href="#cb67-439" aria-hidden="true" tabindex="-1"></a><span class="co"># limit the y axis (horizontal x axis)</span></span>
+<span id="cb67-440"><a href="#cb67-440" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(measurements <span class="sc">~</span> group, </span>
+<span id="cb67-441"><a href="#cb67-441" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> antibody_longdata, </span>
+<span id="cb67-442"><a href="#cb67-442" aria-hidden="true" tabindex="-1"></a>        <span class="at">horizontal =</span> T, </span>
+<span id="cb67-443"><a href="#cb67-443" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4</span>),</span>
+<span id="cb67-444"><a href="#cb67-444" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">'Limit the measurement range'</span>)</span>
+<span id="cb67-445"><a href="#cb67-445" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-446"><a href="#cb67-446" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb67-447"><a href="#cb67-447" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb67-448"><a href="#cb67-448" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-449"><a href="#cb67-449" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(after, <span class="at">main =</span> <span class="st">'Measurements: after'</span>)</span>
-<span id="cb67-450"><a href="#cb67-450" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(after, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">main =</span> <span class="st">'Q-Q plot for measurements: after'</span>)</span>
-<span id="cb67-451"><a href="#cb67-451" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(after, <span class="at">col =</span> <span class="st">'red'</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb67-452"><a href="#cb67-452" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb67-453"><a href="#cb67-453" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-454"><a href="#cb67-454" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-457"><a href="#cb67-457" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb67-458"><a href="#cb67-458" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-3a-6</span></span>
-<span id="cb67-459"><a href="#cb67-459" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb67-460"><a href="#cb67-460" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb67-451"><a href="#cb67-451" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb67-452"><a href="#cb67-452" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-3a-5</span></span>
+<span id="cb67-453"><a href="#cb67-453" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb67-454"><a href="#cb67-454" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb67-455"><a href="#cb67-455" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-456"><a href="#cb67-456" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb67-457"><a href="#cb67-457" aria-hidden="true" tabindex="-1"></a><span class="co"># histogram </span></span>
+<span id="cb67-458"><a href="#cb67-458" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(before, <span class="at">main =</span> <span class="st">'Measurements: before'</span>)</span>
+<span id="cb67-459"><a href="#cb67-459" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(before, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">main =</span> <span class="st">'Q-Q plot for measurements: before'</span>)</span>
+<span id="cb67-460"><a href="#cb67-460" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(before, <span class="at">col =</span> <span class="st">'red'</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
 <span id="cb67-461"><a href="#cb67-461" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-462"><a href="#cb67-462" aria-hidden="true" tabindex="-1"></a><span class="co"># histogram for the difference s</span></span>
-<span id="cb67-463"><a href="#cb67-463" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(after <span class="sc">-</span> before, <span class="at">main =</span> <span class="st">'Difference (after - before)'</span>)</span>
-<span id="cb67-464"><a href="#cb67-464" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb67-465"><a href="#cb67-465" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-466"><a href="#cb67-466" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 3b)</span></span>
+<span id="cb67-462"><a href="#cb67-462" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(after, <span class="at">main =</span> <span class="st">'Measurements: after'</span>)</span>
+<span id="cb67-463"><a href="#cb67-463" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(after, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">main =</span> <span class="st">'Q-Q plot for measurements: after'</span>)</span>
+<span id="cb67-464"><a href="#cb67-464" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(after, <span class="at">col =</span> <span class="st">'red'</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb67-465"><a href="#cb67-465" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb67-466"><a href="#cb67-466" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb67-467"><a href="#cb67-467" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-468"><a href="#cb67-468" aria-hidden="true" tabindex="-1"></a>Analyse the data with an appropriate test. Justify your choice. </span>
-<span id="cb67-469"><a href="#cb67-469" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-472"><a href="#cb67-472" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb67-473"><a href="#cb67-473" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-3b-1</span></span>
-<span id="cb67-474"><a href="#cb67-474" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb67-475"><a href="#cb67-475" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb67-476"><a href="#cb67-476" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-477"><a href="#cb67-477" aria-hidden="true" tabindex="-1"></a><span class="co"># matched data (paired)</span></span>
-<span id="cb67-478"><a href="#cb67-478" aria-hidden="true" tabindex="-1"></a><span class="co"># one-sample test (signed rank)</span></span>
-<span id="cb67-479"><a href="#cb67-479" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-480"><a href="#cb67-480" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(before, after, <span class="at">paired =</span> T)</span>
-<span id="cb67-481"><a href="#cb67-481" aria-hidden="true" tabindex="-1"></a><span class="co"># the error means there are ties (no change)</span></span>
-<span id="cb67-482"><a href="#cb67-482" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb67-483"><a href="#cb67-483" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-484"><a href="#cb67-484" aria-hidden="true" tabindex="-1"></a>::: {.callout-caution}</span>
-<span id="cb67-485"><a href="#cb67-485" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paired vs independent data</span></span>
-<span id="cb67-486"><a href="#cb67-486" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-487"><a href="#cb67-487" aria-hidden="true" tabindex="-1"></a>You can try to do a test treating the data as independent. The conclusion could be different! Be careful with what you are testing.</span>
-<span id="cb67-488"><a href="#cb67-488" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-489"><a href="#cb67-489" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb67-490"><a href="#cb67-490" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-493"><a href="#cb67-493" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb67-494"><a href="#cb67-494" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-3b-2</span></span>
-<span id="cb67-495"><a href="#cb67-495" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb67-496"><a href="#cb67-496" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb67-497"><a href="#cb67-497" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-498"><a href="#cb67-498" aria-hidden="true" tabindex="-1"></a><span class="co"># what happens if you use independent two-samples test?</span></span>
-<span id="cb67-499"><a href="#cb67-499" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(before, after, <span class="at">paired =</span> F) <span class="co"># p = 0.14</span></span>
-<span id="cb67-500"><a href="#cb67-500" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb67-470"><a href="#cb67-470" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb67-471"><a href="#cb67-471" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-3a-6</span></span>
+<span id="cb67-472"><a href="#cb67-472" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb67-473"><a href="#cb67-473" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb67-474"><a href="#cb67-474" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-475"><a href="#cb67-475" aria-hidden="true" tabindex="-1"></a><span class="co"># histogram for the difference s</span></span>
+<span id="cb67-476"><a href="#cb67-476" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(after <span class="sc">-</span> before, <span class="at">main =</span> <span class="st">'Difference (after - before)'</span>)</span>
+<span id="cb67-477"><a href="#cb67-477" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb67-478"><a href="#cb67-478" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-479"><a href="#cb67-479" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3b)</span></span>
+<span id="cb67-480"><a href="#cb67-480" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-481"><a href="#cb67-481" aria-hidden="true" tabindex="-1"></a>Analyse the data with an appropriate test. Justify your choice. </span>
+<span id="cb67-482"><a href="#cb67-482" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-485"><a href="#cb67-485" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb67-486"><a href="#cb67-486" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-3b-1</span></span>
+<span id="cb67-487"><a href="#cb67-487" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb67-488"><a href="#cb67-488" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb67-489"><a href="#cb67-489" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-490"><a href="#cb67-490" aria-hidden="true" tabindex="-1"></a><span class="co"># matched data (paired)</span></span>
+<span id="cb67-491"><a href="#cb67-491" aria-hidden="true" tabindex="-1"></a><span class="co"># one-sample test (signed rank)</span></span>
+<span id="cb67-492"><a href="#cb67-492" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-493"><a href="#cb67-493" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(before, after, <span class="at">paired =</span> T)</span>
+<span id="cb67-494"><a href="#cb67-494" aria-hidden="true" tabindex="-1"></a><span class="co"># the error means there are ties (no change)</span></span>
+<span id="cb67-495"><a href="#cb67-495" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb67-496"><a href="#cb67-496" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-497"><a href="#cb67-497" aria-hidden="true" tabindex="-1"></a>::: {.callout-caution}</span>
+<span id="cb67-498"><a href="#cb67-498" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paired vs independent data</span></span>
+<span id="cb67-499"><a href="#cb67-499" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-500"><a href="#cb67-500" aria-hidden="true" tabindex="-1"></a>You can try to do a test treating the data as independent. The conclusion could be different! Be careful with what you are testing.</span>
 <span id="cb67-501"><a href="#cb67-501" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-502"><a href="#cb67-502" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 4 (nausea) </span></span>
+<span id="cb67-502"><a href="#cb67-502" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb67-503"><a href="#cb67-503" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-504"><a href="#cb67-504" aria-hidden="true" tabindex="-1"></a>(Williams et al., 1989) Patients receiving chemotherapy as outpatients were randomized to receive either an active antiemetic treatment or placebo. The following table shows measurements (in mm) on a 100mm linear analogue self-assessment scale for nausea. The dataset is <span class="in">`nausea`</span>. </span>
-<span id="cb67-505"><a href="#cb67-505" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-506"><a href="#cb67-506" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>group: <span class="in">`1`</span> is active (treatment), and <span class="in">`2`</span> is placebo.</span>
-<span id="cb67-507"><a href="#cb67-507" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-508"><a href="#cb67-508" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 4a)</span></span>
-<span id="cb67-509"><a href="#cb67-509" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-510"><a href="#cb67-510" aria-hidden="true" tabindex="-1"></a>Choose an appropriate test for comparing the treatment and placebo groups. Justify your choice. </span>
-<span id="cb67-511"><a href="#cb67-511" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-514"><a href="#cb67-514" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb67-515"><a href="#cb67-515" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-4a-1</span></span>
-<span id="cb67-516"><a href="#cb67-516" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb67-517"><a href="#cb67-517" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb67-506"><a href="#cb67-506" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb67-507"><a href="#cb67-507" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-3b-2</span></span>
+<span id="cb67-508"><a href="#cb67-508" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb67-509"><a href="#cb67-509" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb67-510"><a href="#cb67-510" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-511"><a href="#cb67-511" aria-hidden="true" tabindex="-1"></a><span class="co"># what happens if you use independent two-samples test?</span></span>
+<span id="cb67-512"><a href="#cb67-512" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(before, after, <span class="at">paired =</span> F) <span class="co"># p = 0.14</span></span>
+<span id="cb67-513"><a href="#cb67-513" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb67-514"><a href="#cb67-514" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-515"><a href="#cb67-515" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 4 (nausea) </span></span>
+<span id="cb67-516"><a href="#cb67-516" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-517"><a href="#cb67-517" aria-hidden="true" tabindex="-1"></a>(Williams et al., 1989) Patients receiving chemotherapy as outpatients were randomized to receive either an active antiemetic treatment or placebo. The following table shows measurements (in mm) on a 100mm linear analogue self-assessment scale for nausea. The dataset is <span class="in">`nausea`</span>. </span>
 <span id="cb67-518"><a href="#cb67-518" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-519"><a href="#cb67-519" aria-hidden="true" tabindex="-1"></a>nausea <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/nausea.csv'</span>)</span>
-<span id="cb67-520"><a href="#cb67-520" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(nausea)</span>
-<span id="cb67-521"><a href="#cb67-521" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-522"><a href="#cb67-522" aria-hidden="true" tabindex="-1"></a>treatment <span class="ot">&lt;-</span> nausea<span class="sc">$</span>value[nausea<span class="sc">$</span>group <span class="sc">==</span> <span class="dv">1</span>]</span>
-<span id="cb67-523"><a href="#cb67-523" aria-hidden="true" tabindex="-1"></a>placebo <span class="ot">&lt;-</span> nausea<span class="sc">$</span>value[nausea<span class="sc">$</span>group <span class="sc">==</span> <span class="dv">2</span>]</span>
+<span id="cb67-519"><a href="#cb67-519" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>group: <span class="in">`1`</span> is active (treatment), and <span class="in">`2`</span> is placebo.</span>
+<span id="cb67-520"><a href="#cb67-520" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-521"><a href="#cb67-521" aria-hidden="true" tabindex="-1"></a><span class="fu">### 4a)</span></span>
+<span id="cb67-522"><a href="#cb67-522" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-523"><a href="#cb67-523" aria-hidden="true" tabindex="-1"></a>Choose an appropriate test for comparing the treatment and placebo groups. Justify your choice. </span>
 <span id="cb67-524"><a href="#cb67-524" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-525"><a href="#cb67-525" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(treatment)</span>
-<span id="cb67-526"><a href="#cb67-526" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(placebo)</span>
-<span id="cb67-527"><a href="#cb67-527" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb67-528"><a href="#cb67-528" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-529"><a href="#cb67-529" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-532"><a href="#cb67-532" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb67-533"><a href="#cb67-533" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-4a-2</span></span>
-<span id="cb67-534"><a href="#cb67-534" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb67-535"><a href="#cb67-535" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb67-536"><a href="#cb67-536" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-537"><a href="#cb67-537" aria-hidden="true" tabindex="-1"></a><span class="co"># these samples are not matched: two sample independent test</span></span>
-<span id="cb67-538"><a href="#cb67-538" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-539"><a href="#cb67-539" aria-hidden="true" tabindex="-1"></a><span class="co"># boxplot</span></span>
-<span id="cb67-540"><a href="#cb67-540" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(value <span class="sc">~</span> group, <span class="at">data =</span> nausea, </span>
-<span id="cb67-541"><a href="#cb67-541" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">'Nausea: treatment vs placebo'</span>)</span>
+<span id="cb67-527"><a href="#cb67-527" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb67-528"><a href="#cb67-528" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-4a-1</span></span>
+<span id="cb67-529"><a href="#cb67-529" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb67-530"><a href="#cb67-530" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb67-531"><a href="#cb67-531" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-532"><a href="#cb67-532" aria-hidden="true" tabindex="-1"></a>nausea <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/nausea.csv'</span>)</span>
+<span id="cb67-533"><a href="#cb67-533" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(nausea)</span>
+<span id="cb67-534"><a href="#cb67-534" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-535"><a href="#cb67-535" aria-hidden="true" tabindex="-1"></a>treatment <span class="ot">&lt;-</span> nausea<span class="sc">$</span>value[nausea<span class="sc">$</span>group <span class="sc">==</span> <span class="dv">1</span>]</span>
+<span id="cb67-536"><a href="#cb67-536" aria-hidden="true" tabindex="-1"></a>placebo <span class="ot">&lt;-</span> nausea<span class="sc">$</span>value[nausea<span class="sc">$</span>group <span class="sc">==</span> <span class="dv">2</span>]</span>
+<span id="cb67-537"><a href="#cb67-537" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-538"><a href="#cb67-538" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(treatment)</span>
+<span id="cb67-539"><a href="#cb67-539" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(placebo)</span>
+<span id="cb67-540"><a href="#cb67-540" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb67-541"><a href="#cb67-541" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb67-542"><a href="#cb67-542" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-543"><a href="#cb67-543" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb67-544"><a href="#cb67-544" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-545"><a href="#cb67-545" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-548"><a href="#cb67-548" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb67-549"><a href="#cb67-549" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-4a-3</span></span>
-<span id="cb67-550"><a href="#cb67-550" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb67-551"><a href="#cb67-551" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb67-552"><a href="#cb67-552" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-553"><a href="#cb67-553" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(treatment, placebo, <span class="at">paired =</span> F)</span>
-<span id="cb67-554"><a href="#cb67-554" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb67-545"><a href="#cb67-545" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb67-546"><a href="#cb67-546" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-4a-2</span></span>
+<span id="cb67-547"><a href="#cb67-547" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb67-548"><a href="#cb67-548" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb67-549"><a href="#cb67-549" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-550"><a href="#cb67-550" aria-hidden="true" tabindex="-1"></a><span class="co"># these samples are not matched: two sample independent test</span></span>
+<span id="cb67-551"><a href="#cb67-551" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-552"><a href="#cb67-552" aria-hidden="true" tabindex="-1"></a><span class="co"># boxplot</span></span>
+<span id="cb67-553"><a href="#cb67-553" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(value <span class="sc">~</span> group, <span class="at">data =</span> nausea, </span>
+<span id="cb67-554"><a href="#cb67-554" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">'Nausea: treatment vs placebo'</span>)</span>
+<span id="cb67-555"><a href="#cb67-555" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-556"><a href="#cb67-556" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb67-557"><a href="#cb67-557" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-558"><a href="#cb67-558" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-561"><a href="#cb67-561" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb67-562"><a href="#cb67-562" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nonpara-4a-3</span></span>
+<span id="cb67-563"><a href="#cb67-563" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb67-564"><a href="#cb67-564" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb67-565"><a href="#cb67-565" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-566"><a href="#cb67-566" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(treatment, placebo, <span class="at">paired =</span> F)</span>
+<span id="cb67-567"><a href="#cb67-567" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

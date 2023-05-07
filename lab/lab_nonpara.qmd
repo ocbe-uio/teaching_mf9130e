@@ -8,6 +8,19 @@ format:
 editor: source
 ---
 
+Datasets
+
+* Exercise 1: `PEFH98-english` ([rda link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.rda), [csv link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.csv))
+* Exercise 2: `liggetid` ([rda link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/liggetid.rda), [csv link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/liggetid.csv))
+* Exercise 3: `antibody` ([rda link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/antibody.rda), [csv link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/antibody.csv))
+* Exercise 4: `nausea` ([rda link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/nausea.rda), [csv link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/nausea.csv))
+
+
+
+[R script](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/6_nonpara.R)
+
+------------------
+
 # Short summary
 
 
@@ -31,7 +44,7 @@ The variables are
 * Mean of all six PEF values (pefmean)
 
 
-#### 1a) 
+### 1a) 
 
 We shall consider the difference betweenn PEF measured in a sitting position and in a standing position, i.e. we look at `diff_pef = pefstam - pefsitm`.  First compute this variable. 
 
@@ -49,7 +62,7 @@ diff_pef <- lung_data$pefstam - lung_data$pefsitm
 ```
 
 
-#### 1b) 
+### 1b) 
 
 Make a histogram and Q-Q plot for the differences. 
 
@@ -67,7 +80,7 @@ qqline(diff_pef)
 ```
 
 
-#### 1c) 
+### 1c) 
 
 Do a non-parametric test to decide whether `pefsitm` and `pefstam` are significantly different.
 
@@ -139,7 +152,7 @@ The variable `liggetid` time is calculated from the `innaar`, `innmaan`, `inndag
 
 
 
-#### 2a)
+### 2a)
 
 We want to compare the **length of hospital stay** for patients with and without **stroke**. First get a better understanding of the data. Start with computing some summary (descriptive) statistics for these two variables: 
 
@@ -194,7 +207,7 @@ qqline(los, col = 'red', lwd = 2)
 
 
 
-#### 2b) 
+### 2b) 
 
 Since we want to compare the length of hospital stay for two groups, we need to separate the length of stay data into two groups, based on whether patients have stroke or not. Create two variables, `ligt_s1` and `ligt_s0`. 
 
@@ -296,7 +309,7 @@ t.test(ligt_s1, ligt_s0)
 ```
 
 
-#### 2c)
+### 2c)
 
 
 Do the same analysis with a t-test on the logarithm-transformed data. The transformed variable already exists in the data set as `lnliggti`.
@@ -327,7 +340,7 @@ t.test(logligt_s1, logligt_s0, paired = F)
 
 (Baker et al., 1980) We have data on concentration of antibody of Type III Group B Streptococcus (GBS) in 20 volunteers before and after immunization. The dataset is `antibody`. 
 
-#### 3a) 
+### 3a) 
 
 The comparison of the antibody levels was summarized in the report of this study as '$t = 1.8; P > 0.05$'. Comment on the result. 
 
@@ -359,7 +372,7 @@ summary(after)
 t.test(antibody$before, antibody$after, paired = T)
 ```
 
-#### (Optional)
+### (Optional)
 
 We can visually get an understanding of whether this result makes sense.
 
@@ -425,7 +438,7 @@ qqline(after, col = 'red', lwd = 2)
 hist(after - before, main = 'Difference (after - before)')
 ```
 
-#### 3b)
+### 3b)
 
 Analyse the data with an appropriate test. Justify your choice. 
 
@@ -463,7 +476,7 @@ wilcox.test(before, after, paired = F) # p = 0.14
 
 * group: `1` is active (treatment), and `2` is placebo.
 
-#### 4a)
+### 4a)
 
 Choose an appropriate test for comparing the treatment and placebo groups. Justify your choice. 
 
