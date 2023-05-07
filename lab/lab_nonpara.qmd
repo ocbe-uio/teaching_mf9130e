@@ -24,6 +24,31 @@ Datasets
 # Short summary
 
 
+When you have data that are not normally distributed, such as time data (e.g. length of hospital stay, survival data), you should be careful when using statisical tests based on normal assumption.
+
+Alternatively, transform your data (log transform for right-skewed data) before carrying out statistical tests; or use non-parametric (rank based) methods.
+
+* One sample / paired sample: Wilcoxon signed rank test 
+* Two samples (independent samples): Wilcoxon rank sum test
+
+```{r}
+#| label: nonpara
+#| echo: true
+#| eval: false
+
+# median ci (with descTools package)
+DescTools::MedianCI(x, conf.level = 0.95)
+
+# one sample (paired samples) wilcoxon test (signed rank)
+wilcox.test(x1, x2, paired = T)
+
+# two sample (independent) wilcoxon test (rank sum)
+wilcox.test(x, y, paired = F)
+```
+
+
+
+
 # Examples (exercises with solution)
 
 
