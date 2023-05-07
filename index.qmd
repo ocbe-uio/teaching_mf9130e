@@ -48,16 +48,15 @@ You can find the **official course schedule** provided by University of Oslo [he
 | Apr 28 | 08:30-11:45 | Guided lab session | DME, Store Auditorium|
 
 
-
 ### Week 2
 
-|  Date  |    Time     |                   Topic                 |     Place  |
-|:----------:|:----------:|:------------------------------------:|:----------:|
-| May 8  | 08:30-11:45 | Lecture and lab: **exploratory data analysis, transformation, non-parametric methods** |    DME, Lille auditorium    |
-| May 8  | 12:45-16:00 |                  Lecture and lab: **sample size, statistical power**                   |    DME, Lille auditorium    |
-| May 9  | 08:30-11:45 |                Lecture: **study designs, principle of clinical trials**                | Helga Engs hus Auditorium 3 |
-| May 9  | 12:45-16:00 |                           Lecture and lab: **regression I**                            | Helga Engs hus Auditorium 3 |
-| May 10 | 08:30-11:45 |                               Lecture: **regression II**                               |     DME, Auditorium 13      |
-| May 10 | 12:45-16:00 |                             Lecture and lab: regression II                             |     DME, Auditorium 13      |
-| May 11 | 08:30-11:45 |                          Lecture and lab: **regression III**                           |     DME, Auditorium 13      |
-| May 11 | 12:45-16:00 |                 Lecture and lab: **survival analysis, course summary**                 |     DME, Auditorium 13      |
+| Date |  Time   |   Topic                  |  Place        |
+|:----:|:-------:|:------------------------:|:-------------:|
+| May 8 |08:30-11:45 | Lecture and lab: **exploratory data analysis, transformation, non-parametric methods** | DME, Lille auditorium|
+| May 8 | 12:45-16:00 | Lecture and lab: **sample size, statistical power** | DME, Lille auditorium|
+| May 9 | 08:30-11:45 | Lecture: **study designs, principle of clinical trials** | Helga Engs hus Auditorium 3|
+| May 9 | 12:45-16:00 | Lecture and lab: **regression I: simple regression, correlation** | Helga Engs hus Auditorium 3|
+| May 10 | 08:30-11:45 | Lecture and lab: **regression II: dummy variables, confounding, multiple regression** | DME, Auditorium 13|
+| May 10 | 12:45-16:00 | Lecture and lab: **regression III: multiple regression (continued), interactions** | DME, Auditorium 13|
+| May 11 | 08:30-11:45  | Lecture and lab: **logistic regression** | DME, Auditorium 13|
+| May 11 | 12:45-16:00 | Lecture and lab: **survival analysis, course summary** | DME, Auditorium 13|
