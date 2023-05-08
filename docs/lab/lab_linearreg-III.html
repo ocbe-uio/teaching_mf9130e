@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Multiple regression (continued)">
+
+<title>MF9130E - V23 - Solutions - Linear regression III</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">MF9130E - V23</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../get_started/get_started.html">
+ <span class="menu-text">Get Started</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../course_material/course_material_overview.html">
+ <span class="menu-text">Course material</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../lab/overview.html">
+ <span class="menu-text">R Lab and Code</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html">
+ <span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ocbe-uio/teaching_mf9130e"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#examples-exercises-with-solution" id="toc-examples-exercises-with-solution" class="nav-link active" data-scroll-target="#examples-exercises-with-solution">Examples (exercises with solution)</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-crime-rate-data." id="toc-exercise-1-crime-rate-data." class="nav-link" data-scroll-target="#exercise-1-crime-rate-data.">Exercise 1 (crime rate data).</a></li>
+  <li><a href="#exercise-2-birth." id="toc-exercise-2-birth." class="nav-link" data-scroll-target="#exercise-2-birth.">Exercise 2 (birth).</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Solutions - Linear regression III</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+<div>
+  <div class="description">
+    Multiple regression (continued)
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Datasets</p>
+<ul>
+<li><p>Exercise 1: <code>crime_mod</code> (<a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/crime_mod.rda">rda link</a>, <a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/crime_mod.csv">csv link</a>)</p></li>
+<li><p>Exercise 2: <code>birth</code> (<a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/birth.rda">rda link</a>, <a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/birth.csv">csv link</a>)</p></li>
+</ul>
+<p><a href="https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/8_linearreg-III.R">R Script</a></p>
+<hr>
+<section id="examples-exercises-with-solution" class="level1">
+<h1>Examples (exercises with solution)</h1>
+<section id="exercise-1-crime-rate-data." class="level2">
+<h2 class="anchored" data-anchor-id="exercise-1-crime-rate-data.">Exercise 1 (crime rate data).</h2>
+<p>This data set contains crime rate data for the individual US states, including District of Columbia (Washington D.C.), coded in the variable <code>state</code>. The variables are violent crime rate (<code>crime</code>), murder rate (<code>murder</code>), percentage metropolitan (<code>pctmetro</code>), percentage high school graduates (<code>pcths</code>), percentage poverty (<code>poverty</code>), percentage single parents (<code>single</code>).</p>
+<section id="a" class="level4">
+<h4 class="anchored" data-anchor-id="a">1a)</h4>
+<p>Make scatter plots with violent crime rate on the y-axis and percentage metropolitan or percentage single parents on the x-axis. Mark each point by the state initials.</p>
+<p>Insert regression lines in each of the diagrams. Comment on the diagram. You see that Washington D.C. (dc) has a particularly high crime rate.</p>
+<p><em>Note: One way how you can add labels (e.g.&nbsp;the state initials) to the data points in a scatter plot is to use the command <code>text()</code>, like so: <code>text(y ~ x, labels = lab)</code>, where <code>x</code> and <code>y</code> are the variables on the x- and y-axis in the scatterplot and <code>lab</code> is the variable that we want to use for the labels.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>crime_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/crime_mod.csv'</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># head(crime_data)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="co"># make plots in 1 row 2 col</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plot: crime vs pctmetro</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(crime <span class="sc">~</span> pctmetro, <span class="at">pch=</span><span class="st">'.'</span>, <span class="at">data =</span> crime_data)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(crime <span class="sc">~</span> pctmetro, <span class="at">labels =</span> state, <span class="at">data =</span> crime_data)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(crime <span class="sc">~</span> pctmetro, <span class="at">data =</span> crime_data), <span class="at">col =</span> <span class="st">'blue'</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plot: crime vs single</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(crime <span class="sc">~</span> single, <span class="at">pch=</span><span class="st">'.'</span>, <span class="at">data =</span> crime_data)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(crime <span class="sc">~</span> single, <span class="at">labels =</span> state, <span class="at">data =</span> crime_data)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(crime <span class="sc">~</span> single, <span class="at">data =</span> crime_data), <span class="at">col =</span> <span class="st">'blue'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab_linearreg-III_files/figure-html/linear-1a-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>From the plots we see that Washington D.C. is an outlier. One must be careful with regression analysis.</p>
+</section>
+<section id="b" class="level4">
+<h4 class="anchored" data-anchor-id="b">1b)</h4>
+<p>Do a regression analysis with crime rate as the dependent variable and percentage metropolitan as the independent variable. Perform also residual analysis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># regression: crime vs pctmetro</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(crime <span class="sc">~</span> pctmetro, <span class="at">data =</span> crime_data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = crime ~ pctmetro, data = crime_data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-497.30 -226.15  -24.61  133.02 1952.76 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -123.683    170.511  -0.725    0.472    
+pctmetro      10.929      2.408   4.539 3.69e-05 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 373.9 on 49 degrees of freedom
+Multiple R-squared:  0.296, Adjusted R-squared:  0.2816 
+F-statistic:  20.6 on 1 and 49 DF,  p-value: 3.685e-05</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># residual analysis:</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">lm</span>(crime <span class="sc">~</span> pctmetro, <span class="at">data =</span> crime_data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab_linearreg-III_files/figure-html/linear-1b-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The explained variation is not so large, even though the predictor is highly significant. When checking residuals, we realize that they deviate quite consistently from the normal distribution (there is clearly an outlier). The analysis cannot be trusted.</p>
+</section>
+<section id="c" class="level4">
+<h4 class="anchored" data-anchor-id="c">1c)</h4>
+<p>Next, do a regression analysis with percentage single parents as the independent variable. Perform the residual analysis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># regression: crime vs single</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(crime <span class="sc">~</span> single, <span class="at">data =</span> crime_data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = crime ~ single, data = crime_data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-767.42 -116.82  -20.58  125.28  719.70 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -1362.53     186.23  -7.316 2.15e-09 ***
+single        174.42      16.17  10.788 1.53e-14 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 242.5 on 49 degrees of freedom
+Multiple R-squared:  0.7037,    Adjusted R-squared:  0.6977 
+F-statistic: 116.4 on 1 and 49 DF,  p-value: 1.529e-14</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># residual analysis:</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">lm</span>(crime <span class="sc">~</span> single, <span class="at">data =</span> crime_data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab_linearreg-III_files/figure-html/linear-1c-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Now the fit looks much better: the explained variation is a lot larger, and the predictor is highly significant. Also the residuals look okay. What has changed from the analysis at the previous task?</p>
+</section>
+<section id="d" class="level4">
+<h4 class="anchored" data-anchor-id="d">1d)</h4>
+<p>Finally, have a look at the fourth plot of the regression diagnostics plots from tasks b) and c), which shows Residuals vs Leverage. Interpret the results in terms of an analysis of potential influence points.</p>
+<p>From both plots it is evident that Washington D.C. (row number 51) has way too strong leverage on the models, and hence should be removed.</p>
+<p>After removing this outlier (e.g.&nbsp;via index and <code>which()</code>), we refit the simple linear regression for crime vs percentage metropolitan, and get the following output:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># regression: crime vs pctmetro</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(crime <span class="sc">~</span> pctmetro, </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> crime_data[<span class="fu">which</span>(crime_data<span class="sc">$</span>state <span class="sc">!=</span> <span class="st">'dc'</span>),]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = crime ~ pctmetro, data = crime_data[which(crime_data$state != 
+    "dc"), ])
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-382.45 -182.81    1.09  163.98  450.40 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   25.558    111.117   0.230    0.819    
+pctmetro       8.108      1.585   5.115 5.44e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 240.5 on 48 degrees of freedom
+Multiple R-squared:  0.3528,    Adjusted R-squared:  0.3393 
+F-statistic: 26.16 on 1 and 48 DF,  p-value: 5.44e-06</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># residual analysis:</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">lm</span>(crime <span class="sc">~</span> pctmetro, </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> crime_data[<span class="fu">which</span>(crime_data<span class="sc">$</span>state <span class="sc">!=</span> <span class="st">'dc'</span>),]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab_linearreg-III_files/figure-html/linear-1d-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Now the predictor is still significant, but the explained variation increased from 29.6% to 35.3%. Also normal probability plot of the residuals and leverage plot look much better now.</p>
+<p>Let us check the model for crime vs percentage of single parents:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># regression: crime vs single</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(crime <span class="sc">~</span> single, </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> crime_data[<span class="fu">which</span>(crime_data<span class="sc">$</span>state <span class="sc">!=</span> <span class="st">'dc'</span>),]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = crime ~ single, data = crime_data[which(crime_data$state != 
+    "dc"), ])
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-599.75 -127.40  -12.87  111.62  705.70 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  -878.86     246.90  -3.560 0.000849 ***
+single        130.11      22.03   5.905  3.5e-07 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 227.5 on 48 degrees of freedom
+Multiple R-squared:  0.4208,    Adjusted R-squared:  0.4087 
+F-statistic: 34.87 on 1 and 48 DF,  p-value: 3.499e-07</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># residual analysis:</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">lm</span>(crime <span class="sc">~</span> single, </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> crime_data[<span class="fu">which</span>(crime_data<span class="sc">$</span>state <span class="sc">!=</span> <span class="st">'dc'</span>),]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab_linearreg-III_files/figure-html/linear-1d-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>In this case, instead, even if the predictor is still highly significant, the explained variation is much smaller! (and the predictor coefficient changed from 174 to 130, huge effect of a single data point). This is because, differently from the previous analysis, the outlier was improving the regression fit by driving the entire analysis.</p>
+<p>Normal probability plot of the residuals and leverage analysis help us verify that we now solved the issue in this analysis as well. In order to be extremely careful, we should do a scatter plot of crime vs single for the data without Washington D.C., and check whether MS (row number 9) is another leverage point/ outlier. Try!</p>
+</section>
+</section>
+<section id="exercise-2-birth." class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2-birth.">Exercise 2 (birth).</h2>
+<p>In a study in Massachusetts, USA, birth weight was measured for the children of 189 women. The main variable in the study was birth weight, <code>bwt</code>, which is an important indicator of the condition of a newborn child. Low birth weight (below 2500 g) may be a medical risk factor. A major question is whether smoking during pregnancy influences the birth weight. One has also studied whether a number of other factors are related to birth weight, such as hypertension in the mother.</p>
+<p>The variables of the study are</p>
+<ul>
+<li>Identification number (id)<br>
+</li>
+<li>Low birth weight (low), i.e.&nbsp;bwt below or above 2500g<br>
+</li>
+<li>Age of the mother in years (age)<br>
+</li>
+<li>Weight (in pounds) at last menstrual period (lwt)<br>
+</li>
+<li>Ethnicity: white, black, or other (eth)<br>
+</li>
+<li>Smoking status, <code>smoker</code> means current smoker, <code>nonsmoker</code> means not smoking during pregnancy (smk)<br>
+</li>
+<li>History of premature labour, values 0, 1, 2… (ptl)<br>
+</li>
+<li>History of hypertension: yes vs no (ht)<br>
+</li>
+<li>Uterine irritability, yes vs no (ui)<br>
+</li>
+<li>First trimester visits, values 0, 1, 2… (ftv)<br>
+</li>
+<li>Third trimester visits, values 0, 1, 2… (ttv)<br>
+</li>
+<li>Birth weight in grams (bwt)</li>
+</ul>
+<section id="a-1" class="level4">
+<h4 class="anchored" data-anchor-id="a-1">2a)</h4>
+<p>Make scatter plots of birth weight (<code>bwt</code>) versus age of the mother (<code>age</code>), and versus weight of mother (<code>lwt</code>). Edit the scatter plots to insert a regression line.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>birth <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/birth.csv'</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># head(birth)</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="co"># make plots in 1 row 2 col</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plots:</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bwt <span class="sc">~</span> age, <span class="at">data =</span> birth)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(bwt <span class="sc">~</span> age, <span class="at">data =</span> birth), <span class="at">col =</span> <span class="st">'blue'</span>)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bwt <span class="sc">~</span> lwt, <span class="at">data =</span> birth)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(bwt <span class="sc">~</span> lwt, <span class="at">data =</span> birth), <span class="at">col =</span> <span class="st">'blue'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab_linearreg-III_files/figure-html/linear-2a-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Make also separate regression lines for smokers and non-smokers. Interpret the results.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) <span class="co"># make plots in 2 row 2 col</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plots separate for smokers and non-smokers:</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bwt <span class="sc">~</span> age, <span class="at">data =</span> birth[<span class="fu">which</span>(birth<span class="sc">$</span>smk <span class="sc">==</span> <span class="st">'smoker'</span>),], </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Smokers"</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(bwt <span class="sc">~</span> age, </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> birth[<span class="fu">which</span>(birth<span class="sc">$</span>smk <span class="sc">==</span> <span class="st">'smoker'</span>),]), </span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">col =</span> <span class="st">'blue'</span>)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bwt <span class="sc">~</span> age, <span class="at">data =</span> birth, </span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset =</span> birth<span class="sc">$</span>smk <span class="sc">==</span> <span class="st">'nonsmoker'</span>, <span class="at">main=</span><span class="st">"Non-smokers"</span>)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(bwt <span class="sc">~</span> age, <span class="at">data =</span> birth, </span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>          <span class="at">subset =</span> birth<span class="sc">$</span>smk <span class="sc">==</span> <span class="st">'nonsmoker'</span>), <span class="at">col =</span> <span class="st">'blue'</span>)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bwt <span class="sc">~</span> lwt, <span class="at">data =</span> birth, </span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset =</span> birth<span class="sc">$</span>smk <span class="sc">==</span> <span class="st">'smoker'</span>, <span class="at">main=</span><span class="st">"Smokers"</span>)</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(bwt <span class="sc">~</span> lwt, <span class="at">data =</span> birth, </span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>          <span class="at">subset =</span> birth<span class="sc">$</span>smk <span class="sc">==</span> <span class="st">'smoker'</span>), <span class="at">col =</span> <span class="st">'blue'</span>)</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bwt <span class="sc">~</span> lwt, <span class="at">data =</span> birth, </span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset =</span> birth<span class="sc">$</span>smk <span class="sc">==</span> <span class="st">'nonsmoker'</span>, <span class="at">main=</span><span class="st">"Non-smokers"</span>)</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(bwt <span class="sc">~</span> lwt, <span class="at">data =</span> birth, </span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>          <span class="at">subset =</span> birth<span class="sc">$</span>smk <span class="sc">==</span> <span class="st">'nonsmoker'</span>), <span class="at">col =</span> <span class="st">'blue'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab_linearreg-III_files/figure-html/linear-2a-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>We can comment the four plots above as follows:</p>
+<ul>
+<li>Smoking mothers tend to have newborns with lower birthweight.<br>
+</li>
+<li>Birthweight increases with the mother’s age only for non-smokers, while in the smoking mothers group the relationship is reverted.<br>
+</li>
+<li>Birthweight increases with the weight of the mother, but less in the smoking group.</li>
+</ul>
+</section>
+<section id="b-1" class="level4">
+<h4 class="anchored" data-anchor-id="b-1">2b)</h4>
+<p>Compute the correlation between birth weight and weight of mother.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(<span class="sc">~</span> bwt <span class="sc">+</span> lwt, <span class="at">data =</span> birth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's product-moment correlation
+
+data:  bwt and lwt
+t = 2.5856, df = 187, p-value = 0.01048
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.04423134 0.32003247
+sample estimates:
+      cor 
+0.1857887 </code></pre>
+</div>
+</div>
+<p>The correlation is not so large (18.6%), but significantly different from 0 at the 5% level (p = 0.01).</p>
+</section>
+<section id="c-1" class="level4">
+<h4 class="anchored" data-anchor-id="c-1">2c)</h4>
+<p>Make boxplots of birth weight for smokers and non-smokers separately.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(bwt <span class="sc">~</span> smk, <span class="at">data =</span> birth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab_linearreg-III_files/figure-html/linear-2c-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The plot indicates some negative effect of smoking on birthweight.</p>
+</section>
+<section id="d-1" class="level4">
+<h4 class="anchored" data-anchor-id="d-1">2d)</h4>
+<p>Let us perform regression analyses with birth weight as the dependent variable. First, use only smoking as an independent variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># regression</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(bwt <span class="sc">~</span> smk, <span class="at">data =</span> birth))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = bwt ~ smk, data = birth)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-2064.24  -477.24    35.04   545.04  1935.04 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  3054.96      66.93  45.642  &lt; 2e-16 ***
+smksmoker    -281.71     106.97  -2.634  0.00916 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 717.8 on 187 degrees of freedom
+Multiple R-squared:  0.03576,   Adjusted R-squared:  0.03061 
+F-statistic: 6.936 on 1 and 187 DF,  p-value: 0.009156</code></pre>
+</div>
+</div>
+<p>Note the low explained variation, 3.6%, in spite of smoking being important. This is very often the case when the independent variable is dichotomous (i.e.&nbsp;has only two values). Let us then fit a multiple linear regression.</p>
+<p>In the second analysis, use also weight of mother as an independent variable. Interpret the results in relation to the earlier results of this exercise.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plots:</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(bwt <span class="sc">~</span> smk <span class="sc">+</span> lwt, <span class="at">data =</span> birth))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = bwt ~ smk + lwt, data = birth)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-2030.16  -447.00    27.74   514.20  1968.51 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 2500.174    230.833  10.831   &lt;2e-16 ***
+smksmoker   -270.013    105.590  -2.557   0.0114 *  
+lwt            4.238      1.690   2.508   0.0130 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 707.8 on 186 degrees of freedom
+Multiple R-squared:  0.06731,   Adjusted R-squared:  0.05728 
+F-statistic: 6.711 on 2 and 186 DF,  p-value: 0.001533</code></pre>
+</div>
+</div>
+<p>Some comments:</p>
+<ul>
+<li>The explained variation is slightly larger than in the previous model (6.7%).<br>
+</li>
+<li>Smoking is still highly significant.<br>
+</li>
+<li>Mother’s weight is significant, but the coefficient is not large.<br>
+</li>
+<li>Residuals are fine.</li>
+</ul>
+<p>And finally, in a third analysis, add smoking, weight of the mother and ethnicity.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plots:</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(bwt <span class="sc">~</span> smk <span class="sc">+</span> lwt <span class="sc">+</span> eth, <span class="at">data =</span> birth))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = bwt ~ smk + lwt + eth, data = birth)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-2290.41  -459.78    24.54   474.69  1706.13 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 2295.338    290.787   7.894 2.56e-13 ***
+smksmoker   -398.290    108.481  -3.672 0.000316 ***
+lwt            3.934      1.704   2.308 0.022107 *  
+ethother     107.873    165.869   0.650 0.516277    
+ethwhite     504.648    153.078   3.297 0.001174 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 680.1 on 184 degrees of freedom
+Multiple R-squared:  0.1482,    Adjusted R-squared:  0.1297 
+F-statistic: 8.002 on 4 and 184 DF,  p-value: 5.718e-06</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># residual analysis:</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">lm</span>(bwt <span class="sc">~</span> smk <span class="sc">+</span> lwt <span class="sc">+</span> eth, <span class="at">data =</span> birth))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab_linearreg-III_files/figure-html/linear-2d-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>This model looks a lot better than the ones before! The explained variation is larger (14.8%), and all predictors are significant.</p>
+<p>Remember to check the residuals before concluding. The residuals look in line with the regression assumption of normality, so we can conclude that this final model is the best.</p>
+
+
+<!-- -->
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb26" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Solutions - Linear regression III"</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Multiple regression (continued)"</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: false</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> source</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>Datasets</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Exercise 1: <span class="in">`crime_mod`</span> (<span class="co">[</span><span class="ot">rda link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/crime_mod.rda)</span>, <span class="co">[</span><span class="ot">csv link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/crime_mod.csv)</span>)</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Exercise 2: <span class="in">`birth`</span> (<span class="co">[</span><span class="ot">rda link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/birth.rda)</span>, <span class="co">[</span><span class="ot">csv link</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/birth.csv)</span>)</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">R Script</span><span class="co">](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/8_linearreg-III.R)</span></span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a>------------------</span>
+<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a><span class="fu"># Examples (exercises with solution)</span></span>
+<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-29"><a href="#cb26-29" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 1 (crime rate data). </span></span>
+<span id="cb26-30"><a href="#cb26-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-31"><a href="#cb26-31" aria-hidden="true" tabindex="-1"></a>This data set contains crime rate data for the individual US states, including District of Columbia (Washington D.C.), coded in the variable <span class="in">`state`</span>. The variables are violent crime rate (<span class="in">`crime`</span>), murder rate (<span class="in">`murder`</span>), percentage metropolitan (<span class="in">`pctmetro`</span>), percentage high school graduates (<span class="in">`pcths`</span>), percentage poverty (<span class="in">`poverty`</span>), percentage single parents (<span class="in">`single`</span>).</span>
+<span id="cb26-32"><a href="#cb26-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-33"><a href="#cb26-33" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 1a)</span></span>
+<span id="cb26-34"><a href="#cb26-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-35"><a href="#cb26-35" aria-hidden="true" tabindex="-1"></a>Make scatter plots with violent crime rate on the y-axis and percentage metropolitan or percentage single parents on the x-axis. Mark each point by the state initials. </span>
+<span id="cb26-36"><a href="#cb26-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a>Insert regression lines in each of the diagrams. Comment on the diagram. You see that Washington D.C. (dc) has a particularly high crime rate.</span>
+<span id="cb26-38"><a href="#cb26-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-39"><a href="#cb26-39" aria-hidden="true" tabindex="-1"></a>*Note: One way how you can add labels (e.g. the state initials) to the data points in a scatter plot is to use the command `text()`, like so: `text(y ~ x, labels = lab)`, where `x` and `y` are the variables on the x- and y-axis in the scatterplot and `lab` is the variable that we want to use for the labels.*</span>
+<span id="cb26-40"><a href="#cb26-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-43"><a href="#cb26-43" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-44"><a href="#cb26-44" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: linear-1a-1</span></span>
+<span id="cb26-45"><a href="#cb26-45" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb26-46"><a href="#cb26-46" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb26-47"><a href="#cb26-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-48"><a href="#cb26-48" aria-hidden="true" tabindex="-1"></a>crime_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/crime_mod.csv'</span>)</span>
+<span id="cb26-49"><a href="#cb26-49" aria-hidden="true" tabindex="-1"></a><span class="co"># head(crime_data)</span></span>
+<span id="cb26-50"><a href="#cb26-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-51"><a href="#cb26-51" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="co"># make plots in 1 row 2 col</span></span>
+<span id="cb26-52"><a href="#cb26-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-53"><a href="#cb26-53" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plot: crime vs pctmetro</span></span>
+<span id="cb26-54"><a href="#cb26-54" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(crime <span class="sc">~</span> pctmetro, <span class="at">pch=</span><span class="st">'.'</span>, <span class="at">data =</span> crime_data)</span>
+<span id="cb26-55"><a href="#cb26-55" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(crime <span class="sc">~</span> pctmetro, <span class="at">labels =</span> state, <span class="at">data =</span> crime_data)</span>
+<span id="cb26-56"><a href="#cb26-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-57"><a href="#cb26-57" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(crime <span class="sc">~</span> pctmetro, <span class="at">data =</span> crime_data), <span class="at">col =</span> <span class="st">'blue'</span>)</span>
+<span id="cb26-58"><a href="#cb26-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-59"><a href="#cb26-59" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plot: crime vs single</span></span>
+<span id="cb26-60"><a href="#cb26-60" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(crime <span class="sc">~</span> single, <span class="at">pch=</span><span class="st">'.'</span>, <span class="at">data =</span> crime_data)</span>
+<span id="cb26-61"><a href="#cb26-61" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(crime <span class="sc">~</span> single, <span class="at">labels =</span> state, <span class="at">data =</span> crime_data)</span>
+<span id="cb26-62"><a href="#cb26-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-63"><a href="#cb26-63" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(crime <span class="sc">~</span> single, <span class="at">data =</span> crime_data), <span class="at">col =</span> <span class="st">'blue'</span>)</span>
+<span id="cb26-64"><a href="#cb26-64" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-65"><a href="#cb26-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-66"><a href="#cb26-66" aria-hidden="true" tabindex="-1"></a>From the plots we see that Washington D.C. is an outlier. One must be careful with regression analysis.</span>
+<span id="cb26-67"><a href="#cb26-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-68"><a href="#cb26-68" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 1b)</span></span>
+<span id="cb26-69"><a href="#cb26-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-70"><a href="#cb26-70" aria-hidden="true" tabindex="-1"></a>Do a regression analysis with crime rate as the dependent variable and percentage metropolitan as the independent variable. Perform also residual analysis.</span>
+<span id="cb26-71"><a href="#cb26-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-74"><a href="#cb26-74" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-75"><a href="#cb26-75" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: linear-1b-1</span></span>
+<span id="cb26-76"><a href="#cb26-76" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb26-77"><a href="#cb26-77" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb26-78"><a href="#cb26-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-79"><a href="#cb26-79" aria-hidden="true" tabindex="-1"></a><span class="co"># regression: crime vs pctmetro</span></span>
+<span id="cb26-80"><a href="#cb26-80" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(crime <span class="sc">~</span> pctmetro, <span class="at">data =</span> crime_data))</span>
+<span id="cb26-81"><a href="#cb26-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-82"><a href="#cb26-82" aria-hidden="true" tabindex="-1"></a><span class="co"># residual analysis:</span></span>
+<span id="cb26-83"><a href="#cb26-83" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb26-84"><a href="#cb26-84" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">lm</span>(crime <span class="sc">~</span> pctmetro, <span class="at">data =</span> crime_data))</span>
+<span id="cb26-85"><a href="#cb26-85" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-86"><a href="#cb26-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-87"><a href="#cb26-87" aria-hidden="true" tabindex="-1"></a>The explained variation is not so large, even though the predictor is highly significant. When checking residuals, we realize that they deviate quite consistently from the normal distribution (there is clearly an outlier). The analysis cannot be trusted.</span>
+<span id="cb26-88"><a href="#cb26-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-89"><a href="#cb26-89" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 1c)</span></span>
+<span id="cb26-90"><a href="#cb26-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-91"><a href="#cb26-91" aria-hidden="true" tabindex="-1"></a>Next, do a regression analysis with percentage single parents as the independent variable. Perform the residual analysis.</span>
+<span id="cb26-92"><a href="#cb26-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-95"><a href="#cb26-95" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-96"><a href="#cb26-96" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: linear-1c-1</span></span>
+<span id="cb26-97"><a href="#cb26-97" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb26-98"><a href="#cb26-98" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb26-99"><a href="#cb26-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-100"><a href="#cb26-100" aria-hidden="true" tabindex="-1"></a><span class="co"># regression: crime vs single</span></span>
+<span id="cb26-101"><a href="#cb26-101" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(crime <span class="sc">~</span> single, <span class="at">data =</span> crime_data))</span>
+<span id="cb26-102"><a href="#cb26-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-103"><a href="#cb26-103" aria-hidden="true" tabindex="-1"></a><span class="co"># residual analysis:</span></span>
+<span id="cb26-104"><a href="#cb26-104" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb26-105"><a href="#cb26-105" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">lm</span>(crime <span class="sc">~</span> single, <span class="at">data =</span> crime_data))</span>
+<span id="cb26-106"><a href="#cb26-106" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-107"><a href="#cb26-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-108"><a href="#cb26-108" aria-hidden="true" tabindex="-1"></a>Now the fit looks much better: the explained variation is a lot larger, and the predictor is highly significant. Also the residuals look okay. What has changed from the analysis at the previous task?</span>
+<span id="cb26-109"><a href="#cb26-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-110"><a href="#cb26-110" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 1d)</span></span>
+<span id="cb26-111"><a href="#cb26-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-112"><a href="#cb26-112" aria-hidden="true" tabindex="-1"></a>Finally, have a look at the fourth plot of the regression diagnostics plots from tasks b) and c), which shows Residuals vs Leverage. Interpret the results in terms of an analysis of potential influence points.</span>
+<span id="cb26-113"><a href="#cb26-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-114"><a href="#cb26-114" aria-hidden="true" tabindex="-1"></a>From both plots it is evident that Washington D.C. (row number 51) has way too strong leverage on the models, and hence should be removed.</span>
+<span id="cb26-115"><a href="#cb26-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-116"><a href="#cb26-116" aria-hidden="true" tabindex="-1"></a>After removing this outlier (e.g. via index and <span class="in">`which()`</span>), we refit the simple linear regression for crime vs percentage metropolitan, and get the following output:</span>
+<span id="cb26-117"><a href="#cb26-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-120"><a href="#cb26-120" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-121"><a href="#cb26-121" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: linear-1d-1</span></span>
+<span id="cb26-122"><a href="#cb26-122" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb26-123"><a href="#cb26-123" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb26-124"><a href="#cb26-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-125"><a href="#cb26-125" aria-hidden="true" tabindex="-1"></a><span class="co"># regression: crime vs pctmetro</span></span>
+<span id="cb26-126"><a href="#cb26-126" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(crime <span class="sc">~</span> pctmetro, </span>
+<span id="cb26-127"><a href="#cb26-127" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> crime_data[<span class="fu">which</span>(crime_data<span class="sc">$</span>state <span class="sc">!=</span> <span class="st">'dc'</span>),]))</span>
+<span id="cb26-128"><a href="#cb26-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-129"><a href="#cb26-129" aria-hidden="true" tabindex="-1"></a><span class="co"># residual analysis:</span></span>
+<span id="cb26-130"><a href="#cb26-130" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb26-131"><a href="#cb26-131" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">lm</span>(crime <span class="sc">~</span> pctmetro, </span>
+<span id="cb26-132"><a href="#cb26-132" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> crime_data[<span class="fu">which</span>(crime_data<span class="sc">$</span>state <span class="sc">!=</span> <span class="st">'dc'</span>),]))</span>
+<span id="cb26-133"><a href="#cb26-133" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-134"><a href="#cb26-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-135"><a href="#cb26-135" aria-hidden="true" tabindex="-1"></a>Now the predictor is still significant, but the explained variation increased from 29.6\% to 35.3\%. Also normal probability plot of the residuals and leverage plot look much better now.</span>
+<span id="cb26-136"><a href="#cb26-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-137"><a href="#cb26-137" aria-hidden="true" tabindex="-1"></a>Let us check the model for crime vs percentage of single parents:</span>
+<span id="cb26-138"><a href="#cb26-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-141"><a href="#cb26-141" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-142"><a href="#cb26-142" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: linear-1d-2</span></span>
+<span id="cb26-143"><a href="#cb26-143" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb26-144"><a href="#cb26-144" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb26-145"><a href="#cb26-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-146"><a href="#cb26-146" aria-hidden="true" tabindex="-1"></a><span class="co"># regression: crime vs single</span></span>
+<span id="cb26-147"><a href="#cb26-147" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(crime <span class="sc">~</span> single, </span>
+<span id="cb26-148"><a href="#cb26-148" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> crime_data[<span class="fu">which</span>(crime_data<span class="sc">$</span>state <span class="sc">!=</span> <span class="st">'dc'</span>),]))</span>
+<span id="cb26-149"><a href="#cb26-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-150"><a href="#cb26-150" aria-hidden="true" tabindex="-1"></a><span class="co"># residual analysis:</span></span>
+<span id="cb26-151"><a href="#cb26-151" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb26-152"><a href="#cb26-152" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">lm</span>(crime <span class="sc">~</span> single, </span>
+<span id="cb26-153"><a href="#cb26-153" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> crime_data[<span class="fu">which</span>(crime_data<span class="sc">$</span>state <span class="sc">!=</span> <span class="st">'dc'</span>),]))</span>
+<span id="cb26-154"><a href="#cb26-154" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-155"><a href="#cb26-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-156"><a href="#cb26-156" aria-hidden="true" tabindex="-1"></a>In this case, instead, even if the predictor is still highly significant, the explained variation is much smaller! (and the predictor coefficient changed from 174 to 130, huge effect of a single data point). This is because, differently from the previous analysis, the outlier was improving the regression fit by driving the entire analysis.</span>
+<span id="cb26-157"><a href="#cb26-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-158"><a href="#cb26-158" aria-hidden="true" tabindex="-1"></a>Normal probability plot of the residuals and leverage analysis help us verify that we now solved the issue in this analysis as well. In order to be extremely careful, we should do a scatter plot of crime vs single for the data without Washington D.C., and check whether MS (row number 9) is another leverage point/ outlier. Try!</span>
+<span id="cb26-159"><a href="#cb26-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-160"><a href="#cb26-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-161"><a href="#cb26-161" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 2 (birth). </span></span>
+<span id="cb26-162"><a href="#cb26-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-163"><a href="#cb26-163" aria-hidden="true" tabindex="-1"></a>In a study in Massachusetts, USA, birth weight was measured for the children of 189 women. The main variable in the study was birth weight, <span class="in">`bwt`</span>, which is an important indicator of the condition of a newborn child. Low birth weight (below 2500 g) may be a medical risk factor. A major question is whether smoking during pregnancy influences the birth weight. One has also studied whether a number of other factors are related to birth weight, such as hypertension in the mother. </span>
+<span id="cb26-164"><a href="#cb26-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-165"><a href="#cb26-165" aria-hidden="true" tabindex="-1"></a>The variables of the study are</span>
+<span id="cb26-166"><a href="#cb26-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-167"><a href="#cb26-167" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Identification number (id)  </span>
+<span id="cb26-168"><a href="#cb26-168" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Low birth weight (low), i.e. bwt below or above 2500g  </span>
+<span id="cb26-169"><a href="#cb26-169" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Age of the mother in years (age)  </span>
+<span id="cb26-170"><a href="#cb26-170" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Weight (in pounds) at last menstrual period (lwt)  </span>
+<span id="cb26-171"><a href="#cb26-171" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Ethnicity: white, black, or other (eth)  </span>
+<span id="cb26-172"><a href="#cb26-172" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Smoking status, <span class="in">`smoker`</span> means current smoker, <span class="in">`nonsmoker`</span> means not smoking during pregnancy (smk)  </span>
+<span id="cb26-173"><a href="#cb26-173" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>History of premature labour, values 0, 1, 2... (ptl)  </span>
+<span id="cb26-174"><a href="#cb26-174" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>History of hypertension: yes vs no (ht)  </span>
+<span id="cb26-175"><a href="#cb26-175" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Uterine irritability, yes vs no (ui)  </span>
+<span id="cb26-176"><a href="#cb26-176" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>First trimester visits, values 0, 1, 2... (ftv)  </span>
+<span id="cb26-177"><a href="#cb26-177" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Third trimester visits, values 0, 1, 2... (ttv)  </span>
+<span id="cb26-178"><a href="#cb26-178" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Birth weight in grams (bwt)  </span>
+<span id="cb26-179"><a href="#cb26-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-180"><a href="#cb26-180" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 2a)</span></span>
+<span id="cb26-181"><a href="#cb26-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-182"><a href="#cb26-182" aria-hidden="true" tabindex="-1"></a>Make scatter plots of birth weight (<span class="in">`bwt`</span>) versus age of the mother (<span class="in">`age`</span>), and versus weight of mother (<span class="in">`lwt`</span>). Edit the scatter plots to insert a regression line. </span>
+<span id="cb26-183"><a href="#cb26-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-186"><a href="#cb26-186" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-187"><a href="#cb26-187" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: linear-2a-1</span></span>
+<span id="cb26-188"><a href="#cb26-188" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb26-189"><a href="#cb26-189" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb26-190"><a href="#cb26-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-191"><a href="#cb26-191" aria-hidden="true" tabindex="-1"></a>birth <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/birth.csv'</span>)</span>
+<span id="cb26-192"><a href="#cb26-192" aria-hidden="true" tabindex="-1"></a><span class="co"># head(birth)</span></span>
+<span id="cb26-193"><a href="#cb26-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-194"><a href="#cb26-194" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="co"># make plots in 1 row 2 col</span></span>
+<span id="cb26-195"><a href="#cb26-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-196"><a href="#cb26-196" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plots:</span></span>
+<span id="cb26-197"><a href="#cb26-197" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bwt <span class="sc">~</span> age, <span class="at">data =</span> birth)</span>
+<span id="cb26-198"><a href="#cb26-198" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(bwt <span class="sc">~</span> age, <span class="at">data =</span> birth), <span class="at">col =</span> <span class="st">'blue'</span>)</span>
+<span id="cb26-199"><a href="#cb26-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-200"><a href="#cb26-200" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bwt <span class="sc">~</span> lwt, <span class="at">data =</span> birth)</span>
+<span id="cb26-201"><a href="#cb26-201" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(bwt <span class="sc">~</span> lwt, <span class="at">data =</span> birth), <span class="at">col =</span> <span class="st">'blue'</span>)</span>
+<span id="cb26-202"><a href="#cb26-202" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-203"><a href="#cb26-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-204"><a href="#cb26-204" aria-hidden="true" tabindex="-1"></a>Make also separate regression lines for smokers and non-smokers. Interpret the results.</span>
+<span id="cb26-205"><a href="#cb26-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-208"><a href="#cb26-208" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-209"><a href="#cb26-209" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: linear-2a-2</span></span>
+<span id="cb26-210"><a href="#cb26-210" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb26-211"><a href="#cb26-211" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb26-212"><a href="#cb26-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-213"><a href="#cb26-213" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) <span class="co"># make plots in 2 row 2 col</span></span>
+<span id="cb26-214"><a href="#cb26-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-215"><a href="#cb26-215" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plots separate for smokers and non-smokers:</span></span>
+<span id="cb26-216"><a href="#cb26-216" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bwt <span class="sc">~</span> age, <span class="at">data =</span> birth[<span class="fu">which</span>(birth<span class="sc">$</span>smk <span class="sc">==</span> <span class="st">'smoker'</span>),], </span>
+<span id="cb26-217"><a href="#cb26-217" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Smokers"</span>)</span>
+<span id="cb26-218"><a href="#cb26-218" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(bwt <span class="sc">~</span> age, </span>
+<span id="cb26-219"><a href="#cb26-219" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> birth[<span class="fu">which</span>(birth<span class="sc">$</span>smk <span class="sc">==</span> <span class="st">'smoker'</span>),]), </span>
+<span id="cb26-220"><a href="#cb26-220" aria-hidden="true" tabindex="-1"></a>          <span class="at">col =</span> <span class="st">'blue'</span>)</span>
+<span id="cb26-221"><a href="#cb26-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-222"><a href="#cb26-222" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bwt <span class="sc">~</span> age, <span class="at">data =</span> birth, </span>
+<span id="cb26-223"><a href="#cb26-223" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset =</span> birth<span class="sc">$</span>smk <span class="sc">==</span> <span class="st">'nonsmoker'</span>, <span class="at">main=</span><span class="st">"Non-smokers"</span>)</span>
+<span id="cb26-224"><a href="#cb26-224" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(bwt <span class="sc">~</span> age, <span class="at">data =</span> birth, </span>
+<span id="cb26-225"><a href="#cb26-225" aria-hidden="true" tabindex="-1"></a>          <span class="at">subset =</span> birth<span class="sc">$</span>smk <span class="sc">==</span> <span class="st">'nonsmoker'</span>), <span class="at">col =</span> <span class="st">'blue'</span>)</span>
+<span id="cb26-226"><a href="#cb26-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-227"><a href="#cb26-227" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bwt <span class="sc">~</span> lwt, <span class="at">data =</span> birth, </span>
+<span id="cb26-228"><a href="#cb26-228" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset =</span> birth<span class="sc">$</span>smk <span class="sc">==</span> <span class="st">'smoker'</span>, <span class="at">main=</span><span class="st">"Smokers"</span>)</span>
+<span id="cb26-229"><a href="#cb26-229" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(bwt <span class="sc">~</span> lwt, <span class="at">data =</span> birth, </span>
+<span id="cb26-230"><a href="#cb26-230" aria-hidden="true" tabindex="-1"></a>          <span class="at">subset =</span> birth<span class="sc">$</span>smk <span class="sc">==</span> <span class="st">'smoker'</span>), <span class="at">col =</span> <span class="st">'blue'</span>)</span>
+<span id="cb26-231"><a href="#cb26-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-232"><a href="#cb26-232" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bwt <span class="sc">~</span> lwt, <span class="at">data =</span> birth, </span>
+<span id="cb26-233"><a href="#cb26-233" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset =</span> birth<span class="sc">$</span>smk <span class="sc">==</span> <span class="st">'nonsmoker'</span>, <span class="at">main=</span><span class="st">"Non-smokers"</span>)</span>
+<span id="cb26-234"><a href="#cb26-234" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(bwt <span class="sc">~</span> lwt, <span class="at">data =</span> birth, </span>
+<span id="cb26-235"><a href="#cb26-235" aria-hidden="true" tabindex="-1"></a>          <span class="at">subset =</span> birth<span class="sc">$</span>smk <span class="sc">==</span> <span class="st">'nonsmoker'</span>), <span class="at">col =</span> <span class="st">'blue'</span>)</span>
+<span id="cb26-236"><a href="#cb26-236" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-237"><a href="#cb26-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-238"><a href="#cb26-238" aria-hidden="true" tabindex="-1"></a>We can comment the four plots above as follows:  </span>
+<span id="cb26-239"><a href="#cb26-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-240"><a href="#cb26-240" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Smoking mothers tend to have newborns with lower birthweight.  </span>
+<span id="cb26-241"><a href="#cb26-241" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Birthweight increases with the mother's age only for non-smokers, while in the smoking mothers group the relationship is reverted.  </span>
+<span id="cb26-242"><a href="#cb26-242" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Birthweight increases with the weight of the mother, but less in the smoking group.  </span>
+<span id="cb26-243"><a href="#cb26-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-244"><a href="#cb26-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-245"><a href="#cb26-245" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 2b)</span></span>
+<span id="cb26-246"><a href="#cb26-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-247"><a href="#cb26-247" aria-hidden="true" tabindex="-1"></a>Compute the correlation between birth weight and weight of mother.</span>
+<span id="cb26-248"><a href="#cb26-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-251"><a href="#cb26-251" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-252"><a href="#cb26-252" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: linear-2b-1</span></span>
+<span id="cb26-253"><a href="#cb26-253" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb26-254"><a href="#cb26-254" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb26-255"><a href="#cb26-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-256"><a href="#cb26-256" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(<span class="sc">~</span> bwt <span class="sc">+</span> lwt, <span class="at">data =</span> birth)</span>
+<span id="cb26-257"><a href="#cb26-257" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-258"><a href="#cb26-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-259"><a href="#cb26-259" aria-hidden="true" tabindex="-1"></a>The correlation is not so large (18.6\%), but significantly different from 0 at the 5\% level (p = 0.01).</span>
+<span id="cb26-260"><a href="#cb26-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-261"><a href="#cb26-261" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 2c)</span></span>
+<span id="cb26-262"><a href="#cb26-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-263"><a href="#cb26-263" aria-hidden="true" tabindex="-1"></a>Make boxplots of birth weight for smokers and non-smokers separately.</span>
+<span id="cb26-264"><a href="#cb26-264" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-267"><a href="#cb26-267" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-268"><a href="#cb26-268" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: linear-2c-1</span></span>
+<span id="cb26-269"><a href="#cb26-269" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb26-270"><a href="#cb26-270" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb26-271"><a href="#cb26-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-272"><a href="#cb26-272" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(bwt <span class="sc">~</span> smk, <span class="at">data =</span> birth)</span>
+<span id="cb26-273"><a href="#cb26-273" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-274"><a href="#cb26-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-275"><a href="#cb26-275" aria-hidden="true" tabindex="-1"></a>The plot indicates some negative effect of smoking on birthweight.</span>
+<span id="cb26-276"><a href="#cb26-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-277"><a href="#cb26-277" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 2d)</span></span>
+<span id="cb26-278"><a href="#cb26-278" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-279"><a href="#cb26-279" aria-hidden="true" tabindex="-1"></a>Let us perform regression analyses with birth weight as the dependent variable. First, use only smoking as an independent variable. </span>
+<span id="cb26-280"><a href="#cb26-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-283"><a href="#cb26-283" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-284"><a href="#cb26-284" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: linear-2d-1</span></span>
+<span id="cb26-285"><a href="#cb26-285" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb26-286"><a href="#cb26-286" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb26-287"><a href="#cb26-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-288"><a href="#cb26-288" aria-hidden="true" tabindex="-1"></a><span class="co"># regression</span></span>
+<span id="cb26-289"><a href="#cb26-289" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(bwt <span class="sc">~</span> smk, <span class="at">data =</span> birth))</span>
+<span id="cb26-290"><a href="#cb26-290" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-291"><a href="#cb26-291" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-292"><a href="#cb26-292" aria-hidden="true" tabindex="-1"></a>Note the low explained variation, 3.6\%, in spite of smoking being important. This is very often the case when the independent variable is dichotomous (i.e. has only two values). Let us then fit a multiple linear regression.</span>
+<span id="cb26-293"><a href="#cb26-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-294"><a href="#cb26-294" aria-hidden="true" tabindex="-1"></a>In the second analysis, use also weight of mother as an independent variable. Interpret the results in relation to the earlier results of this exercise.</span>
+<span id="cb26-295"><a href="#cb26-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-298"><a href="#cb26-298" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-299"><a href="#cb26-299" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: linear-2d-2</span></span>
+<span id="cb26-300"><a href="#cb26-300" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb26-301"><a href="#cb26-301" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb26-302"><a href="#cb26-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-303"><a href="#cb26-303" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plots:</span></span>
+<span id="cb26-304"><a href="#cb26-304" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(bwt <span class="sc">~</span> smk <span class="sc">+</span> lwt, <span class="at">data =</span> birth))</span>
+<span id="cb26-305"><a href="#cb26-305" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-306"><a href="#cb26-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-307"><a href="#cb26-307" aria-hidden="true" tabindex="-1"></a>Some comments:</span>
+<span id="cb26-308"><a href="#cb26-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-309"><a href="#cb26-309" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The explained variation is slightly larger than in the previous model (6.7\%).  </span>
+<span id="cb26-310"><a href="#cb26-310" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Smoking is still highly significant.  </span>
+<span id="cb26-311"><a href="#cb26-311" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Mother's weight is significant, but the coefficient is not large.  </span>
+<span id="cb26-312"><a href="#cb26-312" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Residuals are fine.  </span>
+<span id="cb26-313"><a href="#cb26-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-314"><a href="#cb26-314" aria-hidden="true" tabindex="-1"></a>And finally, in a third analysis, add smoking, weight of the mother and ethnicity.</span>
+<span id="cb26-315"><a href="#cb26-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-318"><a href="#cb26-318" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-319"><a href="#cb26-319" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: linear-2d-3</span></span>
+<span id="cb26-320"><a href="#cb26-320" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb26-321"><a href="#cb26-321" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb26-322"><a href="#cb26-322" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-323"><a href="#cb26-323" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plots:</span></span>
+<span id="cb26-324"><a href="#cb26-324" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(bwt <span class="sc">~</span> smk <span class="sc">+</span> lwt <span class="sc">+</span> eth, <span class="at">data =</span> birth))</span>
+<span id="cb26-325"><a href="#cb26-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-326"><a href="#cb26-326" aria-hidden="true" tabindex="-1"></a><span class="co"># residual analysis:</span></span>
+<span id="cb26-327"><a href="#cb26-327" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb26-328"><a href="#cb26-328" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">lm</span>(bwt <span class="sc">~</span> smk <span class="sc">+</span> lwt <span class="sc">+</span> eth, <span class="at">data =</span> birth))</span>
+<span id="cb26-329"><a href="#cb26-329" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-330"><a href="#cb26-330" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-331"><a href="#cb26-331" aria-hidden="true" tabindex="-1"></a>This model looks a lot better than the ones before! The explained variation is larger (14.8\%), and all predictors are significant. </span>
+<span id="cb26-332"><a href="#cb26-332" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-333"><a href="#cb26-333" aria-hidden="true" tabindex="-1"></a>Remember to check the residuals before concluding. The residuals look in line with the regression assumption of normality, so we can conclude that this final model is the best.</span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+</body></html>

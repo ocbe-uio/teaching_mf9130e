@@ -24,22 +24,22 @@ Datasets
 
 ## Exercise 1 (birth)
 
-We shall analyse the data set given in the file `birth.dta`. In a study in Massachusetts, USA, birth weight was measured for the children of 189 women. The main variable in the study was birth weight, `BWT`, which is an important indicator of the condition of a newborn child. Low birth weight (below 2500 g) may be a medical risk factor. A major question is whether smoking during pregnancy influences the birth weight. One has also studied whether a number of other factors are related to birth weight, such as hypertension in the mother. 
+In a study in Massachusetts, USA, birth weight was measured for the children of 189 women. The main variable in the study was birth weight, `bwt`, which is an important indicator of the condition of a newborn child. Low birth weight (below 2500 g) may be a medical risk factor. A major question is whether smoking during pregnancy influences the birth weight. One has also studied whether a number of other factors are related to birth weight, such as hypertension in the mother. 
 
 The variables of the study are
 
-* Identification number (ID)
-* Low birth weight (LOW)
-* Age of the mother (AGE)
-* Weight (in pounds) at last menstruaal period (LWT)
-* Ethnicity, 1 means White, 2 means African American, 3 meaans other (ETH)
-* Smoking status, 1 means current smoker, 0 means not smoking during pregnancy (SMK)
-* History of premature labbour, values 0, 1, 2... (PTL)
-* History of hypertension, 1 is yes, 0 is no (HT)
-* Uterine irritability, 1 is yes, 0 is no (UI)
-* First trimester visits, values 0, 1, 2... (FTV)
-* Third trimster visits, values 0, 1, 2... (TTV)
-* Birth weight (BWT)
+* Identification number (id)  
+* Low birth weight (low), i.e. bwt below or above 2500g  
+* Age of the mother in years (age)  
+* Weight (in pounds) at last menstrual period (lwt)  
+* Ethnicity: white, black, or other (eth)  
+* Smoking status, `smoker` means current smoker, `nonsmoker` means not smoking during pregnancy (smk)  
+* History of premature labour, values 0, 1, 2... (ptl)  
+* History of hypertension: yes vs no (ht)  
+* Uterine irritability, yes vs no (ui)  
+* First trimester visits, values 0, 1, 2... (ftv)  
+* Third trimester visits, values 0, 1, 2... (ttv)  
+* Birth weight in grams (bwt)  
 
 
 ```{r}

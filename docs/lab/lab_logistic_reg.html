@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.242">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -241,21 +241,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>Examples (exercises with solution)</h1>
 <section id="exercise-1-birth" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-1-birth">Exercise 1 (birth)</h2>
-<p>We shall analyse the data set given in the file <code>birth.dta</code>. In a study in Massachusetts, USA, birth weight was measured for the children of 189 women. The main variable in the study was birth weight, <code>BWT</code>, which is an important indicator of the condition of a newborn child. Low birth weight (below 2500 g) may be a medical risk factor. A major question is whether smoking during pregnancy influences the birth weight. One has also studied whether a number of other factors are related to birth weight, such as hypertension in the mother.</p>
+<p>In a study in Massachusetts, USA, birth weight was measured for the children of 189 women. The main variable in the study was birth weight, <code>bwt</code>, which is an important indicator of the condition of a newborn child. Low birth weight (below 2500 g) may be a medical risk factor. A major question is whether smoking during pregnancy influences the birth weight. One has also studied whether a number of other factors are related to birth weight, such as hypertension in the mother.</p>
 <p>The variables of the study are</p>
 <ul>
-<li>Identification number (ID)</li>
-<li>Low birth weight (LOW)</li>
-<li>Age of the mother (AGE)</li>
-<li>Weight (in pounds) at last menstruaal period (LWT)</li>
-<li>Ethnicity, 1 means White, 2 means African American, 3 meaans other (ETH)</li>
-<li>Smoking status, 1 means current smoker, 0 means not smoking during pregnancy (SMK)</li>
-<li>History of premature labbour, values 0, 1, 2… (PTL)</li>
-<li>History of hypertension, 1 is yes, 0 is no (HT)</li>
-<li>Uterine irritability, 1 is yes, 0 is no (UI)</li>
-<li>First trimester visits, values 0, 1, 2… (FTV)</li>
-<li>Third trimster visits, values 0, 1, 2… (TTV)</li>
-<li>Birth weight (BWT)</li>
+<li>Identification number (id)<br>
+</li>
+<li>Low birth weight (low), i.e.&nbsp;bwt below or above 2500g<br>
+</li>
+<li>Age of the mother in years (age)<br>
+</li>
+<li>Weight (in pounds) at last menstrual period (lwt)<br>
+</li>
+<li>Ethnicity: white, black, or other (eth)<br>
+</li>
+<li>Smoking status, <code>smoker</code> means current smoker, <code>nonsmoker</code> means not smoking during pregnancy (smk)<br>
+</li>
+<li>History of premature labour, values 0, 1, 2… (ptl)<br>
+</li>
+<li>History of hypertension: yes vs no (ht)<br>
+</li>
+<li>Uterine irritability, yes vs no (ui)<br>
+</li>
+<li>First trimester visits, values 0, 1, 2… (ftv)<br>
+</li>
+<li>Third trimester visits, values 0, 1, 2… (ttv)<br>
+</li>
+<li>Birth weight in grams (bwt)</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
@@ -965,22 +976,22 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb63-24"><a href="#cb63-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb63-25"><a href="#cb63-25" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 1 (birth)</span></span>
 <span id="cb63-26"><a href="#cb63-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-27"><a href="#cb63-27" aria-hidden="true" tabindex="-1"></a>We shall analyse the data set given in the file <span class="in">`birth.dta`</span>. In a study in Massachusetts, USA, birth weight was measured for the children of 189 women. The main variable in the study was birth weight, <span class="in">`BWT`</span>, which is an important indicator of the condition of a newborn child. Low birth weight (below 2500 g) may be a medical risk factor. A major question is whether smoking during pregnancy influences the birth weight. One has also studied whether a number of other factors are related to birth weight, such as hypertension in the mother. </span>
+<span id="cb63-27"><a href="#cb63-27" aria-hidden="true" tabindex="-1"></a>In a study in Massachusetts, USA, birth weight was measured for the children of 189 women. The main variable in the study was birth weight, <span class="in">`bwt`</span>, which is an important indicator of the condition of a newborn child. Low birth weight (below 2500 g) may be a medical risk factor. A major question is whether smoking during pregnancy influences the birth weight. One has also studied whether a number of other factors are related to birth weight, such as hypertension in the mother. </span>
 <span id="cb63-28"><a href="#cb63-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb63-29"><a href="#cb63-29" aria-hidden="true" tabindex="-1"></a>The variables of the study are</span>
 <span id="cb63-30"><a href="#cb63-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-31"><a href="#cb63-31" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Identification number (ID)</span>
-<span id="cb63-32"><a href="#cb63-32" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Low birth weight (LOW)</span>
-<span id="cb63-33"><a href="#cb63-33" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Age of the mother (AGE)</span>
-<span id="cb63-34"><a href="#cb63-34" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Weight (in pounds) at last menstruaal period (LWT)</span>
-<span id="cb63-35"><a href="#cb63-35" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Ethnicity, 1 means White, 2 means African American, 3 meaans other (ETH)</span>
-<span id="cb63-36"><a href="#cb63-36" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Smoking status, 1 means current smoker, 0 means not smoking during pregnancy (SMK)</span>
-<span id="cb63-37"><a href="#cb63-37" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>History of premature labbour, values 0, 1, 2... (PTL)</span>
-<span id="cb63-38"><a href="#cb63-38" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>History of hypertension, 1 is yes, 0 is no (HT)</span>
-<span id="cb63-39"><a href="#cb63-39" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Uterine irritability, 1 is yes, 0 is no (UI)</span>
-<span id="cb63-40"><a href="#cb63-40" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>First trimester visits, values 0, 1, 2... (FTV)</span>
-<span id="cb63-41"><a href="#cb63-41" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Third trimster visits, values 0, 1, 2... (TTV)</span>
-<span id="cb63-42"><a href="#cb63-42" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Birth weight (BWT)</span>
+<span id="cb63-31"><a href="#cb63-31" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Identification number (id)  </span>
+<span id="cb63-32"><a href="#cb63-32" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Low birth weight (low), i.e. bwt below or above 2500g  </span>
+<span id="cb63-33"><a href="#cb63-33" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Age of the mother in years (age)  </span>
+<span id="cb63-34"><a href="#cb63-34" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Weight (in pounds) at last menstrual period (lwt)  </span>
+<span id="cb63-35"><a href="#cb63-35" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Ethnicity: white, black, or other (eth)  </span>
+<span id="cb63-36"><a href="#cb63-36" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Smoking status, <span class="in">`smoker`</span> means current smoker, <span class="in">`nonsmoker`</span> means not smoking during pregnancy (smk)  </span>
+<span id="cb63-37"><a href="#cb63-37" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>History of premature labour, values 0, 1, 2... (ptl)  </span>
+<span id="cb63-38"><a href="#cb63-38" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>History of hypertension: yes vs no (ht)  </span>
+<span id="cb63-39"><a href="#cb63-39" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Uterine irritability, yes vs no (ui)  </span>
+<span id="cb63-40"><a href="#cb63-40" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>First trimester visits, values 0, 1, 2... (ftv)  </span>
+<span id="cb63-41"><a href="#cb63-41" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Third trimester visits, values 0, 1, 2... (ttv)  </span>
+<span id="cb63-42"><a href="#cb63-42" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Birth weight in grams (bwt)  </span>
 <span id="cb63-43"><a href="#cb63-43" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb63-44"><a href="#cb63-44" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb63-47"><a href="#cb63-47" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
