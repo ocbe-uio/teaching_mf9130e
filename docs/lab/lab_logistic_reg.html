@@ -325,10 +325,6 @@ bwt &lt;= 2500  bwt &gt; 2500
 Call:
 glm(formula = is_low_bwt ~ age, family = "binomial", data = birth_data)
 
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--1.0402  -0.9018  -0.7754   1.4119   1.7800  
-
 Coefficients:
             Estimate Std. Error z value Pr(&gt;|z|)
 (Intercept)  0.38458    0.73212   0.525    0.599
@@ -392,10 +388,6 @@ age         0.8912949 1.009027</code></pre>
 Call:
 glm(formula = is_low_bwt ~ smk, family = "binomial", data = birth_data)
 
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--1.0197  -0.7623  -0.7623   1.3438   1.6599  
-
 Coefficients:
             Estimate Std. Error z value Pr(&gt;|z|)    
 (Intercept)  -1.0871     0.2147  -5.062 4.14e-07 ***
@@ -450,10 +442,6 @@ Levels: white black other</code></pre>
 Call:
 glm(formula = is_low_bwt ~ eth, family = "binomial", data = birth_data)
 
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--1.0489  -0.9665  -0.7401   1.4042   1.6905  
-
 Coefficients:
             Estimate Std. Error z value Pr(&gt;|z|)    
 (Intercept)  -1.1550     0.2391  -4.830 1.36e-06 ***
@@ -498,10 +486,6 @@ ethother    0.9565420 3.7578709</code></pre>
 Call:
 glm(formula = is_low_bwt ~ age + smk + eth, family = "binomial", 
     data = birth_data)
-
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--1.4211  -0.9171  -0.5687   1.3687   2.0707  
 
 Coefficients:
             Estimate Std. Error z value Pr(&gt;|z|)   
@@ -612,10 +596,6 @@ ethother    1.31818618 6.531492</code></pre>
 Call:
 glm(formula = firstchd_coded ~ smoke, family = "binomial", data = framingham)
 
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--0.4001  -0.4001  -0.4001  -0.3668   2.3378  
-
 Coefficients:
              Estimate Std. Error z value Pr(&gt;|z|)    
 (Intercept)   -2.6655     0.3656  -7.290  3.1e-13 ***
@@ -661,10 +641,6 @@ Call:
 glm(formula = firstchd_coded ~ meansbp, family = "binomial", 
     data = framingham)
 
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--1.0472  -0.4033  -0.3500  -0.3070   2.4813  
-
 Coefficients:
              Estimate Std. Error z value Pr(&gt;|z|)    
 (Intercept) -5.846488   1.020563  -5.729 1.01e-08 ***
@@ -707,10 +683,6 @@ meansbp     1.0100963603 1.03921069</code></pre>
 Call:
 glm(formula = firstchd_coded ~ meansbp + smoke + cholesterol + 
     age, family = "binomial", data = framingham)
-
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--1.0103  -0.4300  -0.3098  -0.2310   2.6946  
 
 Coefficients:
                Estimate Std. Error z value Pr(&gt;|z|)    

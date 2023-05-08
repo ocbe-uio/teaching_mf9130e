@@ -63,7 +63,7 @@ To help you with the exercises and homework, we have created this [list of comma
 | [t-test](lab_ttest.qmd)| One sample, two sample t-tests | [exercise](ex_ttest.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/3_ttest.R) |
 | [Categorical data analysis](lab_categorical.qmd)| Proportions, contingency table, chi-square test | [exercise](ex_categorical.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/4_categorical.R)|
 | [Non-parametric tests](lab_nonpara.qmd) |Wilcoxon signed test, rank sum test | [exercise](ex_nonpara.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/6_nonpara.R) |
-| Sample size, power| Sample size, power calculation | |
+| [Sample size, power]()| Sample size, power calculation |[code: lecture](), [code: exercises]() |
 | [Linear regression](lab_linearreg.qmd)| Linear regression, correlation | [exercise](ex_linearreg.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/8_linearreg.R)|
 | [Logistic regression](lab_logistic_reg.qmd)| Logistic regression |[exercise](ex_logisticreg.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/9_logisticreg.R) |
 | [Survival analysis](lab_survival.qmd)|Kaplan-Meier curve, log rank tests | [exercise](ex_survival.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/10_survival.R)| 
