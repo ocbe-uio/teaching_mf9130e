@@ -268,9 +268,13 @@ write.csv(liggetid, file = './lab/data/liggetid.csv',
           row.names = F)
 
 
+save(liggetid, file = './lab/data/liggetid.rda')
+
 tt <- read.csv('./lab/data/liggetid.csv', sep = ',')
 head(tt)
 
+xlsx::write.xlsx(liggetid, file = './lab/data/liggetid.xlsx', 
+                 col.names = T)
 
 
 # framingham ----

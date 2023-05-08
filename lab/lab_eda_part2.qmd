@@ -166,7 +166,7 @@ In this section we will load the packages via `library(package_name)`.
 
 As tidyverse is a complex ecosystem for R packages, we are not going to cover the details; rather, we recommend that you try to install the packages and run the code in this section.
 
-To install an R package (such as `ggplot2`), type `install('ggplot2')` in the console. 
+To install an R package (such as `ggplot2`), type `install.packages('ggplot2')` in the console. 
 
 :::
 
@@ -246,6 +246,21 @@ filter(data_los2, adm_year == 1986 & age > 80 & sex == 'mann' & los > 100)
 
 
 # Visualization with `ggplot2`
+
+::: {.callout-tip}
+## Resources for ggplot2
+
+If you want to learn `ggplot2`, you can start with the following resources:
+
+* Software carpentry workshop material [link](https://data-lessons.github.io/gapminder-R/04-ggplot.html)
+* Lecture notes at UiO software carpentries workshop by Chi [link](https://github.com/andreaczhang/andreaczhang.github.io/blob/main/resources/lecture_ggplot.pdf)
+* ggplot2 book by Hadley Wickham [link](https://ggplot2-book.org)
+
+Google often, and re-use your own code from other plots!
+
+:::
+
+
 
 ## Data processing 
 

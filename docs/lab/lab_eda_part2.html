@@ -397,7 +397,7 @@ Learning tidyverse
 </div>
 <div class="callout-body-container callout-body">
 <p>As tidyverse is a complex ecosystem for R packages, we are not going to cover the details; rather, we recommend that you try to install the packages and run the code in this section.</p>
-<p>To install an R package (such as <code>ggplot2</code>), type <code>install('ggplot2')</code> in the console.</p>
+<p>To install an R package (such as <code>ggplot2</code>), type <code>install.packages('ggplot2')</code> in the console.</p>
 </div>
 </div>
 <section id="subsetting-and-rename-variables-1" class="level2">
@@ -498,6 +498,25 @@ Attaching package: 'dplyr'</code></pre>
 </section>
 <section id="visualization-with-ggplot2" class="level1">
 <h1>Visualization with <code>ggplot2</code></h1>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Resources for ggplot2
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you want to learn <code>ggplot2</code>, you can start with the following resources:</p>
+<ul>
+<li>Software carpentry workshop material <a href="https://data-lessons.github.io/gapminder-R/04-ggplot.html">link</a></li>
+<li>Lecture notes at UiO software carpentries workshop by Chi <a href="https://github.com/andreaczhang/andreaczhang.github.io/blob/main/resources/lecture_ggplot.pdf">link</a></li>
+<li>ggplot2 book by Hadley Wickham <a href="https://ggplot2-book.org">link</a></li>
+</ul>
+<p>Google often, and re-use your own code from other plots!</p>
+</div>
+</div>
 <p>##&nbsp;Data processing</p>
 <p>It is usually required to pre-process the data before visualization.</p>
 <p>We know that there are some missing values, so we can remove them now (with <code>filter</code>).</p>
@@ -1084,7 +1103,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb42-178"><a href="#cb42-178" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb42-179"><a href="#cb42-179" aria-hidden="true" tabindex="-1"></a>As tidyverse is a complex ecosystem for R packages, we are not going to cover the details; rather, we recommend that you try to install the packages and run the code in this section.</span>
 <span id="cb42-180"><a href="#cb42-180" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-181"><a href="#cb42-181" aria-hidden="true" tabindex="-1"></a>To install an R package (such as <span class="in">`ggplot2`</span>), type <span class="in">`install('ggplot2')`</span> in the console. </span>
+<span id="cb42-181"><a href="#cb42-181" aria-hidden="true" tabindex="-1"></a>To install an R package (such as <span class="in">`ggplot2`</span>), type <span class="in">`install.packages('ggplot2')`</span> in the console. </span>
 <span id="cb42-182"><a href="#cb42-182" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb42-183"><a href="#cb42-183" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb42-184"><a href="#cb42-184" aria-hidden="true" tabindex="-1"></a></span>
@@ -1165,261 +1184,276 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb42-267"><a href="#cb42-267" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb42-268"><a href="#cb42-268" aria-hidden="true" tabindex="-1"></a><span class="fu"># Visualization with `ggplot2`</span></span>
 <span id="cb42-269"><a href="#cb42-269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-270"><a href="#cb42-270" aria-hidden="true" tabindex="-1"></a><span class="fu">##&nbsp;Data processing </span></span>
-<span id="cb42-271"><a href="#cb42-271" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-272"><a href="#cb42-272" aria-hidden="true" tabindex="-1"></a>It is usually required to pre-process the data before visualization.</span>
-<span id="cb42-273"><a href="#cb42-273" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-274"><a href="#cb42-274" aria-hidden="true" tabindex="-1"></a>We know that there are some missing values, so we can remove them now (with <span class="in">`filter`</span>).</span>
-<span id="cb42-275"><a href="#cb42-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-276"><a href="#cb42-276" aria-hidden="true" tabindex="-1"></a>Some variables also need to be re-coded so that they display nicely in the plot. For example, we can code <span class="in">`adm_from`</span> (admission from) with text.</span>
-<span id="cb42-277"><a href="#cb42-277" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-280"><a href="#cb42-280" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb42-281"><a href="#cb42-281" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda2-viz-1</span></span>
-<span id="cb42-282"><a href="#cb42-282" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb42-283"><a href="#cb42-283" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb42-270"><a href="#cb42-270" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb42-271"><a href="#cb42-271" aria-hidden="true" tabindex="-1"></a><span class="fu">## Resources for ggplot2</span></span>
+<span id="cb42-272"><a href="#cb42-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-273"><a href="#cb42-273" aria-hidden="true" tabindex="-1"></a>If you want to learn <span class="in">`ggplot2`</span>, you can start with the following resources:</span>
+<span id="cb42-274"><a href="#cb42-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-275"><a href="#cb42-275" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Software carpentry workshop material <span class="co">[</span><span class="ot">link</span><span class="co">](https://data-lessons.github.io/gapminder-R/04-ggplot.html)</span></span>
+<span id="cb42-276"><a href="#cb42-276" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Lecture notes at UiO software carpentries workshop by Chi <span class="co">[</span><span class="ot">link</span><span class="co">](https://github.com/andreaczhang/andreaczhang.github.io/blob/main/resources/lecture_ggplot.pdf)</span></span>
+<span id="cb42-277"><a href="#cb42-277" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>ggplot2 book by Hadley Wickham <span class="co">[</span><span class="ot">link</span><span class="co">](https://ggplot2-book.org)</span></span>
+<span id="cb42-278"><a href="#cb42-278" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-279"><a href="#cb42-279" aria-hidden="true" tabindex="-1"></a>Google often, and re-use your own code from other plots!</span>
+<span id="cb42-280"><a href="#cb42-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-281"><a href="#cb42-281" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb42-282"><a href="#cb42-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-283"><a href="#cb42-283" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb42-284"><a href="#cb42-284" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-285"><a href="#cb42-285" aria-hidden="true" tabindex="-1"></a><span class="co">#data_los &lt;- liggetid[, c('innaar', 'alder', 'kjoenn', </span></span>
-<span id="cb42-286"><a href="#cb42-286" aria-hidden="true" tabindex="-1"></a><span class="co">#                         'kom_fra', 'slag', 'liggetid')]</span></span>
-<span id="cb42-287"><a href="#cb42-287" aria-hidden="true" tabindex="-1"></a><span class="co">#names(data_los) &lt;- c('adm_year', 'age', 'sex', 'adm_from', 'stroke', 'los')</span></span>
+<span id="cb42-285"><a href="#cb42-285" aria-hidden="true" tabindex="-1"></a><span class="fu">##&nbsp;Data processing </span></span>
+<span id="cb42-286"><a href="#cb42-286" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-287"><a href="#cb42-287" aria-hidden="true" tabindex="-1"></a>It is usually required to pre-process the data before visualization.</span>
 <span id="cb42-288"><a href="#cb42-288" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-289"><a href="#cb42-289" aria-hidden="true" tabindex="-1"></a><span class="co"># remove NA </span></span>
-<span id="cb42-290"><a href="#cb42-290" aria-hidden="true" tabindex="-1"></a>data_los <span class="ot">&lt;-</span> <span class="fu">filter</span>(data_los, <span class="sc">!</span><span class="fu">is.na</span>(sex) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(stroke) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(adm_from))</span>
-<span id="cb42-291"><a href="#cb42-291" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-292"><a href="#cb42-292" aria-hidden="true" tabindex="-1"></a><span class="co"># code admission from with text</span></span>
-<span id="cb42-293"><a href="#cb42-293" aria-hidden="true" tabindex="-1"></a>data_los<span class="sc">$</span>adm_from <span class="ot">&lt;-</span> <span class="fu">as.character</span>(data_los<span class="sc">$</span>adm_from)</span>
-<span id="cb42-294"><a href="#cb42-294" aria-hidden="true" tabindex="-1"></a>data_los<span class="sc">$</span>adm_from <span class="ot">&lt;-</span> <span class="fu">factor</span>(data_los<span class="sc">$</span>adm_from, </span>
-<span id="cb42-295"><a href="#cb42-295" aria-hidden="true" tabindex="-1"></a>                            <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">'1'</span>, <span class="st">'2'</span>, <span class="st">'3'</span>, <span class="st">'4'</span>, <span class="st">'5'</span>, <span class="st">'6'</span>), </span>
-<span id="cb42-296"><a href="#cb42-296" aria-hidden="true" tabindex="-1"></a>                            <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">'Home'</span>, <span class="st">'Div.Medicine'</span>, <span class="st">'Div.Surgery'</span>, </span>
-<span id="cb42-297"><a href="#cb42-297" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">'Div.Other'</span>, <span class="st">'Other hospital'</span>, <span class="st">'Nursing home'</span>))</span>
-<span id="cb42-298"><a href="#cb42-298" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-299"><a href="#cb42-299" aria-hidden="true" tabindex="-1"></a><span class="co"># code admission year with text</span></span>
-<span id="cb42-300"><a href="#cb42-300" aria-hidden="true" tabindex="-1"></a>data_los<span class="sc">$</span>adm_year <span class="ot">&lt;-</span> <span class="fu">factor</span>(data_los<span class="sc">$</span>adm_year,</span>
-<span id="cb42-301"><a href="#cb42-301" aria-hidden="true" tabindex="-1"></a>                            <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1981</span><span class="sc">:</span><span class="dv">1987</span>),</span>
-<span id="cb42-302"><a href="#cb42-302" aria-hidden="true" tabindex="-1"></a>                            <span class="at">labels =</span> <span class="fu">as.character</span>(<span class="dv">1981</span><span class="sc">:</span><span class="dv">1987</span>))</span>
+<span id="cb42-289"><a href="#cb42-289" aria-hidden="true" tabindex="-1"></a>We know that there are some missing values, so we can remove them now (with <span class="in">`filter`</span>).</span>
+<span id="cb42-290"><a href="#cb42-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-291"><a href="#cb42-291" aria-hidden="true" tabindex="-1"></a>Some variables also need to be re-coded so that they display nicely in the plot. For example, we can code <span class="in">`adm_from`</span> (admission from) with text.</span>
+<span id="cb42-292"><a href="#cb42-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-295"><a href="#cb42-295" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb42-296"><a href="#cb42-296" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda2-viz-1</span></span>
+<span id="cb42-297"><a href="#cb42-297" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb42-298"><a href="#cb42-298" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb42-299"><a href="#cb42-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-300"><a href="#cb42-300" aria-hidden="true" tabindex="-1"></a><span class="co">#data_los &lt;- liggetid[, c('innaar', 'alder', 'kjoenn', </span></span>
+<span id="cb42-301"><a href="#cb42-301" aria-hidden="true" tabindex="-1"></a><span class="co">#                         'kom_fra', 'slag', 'liggetid')]</span></span>
+<span id="cb42-302"><a href="#cb42-302" aria-hidden="true" tabindex="-1"></a><span class="co">#names(data_los) &lt;- c('adm_year', 'age', 'sex', 'adm_from', 'stroke', 'los')</span></span>
 <span id="cb42-303"><a href="#cb42-303" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-304"><a href="#cb42-304" aria-hidden="true" tabindex="-1"></a>data_los<span class="sc">$</span>stroke <span class="ot">&lt;-</span> <span class="fu">factor</span>(data_los<span class="sc">$</span>stroke, </span>
-<span id="cb42-305"><a href="#cb42-305" aria-hidden="true" tabindex="-1"></a>                          <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), </span>
-<span id="cb42-306"><a href="#cb42-306" aria-hidden="true" tabindex="-1"></a>                          <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">'no'</span>,<span class="st">'yes'</span>))</span>
-<span id="cb42-307"><a href="#cb42-307" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-308"><a href="#cb42-308" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb42-309"><a href="#cb42-309" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-310"><a href="#cb42-310" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-311"><a href="#cb42-311" aria-hidden="true" tabindex="-1"></a><span class="fu">## Scatter plot</span></span>
-<span id="cb42-312"><a href="#cb42-312" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-313"><a href="#cb42-313" aria-hidden="true" tabindex="-1"></a>We first explore **age** and **length of hospital stay** (<span class="in">`los`</span>) with scatter plots. </span>
-<span id="cb42-314"><a href="#cb42-314" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-317"><a href="#cb42-317" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb42-318"><a href="#cb42-318" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda2-viz-2</span></span>
-<span id="cb42-319"><a href="#cb42-319" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb42-320"><a href="#cb42-320" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb42-321"><a href="#cb42-321" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-322"><a href="#cb42-322" aria-hidden="true" tabindex="-1"></a><span class="co"># age vs length of stay</span></span>
-<span id="cb42-323"><a href="#cb42-323" aria-hidden="true" tabindex="-1"></a><span class="co"># baseR:</span></span>
-<span id="cb42-324"><a href="#cb42-324" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(data_los<span class="sc">$</span>age, data_los<span class="sc">$</span>los)</span>
+<span id="cb42-304"><a href="#cb42-304" aria-hidden="true" tabindex="-1"></a><span class="co"># remove NA </span></span>
+<span id="cb42-305"><a href="#cb42-305" aria-hidden="true" tabindex="-1"></a>data_los <span class="ot">&lt;-</span> <span class="fu">filter</span>(data_los, <span class="sc">!</span><span class="fu">is.na</span>(sex) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(stroke) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(adm_from))</span>
+<span id="cb42-306"><a href="#cb42-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-307"><a href="#cb42-307" aria-hidden="true" tabindex="-1"></a><span class="co"># code admission from with text</span></span>
+<span id="cb42-308"><a href="#cb42-308" aria-hidden="true" tabindex="-1"></a>data_los<span class="sc">$</span>adm_from <span class="ot">&lt;-</span> <span class="fu">as.character</span>(data_los<span class="sc">$</span>adm_from)</span>
+<span id="cb42-309"><a href="#cb42-309" aria-hidden="true" tabindex="-1"></a>data_los<span class="sc">$</span>adm_from <span class="ot">&lt;-</span> <span class="fu">factor</span>(data_los<span class="sc">$</span>adm_from, </span>
+<span id="cb42-310"><a href="#cb42-310" aria-hidden="true" tabindex="-1"></a>                            <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">'1'</span>, <span class="st">'2'</span>, <span class="st">'3'</span>, <span class="st">'4'</span>, <span class="st">'5'</span>, <span class="st">'6'</span>), </span>
+<span id="cb42-311"><a href="#cb42-311" aria-hidden="true" tabindex="-1"></a>                            <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">'Home'</span>, <span class="st">'Div.Medicine'</span>, <span class="st">'Div.Surgery'</span>, </span>
+<span id="cb42-312"><a href="#cb42-312" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">'Div.Other'</span>, <span class="st">'Other hospital'</span>, <span class="st">'Nursing home'</span>))</span>
+<span id="cb42-313"><a href="#cb42-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-314"><a href="#cb42-314" aria-hidden="true" tabindex="-1"></a><span class="co"># code admission year with text</span></span>
+<span id="cb42-315"><a href="#cb42-315" aria-hidden="true" tabindex="-1"></a>data_los<span class="sc">$</span>adm_year <span class="ot">&lt;-</span> <span class="fu">factor</span>(data_los<span class="sc">$</span>adm_year,</span>
+<span id="cb42-316"><a href="#cb42-316" aria-hidden="true" tabindex="-1"></a>                            <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1981</span><span class="sc">:</span><span class="dv">1987</span>),</span>
+<span id="cb42-317"><a href="#cb42-317" aria-hidden="true" tabindex="-1"></a>                            <span class="at">labels =</span> <span class="fu">as.character</span>(<span class="dv">1981</span><span class="sc">:</span><span class="dv">1987</span>))</span>
+<span id="cb42-318"><a href="#cb42-318" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-319"><a href="#cb42-319" aria-hidden="true" tabindex="-1"></a>data_los<span class="sc">$</span>stroke <span class="ot">&lt;-</span> <span class="fu">factor</span>(data_los<span class="sc">$</span>stroke, </span>
+<span id="cb42-320"><a href="#cb42-320" aria-hidden="true" tabindex="-1"></a>                          <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), </span>
+<span id="cb42-321"><a href="#cb42-321" aria-hidden="true" tabindex="-1"></a>                          <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">'no'</span>,<span class="st">'yes'</span>))</span>
+<span id="cb42-322"><a href="#cb42-322" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-323"><a href="#cb42-323" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb42-324"><a href="#cb42-324" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb42-325"><a href="#cb42-325" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-326"><a href="#cb42-326" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot </span></span>
-<span id="cb42-327"><a href="#cb42-327" aria-hidden="true" tabindex="-1"></a>plt_scat <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> data_los, </span>
-<span id="cb42-328"><a href="#cb42-328" aria-hidden="true" tabindex="-1"></a>                   <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> los))</span>
-<span id="cb42-329"><a href="#cb42-329" aria-hidden="true" tabindex="-1"></a>plt_scat <span class="ot">&lt;-</span> plt_scat <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="co"># add point</span></span>
-<span id="cb42-330"><a href="#cb42-330" aria-hidden="true" tabindex="-1"></a>plt_scat</span>
-<span id="cb42-331"><a href="#cb42-331" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-332"><a href="#cb42-332" aria-hidden="true" tabindex="-1"></a><span class="co"># can make some customizations: change titles, bigger fonts</span></span>
-<span id="cb42-333"><a href="#cb42-333" aria-hidden="true" tabindex="-1"></a>plt_scat <span class="ot">&lt;-</span> plt_scat <span class="sc">+</span> <span class="fu">labs</span>(</span>
-<span id="cb42-334"><a href="#cb42-334" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">'Age'</span>, </span>
-<span id="cb42-335"><a href="#cb42-335" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">'Length of hosptial stay (days)'</span>, </span>
-<span id="cb42-336"><a href="#cb42-336" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">'Length of stay versus age'</span></span>
-<span id="cb42-337"><a href="#cb42-337" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb42-338"><a href="#cb42-338" aria-hidden="true" tabindex="-1"></a>plt_scat <span class="ot">&lt;-</span> plt_scat <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="co"># make white background</span></span>
-<span id="cb42-339"><a href="#cb42-339" aria-hidden="true" tabindex="-1"></a>plt_scat <span class="ot">&lt;-</span> plt_scat <span class="sc">+</span> <span class="fu">theme</span>(</span>
-<span id="cb42-340"><a href="#cb42-340" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>),</span>
-<span id="cb42-341"><a href="#cb42-341" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>), </span>
-<span id="cb42-342"><a href="#cb42-342" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>)</span>
-<span id="cb42-343"><a href="#cb42-343" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb42-344"><a href="#cb42-344" aria-hidden="true" tabindex="-1"></a>plt_scat</span>
-<span id="cb42-345"><a href="#cb42-345" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb42-326"><a href="#cb42-326" aria-hidden="true" tabindex="-1"></a><span class="fu">## Scatter plot</span></span>
+<span id="cb42-327"><a href="#cb42-327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-328"><a href="#cb42-328" aria-hidden="true" tabindex="-1"></a>We first explore **age** and **length of hospital stay** (<span class="in">`los`</span>) with scatter plots. </span>
+<span id="cb42-329"><a href="#cb42-329" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-332"><a href="#cb42-332" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb42-333"><a href="#cb42-333" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda2-viz-2</span></span>
+<span id="cb42-334"><a href="#cb42-334" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb42-335"><a href="#cb42-335" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb42-336"><a href="#cb42-336" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-337"><a href="#cb42-337" aria-hidden="true" tabindex="-1"></a><span class="co"># age vs length of stay</span></span>
+<span id="cb42-338"><a href="#cb42-338" aria-hidden="true" tabindex="-1"></a><span class="co"># baseR:</span></span>
+<span id="cb42-339"><a href="#cb42-339" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(data_los<span class="sc">$</span>age, data_los<span class="sc">$</span>los)</span>
+<span id="cb42-340"><a href="#cb42-340" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-341"><a href="#cb42-341" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot </span></span>
+<span id="cb42-342"><a href="#cb42-342" aria-hidden="true" tabindex="-1"></a>plt_scat <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> data_los, </span>
+<span id="cb42-343"><a href="#cb42-343" aria-hidden="true" tabindex="-1"></a>                   <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> los))</span>
+<span id="cb42-344"><a href="#cb42-344" aria-hidden="true" tabindex="-1"></a>plt_scat <span class="ot">&lt;-</span> plt_scat <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="co"># add point</span></span>
+<span id="cb42-345"><a href="#cb42-345" aria-hidden="true" tabindex="-1"></a>plt_scat</span>
 <span id="cb42-346"><a href="#cb42-346" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-347"><a href="#cb42-347" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-348"><a href="#cb42-348" aria-hidden="true" tabindex="-1"></a>You can add more information in the plot, with colors and shapes. </span>
-<span id="cb42-349"><a href="#cb42-349" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-352"><a href="#cb42-352" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb42-353"><a href="#cb42-353" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda2-viz-3</span></span>
-<span id="cb42-354"><a href="#cb42-354" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb42-355"><a href="#cb42-355" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb42-356"><a href="#cb42-356" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-357"><a href="#cb42-357" aria-hidden="true" tabindex="-1"></a><span class="co"># can add on more information: color</span></span>
-<span id="cb42-358"><a href="#cb42-358" aria-hidden="true" tabindex="-1"></a>plt_scat2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> data_los, </span>
-<span id="cb42-359"><a href="#cb42-359" aria-hidden="true" tabindex="-1"></a>                    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> los, <span class="at">shape =</span> sex, <span class="at">color =</span> sex))</span>
-<span id="cb42-360"><a href="#cb42-360" aria-hidden="true" tabindex="-1"></a>plt_scat2 <span class="ot">&lt;-</span> plt_scat2 <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>)</span>
-<span id="cb42-361"><a href="#cb42-361" aria-hidden="true" tabindex="-1"></a><span class="co"># customize</span></span>
-<span id="cb42-362"><a href="#cb42-362" aria-hidden="true" tabindex="-1"></a>plt_scat2 <span class="ot">&lt;-</span> plt_scat2 <span class="sc">+</span> <span class="fu">labs</span>(</span>
-<span id="cb42-363"><a href="#cb42-363" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">'Age'</span>, </span>
-<span id="cb42-364"><a href="#cb42-364" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">'Length of hosptial stay (days)'</span>, </span>
-<span id="cb42-365"><a href="#cb42-365" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">'Length of stay versus age'</span></span>
-<span id="cb42-366"><a href="#cb42-366" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb42-367"><a href="#cb42-367" aria-hidden="true" tabindex="-1"></a>plt_scat2 <span class="ot">&lt;-</span> plt_scat2 <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="co"># make white background</span></span>
-<span id="cb42-368"><a href="#cb42-368" aria-hidden="true" tabindex="-1"></a><span class="co"># change text size</span></span>
-<span id="cb42-369"><a href="#cb42-369" aria-hidden="true" tabindex="-1"></a>plt_scat2 <span class="ot">&lt;-</span> plt_scat2 <span class="sc">+</span> <span class="fu">theme</span>(</span>
-<span id="cb42-370"><a href="#cb42-370" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),</span>
-<span id="cb42-371"><a href="#cb42-371" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>), </span>
-<span id="cb42-372"><a href="#cb42-372" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>)</span>
-<span id="cb42-373"><a href="#cb42-373" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb42-374"><a href="#cb42-374" aria-hidden="true" tabindex="-1"></a><span class="co"># change color</span></span>
-<span id="cb42-375"><a href="#cb42-375" aria-hidden="true" tabindex="-1"></a>plt_scat2 <span class="ot">&lt;-</span> plt_scat2 <span class="sc">+</span> <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">'Set1'</span>)</span>
-<span id="cb42-376"><a href="#cb42-376" aria-hidden="true" tabindex="-1"></a>plt_scat2</span>
-<span id="cb42-377"><a href="#cb42-377" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb42-378"><a href="#cb42-378" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-379"><a href="#cb42-379" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-380"><a href="#cb42-380" aria-hidden="true" tabindex="-1"></a>You can also use R packages beyond the tidyverse, to add histograms on top of the scatter plot.</span>
-<span id="cb42-381"><a href="#cb42-381" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-384"><a href="#cb42-384" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb42-385"><a href="#cb42-385" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda2-viz-4</span></span>
-<span id="cb42-386"><a href="#cb42-386" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb42-387"><a href="#cb42-387" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb42-388"><a href="#cb42-388" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-389"><a href="#cb42-389" aria-hidden="true" tabindex="-1"></a><span class="co"># can add histogram on top</span></span>
-<span id="cb42-390"><a href="#cb42-390" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggExtra)</span>
-<span id="cb42-391"><a href="#cb42-391" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-392"><a href="#cb42-392" aria-hidden="true" tabindex="-1"></a><span class="fu">ggMarginal</span>(plt_scat, <span class="at">type =</span> <span class="st">'histogram'</span>)</span>
-<span id="cb42-393"><a href="#cb42-393" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb42-347"><a href="#cb42-347" aria-hidden="true" tabindex="-1"></a><span class="co"># can make some customizations: change titles, bigger fonts</span></span>
+<span id="cb42-348"><a href="#cb42-348" aria-hidden="true" tabindex="-1"></a>plt_scat <span class="ot">&lt;-</span> plt_scat <span class="sc">+</span> <span class="fu">labs</span>(</span>
+<span id="cb42-349"><a href="#cb42-349" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">'Age'</span>, </span>
+<span id="cb42-350"><a href="#cb42-350" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">'Length of hosptial stay (days)'</span>, </span>
+<span id="cb42-351"><a href="#cb42-351" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">'Length of stay versus age'</span></span>
+<span id="cb42-352"><a href="#cb42-352" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb42-353"><a href="#cb42-353" aria-hidden="true" tabindex="-1"></a>plt_scat <span class="ot">&lt;-</span> plt_scat <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="co"># make white background</span></span>
+<span id="cb42-354"><a href="#cb42-354" aria-hidden="true" tabindex="-1"></a>plt_scat <span class="ot">&lt;-</span> plt_scat <span class="sc">+</span> <span class="fu">theme</span>(</span>
+<span id="cb42-355"><a href="#cb42-355" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>),</span>
+<span id="cb42-356"><a href="#cb42-356" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>), </span>
+<span id="cb42-357"><a href="#cb42-357" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>)</span>
+<span id="cb42-358"><a href="#cb42-358" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb42-359"><a href="#cb42-359" aria-hidden="true" tabindex="-1"></a>plt_scat</span>
+<span id="cb42-360"><a href="#cb42-360" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb42-361"><a href="#cb42-361" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-362"><a href="#cb42-362" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-363"><a href="#cb42-363" aria-hidden="true" tabindex="-1"></a>You can add more information in the plot, with colors and shapes. </span>
+<span id="cb42-364"><a href="#cb42-364" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-367"><a href="#cb42-367" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb42-368"><a href="#cb42-368" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda2-viz-3</span></span>
+<span id="cb42-369"><a href="#cb42-369" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb42-370"><a href="#cb42-370" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb42-371"><a href="#cb42-371" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-372"><a href="#cb42-372" aria-hidden="true" tabindex="-1"></a><span class="co"># can add on more information: color</span></span>
+<span id="cb42-373"><a href="#cb42-373" aria-hidden="true" tabindex="-1"></a>plt_scat2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> data_los, </span>
+<span id="cb42-374"><a href="#cb42-374" aria-hidden="true" tabindex="-1"></a>                    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> los, <span class="at">shape =</span> sex, <span class="at">color =</span> sex))</span>
+<span id="cb42-375"><a href="#cb42-375" aria-hidden="true" tabindex="-1"></a>plt_scat2 <span class="ot">&lt;-</span> plt_scat2 <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>)</span>
+<span id="cb42-376"><a href="#cb42-376" aria-hidden="true" tabindex="-1"></a><span class="co"># customize</span></span>
+<span id="cb42-377"><a href="#cb42-377" aria-hidden="true" tabindex="-1"></a>plt_scat2 <span class="ot">&lt;-</span> plt_scat2 <span class="sc">+</span> <span class="fu">labs</span>(</span>
+<span id="cb42-378"><a href="#cb42-378" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">'Age'</span>, </span>
+<span id="cb42-379"><a href="#cb42-379" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">'Length of hosptial stay (days)'</span>, </span>
+<span id="cb42-380"><a href="#cb42-380" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">'Length of stay versus age'</span></span>
+<span id="cb42-381"><a href="#cb42-381" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb42-382"><a href="#cb42-382" aria-hidden="true" tabindex="-1"></a>plt_scat2 <span class="ot">&lt;-</span> plt_scat2 <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="co"># make white background</span></span>
+<span id="cb42-383"><a href="#cb42-383" aria-hidden="true" tabindex="-1"></a><span class="co"># change text size</span></span>
+<span id="cb42-384"><a href="#cb42-384" aria-hidden="true" tabindex="-1"></a>plt_scat2 <span class="ot">&lt;-</span> plt_scat2 <span class="sc">+</span> <span class="fu">theme</span>(</span>
+<span id="cb42-385"><a href="#cb42-385" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb42-386"><a href="#cb42-386" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>), </span>
+<span id="cb42-387"><a href="#cb42-387" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>)</span>
+<span id="cb42-388"><a href="#cb42-388" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb42-389"><a href="#cb42-389" aria-hidden="true" tabindex="-1"></a><span class="co"># change color</span></span>
+<span id="cb42-390"><a href="#cb42-390" aria-hidden="true" tabindex="-1"></a>plt_scat2 <span class="ot">&lt;-</span> plt_scat2 <span class="sc">+</span> <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">'Set1'</span>)</span>
+<span id="cb42-391"><a href="#cb42-391" aria-hidden="true" tabindex="-1"></a>plt_scat2</span>
+<span id="cb42-392"><a href="#cb42-392" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb42-393"><a href="#cb42-393" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb42-394"><a href="#cb42-394" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-395"><a href="#cb42-395" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-396"><a href="#cb42-396" aria-hidden="true" tabindex="-1"></a><span class="fu">## Histogram </span></span>
-<span id="cb42-397"><a href="#cb42-397" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-400"><a href="#cb42-400" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb42-401"><a href="#cb42-401" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda2-viz-5</span></span>
-<span id="cb42-402"><a href="#cb42-402" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb42-403"><a href="#cb42-403" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb42-404"><a href="#cb42-404" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-405"><a href="#cb42-405" aria-hidden="true" tabindex="-1"></a>plt_hist <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> data_los, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> los, <span class="at">fill =</span> sex))</span>
-<span id="cb42-406"><a href="#cb42-406" aria-hidden="true" tabindex="-1"></a>plt_hist <span class="ot">&lt;-</span> plt_hist <span class="sc">+</span> <span class="fu">geom_histogram</span>() </span>
-<span id="cb42-407"><a href="#cb42-407" aria-hidden="true" tabindex="-1"></a>plt_hist <span class="ot">&lt;-</span> plt_hist <span class="sc">+</span> <span class="fu">facet_wrap</span>( <span class="sc">~</span> sex, <span class="at">ncol =</span> <span class="dv">1</span>)</span>
-<span id="cb42-408"><a href="#cb42-408" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-409"><a href="#cb42-409" aria-hidden="true" tabindex="-1"></a><span class="co"># some customization</span></span>
-<span id="cb42-410"><a href="#cb42-410" aria-hidden="true" tabindex="-1"></a>plt_hist <span class="ot">&lt;-</span> plt_hist <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="co"># make minimal background</span></span>
-<span id="cb42-411"><a href="#cb42-411" aria-hidden="true" tabindex="-1"></a><span class="co"># change axis</span></span>
-<span id="cb42-412"><a href="#cb42-412" aria-hidden="true" tabindex="-1"></a>plt_hist <span class="ot">&lt;-</span> plt_hist <span class="sc">+</span> <span class="fu">labs</span>(</span>
-<span id="cb42-413"><a href="#cb42-413" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">'Length of hospital stay (days)'</span>, </span>
-<span id="cb42-414"><a href="#cb42-414" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">'Count'</span>, </span>
-<span id="cb42-415"><a href="#cb42-415" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">'Histograms for length of hospital stay'</span></span>
-<span id="cb42-416"><a href="#cb42-416" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb42-417"><a href="#cb42-417" aria-hidden="true" tabindex="-1"></a><span class="co"># change text size</span></span>
-<span id="cb42-418"><a href="#cb42-418" aria-hidden="true" tabindex="-1"></a>plt_hist <span class="ot">&lt;-</span> plt_hist <span class="sc">+</span> <span class="fu">theme</span>(</span>
-<span id="cb42-419"><a href="#cb42-419" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),</span>
-<span id="cb42-420"><a href="#cb42-420" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>), </span>
-<span id="cb42-421"><a href="#cb42-421" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>)</span>
-<span id="cb42-422"><a href="#cb42-422" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb42-423"><a href="#cb42-423" aria-hidden="true" tabindex="-1"></a><span class="co"># change color</span></span>
-<span id="cb42-424"><a href="#cb42-424" aria-hidden="true" tabindex="-1"></a>plt_hist <span class="ot">&lt;-</span> plt_hist <span class="sc">+</span> <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">'Set1'</span>)</span>
-<span id="cb42-425"><a href="#cb42-425" aria-hidden="true" tabindex="-1"></a>plt_hist</span>
-<span id="cb42-426"><a href="#cb42-426" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb42-427"><a href="#cb42-427" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-428"><a href="#cb42-428" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-429"><a href="#cb42-429" aria-hidden="true" tabindex="-1"></a>You can plot a few histogram (or density) in the same plot. </span>
-<span id="cb42-430"><a href="#cb42-430" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-433"><a href="#cb42-433" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb42-434"><a href="#cb42-434" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda2-viz-6</span></span>
-<span id="cb42-435"><a href="#cb42-435" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb42-436"><a href="#cb42-436" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb42-437"><a href="#cb42-437" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-438"><a href="#cb42-438" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggridges)</span>
-<span id="cb42-439"><a href="#cb42-439" aria-hidden="true" tabindex="-1"></a>plt_ridge <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> data_los, </span>
-<span id="cb42-440"><a href="#cb42-440" aria-hidden="true" tabindex="-1"></a>                    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> los, <span class="at">y =</span> adm_year, <span class="at">fill =</span> sex))</span>
-<span id="cb42-441"><a href="#cb42-441" aria-hidden="true" tabindex="-1"></a>plt_ridge <span class="ot">&lt;-</span> plt_ridge <span class="sc">+</span> <span class="fu">geom_density_ridges</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) </span>
-<span id="cb42-442"><a href="#cb42-442" aria-hidden="true" tabindex="-1"></a>plt_ridge <span class="ot">&lt;-</span> plt_ridge <span class="sc">+</span> <span class="fu">theme_ridges</span>()</span>
-<span id="cb42-443"><a href="#cb42-443" aria-hidden="true" tabindex="-1"></a>plt_ridge <span class="ot">&lt;-</span> plt_ridge <span class="sc">+</span> <span class="fu">labs</span>(</span>
-<span id="cb42-444"><a href="#cb42-444" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">'Length of hosptial stay (days)'</span>, </span>
-<span id="cb42-445"><a href="#cb42-445" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">'Admission year'</span>, </span>
-<span id="cb42-446"><a href="#cb42-446" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">'Length of stay in each year, for each gender'</span></span>
-<span id="cb42-447"><a href="#cb42-447" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb42-448"><a href="#cb42-448" aria-hidden="true" tabindex="-1"></a><span class="co"># change color</span></span>
-<span id="cb42-449"><a href="#cb42-449" aria-hidden="true" tabindex="-1"></a>plt_ridge <span class="ot">&lt;-</span> plt_ridge <span class="sc">+</span> <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">'Set1'</span>)</span>
-<span id="cb42-450"><a href="#cb42-450" aria-hidden="true" tabindex="-1"></a>plt_ridge</span>
-<span id="cb42-451"><a href="#cb42-451" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb42-395"><a href="#cb42-395" aria-hidden="true" tabindex="-1"></a>You can also use R packages beyond the tidyverse, to add histograms on top of the scatter plot.</span>
+<span id="cb42-396"><a href="#cb42-396" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-399"><a href="#cb42-399" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb42-400"><a href="#cb42-400" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda2-viz-4</span></span>
+<span id="cb42-401"><a href="#cb42-401" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb42-402"><a href="#cb42-402" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb42-403"><a href="#cb42-403" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-404"><a href="#cb42-404" aria-hidden="true" tabindex="-1"></a><span class="co"># can add histogram on top</span></span>
+<span id="cb42-405"><a href="#cb42-405" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggExtra)</span>
+<span id="cb42-406"><a href="#cb42-406" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-407"><a href="#cb42-407" aria-hidden="true" tabindex="-1"></a><span class="fu">ggMarginal</span>(plt_scat, <span class="at">type =</span> <span class="st">'histogram'</span>)</span>
+<span id="cb42-408"><a href="#cb42-408" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb42-409"><a href="#cb42-409" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-410"><a href="#cb42-410" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-411"><a href="#cb42-411" aria-hidden="true" tabindex="-1"></a><span class="fu">## Histogram </span></span>
+<span id="cb42-412"><a href="#cb42-412" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-415"><a href="#cb42-415" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb42-416"><a href="#cb42-416" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda2-viz-5</span></span>
+<span id="cb42-417"><a href="#cb42-417" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb42-418"><a href="#cb42-418" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb42-419"><a href="#cb42-419" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-420"><a href="#cb42-420" aria-hidden="true" tabindex="-1"></a>plt_hist <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> data_los, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> los, <span class="at">fill =</span> sex))</span>
+<span id="cb42-421"><a href="#cb42-421" aria-hidden="true" tabindex="-1"></a>plt_hist <span class="ot">&lt;-</span> plt_hist <span class="sc">+</span> <span class="fu">geom_histogram</span>() </span>
+<span id="cb42-422"><a href="#cb42-422" aria-hidden="true" tabindex="-1"></a>plt_hist <span class="ot">&lt;-</span> plt_hist <span class="sc">+</span> <span class="fu">facet_wrap</span>( <span class="sc">~</span> sex, <span class="at">ncol =</span> <span class="dv">1</span>)</span>
+<span id="cb42-423"><a href="#cb42-423" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-424"><a href="#cb42-424" aria-hidden="true" tabindex="-1"></a><span class="co"># some customization</span></span>
+<span id="cb42-425"><a href="#cb42-425" aria-hidden="true" tabindex="-1"></a>plt_hist <span class="ot">&lt;-</span> plt_hist <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="co"># make minimal background</span></span>
+<span id="cb42-426"><a href="#cb42-426" aria-hidden="true" tabindex="-1"></a><span class="co"># change axis</span></span>
+<span id="cb42-427"><a href="#cb42-427" aria-hidden="true" tabindex="-1"></a>plt_hist <span class="ot">&lt;-</span> plt_hist <span class="sc">+</span> <span class="fu">labs</span>(</span>
+<span id="cb42-428"><a href="#cb42-428" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">'Length of hospital stay (days)'</span>, </span>
+<span id="cb42-429"><a href="#cb42-429" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">'Count'</span>, </span>
+<span id="cb42-430"><a href="#cb42-430" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">'Histograms for length of hospital stay'</span></span>
+<span id="cb42-431"><a href="#cb42-431" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb42-432"><a href="#cb42-432" aria-hidden="true" tabindex="-1"></a><span class="co"># change text size</span></span>
+<span id="cb42-433"><a href="#cb42-433" aria-hidden="true" tabindex="-1"></a>plt_hist <span class="ot">&lt;-</span> plt_hist <span class="sc">+</span> <span class="fu">theme</span>(</span>
+<span id="cb42-434"><a href="#cb42-434" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb42-435"><a href="#cb42-435" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>), </span>
+<span id="cb42-436"><a href="#cb42-436" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>)</span>
+<span id="cb42-437"><a href="#cb42-437" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb42-438"><a href="#cb42-438" aria-hidden="true" tabindex="-1"></a><span class="co"># change color</span></span>
+<span id="cb42-439"><a href="#cb42-439" aria-hidden="true" tabindex="-1"></a>plt_hist <span class="ot">&lt;-</span> plt_hist <span class="sc">+</span> <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">'Set1'</span>)</span>
+<span id="cb42-440"><a href="#cb42-440" aria-hidden="true" tabindex="-1"></a>plt_hist</span>
+<span id="cb42-441"><a href="#cb42-441" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb42-442"><a href="#cb42-442" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-443"><a href="#cb42-443" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-444"><a href="#cb42-444" aria-hidden="true" tabindex="-1"></a>You can plot a few histogram (or density) in the same plot. </span>
+<span id="cb42-445"><a href="#cb42-445" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-448"><a href="#cb42-448" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb42-449"><a href="#cb42-449" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda2-viz-6</span></span>
+<span id="cb42-450"><a href="#cb42-450" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb42-451"><a href="#cb42-451" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
 <span id="cb42-452"><a href="#cb42-452" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-453"><a href="#cb42-453" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-454"><a href="#cb42-454" aria-hidden="true" tabindex="-1"></a><span class="fu">## Box plot</span></span>
-<span id="cb42-455"><a href="#cb42-455" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-458"><a href="#cb42-458" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb42-459"><a href="#cb42-459" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda2-viz-7</span></span>
-<span id="cb42-460"><a href="#cb42-460" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb42-461"><a href="#cb42-461" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb42-462"><a href="#cb42-462" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-463"><a href="#cb42-463" aria-hidden="true" tabindex="-1"></a><span class="co"># we try to plot length of stay versus year, and potentially sex and adm type</span></span>
-<span id="cb42-464"><a href="#cb42-464" aria-hidden="true" tabindex="-1"></a><span class="co"># base R is limited in this regard</span></span>
-<span id="cb42-465"><a href="#cb42-465" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span>
-<span id="cb42-466"><a href="#cb42-466" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(los <span class="sc">~</span> adm_year, <span class="at">data =</span> data_los, <span class="at">main =</span> <span class="st">'Length of stay vs year'</span>)</span>
-<span id="cb42-467"><a href="#cb42-467" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(los <span class="sc">~</span> sex, <span class="at">data =</span> data_los,  <span class="at">horizontal =</span> T, <span class="at">main =</span> <span class="st">'Length of stay vs sex'</span>)</span>
-<span id="cb42-468"><a href="#cb42-468" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(los <span class="sc">~</span> adm_from, <span class="at">data =</span> data_los, <span class="at">horizontal =</span> T,</span>
-<span id="cb42-469"><a href="#cb42-469" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">'Length of stay vs admission type'</span>)</span>
+<span id="cb42-453"><a href="#cb42-453" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggridges)</span>
+<span id="cb42-454"><a href="#cb42-454" aria-hidden="true" tabindex="-1"></a>plt_ridge <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> data_los, </span>
+<span id="cb42-455"><a href="#cb42-455" aria-hidden="true" tabindex="-1"></a>                    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> los, <span class="at">y =</span> adm_year, <span class="at">fill =</span> sex))</span>
+<span id="cb42-456"><a href="#cb42-456" aria-hidden="true" tabindex="-1"></a>plt_ridge <span class="ot">&lt;-</span> plt_ridge <span class="sc">+</span> <span class="fu">geom_density_ridges</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) </span>
+<span id="cb42-457"><a href="#cb42-457" aria-hidden="true" tabindex="-1"></a>plt_ridge <span class="ot">&lt;-</span> plt_ridge <span class="sc">+</span> <span class="fu">theme_ridges</span>()</span>
+<span id="cb42-458"><a href="#cb42-458" aria-hidden="true" tabindex="-1"></a>plt_ridge <span class="ot">&lt;-</span> plt_ridge <span class="sc">+</span> <span class="fu">labs</span>(</span>
+<span id="cb42-459"><a href="#cb42-459" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">'Length of hosptial stay (days)'</span>, </span>
+<span id="cb42-460"><a href="#cb42-460" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">'Admission year'</span>, </span>
+<span id="cb42-461"><a href="#cb42-461" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">'Length of stay in each year, for each gender'</span></span>
+<span id="cb42-462"><a href="#cb42-462" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb42-463"><a href="#cb42-463" aria-hidden="true" tabindex="-1"></a><span class="co"># change color</span></span>
+<span id="cb42-464"><a href="#cb42-464" aria-hidden="true" tabindex="-1"></a>plt_ridge <span class="ot">&lt;-</span> plt_ridge <span class="sc">+</span> <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">'Set1'</span>)</span>
+<span id="cb42-465"><a href="#cb42-465" aria-hidden="true" tabindex="-1"></a>plt_ridge</span>
+<span id="cb42-466"><a href="#cb42-466" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb42-467"><a href="#cb42-467" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-468"><a href="#cb42-468" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-469"><a href="#cb42-469" aria-hidden="true" tabindex="-1"></a><span class="fu">## Box plot</span></span>
 <span id="cb42-470"><a href="#cb42-470" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-471"><a href="#cb42-471" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb42-472"><a href="#cb42-472" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-473"><a href="#cb42-473" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-476"><a href="#cb42-476" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb42-477"><a href="#cb42-477" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda2-viz-8</span></span>
-<span id="cb42-478"><a href="#cb42-478" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb42-479"><a href="#cb42-479" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb42-480"><a href="#cb42-480" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-481"><a href="#cb42-481" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot can make more flexible plots</span></span>
-<span id="cb42-482"><a href="#cb42-482" aria-hidden="true" tabindex="-1"></a><span class="co"># add color </span></span>
-<span id="cb42-483"><a href="#cb42-483" aria-hidden="true" tabindex="-1"></a>plt_box <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> data_los, </span>
-<span id="cb42-484"><a href="#cb42-484" aria-hidden="true" tabindex="-1"></a>                  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> adm_year, <span class="at">y =</span> los, <span class="at">fill =</span> sex))</span>
-<span id="cb42-485"><a href="#cb42-485" aria-hidden="true" tabindex="-1"></a>plt_box <span class="ot">&lt;-</span> plt_box <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">outlier.size =</span> <span class="dv">1</span>)</span>
-<span id="cb42-486"><a href="#cb42-486" aria-hidden="true" tabindex="-1"></a><span class="co"># plt_box &lt;- plt_box + facet_wrap( ~ sex)</span></span>
-<span id="cb42-487"><a href="#cb42-487" aria-hidden="true" tabindex="-1"></a>plt_box <span class="ot">&lt;-</span> plt_box <span class="sc">+</span> <span class="fu">coord_flip</span>()</span>
+<span id="cb42-473"><a href="#cb42-473" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb42-474"><a href="#cb42-474" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda2-viz-7</span></span>
+<span id="cb42-475"><a href="#cb42-475" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb42-476"><a href="#cb42-476" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb42-477"><a href="#cb42-477" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-478"><a href="#cb42-478" aria-hidden="true" tabindex="-1"></a><span class="co"># we try to plot length of stay versus year, and potentially sex and adm type</span></span>
+<span id="cb42-479"><a href="#cb42-479" aria-hidden="true" tabindex="-1"></a><span class="co"># base R is limited in this regard</span></span>
+<span id="cb42-480"><a href="#cb42-480" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span>
+<span id="cb42-481"><a href="#cb42-481" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(los <span class="sc">~</span> adm_year, <span class="at">data =</span> data_los, <span class="at">main =</span> <span class="st">'Length of stay vs year'</span>)</span>
+<span id="cb42-482"><a href="#cb42-482" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(los <span class="sc">~</span> sex, <span class="at">data =</span> data_los,  <span class="at">horizontal =</span> T, <span class="at">main =</span> <span class="st">'Length of stay vs sex'</span>)</span>
+<span id="cb42-483"><a href="#cb42-483" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(los <span class="sc">~</span> adm_from, <span class="at">data =</span> data_los, <span class="at">horizontal =</span> T,</span>
+<span id="cb42-484"><a href="#cb42-484" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">'Length of stay vs admission type'</span>)</span>
+<span id="cb42-485"><a href="#cb42-485" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-486"><a href="#cb42-486" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb42-487"><a href="#cb42-487" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb42-488"><a href="#cb42-488" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-489"><a href="#cb42-489" aria-hidden="true" tabindex="-1"></a><span class="co"># customize</span></span>
-<span id="cb42-490"><a href="#cb42-490" aria-hidden="true" tabindex="-1"></a>plt_box <span class="ot">&lt;-</span> plt_box <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="co"># make white background</span></span>
-<span id="cb42-491"><a href="#cb42-491" aria-hidden="true" tabindex="-1"></a>plt_box <span class="ot">&lt;-</span> plt_box <span class="sc">+</span> <span class="fu">labs</span>(</span>
-<span id="cb42-492"><a href="#cb42-492" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">'Admission year'</span>, </span>
-<span id="cb42-493"><a href="#cb42-493" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">'Length of hosptial stay (days)'</span>, </span>
-<span id="cb42-494"><a href="#cb42-494" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">'Length of stay in each year, both men and women'</span></span>
-<span id="cb42-495"><a href="#cb42-495" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb42-496"><a href="#cb42-496" aria-hidden="true" tabindex="-1"></a>plt_box <span class="ot">&lt;-</span> plt_box <span class="sc">+</span> <span class="fu">theme</span>(</span>
-<span id="cb42-497"><a href="#cb42-497" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),</span>
-<span id="cb42-498"><a href="#cb42-498" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>), </span>
-<span id="cb42-499"><a href="#cb42-499" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>), </span>
-<span id="cb42-500"><a href="#cb42-500" aria-hidden="true" tabindex="-1"></a>  <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>)</span>
-<span id="cb42-501"><a href="#cb42-501" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb42-502"><a href="#cb42-502" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-503"><a href="#cb42-503" aria-hidden="true" tabindex="-1"></a>plt_box <span class="ot">&lt;-</span> plt_box <span class="sc">+</span> <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">'Set1'</span>)</span>
-<span id="cb42-504"><a href="#cb42-504" aria-hidden="true" tabindex="-1"></a>plt_box </span>
-<span id="cb42-505"><a href="#cb42-505" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-506"><a href="#cb42-506" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb42-507"><a href="#cb42-507" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-508"><a href="#cb42-508" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-511"><a href="#cb42-511" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb42-512"><a href="#cb42-512" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda2-viz-9</span></span>
-<span id="cb42-513"><a href="#cb42-513" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb42-514"><a href="#cb42-514" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb42-515"><a href="#cb42-515" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-516"><a href="#cb42-516" aria-hidden="true" tabindex="-1"></a><span class="co"># add even more information </span></span>
-<span id="cb42-517"><a href="#cb42-517" aria-hidden="true" tabindex="-1"></a>plt_box2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> data_los, </span>
-<span id="cb42-518"><a href="#cb42-518" aria-hidden="true" tabindex="-1"></a>                  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> adm_year, <span class="at">y =</span> los, <span class="at">fill =</span> sex))</span>
-<span id="cb42-519"><a href="#cb42-519" aria-hidden="true" tabindex="-1"></a>plt_box2 <span class="ot">&lt;-</span> plt_box2 <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">outlier.size =</span> <span class="fl">0.8</span>)</span>
-<span id="cb42-520"><a href="#cb42-520" aria-hidden="true" tabindex="-1"></a>plt_box2 <span class="ot">&lt;-</span> plt_box2 <span class="sc">+</span> <span class="fu">facet_wrap</span>( <span class="sc">~</span> adm_from)</span>
-<span id="cb42-521"><a href="#cb42-521" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-491"><a href="#cb42-491" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb42-492"><a href="#cb42-492" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda2-viz-8</span></span>
+<span id="cb42-493"><a href="#cb42-493" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb42-494"><a href="#cb42-494" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb42-495"><a href="#cb42-495" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-496"><a href="#cb42-496" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot can make more flexible plots</span></span>
+<span id="cb42-497"><a href="#cb42-497" aria-hidden="true" tabindex="-1"></a><span class="co"># add color </span></span>
+<span id="cb42-498"><a href="#cb42-498" aria-hidden="true" tabindex="-1"></a>plt_box <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> data_los, </span>
+<span id="cb42-499"><a href="#cb42-499" aria-hidden="true" tabindex="-1"></a>                  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> adm_year, <span class="at">y =</span> los, <span class="at">fill =</span> sex))</span>
+<span id="cb42-500"><a href="#cb42-500" aria-hidden="true" tabindex="-1"></a>plt_box <span class="ot">&lt;-</span> plt_box <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">outlier.size =</span> <span class="dv">1</span>)</span>
+<span id="cb42-501"><a href="#cb42-501" aria-hidden="true" tabindex="-1"></a><span class="co"># plt_box &lt;- plt_box + facet_wrap( ~ sex)</span></span>
+<span id="cb42-502"><a href="#cb42-502" aria-hidden="true" tabindex="-1"></a>plt_box <span class="ot">&lt;-</span> plt_box <span class="sc">+</span> <span class="fu">coord_flip</span>()</span>
+<span id="cb42-503"><a href="#cb42-503" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-504"><a href="#cb42-504" aria-hidden="true" tabindex="-1"></a><span class="co"># customize</span></span>
+<span id="cb42-505"><a href="#cb42-505" aria-hidden="true" tabindex="-1"></a>plt_box <span class="ot">&lt;-</span> plt_box <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="co"># make white background</span></span>
+<span id="cb42-506"><a href="#cb42-506" aria-hidden="true" tabindex="-1"></a>plt_box <span class="ot">&lt;-</span> plt_box <span class="sc">+</span> <span class="fu">labs</span>(</span>
+<span id="cb42-507"><a href="#cb42-507" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">'Admission year'</span>, </span>
+<span id="cb42-508"><a href="#cb42-508" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">'Length of hosptial stay (days)'</span>, </span>
+<span id="cb42-509"><a href="#cb42-509" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">'Length of stay in each year, both men and women'</span></span>
+<span id="cb42-510"><a href="#cb42-510" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb42-511"><a href="#cb42-511" aria-hidden="true" tabindex="-1"></a>plt_box <span class="ot">&lt;-</span> plt_box <span class="sc">+</span> <span class="fu">theme</span>(</span>
+<span id="cb42-512"><a href="#cb42-512" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb42-513"><a href="#cb42-513" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>), </span>
+<span id="cb42-514"><a href="#cb42-514" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>), </span>
+<span id="cb42-515"><a href="#cb42-515" aria-hidden="true" tabindex="-1"></a>  <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>)</span>
+<span id="cb42-516"><a href="#cb42-516" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb42-517"><a href="#cb42-517" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-518"><a href="#cb42-518" aria-hidden="true" tabindex="-1"></a>plt_box <span class="ot">&lt;-</span> plt_box <span class="sc">+</span> <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">'Set1'</span>)</span>
+<span id="cb42-519"><a href="#cb42-519" aria-hidden="true" tabindex="-1"></a>plt_box </span>
+<span id="cb42-520"><a href="#cb42-520" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-521"><a href="#cb42-521" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb42-522"><a href="#cb42-522" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-523"><a href="#cb42-523" aria-hidden="true" tabindex="-1"></a><span class="co"># customize</span></span>
-<span id="cb42-524"><a href="#cb42-524" aria-hidden="true" tabindex="-1"></a>plt_box2 <span class="ot">&lt;-</span> plt_box2 <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="co"># make white background</span></span>
-<span id="cb42-525"><a href="#cb42-525" aria-hidden="true" tabindex="-1"></a>plt_box2 <span class="ot">&lt;-</span> plt_box2 <span class="sc">+</span> <span class="fu">labs</span>(</span>
-<span id="cb42-526"><a href="#cb42-526" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">'Admission year'</span>, </span>
-<span id="cb42-527"><a href="#cb42-527" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">'Length of hosptial stay (days)'</span>, </span>
-<span id="cb42-528"><a href="#cb42-528" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">'Length of stay in each year, each type of admission'</span></span>
-<span id="cb42-529"><a href="#cb42-529" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb42-530"><a href="#cb42-530" aria-hidden="true" tabindex="-1"></a>plt_box2 <span class="ot">&lt;-</span> plt_box2 <span class="sc">+</span> <span class="fu">theme</span>(</span>
-<span id="cb42-531"><a href="#cb42-531" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">11</span>),</span>
-<span id="cb42-532"><a href="#cb42-532" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>), </span>
-<span id="cb42-533"><a href="#cb42-533" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>), </span>
-<span id="cb42-534"><a href="#cb42-534" aria-hidden="true" tabindex="-1"></a>  <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>), </span>
-<span id="cb42-535"><a href="#cb42-535" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>) <span class="co"># more readable</span></span>
-<span id="cb42-536"><a href="#cb42-536" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb42-523"><a href="#cb42-523" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-526"><a href="#cb42-526" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb42-527"><a href="#cb42-527" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: eda2-viz-9</span></span>
+<span id="cb42-528"><a href="#cb42-528" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb42-529"><a href="#cb42-529" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb42-530"><a href="#cb42-530" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-531"><a href="#cb42-531" aria-hidden="true" tabindex="-1"></a><span class="co"># add even more information </span></span>
+<span id="cb42-532"><a href="#cb42-532" aria-hidden="true" tabindex="-1"></a>plt_box2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> data_los, </span>
+<span id="cb42-533"><a href="#cb42-533" aria-hidden="true" tabindex="-1"></a>                  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> adm_year, <span class="at">y =</span> los, <span class="at">fill =</span> sex))</span>
+<span id="cb42-534"><a href="#cb42-534" aria-hidden="true" tabindex="-1"></a>plt_box2 <span class="ot">&lt;-</span> plt_box2 <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">outlier.size =</span> <span class="fl">0.8</span>)</span>
+<span id="cb42-535"><a href="#cb42-535" aria-hidden="true" tabindex="-1"></a>plt_box2 <span class="ot">&lt;-</span> plt_box2 <span class="sc">+</span> <span class="fu">facet_wrap</span>( <span class="sc">~</span> adm_from)</span>
+<span id="cb42-536"><a href="#cb42-536" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb42-537"><a href="#cb42-537" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-538"><a href="#cb42-538" aria-hidden="true" tabindex="-1"></a>plt_box2 <span class="ot">&lt;-</span> plt_box2 <span class="sc">+</span> <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">'Set1'</span>)</span>
-<span id="cb42-539"><a href="#cb42-539" aria-hidden="true" tabindex="-1"></a>plt_box2 </span>
-<span id="cb42-540"><a href="#cb42-540" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb42-541"><a href="#cb42-541" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-542"><a href="#cb42-542" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-538"><a href="#cb42-538" aria-hidden="true" tabindex="-1"></a><span class="co"># customize</span></span>
+<span id="cb42-539"><a href="#cb42-539" aria-hidden="true" tabindex="-1"></a>plt_box2 <span class="ot">&lt;-</span> plt_box2 <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="co"># make white background</span></span>
+<span id="cb42-540"><a href="#cb42-540" aria-hidden="true" tabindex="-1"></a>plt_box2 <span class="ot">&lt;-</span> plt_box2 <span class="sc">+</span> <span class="fu">labs</span>(</span>
+<span id="cb42-541"><a href="#cb42-541" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">'Admission year'</span>, </span>
+<span id="cb42-542"><a href="#cb42-542" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">'Length of hosptial stay (days)'</span>, </span>
+<span id="cb42-543"><a href="#cb42-543" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">'Length of stay in each year, each type of admission'</span></span>
+<span id="cb42-544"><a href="#cb42-544" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb42-545"><a href="#cb42-545" aria-hidden="true" tabindex="-1"></a>plt_box2 <span class="ot">&lt;-</span> plt_box2 <span class="sc">+</span> <span class="fu">theme</span>(</span>
+<span id="cb42-546"><a href="#cb42-546" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">11</span>),</span>
+<span id="cb42-547"><a href="#cb42-547" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>), </span>
+<span id="cb42-548"><a href="#cb42-548" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>), </span>
+<span id="cb42-549"><a href="#cb42-549" aria-hidden="true" tabindex="-1"></a>  <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>), </span>
+<span id="cb42-550"><a href="#cb42-550" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>) <span class="co"># more readable</span></span>
+<span id="cb42-551"><a href="#cb42-551" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb42-552"><a href="#cb42-552" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-553"><a href="#cb42-553" aria-hidden="true" tabindex="-1"></a>plt_box2 <span class="ot">&lt;-</span> plt_box2 <span class="sc">+</span> <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">'Set1'</span>)</span>
+<span id="cb42-554"><a href="#cb42-554" aria-hidden="true" tabindex="-1"></a>plt_box2 </span>
+<span id="cb42-555"><a href="#cb42-555" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb42-556"><a href="#cb42-556" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-557"><a href="#cb42-557" aria-hidden="true" tabindex="-1"></a></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
