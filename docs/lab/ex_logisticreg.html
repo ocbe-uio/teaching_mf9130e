@@ -161,21 +161,32 @@ ul.task-list li input[type="checkbox"] {
 <hr>
 <section id="exercise-1-birth" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-1-birth">Exercise 1 (birth)</h2>
-<p>We shall analyse the data set given in the file <code>birth.dta</code>. In a study in Massachusetts, USA, birth weight was measured for the children of 189 women. The main variable in the study was birth weight, <code>BWT</code>, which is an important indicator of the condition of a newborn child. Low birth weight (below 2500 g) may be a medical risk factor. A major question is whether smoking during pregnancy influences the birth weight. One has also studied whether a number of other factors are related to birth weight, such as hypertension in the mother.</p>
+<p>In a study in Massachusetts, USA, birth weight was measured for the children of 189 women. The main variable in the study was birth weight, <code>bwt</code>, which is an important indicator of the condition of a newborn child. Low birth weight (below 2500 g) may be a medical risk factor. A major question is whether smoking during pregnancy influences the birth weight. One has also studied whether a number of other factors are related to birth weight, such as hypertension in the mother.</p>
 <p>The variables of the study are</p>
 <ul>
-<li>Identification number (ID)</li>
-<li>Low birth weight (LOW)</li>
-<li>Age of the mother (AGE)</li>
-<li>Weight (in pounds) at last menstruaal period (LWT)</li>
-<li>Ethnicity, 1 means White, 2 means African American, 3 meaans other (ETH)</li>
-<li>Smoking status, 1 means current smoker, 0 means not smoking during pregnancy (SMK)</li>
-<li>History of premature labbour, values 0, 1, 2… (PTL)</li>
-<li>History of hypertension, 1 is yes, 0 is no (HT)</li>
-<li>Uterine irritability, 1 is yes, 0 is no (UI)</li>
-<li>First trimester visits, values 0, 1, 2… (FTV)</li>
-<li>Third trimster visits, values 0, 1, 2… (TTV)</li>
-<li>Birth weight (BWT)</li>
+<li>Identification number (id)<br>
+</li>
+<li>Low birth weight (low), i.e.&nbsp;bwt below or above 2500g<br>
+</li>
+<li>Age of the mother in years (age)<br>
+</li>
+<li>Weight (in pounds) at last menstrual period (lwt)<br>
+</li>
+<li>Ethnicity: white, black, or other (eth)<br>
+</li>
+<li>Smoking status, <code>smoker</code> means current smoker, <code>nonsmoker</code> means not smoking during pregnancy (smk)<br>
+</li>
+<li>History of premature labour, values 0, 1, 2… (ptl)<br>
+</li>
+<li>History of hypertension: yes vs no (ht)<br>
+</li>
+<li>Uterine irritability, yes vs no (ui)<br>
+</li>
+<li>First trimester visits, values 0, 1, 2… (ftv)<br>
+</li>
+<li>Third trimester visits, values 0, 1, 2… (ttv)<br>
+</li>
+<li>Birth weight in grams (bwt)</li>
 </ul>
 <section id="a" class="level4">
 <h4 class="anchored" data-anchor-id="a">1a)</h4>
