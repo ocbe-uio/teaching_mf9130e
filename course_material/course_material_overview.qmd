@@ -38,9 +38,11 @@ For the exercises and lab notes we use during the lab sessions, please check the
 |                  | Non-parametric methods | |[Lab notes](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_nonpara.html) | |
 | May 8 PM | Sample size, statistical power          | | | | |
 | May 9 AM | Study design, principles of clinical trials          | |  | |
-| May 9 PM | Linear regression        | | [Lab notes](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_linearreg.html) | |
-| May 10 AM | Logistic regression          | | [Lab notes](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_logisticreg.html) | |
-| May 10 PM | Survival analysis          | | [Lab notes](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_survival.html) | |
+| May 9 PM | Linear regression I        | | [Lab notes](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_linearreg-I.html) | |
+| May 10 AM | Linear regression II       | | [Lab notes](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_linearreg-II.html) | |
+| May 10 PM | Linear regression III       | | [Lab notes](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_linearreg-III.html) | |
+| May 11 AM | Logistic regression          | | [Lab notes](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_logisticreg.html) | |
+| May 11 PM | Survival analysis          | | [Lab notes](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_survival.html) | |
 
 
 
