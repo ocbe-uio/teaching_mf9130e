@@ -64,7 +64,9 @@ To help you with the exercises and homework, we have created this [list of comma
 | [Categorical data analysis](lab_categorical.qmd)| Proportions, contingency table, chi-square test | [exercise](ex_categorical.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/4_categorical.R)|
 | [Non-parametric tests](lab_nonpara.qmd) |Wilcoxon signed test, rank sum test | [exercise](ex_nonpara.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/6_nonpara.R) |
 | [Sample size, power](https://ocbe-uio.github.io/teaching_mf9130e/course_material/day5/day5_exercises_sample_size.pdf)| Sample size, power calculation |[code: lecture](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/day5_lecture_sample_size.R), [code: exercises](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/day5_lab_sample_size.R) |
-| [Linear regression](lab_linearreg.qmd)| Linear regression, correlation | [exercise](ex_linearreg.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/8_linearreg.R)|
+| [Linear regression I](lab_linearreg-I.qmd)| Correlation, univariate analysiss | [exercise](ex_linearreg-I.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/8_linearreg.R)|
+| [Linear regression II](lab_linearreg-II.qmd)| Multiple regression | [exercise](ex_linearreg-II.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/8_linearreg.R)|
+| [Linear regression III](lab_linearreg-I.qmd)| Model diagnostics, selection| [exercise](ex_linearreg-III.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/8_linearreg.R)|
 | [Logistic regression](lab_logistic_reg.qmd)| Logistic regression |[exercise](ex_logisticreg.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/9_logisticreg.R) |
 | [Survival analysis](lab_survival.qmd)|Kaplan-Meier curve, log rank tests | [exercise](ex_survival.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/10_survival.R)| 
 

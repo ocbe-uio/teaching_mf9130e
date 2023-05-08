@@ -265,17 +265,69 @@ wilcox.test(x, y, paired = F)
 ```
 
 
-# Regression
+# Regression analysis
 
 
 #### Linear regression
 
+```{r}
+#| label: linearreg
+#| echo: true
+#| eval: false
+
+# univariate: y is dependent var, x,z are independent var
+linear_model <- lm(y ~ x, data = your_data)
+
+# multivarite
+linear_model <- lm(y ~ x+z, data = your_data)
+
+# model summary
+summary(linear_model)
+
+# model diagnostic plots
+plot(linear_model)
+```
+
+
 
 #### Logistic regression
+
+```{r}
+#| label: logisticreg
+#| echo: true
+#| eval: false
+
+# univariate: y is dependent var, x,z are independent var
+# y needs to be either 0/1, or factors
+logit_model <- glm(y ~ x, data = your_data, family = 'binomial')
+
+# multivariate, summary and diagnostic are the same as linear model
+```
 
 #### Survival analysis
 
 
+```{r}
+#| label: survival
+#| echo: true
+#| eval: false
 
+# need package, survival
+# install.packages('survival')
+library(survival)
+
+# fit kaplan-meier plot
+km_fit <- survfit(Surv(lifetime, death) ~ 1)
+plot(km_fit)
+
+# survival probabilities at specific times
+tme <- c(1, 2, 5) # time points
+summary(km_fit, times = tme)
+
+# log rank test (compare two genders)
+km_fit_gender <- survfit(Surv(lifetime, death) ~ gender)
+plot(km_fit_gender, col = c('blue', 'red'))
+survdiff(Surv(lifetime, death) ~ gender)
+```
 
 

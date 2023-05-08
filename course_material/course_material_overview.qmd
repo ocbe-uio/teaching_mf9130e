@@ -13,36 +13,36 @@ For the exercises and lab notes we use during the lab sessions, please check the
 
 ## Week 1
 
-|     Time      |                  Topic                   |   Lecture notes    |  Lab | Other |
-|:-------------:|:-----------------------------------------:|:---------:|:----:|:-----:|
-| April 24 PM  | Course introduction | [Slides](Module1-Part1-Course_introduction.pdf) |  | |
-|              | Descriptive statistics| [Slides](Module1-Part2-Data_and_descriptive_statistics_full.pdf), K&S chapter 2-4, Aalen chapter 1-2  |  | [Paper 1](Gerstung_2015.pdf), [Paper 2](Kristiansen_2022.pdf), [Paper 3](PreventADALL_2022.pdf) |
-| April 25 AM  | Introduction to R and Rstudio | [Slides](lab_slides/lablecture_intro_r.pdf) | [Intro to RStudio](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_intro_rstudio.html), [Intro to R](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_intro_r.html) | |
-|              | Lab session |[Slides](lab_slides/lablecture_eda1.pdf) | [Descriptive statistics (EDA I)](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_eda_part1.html) | |
-| April 25 PM | Probability, diagnosistic tests  | [Intro slides](Slides_intro_probability_diagnostic_tests.pdf) [Probability](notes_probability.qmd) [Diagnostic tests](notes_diagnostic_tests.qmd) |     |       |
-|             |  Statistical distributions   |  [Distributions](notes_distributions.qmd)  |     |       |
-| April 26 AM |  Lab session  | | [COVID-19 tests](lab_diagnostic_tests.qmd),  [Simulations](lab_distributions.qmd)  |  |
-| April 26 PM |  Statistical inference, confidence intervals, t-test         |[Overview](day3/Module3-PartI-IntroLecture.pdf), [Sample mean](day3/Module3-PartI-key_concept_1.pdf), [Confidence interval](day3/Module3-PartI-key_concept_2.pdf), [Hypothesis testing](day3/Module3-PartI-key_concept_3.pdf)  |  | |
-| April 27 AM |  Lab session         |[Slides](lab_slides/lablecture_ttest.pdf)  | [t-test](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_ttest.html) | |
-| April 27 PM |  Categorical data, proportions, table analysis        |[Overview](day4/Module3-PartII-IntroLecture.pdf), [Proportions](day4/Module3-PartII-key_concept_1.pdf), [Compare proportions](day4/Module3-PartII-key_concept_2.pdf),  [Table analysis](day4/Module3-PartII-key_concept_3.pdf) |  | |
-| April 28 AM |  Lab session        | [Slides](lab_slides/lablecture_categorical.pdf) | [Categorical data analysis](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_categorical.html) | |
+|     Time      |                  Topic                   |   Lecture notes    |  Lab |
+|:-------------:|:-----------------------------------------:|:---------:|:----:|
+| April 24 PM  | Course introduction | [Slides](Module1-Part1-Course_introduction.pdf) |  |
+|              | Descriptive statistics| [Slides](Module1-Part2-Data_and_descriptive_statistics_full.pdf), K&S chapter 2-4, Aalen chapter 1-2  | [Paper 1](Gerstung_2015.pdf), [Paper 2](Kristiansen_2022.pdf), [Paper 3](PreventADALL_2022.pdf)  |
+| April 25 AM  | Introduction to R and Rstudio | [Slides](lab_slides/lablecture_intro_r.pdf) | [Intro to RStudio](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_intro_rstudio.html), [Intro to R](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_intro_r.html) | 
+|              | Lab session |[Slides](lab_slides/lablecture_eda1.pdf) | [Descriptive statistics (EDA I)](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_eda_part1.html) | 
+| April 25 PM | Probability, diagnosistic tests  | [Intro slides](Slides_intro_probability_diagnostic_tests.pdf) [Probability](notes_probability.qmd) [Diagnostic tests](notes_diagnostic_tests.qmd) |  |
+|             |  Statistical distributions   |  [Distributions](notes_distributions.qmd)  |     |
+| April 26 AM |  Lab session  | | [COVID-19 tests](lab_diagnostic_tests.qmd),  [Simulations](lab_distributions.qmd)  |
+| April 26 PM |  Statistical inference, confidence intervals, t-test         |[Overview](day3/Module3-PartI-IntroLecture.pdf), [Sample mean](day3/Module3-PartI-key_concept_1.pdf), [Confidence interval](day3/Module3-PartI-key_concept_2.pdf), [Hypothesis testing](day3/Module3-PartI-key_concept_3.pdf)  |  | 
+| April 27 AM |  Lab session         |[Slides](lab_slides/lablecture_ttest.pdf)  | [t-test](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_ttest.html) | 
+| April 27 PM |  Categorical data, proportions, table analysis        |[Overview](day4/Module3-PartII-IntroLecture.pdf), [Proportions](day4/Module3-PartII-key_concept_1.pdf), [Compare proportions](day4/Module3-PartII-key_concept_2.pdf),  [Table analysis](day4/Module3-PartII-key_concept_3.pdf) | |
+| April 28 AM |  Lab session        | [Slides](lab_slides/lablecture_categorical.pdf) | [Categorical data analysis](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_categorical.html) |
 
 
 
 ## Week 2
 
 
-|     Time      |                  Topic                   |   Lecture notes     |  Lab | Other |
-|:-------------:|:----------------------------------------:|:--------:|:-------------:|:--------:|
-| May 8 AM  | Exploratory data analysis (part II) | [Lecture](day5/lecture_eda2.pdf)|[Lab notes](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_eda_part2.html) | |
-|                  | Non-parametric methods |[Lecture](day5/lecture_nonpara.pdf) |[Lab notes](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_nonpara.html) | |
-| May 8 PM | Sample size, statistical power          |[Lecture](day5/day5_lecture_sample_size.pdf) | [Exercises](day5/day5_exercises_sample_size.pdf)| | |
-| May 9 AM | Study design, principles of clinical trials          | |  | |
-| May 9 PM | Linear regression I        | | [Lab notes](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_linearreg-I.html) | |
-| May 10 AM | Linear regression II       | | [Lab notes](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_linearreg-II.html) | |
-| May 10 PM | Linear regression III       | | [Lab notes](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_linearreg-III.html) | |
-| May 11 AM | Logistic regression          | | [Lab notes](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_logisticreg.html) | |
-| May 11 PM | Survival analysis          | | [Lab notes](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_survival.html) | |
+|     Time      |                  Topic                   |   Lecture notes     |  Lab |
+|:-------------:|:----------------------------------------:|:--------:|:-------------:|
+| May 8 AM  | Exploratory data analysis (part II) | [Lecture](day5/lecture_eda2.pdf)|[EDA II](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_eda_part2.html) | 
+|                  | Non-parametric methods |[Lecture](day5/lecture_nonpara.pdf) |[Non-parametric tests](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_nonpara.html) | 
+| May 8 PM | Sample size, statistical power          |[Lecture](day5/day5_lecture_sample_size.pdf) | [Exercises](day5/day5_exercises_sample_size.pdf)| | 
+| May 9 AM | Study design, principles of clinical trials          | [Lecture](day6/2023-05-09_Epidemiological-clinical-design_Stenehjem_UPLOAD.pdf)|  | 
+| May 9 PM | Linear regression I        | | [Linear regression I](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_linearreg-I.html) | 
+| May 10 AM | Linear regression II       | | [Linear regression II](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_linearreg-II.html) | 
+| May 10 PM | Linear regression III       | | [Linear regression III](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_linearreg-III.html) | 
+| May 11 AM | Logistic regression          | | [Logistic regression](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_logistic_reg.html) | 
+| May 11 PM | Survival analysis          | | [Survival analysis](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_survival.html) | 
 
 
 
