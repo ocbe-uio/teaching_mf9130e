@@ -53,21 +53,31 @@ Make a scatter plot of `pefsit2` versus `pefsit1`; and make a separate scatter p
 #| echo: true
 
 lung_data <- read.csv('data/PEFH98-english.csv')
+
 # head(lung_data)
 # assign variables (not strictly necessary)
 pefsit1 <- lung_data$pefsit1
 pefsit2 <- lung_data$pefsit2
 weight <- lung_data$weight
 
+# scatter plot: pefsit2 vs pefsit1
+
+#Simple version (using default plot options):
+plot(x = pefsit1, y = pefsit2)
+abline(lm(pefsit2 ~ pefsit1, data = lung_data))
+
+#Alternative using the formula notation:
+# plot(pefsit2 ~ pefsit1, data=lung_data)
+
 par(mfrow = c(1, 2)) # make plots in 1 row 2 col
 
-# scatter plot: pefsit2 vs pefsit1
+#More elaborate version:
 plot(x = pefsit1, y = pefsit2, 
-     main = 'PEF sit1 vs PEF sit2', 
-     xlab = 'pefsit1', ylab = 'pefsit2', 
-     pch = 20)
+     main = 'PEF sit1 vs PEF sit2',         #add a plot heading
+     xlab = 'pefsit1', ylab = 'pefsit2',    #change the axis labels
+     pch = 20)                              #change the point type
 abline(lm(pefsit2 ~ pefsit1, data = lung_data), 
-       col = 'blue', lwd = 3)
+       col = 'blue', lwd = 3)     #change the line colour and width
 
 # scatter plot: pefsit1 vs weight
 plot(x = weight, y = pefsit1, 
@@ -87,7 +97,7 @@ Compute the correlation between `pefsit1` and `pefsit2`; and between `pefsit1` a
 
 Why is the correlation between the first pair closer to 1 than the second pair?
 
-*Note: You can get the pair-wise correlation between many other pairs of variables using `cor(your_data)`. Be mindful of missing values in your data; if there are any missing values, you can still calculate the correlation by using `cor(your_data, use='pairwise.complete.obs').*  
+*Note: You can get the pair-wise correlation between many other pairs of variables using `cor(your_data)`. Be mindful of missing values in your data; if there are any missing values, you can still calculate the correlation by using `cor(your_data, use='complete.obs').*  
 
 ```{r}
 #| label: linear-1b-1
@@ -101,10 +111,9 @@ which(is.na(pefsit2)) # 66th missing
 
 # option 1: cor() removes NA for you 
 # specify use complete observations
-cor(pefsit2, pefsit1, use = 'pairwise.complete.obs')
+cor(pefsit2, pefsit1, use = 'complete.obs')
 
- 
-# option 2: you process (remove) the row of missing 
+# option 2 (advanced): you process (remove) the row of missing 
 # from both variables (remove element 66)
 pefsit2_narm <- pefsit2[!is.na(pefsit2)]
 pefsit1_narm <- pefsit1[!is.na(pefsit2)]
@@ -112,9 +121,12 @@ pefsit1_narm <- pefsit1[!is.na(pefsit2)]
 # use pefsit2_narm instead of pefsit2 to compute cor
 # should be the same
 cor(pefsit2_narm, pefsit1_narm)
+
+# option 3: cor.test automatically removes missing values:
+cor.test(pefsit2, pefsit1)
 ```
 
-The output indicates a very significant correlation between `pefsit2` and `pefsit1 (p < 0.001)`. This could be expected from observing the scatterplot.
+The output indicates a very significant correlation between `pefsit2` and `pefsit1 (r=0.97, p < 0.001)`. This could be expected from observing the scatterplot.
 
 For `pefsit1` and `weight` it is straightforward, as there is not missing data. 
 
@@ -124,10 +136,10 @@ For `pefsit1` and `weight` it is straightforward, as there is not missing data.
 #| echo: true
 
 # pefsit1, weight
-cor(pefsit1, weight)
+cor.test(pefsit1, weight)
 ```
 
-This again shows a very small p-value (p < 0.001), which indicates that the correlation between `pefsit1` and `weight` is significant. However, the value of the correlation is slightly lower than for `pefsit2` and `pefsit1`, and this corresponds to the slightly worse fit of the line in the scatter plot.
+This again shows a very small p-value (r = 0.71, p < 0.001), which indicates that the correlation between `pefsit1` and `weight` is significant. However, the value of the correlation is slightly lower than for `pefsit2` and `pefsit1`, and this corresponds to the slightly worse fit of the line in the scatter plot.
 
 To compute the correlation between multiple pairs, you need to select a few variables first.
 
@@ -146,7 +158,7 @@ head(lungdata2, 3)
 
 # produce correlation matrix for all the variables here
 # round(1.2345, digits = 2) gives 1.23
-round(cor(lungdata2, use = 'pairwise.complete.obs'), digits = 2)
+round(cor(lungdata2, use = 'complete.obs'), digits = 2)
 ```
 
 The correlation table shows that `age` has a very low correlation to the other variables in the dataset, that `height` and `weight` are quite well correlated to the `pefsit` measurements, while (as expected) all `pefsit` measurements are very correlated with one another.
@@ -155,8 +167,8 @@ The correlation table shows that `age` has a very low correlation to the other v
 
 Carry out two regression analysis: 
 
-* `pefsit2` as dependent variable, `pefsit1` as independent variable;
-* `pefsit1` as dependent variable, `weight` as independent variable.
+* `pefsit2` as dependent variable (y), `pefsit1` as independent variable (x);
+* `pefsitm` as dependent variable (y), `weight` as independent variable (x).
 
 Interpret the results in relation to the scatter plots.
 
@@ -168,10 +180,11 @@ Interpret the results in relation to the scatter plots.
 # pef2 vs pef 1
 lm_pef2_pef1 <- lm(pefsit2 ~ pefsit1, data = lung_data)
 summary(lm_pef2_pef1)
+confint(lm_pef2_pef1)
 ```
 
 The regression coefficient for `pefsit1` is highly significant (p < 0.001), the estimated regression line is `pefsit2 = 11.7 + 0.98 * pefsit1`, with the 95\% confidence interval for the slope coefficient being (0.94, 1.03), and
-R^2 = 93.96\%. The model is highly statistically significant.
+R^2 = 93.96\%. The model is highly statistically significant (p < 0.001).
 
 ```{r}
 #| label: linear-1c-2
@@ -181,6 +194,10 @@ R^2 = 93.96\%. The model is highly statistically significant.
 # pef1 vs weight 
 lm_pef1_weight <- lm(pefsit1 ~ weight, data = lung_data)
 summary(lm_pef1_weight)
+confint(lm_pef1_weight)
+
+#Model diagnostics plots:
+plot(lm_pef1_weight)
 ```
 
 The regression coeficient for `weight` is highly significant (p < 0.001), the estimated regression line is `pefsit1 = -30.08+7.86 * weight`, with the 95\% confidence interval for the slope coefficient being (6.32, 9.39). This
@@ -284,15 +301,11 @@ The regression parameter is positive, meaning that blood pressure increases with
 #| warning: false
 #| echo: true
 
-plot(x = bp$Age, y = bp$bloodpressure, 
-     main = 'Age versus Blood Pressure', 
-     xlab = 'Age', ylab = 'Blood pressure', 
-     pch = 20, 
-     xlim = c(15, 80))
+plot(x = bp$Age, y = bp$bloodpressure, xlim = c(15, 80))
 # add the regression line on top
-abline(lm(bloodpressure ~ Age, data = bp), 
-       col = 'blue', lwd = 3)
+abline(lm(bloodpressure ~ Age, data = bp), col = 'blue')
 
 # residual plots
+par(mfrow = c(2, 2)) # plot 2 by 2
 plot(lm(bloodpressure ~ Age, data = bp))
 ```
