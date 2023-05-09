@@ -97,7 +97,7 @@ Compute the correlation between `pefsit1` and `pefsit2`; and between `pefsit1` a
 
 Why is the correlation between the first pair closer to 1 than the second pair?
 
-*Note: You can get the pair-wise correlation between many other pairs of variables using `cor(your_data)`. Be mindful of missing values in your data; if there are any missing values, you can still calculate the correlation by using `cor(your_data, use='complete.obs').*  
+*Note: You can get the pair-wise correlation between many other pairs of variables using `cor(your_data)`. Be mindful of missing values in your data; if there are any missing values, you can still calculate the correlation by using `cor(your_data, use='pairwise.complete.obs').*  
 
 ```{r}
 #| label: linear-1b-1
@@ -111,7 +111,7 @@ which(is.na(pefsit2)) # 66th missing
 
 # option 1: cor() removes NA for you 
 # specify use complete observations
-cor(pefsit2, pefsit1, use = 'complete.obs')
+cor(pefsit2, pefsit1, use = 'pairwise.complete.obs')
 
 # option 2 (advanced): you process (remove) the row of missing 
 # from both variables (remove element 66)
@@ -158,7 +158,7 @@ head(lungdata2, 3)
 
 # produce correlation matrix for all the variables here
 # round(1.2345, digits = 2) gives 1.23
-round(cor(lungdata2, use = 'complete.obs'), digits = 2)
+round(cor(lungdata2, use = 'pairwise.complete.obs'), digits = 2)
 ```
 
 The correlation table shows that `age` has a very low correlation to the other variables in the dataset, that `height` and `weight` are quite well correlated to the `pefsit` measurements, while (as expected) all `pefsit` measurements are very correlated with one another.
