@@ -20,17 +20,28 @@ weight <- lung_data$weight
 
 # 1a) -----
 
+# ----
+# i) scatter plot: pefsit2 vs pefsit1
+
+#Simple version (using default plot options):
+plot(x = pefsit1, y = pefsit2)
+abline(lm(pefsit2 ~ pefsit1, data = lung_data))
+
+#Alternative using the formula notation:
+# plot(pefsit2 ~ pefsit1, data=lung_data)
+
 par(mfrow = c(1, 2)) # make plots in 1 row 2 col
 
-# scatter plot: pefsit2 vs pefsit1
+#More elaborate version:
 plot(x = pefsit1, y = pefsit2, 
-     main = 'PEF sit1 vs PEF sit2', 
-     xlab = 'pefsit1', ylab = 'pefsit2', 
-     pch = 20)
+     main = 'PEF sit1 vs PEF sit2',         #add a plot heading
+     xlab = 'pefsit1', ylab = 'pefsit2',    #change the axis labels
+     pch = 20)                              #change the point type
 abline(lm(pefsit2 ~ pefsit1, data = lung_data), 
-       col = 'blue', lwd = 3)
+       col = 'blue', lwd = 3)     #change the line colour and width
 
-# scatter plot: pefsit1 vs weight
+# ----
+# ii) scatter plot: pefsit1 vs weight
 plot(x = weight, y = pefsit1, 
      main = 'Weight vs pefsit1', 
      xlab = 'Weight', ylab = 'pefsit1', 
@@ -53,8 +64,7 @@ which(is.na(pefsit2)) # 66th missing
 # specify use complete observations
 cor(pefsit2, pefsit1, use = 'pairwise.complete.obs')
 
- 
-# option 2: you process (remove) the row of missing 
+# option 2 (advanced): you process (remove) the row of missing 
 # from both variables (remove element 66)
 pefsit2_narm <- pefsit2[!is.na(pefsit2)]
 pefsit1_narm <- pefsit1[!is.na(pefsit2)]
@@ -62,6 +72,9 @@ pefsit1_narm <- pefsit1[!is.na(pefsit2)]
 # use pefsit2_narm instead of pefsit2 to compute cor
 # should be the same
 cor(pefsit2_narm, pefsit1_narm)
+
+# option 3: cor.test automatically removes missing values:
+cor.test(pefsit2, pefsit1)
 
 #| label: linear-1b-2
 #| warning: false
@@ -74,6 +87,9 @@ cor(pefsit1, weight)
 #| warning: false
 #| echo: true
 
+# pairwise for multiple pairs 
+# use age, height, weight, pefsit1, pefsit2, pefsit3, pefmean
+# select a smaller dataset 
 # pairwise for multiple pairs 
 # use age, height, weight, pefsit1, pefsit2, pefsit3, pefmean
 # select a smaller dataset 
@@ -95,6 +111,7 @@ round(cor(lungdata2, use = 'pairwise.complete.obs'), digits = 2)
 # pef2 vs pef 1
 lm_pef2_pef1 <- lm(pefsit2 ~ pefsit1, data = lung_data)
 summary(lm_pef2_pef1)
+confint(lm_pef2_pef1)
 
 #| label: linear-1c-2
 #| warning: false
@@ -103,6 +120,7 @@ summary(lm_pef2_pef1)
 # pef1 vs weight 
 lm_pef1_weight <- lm(pefsit1 ~ weight, data = lung_data)
 summary(lm_pef1_weight)
+confint(lm_pef1_weight)
 
 # 1d) -----
 
@@ -152,6 +170,7 @@ cor.test(bp$Age, bp$bloodpressure)
 # fit a linear regression model
 model_age_bp <- lm(bloodpressure ~ Age, data = bp)
 summary(model_age_bp)
+confint(model_age_bp)
 
 # to predict (insert x), you need to put data in a data frame
 predict(model_age_bp, 

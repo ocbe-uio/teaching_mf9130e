@@ -195,9 +195,6 @@ R^2 = 93.96\%. The model is highly statistically significant (p < 0.001).
 lm_pef1_weight <- lm(pefsit1 ~ weight, data = lung_data)
 summary(lm_pef1_weight)
 confint(lm_pef1_weight)
-
-#Model diagnostics plots:
-plot(lm_pef1_weight)
 ```
 
 The regression coeficient for `weight` is highly significant (p < 0.001), the estimated regression line is `pefsit1 = -30.08+7.86 * weight`, with the 95\% confidence interval for the slope coefficient being (6.32, 9.39). This
@@ -283,6 +280,7 @@ What is the blood pressure for a person at age 40? For a person at age 75? Comme
 # fit a linear regression model
 model_age_bp <- lm(bloodpressure ~ Age, data = bp)
 summary(model_age_bp)
+confint(model_age_bp)
 
 # to predict (insert x), you need to put data in a data frame
 predict(model_age_bp, 
