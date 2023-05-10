@@ -49,7 +49,7 @@ crime_data <- read.csv('data/crime_mod.csv')
 par(mfrow = c(1, 2)) # make plots in 1 row 2 col
 
 # scatter plot: crime vs pctmetro
-plot(crime ~ pctmetro, pch='.', data = crime_data)
+plot(crime ~ pctmetro, pch=".", data = crime_data)
 text(crime ~ pctmetro, labels = state, data = crime_data)
 
 abline(lm(crime ~ pctmetro, data = crime_data), col = 'blue')
@@ -118,6 +118,13 @@ After removing this outlier (e.g. via index and `which()`), we refit the simple 
 summary(lm(crime ~ pctmetro, 
            data = crime_data[which(crime_data$state != 'dc'),]))
 
+ids <- crime_data$state != 'dc' & crime_data$state != 'ms'
+which.ids <- which(ids)
+crime_subset <- crime_data[which.ids, ]
+fit <- lm(crime ~ pctmetro, data = crime_subset)
+summary(fit)
+plot(fit)
+
 # residual analysis:
 par(mfrow=c(2,2))
 plot(lm(crime ~ pctmetro, 
@@ -145,7 +152,7 @@ plot(lm(crime ~ single,
 
 In this case, instead, even if the predictor is still highly significant, the explained variation is much smaller! (and the predictor coefficient changed from 174 to 130, huge effect of a single data point). This is because, differently from the previous analysis, the outlier was improving the regression fit by driving the entire analysis.
 
-Normal probability plot of the residuals and leverage analysis help us verify that we now solved the issue in this analysis as well. In order to be extremely careful, we should do a scatter plot of crime vs single for the data without Washington D.C., and check whether MS (row number 9) is another leverage point/ outlier. Try!
+Normal probability plot of the residuals and leverage analysis help us verify that we now solved the issue in this analysis as well. In order to be extremely careful, we should do a scatter plot of crime vs single for the data without Washington D.C., and check whether MS (row number 25) is another leverage point/ outlier. Try!
 
 
 ## Exercise 2 (birth). 
