@@ -39,8 +39,8 @@ For the exercises and lab notes we use during the lab sessions, please check the
 | May 8 PM | Sample size, statistical power          |[Lecture](day5/day5_lecture_sample_size.pdf) | [Exercises](day5/day5_exercises_sample_size.pdf)| | 
 | May 9 AM | Study design, principles of clinical trials          | [Lecture](day6/2023-05-09_Epidemiological-clinical-design_Stenehjem_UPLOAD.pdf)|  | 
 | May 9 PM | Linear regression I        | [Lecture](day6/Module7-Regression1.pdf) | [Linear regression I](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_linearreg-I.html) | 
-| May 10 AM | Linear regression II       | | [Linear regression II](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_linearreg-II.html) | 
-| May 10 PM | Linear regression III       | | [Linear regression III](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_linearreg-III.html) | 
+| May 10 AM | Linear regression II       | [Lecture](Module7-Regression2.pdf) | [Linear regression II](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_linearreg-II.html) | 
+| May 10 PM | Linear regression III       | [Lecture](Module7-Regression2.pdf) | [Linear regression III](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_linearreg-III.html) | 
 | May 11 AM | Logistic regression          | | [Logistic regression](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_logistic_reg.html) | 
 | May 11 PM | Survival analysis          | | [Survival analysis](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_survival.html) | 
 
