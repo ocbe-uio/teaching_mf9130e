@@ -5,13 +5,21 @@ title: "MF9130E - Introductory course in Statistics"
 
 ------------------
 
-# Important Notice:
+::: callout-note
+## Use of the course material
 
-The course will start up slightly later today (Thursday, 11 May) because Manuela is delayed due to several canceled trains. We expect to start the course around 08:45. Very sorry for the delay!
+This course website was built primarily with students taking MF9130E in mind, therefore the topics and examples are tailored to matche the existing teaching material we had been using at UiO.
+
+However, the course material and website are **open source and fully publicly accessible**. We advocate strongly for **making learning statistics more accessible to everyone**. Feel free to spread the words! And do let us know if you benefit from the course and the website :)  
+
+Please contact Chi Zhang [chi.zhang\@medisin.uio.no](mailto:chi.zhang@medisin.uio.no) if you have questions and feedbacks.
+
+:::
+
 
 # Welcome!
 
-You are on the course website for MF9130E - Introductory Course in Statistics.
+You are on the course website for **MF9130E - Introductory Course in Statistics** at the Faculty of Medicine, University of Oslo.
 
 -   The course is intended for students and researchers who are interested in statistics and R programming, with applications in medical and healthcare data. No previous programming experience is required to participate in this course.
 -   This website is developed by the instructors of the course, hosted for free and public access on Github. The course github repository can be accessed [here](https://github.com/ocbe-uio/teaching_mf9130e). 
