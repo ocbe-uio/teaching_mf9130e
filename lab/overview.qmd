@@ -78,4 +78,4 @@ List of commands that are useful for this course: [list of commands](list_of_com
 
 Book (Wickham et al) [R for Data Science (2e)](https://r4ds.hadley.nz)
 
-
+[Demo](demo_interactive.qmd) of webR 

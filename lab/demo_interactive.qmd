@@ -1,0 +1,32 @@
+---
+title: "Demo: run code interactively"
+description: "Using `webr` extension"
+engine: knitr
+format: 
+  html:
+    code-fold: false
+    code-tools: false
+editor: source
+filters: 
+  - webr
+webr:
+  channel-type: "post-message"
+---
+
+
+# Create variables
+
+Create a numeric variable
+
+
+```{webr-r}
+#| label: use-webr
+#| echo: true
+#| eval: true
+a <- 3
+b <- 5
+a+b
+```
+
+
+
