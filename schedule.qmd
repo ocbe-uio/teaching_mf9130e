@@ -9,35 +9,65 @@ editor: source
 
 
 
-
-# Schedule
-
-You can find the **official course schedule** provided by University of Oslo [here](https://www.uio.no/studier/emner/medisin/med/MF9130E/v24/timeplan/index.html). If there is an error in the time and place on this page, please refer to the official schedule.
-
-### Week 1
+You can find the **official course schedule** provided by University of Oslo [here](https://www.uio.no/studier/emner/medisin/med/MF9130E/v24/timeplan/index.html). 
+If there is an error in the time and place on this page, please refer to the official schedule.
 
 
-| Date |  Time   |   Topic                  |  Place        |
-|:----:|:-------:|:------------------------:|:-------------:|
-| Apr 24 |12:45-16:00 | Lecture: **course introduction, data and descriptive statistics** | DME, Lille auditorium|
-| Apr 25 | 08:30-11:45 | Guided lab session: **introduction to R, descriptive statistics with R** | DME, Auditorium 13|
-| Apr 25 | 12:45-16:00 | Lecture: **probability, Bayes law, diagnostic tests, distributions** | DME, Auditorium 13|
-| Apr 26 | 08:30-11:45 | Guided lab session | DME, Store auditorium|
-| Apr 26 | 12:45-16:00 | Lecture: **statistical inference, hypothesis testing, confidence intervals, t-tests** | DME, Store auditorium|
-| Apr 27 | 08:30-11:45 | Guided lab session | DME, Runde auditorium R105|
-| Apr 27 | 12:45-16:00 | Lecture: **categorical data analysis** | DME, Runde auditorium R105|
-| Apr 28 | 08:30-11:45 | Guided lab session | DME, Store Auditorium|
+::: callout-note
+
+## Time and place
+
+Sessions are roughly divided by AM (morning) and PM (afternoon). 
+
+- AM: 8:30 - 11:45
+- PM: 12:45 - 16:00
+
+Locations
+
+- **Aud13**: Auditorium 13 in Domus Medica ([map](https://use.mazemap.com/#v=1&config=uio&campusid=799&zlevel=2&center=10.715371,59.946743&zoom=18&sharepoitype=poi&sharepoi=1000983201))
+- **Runde**: Runde auditorium R105 ([map](https://use.mazemap.com/#v=1&config=uio&campusid=799&zlevel=1&center=10.715886,59.946189&zoom=18&sharepoitype=poi&sharepoi=1001022929))
+
+:::
 
 
-### Week 2
+# Week 1
 
-| Date |  Time   |   Topic                  |  Place        |
-|:----:|:-------:|:------------------------:|:-------------:|
-| May 8 |08:30-11:45 | Lecture and lab: **exploratory data analysis, transformation, non-parametric methods** | DME, Lille auditorium|
-| May 8 | 12:45-16:00 | Lecture and lab: **sample size, statistical power** | DME, Lille auditorium|
-| May 9 | 08:30-11:45 | Lecture: **study designs, principle of clinical trials** | Helga Engs hus Auditorium 3|
-| May 9 | 12:45-16:00 | Lecture and lab: **regression I: simple regression, correlation** | Helga Engs hus Auditorium 3|
-| May 10 | 08:30-11:45 | Lecture and lab: **regression II: dummy variables, confounding, multiple regression** | DME, Auditorium 13|
-| May 10 | 12:45-16:00 | Lecture and lab: **regression III: multiple regression (continued), interactions** | DME, Auditorium 13|
-| May 11 | 08:30-11:45  | Lecture and lab: **logistic regression** | DME, Auditorium 13|
-| May 11 | 12:45-16:00 | Lecture and lab: **survival analysis, course summary** | DME, Auditorium 13|
+
+|  Day | Session  | Place |  Topic           |  Course material        |
+|:-------:|:---:|:------:|:---------------:|:-------------:|
+| Day 1 - Apr 8 |PM | Aud 13 | Course introduction | |
+|           | | | Data and descriptive statistics | |
+| Day 2 - Apr 9 |AM | Aud 13 | Lab | |
+|           | | | Lab | |
+|               |PM |  | Probability | |
+|           | | | Diagnostic tests | |
+| Day 3 - Apr 10 |AM | Aud 13 | Lab  | |
+|           | | | Diagnostic tests | |
+|               |PM |  | Statistical inference  | |
+|           | | | t-test | |
+| Day 4 - Apr 11 |AM | Aud 13 | Lab | |
+|                |PM |  | Categorical data analysis  | |
+| Day 5 - Apr 12 |AM | Aud 13 | Lab | |
+
+
+
+
+
+
+
+# Week 2
+
+
+|  Day | Session  | Place |  Topic           |  
+|:-------:|:---:|:------:|:---------------:|
+| Apr 22 |AM | Runde | Transformations, non-parametric methods | 
+|        |PM | Runde | Sample size and statistical power | 
+| Apr 23 |AM | Runde | Study designs | 
+|        |PM | Runde | Linear regression I | 
+| Apr 24 |AM | Aud 13 | Linear regression II | 
+|        |PM | Aud 13 | Linear regression III | 
+|        | |  | Course summary | 
+| Apr 25 |AM | Runde | Logistic regression | 
+|        |PM | Runde | Survival analysis | 
+
+
