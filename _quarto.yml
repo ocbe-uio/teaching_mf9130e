@@ -1,10 +1,13 @@
 project:
   type: website
   output-dir: docs
+  render: 
+    - "*.qmd"
+    - "!v23/"
 
 website:
-  title: "MF9130E - V23"
-  description: "Homepage for MF9130E - Introduction to Statistics at University of Oslo, Spring 2023"
+  title: "MF9130E - V24"
+  description: "Homepage for MF9130E - Introduction to Statistics at University of Oslo, Spring 2024"
 
   navbar: 
     left: 
@@ -12,6 +15,8 @@ website:
         text: "Home"
       - href: get_started/get_started.qmd
         text: "Get Started"
+      - href: schedule.qmd  
+        text: "Schedule"
       - href: course_material/course_material_overview.qmd
         text: "Course material"
       - href: lab/overview.qmd
@@ -29,7 +34,7 @@ website:
 
 format:
   html:
-    theme: yeti
+    theme: flatly
     css: styles.css
     toc: true
 

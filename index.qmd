@@ -5,6 +5,36 @@ title: "MF9130E - Introductory course in Statistics"
 
 ------------------
 
+
+# Welcome!
+
+You are on the course website for **MF9130E - Introductory Course in Statistics** at the Faculty of Medicine, University of Oslo.
+
+-   The course is intended for students and researchers who are interested in statistics and R programming, with applications in medical and healthcare data. No previous programming experience is required to participate in this course.
+-   This website is developed by the instructors of the course, hosted for free and public access on Github. The course github repository can be accessed [here](https://github.com/ocbe-uio/teaching_mf9130e). 
+-   You can check the [course page by UiO](https://www.uio.no/studier/emner/medisin/med/MF9130E/) for information related to applications, evaluations and other administrative matters. 
+-   **About home exam**: information regarding home exam will be talked about in the class on the first and last days. Assignment tasks for home exam will be put in **Canvas**, and you should submit your assignment in **Inspera**. [More information about the exam](https://www.uio.no/studier/emner/medisin/med/MF9130E/#exam) 
+
+# Schedule
+
+You can find the **official course schedule** provided by University of Oslo [here](https://www.uio.no/studier/emner/medisin/med/MF9130E/v24/timeplan/index.html). If there is an error in the time and place on this page, please refer to the official schedule.
+
+
+### Preparation
+
+You should have a <u>working solution of R</u> (either installed on your own laptop, or using Posit cloud) before the course.
+
+
+Please <u>familiarize yourself with the course website</u>. 
+
+* [Get Started](https://ocbe-uio.github.io/teaching_mf9130e/get_started/get_started.html) provides some information about software installation, where to download data and code, and some resources.
+* [Course material](course_material/course_material_overview.html) provides an overview of the material and corresponding links for each session.
+* [R Lab and Code](https://ocbe-uio.github.io/teaching_mf9130e/lab/overview.html) hosts the lab session notes. 
+
+
+
+
+
 ::: callout-note
 ## Use of the course material
 
@@ -17,56 +47,3 @@ Please contact Chi Zhang [chi.zhang\@medisin.uio.no](mailto:chi.zhang@medisin.ui
 :::
 
 
-# Welcome!
-
-You are on the course website for **MF9130E - Introductory Course in Statistics** at the Faculty of Medicine, University of Oslo.
-
--   The course is intended for students and researchers who are interested in statistics and R programming, with applications in medical and healthcare data. No previous programming experience is required to participate in this course.
--   This website is developed by the instructors of the course, hosted for free and public access on Github. The course github repository can be accessed [here](https://github.com/ocbe-uio/teaching_mf9130e). 
--   You can check the [course page by UiO](https://www.uio.no/studier/emner/medisin/med/MF9130E/) for information related to applications, evaluations and other administrative matters. 
--   **About home exam**: information regarding home exam will be talked about in the class on the first and last days. Assignment tasks for home exam will be put in **Canvas**, and you should submit your assignment in **Inspera**. [More information about the exam](https://www.uio.no/studier/emner/medisin/med/MF9130E/#exam) 
-
-
-### Preparation
-
-You should have a <u>working solution of R</u> (either installed on your own laptop, or using Posit cloud) before the course.
-
-
-It would also be helpful if you <u>familiarize yourself with the course website</u>. 
-
-* [Get Started](https://ocbe-uio.github.io/teaching_mf9130e/get_started/get_started.html) provides some information about software installation, where to download data and code, and some resources.
-* [Course material](course_material/course_material_overview.html) provides an overview of the material and corresponding links for each session.
-* [R Lab and Code](https://ocbe-uio.github.io/teaching_mf9130e/lab/overview.html) hosts the lab session notes. 
-
-
-# Schedule
-
-You can find the **official course schedule** provided by University of Oslo [here](https://www.uio.no/studier/emner/medisin/med/MF9130E/v23/timeplan/index.html). If there is an error in the time and place on this page, please refer to the official schedule.
-
-### Week 1
-
-
-| Date |  Time   |   Topic                  |  Place        |
-|:----:|:-------:|:------------------------:|:-------------:|
-| Apr 24 |12:45-16:00 | Lecture: **course introduction, data and descriptive statistics** | DME, Lille auditorium|
-| Apr 25 | 08:30-11:45 | Guided lab session: **introduction to R, descriptive statistics with R** | DME, Auditorium 13|
-| Apr 25 | 12:45-16:00 | Lecture: **probability, Bayes law, diagnostic tests, distributions** | DME, Auditorium 13|
-| Apr 26 | 08:30-11:45 | Guided lab session | DME, Store auditorium|
-| Apr 26 | 12:45-16:00 | Lecture: **statistical inference, hypothesis testing, confidence intervals, t-tests** | DME, Store auditorium|
-| Apr 27 | 08:30-11:45 | Guided lab session | DME, Runde auditorium R105|
-| Apr 27 | 12:45-16:00 | Lecture: **categorical data analysis** | DME, Runde auditorium R105|
-| Apr 28 | 08:30-11:45 | Guided lab session | DME, Store Auditorium|
-
-
-### Week 2
-
-| Date |  Time   |   Topic                  |  Place        |
-|:----:|:-------:|:------------------------:|:-------------:|
-| May 8 |08:30-11:45 | Lecture and lab: **exploratory data analysis, transformation, non-parametric methods** | DME, Lille auditorium|
-| May 8 | 12:45-16:00 | Lecture and lab: **sample size, statistical power** | DME, Lille auditorium|
-| May 9 | 08:30-11:45 | Lecture: **study designs, principle of clinical trials** | Helga Engs hus Auditorium 3|
-| May 9 | 12:45-16:00 | Lecture and lab: **regression I: simple regression, correlation** | Helga Engs hus Auditorium 3|
-| May 10 | 08:30-11:45 | Lecture and lab: **regression II: dummy variables, confounding, multiple regression** | DME, Auditorium 13|
-| May 10 | 12:45-16:00 | Lecture and lab: **regression III: multiple regression (continued), interactions** | DME, Auditorium 13|
-| May 11 | 08:30-11:45  | Lecture and lab: **logistic regression** | DME, Auditorium 13|
-| May 11 | 12:45-16:00 | Lecture and lab: **survival analysis, course summary** | DME, Auditorium 13|
