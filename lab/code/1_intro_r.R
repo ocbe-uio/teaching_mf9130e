@@ -1,5 +1,5 @@
-# Course material for "MF9130E V23, Introduction to Statistics" 
-# 2023.04.26
+# Course material for "MF9130E"
+# 2024.04.09
 
 
 # 1: create a variable ----
@@ -22,7 +22,7 @@ student <- 'hadley'
 true_or_false <- T
 
 
-# return variable 
+# return variable
 number_1
 print(number_1)
 
@@ -50,13 +50,13 @@ num_vector
 char_vector <- c('student_a', 'student_b', 'student_c')
 char_vector
 
-# logical 
+# logical
 logical_vector <- c(T, F, T, F)
 logical_vector
 
 
 
-# shortcut for creating a vector 
+# shortcut for creating a vector
 # numeric
 # num_vector <- c(1, 2, 3, 4, 5)
 num_vector <- 1:5 # from 1 to 5
@@ -73,7 +73,7 @@ vec1 <- c(1, 3, 5)
 vec2 <- c(100, 101)
 c(vec1, vec2)
 
-# you can also save it into a new variable, 
+# you can also save it into a new variable,
 # so that you can access it in the future
 vec_combined <- c(vec1, vec2)
 vec_combined
@@ -102,8 +102,8 @@ matrix_r
 
 # create a data.frame
 mini_data <- data.frame(
-  age = c(20, 50, 32), 
-  sex = c('male', 'female', 'male'), 
+  age = c(20, 50, 32),
+  sex = c('male', 'female', 'male'),
   has_covid = c(T, T, F)
 )
 mini_data
@@ -156,20 +156,20 @@ mat_3by3[1,]
 
 
 
-# data.frame 
+# data.frame
 # via index
-# first row 
+# first row
 mini_data[1, ]
 
 # second col
 mini_data[, 2]
 
-# via column name 
+# via column name
 mini_data$age
 mini_data['age']
 
 
-# filter a vector based on a second vector 
+# filter a vector based on a second vector
 age <- c(55, 60, 65)
 sex <- c('Male', 'Female', 'Male')
 
@@ -178,19 +178,11 @@ sex <- c('Male', 'Female', 'Male')
 sex_indicator <- sex == 'Female'
 
 # next combine age with sex_indicator, this only selects the 2nd element
-age[sex_indicator] 
+age[sex_indicator]
 
 # you can skip the middle step:
 age[sex == 'Female']
 
-
-
-# 5: data import ----
-
-# read a csv file
-penguins_mini <- read.csv('data/penguins_mini.csv', sep = ',')
-
-penguins_mini
 
 
 

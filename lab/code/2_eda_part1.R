@@ -1,72 +1,98 @@
 # Exploratory data analysis (part 1, part2)
 
-# set the path to your data first
-penguins <- read.csv('data/penguins_complete.csv', sep = ',')
+
+# birth data ----
+# find out the path (where you saved the data)
+# if your file is located in a folder called 'data'
+# getwd() can tell you where your working directory is
+
+birth <- read.csv('data/birth.csv', sep = ',')
+# birth <- read.csv('lab/data/birth.csv', sep = ',')
 
 
-# explore a dataset -----
-head(penguins)
-# penguins[1:6, ]
-# head(penguins, 10)  gives first 10 rows
-# tail(penguins)
-
-colnames(penguins)
-ncol(penguins)
-
-dim(penguins)
-nrow(penguins)
-length(penguins$species) # length() gives the size of a vector
+# initial exploration -----
+# head prints first 6 rows
+# tail prints last 6 rows
+head(birth)
 
 
+# by index
+birth[1, ] 
+birth[, 1]
 
-str(penguins)
-class(penguins$species)
-class(penguins$bill_length_mm)
+# by column name
+birth[, 'age']
+
+# by $ operator
+birth$age
+
+# what column names are there?
+colnames(birth)
+
+# how many columns and rows?
+ncol(birth)
+nrow(birth)
+dim(birth)
+
+
+# number of element in a vector
+length(birth$age)
+
+# type of data
+class(birth$age)
+class(birth$low)
+
 
 
 # descriptive statistics ----
-# create a variable called bill
-bill <- penguins$bill_length_mm
+
+# create a variable called age
+age <- birth$age
+
 
 # use the command summary on a continuous variable
-summary(bill)
+summary(age)
 
-# compute the min
-min(bill)
-min(bill, na.rm = T) # remove NA
+# compute the min, max
+min(age)
+max(age)
 
-
-
-max(bill, na.rm = T)
-mean(bill, na.rm = T) 
-median(bill, na.rm = T)
-quantile(bill, 0.05, na.rm = T)
-quantile(bill, 0.95, na.rm = T)
+mean(age)
+median(age)
+quantile(age, 0.05)
+quantile(age, 0.95)
 
 
+# categorical variable
+smoker <- birth$smk
+low_birthweight <- birth$low
 
-species <- penguins$species
-island <- penguins$island
+# categories with counts
+table(smoker)
+table(low_birthweight)
 
-# for one variable
-table(species)
-
-# for two variables
-table(species, island)
+# two categories
+table(smoker, low_birthweight)
 
 # to create percentage, divide by number of subjects
-table(species)/length(species)
+table(smoker)/length(smoker)
+
 
 
 # visualisation ----
-hist(bill)
+# histogram
+hist(age)
 
-boxplot(bill)
+# boxplot
+boxplot(age)
 
 # multiple boxplot together
-boxplot(bill_length_mm ~ species, data = penguins)
+boxplot(bwt ~ smk, data = birth)
 
-plot(penguins$bill_length_mm, penguins$bill_depth_mm)
+# scatterplot for 2 continuous variables
+plot(birth$age, birth$bwt)
+
+
 
 
 

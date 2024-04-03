@@ -10,7 +10,7 @@ editor: source
 
 Datasets
 
-* Explore a dataset: `penguins_complete` ([csv link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/penguins_complete.csv))
+* Explore a dataset: `birth` ([csv link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/birth.csv))
 * Exercise 1: no data, we type in data directly
 * Exercise 2: `PEFH98-english` ([rda link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.rda), [csv link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.csv))
 
@@ -23,18 +23,20 @@ Datasets
 
 In this section, we will introduce some frequently used commands when you first load a dataset. 
 
-We use `penguins` data as an example.
+We use `birth` data as an example.
 
 ```{r}
-#| label: load-data-penguins-mini
+#| label: load-data-birth
 #| warning: false
 #| echo: true
 
-# read a csv file
-penguins <- read.csv('data/penguins_complete.csv', sep = ',')
+# read a csv file, name it 'birth'
+# this is the method to read in the data with R command
+# you can also use the Rstudio interface to import a dataset
+birth <- read.csv('data/birth.csv', sep = ',')
 ```
 
-You *can* type `penguins` in the console to print the data; but you will see that it gets hard to read. This is usually the case: you have lots of data that is hard to fit in your screen. 
+You can type `birth` in the console to print the data; but you will see that it gets hard to read. This is usually the case: you have lots of data that is hard to fit in your screen. 
 
 Therefore, it is useful to
 
@@ -43,19 +45,19 @@ Therefore, it is useful to
 * know the dimension of the dataset (number of observations and features/measurements)
 * produce some summary statistics
 
-We extract the **head** (first several, by default 6) rows of your data. Similarly, you can get the last several rows using `tail()`
+We extract the **head** (first several rows, by default 6) rows of your data. Similarly, you can get the last several rows using `tail()`
 
 ```{r}
 #| label: summary of dataset
 #| warning: false
 #| echo: true
 
-head(penguins)
+head(birth)
 
-# this is essentially giving the first 6 rows of your data
-# penguins[1:6, ]
-# head(penguins, 10)  gives first 10 rows
-# tail(penguins)
+# this is giving the first 6 rows of your data
+# birth[1:6, ]
+# head(birth, 10)  gives first 10 rows
+# tail(birth)
 ```
 
 In RStudio, you can also use `View()` command to look at your dataset in a tabular form.
@@ -67,22 +69,36 @@ To know what measurements (or feature, variable, parameter) are in the data, you
 #| warning: false
 #| echo: true
 
-colnames(penguins)
-ncol(penguins)
+colnames(birth)
+ncol(birth)
 ```
 
 To know **how many subjects** are in a dataset, there are a few options. You can find the dimension of the dataset; or find how many rows are in the data. 
 
-Alternatively, if you have one variable (say `species`), you can also use `length(species)`.
+Alternatively, if you have one variable (say `age`), you can also use `length(age)`.
 
 ```{r}
 #| label: summary of dataset 3
 #| warning: false
 #| echo: true
 
-dim(penguins)
-nrow(penguins)
-length(penguins$species) # length() gives the size of a vector
+# by index
+birth[1, ] 
+birth[, 1]
+
+# by column name
+birth[, 'age']
+
+# by $ operator
+birth$age
+
+# what column names are there?
+colnames(birth)
+
+# how many columns and rows?
+ncol(birth)
+nrow(birth)
+dim(birth)
 ```
 
 Sometimes it is also useful to know what **types of data** it is for each variable. You can either use `str()` (structure) on the dataset; or use `class()` on the variable you are interested in.
@@ -92,9 +108,9 @@ Sometimes it is also useful to know what **types of data** it is for each variab
 #| warning: false
 #| echo: true
 
-str(penguins)
-class(penguins$species)
-class(penguins$bill_length_mm)
+str(birth)
+class(birth$age)
+class(birth$low)
 ```
 
 
@@ -119,38 +135,25 @@ Let us focus on one continuous variable, `bill_length_mm`.
 #| warning: false
 #| echo: true
 
-# create a variable called bill
-bill <- penguins$bill_length_mm
+# create a variable called age
+age <- birth$age
+
 
 # use the command summary on a continuous variable
-summary(bill)
+summary(age)
+
+# compute the min, max
+min(age)
+max(age)
+
+mean(age)
+median(age)
+quantile(age, 0.05)
+quantile(age, 0.95)
+
 ```
 
-You see that there are some `NA's`. This means the data is missing for 2 subjects. If we do not remove them before (or tell the functions to remove it), the results will be affected.
 
-```{r}
-#| label: descriptive stat 2
-#| warning: false
-#| echo: true
-
-# compute the min
-min(bill)
-min(bill, na.rm = T) # remove NA
-```
-
-Now we compute the maximum, mean, median, bottom and top 5 percent quantile.
-
-```{r}
-#| label: descriptive stat 3
-#| warning: false
-#| echo: true
-
-max(bill, na.rm = T)
-mean(bill, na.rm = T) 
-median(bill, na.rm = T)
-quantile(bill, 0.05, na.rm = T)
-quantile(bill, 0.95, na.rm = T)
-```
 
 ### Categorical variable
 
@@ -165,17 +168,19 @@ We use the variable `species` and `island` from the penguin data.
 #| warning: false
 #| echo: true
 
-species <- penguins$species
-island <- penguins$island
+# categorical variable
+smoker <- birth$smk
+low_birthweight <- birth$low
 
-# for one variable
-table(species)
+# categories with counts
+table(smoker)
+table(low_birthweight)
 
-# for two variables
-table(species, island)
+# two categories
+table(smoker, low_birthweight)
 
 # to create percentage, divide by number of subjects
-table(species)/length(species)
+table(smoker)/length(smoker)
 ```
 
 
@@ -190,7 +195,7 @@ table(species)/length(species)
 #| warning: false
 #| echo: true
 
-hist(bill)
+hist(age)
 ```
 
 
@@ -208,10 +213,10 @@ A boxplot gives the position of
 #| warning: false
 #| echo: true
 
-boxplot(bill)
+boxplot(age)
 
 # multiple boxplot together
-boxplot(bill_length_mm ~ species, data = penguins)
+boxplot(bwt ~ smk, data = birth)
 ```
 
 
@@ -223,7 +228,7 @@ boxplot(bill_length_mm ~ species, data = penguins)
 #| warning: false
 #| echo: true
 
-plot(penguins$bill_length_mm, penguins$bill_depth_mm)
+plot(birth$age, birth$bwt)
 ```
 
 
