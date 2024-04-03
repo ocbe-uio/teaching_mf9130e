@@ -1,0 +1,274 @@
+---
+title: "Binomial and Normal distribution"
+format: 
+  html:
+    code-fold: false
+    code-tools: true
+editor: source
+---
+
+
+## Randomness and simulation
+
+```{r}
+#| label: rand1
+#| warning: false
+#| echo: true
+
+sample(1:6, size = 2, replace = T)
+
+# set replacement False
+sample(1:3, size = 3, replace = F)
+sample(1:3, size = 3, replace = T) # replacement is allowed
+```
+
+
+```{r}
+#| label: rand2
+#| warning: false
+#| echo: true
+
+# if set seed, the result is the same
+# you need to run the line set.seed(yourseed) right before
+set.seed(1)
+sample(1:6, size = 2, replace = T)
+```
+
+
+## Binomial distribution
+
+```{r}
+#| label: binom1
+#| warning: false
+#| echo: true
+
+# for this simulation, we do not need to set seed
+# because the reproducibility is not too important for the demo
+
+x <- rbinom(n = 500, size = 1, prob = 0.5)
+hist(x)
+
+# test different prob
+x <- rbinom(n = 500, size = 1, prob = 0.15)
+hist(x)
+
+# test out different size
+x <- rbinom(n = 500, size = 8, prob = 0.5)
+hist(x)
+
+# increase n and p (size and prob)
+x <- rbinom(n = 500, size = 30, prob = 0.5)
+hist(x, breaks = 20)
+
+# more data points
+x <- rbinom(n = 2000, size = 30, prob = 0.5)
+hist(x, breaks = 20)
+```
+
+
+## Normal distribution
+
+```{r}
+#| label: norm1
+#| echo: true
+
+# two parameters: mean and sd
+x <- rnorm(1000, mean = 0, sd = 1)
+hist(x)
+
+x <- rnorm(1000, mean = 10, sd = 2)
+hist(x)
+```
+
+
+
+```{r}
+#| label: norm2
+#| warning: false
+#| echo: true
+
+# check the summary
+summary(x)
+
+# mean
+mean(x)
+
+# variance and sd
+var(x)
+sd(x)
+# (sd(x))^2 # these two are equivalent
+```
+
+
+```{r}
+#| label: norm3
+#| warning: false
+#| echo: true
+
+# can plot the mean on the histogram to indicate the center
+hist(x)
+
+# v means verticle line, lwd means line width
+abline(v = mean(x), col = 'red', lwd = 2)
+```
+
+
+
+```{r}
+#| label: norm4
+#| warning: false
+#| echo: true
+
+# quantiles and probability
+p1 <- pnorm(1.96, mean = 0, sd = 1)
+p2 <- pnorm(-1.96, mean = 0, sd = 1)
+
+1-p1 # equal to p2
+```
+
+
+
+
+## Bar plot 
+
+```{r}
+#| label: bar1
+#| warning: false
+#| echo: true
+
+dd <- data.frame(prob = c(0.03, 0.14, 0.13, 0.38, 0.33),
+                 n = c(3,16,15,44,38))
+rownames(dd) <- c('0-17', '18-24', '25-34', '35-64', '65+')
+
+
+# we can plot two graphs side by side
+# set parameter: 1 row 2 columns
+par(mfrow = c(1, 2))
+# bar plot for counts
+barplot(dd$n, names.arg = rownames(dd),
+        main = 'Number of killed for road accidents')
+
+
+# bar plot for probability
+barplot(dd$prob, names.arg = rownames(dd),
+        main = 'Proportion for killed road accidents')
+```
+
+
+
+## Example: birth weight 
+
+
+```{r}
+#| label: birth1
+#| warning: false
+#| echo: true
+
+# load birth data first
+# if you forgot, check notes from day 2 (descriptive stat)
+birth <- read.csv('data/birth.csv', sep =',')
+head(birth) # print 6 rows
+
+# we use the variable bwt
+birth_weight <- birth$bwt
+hist(birth_weight)
+```
+
+
+### Use empirical distribution
+
+```{r}
+#| label: birth2
+#| warning: false
+#| echo: true
+
+
+# first find how many are above 400 (counting)
+birth_weight>4000
+
+# we see 9 TRUE
+# which finds the indices
+# length counts the number of elements
+which(birth_weight >4000)
+length(which(birth_weight >4000)==T)
+```
+
+```{r}
+#| label: birth3
+#| warning: false
+#| echo: true
+
+# alternatively, since R codes T as 1 and F as 0
+# we can use sum() command
+sum(birth_weight>4000)
+
+
+# probability 
+9/189
+```
+
+
+### Use normal approximation
+
+```{r}
+#| label: birth4
+#| warning: false
+#| echo: true
+
+# use normal approximation 
+# first get the parameters mean and sd (or sqrt variance)
+m <- mean(birth_weight)
+s <- sd(birth_weight)
+# s <- sqrt(var(birth_weight))
+
+# probability of birthweight above 4000
+
+# if you want 
+pnorm(4000, mean = m, sd =s, lower.tail = F)
+
+# you can also use the standard normal dist
+# whose mean and sd (var) are 0 and 1
+# can be translated as a second variable Y above 1.45 
+# see lecture notes for why this is the case!
+pnorm(1.45, lower.tail = F)
+```
+
+
+## Binomial vs Normal distribution
+
+```{r}
+#| label: binnorm
+#| warning: false
+#| echo: true
+
+# the approximation is N(np, npq) if n is large, p close to 0.5
+# note: the small n (first argument) is how many random samples you want
+# it is different from the 'size' argument in binomial distribution
+
+
+N <- 50
+P <- 0.5
+
+# binom(50, 0.5)
+x_binom <- rbinom(n = 1000, size = N, prob = P)
+
+# normal
+x_norm <- rnorm(n = 1000, mean = N*P, sd = sqrt(50*0.5*(1-0.5)))
+
+# plot them side by side
+# note that sd for normal distribution is approximate
+par(mfrow = c(1, 2))
+hist(x_binom, main = 'Binomial (50, 0.5)')
+hist(x_norm, main = 'Normal (25, 3.53)')
+
+
+# take summary statistics 
+summary(x_binom)
+summary(x_norm)
+
+# variance. if want standard deviation, use sd(x)
+var(x_binom)
+var(x_norm) 
+```
+
+

@@ -17,8 +17,8 @@ website:
         text: "Get Started"
       - href: schedule.qmd  
         text: "Schedule"
-      - href: course_material/course_material_overview.qmd
-        text: "Course material"
+      #- href: course_material/course_material_overview.qmd
+      #  text: "Course material"
       - href: lab/overview.qmd
         text: "R Lab and Code"
       - href: about.qmd

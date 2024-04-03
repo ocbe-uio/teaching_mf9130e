@@ -7,47 +7,58 @@ format:
 editor: source
 ---
 
-Here you will find useful information on how to get started. 
+Here you will find useful information on how to get started with the software. 
 
-In this workshop we will be using R. You can either
+In this course we will be using R. You can either
 
--   (recommended) have **R and Rstudio** installed on your laptop 
+-   (**recommended**) have **R and Rstudio** installed on your laptop 
 -   or, use **Posit cloud** (formerly Rstudio Cloud).
 
 
-### Option 1: Set up your RStudio on your laptop
+Please let us know if you have issue accessing data files on GitHub or content on the webpage!
+
+
+
+
+
+
+
+### Option 1 (recommend): Set up your RStudio on your laptop
 
 You will need both R and Rstudio, they are two separate things. 
 
-You can download **Rstudio** [here](https://posit.co/download/rstudio-desktop/). In this page it will ask you to install R, so it should be clear to follow.
 
-<img src="fig_get_started_downloadrstudio.png" align="center" width="800" /></a>
+::: {.callout-tip}
+Watch these [YouTube videos](https://www.youtube.com/results?search_query=download+r+and+rstudio) if you have trouble when trying at home.
+:::
+
+
+You can [download Rstudio here](https://posit.co/download/rstudio-desktop/). In this page it will first ask you to install R.
+
+<img src="fig_get_started_downloadrstudio.png" align="center" width="600" /></a>
 
 
 You can download **R** for Linux, macOS or Windows [here](https://cran.rstudio.com) or [here](https://cran.uib.no)
 
-<img src="fig_get_started_downloadr.png" align="center" width="800" /></a>
+<img src="fig_get_started_downloadr.png" align="center" width="600" /></a>
 
 
 Once you have finished installing both R and Rstudio, open Rstudio, and you should be seeing something like this:
 
-<img src="fig_get_started_newproj.png" align="center" width="800" /></a>
+<img src="fig_get_started_newproj.png" align="center" width="600" /></a>
 
 
 
 
-::: {.callout-tip}
-Watch these [YouTube videos](https://www.youtube.com/results?search_query=download+r+and+rstudio) if you are stuck.
-:::
 
 
 ### Option 2: Use Posit Cloud
 
 
-::: {.callout-tip}
+::: {.callout-note}
 ## Note
 
-It is recommended to have R and Rstudio installed on your laptop, this is because you have a better control of where you prefer to download data and course material. This is also useful when you want to analyse your own datasets. For example, you might have to upload datafiles to the server for Posit Cloud to work.
+**It is recommended to have R and Rstudio installed on your laptop, this is because you have a better control of where you prefer to download data and course material**. This is also useful when you want to analyse your own datasets. For example, you might have to upload datafiles to the server for Posit Cloud to work.
 
 However, if there is a problem with the installation, you can use Posit Cloud as an alternative.
 
@@ -56,15 +67,13 @@ On Tuesday morning we will see if most people can successfully make R run on the
 
 
 
-
-
 [Posit Cloud](https://posit.cloud) is free of charge for personal users. You need to [sign up](https://posit.cloud/plans/free) for a new user account and have internet connection.
 
-<img src="fig_get_started_cloud1.png" align="center" width="800" /></a>
+<img src="fig_get_started_cloud1.png" align="center" width="600" /></a>
 
 Once you signed up, you can open a new **workspace**, and it will look like something like this. If it is the first time you use Posit Cloud, it will be empty (i.e. no script or data). 
 
-<img src="fig_get_started_cloud2.png" align="center" width="800" /></a>
+<img src="fig_get_started_cloud2.png" align="center" width="600" /></a>
 
 
 
@@ -74,15 +83,17 @@ Once you signed up, you can open a new **workspace**, and it will look like some
 The datasets used in this course are stored in this [folder](https://github.com/ocbe-uio/teaching_mf9130e/tree/main/lab/data).
 
 
+If you have trouble accessing or downloading datasets from GitHub, please let us know - we will upload a copy on Canvas.
 
-### Download data
+
+### Download data from GitHub
 
 1. Go to the repository, select the data you want to download by **left-click the file name**
 
 2. If it is a dataset in `.csv, .txt` format, you will see something like this
 
 
-<img src="fig_get_started_download2.png" align="center" width="800" /></a>
+<img src="fig_get_started_download2.png" align="center" width="600" /></a>
 
   * find **Raw** button, **right-click**, you will see a list of options
   * choose **Download Linked File**, this will download the data into your default download folder 
@@ -90,7 +101,7 @@ The datasets used in this course are stored in this [folder](https://github.com/
 
 3. If it is a dataset in `.dta, .xlsx` or other format, you might not see the data directly:
 
-<img src="fig_get_started_download1.png" align="center" width="800" /></a>
+<img src="fig_get_started_download1.png" align="center" width="600" /></a>
 
   * find **Download** button, left-click, and you will download it into your default download folder.
 
@@ -108,17 +119,11 @@ R scripts are stored in this [folder](https://github.com/ocbe-uio/teaching_mf913
 
 To **download an R script**, it is similar to downloading a dataset
 
-<img src="fig_get_started_download3.png" align="center" width="800" /></a>
+<img src="fig_get_started_download3.png" align="center" width="600" /></a>
 
 Alternatively, you can **create your own R script locally** inside Rstudio, by copy and paste the script from Github.
 
 
-
-# Resources 
-
-You will find the material used in class on this [page](https://ocbe-uio.github.io/teaching_mf9130e/course_material/course_material_overview.html).
-
-We keep updating the material, so please stay tuned! 
 
 
 

@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.552">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>MF9130E - V24 - Binomial and Normal distribution</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">MF9130E - V24</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../get_started/get_started.html"> 
+<span class="menu-text">Get Started</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../schedule.html"> 
+<span class="menu-text">Schedule</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../course_material/course_material_overview.html"> 
+<span class="menu-text">Course material</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../lab/overview.html"> 
+<span class="menu-text">R Lab and Code</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ocbe-uio/teaching_mf9130e"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#randomness-and-simulation" id="toc-randomness-and-simulation" class="nav-link active" data-scroll-target="#randomness-and-simulation">Randomness and simulation</a></li>
+  <li><a href="#binomial-distribution" id="toc-binomial-distribution" class="nav-link" data-scroll-target="#binomial-distribution">Binomial distribution</a></li>
+  <li><a href="#normal-distribution" id="toc-normal-distribution" class="nav-link" data-scroll-target="#normal-distribution">Normal distribution</a></li>
+  <li><a href="#bar-plot" id="toc-bar-plot" class="nav-link" data-scroll-target="#bar-plot">Bar plot</a></li>
+  <li><a href="#example-birth-weight" id="toc-example-birth-weight" class="nav-link" data-scroll-target="#example-birth-weight">Example: birth weight</a>
+  <ul class="collapse">
+  <li><a href="#use-empirical-distribution" id="toc-use-empirical-distribution" class="nav-link" data-scroll-target="#use-empirical-distribution">Use empirical distribution</a></li>
+  <li><a href="#use-normal-approximation" id="toc-use-normal-approximation" class="nav-link" data-scroll-target="#use-normal-approximation">Use normal approximation</a></li>
+  </ul></li>
+  <li><a href="#binomial-vs-normal-distribution" id="toc-binomial-vs-normal-distribution" class="nav-link" data-scroll-target="#binomial-vs-normal-distribution">Binomial vs Normal distribution</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Binomial and Normal distribution</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="randomness-and-simulation" class="level2">
+<h2 class="anchored" data-anchor-id="randomness-and-simulation">Randomness and simulation</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">replace =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3 2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set replacement False</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">replace =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3 1 2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">replace =</span> T) <span class="co"># replacement is allowed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2 3 2</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if set seed, the result is the same</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># you need to run the line set.seed(yourseed) right before</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">replace =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 4</code></pre>
+</div>
+</div>
+</section>
+<section id="binomial-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="binomial-distribution">Binomial distribution</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for this simulation, we do not need to set seed</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># because the reproducibility is not too important for the demo</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">500</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab_distribution_files/figure-html/binom1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># test different prob</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">500</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.15</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab_distribution_files/figure-html/binom1-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># test out different size</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">500</span>, <span class="at">size =</span> <span class="dv">8</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab_distribution_files/figure-html/binom1-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># increase n and p (size and prob)</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">500</span>, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x, <span class="at">breaks =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab_distribution_files/figure-html/binom1-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># more data points</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">2000</span>, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x, <span class="at">breaks =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab_distribution_files/figure-html/binom1-5.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="normal-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="normal-distribution">Normal distribution</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># two parameters: mean and sd</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab_distribution_files/figure-html/norm1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab_distribution_files/figure-html/norm1-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the summary</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  3.584   8.637  10.028  10.030  11.445  16.129 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mean</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10.0297</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># variance and sd</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.31841</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.078078</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (sd(x))^2 # these two are equivalent</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># can plot the mean on the histogram to indicate the center</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># v means verticle line, lwd means line width</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(x), <span class="at">col =</span> <span class="st">'red'</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab_distribution_files/figure-html/norm3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># quantiles and probability</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="fl">1.96</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">1.96</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span>p1 <span class="co"># equal to p2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0249979</code></pre>
+</div>
+</div>
+</section>
+<section id="bar-plot" class="level2">
+<h2 class="anchored" data-anchor-id="bar-plot">Bar plot</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>dd <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.03</span>, <span class="fl">0.14</span>, <span class="fl">0.13</span>, <span class="fl">0.38</span>, <span class="fl">0.33</span>),</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">16</span>,<span class="dv">15</span>,<span class="dv">44</span>,<span class="dv">38</span>))</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(dd) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'0-17'</span>, <span class="st">'18-24'</span>, <span class="st">'25-34'</span>, <span class="st">'35-64'</span>, <span class="st">'65+'</span>)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="co"># we can plot two graphs side by side</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co"># set parameter: 1 row 2 columns</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="co"># bar plot for counts</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(dd<span class="sc">$</span>n, <span class="at">names.arg =</span> <span class="fu">rownames</span>(dd),</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">'Number of killed for road accidents'</span>)</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a><span class="co"># bar plot for probability</span></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(dd<span class="sc">$</span>prob, <span class="at">names.arg =</span> <span class="fu">rownames</span>(dd),</span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">'Proportion for killed road accidents'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab_distribution_files/figure-html/bar1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="example-birth-weight" class="level2">
+<h2 class="anchored" data-anchor-id="example-birth-weight">Example: birth weight</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load birth data first</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co"># if you forgot, check notes from day 2 (descriptive stat)</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>birth <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/birth.csv'</span>, <span class="at">sep =</span><span class="st">','</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(birth) <span class="co"># print 6 rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  id         low age lwt   eth       smk ptl  ht  ui fvt ttv  bwt
+1  4 bwt &lt;= 2500  28 120 other    smoker   1  no yes   0   0  709
+2 10 bwt &lt;= 2500  29 130 white nonsmoker   0  no yes   2   0 1021
+3 11 bwt &lt;= 2500  34 187 black    smoker   0 yes  no   0   0 1135
+4 13 bwt &lt;= 2500  25 105 other nonsmoker   1 yes  no   0   0 1330
+5 15 bwt &lt;= 2500  25  85 other nonsmoker   0  no yes   0   4 1474
+6 16 bwt &lt;= 2500  27 150 other nonsmoker   0  no  no   0   5 1588</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we use the variable bwt</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>birth_weight <span class="ot">&lt;-</span> birth<span class="sc">$</span>bwt</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(birth_weight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab_distribution_files/figure-html/birth1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="use-empirical-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="use-empirical-distribution">Use empirical distribution</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first find how many are above 400 (counting)</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>birth_weight<span class="sc">&gt;</span><span class="dv">4000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [37] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [49] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [61] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [73] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [85] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [97] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[109] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[121] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[133] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[145] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[157] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[169] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[181]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we see 9 TRUE</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># which finds the indices</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># length counts the number of elements</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(birth_weight <span class="sc">&gt;</span><span class="dv">4000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 181 182 183 184 185 186 187 188 189</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">which</span>(birth_weight <span class="sc">&gt;</span><span class="dv">4000</span>)<span class="sc">==</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># alternatively, since R codes T as 1 and F as 0</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co"># we can use sum() command</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(birth_weight<span class="sc">&gt;</span><span class="dv">4000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># probability </span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="dv">9</span><span class="sc">/</span><span class="dv">189</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.04761905</code></pre>
+</div>
+</div>
+</section>
+<section id="use-normal-approximation" class="level3">
+<h3 class="anchored" data-anchor-id="use-normal-approximation">Use normal approximation</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use normal approximation </span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co"># first get the parameters mean and sd (or sqrt variance)</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">mean</span>(birth_weight)</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">sd</span>(birth_weight)</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="co"># s &lt;- sqrt(var(birth_weight))</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="co"># probability of birthweight above 4000</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="co"># if you want </span></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">4000</span>, <span class="at">mean =</span> m, <span class="at">sd =</span>s, <span class="at">lower.tail =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.07386235</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you can also use the standard normal dist</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="co"># whose mean and sd (var) are 0 and 1</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="co"># can be translated as a second variable Y above 1.45 </span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co"># see lecture notes for why this is the case!</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">1.45</span>, <span class="at">lower.tail =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.07352926</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="binomial-vs-normal-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="binomial-vs-normal-distribution">Binomial vs Normal distribution</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the approximation is N(np, npq) if n is large, p close to 0.5</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co"># note: the small n (first argument) is how many random samples you want</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co"># it is different from the 'size' argument in binomial distribution</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>P <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a><span class="co"># binom(50, 0.5)</span></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>x_binom <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">size =</span> N, <span class="at">prob =</span> P)</span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a><span class="co"># normal</span></span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>x_norm <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">mean =</span> N<span class="sc">*</span>P, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="dv">50</span><span class="sc">*</span><span class="fl">0.5</span><span class="sc">*</span>(<span class="dv">1</span><span class="fl">-0.5</span>)))</span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a><span class="co"># plot them side by side</span></span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a><span class="co"># note that sd for normal distribution is approximate</span></span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x_binom, <span class="at">main =</span> <span class="st">'Binomial (50, 0.5)'</span>)</span>
+<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x_norm, <span class="at">main =</span> <span class="st">'Normal (25, 3.53)'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab_distribution_files/figure-html/binnorm-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># take summary statistics </span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(x_binom)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+     12      23      25      25      27      35 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(x_norm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  14.70   22.58   24.88   24.91   27.26   34.68 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># variance. if want standard deviation, use sd(x)</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(x_binom)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 12.41141</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(x_norm) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 11.83043</code></pre>
+</div>
+</div>
+
+
+<!-- -->
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb55" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Binomial and Normal distribution"</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: false</span></span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> source</span></span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-11"><a href="#cb55-11" aria-hidden="true" tabindex="-1"></a><span class="fu">## Randomness and simulation</span></span>
+<span id="cb55-12"><a href="#cb55-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-15"><a href="#cb55-15" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb55-16"><a href="#cb55-16" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: rand1</span></span>
+<span id="cb55-17"><a href="#cb55-17" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb55-18"><a href="#cb55-18" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb55-19"><a href="#cb55-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-20"><a href="#cb55-20" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">replace =</span> T)</span>
+<span id="cb55-21"><a href="#cb55-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-22"><a href="#cb55-22" aria-hidden="true" tabindex="-1"></a><span class="co"># set replacement False</span></span>
+<span id="cb55-23"><a href="#cb55-23" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">replace =</span> F)</span>
+<span id="cb55-24"><a href="#cb55-24" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">replace =</span> T) <span class="co"># replacement is allowed</span></span>
+<span id="cb55-25"><a href="#cb55-25" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb55-26"><a href="#cb55-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-27"><a href="#cb55-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-30"><a href="#cb55-30" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb55-31"><a href="#cb55-31" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: rand2</span></span>
+<span id="cb55-32"><a href="#cb55-32" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb55-33"><a href="#cb55-33" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb55-34"><a href="#cb55-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-35"><a href="#cb55-35" aria-hidden="true" tabindex="-1"></a><span class="co"># if set seed, the result is the same</span></span>
+<span id="cb55-36"><a href="#cb55-36" aria-hidden="true" tabindex="-1"></a><span class="co"># you need to run the line set.seed(yourseed) right before</span></span>
+<span id="cb55-37"><a href="#cb55-37" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb55-38"><a href="#cb55-38" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">replace =</span> T)</span>
+<span id="cb55-39"><a href="#cb55-39" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb55-40"><a href="#cb55-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-41"><a href="#cb55-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-42"><a href="#cb55-42" aria-hidden="true" tabindex="-1"></a><span class="fu">## Binomial distribution</span></span>
+<span id="cb55-43"><a href="#cb55-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-46"><a href="#cb55-46" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb55-47"><a href="#cb55-47" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: binom1</span></span>
+<span id="cb55-48"><a href="#cb55-48" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb55-49"><a href="#cb55-49" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb55-50"><a href="#cb55-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-51"><a href="#cb55-51" aria-hidden="true" tabindex="-1"></a><span class="co"># for this simulation, we do not need to set seed</span></span>
+<span id="cb55-52"><a href="#cb55-52" aria-hidden="true" tabindex="-1"></a><span class="co"># because the reproducibility is not too important for the demo</span></span>
+<span id="cb55-53"><a href="#cb55-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-54"><a href="#cb55-54" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">500</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
+<span id="cb55-55"><a href="#cb55-55" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x)</span>
+<span id="cb55-56"><a href="#cb55-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-57"><a href="#cb55-57" aria-hidden="true" tabindex="-1"></a><span class="co"># test different prob</span></span>
+<span id="cb55-58"><a href="#cb55-58" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">500</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.15</span>)</span>
+<span id="cb55-59"><a href="#cb55-59" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x)</span>
+<span id="cb55-60"><a href="#cb55-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-61"><a href="#cb55-61" aria-hidden="true" tabindex="-1"></a><span class="co"># test out different size</span></span>
+<span id="cb55-62"><a href="#cb55-62" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">500</span>, <span class="at">size =</span> <span class="dv">8</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
+<span id="cb55-63"><a href="#cb55-63" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x)</span>
+<span id="cb55-64"><a href="#cb55-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-65"><a href="#cb55-65" aria-hidden="true" tabindex="-1"></a><span class="co"># increase n and p (size and prob)</span></span>
+<span id="cb55-66"><a href="#cb55-66" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">500</span>, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
+<span id="cb55-67"><a href="#cb55-67" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x, <span class="at">breaks =</span> <span class="dv">20</span>)</span>
+<span id="cb55-68"><a href="#cb55-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-69"><a href="#cb55-69" aria-hidden="true" tabindex="-1"></a><span class="co"># more data points</span></span>
+<span id="cb55-70"><a href="#cb55-70" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">2000</span>, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
+<span id="cb55-71"><a href="#cb55-71" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x, <span class="at">breaks =</span> <span class="dv">20</span>)</span>
+<span id="cb55-72"><a href="#cb55-72" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb55-73"><a href="#cb55-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-74"><a href="#cb55-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-75"><a href="#cb55-75" aria-hidden="true" tabindex="-1"></a><span class="fu">## Normal distribution</span></span>
+<span id="cb55-76"><a href="#cb55-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-79"><a href="#cb55-79" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb55-80"><a href="#cb55-80" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: norm1</span></span>
+<span id="cb55-81"><a href="#cb55-81" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb55-82"><a href="#cb55-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-83"><a href="#cb55-83" aria-hidden="true" tabindex="-1"></a><span class="co"># two parameters: mean and sd</span></span>
+<span id="cb55-84"><a href="#cb55-84" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb55-85"><a href="#cb55-85" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x)</span>
+<span id="cb55-86"><a href="#cb55-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-87"><a href="#cb55-87" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
+<span id="cb55-88"><a href="#cb55-88" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x)</span>
+<span id="cb55-89"><a href="#cb55-89" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb55-90"><a href="#cb55-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-91"><a href="#cb55-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-92"><a href="#cb55-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-95"><a href="#cb55-95" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb55-96"><a href="#cb55-96" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: norm2</span></span>
+<span id="cb55-97"><a href="#cb55-97" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb55-98"><a href="#cb55-98" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb55-99"><a href="#cb55-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-100"><a href="#cb55-100" aria-hidden="true" tabindex="-1"></a><span class="co"># check the summary</span></span>
+<span id="cb55-101"><a href="#cb55-101" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(x)</span>
+<span id="cb55-102"><a href="#cb55-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-103"><a href="#cb55-103" aria-hidden="true" tabindex="-1"></a><span class="co"># mean</span></span>
+<span id="cb55-104"><a href="#cb55-104" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span>
+<span id="cb55-105"><a href="#cb55-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-106"><a href="#cb55-106" aria-hidden="true" tabindex="-1"></a><span class="co"># variance and sd</span></span>
+<span id="cb55-107"><a href="#cb55-107" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(x)</span>
+<span id="cb55-108"><a href="#cb55-108" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)</span>
+<span id="cb55-109"><a href="#cb55-109" aria-hidden="true" tabindex="-1"></a><span class="co"># (sd(x))^2 # these two are equivalent</span></span>
+<span id="cb55-110"><a href="#cb55-110" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb55-111"><a href="#cb55-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-112"><a href="#cb55-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-115"><a href="#cb55-115" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb55-116"><a href="#cb55-116" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: norm3</span></span>
+<span id="cb55-117"><a href="#cb55-117" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb55-118"><a href="#cb55-118" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb55-119"><a href="#cb55-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-120"><a href="#cb55-120" aria-hidden="true" tabindex="-1"></a><span class="co"># can plot the mean on the histogram to indicate the center</span></span>
+<span id="cb55-121"><a href="#cb55-121" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x)</span>
+<span id="cb55-122"><a href="#cb55-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-123"><a href="#cb55-123" aria-hidden="true" tabindex="-1"></a><span class="co"># v means verticle line, lwd means line width</span></span>
+<span id="cb55-124"><a href="#cb55-124" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(x), <span class="at">col =</span> <span class="st">'red'</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb55-125"><a href="#cb55-125" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb55-126"><a href="#cb55-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-127"><a href="#cb55-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-128"><a href="#cb55-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-131"><a href="#cb55-131" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb55-132"><a href="#cb55-132" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: norm4</span></span>
+<span id="cb55-133"><a href="#cb55-133" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb55-134"><a href="#cb55-134" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb55-135"><a href="#cb55-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-136"><a href="#cb55-136" aria-hidden="true" tabindex="-1"></a><span class="co"># quantiles and probability</span></span>
+<span id="cb55-137"><a href="#cb55-137" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="fl">1.96</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb55-138"><a href="#cb55-138" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">1.96</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb55-139"><a href="#cb55-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-140"><a href="#cb55-140" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span>p1 <span class="co"># equal to p2</span></span>
+<span id="cb55-141"><a href="#cb55-141" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb55-142"><a href="#cb55-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-143"><a href="#cb55-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-144"><a href="#cb55-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-145"><a href="#cb55-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-146"><a href="#cb55-146" aria-hidden="true" tabindex="-1"></a><span class="fu">## Bar plot </span></span>
+<span id="cb55-147"><a href="#cb55-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-150"><a href="#cb55-150" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb55-151"><a href="#cb55-151" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: bar1</span></span>
+<span id="cb55-152"><a href="#cb55-152" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb55-153"><a href="#cb55-153" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb55-154"><a href="#cb55-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-155"><a href="#cb55-155" aria-hidden="true" tabindex="-1"></a>dd <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.03</span>, <span class="fl">0.14</span>, <span class="fl">0.13</span>, <span class="fl">0.38</span>, <span class="fl">0.33</span>),</span>
+<span id="cb55-156"><a href="#cb55-156" aria-hidden="true" tabindex="-1"></a>                 <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">16</span>,<span class="dv">15</span>,<span class="dv">44</span>,<span class="dv">38</span>))</span>
+<span id="cb55-157"><a href="#cb55-157" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(dd) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'0-17'</span>, <span class="st">'18-24'</span>, <span class="st">'25-34'</span>, <span class="st">'35-64'</span>, <span class="st">'65+'</span>)</span>
+<span id="cb55-158"><a href="#cb55-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-159"><a href="#cb55-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-160"><a href="#cb55-160" aria-hidden="true" tabindex="-1"></a><span class="co"># we can plot two graphs side by side</span></span>
+<span id="cb55-161"><a href="#cb55-161" aria-hidden="true" tabindex="-1"></a><span class="co"># set parameter: 1 row 2 columns</span></span>
+<span id="cb55-162"><a href="#cb55-162" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb55-163"><a href="#cb55-163" aria-hidden="true" tabindex="-1"></a><span class="co"># bar plot for counts</span></span>
+<span id="cb55-164"><a href="#cb55-164" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(dd<span class="sc">$</span>n, <span class="at">names.arg =</span> <span class="fu">rownames</span>(dd),</span>
+<span id="cb55-165"><a href="#cb55-165" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">'Number of killed for road accidents'</span>)</span>
+<span id="cb55-166"><a href="#cb55-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-167"><a href="#cb55-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-168"><a href="#cb55-168" aria-hidden="true" tabindex="-1"></a><span class="co"># bar plot for probability</span></span>
+<span id="cb55-169"><a href="#cb55-169" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(dd<span class="sc">$</span>prob, <span class="at">names.arg =</span> <span class="fu">rownames</span>(dd),</span>
+<span id="cb55-170"><a href="#cb55-170" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">'Proportion for killed road accidents'</span>)</span>
+<span id="cb55-171"><a href="#cb55-171" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb55-172"><a href="#cb55-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-173"><a href="#cb55-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-174"><a href="#cb55-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-175"><a href="#cb55-175" aria-hidden="true" tabindex="-1"></a><span class="fu">## Example: birth weight </span></span>
+<span id="cb55-176"><a href="#cb55-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-177"><a href="#cb55-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-180"><a href="#cb55-180" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb55-181"><a href="#cb55-181" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: birth1</span></span>
+<span id="cb55-182"><a href="#cb55-182" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb55-183"><a href="#cb55-183" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb55-184"><a href="#cb55-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-185"><a href="#cb55-185" aria-hidden="true" tabindex="-1"></a><span class="co"># load birth data first</span></span>
+<span id="cb55-186"><a href="#cb55-186" aria-hidden="true" tabindex="-1"></a><span class="co"># if you forgot, check notes from day 2 (descriptive stat)</span></span>
+<span id="cb55-187"><a href="#cb55-187" aria-hidden="true" tabindex="-1"></a>birth <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/birth.csv'</span>, <span class="at">sep =</span><span class="st">','</span>)</span>
+<span id="cb55-188"><a href="#cb55-188" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(birth) <span class="co"># print 6 rows</span></span>
+<span id="cb55-189"><a href="#cb55-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-190"><a href="#cb55-190" aria-hidden="true" tabindex="-1"></a><span class="co"># we use the variable bwt</span></span>
+<span id="cb55-191"><a href="#cb55-191" aria-hidden="true" tabindex="-1"></a>birth_weight <span class="ot">&lt;-</span> birth<span class="sc">$</span>bwt</span>
+<span id="cb55-192"><a href="#cb55-192" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(birth_weight)</span>
+<span id="cb55-193"><a href="#cb55-193" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb55-194"><a href="#cb55-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-195"><a href="#cb55-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-196"><a href="#cb55-196" aria-hidden="true" tabindex="-1"></a><span class="fu">### Use empirical distribution</span></span>
+<span id="cb55-197"><a href="#cb55-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-200"><a href="#cb55-200" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb55-201"><a href="#cb55-201" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: birth2</span></span>
+<span id="cb55-202"><a href="#cb55-202" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb55-203"><a href="#cb55-203" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb55-204"><a href="#cb55-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-205"><a href="#cb55-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-206"><a href="#cb55-206" aria-hidden="true" tabindex="-1"></a><span class="co"># first find how many are above 400 (counting)</span></span>
+<span id="cb55-207"><a href="#cb55-207" aria-hidden="true" tabindex="-1"></a>birth_weight<span class="sc">&gt;</span><span class="dv">4000</span></span>
+<span id="cb55-208"><a href="#cb55-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-209"><a href="#cb55-209" aria-hidden="true" tabindex="-1"></a><span class="co"># we see 9 TRUE</span></span>
+<span id="cb55-210"><a href="#cb55-210" aria-hidden="true" tabindex="-1"></a><span class="co"># which finds the indices</span></span>
+<span id="cb55-211"><a href="#cb55-211" aria-hidden="true" tabindex="-1"></a><span class="co"># length counts the number of elements</span></span>
+<span id="cb55-212"><a href="#cb55-212" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(birth_weight <span class="sc">&gt;</span><span class="dv">4000</span>)</span>
+<span id="cb55-213"><a href="#cb55-213" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">which</span>(birth_weight <span class="sc">&gt;</span><span class="dv">4000</span>)<span class="sc">==</span>T)</span>
+<span id="cb55-214"><a href="#cb55-214" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb55-215"><a href="#cb55-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-218"><a href="#cb55-218" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb55-219"><a href="#cb55-219" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: birth3</span></span>
+<span id="cb55-220"><a href="#cb55-220" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb55-221"><a href="#cb55-221" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb55-222"><a href="#cb55-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-223"><a href="#cb55-223" aria-hidden="true" tabindex="-1"></a><span class="co"># alternatively, since R codes T as 1 and F as 0</span></span>
+<span id="cb55-224"><a href="#cb55-224" aria-hidden="true" tabindex="-1"></a><span class="co"># we can use sum() command</span></span>
+<span id="cb55-225"><a href="#cb55-225" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(birth_weight<span class="sc">&gt;</span><span class="dv">4000</span>)</span>
+<span id="cb55-226"><a href="#cb55-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-227"><a href="#cb55-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-228"><a href="#cb55-228" aria-hidden="true" tabindex="-1"></a><span class="co"># probability </span></span>
+<span id="cb55-229"><a href="#cb55-229" aria-hidden="true" tabindex="-1"></a><span class="dv">9</span><span class="sc">/</span><span class="dv">189</span></span>
+<span id="cb55-230"><a href="#cb55-230" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb55-231"><a href="#cb55-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-232"><a href="#cb55-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-233"><a href="#cb55-233" aria-hidden="true" tabindex="-1"></a><span class="fu">### Use normal approximation</span></span>
+<span id="cb55-234"><a href="#cb55-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-237"><a href="#cb55-237" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb55-238"><a href="#cb55-238" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: birth4</span></span>
+<span id="cb55-239"><a href="#cb55-239" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb55-240"><a href="#cb55-240" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb55-241"><a href="#cb55-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-242"><a href="#cb55-242" aria-hidden="true" tabindex="-1"></a><span class="co"># use normal approximation </span></span>
+<span id="cb55-243"><a href="#cb55-243" aria-hidden="true" tabindex="-1"></a><span class="co"># first get the parameters mean and sd (or sqrt variance)</span></span>
+<span id="cb55-244"><a href="#cb55-244" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">mean</span>(birth_weight)</span>
+<span id="cb55-245"><a href="#cb55-245" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">sd</span>(birth_weight)</span>
+<span id="cb55-246"><a href="#cb55-246" aria-hidden="true" tabindex="-1"></a><span class="co"># s &lt;- sqrt(var(birth_weight))</span></span>
+<span id="cb55-247"><a href="#cb55-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-248"><a href="#cb55-248" aria-hidden="true" tabindex="-1"></a><span class="co"># probability of birthweight above 4000</span></span>
+<span id="cb55-249"><a href="#cb55-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-250"><a href="#cb55-250" aria-hidden="true" tabindex="-1"></a><span class="co"># if you want </span></span>
+<span id="cb55-251"><a href="#cb55-251" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">4000</span>, <span class="at">mean =</span> m, <span class="at">sd =</span>s, <span class="at">lower.tail =</span> F)</span>
+<span id="cb55-252"><a href="#cb55-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-253"><a href="#cb55-253" aria-hidden="true" tabindex="-1"></a><span class="co"># you can also use the standard normal dist</span></span>
+<span id="cb55-254"><a href="#cb55-254" aria-hidden="true" tabindex="-1"></a><span class="co"># whose mean and sd (var) are 0 and 1</span></span>
+<span id="cb55-255"><a href="#cb55-255" aria-hidden="true" tabindex="-1"></a><span class="co"># can be translated as a second variable Y above 1.45 </span></span>
+<span id="cb55-256"><a href="#cb55-256" aria-hidden="true" tabindex="-1"></a><span class="co"># see lecture notes for why this is the case!</span></span>
+<span id="cb55-257"><a href="#cb55-257" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">1.45</span>, <span class="at">lower.tail =</span> F)</span>
+<span id="cb55-258"><a href="#cb55-258" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb55-259"><a href="#cb55-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-260"><a href="#cb55-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-261"><a href="#cb55-261" aria-hidden="true" tabindex="-1"></a><span class="fu">## Binomial vs Normal distribution</span></span>
+<span id="cb55-262"><a href="#cb55-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-265"><a href="#cb55-265" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb55-266"><a href="#cb55-266" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: binnorm</span></span>
+<span id="cb55-267"><a href="#cb55-267" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb55-268"><a href="#cb55-268" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb55-269"><a href="#cb55-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-270"><a href="#cb55-270" aria-hidden="true" tabindex="-1"></a><span class="co"># the approximation is N(np, npq) if n is large, p close to 0.5</span></span>
+<span id="cb55-271"><a href="#cb55-271" aria-hidden="true" tabindex="-1"></a><span class="co"># note: the small n (first argument) is how many random samples you want</span></span>
+<span id="cb55-272"><a href="#cb55-272" aria-hidden="true" tabindex="-1"></a><span class="co"># it is different from the 'size' argument in binomial distribution</span></span>
+<span id="cb55-273"><a href="#cb55-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-274"><a href="#cb55-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-275"><a href="#cb55-275" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb55-276"><a href="#cb55-276" aria-hidden="true" tabindex="-1"></a>P <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb55-277"><a href="#cb55-277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-278"><a href="#cb55-278" aria-hidden="true" tabindex="-1"></a><span class="co"># binom(50, 0.5)</span></span>
+<span id="cb55-279"><a href="#cb55-279" aria-hidden="true" tabindex="-1"></a>x_binom <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">size =</span> N, <span class="at">prob =</span> P)</span>
+<span id="cb55-280"><a href="#cb55-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-281"><a href="#cb55-281" aria-hidden="true" tabindex="-1"></a><span class="co"># normal</span></span>
+<span id="cb55-282"><a href="#cb55-282" aria-hidden="true" tabindex="-1"></a>x_norm <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">mean =</span> N<span class="sc">*</span>P, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="dv">50</span><span class="sc">*</span><span class="fl">0.5</span><span class="sc">*</span>(<span class="dv">1</span><span class="fl">-0.5</span>)))</span>
+<span id="cb55-283"><a href="#cb55-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-284"><a href="#cb55-284" aria-hidden="true" tabindex="-1"></a><span class="co"># plot them side by side</span></span>
+<span id="cb55-285"><a href="#cb55-285" aria-hidden="true" tabindex="-1"></a><span class="co"># note that sd for normal distribution is approximate</span></span>
+<span id="cb55-286"><a href="#cb55-286" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb55-287"><a href="#cb55-287" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x_binom, <span class="at">main =</span> <span class="st">'Binomial (50, 0.5)'</span>)</span>
+<span id="cb55-288"><a href="#cb55-288" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x_norm, <span class="at">main =</span> <span class="st">'Normal (25, 3.53)'</span>)</span>
+<span id="cb55-289"><a href="#cb55-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-290"><a href="#cb55-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-291"><a href="#cb55-291" aria-hidden="true" tabindex="-1"></a><span class="co"># take summary statistics </span></span>
+<span id="cb55-292"><a href="#cb55-292" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(x_binom)</span>
+<span id="cb55-293"><a href="#cb55-293" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(x_norm)</span>
+<span id="cb55-294"><a href="#cb55-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-295"><a href="#cb55-295" aria-hidden="true" tabindex="-1"></a><span class="co"># variance. if want standard deviation, use sd(x)</span></span>
+<span id="cb55-296"><a href="#cb55-296" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(x_binom)</span>
+<span id="cb55-297"><a href="#cb55-297" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(x_norm) </span>
+<span id="cb55-298"><a href="#cb55-298" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb55-299"><a href="#cb55-299" aria-hidden="true" tabindex="-1"></a></span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

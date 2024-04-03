@@ -46,7 +46,7 @@
     "href": "about.html",
     "title": "About the course",
     "section": "",
-    "text": "The aim of the course is to make the participants acquainted with basic statistical ideas and methods. No special previous knowledge of mathematics or statistics is assumed. The statistical software R and the RStudio environment will be used in many of the exercises. Analysis of examples from biomedical research will be emphasized.\n\nContact\n\nValeria Vitelli: valeria.vitelli@medisin.uio.no\nChi Zhang: chi.zhang@medisin.uio.no\n\nPlease contact Chi regarding the development of the website."
+    "text": "The aim of the course is to make the participants acquainted with basic statistical ideas and methods. No special previous knowledge of mathematics or statistics is assumed. The statistical software R and the RStudio environment will be used in many of the exercises. Analysis of examples from biomedical research will be emphasized.\n\n\n\n\n\n\nUse of the course material\n\n\n\nThis course website was built primarily with students taking MF9130E in mind, therefore the topics and examples are tailored to matche the existing teaching material we had been using at UiO.\nHowever, the course material and website are open source and fully publicly accessible. We advocate strongly for making learning statistics more accessible to everyone. Feel free to spread the words! And do let us know if you benefit from the course and the website :)\nPlease contact Chi Zhang chi.zhang@medisin.uio.no if you have questions and feedbacks.\n\n\n\nContact 2024 team\n\nValeria Vitelli: valeria.vitelli@medisin.uio.no\nChi Zhang: chi.zhang@medisin.uio.no\n\nPlease contact Chi regarding the development of the website."
   },
   {
     "objectID": "lab/overview.html",
@@ -725,7 +725,7 @@
     "href": "get_started/get_started.html",
     "title": "Get started",
     "section": "",
-    "text": "Here you will find useful information on how to get started.\nIn this workshop we will be using R. You can either\n\n(recommended) have R and Rstudio installed on your laptop\nor, use Posit cloud (formerly Rstudio Cloud).\n\n\nOption 1: Set up your RStudio on your laptop\nYou will need both R and Rstudio, they are two separate things.\nYou can download Rstudio here. In this page it will ask you to install R, so it should be clear to follow.\n\nYou can download R for Linux, macOS or Windows here or here\n\nOnce you have finished installing both R and Rstudio, open Rstudio, and you should be seeing something like this:\n\n\n\n\n\n\n\nTip\n\n\n\nWatch these YouTube videos if you are stuck.\n\n\n\n\nOption 2: Use Posit Cloud\n\n\n\n\n\n\nNote\n\n\n\nIt is recommended to have R and Rstudio installed on your laptop, this is because you have a better control of where you prefer to download data and course material. This is also useful when you want to analyse your own datasets. For example, you might have to upload datafiles to the server for Posit Cloud to work.\nHowever, if there is a problem with the installation, you can use Posit Cloud as an alternative.\nOn Tuesday morning we will see if most people can successfully make R run on their laptop and make necessary adjustments.\n\n\nPosit Cloud is free of charge for personal users. You need to sign up for a new user account and have internet connection.\n\nOnce you signed up, you can open a new workspace, and it will look like something like this. If it is the first time you use Posit Cloud, it will be empty (i.e. no script or data).\n\n\n\nData\nThe datasets used in this course are stored in this folder.\n\nDownload data\n\nGo to the repository, select the data you want to download by left-click the file name\nIf it is a dataset in .csv, .txt format, you will see something like this\n\n\n\nfind Raw button, right-click, you will see a list of options\nchoose Download Linked File, this will download the data into your default download folder\nalternatively, choose Download linked file as… so that you can change where you put it and file name.\n\n\nIf it is a dataset in .dta, .xlsx or other format, you might not see the data directly:\n\n\n\nfind Download button, left-click, and you will download it into your default download folder.\n\n\nOptional: download data via URL\nIf you feel like it, you can also download data inside R via URL. You can read more about it here.\n\n\n\n\nCode\nR scripts are stored in this folder.\nTo download an R script, it is similar to downloading a dataset\n\nAlternatively, you can create your own R script locally inside Rstudio, by copy and paste the script from Github.\n\n\nResources\nYou will find the material used in class on this page.\nWe keep updating the material, so please stay tuned!\n\nBooks and papers\nYou can find these books in the library.\n\nEssential medical statistics (Kirkwood and Sterne, 2nd edition, 2003) (link\nStatistiske metoder i medisin og helsefag (Aalen, Frigessi, Moger, Scheel, Skovlund og Veierød, 2 utg, 2018) (link)\n\n\n\nVideos\nInstall R and Rstudio YouTube videos"
+    "text": "Here you will find useful information on how to get started with the software.\nIn this course we will be using R. You can either\n\n(recommended) have R and Rstudio installed on your laptop\nor, use Posit cloud (formerly Rstudio Cloud).\n\nPlease let us know if you have issue accessing data files on GitHub or content on the webpage!\n\nOption 1 (recommend): Set up your RStudio on your laptop\nYou will need both R and Rstudio, they are two separate things.\n\n\n\n\n\n\nTip\n\n\n\nWatch these YouTube videos if you have trouble when trying at home.\n\n\nYou can download Rstudio here. In this page it will first ask you to install R.\n\nYou can download R for Linux, macOS or Windows here or here\n\nOnce you have finished installing both R and Rstudio, open Rstudio, and you should be seeing something like this:\n\n\n\nOption 2: Use Posit Cloud\n\n\n\n\n\n\nNote\n\n\n\nIt is recommended to have R and Rstudio installed on your laptop, this is because you have a better control of where you prefer to download data and course material. This is also useful when you want to analyse your own datasets. For example, you might have to upload datafiles to the server for Posit Cloud to work.\nHowever, if there is a problem with the installation, you can use Posit Cloud as an alternative.\nOn Tuesday morning we will see if most people can successfully make R run on their laptop and make necessary adjustments.\n\n\nPosit Cloud is free of charge for personal users. You need to sign up for a new user account and have internet connection.\n\nOnce you signed up, you can open a new workspace, and it will look like something like this. If it is the first time you use Posit Cloud, it will be empty (i.e. no script or data).\n\n\n\nData\nThe datasets used in this course are stored in this folder.\nIf you have trouble accessing or downloading datasets from GitHub, please let us know - we will upload a copy on Canvas.\n\nDownload data from GitHub\n\nGo to the repository, select the data you want to download by left-click the file name\nIf it is a dataset in .csv, .txt format, you will see something like this\n\n\n\nfind Raw button, right-click, you will see a list of options\nchoose Download Linked File, this will download the data into your default download folder\nalternatively, choose Download linked file as… so that you can change where you put it and file name.\n\n\nIf it is a dataset in .dta, .xlsx or other format, you might not see the data directly:\n\n\n\nfind Download button, left-click, and you will download it into your default download folder.\n\n\nOptional: download data via URL\nIf you feel like it, you can also download data inside R via URL. You can read more about it here.\n\n\n\n\nCode\nR scripts are stored in this folder.\nTo download an R script, it is similar to downloading a dataset\n\nAlternatively, you can create your own R script locally inside Rstudio, by copy and paste the script from Github.\n\nBooks and papers\nYou can find these books in the library.\n\nEssential medical statistics (Kirkwood and Sterne, 2nd edition, 2003) (link\nStatistiske metoder i medisin og helsefag (Aalen, Frigessi, Moger, Scheel, Skovlund og Veierød, 2 utg, 2018) (link)\n\n\n\nVideos\nInstall R and Rstudio YouTube videos"
   },
   {
     "objectID": "for_instructors/plan.html",
@@ -893,6 +893,104 @@
     "href": "schedule.html",
     "title": "Schedule",
     "section": "",
-    "text": "You can find the official course schedule provided by University of Oslo here. If there is an error in the time and place on this page, please refer to the official schedule.\n\n\n\n\n\n\nTime and place\n\n\n\nSessions are roughly divided by AM (morning) and PM (afternoon).\n\nAM: 8:30 - 11:45\nPM: 12:45 - 16:00\n\nLocations\n\nAud13: Auditorium 13 in Domus Medica (map)\nRunde: Runde auditorium R105 (map)\n\n\n\n\nWeek 1\n\n\n\nDay\nSession\nPlace\nTopic\nCourse material\n\n\n\n\nDay 1 - Apr 8\nPM\nAud 13\nCourse introduction\n\n\n\n\n\n\nData and descriptive statistics\n\n\n\nDay 2 - Apr 9\nAM\nAud 13\nLab\n\n\n\n\n\n\nLab\n\n\n\n\nPM\n\nProbability\n\n\n\n\n\n\nDiagnostic tests\n\n\n\nDay 3 - Apr 10\nAM\nAud 13\nLab\n\n\n\n\n\n\nDiagnostic tests\n\n\n\n\nPM\n\nStatistical inference\n\n\n\n\n\n\nt-test\n\n\n\nDay 4 - Apr 11\nAM\nAud 13\nLab\n\n\n\n\nPM\n\nCategorical data analysis\n\n\n\nDay 5 - Apr 12\nAM\nAud 13\nLab\n\n\n\n\n\n\nWeek 2\n\n\n\nDay\nSession\nPlace\nTopic\n\n\n\n\nApr 22\nAM\nRunde\nTransformations, non-parametric methods\n\n\n\nPM\nRunde\nSample size and statistical power\n\n\nApr 23\nAM\nRunde\nStudy designs\n\n\n\nPM\nRunde\nLinear regression I\n\n\nApr 24\nAM\nAud 13\nLinear regression II\n\n\n\nPM\nAud 13\nLinear regression III\n\n\n\n\n\nCourse summary\n\n\nApr 25\nAM\nRunde\nLogistic regression\n\n\n\nPM\nRunde\nSurvival analysis"
+    "text": "You can find the official course schedule provided by University of Oslo here. If there is an error in the time and place on this page, please refer to the official schedule.\n\n\n\n\n\n\nTime and place\n\n\n\nSessions are roughly divided by AM (morning) and PM (afternoon).\n\nAM: 8:30 - 11:45\nPM: 12:45 - 16:00\n\nLocations\n\nAud13: Auditorium 13 in Domus Medica (map)\nRunde: Runde auditorium R105 (map)\n\n\n\n\nWeek 1\n\n\n\nDay\nSession\nPlace\nTopic\nCourse material\n\n\n\n\nDay 1 - Apr 8\nPM\nAud 13\nCourse introduction\n\n\n\n\n\n\nData and descriptive statistics\n\n\n\nDay 2 - Apr 9\nAM\nAud 13\nLab 1\nSlides, Lab notes, Code\n\n\n\n\n\nLab 2\nSlides, Lab notes, Code\n\n\n\nPM\n\nIntro to probability\n\n\n\n\n\n\nDiagnostic test\n\n\n\n\n\n\nLab 3\nSlides, Lab notes, Code\n\n\nDay 3 - Apr 10\nAM\nAud 13\nBinomial distribution\n\n\n\n\n\n\nNormal distribution\n\n\n\n\n\n\nLab 4\nSlides, Lab notes, Code\n\n\n\nPM\n\nStatistical inference\n\n\n\n\n\n\nt-test\n\n\n\nDay 4 - Apr 11\nAM\nAud 13\nLab 5\nSlides, Lab notes, Code\n\n\n\nPM\n\nCategorical data analysis\n\n\n\nDay 5 - Apr 12\nAM\nAud 13\nLab 6\nSlides, Lab notes, Code\n\n\n\n\n\nWeek 2\n\n\n\nDay\nSession\nPlace\nTopic\n\n\n\n\nApr 22\nAM\nRunde\nTransformations, non-parametric methods\n\n\n\nPM\nRunde\nSample size and statistical power\n\n\nApr 23\nAM\nRunde\nStudy designs\n\n\n\nPM\nRunde\nLinear regression I\n\n\nApr 24\nAM\nAud 13\nLinear regression II\n\n\n\nPM\nAud 13\nLinear regression III\n\n\n\n\n\nCourse summary\n\n\nApr 25\nAM\nRunde\nLogistic regression\n\n\n\nPM\nRunde\nSurvival analysis"
+  },
+  {
+    "objectID": "lab_diagtest.html",
+    "href": "lab_diagtest.html",
+    "title": "Probability and diagnostic testing",
+    "section": "",
+    "text": "tp &lt;- 22\ntn &lt;- 331\nfp &lt;- 16\nfn &lt;- 3\npositives &lt;- tp + fn\npositives\n\n[1] 25\n\nnegatives &lt;- tn + fp\nnegatives\n\n[1] 347\n# sensitivity: tp / positives\ntp/positives\n\n[1] 0.88\n\n# specificity: tn / negatives\ntn/negatives\n\n[1] 0.9538905\n\n# positive predictive value ppv\n# tp / positive test\ntp / (tp+fp)\n\n[1] 0.5789474"
+  },
+  {
+    "objectID": "lab_diagtest.html#hiv-example",
+    "href": "lab_diagtest.html#hiv-example",
+    "title": "Probability and diagnostic testing",
+    "section": "HIV example",
+    "text": "HIV example\n\n# prevalence 0.1%\n# other values\n# prevalence &lt;- 0.01\n# prevalence &lt;- 0.1\n# prevalence &lt;- 0.0001\nprevalence &lt;- 0.001\n\n\n# false positive rate 0.2%\n# fpr is 1-specificity\nspecificity &lt;- 1-0.002\nspecificity\n\n[1] 0.998\n\n# false negative rate 2%\n# fnr is 1-sensitivity\nsensitivity &lt;- 1-0.02\nsensitivity\n\n[1] 0.98\n\n\nFind positive predictive value.\n\na &lt;- sensitivity * prevalence\nb &lt;- sensitivity * prevalence + (1-specificity) * (1-prevalence)\na/b\n\n[1] 0.3290799\n\n# you can skip the step where you name a and b\n(sensitivity * prevalence) / (sensitivity * prevalence + (1-specificity) * (1-prevalence))\n\n[1] 0.3290799"
+  },
+  {
+    "objectID": "lab/lab_distribution.html",
+    "href": "lab/lab_distribution.html",
+    "title": "Binomial and Normal distribution",
+    "section": "",
+    "text": "sample(1:6, size = 2, replace = T)\n\n[1] 3 2\n\n# set replacement False\nsample(1:3, size = 3, replace = F)\n\n[1] 3 1 2\n\nsample(1:3, size = 3, replace = T) # replacement is allowed\n\n[1] 2 3 2\n\n\n\n# if set seed, the result is the same\n# you need to run the line set.seed(yourseed) right before\nset.seed(1)\nsample(1:6, size = 2, replace = T)\n\n[1] 1 4"
+  },
+  {
+    "objectID": "lab/lab_distribution.html#randomness-and-simulation",
+    "href": "lab/lab_distribution.html#randomness-and-simulation",
+    "title": "Binomial and Normal distribution",
+    "section": "",
+    "text": "sample(1:6, size = 2, replace = T)\n\n[1] 3 2\n\n# set replacement False\nsample(1:3, size = 3, replace = F)\n\n[1] 3 1 2\n\nsample(1:3, size = 3, replace = T) # replacement is allowed\n\n[1] 2 3 2\n\n\n\n# if set seed, the result is the same\n# you need to run the line set.seed(yourseed) right before\nset.seed(1)\nsample(1:6, size = 2, replace = T)\n\n[1] 1 4"
+  },
+  {
+    "objectID": "lab/lab_distribution.html#binomial-distribution",
+    "href": "lab/lab_distribution.html#binomial-distribution",
+    "title": "Binomial and Normal distribution",
+    "section": "Binomial distribution",
+    "text": "Binomial distribution\n\n# for this simulation, we do not need to set seed\n# because the reproducibility is not too important for the demo\n\nx &lt;- rbinom(n = 500, size = 1, prob = 0.5)\nhist(x)\n\n\n\n\n\n\n\n# test different prob\nx &lt;- rbinom(n = 500, size = 1, prob = 0.15)\nhist(x)\n\n\n\n\n\n\n\n# test out different size\nx &lt;- rbinom(n = 500, size = 8, prob = 0.5)\nhist(x)\n\n\n\n\n\n\n\n# increase n and p (size and prob)\nx &lt;- rbinom(n = 500, size = 30, prob = 0.5)\nhist(x, breaks = 20)\n\n\n\n\n\n\n\n# more data points\nx &lt;- rbinom(n = 2000, size = 30, prob = 0.5)\nhist(x, breaks = 20)"
+  },
+  {
+    "objectID": "lab/lab_distribution.html#normal-distribution",
+    "href": "lab/lab_distribution.html#normal-distribution",
+    "title": "Binomial and Normal distribution",
+    "section": "Normal distribution",
+    "text": "Normal distribution\n\n# two parameters: mean and sd\nx &lt;- rnorm(1000, mean = 0, sd = 1)\nhist(x)\n\n\n\n\n\n\n\nx &lt;- rnorm(1000, mean = 10, sd = 2)\nhist(x)\n\n\n\n\n\n\n\n\n\n# check the summary\nsummary(x)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  3.584   8.637  10.028  10.030  11.445  16.129 \n\n# mean\nmean(x)\n\n[1] 10.0297\n\n# variance and sd\nvar(x)\n\n[1] 4.31841\n\nsd(x)\n\n[1] 2.078078\n\n# (sd(x))^2 # these two are equivalent\n\n\n# can plot the mean on the histogram to indicate the center\nhist(x)\n\n# v means verticle line, lwd means line width\nabline(v = mean(x), col = 'red', lwd = 2)\n\n\n\n\n\n\n\n\n\n# quantiles and probability\np1 &lt;- pnorm(1.96, mean = 0, sd = 1)\np2 &lt;- pnorm(-1.96, mean = 0, sd = 1)\n\n1-p1 # equal to p2\n\n[1] 0.0249979"
+  },
+  {
+    "objectID": "lab/lab_distribution.html#bar-plot",
+    "href": "lab/lab_distribution.html#bar-plot",
+    "title": "Binomial and Normal distribution",
+    "section": "Bar plot",
+    "text": "Bar plot\n\ndd &lt;- data.frame(prob = c(0.03, 0.14, 0.13, 0.38, 0.33),\n                 n = c(3,16,15,44,38))\nrownames(dd) &lt;- c('0-17', '18-24', '25-34', '35-64', '65+')\n\n\n# we can plot two graphs side by side\n# set parameter: 1 row 2 columns\npar(mfrow = c(1, 2))\n# bar plot for counts\nbarplot(dd$n, names.arg = rownames(dd),\n        main = 'Number of killed for road accidents')\n\n\n# bar plot for probability\nbarplot(dd$prob, names.arg = rownames(dd),\n        main = 'Proportion for killed road accidents')"
+  },
+  {
+    "objectID": "lab/lab_distribution.html#example-birth-weight",
+    "href": "lab/lab_distribution.html#example-birth-weight",
+    "title": "Binomial and Normal distribution",
+    "section": "Example: birth weight",
+    "text": "Example: birth weight\n\n# load birth data first\n# if you forgot, check notes from day 2 (descriptive stat)\nbirth &lt;- read.csv('data/birth.csv', sep =',')\nhead(birth) # print 6 rows\n\n  id         low age lwt   eth       smk ptl  ht  ui fvt ttv  bwt\n1  4 bwt &lt;= 2500  28 120 other    smoker   1  no yes   0   0  709\n2 10 bwt &lt;= 2500  29 130 white nonsmoker   0  no yes   2   0 1021\n3 11 bwt &lt;= 2500  34 187 black    smoker   0 yes  no   0   0 1135\n4 13 bwt &lt;= 2500  25 105 other nonsmoker   1 yes  no   0   0 1330\n5 15 bwt &lt;= 2500  25  85 other nonsmoker   0  no yes   0   4 1474\n6 16 bwt &lt;= 2500  27 150 other nonsmoker   0  no  no   0   5 1588\n\n# we use the variable bwt\nbirth_weight &lt;- birth$bwt\nhist(birth_weight)\n\n\n\n\n\n\n\n\n\nUse empirical distribution\n\n# first find how many are above 400 (counting)\nbirth_weight&gt;4000\n\n  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [37] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [49] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [61] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [73] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [85] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [97] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[109] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[121] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[133] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[145] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[157] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[169] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[181]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n\n# we see 9 TRUE\n# which finds the indices\n# length counts the number of elements\nwhich(birth_weight &gt;4000)\n\n[1] 181 182 183 184 185 186 187 188 189\n\nlength(which(birth_weight &gt;4000)==T)\n\n[1] 9\n\n\n\n# alternatively, since R codes T as 1 and F as 0\n# we can use sum() command\nsum(birth_weight&gt;4000)\n\n[1] 9\n\n# probability \n9/189\n\n[1] 0.04761905\n\n\n\n\nUse normal approximation\n\n# use normal approximation \n# first get the parameters mean and sd (or sqrt variance)\nm &lt;- mean(birth_weight)\ns &lt;- sd(birth_weight)\n# s &lt;- sqrt(var(birth_weight))\n\n# probability of birthweight above 4000\n\n# if you want \npnorm(4000, mean = m, sd =s, lower.tail = F)\n\n[1] 0.07386235\n\n# you can also use the standard normal dist\n# whose mean and sd (var) are 0 and 1\n# can be translated as a second variable Y above 1.45 \n# see lecture notes for why this is the case!\npnorm(1.45, lower.tail = F)\n\n[1] 0.07352926"
+  },
+  {
+    "objectID": "lab/lab_diagtest.html",
+    "href": "lab/lab_diagtest.html",
+    "title": "Probability and diagnostic testing",
+    "section": "",
+    "text": "tp &lt;- 22\ntn &lt;- 331\nfp &lt;- 16\nfn &lt;- 3\n\n\npositives &lt;- tp + fn\npositives\n\n[1] 25\n\nnegatives &lt;- tn + fp\nnegatives\n\n[1] 347\n\n\n\n# sensitivity: tp / positives\ntp/positives\n\n[1] 0.88\n\n# specificity: tn / negatives\ntn/negatives\n\n[1] 0.9538905\n\n# positive predictive value ppv\n# tp / positive test\ntp / (tp+fp)\n\n[1] 0.5789474"
+  },
+  {
+    "objectID": "lab/lab_diagtest.html#mammography-example",
+    "href": "lab/lab_diagtest.html#mammography-example",
+    "title": "Probability and diagnostic testing",
+    "section": "",
+    "text": "tp &lt;- 22\ntn &lt;- 331\nfp &lt;- 16\nfn &lt;- 3\n\n\npositives &lt;- tp + fn\npositives\n\n[1] 25\n\nnegatives &lt;- tn + fp\nnegatives\n\n[1] 347\n\n\n\n# sensitivity: tp / positives\ntp/positives\n\n[1] 0.88\n\n# specificity: tn / negatives\ntn/negatives\n\n[1] 0.9538905\n\n# positive predictive value ppv\n# tp / positive test\ntp / (tp+fp)\n\n[1] 0.5789474"
+  },
+  {
+    "objectID": "lab/lab_diagtest.html#hiv-example",
+    "href": "lab/lab_diagtest.html#hiv-example",
+    "title": "Probability and diagnostic testing",
+    "section": "HIV example",
+    "text": "HIV example\n\n# prevalence 0.1%\n# other values\n# prevalence &lt;- 0.01\n# prevalence &lt;- 0.1\n# prevalence &lt;- 0.0001\nprevalence &lt;- 0.001\n\n\n# false positive rate 0.2%\n# fpr is 1-specificity\nspecificity &lt;- 1-0.002\nspecificity\n\n[1] 0.998\n\n# false negative rate 2%\n# fnr is 1-sensitivity\nsensitivity &lt;- 1-0.02\nsensitivity\n\n[1] 0.98\n\n\nFind positive predictive value.\n\na &lt;- sensitivity * prevalence\nb &lt;- sensitivity * prevalence + (1-specificity) * (1-prevalence)\na/b\n\n[1] 0.3290799\n\n# you can skip the step where you name a and b\n(sensitivity * prevalence) / (sensitivity * prevalence + (1-specificity) * (1-prevalence))\n\n[1] 0.3290799"
+  },
+  {
+    "objectID": "lab/lab_distribution.html#binomial-vs-normal-distribution",
+    "href": "lab/lab_distribution.html#binomial-vs-normal-distribution",
+    "title": "Binomial and Normal distribution",
+    "section": "Binomial vs Normal distribution",
+    "text": "Binomial vs Normal distribution\n\n# the approximation is N(np, npq) if n is large, p close to 0.5\n# note: the small n (first argument) is how many random samples you want\n# it is different from the 'size' argument in binomial distribution\n\n\nN &lt;- 50\nP &lt;- 0.5\n\n# binom(50, 0.5)\nx_binom &lt;- rbinom(n = 1000, size = N, prob = P)\n\n# normal\nx_norm &lt;- rnorm(n = 1000, mean = N*P, sd = sqrt(50*0.5*(1-0.5)))\n\n# plot them side by side\n# note that sd for normal distribution is approximate\npar(mfrow = c(1, 2))\nhist(x_binom, main = 'Binomial (50, 0.5)')\nhist(x_norm, main = 'Normal (25, 3.53)')\n\n\n\n\n\n\n\n# take summary statistics \nsummary(x_binom)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n     12      23      25      25      27      35 \n\nsummary(x_norm)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  14.70   22.58   24.88   24.91   27.26   34.68 \n\n# variance. if want standard deviation, use sd(x)\nvar(x_binom)\n\n[1] 12.41141\n\nvar(x_norm) \n\n[1] 11.83043"
+  },
+  {
+    "objectID": "index.html#preparation",
+    "href": "index.html#preparation",
+    "title": "MF9130E - Introductory course in Statistics",
+    "section": "Preparation",
+    "text": "Preparation\nYou should have a working solution of R and RStudio (either installed on your own laptop, or using Posit cloud) before the course.\nPlease also familiarize yourself with the course website.\n\nGet Started provides some information about software installation, where to download data and code, and some resources.\nSchedule provides an overview of the planned sessions, and links to course material used in each session.\nR Lab and Code hosts the lab session notes collectively."
+  },
+  {
+    "objectID": "index.html#schedule-and-course-material",
+    "href": "index.html#schedule-and-course-material",
+    "title": "MF9130E - Introductory course in Statistics",
+    "section": "Schedule and course material",
+    "text": "Schedule and course material\nOn Schedule page, you will see a list of topics and links to the material. This should be consistent with the official UiO schedule provided by University of Oslo.\nIf there is an error in the time and place on this page, please refer to the official schedule.\n\n\n\n\n\n\nNote\n\n\n\nWe will primarily use this website (instead of Canvas) for hosting material and exercises. Please let us know if you have issue accessing data files or content!"
   }
 ]

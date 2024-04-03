@@ -1,0 +1,103 @@
+---
+title: "Probability and diagnostic testing"
+format: 
+  html:
+    code-fold: false
+    code-tools: true
+editor: source
+---
+
+
+
+
+
+## Mammography example
+
+```{r}
+#| label: mamm1
+#| warning: false
+#| echo: true
+
+tp <- 22
+tn <- 331
+fp <- 16
+fn <- 3
+```
+
+
+```{r}
+#| label: mamm2
+#| warning: false
+#| echo: true
+
+positives <- tp + fn
+positives
+negatives <- tn + fp
+negatives
+```
+
+
+```{r}
+#| label: mamm3
+#| warning: false
+#| echo: true
+
+# sensitivity: tp / positives
+tp/positives
+
+# specificity: tn / negatives
+tn/negatives
+
+# positive predictive value ppv
+# tp / positive test
+tp / (tp+fp)
+```
+
+
+## HIV example
+
+```{r}
+#| label: hiv1
+#| warning: false
+#| echo: true
+
+# prevalence 0.1%
+# other values
+# prevalence <- 0.01
+# prevalence <- 0.1
+# prevalence <- 0.0001
+prevalence <- 0.001
+
+```
+
+
+
+```{r}
+#| label: hiv2
+#| warning: false
+#| echo: true
+
+# false positive rate 0.2%
+# fpr is 1-specificity
+specificity <- 1-0.002
+specificity
+# false negative rate 2%
+# fnr is 1-sensitivity
+sensitivity <- 1-0.02
+sensitivity
+```
+
+Find positive predictive value.
+
+```{r}
+#| label: hiv3
+#| warning: false
+#| echo: true
+
+a <- sensitivity * prevalence
+b <- sensitivity * prevalence + (1-specificity) * (1-prevalence)
+a/b
+
+# you can skip the step where you name a and b
+(sensitivity * prevalence) / (sensitivity * prevalence + (1-specificity) * (1-prevalence))
+```

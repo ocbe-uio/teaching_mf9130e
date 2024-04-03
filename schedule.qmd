@@ -35,19 +35,21 @@ Locations
 
 |  Day | Session  | Place |  Topic           |  Course material        |
 |:-------:|:---:|:------:|:---------------:|:-------------:|
-| Day 1 - Apr 8 |PM | Aud 13 | Course introduction | |
-|           | | | Data and descriptive statistics | |
-| Day 2 - Apr 9 |AM | Aud 13 | Lab | |
-|           | | | Lab | |
-|               |PM |  | Probability | |
-|           | | | Diagnostic tests | |
-| Day 3 - Apr 10 |AM | Aud 13 | Lab  | |
-|           | | | Diagnostic tests | |
-|               |PM |  | Statistical inference  | |
-|           | | | t-test | |
-| Day 4 - Apr 11 |AM | Aud 13 | Lab | |
-|                |PM |  | Categorical data analysis  | |
-| Day 5 - Apr 12 |AM | Aud 13 | Lab | |
+| Day 1 - Apr 8 |PM | Aud 13 | **Course introduction** | |
+|           | | | **Data and descriptive statistics** | |
+| Day 2 - Apr 9 |AM | Aud 13 | Lab 1 | [Slides](), [Lab notes](lab/lab_intro_r.qmd), [Code]() |
+|           | | | Lab 2 |[Slides](), [Lab notes](lab/lab_eda_part1.qmd), [Code]() |
+|               |PM |  | **Intro to probability** | |
+|           | | | **Diagnostic test** | |
+|           | | | Lab 3 |[Slides](), [Lab notes](lab/lab_diagtest.qmd), [Code]() |
+| Day 3 - Apr 10 |AM | Aud 13 | **Binomial distribution**  | |
+|           | | | **Normal distribution** | |
+|           | | | Lab 4 | [Slides](), [Lab notes](lab/lab_distribution.qmd), [Code]()|
+|               |PM |  | **Statistical inference**  | |
+|           | | | **t-test** | |
+| Day 4 - Apr 11 |AM | Aud 13 | Lab 5 |[Slides](), [Lab notes](lab/lab_ttest.qmd), [Code]() |
+|                |PM |  | **Categorical data analysis**  | |
+| Day 5 - Apr 12 |AM | Aud 13 | Lab 6 |[Slides](), [Lab notes](lab/lab_categorical.qmd), [Code]() |
 
 
 
