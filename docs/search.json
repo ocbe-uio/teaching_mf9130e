@@ -914,14 +914,14 @@
     "href": "lab/lab_distribution.html",
     "title": "Binomial and Normal distribution",
     "section": "",
-    "text": "sample(1:6, size = 2, replace = T)\n\n[1] 3 2\n\n# set replacement False\nsample(1:3, size = 3, replace = F)\n\n[1] 3 1 2\n\nsample(1:3, size = 3, replace = T) # replacement is allowed\n\n[1] 2 3 2\n\n\n\n# if set seed, the result is the same\n# you need to run the line set.seed(yourseed) right before\nset.seed(1)\nsample(1:6, size = 2, replace = T)\n\n[1] 1 4"
+    "text": "On this page you will find some examples and code for probability distributions."
   },
   {
     "objectID": "lab/lab_distribution.html#randomness-and-simulation",
     "href": "lab/lab_distribution.html#randomness-and-simulation",
     "title": "Binomial and Normal distribution",
-    "section": "",
-    "text": "sample(1:6, size = 2, replace = T)\n\n[1] 3 2\n\n# set replacement False\nsample(1:3, size = 3, replace = F)\n\n[1] 3 1 2\n\nsample(1:3, size = 3, replace = T) # replacement is allowed\n\n[1] 2 3 2\n\n\n\n# if set seed, the result is the same\n# you need to run the line set.seed(yourseed) right before\nset.seed(1)\nsample(1:6, size = 2, replace = T)\n\n[1] 1 4"
+    "section": "Randomness and simulation",
+    "text": "Randomness and simulation\n\nsample(1:6, size = 2, replace = T)\n\n[1] 4 5\n\n# set replacement False\nsample(1:3, size = 3, replace = F)\n\n[1] 1 3 2\n\nsample(1:3, size = 3, replace = T) # replacement is allowed\n\n[1] 2 3 1\n\n\n\n# if set seed, the result is the same\n# you need to run the line set.seed(yourseed) right before\nset.seed(1)\nsample(1:6, size = 2, replace = T)\n\n[1] 1 4"
   },
   {
     "objectID": "lab/lab_distribution.html#binomial-distribution",
@@ -956,21 +956,21 @@
     "href": "lab/lab_diagtest.html",
     "title": "Probability and diagnostic testing",
     "section": "",
-    "text": "tp &lt;- 22\ntn &lt;- 331\nfp &lt;- 16\nfn &lt;- 3\n\n\npositives &lt;- tp + fn\npositives\n\n[1] 25\n\nnegatives &lt;- tn + fp\nnegatives\n\n[1] 347\n\n\n\n# sensitivity: tp / positives\ntp/positives\n\n[1] 0.88\n\n# specificity: tn / negatives\ntn/negatives\n\n[1] 0.9538905\n\n# positive predictive value ppv\n# tp / positive test\ntp / (tp+fp)\n\n[1] 0.5789474"
+    "text": "In this page you will find some examples from the lecture. You are not required to do your exercises with R, however R can be used as a calculator.\nIn addition,\nWhen you have prevalence of the disease, the positive and negative predictive value PPV, NPV are\n\\[PPV = \\frac{sens \\times prev}{sens \\times prev + (1-spec) \\times (1 - prev)}\\]\n\\[NPV = \\frac{spec \\times prev}{(1-sens) \\ times prev + spec \\times (1-prev)}\\]"
   },
   {
     "objectID": "lab/lab_diagtest.html#mammography-example",
     "href": "lab/lab_diagtest.html#mammography-example",
     "title": "Probability and diagnostic testing",
-    "section": "",
-    "text": "tp &lt;- 22\ntn &lt;- 331\nfp &lt;- 16\nfn &lt;- 3\n\n\npositives &lt;- tp + fn\npositives\n\n[1] 25\n\nnegatives &lt;- tn + fp\nnegatives\n\n[1] 347\n\n\n\n# sensitivity: tp / positives\ntp/positives\n\n[1] 0.88\n\n# specificity: tn / negatives\ntn/negatives\n\n[1] 0.9538905\n\n# positive predictive value ppv\n# tp / positive test\ntp / (tp+fp)\n\n[1] 0.5789474"
+    "section": "Mammography example",
+    "text": "Mammography example\nIn the mammography dataset, we are given the counts of patients that fall into one of the four categories:\n\n22 tested cancer really have cancer\n331 tested no cancer really do not have cancer\n16 tested cancer, but do not have cancer\n3 tested no cancer, but really have cancer\n\nAccording to the terminology introduced in class, we can create four variables to store the data.\n\ntp &lt;- 22\ntn &lt;- 331\nfp &lt;- 16\nfn &lt;- 3\n\nWe can find how many patients really have cancer, or not have cancer. Here positive and negative refer to the actual disease status, not thest test result.\n\n# positive means positive condition - real disease status\npositives &lt;- tp + fn\npositives\n\n[1] 25\n\nnegatives &lt;- tn + fp\nnegatives\n\n[1] 347\n\n\nNow find the sensitivity, specificity, positive predictive value.\n\n# sensitivity: tp / positives\ntp/positives\n\n[1] 0.88\n\n# specificity: tn / negatives\ntn/negatives\n\n[1] 0.9538905\n\n# positive predictive value ppv\n# tp / positive test\ntp / (tp+fp)\n\n[1] 0.5789474"
   },
   {
     "objectID": "lab/lab_diagtest.html#hiv-example",
     "href": "lab/lab_diagtest.html#hiv-example",
     "title": "Probability and diagnostic testing",
     "section": "HIV example",
-    "text": "HIV example\n\n# prevalence 0.1%\n# other values\n# prevalence &lt;- 0.01\n# prevalence &lt;- 0.1\n# prevalence &lt;- 0.0001\nprevalence &lt;- 0.001\n\n\n# false positive rate 0.2%\n# fpr is 1-specificity\nspecificity &lt;- 1-0.002\nspecificity\n\n[1] 0.998\n\n# false negative rate 2%\n# fnr is 1-sensitivity\nsensitivity &lt;- 1-0.02\nsensitivity\n\n[1] 0.98\n\n\nFind positive predictive value.\n\na &lt;- sensitivity * prevalence\nb &lt;- sensitivity * prevalence + (1-specificity) * (1-prevalence)\na/b\n\n[1] 0.3290799\n\n# you can skip the step where you name a and b\n(sensitivity * prevalence) / (sensitivity * prevalence + (1-specificity) * (1-prevalence))\n\n[1] 0.3290799"
+    "text": "HIV example\nThe HIV example from the class demonstrates the how prevalence affects metrics of diagnostic tests.\nTo start, we set prevalence to 0.001.\n\n# prevalence 0.1%\n# other values\n# prevalence &lt;- 0.01\n# prevalence &lt;- 0.1\n# prevalence &lt;- 0.0001\nprevalence &lt;- 0.001\n\nWe were given some terms that are not sensitivity and specifity, but it is straightfoward to translate into terms we know.\n\n# false positive rate 0.2%\n# fpr is 1-specificity\nspecificity &lt;- 1-0.002\nspecificity\n\n[1] 0.998\n\n# false negative rate 2%\n# fnr is 1-sensitivity\nsensitivity &lt;- 1-0.02\nsensitivity\n\n[1] 0.98\n\n\nFind positive predictive value from the formula.\n\na &lt;- sensitivity * prevalence\nb &lt;- sensitivity * prevalence + (1-specificity) * (1-prevalence)\na/b\n\n[1] 0.3290799\n\n# you can skip the step where you name a and b\n(sensitivity * prevalence) / (sensitivity * prevalence + (1-specificity) * (1-prevalence))\n\n[1] 0.3290799"
   },
   {
     "objectID": "lab/lab_distribution.html#binomial-vs-normal-distribution",
@@ -992,5 +992,12 @@
     "title": "MF9130E - Introductory course in Statistics",
     "section": "Schedule and course material",
     "text": "Schedule and course material\nOn Schedule page, you will see a list of topics and links to the material. This should be consistent with the official UiO schedule provided by University of Oslo.\nIf there is an error in the time and place on this page, please refer to the official schedule.\n\n\n\n\n\n\nNote\n\n\n\nWe will primarily use this website (instead of Canvas) for hosting material and exercises. Please let us know if you have issue accessing data files or content!"
+  },
+  {
+    "objectID": "lab/lab_distribution.html#randomness-and-simulation-optional",
+    "href": "lab/lab_distribution.html#randomness-and-simulation-optional",
+    "title": "Binomial and Normal distribution",
+    "section": "Randomness and simulation (optional)",
+    "text": "Randomness and simulation (optional)\nA random sample is random. For example, if you throw a 6 sided dice twice, you will possibly have different outcomes. This process can be simulated with the line below.\nYou can copy and paste this line to your R console, and run it a few times. You should see different results every time.\n\n# take two samples from 1,2,3,4,5,6; \n# replace = T means the same number can appear in both first and second\nsample(1:6, size = 2, replace = T)\n\n[1] 1 1\n\n\nBy setting the seed in programming, it means you fix the process of the random data generator. This ensures that your results is reproducible regardless of when you run the line below.\n\n# if set seed, the result is the same\n# you need to run the line set.seed(yourseed) right before\nset.seed(1)\nsample(1:6, size = 2, replace = T)\n\n[1] 1 4"
   }
 ]

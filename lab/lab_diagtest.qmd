@@ -7,11 +7,33 @@ format:
 editor: source
 ---
 
+In this page you will find some examples from the lecture. You are not required to do your exercises with R, however R can be used as a calculator. 
 
+* Sensitivity = TP / P = TP / (TP+FN)
+* Specificity = TN / N = TN / (TN+FP)
+* Positive predictive value PPV = TP / test positive = TP / (TP + FP)
 
+In addition,
 
+* false positive rate (FPR) is 1 - specificity
+* false negative rate (FNR) is 1 - sensitivity
+
+When you have prevalence of the disease, the positive and negative predictive value PPV, NPV are
+
+$$PPV = \frac{sens \times prev}{sens \times prev + (1-spec) \times (1 - prev)}$$
+
+$$NPV = \frac{spec \times prev}{(1-sens) \ times prev + spec \times (1-prev)}$$
 
 ## Mammography example
+
+In the mammography dataset, we are given the counts of patients that fall into one of the four categories: 
+
+* 22 tested cancer really have cancer
+* 331 tested no cancer really do not have cancer
+* 16 tested cancer, but do not have cancer
+* 3 tested no cancer, but really have cancer
+
+According to the terminology introduced in class, we can create four variables to store the data.
 
 ```{r}
 #| label: mamm1
@@ -24,18 +46,21 @@ fp <- 16
 fn <- 3
 ```
 
+We can find how many patients really have cancer, or not have cancer. Here **positive** and **negative** refer to the actual disease status, not thest test result.
 
 ```{r}
 #| label: mamm2
 #| warning: false
 #| echo: true
 
+# positive means positive condition - real disease status
 positives <- tp + fn
 positives
 negatives <- tn + fp
 negatives
 ```
 
+Now find the **sensitivity, specificity, positive predictive value**. 
 
 ```{r}
 #| label: mamm3
@@ -56,6 +81,11 @@ tp / (tp+fp)
 
 ## HIV example
 
+The HIV example from the class demonstrates the how prevalence affects metrics of diagnostic tests. 
+
+To start, we set prevalence to 0.001.
+
+
 ```{r}
 #| label: hiv1
 #| warning: false
@@ -67,10 +97,9 @@ tp / (tp+fp)
 # prevalence <- 0.1
 # prevalence <- 0.0001
 prevalence <- 0.001
-
 ```
 
-
+We were given some terms that are not sensitivity and specifity, but it is straightfoward to translate into terms we know.
 
 ```{r}
 #| label: hiv2
@@ -87,7 +116,7 @@ sensitivity <- 1-0.02
 sensitivity
 ```
 
-Find positive predictive value.
+Find positive predictive value from the formula.
 
 ```{r}
 #| label: hiv3
