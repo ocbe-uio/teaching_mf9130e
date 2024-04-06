@@ -1,10 +1,15 @@
 ---
 title: "Binomial and Normal distribution"
+engine: knitr
 format: 
   html:
     code-fold: false
     code-tools: true
 editor: source
+filters: 
+  - webr
+webr:
+  channel-type: "post-message"
 ---
 
 On this page you will find some examples and code for probability distributions. 
@@ -21,27 +26,26 @@ In your take-home exam, you will NOT be tested on programming (e.g. simulation) 
 
 A random sample is **random**. For example, if you throw a 6 sided dice twice, you will possibly have different outcomes. This process can be **simulated** with the line below. 
 
-You can copy and paste this line to your R console, and run it a few times. You should see different results every time.
+You can copy and paste this line to your R console, and **run it a few times**. Alternatively, click on **Run Code** button below a few times. You should see different results every time.
 
 
-```{r}
+```{webr-r}
 #| label: rand1
 #| warning: false
 #| echo: true
-
-# take two samples from 1,2,3,4,5,6; 
+# take two numbers from 1,2,3,4,5,6
 # replace = T means the same number can appear in both first and second
 sample(1:6, size = 2, replace = T)
 ```
 
-By **setting the seed** in programming, it means you fix the process of the random data generator. This ensures that your results is reproducible regardless of when you run the line below.
+By **setting the seed** in programming, it means you fix the process of the random data generator. This ensures that your results is **reproducible** regardless of when you run the line below.
 
+You can try to set a different value of the seed number, say `set.seed(20)` and see what happens!
 
-```{r}
+```{webr-r}
 #| label: rand2
 #| warning: false
 #| echo: true
-
 # if set seed, the result is the same
 # you need to run the line set.seed(yourseed) right before
 set.seed(1)
@@ -49,52 +53,106 @@ sample(1:6, size = 2, replace = T)
 ```
 
 
+The randomness in the data generating process implies that if you simulate two datasets with the same parameters, the output could be different, even though both are from the same theoretical distribution. 
+
+```{webr-r}
+#| label: rand3
+#| warning: false
+#| echo: true
+# 100 standard normal distributed data
+x1 <- rnorm(100, mean = 0, sd = 1)
+head(x1) # prints the first 6 values
+summary(x1) # prints the summary statistic for these data
+hist(x1, main = '100 random samples from N(0,1)')
+```
+
+
 ## Binomial distribution
 
-```{r}
+Binomial distribution has two parameters: $n$ and $p$. In R, they are referred to as `size` and `prob`. Consider the following process:
+
+* an experiment or trial has two outcomes: 1 and 0; positive or negative; boy or girl; ... 
+* the probability of having 1 as outcome (or 'success') is $p$
+* repeat the experiment $n$ times, where each one experiment does not affect the other (independent)
+* count how many times there are zero 1's, one 1's, ..., n 1's
+
+The probability associated with each possibility can be described by binomial distribution (n,p).
+
+
+### Coin toss example
+
+We can start with simulating 500 random sample from a binomial distribution whose parameters (n,p) are (1, 0.5). This is like tossing a fair coin once (n=1), whose probability of having Heads and Tails are 50/50 (p=0.5). We toss it 500 times, and record each time what outcome it is. 
+
+We can print out the first 20 results, and visualize all the frequencies from the 500 outcomes.
+
+
+```{webr-r}
 #| label: binom1
 #| warning: false
 #| echo: true
-
-# for this simulation, we do not need to set seed
-# because the reproducibility is not too important for the demo
-
+# run the code chunk a few times
 x <- rbinom(n = 500, size = 1, prob = 0.5)
+# first 20 outcomes
+x[1:20] 
+# how many 1 and 0? proportion?
+table(x)
+table(x)/500 
+# plot frequency
+hist(x, main = 'Histogram of binom(1, 0.5)')
+```
+
+Here you see that the frequency for 1 and 0 outcomes are very close to 0.5, even though sometimes there are slightly more 1 than 0 and vice versa. 
+
+The X-axis should be only two discrete values - 0 and 1; and nothing between.
+
+### Different n and p
+
+For a random variable $X$ and parameters $n, p$, the formula of binomial distribution is
+
+$$P(X = k) = {n \choose k}p^{k}(1-p)^{n-k}$$
+Here $k$ is the number of success (1's) among $n$ experiments. For example, $n=5$, the possible range of $k$ could be 0, 1, 2, 3, 4, 5 successes. The number of successes is affected by the probability $p$ for each one experiment - in general, the higher $p$ is, the more likely you get larger number of successes. This can be seen from the histogram.
+
+You can experiment with different combinations to see the effect of size and prob, N and P. Try the following combinations:
+
+* N: 1, 5, 8, 20, 50, 100
+* P: 0.15, 0.5, 0.8, 0.95
+
+
+```{webr-r}
+#| label: binom2
+#| warning: false
+#| echo: true
+# try set different values, run the code chunk a few times
+n_sample <- 500
+N <- 1
+P <- 0.15
+# first 20 outcomes
+x[1:20] 
+# how many of each outcomes? proportion?
+table(x)
+table(x)/500 
+x <- rbinom(n = n_sample, size = N, prob = P)
 hist(x)
-
-# test different prob
-x <- rbinom(n = 500, size = 1, prob = 0.15)
-hist(x)
-
-# test out different size
-x <- rbinom(n = 500, size = 8, prob = 0.5)
-hist(x)
-
-# increase n and p (size and prob)
-x <- rbinom(n = 500, size = 30, prob = 0.5)
-hist(x, breaks = 20)
-
-# more data points
-x <- rbinom(n = 2000, size = 30, prob = 0.5)
-hist(x, breaks = 20)
 ```
 
 
 ## Normal distribution
+
+The normal distribution has a bell-shape, and is symmetrical. In a simulation, it might not look perfectly symmetrical; but when you have a large enough sample, it should be close enough to a bell-shaped histogram.
 
 ```{r}
 #| label: norm1
 #| echo: true
 
 # two parameters: mean and sd
-x <- rnorm(1000, mean = 0, sd = 1)
-hist(x)
+x01 <- rnorm(1000, mean = 0, sd = 1)
+hist(x01, main = '1000 normally distributed data N(0,1)')
 
-x <- rnorm(1000, mean = 10, sd = 2)
-hist(x)
+x102 <- rnorm(1000, mean = 10, sd = 2)
+hist(x102, main = '1000 normally distributed data N(10,2)')
 ```
 
-
+You can find the summary statistics for the simulated data.
 
 ```{r}
 #| label: norm2
@@ -102,17 +160,17 @@ hist(x)
 #| echo: true
 
 # check the summary
-summary(x)
+summary(x102)
 
 # mean
-mean(x)
+mean(x102)
 
 # variance and sd
-var(x)
-sd(x)
-# (sd(x))^2 # these two are equivalent
+var(x102) # (sd(x102))^2 # these two are equivalent
+sd(x102)
 ```
 
+It can be helpful to visualize the mean on top of the histogram.
 
 ```{r}
 #| label: norm3
@@ -120,30 +178,42 @@ sd(x)
 #| echo: true
 
 # can plot the mean on the histogram to indicate the center
-hist(x)
+hist(x102, main = '1000 normally distributed data N(10,2)')
 
 # v means verticle line, lwd means line width
-abline(v = mean(x), col = 'red', lwd = 2)
+abline(v = mean(x102), col = 'red', lwd = 2)
 ```
 
+### Important values
 
+For a standard normal distribution, its 2.5% and 97.5% quantiles ($\pm 1.96$) are frequently used. This means that 
+
+* probability below -1.96 is approximately 0.025 (2.5%)
+* probability above 1.96 is approximately 0.025; below 1.96 is 1-0.025 = 0.975
+* probability between $\pm 1.96$ is approximately 95%.
 
 ```{r}
 #| label: norm4
 #| warning: false
 #| echo: true
 
-# quantiles and probability
-p1 <- pnorm(1.96, mean = 0, sd = 1)
-p2 <- pnorm(-1.96, mean = 0, sd = 1)
+# pnorm finds the probability below a value
+p1 <- pnorm(-1.96, mean = 0, sd = 1)
+p2 <- pnorm(1.96, mean = 0, sd = 1)
+c(p1, p2) # print the values
 
 1-p1 # equal to p2
+
+qnorm(0.025, mean = 0, sd = 1) # 2.5% quantile
+qnorm(0.975, mean = 0, sd = 1) # 97.5%
 ```
 
 
 
 
 ## Bar plot 
+
+When you have data in groups, you can plot them in a bar plot.
 
 ```{r}
 #| label: bar1
@@ -172,6 +242,11 @@ barplot(dd$prob, names.arg = rownames(dd),
 
 ## Example: birth weight 
 
+This is the example we used in class to illustrate normal distribution. We are going to reproduce the example in class: explore **birth weight** variable, `bwt`. Our task is to **estimate the probability (or proportion) for birth weight above 4000g**.
+
+Load the data `birth.csv` (or another data format). You can use the point-and-click in Rstudio to load the dataset. 
+
+Create a variable called `birth_weight` by extracting the `bwt` column, using the dollar sign operator. Make a histogram of this variable.
 
 ```{r}
 #| label: birth1
@@ -189,23 +264,26 @@ hist(birth_weight)
 ```
 
 
-### Use empirical distribution
+### By counting
+
+You can count how many data points fits your criteria: weight above 4000. Let us assume that this is strictly above, hence equal to 4000 is not considered.
 
 ```{r}
 #| label: birth2
 #| warning: false
 #| echo: true
 
+birth_weight>4000 # converts 189 values to T/F indicator
 
-# first find how many are above 400 (counting)
-birth_weight>4000
-
-# we see 9 TRUE
-# which finds the indices
-# length counts the number of elements
+# we see 9 TRUE. you can print out the birth_weight values to check if it's the case
+# 'which' finds the indices for TRUE
 which(birth_weight >4000)
+# length counts the number of elements, here it is 9
 length(which(birth_weight >4000)==T)
 ```
+
+
+R treats the logical values `TRUE` as 1 and `FALSE` as 0; so you can also do mathematical operation such as sum directly.
 
 ```{r}
 #| label: birth3
@@ -216,50 +294,63 @@ length(which(birth_weight >4000)==T)
 # we can use sum() command
 sum(birth_weight>4000)
 
-
-# probability 
+# probability is 9 over total subjects
 9/189
 ```
 
 
 ### Use normal approximation
 
+Since the variable `birth_weight` looks similar to a normal distribution, we can also use normal approximation for this task. First we should find out the parameters for this distribution, by estimating the mean $m$ and standard deviation $s$.
+
+Afterwards, there are two options: 
+
+* estimate $P(X>4000)$ when $X \sim N(m, s)$
+* estimate $P(Y>\frac{4000-m}{s})$ when $Y \sim N(0,1)$
+
 ```{r}
 #| label: birth4
 #| warning: false
 #| echo: true
 
-# use normal approximation 
 # first get the parameters mean and sd (or sqrt variance)
 m <- mean(birth_weight)
 s <- sd(birth_weight)
+c(m, s) # print out
 # s <- sqrt(var(birth_weight))
 
 # probability of birthweight above 4000
 
-# if you want 
+# directly from N(2944, 729)
+# lower.tail = F means it computes p(X>4000) 
 pnorm(4000, mean = m, sd =s, lower.tail = F)
 
 # you can also use the standard normal dist
 # whose mean and sd (var) are 0 and 1
 # can be translated as a second variable Y above 1.45 
 # see lecture notes for why this is the case!
+# hint: (4000-m)/s
 pnorm(1.45, lower.tail = F)
 ```
 
 
 ## Binomial vs Normal distribution
 
-```{r}
+Under certain conditions, binomial distribution can be approximated by a normal distribution. Try out different values of $N, P$ to see when the approximation breaks!
+
+For example, start with 
+
+* N: 10, 20, 50, 100
+* P: 0.1, 0.5, 0.8
+
+```{webr-r}
 #| label: binnorm
 #| warning: false
 #| echo: true
 
-# the approximation is N(np, npq) if n is large, p close to 0.5
+# the approximation is N(np, np(1-p)) if n is large, p close to 0.5
 # note: the small n (first argument) is how many random samples you want
 # it is different from the 'size' argument in binomial distribution
-
-
 N <- 50
 P <- 0.5
 
@@ -267,14 +358,13 @@ P <- 0.5
 x_binom <- rbinom(n = 1000, size = N, prob = P)
 
 # normal
-x_norm <- rnorm(n = 1000, mean = N*P, sd = sqrt(50*0.5*(1-0.5)))
+x_norm <- rnorm(n = 1000, mean = N*P, sd = sqrt(50*P*(1-P)))
 
 # plot them side by side
 # note that sd for normal distribution is approximate
 par(mfrow = c(1, 2))
-hist(x_binom, main = 'Binomial (50, 0.5)')
-hist(x_norm, main = 'Normal (25, 3.53)')
-
+hist(x_binom, main = 'Binomial (N,P)')
+hist(x_norm, main = 'Normal (NP, NP(1-P))')
 
 # take summary statistics 
 summary(x_binom)

@@ -1,10 +1,15 @@
 ---
 title: "Probability and diagnostic testing"
+engine: knitr
 format: 
   html:
     code-fold: false
     code-tools: true
 editor: source
+filters: 
+  - webr
+webr:
+  channel-type: "post-message"
 ---
 
 In this page you will find some examples from the lecture. You are not required to do your exercises with R, however R can be used as a calculator. 
@@ -85,17 +90,12 @@ The HIV example from the class demonstrates the how prevalence affects metrics o
 
 To start, we set prevalence to 0.001.
 
-
 ```{r}
 #| label: hiv1
 #| warning: false
 #| echo: true
 
 # prevalence 0.1%
-# other values
-# prevalence <- 0.01
-# prevalence <- 0.1
-# prevalence <- 0.0001
 prevalence <- 0.001
 ```
 
@@ -130,3 +130,24 @@ a/b
 # you can skip the step where you name a and b
 (sensitivity * prevalence) / (sensitivity * prevalence + (1-specificity) * (1-prevalence))
 ```
+
+
+Now test out different values of prevalence. Replace the value of prevalence, then run the following code by pressing the button. 
+
+You can try the following prevalence values: 0.01%, 0.1%, 1%, 10%.
+
+```{webr-r}
+#| label: prev
+#| warning: false
+#| echo: true
+# delete and replace the value:
+prevalence <- 0.01
+# other two metrics are kept as before
+specificity <- 0.998
+sensitivity <- 0.98
+# run the formula for ppv
+(sensitivity * prevalence) / (sensitivity * prevalence + (1-specificity) * (1-prevalence))
+```
+
+
+
