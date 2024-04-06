@@ -8,7 +8,7 @@
 
 <meta name="description" content="Create a variable, data types, data structure, basic data manipulation, import data">
 
-<title>MF9130E - V23 - Introduction to R</title>
+<title>MF9130E - V24 - Introduction to R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -143,7 +143,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">MF9130E - V23</span>
+    <span class="navbar-title">MF9130E - V24</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -161,8 +161,8 @@ window.Quarto = {
 <span class="menu-text">Get Started</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../course_material/course_material_overview.html"> 
-<span class="menu-text">Course material</span></a>
+    <a class="nav-link" href="../schedule.html"> 
+<span class="menu-text">Schedule</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../lab/overview.html"> 
@@ -284,7 +284,7 @@ Getting help
 <pre><code>[1] 3</code></pre>
 </div>
 </div>
-<p>You can carry out **mathematical calculation8* on numeric variables, such as exponentiate, addition, division and many more.</p>
+<p>You can carry out **mathematical calculation8* on numeric variables, such as exponentiation, addition, division and many more.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># assign values to variables a, b, c</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">3</span></span>
@@ -808,30 +808,200 @@ Keep your original data safe!
 <p>It is difficult to summarise all the data formats here, so you should check the documentation on how to import and write (save) data of different types.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read a csv file</span></span>
-<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>penguins_mini <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/penguins_mini.csv'</span>, <span class="at">sep =</span> <span class="st">','</span>)</span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>birth <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/birth.csv'</span>, <span class="at">sep =</span> <span class="st">','</span>)</span>
 <span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-4"><a href="#cb94-4" aria-hidden="true" tabindex="-1"></a>penguins_mini</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb94-4"><a href="#cb94-4" aria-hidden="true" tabindex="-1"></a>birth</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>    species    island bill_length_mm bill_depth_mm flipper_length_mm
-1    Adelie Torgersen           40.3          18.0               195
-2    Adelie Torgersen             NA            NA                NA
-3    Adelie     Dream           40.9          18.9               184
-4    Adelie Torgersen           37.2          19.4               184
-5    Adelie     Dream           36.0          17.1               187
-6    Gentoo    Biscoe           46.2          14.5               209
-7 Chinstrap     Dream           46.5          17.9               192
-8 Chinstrap     Dream           43.5          18.1               202
-9    Gentoo    Biscoe           44.9          13.3               213
-  body_mass_g    sex year
-1        3250 female 2007
-2          NA   &lt;NA&gt; 2007
-3        3900   male 2007
-4        3900   male 2008
-5        3700 female 2009
-6        4800 female 2007
-7        3500 female 2007
-8        3400 female 2009
-9        5100 female 2008</code></pre>
+<pre><code>     id         low age lwt   eth       smk ptl  ht  ui fvt ttv  bwt
+1     4 bwt &lt;= 2500  28 120 other    smoker   1  no yes   0   0  709
+2    10 bwt &lt;= 2500  29 130 white nonsmoker   0  no yes   2   0 1021
+3    11 bwt &lt;= 2500  34 187 black    smoker   0 yes  no   0   0 1135
+4    13 bwt &lt;= 2500  25 105 other nonsmoker   1 yes  no   0   0 1330
+5    15 bwt &lt;= 2500  25  85 other nonsmoker   0  no yes   0   4 1474
+6    16 bwt &lt;= 2500  27 150 other nonsmoker   0  no  no   0   5 1588
+7    17 bwt &lt;= 2500  23  97 other nonsmoker   0  no yes   1   5 1588
+8    18 bwt &lt;= 2500  24 128 black nonsmoker   1  no  no   1   2 1701
+9    19 bwt &lt;= 2500  24 132 other nonsmoker   0 yes  no   0   5 1729
+10   20 bwt &lt;= 2500  21 165 white    smoker   0 yes  no   1   4 1790
+11   22 bwt &lt;= 2500  32 105 white    smoker   0  no  no   0   0 1818
+12   23 bwt &lt;= 2500  19  91 white    smoker   2  no yes   0  12 1885
+13   24 bwt &lt;= 2500  25 115 other nonsmoker   0  no  no   0   3 1893
+14   25 bwt &lt;= 2500  16 130 other nonsmoker   0  no  no   1   4 1899
+15   26 bwt &lt;= 2500  25  92 white    smoker   0  no  no   0   4 1928
+16   27 bwt &lt;= 2500  20 150 white    smoker   0  no  no   2   5 1928
+17   28 bwt &lt;= 2500  21 200 black nonsmoker   0  no yes   2   4 1928
+18   29 bwt &lt;= 2500  24 155 white    smoker   1  no  no   0   6 1936
+19   30 bwt &lt;= 2500  21 103 other nonsmoker   0  no  no   0   5 1970
+20   31 bwt &lt;= 2500  20 125 other nonsmoker   0  no yes   0   2 2055
+21   32 bwt &lt;= 2500  25  89 other nonsmoker   2  no  no   1   4 2055
+22   33 bwt &lt;= 2500  19 102 white nonsmoker   0  no  no   2   3 2082
+23   34 bwt &lt;= 2500  19 112 white    smoker   0  no yes   0   4 2084
+24   35 bwt &lt;= 2500  26 117 white    smoker   1  no  no   0   7 2084
+25   36 bwt &lt;= 2500  24 138 white nonsmoker   0  no  no   0   1 2100
+26   37 bwt &lt;= 2500  17 130 other    smoker   1  no yes   0   9 2125
+27   40 bwt &lt;= 2500  20 120 black    smoker   0  no  no   3   6 2126
+28   42 bwt &lt;= 2500  22 130 white    smoker   1  no yes   1   4 2187
+29   43 bwt &lt;= 2500  27 130 black nonsmoker   0  no yes   0   6 2187
+30   44 bwt &lt;= 2500  20  80 other    smoker   0  no yes   0   6 2211
+31   45 bwt &lt;= 2500  17 110 white    smoker   0  no  no   0   5 2225
+32   46 bwt &lt;= 2500  25 105 other nonsmoker   1  no  no   1   5 2240
+33   47 bwt &lt;= 2500  20 109 other nonsmoker   0  no  no   0   5 2240
+34   49 bwt &lt;= 2500  18 148 other nonsmoker   0  no  no   0   3 2282
+35   50 bwt &lt;= 2500  18 110 black    smoker   1  no  no   0   4 2296
+36   51 bwt &lt;= 2500  20 121 white    smoker   1  no yes   0   4 2296
+37   52 bwt &lt;= 2500  21 100 other nonsmoker   1  no  no   4   0 2301
+38   54 bwt &lt;= 2500  26  96 other nonsmoker   0  no  no   0   6 2325
+39   56 bwt &lt;= 2500  31 102 white    smoker   1  no  no   1   5 2353
+40   57 bwt &lt;= 2500  15 110 white nonsmoker   0  no  no   0   3 2353
+41   59 bwt &lt;= 2500  23 187 black    smoker   0  no  no   1   5 2367
+42   60 bwt &lt;= 2500  20 122 black    smoker   0  no  no   0   4 2381
+43   61 bwt &lt;= 2500  24 105 black    smoker   0  no  no   0   3 2381
+44   62 bwt &lt;= 2500  15 115 other nonsmoker   0  no yes   0   4 2381
+45   63 bwt &lt;= 2500  23 120 other nonsmoker   0  no  no   0   2 2395
+46   65 bwt &lt;= 2500  30 142 white    smoker   1  no  no   0   4 2410
+47   67 bwt &lt;= 2500  22 130 white    smoker   0  no  no   1   2 2410
+48   68 bwt &lt;= 2500  17 120 white    smoker   0  no  no   3   6 2414
+49   69 bwt &lt;= 2500  23 110 white    smoker   1  no  no   0   9 2424
+50   71 bwt &lt;= 2500  17 120 black nonsmoker   0  no  no   2   6 2438
+51   75 bwt &lt;= 2500  26 154 other nonsmoker   1 yes  no   1  10 2442
+52   76 bwt &lt;= 2500  20 105 other nonsmoker   0  no  no   3   6 2450
+53   77 bwt &lt;= 2500  26 190 white    smoker   0  no  no   0   4 2466
+54   78 bwt &lt;= 2500  14 101 other    smoker   1  no  no   0   7 2466
+55   79 bwt &lt;= 2500  28  95 white    smoker   0  no  no   2   7 2466
+56   81 bwt &lt;= 2500  14 100 other nonsmoker   0  no  no   2   6 2495
+57   82 bwt &lt;= 2500  23  94 other    smoker   0  no  no   0   4 2495
+58   83 bwt &lt;= 2500  17 142 black nonsmoker   0 yes  no   0   2 2495
+59   84 bwt &lt;= 2500  21 130 white    smoker   0 yes  no   3   4 2495
+60   85  bwt &gt; 2500  19 182 black nonsmoker   0  no yes   0   4 2523
+61   86  bwt &gt; 2500  33 155 other nonsmoker   0  no  no   3   6 2551
+62   87  bwt &gt; 2500  20 105 white    smoker   0  no  no   1  10 2557
+63   88  bwt &gt; 2500  21 108 white    smoker   0  no yes   2  10 2594
+64   89  bwt &gt; 2500  18 107 white    smoker   0  no yes   0   2 2600
+65   91  bwt &gt; 2500  21 124 other nonsmoker   0  no  no   0   5 2622
+66   92  bwt &gt; 2500  22 118 white nonsmoker   0  no  no   1   1 2637
+67   93  bwt &gt; 2500  17 103 other nonsmoker   0  no  no   1   7 2637
+68   94  bwt &gt; 2500  29 123 white    smoker   0  no  no   1   4 2663
+69   95  bwt &gt; 2500  26 113 white    smoker   0  no  no   0   2 2665
+70   96  bwt &gt; 2500  19  95 other nonsmoker   0  no  no   0   4 2722
+71   97  bwt &gt; 2500  19 150 other nonsmoker   0  no  no   1   9 2733
+72   98  bwt &gt; 2500  22  95 other nonsmoker   0 yes  no   0  10 2750
+73   99  bwt &gt; 2500  30 107 other nonsmoker   1  no yes   2  17 2750
+74  100  bwt &gt; 2500  18 100 white    smoker   0  no  no   0   0 2769
+75  101  bwt &gt; 2500  18 100 white    smoker   0  no  no   0   0 2769
+76  102  bwt &gt; 2500  15  98 black nonsmoker   0  no  no   0   7 2778
+77  103  bwt &gt; 2500  25 118 white    smoker   0  no  no   3   7 2782
+78  104  bwt &gt; 2500  20 120 other nonsmoker   0  no yes   0   4 2807
+79  105  bwt &gt; 2500  28 120 white    smoker   0  no  no   1   6 2821
+80  106  bwt &gt; 2500  32 121 other nonsmoker   0  no  no   2  10 2835
+81  107  bwt &gt; 2500  31 100 white nonsmoker   0  no yes   3   4 2835
+82  108  bwt &gt; 2500  36 202 white nonsmoker   0  no  no   1   7 2836
+83  109  bwt &gt; 2500  28 120 other nonsmoker   0  no  no   0   8 2863
+84  111  bwt &gt; 2500  25 120 other nonsmoker   0  no yes   2  10 2877
+85  112  bwt &gt; 2500  28 167 white nonsmoker   0  no  no   0  12 2877
+86  113  bwt &gt; 2500  17 122 white    smoker   0  no  no   0   9 2906
+87  114  bwt &gt; 2500  29 150 white nonsmoker   0  no  no   2   4 2920
+88  115  bwt &gt; 2500  26 168 black    smoker   0  no  no   0   6 2920
+89  116  bwt &gt; 2500  17 113 black nonsmoker   0  no  no   1  12 2920
+90  117  bwt &gt; 2500  17 113 black nonsmoker   0  no  no   1  12 2920
+91  118  bwt &gt; 2500  24  90 white    smoker   1  no  no   1   1 2948
+92  119  bwt &gt; 2500  35 121 black    smoker   1  no  no   1  11 2948
+93  120  bwt &gt; 2500  25 155 white nonsmoker   0  no  no   1   5 2977
+94  121  bwt &gt; 2500  25 125 black nonsmoker   0  no  no   0   4 2977
+95  123  bwt &gt; 2500  29 140 white    smoker   0  no  no   2   7 2977
+96  124  bwt &gt; 2500  19 138 white    smoker   0  no  no   2   2 2977
+97  125  bwt &gt; 2500  27 124 white    smoker   0  no  no   0   3 2992
+98  126  bwt &gt; 2500  31 215 white    smoker   0  no  no   2  11 3005
+99  127  bwt &gt; 2500  33 109 white    smoker   0  no  no   1   6 3033
+100 128  bwt &gt; 2500  21 185 black    smoker   0  no  no   2   8 3042
+101 129  bwt &gt; 2500  19 189 white nonsmoker   0  no  no   2   4 3062
+102 130  bwt &gt; 2500  23 130 black nonsmoker   0  no  no   1   4 3062
+103 131  bwt &gt; 2500  21 160 white nonsmoker   0  no  no   0  11 3062
+104 132  bwt &gt; 2500  18  90 white    smoker   0  no yes   0   6 3076
+105 133  bwt &gt; 2500  18  90 white    smoker   0  no yes   0   6 3076
+106 134  bwt &gt; 2500  32 132 white nonsmoker   0  no  no   4   7 3080
+107 135  bwt &gt; 2500  19 132 other nonsmoker   0  no  no   0   3 3090
+108 136  bwt &gt; 2500  24 115 white nonsmoker   0  no  no   2   5 3090
+109 137  bwt &gt; 2500  22  85 other    smoker   0  no  no   0   5 3090
+110 138  bwt &gt; 2500  22 120 white nonsmoker   0 yes  no   1   3 3100
+111 139  bwt &gt; 2500  23 128 other nonsmoker   0  no  no   0   8 3104
+112 140  bwt &gt; 2500  22 130 white    smoker   0  no  no   0   4 3132
+113 141  bwt &gt; 2500  30  95 white    smoker   0  no  no   2   4 3147
+114 142  bwt &gt; 2500  19 115 other nonsmoker   0  no  no   0   7 3175
+115 143  bwt &gt; 2500  16 110 other nonsmoker   0  no  no   0   3 3175
+116 144  bwt &gt; 2500  21 110 other    smoker   0  no yes   0   7 3203
+117 145  bwt &gt; 2500  30 153 other nonsmoker   0  no  no   0   6 3203
+118 146  bwt &gt; 2500  20 103 other nonsmoker   0  no  no   0   5 3203
+119 147  bwt &gt; 2500  17 119 other nonsmoker   0  no  no   0   9 3225
+120 148  bwt &gt; 2500  17 119 other nonsmoker   0  no  no   0   9 3225
+121 149  bwt &gt; 2500  23 119 other nonsmoker   0  no  no   2   5 3232
+122 150  bwt &gt; 2500  24 110 other nonsmoker   0  no  no   0   6 3232
+123 151  bwt &gt; 2500  28 140 white nonsmoker   0  no  no   0   4 3234
+124 154  bwt &gt; 2500  26 133 other    smoker   2  no  no   0   3 3260
+125 155  bwt &gt; 2500  20 169 other nonsmoker   1  no yes   1   8 3274
+126 156  bwt &gt; 2500  24 115 other nonsmoker   0  no  no   2  11 3274
+127 159  bwt &gt; 2500  28 250 other    smoker   0  no  no   6  13 3303
+128 160  bwt &gt; 2500  20 141 white nonsmoker   2  no yes   1   7 3317
+129 161  bwt &gt; 2500  22 158 black nonsmoker   1  no  no   2   5 3317
+130 162  bwt &gt; 2500  22 112 white    smoker   2  no  no   0   7 3317
+131 163  bwt &gt; 2500  31 150 other    smoker   0  no  no   2   7 3321
+132 164  bwt &gt; 2500  23 115 other    smoker   0  no  no   1  10 3331
+133 166  bwt &gt; 2500  16 112 black nonsmoker   0  no  no   0  11 3374
+134 167  bwt &gt; 2500  16 135 white    smoker   0  no  no   0   3 3374
+135 168  bwt &gt; 2500  18 229 black nonsmoker   0  no  no   0   6 3402
+136 169  bwt &gt; 2500  25 140 white nonsmoker   0  no  no   1   8 3416
+137 170  bwt &gt; 2500  32 134 white    smoker   1  no  no   4   7 3430
+138 172  bwt &gt; 2500  20 121 black    smoker   0  no  no   0   6 3444
+139 173  bwt &gt; 2500  23 190 white nonsmoker   0  no  no   0   3 3459
+140 174  bwt &gt; 2500  22 131 white nonsmoker   0  no  no   1   7 3460
+141 175  bwt &gt; 2500  32 170 white nonsmoker   0  no  no   0   4 3473
+142 176  bwt &gt; 2500  30 110 other nonsmoker   0  no  no   0   8 3475
+143 177  bwt &gt; 2500  20 127 other nonsmoker   0  no  no   0   3 3487
+144 179  bwt &gt; 2500  23 123 other nonsmoker   0  no  no   0  10 3544
+145 180  bwt &gt; 2500  17 120 other    smoker   0  no  no   0   7 3572
+146 181  bwt &gt; 2500  19 105 other nonsmoker   0  no  no   0   8 3572
+147 182  bwt &gt; 2500  23 130 white nonsmoker   0  no  no   0   4 3586
+148 183  bwt &gt; 2500  36 175 white nonsmoker   0  no  no   0  12 3600
+149 184  bwt &gt; 2500  22 125 white nonsmoker   0  no  no   1  13 3614
+150 185  bwt &gt; 2500  24 133 white nonsmoker   0  no  no   0   7 3614
+151 186  bwt &gt; 2500  21 134 other nonsmoker   0  no  no   2   8 3629
+152 187  bwt &gt; 2500  19 235 white    smoker   0 yes  no   0   5 3629
+153 188  bwt &gt; 2500  25  95 white    smoker   3  no yes   0   8 3637
+154 189  bwt &gt; 2500  16 135 white    smoker   0  no  no   0   2 3643
+155 190  bwt &gt; 2500  29 135 white nonsmoker   0  no  no   1   4 3651
+156 191  bwt &gt; 2500  29 154 white nonsmoker   0  no  no   1   5 3651
+157 192  bwt &gt; 2500  19 147 white    smoker   0  no  no   0   4 3651
+158 193  bwt &gt; 2500  19 147 white    smoker   0  no  no   0   4 3651
+159 195  bwt &gt; 2500  30 137 white nonsmoker   0  no  no   1   5 3699
+160 196  bwt &gt; 2500  24 110 white nonsmoker   0  no  no   1   8 3728
+161 197  bwt &gt; 2500  19 184 white    smoker   0 yes  no   0   7 3756
+162 199  bwt &gt; 2500  24 110 other nonsmoker   1  no  no   0  10 3770
+163 200  bwt &gt; 2500  23 110 white nonsmoker   0  no  no   1   4 3770
+164 201  bwt &gt; 2500  20 120 other nonsmoker   0  no  no   0   2 3770
+165 202  bwt &gt; 2500  25 241 black nonsmoker   0 yes  no   0  10 3790
+166 203  bwt &gt; 2500  30 112 white nonsmoker   0  no  no   1   5 3799
+167 204  bwt &gt; 2500  22 169 white nonsmoker   0  no  no   0   7 3827
+168 205  bwt &gt; 2500  18 120 white    smoker   0  no  no   2   6 3856
+169 206  bwt &gt; 2500  16 170 black nonsmoker   0  no  no   4   8 3860
+170 207  bwt &gt; 2500  32 186 white nonsmoker   0  no  no   2   6 3860
+171 208  bwt &gt; 2500  18 120 other nonsmoker   0  no  no   1  13 3884
+172 209  bwt &gt; 2500  29 130 white    smoker   0  no  no   2   8 3884
+173 210  bwt &gt; 2500  33 117 white nonsmoker   0  no yes   1   2 3912
+174 211  bwt &gt; 2500  20 170 white    smoker   0  no  no   0   4 3940
+175 212  bwt &gt; 2500  28 134 other nonsmoker   0  no  no   1   8 3941
+176 213  bwt &gt; 2500  14 135 white nonsmoker   0  no  no   0   8 3941
+177 214  bwt &gt; 2500  28 130 other nonsmoker   0  no  no   0   8 3969
+178 215  bwt &gt; 2500  25 120 white nonsmoker   0  no  no   2   7 3983
+179 216  bwt &gt; 2500  16  95 other nonsmoker   0  no  no   1  10 3997
+180 217  bwt &gt; 2500  20 158 white nonsmoker   0  no  no   1   6 3997
+181 218  bwt &gt; 2500  26 160 other nonsmoker   0  no  no   0   9 4054
+182 219  bwt &gt; 2500  21 115 white nonsmoker   0  no  no   1   5 4054
+183 220  bwt &gt; 2500  22 129 white nonsmoker   0  no  no   0   4 4111
+184 221  bwt &gt; 2500  25 130 white nonsmoker   0  no  no   2   9 4153
+185 222  bwt &gt; 2500  31 120 white nonsmoker   0  no  no   2   7 4167
+186 223  bwt &gt; 2500  35 170 white nonsmoker   1  no  no   1   6 4174
+187 224  bwt &gt; 2500  19 120 white    smoker   0  no  no   0   3 4238
+188 225  bwt &gt; 2500  24 116 white nonsmoker   0  no  no   1   7 4593
+189 226  bwt &gt; 2500  45 123 white nonsmoker   0  no  no   1   5 4990</code></pre>
 </div>
 </div>
 

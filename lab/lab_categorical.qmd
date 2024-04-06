@@ -13,7 +13,7 @@ Datasets
 * Exercise 1: `PEFH98-english` ([rda link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.rda), [csv link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.csv))
 * Exercise 2: `birth` ([rda link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/birth.rda), [csv link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/birth.csv))
 
-[R Script](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/5_categorical.R)
+[R Script](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/4_categorical.R)
 
 ------------------
 

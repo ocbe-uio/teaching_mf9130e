@@ -46,7 +46,7 @@ a <- 3
 a
 ```
 
-You can carry out **mathematical calculation8* on numeric variables, such as exponentiate, addition, division and many more.
+You can carry out **mathematical calculation8* on numeric variables, such as exponentiation, addition, division and many more.
 
 ```{r}
 #| label: basic calculation
@@ -535,14 +535,14 @@ Data exist in different formats,
 It is difficult to summarise all the data formats here, so you should check the documentation on how to import and write (save) data of different types.
 
 ```{r}
-#| label: load-data-penguins-mini
+#| label: load-data-birth
 #| warning: false
 #| echo: true
 
 # read a csv file
-penguins_mini <- read.csv('data/penguins_mini.csv', sep = ',')
+birth <- read.csv('data/birth.csv', sep = ',')
 
-penguins_mini
+birth
 ```
 
 

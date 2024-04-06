@@ -13,7 +13,7 @@ Datasets
 * Exercise 1: no data needed, we type in data directly.
 * Exercise 2: `PEFH98-english` ([rda link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.rda), [csv link](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/data/PEFH98-english.csv))
 
-[R script](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/4_ttest.R)
+[R script](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/3_ttest.R)
 
 ------------------
 

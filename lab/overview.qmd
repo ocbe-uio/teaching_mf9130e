@@ -56,8 +56,8 @@ To help you with the exercises and homework, we have created this [list of comma
 | Lab 1 | Create new project, workspace navigation  | [Get started in Rstudio](lab_intro_rstudio.qmd) |
 |  | Variable, data types and structure, basic data manipulation, import data  | [Introduction to R](lab_intro_r.qmd)|
 | Lab 2 | Exploring a dataset, descriptive statistics | [Descriptive statistics](lab_eda_part1.qmd) |
-| Lab 3 | Evaluation of diagnostic tests, sensitivity, specificity  | [Diagnostic tests](lab_diagnostic_tests.qmd) |
-| Lab 4 | Binomial and normal distribution  | [Statistical distributions](lab_distributions.qmd) |
+| Lab 3 | Evaluation of diagnostic tests, sensitivity, specificity  | [Diagnostic tests](lab_diagtest.qmd) |
+| Lab 4 | Binomial and normal distribution  | [Statistical distributions](lab_distribution.qmd) |
 | Lab 5| Inference and t-test | [t-test](lab_ttest.qmd) |
 | Lab 6| Proportions, contingency table, chi-square test |  [Categorical data analysis](lab_categorical.qmd)|
 
