@@ -533,7 +533,7 @@ window.Quarto = {
   let editor;
   require(['vs/editor/editor.main'], function () {
     editor = monaco.editor.create(editorDiv, {
-      value: `
+      value: `# delete and replace the value:
 prevalence <- 0.01
 # other two metrics are kept as before
 specificity <- 0.998
@@ -1346,7 +1346,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb21-152"><a href="#cb21-152" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: prev</span></span>
 <span id="cb21-153"><a href="#cb21-153" aria-hidden="true" tabindex="-1"></a><span class="in">#| warning: false</span></span>
 <span id="cb21-154"><a href="#cb21-154" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb21-155"><a href="#cb21-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-155"><a href="#cb21-155" aria-hidden="true" tabindex="-1"></a><span class="in"># delete and replace the value:</span></span>
 <span id="cb21-156"><a href="#cb21-156" aria-hidden="true" tabindex="-1"></a><span class="in">prevalence &lt;- 0.01</span></span>
 <span id="cb21-157"><a href="#cb21-157" aria-hidden="true" tabindex="-1"></a><span class="in"># other two metrics are kept as before</span></span>
 <span id="cb21-158"><a href="#cb21-158" aria-hidden="true" tabindex="-1"></a><span class="in">specificity &lt;- 0.998</span></span>
