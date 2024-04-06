@@ -1,5 +1,5 @@
 ---
-title: "t-test"
+title: "Statistical inference, t-test"
 description: "Hypothesis testing, confidence interval, comparing continous variables"
 format: 
   html:
@@ -111,9 +111,11 @@ For t-test of two independent samples, in addition to above:
 * Equality of population standard deviation for both samples
 * if not: Welch test or Fisher-Behrens test
 
-# Examples (exercises with solution)
 
-## Exercise 1 (heart data)
+
+-------------------
+
+# Exercise 1 (heart)
 
 The weight of the hearts of 20 men with age between 25 and 55 years have been evaluated, and is given below (in ounces, 1 ounce = 28g) 
 
@@ -122,7 +124,178 @@ The weight of the hearts of 20 men with age between 25 and 55 years have been ev
 10.50 11.75 10.00 14.50 12.00 11.00 14.00 15.00 11.50 10.25
 ```
 
-### 1a)
+#### 1a)
+
+Create a variable in R, and enter the data. Compute the mean weight of the hearts based on the formula; then verify it with R function.
+
+::: {.callout-tip}
+## Formula: mean
+
+The mean of data $X = (x_1, x_2, ... x_n)$, $\bar{x} = \frac{1}{n}\sum_{i = 1}^N x_i$
+:::
+
+
+
+#### 1b) 
+
+Go through the procedure of computing the 95% confidence interval for the sample mean from the formula. Verify the computed confidence interval with R function `t.test(heart)`.
+
+::: {.callout-tip collapse="true"}
+## Formula: confidence interval for the mean
+
+95% confidence interval for the sample mean $\bar{X}$ is
+
+$(\bar{X} - t' \times \frac{s}{\sqrt{n}}, \bar{X} + t' \times \frac{s}{\sqrt{n}})$
+
+where $s$ is the (empirical) standard deviation, $s^2 = \frac{\sum_{i=1}^n (X_i - \bar{X})^2}{n-1}$
+
+($t' = 2.09$ for $n = 20$)
+:::
+
+```{r}
+#| label: ttest-1b-1ex
+#| echo: true
+#| eval: false
+
+# sample size n of this data
+n <- 20  # length(heart)
+
+# 1. compute (empirical) standard deviation
+# formula (sd): sqrt(1/(n-1) * (sum(xi - xbar)^2))
+
+sqrt(1/(n-1) * (sum((heart - mean(heart))^2))) # be careful with brackets
+
+# alternatively, use sd() function. these two numbers should match
+sd(heart) # 1.779
+
+# 2. 95% CI (quantile from t-distribution)
+# formula: CI = xbar +- t(n-1, alpha/2) * sd/sqrt(n)
+# translate into format R can understand:
+
+t025 <- qt(p = 0.025, df = n-1) # -2.09
+t975 <- qt(p = 0.975, df = n-1) # 2.09
+c(t025, t975) # symmetric around 0, so can pick any one
+
+# plug in the formula
+ci_lower <- mean(heart) - t975 * sd(heart)/sqrt(n)
+ci_upper <- mean(heart) + t975 * sd(heart)/sqrt(n)
+c(ci_lower, ci_upper)
+
+# verify by doing a one-sample t-test
+# by default, it tests whether mean is 0
+t.test(heart)
+```
+
+
+#### 1c)
+
+We would like to know whether the mean heart weight is equal to 11 and 11.5. 
+
+Before you carry out hypothesis tests, you can gain useful insight 
+by visualization. You can try to use histogram, Q-Q plot and boxplot, and compare the mean heart weight with 11 and 11.5.
+
+What can you conclude?
+
+
+#### 1d)
+
+Formulate hypothesis tests. Decide whether you need one-sided or two-sided test, and state your conclusion (with p-values and confidence intervals). 
+
+
+
+
+
+
+# Exercise 2 (lung function)
+
+Lung function has been measured on 106 medical students. Peak expiratory flow rate (PEF, measured in liters per minute) was measured three times in a sittinng position, and three times in a standing position.
+
+The variables are 
+
+* Age (years)
+* Gender (1 is female, 2 is male)
+* Height (cm)
+* Weight (kg)
+* PEF measured three times in a sitting position (pefsit1, pefsit2, pefsit3)
+* PEF measured three times in a standing position (pefsta1, pefsta2, pefsta3)
+* Mean of the three measurements made in a sitting position (pefsitm)
+* Mean of the three measurements made in a standing position (pefstam)
+* Mean of all six PEF values (pefmean)
+
+::: {.callout-tip}
+## Lung function data
+
+This is the same dataset we have used in EDA (part I) from two days ago. You can use either `PEFH98-english.rda`, or `PEFH98-english.csv` data. 
+
+If you forgot how to load the data, you can refresh your knowledge by reading these [notes](lab_eda_part1.qmd) (Example 2)
+:::
+
+
+#### 2a) 
+
+Open `PEFH98-english` (in either `csv` or `rda` format) into R. 
+
+Determine the mean height for females. Calculate the standard deviation and a 95% confidence interval. 
+
+Do the same for males.
+
+#### 2b)
+
+Assume that the average height for female students a few years ago was 167 cm. Does the height in the present material differ significantly?
+
+Formulate a null hypothesis, calculate a test statistic and p-value. 
+
+#### 2c)
+
+Do the values `pefsit1` and `pefsit2` differ significantly? Calculate a test statistic, the mean difference, and the 95% confidence interval, and formulate a conclusion. Interpret the results.
+
+#### 2d)
+
+Carry out a t-test to decide whether `pefsitm` annd `pefstam` are significantly different.
+
+#### 2e)
+
+Are the assumptions of the previous test reasonably fulfilled? 
+
+You should check that the difference between `pefsitm` and `pefstam` is normally distributed. 
+
+::: {.callout-tip collapse="true"}
+## Expand to read hint
+
+You can create a new variable called `difference` by `difference <- pefsitm - pefstam`, then check the normality of `difference` by looking at histogram (`hist(difference)`), or QQ plot (`qnorm difference`)
+:::
+
+
+#### 2f) 
+
+Carry out a t-test to evaluate whether `pefmean` is significantly different for men and women. 
+
+Interpret the results, and formulate a conclusion including p-value and confidence interval.
+
+
+
+#### 2g)
+
+Are the assumptions fulfilled in the previous test (`pefmean` vs `gender`)? 
+
+
+
+
+
+--------------
+
+# Solution
+
+### Exercise 1 (heart data)
+
+The weight of the hearts of 20 men with age between 25 and 55 years have been evaluated, and is given below (in ounces, 1 ounce = 28g) 
+
+```
+11.50 14.75 13.75 10.50 14.75 13.50 10.75 9.50 11.75 12.00
+10.50 11.75 10.00 14.50 12.00 11.00 14.00 15.00 11.50 10.25
+```
+
+#### 1a)
 
 Create a variable in R, and enter the data. Compute the mean weight of the hearts based on the formula; then verify it with R function.
 
@@ -173,7 +346,7 @@ mean(heart)  # should be the same as above
 
 
 
-### 1b) 
+#### 1b) 
 
 Go through the procedure of computing the 95% confidence interval for the sample mean from the formula. Verify the computed confidence interval with R function `t.test(heart)`.
 
@@ -225,7 +398,7 @@ t.test(heart)
 ```
 
 
-### 1c)
+#### 1c)
 
 We would like to know whether the mean heart weight is equal to 11 and 11.5. 
 
@@ -276,7 +449,7 @@ abline(v = c(ci_lower, ci_upper), col = 'red', lwd = 2,
 abline(v = 11.5, col = 'forestgreen', lwd = 3)
 ```
 
-### 1d)
+#### 1d)
 
 Formulate hypothesis tests. Decide whether you need one-sided or two-sided test, and state your conclusion (with p-values and confidence intervals). 
 
@@ -295,7 +468,7 @@ t.test(heart, mu = 11.5, conf.level = 0.95)
 
 
 
-## Exercise 2 (lung function)
+### Exercise 2 (lung function)
 
 
 Lung function has been measured on 106 medical students. Peak expiratory flow rate (PEF, measured in liters per minute) was measured three times in a sittinng position, and three times in a standing position.
@@ -321,7 +494,7 @@ If you forgot how to load the data, you can refresh your knowledge by reading th
 :::
 
 
-### 2a) 
+#### 2a) 
 
 Open `PEFH98-english` (in either `csv` or `rda` format) into R. 
 
@@ -432,7 +605,7 @@ Based on our calculation, the mean height for males is 181.87 cm (95% confidence
 
 
 
-### 2b)
+#### 2b)
 
 Assume that the average height for female students a few years ago was 167 cm. Does the height in the present material differ significantly?
 
@@ -470,7 +643,7 @@ pval_twosided
 ```
 
 
-### 2c)
+#### 2c)
 
 Do the values `pefsit1` and `pefsit2` differ significantly? Calculate a test statistic, the mean difference, and the 95% confidence interval, and formulate a conclusion. Interpret the results.
 
@@ -517,7 +690,7 @@ t.test(diff_sit1_sit2, mu = 0)
 We can conclude that there is no significant difference (p = 0.12) between the first and second pef measurement.
 
 
-### 2d)
+#### 2d)
 
 Carry out a t-test to decide whether `pefsitm` annd `pefstam` are significantly different.
 
@@ -564,7 +737,7 @@ qqline(diff_sitm_stam, col = 'red', lwd = 2)
 
 When a Q-Q plot looks like this, we can say that the normality assumption is reasonably fulfilled. 
 
-### 2f) 
+#### 2f) 
 
 Carry out a t-test to evaluate whether `pefmean` is significantly different for men and women. 
 
@@ -617,7 +790,7 @@ t.test(pefmean_f, pefmean_m, paired = F, var.equal = T)
 From both results you can see that the difference in means between two genders is very big. The p-values are very small (p < 0.001), can reject the null hypothesis that the sample means from two groups are equal.
 
 
-### 2g)
+#### 2g)
 
 Are the assumptions fulfilled in the previous test (`pefmean` vs `gender`)? 
 

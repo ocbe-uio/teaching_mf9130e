@@ -7,7 +7,8 @@ format:
 editor: source
 ---
 
-Welcome! Here you will find material for **R lab and code** for this course. Lecture notes, videos and other resources can be found in [Course material](https://ocbe-uio.github.io/teaching_mf9130e/course_material/course_material_overview.html) page.
+Welcome! Here you will find material for **R lab and code** for this course. 
+
 
 ### Set up 
 
@@ -17,25 +18,21 @@ If you don't have R yet, please read [this page](https://ocbe-uio.github.io/teac
 
 ### Data and R scripts
 
-Datasets used for this course can be found in [this folder](https://github.com/ocbe-uio/teaching_mf9130e/tree/main/lab/data). R scripts used for each section are place in [this folder](https://github.com/ocbe-uio/teaching_mf9130e/tree/main/lab/code). 
+**Datasets** can be found in [this folder](https://github.com/ocbe-uio/teaching_mf9130e/tree/main/lab/data). **R scripts** used for each section are placed in [this folder](https://github.com/ocbe-uio/teaching_mf9130e/tree/main/lab/code). 
 
-In the first R lab session, we will go through how to download them from Github; you can also try it yourself following instructions on [this page](https://ocbe-uio.github.io/teaching_mf9130e/get_started/get_started.html).
+In the first R lab session, we will go through how to download them from GitHub; you can also try it yourself following instructions on [this page](https://ocbe-uio.github.io/teaching_mf9130e/get_started/get_started.html).
 
+
+If you have trouble downloading datasets from GitHub, please let us know as soon as possible.
 
 
 # Lab notes and exercises
 
-**Lab notes** contain 
+In the lab sessions, you will have time to go through the examples and exercises with the help from the instructors. In the lab notes you can find:
 
 * Brief summary of the topics discussed in class;
-* Worked data analysis examples (code, visualisation) and some comments;
-* Exercise solutions
-
-
-**Exercises** (without solution) can be used when you want to try the examples by yourself. 
-
-* The solution can be found in corresponding lab notes;
-* You can open two tabs in your web browser, one without solution and another with solution in case you get stuck.
+* Worked data analysis examples with code and visualization;
+* Exercises and solution
 
 
 
@@ -43,25 +40,32 @@ In the first R lab session, we will go through how to download them from Github;
 
 # How much programming do I need to learn?
 
-If this is the first time you write code, you might find it a bit overwhelming. It is ok! *Not all* code shown in class are necessary to master; it's more for you to understand the topics we discussed. 
+If this is the first time you write R code, you might find it a bit overwhelming. It is ok! Programming is NOT the focus of this course.
 
-To help you with the exercises and homework, we have created this [list of commands](list_of_commands.qmd). This hopefully could make it easier to navigate through the course. 
+*Not all* code shown in class are mandatory; it's more for you to understand the topics we discussed. 
+
+To help you with the exercises and homework, we have created this [list of commands](list_of_commands.qmd). They should cover the most important commands for this course.
 :::
 
 
 
+### Week 1
 
+|    |  Topics             | Lab notes |
+|:---------------:|:----------:|:------------------:|
+| Lab 1 | Create new project, workspace navigation  | [Get started in Rstudio](lab_intro_rstudio.qmd) |
+|  | Variable, data types and structure, basic data manipulation, import data  | [Introduction to R](lab_intro_r.qmd)|
+| Lab 2 | Exploring a dataset, descriptive statistics | [Descriptive statistics](lab_eda_part1.qmd) |
+| Lab 3 | Evaluation of diagnostic tests, sensitivity, specificity  | [Diagnostic tests](lab_diagnostic_tests.qmd) |
+| Lab 4 | Binomial and normal distribution  | [Statistical distributions](lab_distributions.qmd) |
+| Lab 5| Inference and t-test | [t-test](lab_ttest.qmd) |
+| Lab 6| Proportions, contingency table, chi-square test |  [Categorical data analysis](lab_categorical.qmd)|
+
+
+### Week 2 (update pending)
 
 | Lab notes   |  Topics             | Links |
 |:---------------:|:----------:|:------------------:|
-| [Getting started in Rstudio](lab_intro_rstudio.qmd) | Create new project, workspace navigation  |  |
-| [Introduction to R](lab_intro_r.qmd) | Create a variable, data types, data structure, basic data manipulation, import data  | [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/1_intro_r.R) |
-| [Diagnostic tests](lab_diagnostic_tests.qmd) | Evaluation of diagnostic tests, sensitivity, specificity  |  |
-| [Statistical distributions](lab_distributions.qmd) | Statistical distributions  |  |
-| [EDA I](lab_eda_part1.qmd) | Exploring a dataset, descriptive statistics | [exercise](ex_eda_part1.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/2_eda_part1.R) |
-| [EDA II](lab_eda_part2.qmd) | (Week 2) More on data manipulation, visualisation|[code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/5_eda_part2.R)  |
-| [t-test](lab_ttest.qmd)| One sample, two sample t-tests | [exercise](ex_ttest.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/3_ttest.R) |
-| [Categorical data analysis](lab_categorical.qmd)| Proportions, contingency table, chi-square test | [exercise](ex_categorical.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/4_categorical.R)|
 | [Non-parametric tests](lab_nonpara.qmd) |Wilcoxon signed test, rank sum test | [exercise](ex_nonpara.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/6_nonpara.R) |
 | [Sample size, power](https://ocbe-uio.github.io/teaching_mf9130e/course_material/day5/day5_exercises_sample_size.pdf)| Sample size, power calculation |[code: lecture](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/day5_lecture_sample_size.R), [code: exercises](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/day5_lab_sample_size.R) |
 | [Linear regression I](lab_linearreg-I.qmd)| Correlation, univariate analysiss | [exercise](ex_linearreg-I.qmd), [code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/8_linearreg-I.R)|

@@ -8,7 +8,7 @@
 
 <meta name="description" content="Proportions, contingency table, chi-square test">
 
-<title>MF9130E - V23 - Categorical data analysis</title>
+<title>MF9130E - V24 - Categorical data analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -143,7 +143,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">MF9130E - V23</span>
+    <span class="navbar-title">MF9130E - V24</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -161,8 +161,8 @@ window.Quarto = {
 <span class="menu-text">Get Started</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../course_material/course_material_overview.html"> 
-<span class="menu-text">Course material</span></a>
+    <a class="nav-link" href="../schedule.html"> 
+<span class="menu-text">Schedule</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../lab/overview.html"> 
@@ -201,17 +201,12 @@ window.Quarto = {
   <li><a href="#compare-two-proportions" id="toc-compare-two-proportions" class="nav-link" data-scroll-target="#compare-two-proportions">Compare two proportions</a></li>
   <li><a href="#strength-of-association-statistical-tests" id="toc-strength-of-association-statistical-tests" class="nav-link" data-scroll-target="#strength-of-association-statistical-tests">Strength of association (statistical tests)</a></li>
   </ul></li>
-  <li><a href="#examples-exercises-with-solution" id="toc-examples-exercises-with-solution" class="nav-link" data-scroll-target="#examples-exercises-with-solution">Examples (exercises with solution)</a>
-  <ul class="collapse">
-  <li><a href="#exercise-1-lung-function" id="toc-exercise-1-lung-function" class="nav-link" data-scroll-target="#exercise-1-lung-function">Exercise 1 (lung function)</a>
-  <ul class="collapse">
-  <li><a href="#a" id="toc-a" class="nav-link" data-scroll-target="#a">1a)</a></li>
-  <li><a href="#b" id="toc-b" class="nav-link" data-scroll-target="#b">1b)</a></li>
-  <li><a href="#c" id="toc-c" class="nav-link" data-scroll-target="#c">1c)</a></li>
-  <li><a href="#d" id="toc-d" class="nav-link" data-scroll-target="#d">1d)</a></li>
-  <li><a href="#optional-use-r-package-to-compute-rr-and-or" id="toc-optional-use-r-package-to-compute-rr-and-or" class="nav-link" data-scroll-target="#optional-use-r-package-to-compute-rr-and-or">Optional: use R package to compute RR and OR</a></li>
-  </ul></li>
+  <li><a href="#exercise-1-lung-function" id="toc-exercise-1-lung-function" class="nav-link" data-scroll-target="#exercise-1-lung-function">Exercise 1 (lung function)</a></li>
   <li><a href="#exercise-2-birth-data" id="toc-exercise-2-birth-data" class="nav-link" data-scroll-target="#exercise-2-birth-data">Exercise 2 (birth data)</a></li>
+  <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-lung-function-1" id="toc-exercise-1-lung-function-1" class="nav-link" data-scroll-target="#exercise-1-lung-function-1">Exercise 1 (lung function)</a></li>
+  <li><a href="#exercise-2-birth-data-1" id="toc-exercise-2-birth-data-1" class="nav-link" data-scroll-target="#exercise-2-birth-data-1">Exercise 2 (birth data)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -369,10 +364,120 @@ Chi-square test measures strength of association
 </div>
 </section>
 </section>
-<section id="examples-exercises-with-solution" class="level1">
-<h1>Examples (exercises with solution)</h1>
-<section id="exercise-1-lung-function" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-1-lung-function">Exercise 1 (lung function)</h2>
+<section id="exercise-1-lung-function" class="level1">
+<h1>Exercise 1 (lung function)</h1>
+<p>Lung function has been measured on 106 medical students. Peak expiratory flow rate (PEF, measured in liters per minute) was measured three times in a sitting position, and three times in a standing position.</p>
+<p>The variables are</p>
+<ul>
+<li>Age (years)</li>
+<li>Gender (female, male)</li>
+<li>Height (cm)</li>
+<li>Weight (kg)</li>
+<li>PEF measured three times in a sitting position (pefsit1, pefsit2, pefsit3)</li>
+<li>PEF measured three times in a standing position (pefsta1, pefsta2, pefsta3)</li>
+<li>Mean of the three measurements made in a sitting position (pefsitm)</li>
+<li>Mean of the three measurements made in a standing position (pefstam)</li>
+<li>Mean of all six PEF values (pefmean)</li>
+</ul>
+<section id="a" class="level4">
+<h4 class="anchored" data-anchor-id="a">1a)</h4>
+<p>We investigate whether having a high value of <code>pefmean</code> is associated with <code>gender</code>.</p>
+<p>First, create a new variable <strong>highpef</strong> that indicates whether <code>pefmean</code> is above 500.</p>
+</section>
+<section id="b" class="level4">
+<h4 class="anchored" data-anchor-id="b">1b)</h4>
+<p>We investigate the association between these two variables via an appropriate table analysis. Make a table of <code>highpef</code> vs <code>gender</code>, which counts the number of subjects having each one of the four combinations in a 2 by 2 contingency table.</p>
+</section>
+<section id="c" class="level4">
+<h4 class="anchored" data-anchor-id="c">1c)</h4>
+<p>Compute <strong>risk ratio</strong> and <strong>odds ratio</strong> (only the point estimates, no confidence interval). Here the exposure is <code>gender</code> (we assume that the reference group is <em>female</em>: unexposed), and outcome is <code>highpef</code>. Interpret your results.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Risk ratio and odds ratio
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Outcome (yes)</th>
+<th>Outcome (no)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Exposed</td>
+<td>a</td>
+<td>b</td>
+</tr>
+<tr class="even">
+<td>Unexposed</td>
+<td>c</td>
+<td>d</td>
+</tr>
+</tbody>
+</table>
+<p>Risk ratio: <span class="math inline">\(\frac{a/(a+b)}{c/(c+d)}\)</span></p>
+<p>Odds ratio: <span class="math inline">\(\frac{a/b}{c/d} = \frac{ad}{bc}\)</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="d" class="level4">
+<h4 class="anchored" data-anchor-id="d">1d)</h4>
+<p>Carry out a chi-square analysis to assess the strength of association. Interpret your results.</p>
+</section>
+</section>
+<section id="exercise-2-birth-data" class="level1">
+<h1>Exercise 2 (birth data)</h1>
+<p>We shall analyse the data set given in the file <code>birth.dta</code>. In a study in Massachusetts, USA, birth weight was measured for the children of 189 women. The main variable in the study was birth weight, <code>BWT</code>, which is an important indicator of the condition of a newborn child. Low birth weight (below 2500 g) may be a medical risk factor. A major question is whether smoking during pregnancy influences the birth weight. One has also studied whether a number of other factors are related to birth weight, such as hypertension in the mother.</p>
+<p>The variables of the study are</p>
+<ul>
+<li>Identification number (ID)</li>
+<li>Low birth weight</li>
+<li>Age of the mother (AGE)</li>
+<li>Weight (in pounds) at last menstruaal period (LWT)</li>
+<li>Ethnicity, 1 means White, 2 means African American, 3 meaans other (ETH)</li>
+<li>Smoking status, 1 means current smoker, 0 means not smoking during pregnancy (SMK)</li>
+<li>History of premature labbour, values 0, 1, 2… (PTL)</li>
+<li>History of hypertension, 1 is yes, 0 is no (HT)</li>
+<li>Uterine irritability, 1 is yes, 0 is no (UI)</li>
+<li>First trimester visits, values 0, 1, 2… (FTV)</li>
+<li>Third trimster visits, values 0, 1, 2… (TTV)</li>
+<li>Birth weight (BWT)</li>
+</ul>
+<section id="a-1" class="level4">
+<h4 class="anchored" data-anchor-id="a-1">2a)</h4>
+<p>Does smoking influence the birth weight of a baby?</p>
+<p>Make a histogram and a box plot, and find the median and mean for birth weight in grams (<code>bwt</code>) for the two groups of mothers: one group that smokes, and one that does not smoke durinng the pregnancy. (Hint: use variable <code>smk</code> for this task)</p>
+</section>
+<section id="b-1" class="level4">
+<h4 class="anchored" data-anchor-id="b-1">2b)</h4>
+<p>Are the distributions for the two groups normal? Can we conclude that smoking has an effect on the weight of a newborn? Use a t-test.</p>
+</section>
+<section id="c-1" class="level4">
+<h4 class="anchored" data-anchor-id="c-1">2c)</h4>
+<p>Do mothers of hypertension have a tendency to have babies with a lower birth weight? (The variable for hypertension is <code>ht</code>)</p>
+<p>Make a histogram of birth weight for the two groups of mothers with and without hypertension. What do you observe?</p>
+</section>
+<section id="d-1" class="level4">
+<h4 class="anchored" data-anchor-id="d-1">2d)</h4>
+<p>Analyse the effect of smoking on birth weight in a table (categorical analysis): compute the relative risk (risk ratio) and carry out a test to assess the strength of association.</p>
+<p>Also do it for hypertension (instead of smoking).</p>
+<p>What can you conclude?</p>
+</section>
+</section>
+<section id="solution" class="level1">
+<h1>Solution</h1>
+<section id="exercise-1-lung-function-1" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-1-lung-function-1">Exercise 1 (lung function)</h2>
 <p>Lung function has been measured on 106 medical students. Peak expiratory flow rate (PEF, measured in liters per minute) was measured three times in a sittinng position, and three times in a standing position.</p>
 <p>The variables are</p>
 <ul>
@@ -386,8 +491,8 @@ Chi-square test measures strength of association
 <li>Mean of the three measurements made in a standing position (pefstam)</li>
 <li>Mean of all six PEF values (pefmean)</li>
 </ul>
-<section id="a" class="level3">
-<h3 class="anchored" data-anchor-id="a">1a)</h3>
+<section id="a-2" class="level4">
+<h4 class="anchored" data-anchor-id="a-2">1a)</h4>
 <p>We investigate whether having a high value of <code>pefmean</code> is associated with <code>gender</code>. First, create a new variable <strong>highpef</strong> that indicates whether <code>pefmean</code> is above 500.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if you use rda data file: </span></span>
@@ -443,8 +548,8 @@ Chi-square test measures strength of association
 </div>
 </div>
 </section>
-<section id="b" class="level3">
-<h3 class="anchored" data-anchor-id="b">1b)</h3>
+<section id="b-2" class="level4">
+<h4 class="anchored" data-anchor-id="b-2">1b)</h4>
 <p>We investigate the association between these two variables via an appropriate table analysis. Make a table of <code>highpef</code> vs <code>gender</code>, which counts the number of subjects having each one of the four combinations in a 2 by 2 contingency table.</p>
 <p>You can do this with <code>table()</code> command: it counts how many observations equals to each unique value in the data. When the data takes 2 values (1/0, yes or no), <code>table()</code> counts the numbers in each category.</p>
 <div class="cell">
@@ -478,7 +583,7 @@ gender    0  1
 </div>
 </div>
 <div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -487,7 +592,7 @@ Cross tabulation, order of exposure and outcome
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>You should be aware that <code>table()</code> does not <em>automatically</em> produce the contingency table which puts exposed (group 1) for two outcomes at the first row; neither does it put positive outcome (outcome = yes) for exposed/unexposed group in the first column.</p>
 <p><code>table()</code> only counts the combination. It is up to you to make sense which numbers are <span class="math inline">\(d1, d0, h1, h0\)</span>!</p>
@@ -495,11 +600,11 @@ Cross tabulation, order of exposure and outcome
 </div>
 </div>
 </section>
-<section id="c" class="level3">
-<h3 class="anchored" data-anchor-id="c">1c)</h3>
+<section id="c-2" class="level4">
+<h4 class="anchored" data-anchor-id="c-2">1c)</h4>
 <p>Compute <strong>risk ratio</strong> and <strong>odds ratio</strong> (only the point estimates, no confidence interval). Here the exposure is <code>gender</code> (we assume that the reference group is <em>female</em>: unexposed), and outcome is <code>highpef</code>. Interpret your results.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -508,7 +613,7 @@ Risk ratio and odds ratio
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <table class="table">
 <thead>
@@ -581,8 +686,8 @@ Risk ratio and odds ratio
 </div>
 </div>
 </section>
-<section id="d" class="level3">
-<h3 class="anchored" data-anchor-id="d">1d)</h3>
+<section id="d-2" class="level4">
+<h4 class="anchored" data-anchor-id="d-2">1d)</h4>
 <p>Carry out a chi-square analysis to assess the strength of association. Interpret your results.</p>
 <p>We do a chi-square test with <code>chisq.test()</code> function. To read more about what is required as input, you can use <code>?chisq.test()</code> to get the documentation.</p>
 <div class="cell">
@@ -646,8 +751,8 @@ X-squared = 62.498, df = 1, p-value = 2.667e-15</code></pre>
 </div>
 </div>
 </section>
-<section id="optional-use-r-package-to-compute-rr-and-or" class="level3">
-<h3 class="anchored" data-anchor-id="optional-use-r-package-to-compute-rr-and-or">Optional: use R package to compute RR and OR</h3>
+<section id="optional-use-r-package-to-compute-rr-and-or" class="level4">
+<h4 class="anchored" data-anchor-id="optional-use-r-package-to-compute-rr-and-or">Optional: use R package to compute RR and OR</h4>
 <p>(This is for people who are interested, and able to load additional R packages and read the documentations. If this is too much: skip it)</p>
 <p>You can verify if this is correct with some R packages that implement risk ratio and odds ratio.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -752,8 +857,8 @@ Fisher exact test that OR = 1: Pr&gt;chi2 = &lt;0.001
 </div>
 </section>
 </section>
-<section id="exercise-2-birth-data" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-2-birth-data">Exercise 2 (birth data)</h2>
+<section id="exercise-2-birth-data-1" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2-birth-data-1">Exercise 2 (birth data)</h2>
 <p>We shall analyse the data set given in the file <code>birth.dta</code>. In a study in Massachusetts, USA, birth weight was measured for the children of 189 women. The main variable in the study was birth weight, <code>BWT</code>, which is an important indicator of the condition of a newborn child. Low birth weight (below 2500 g) may be a medical risk factor. A major question is whether smoking during pregnancy influences the birth weight. One has also studied whether a number of other factors are related to birth weight, such as hypertension in the mother.</p>
 <p>The variables of the study are</p>
 <ul>
@@ -770,8 +875,8 @@ Fisher exact test that OR = 1: Pr&gt;chi2 = &lt;0.001
 <li>Third trimster visits, values 0, 1, 2… (TTV)</li>
 <li>Birth weight (BWT)</li>
 </ul>
-<section id="a-1" class="level4">
-<h4 class="anchored" data-anchor-id="a-1">2a)</h4>
+<section id="a-3" class="level4">
+<h4 class="anchored" data-anchor-id="a-3">2a)</h4>
 <p>Does smoking influence the birth weight of a baby?</p>
 <p>Make a histogram and a box plot, and find the median and mean for birth weight in grams (<code>bwt</code>) for the two groups of mothers: one group that smokes, and one that does not smoke durinng the pregnancy. (Hint: use variable <code>smk</code> for this task)</p>
 <div class="cell">
@@ -853,8 +958,8 @@ nonsmoker    smoker
 </div>
 <p>From the histograms and boxplots, you can spot that there seems to be slightly smaller values of baby birth weight for smoker mothers; although we can not draw a concrete conclusion by looking at the graphs. Therefore, you should carry out a hypothesis test to be more certain.</p>
 </section>
-<section id="b-1" class="level4">
-<h4 class="anchored" data-anchor-id="b-1">2b)</h4>
+<section id="b-3" class="level4">
+<h4 class="anchored" data-anchor-id="b-3">2b)</h4>
 <p>Are the distributions for the two groups normal? Can we conclude that smoking has an effect on the weight of a newborn? Use a t-test.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(bw_smoker, <span class="at">main =</span> <span class="st">'QQplot: birthweight: smoker mothers'</span>)</span>
@@ -908,8 +1013,8 @@ mean of x mean of y
 <p>From the Q-Q plots, you can consider that the normality assumption is fulfilled.</p>
 <p>The t-test (either Welch’s two sample t-test; or two sample t-test for equal variances) indicates that there is significant difference between the two groups. Birth weight of babies from smoker mothers are significantly lower than those from non-smoker mothers (p=0.009 if using the second test).</p>
 </section>
-<section id="c-1" class="level4">
-<h4 class="anchored" data-anchor-id="c-1">2c)</h4>
+<section id="c-3" class="level4">
+<h4 class="anchored" data-anchor-id="c-3">2c)</h4>
 <p>Do mothers of <strong>hypertension</strong> have a tendency to have babies with a lower birth weight? (The variable for hypertension is <code>HT</code>)</p>
 <p>Make a histogram of birth weight for the two groups of mothers with and without hypertension. What do you observe?</p>
 <div class="cell">
@@ -1002,8 +1107,8 @@ mean of x mean of y
 <p>The data in hypertension group (even though scarce) fall roughly on the straight line in the QQ plot. The data on the no hyper tension group (much more data) also fall on the straight line; this suggests that the normal assumption can be assumed to be fulfilled.</p>
 <p>We have checked whether the variances between the two groups are very different (rule of thumb: twice standard deviation). We can see that they do not differ by that much; so we can use the t-test with equal variance.</p>
 </section>
-<section id="d-1" class="level4">
-<h4 class="anchored" data-anchor-id="d-1">2d)</h4>
+<section id="d-3" class="level4">
+<h4 class="anchored" data-anchor-id="d-3">2d)</h4>
 <p>Analyse the effect of smoking on birth weight in a table (categorical analysis): compute the relative risk (risk ratio) and carry out a test to assess the strength of association.</p>
 <p>Also do it for hypertension (instead of smoking).</p>
 <p>What can you conclude?</p>
@@ -1102,7 +1207,7 @@ X-squared = 4.388, df = 1, p-value = 0.03619</code></pre>
     replicates)
 
 data:  tb_bw_ht
-X-squared = 4.388, df = NA, p-value = 0.05397</code></pre>
+X-squared = 4.388, df = NA, p-value = 0.06347</code></pre>
 </div>
 </div>
 <p>You can see that the conclusion for this chi-square test is problematic, as the data is very imbalanced. The p-value is around 0.05, so you are not able to reject the null hypothesis (of no association) with full confidence. You should report your confidence interval along with the point estimate, and also report your p-value even if it is not significantly small.</p>
