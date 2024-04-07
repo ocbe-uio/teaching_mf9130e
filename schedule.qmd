@@ -35,21 +35,21 @@ Locations
 
 |  Day | Session  | Place |  Topic           |  Course material        |
 |:-------:|:---:|:------:|:---------------:|:-------------:|
-| Day 1 - Apr 8 |PM | Aud 13 | **Course introduction** | [Lecture notes](v24/day1-1-Course_introduction.pdf)|
-|           | | | **Data and descriptive statistics** |[Lecture notes](v24/day1-2-Data_and_descriptive_statistics.pdf) |
-| Day 2 - Apr 9 |AM | Aud 13 | Lab 1 | [Slides](), [Lab notes](lab/lab_intro_r.qmd), [Code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/1_intro_r.R) |
-|           | | | Lab 2 |[Slides](), [Lab notes](lab/lab_eda_part1.qmd), [Code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/2_eda_part1.R) |
-|               |PM |  | **Intro to probability** | |
-|           | | | **Diagnostic test** | |
-|           | | | Lab 3 |[Slides](), [Lab notes](lab/lab_diagtest.qmd), [Code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/2_diagtest.R) |
-| Day 3 - Apr 10 |AM | Aud 13 | **Binomial distribution**  | |
-|           | | | **Normal distribution** | |
-|           | | | Lab 4 | [Slides](), [Lab notes](lab/lab_distribution.qmd), [Code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/2_distributions.R)|
+| Day 1 - Apr 8 |PM | Aud 13 | **Course introduction** | [Lecture](v24/day1-1-Course_introduction.pdf)|
+|           | | | **Data and descriptive statistics** |[Lecture](v24/day1-2-Data_and_descriptive_statistics.pdf) |
+| Day 2 - Apr 9 |AM | Aud 13 | Lab 1 | [Lecture](v24/lab_20240409_intro_to_r.pdf), [Lab notes](lab/lab_intro_r.qmd), [Code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/1_intro_r.R) |
+|           | | | Lab 2 |[Lecture](v24/lab_20240409_descriptive.pdf), [Lab notes](lab/lab_eda_part1.qmd), [Code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/2_eda_part1.R) |
+|               |PM |  | **Intro to probability** |[Lecture](v24/lecture_20240409_probability.pdf) |
+|           | | | **Diagnostic test** | [Lecture](v24/lecture_20240409_diagtest.pdf)|
+|           | | | Lab 3 |[Lab notes](lab/lab_diagtest.qmd), [Code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/2_diagtest.R) |
+| Day 3 - Apr 10 |AM | Aud 13 | **Binomial distribution**  | Lecture|
+|           | | | **Normal distribution** | Lecture|
+|           | | | Lab 4 |[Lab notes](lab/lab_distribution.qmd), [Code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/2_distributions.R)|
 |               |PM |  | **Statistical inference**  | |
 |           | | | **t-test** | |
-| Day 4 - Apr 11 |AM | Aud 13 | Lab 5 |[Slides](), [Lab notes](lab/lab_ttest.qmd), [Code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/3_ttest.R) |
+| Day 4 - Apr 11 |AM | Aud 13 | Lab 5 |Lecture, [Lab notes](lab/lab_ttest.qmd), [Code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/3_ttest.R) |
 |                |PM |  | **Categorical data analysis**  | |
-| Day 5 - Apr 12 |AM | Aud 13 | Lab 6 |[Slides](), [Lab notes](lab/lab_categorical.qmd), [Code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/4_categorical.R) |
+| Day 5 - Apr 12 |AM | Aud 13 | Lab 6 |Lecture, [Lab notes](lab/lab_categorical.qmd), [Code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/4_categorical.R) |
 
 
 

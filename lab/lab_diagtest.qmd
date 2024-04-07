@@ -27,11 +27,48 @@ When you have prevalence of the disease, the positive and negative predictive va
 
 $$PPV = \frac{sens \times prev}{sens \times prev + (1-spec) \times (1 - prev)}$$
 
-$$NPV = \frac{spec \times prev}{(1-sens) \ times prev + spec \times (1-prev)}$$
+$$NPV = \frac{spec \times prev}{(1-sens) \times prev + spec \times (1-prev)}$$
 
-## Mammography example
 
-In the mammography dataset, we are given the counts of patients that fall into one of the four categories: 
+
+# Coin toss example
+
+You can replicate the coin toss example in the probability section. Modify $n$ (number of tosses) and $p$ (probability of having 1 as outcome) to see what happens.
+
+```{webr-r}
+#| label: coin
+#| warning: false
+#| echo: true
+# coin tosses: modify n to 50, 100 and run the code
+n <- 10
+p <- 0.5 # prob of Heads (1s)
+s <- 1 
+
+coin <- rbinom(n = n, size = s, prob = p)
+coin # outcome, 1 is heads, 0 is tails
+
+# count how many 1s
+n_heads <- cumsum(coin)
+n_tosses <- 1:n
+
+# compute the cumulative probability of all first 1, 2, ..., n tosses
+p_cumulative <- n_heads/n_tosses
+p_cumulative <- round(p_cumulative, digits = 2) # take 2 digits
+
+# plot the probability
+plot(p_cumulative, ylim = c(0,1), pch = 20,
+     xlab = 'Toss', 
+     ylab = 'Frequency', 
+     main = 'Coin tosses cumulative probability of H (1)')
+
+# highlight the 'true' probability
+abline(h = p, col = 'red')
+```
+
+
+# Mammography example
+
+In the mammography example, we are given the counts of patients that fall into one of the four categories: 
 
 * 22 tested cancer really have cancer
 * 331 tested no cancer really do not have cancer
@@ -84,7 +121,7 @@ tp / (tp+fp)
 ```
 
 
-## HIV example
+# HIV example
 
 The HIV example from the class demonstrates the how prevalence affects metrics of diagnostic tests. 
 
