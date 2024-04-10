@@ -78,6 +78,44 @@ Binomial distribution has two parameters: $n$ and $p$. In R, they are referred t
 
 The probability associated with each possibility can be described by binomial distribution (n,p).
 
+### Binomial coefficient in R
+
+You will see the notation ${n \choose k}$ in the formula of binomial distribution. This is the binomial coefficient, it is the number of ways to pick up $k$ elements from a total of $n$; or, having $k$ number of successes in $n$ experiments. 
+
+In 2 coin tosses, each one toss can have 2 outcomes (write as 1, 0 as Heads and Tails). There are in total 4 possibilities: (0,0), (0,1), (1,0), (1,1)
+
+* zero 1, only when both are Tails, (0,0);
+* one 1, it can be either the first (1,0), or the second coin toss (0,1);
+* two 1's, only when both are 1, (1,1)
+
+The number of scenarios corresponding to zero 1, one 1, two 1's are (1, 2, 1). In R, you can use commmand `choose(n, k)` to find these three values.
+
+```{r}
+#| label: bincoef1
+#| warning: false
+#| echo: true
+# having 0 Heads in 2 coin tosses: 
+choose(n=2,k=0) # (0,0)
+# having 1 Heads in 2 coin tosses: 
+choose(n=2,k=1) # (0,1), (1,0)
+# having 2 Heads in 2 coin tosses: 
+choose(n=2,k=2) # (1,1)
+```
+
+Similarly, if you want to find out in 3 coin tosses, how many scenarios (or combinations) can give zero, one, two and three 1's, 
+
+```{r}
+#| label: bincoef2
+#| warning: false
+#| echo: true
+# having 0, 1, 2, 3 Heads in three coin tosses: 
+choose(n=3,k=0) # (0,0,0)
+choose(n=3,k=1) # (1,0,0), (0,1,0), (0,0,1)
+choose(n=3,k=2) # (1,1,0), (1,0,1), (0,1,1)
+choose(n=3,k=3) # (1,1,1)
+```
+
+
 
 ### Coin toss example
 
@@ -104,6 +142,9 @@ hist(x, main = 'Histogram of binom(1, 0.5)')
 Here you see that the frequency for 1 and 0 outcomes are very close to 0.5, even though sometimes there are slightly more 1 than 0 and vice versa. 
 
 The X-axis should be only two discrete values - 0 and 1; and nothing between.
+
+
+
 
 ### Different n and p
 
@@ -133,6 +174,38 @@ table(x)
 table(x)/500 
 x <- rbinom(n = n_sample, size = N, prob = P)
 hist(x)
+```
+
+
+### 8 patient example
+
+In the lecture we used 8 patient contracting a disease with probability of 0.15 as example. We computed the probability of having 2 patient getting the disease. Let $X$ be the random variable denoting the number of patients having disease; $P(X = 2)$ is when this number equals to 2. 
+
+Using the formula of binomial distribution, plugging the numbers: 
+
+$$P(X = 2) = {8 \choose 2}0.15^{2}(1-0.15)^{8-2}$$
+In R, 
+
+```{r}
+#| label: binom3
+#| warning: false
+#| echo: true
+
+# probability: p=0.15
+# total patients: n=8
+# x (or k) = 2, 2 getting disease
+p <- 0.15
+choose(8, 2)*p^2 * (1-p)^(8-2)
+```
+
+This is equivalent to using the R command `rbinom(x, size, prob)`, 
+
+```{r}
+#| label: binom4
+#| warning: false
+#| echo: true
+
+dbinom(2, size = 8, prob = 0.15)
 ```
 
 
