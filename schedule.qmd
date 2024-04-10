@@ -45,13 +45,16 @@ Locations
 | Day 3 - Apr 10 |AM | Aud 13 | **Binomial distribution**  | [Lecture](v24/lecture_20240410_binom.pdf)|
 |           | | | **Normal distribution** | [Lecture](v24/lecture_20240410_normaldist.pdf)|
 |           | | | Lab 4 |[Lab notes](lab/lab_distribution.qmd), [Code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/2_distributions.R)|
-|               |PM |  | **Statistical inference**  | [Lecture](v24/day3_Introductory_Lecture.pdf)|
+|               |PM |  | **Statistical inference I**  | [Lecture](v24/day3_Introductory_Lecture.pdf)|
 |           | | | **Sample mean** | [Lecture](v24/day3_key_concept_1.pdf)|
 |           | | | **Confidence interval** | [Lecture](v24/day3_key_concept_2.pdf) |
 |           | | | **t-test** | [Lecture](v24/day3_key_concept_3.pdf)|
 | Day 4 - Apr 11 |AM | Aud 13 | Lab 5 |[Lecture](v24/lab_20240411_ttest.pdf), [Lab notes](lab/lab_ttest.qmd), [Code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/3_ttest.R) |
-|                |PM |  | **Categorical data analysis**  | |
-| Day 5 - Apr 12 |AM | Aud 13 | Lab 6 |Lecture, [Lab notes](lab/lab_categorical.qmd), [Code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/4_categorical.R) |
+|                |PM |  | **Statistical inference II**  | [Lecture](v24/day4_Introductory_Lecture.pdf) |
+|           | | | **One proportion** |[Lecture](v24/day4_key_concept_1.pdf)|
+|           | | | **Two proportions** | [Lecture](v24/day4_key_concept_2.pdf) |
+|           | | | **Table analysis** | [Lecture](v24/day4_key_concept_3.pdf)|
+| Day 5 - Apr 12 |AM | Aud 13 | Lab 6 |[Lecture](v24/lab_20240412_categorical.pdf), [Lab notes](lab/lab_categorical.qmd), [Code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/4_categorical.R) |
 
 
 
