@@ -241,9 +241,9 @@ Do the same for males.
 
 #### 2b)
 
-Assume that the average height for female students a few years ago was 167 cm. Does the height in the present material differ significantly?
+Assume that the average height for female students a few years ago was 167 cm. Does the height in the present material differ significantly? Is it significantly different from 169cm?
 
-Formulate a null hypothesis, calculate a test statistic and p-value. 
+Formulate a null hypothesis, calculate a test statistic and p-value. Interpret your results.
 
 #### 2c)
 
@@ -607,9 +607,9 @@ Based on our calculation, the mean height for males is 181.87 cm (95% confidence
 
 #### 2b)
 
-Assume that the average height for female students a few years ago was 167 cm. Does the height in the present material differ significantly?
+Assume that the average height for female students a few years ago was 167 cm. Does the height in the present material differ significantly? Is it significantly different from 169cm?
 
-Formulate a null hypothesis, calculate a test statistic and p-value. 
+Formulate a null hypothesis, calculate a test statistic and p-value. Interpret the results.
 
 Let $\mu_F$ indicate the average height for the female students. We test the hypothesis
 
@@ -642,6 +642,76 @@ pval_twosided <- pt(q = t_stat, df = nf-1, lower.tail = F)*2
 pval_twosided
 ```
 
+
+Now we compare with 169 cm.
+
+```{r}
+#| label: ttest-2b-3
+#| echo: true
+#| eval: true
+
+t.test(height_f, mu = 169)
+# verify p-val (optional)
+t_stat <- (mean(height_f) - 169)/(sd(height_f)/sqrt(nf))
+t_stat  
+
+# compare this with t distribution with nf-1 degrees of freedom
+pval_twosided <- pt(q = t_stat, df = nf-1, lower.tail = F)*2
+pval_twosided
+```
+
+
+We can go one step further by visualizing the two scenarios. First we compare with 167 cm, where there were a significant difference. Dashed lines are confidence interval. The blue lines in the t-distribution histogram indicate the location for the t-statistic, and (two-sided) p-value is the probability beyond these two lines - greater than 3.32, and smaller than -3.32.
+
+```{r}
+#| label: ttest-2b-4
+#| echo: true
+#| eval: true
+#| code-fold: true
+#| code-summary: 'Show code'
+
+par(mfrow = c(1,2))
+# plot 1: 167
+hist(height_f, main = 'Histogram of height (female)', xlab = 'Height (cm)')
+abline(v = mean(height_f), lwd = 4, col = 'red')
+abline(v = 167, lwd = 4, col = 'forestgreen')
+
+# add CI on top of the plot  
+abline(v = ci_lower_f, lwd = 2, col = 'red', lty = 'dashed')
+abline(v = ci_upper_f, lwd = 2, col = 'red', lty = 'dashed')
+
+# plot 1t
+simt <- rt(1000, df =nf-1) # make 1000 t random variables
+hist(simt, xlim = c(-5, 5), main = 't-dist of 53 degrees of freedom')
+abline(v = 3.323, lwd = 4, col = 'blue')
+abline(v = -3.323, lwd = 4, col = 'blue')
+```
+
+
+Now compare with 169 cm.
+
+```{r}
+#| label: ttest-2b-5
+#| echo: true
+#| eval: true
+#| code-fold: true
+#| code-summary: 'Show code'
+
+par(mfrow = c(1,2))
+# plot 2: 169
+hist(height_f, main = 'Histogram of height (female)', xlab = 'Height (cm)')
+abline(v = mean(height_f), lwd = 4, col = 'red')
+abline(v = 169, lwd = 4, col = 'forestgreen')
+
+# add CI on top of the plot  
+abline(v = ci_lower_f, lwd = 2, col = 'red', lty = 'dashed')
+abline(v = ci_upper_f, lwd = 2, col = 'red', lty = 'dashed')
+
+# plot 2t
+hist(simt, xlim = c(-5, 5), main = 't-dist of 53 degrees of freedom')
+abline(v = 0.74, lwd = 4, col = 'blue')
+abline(v = -0.74, lwd = 4, col = 'blue')
+```
 
 #### 2c)
 
@@ -710,7 +780,7 @@ t.test(pefsitm, pefstam, paired = T)
 
 We can conclude that that there is a significant difference (p < 0.001) between pef measured in a sitting and standing position. 
 
-### 2e)
+#### 2e)
 
 Are the assumptions of the previous test reasonably fulfilled? 
 

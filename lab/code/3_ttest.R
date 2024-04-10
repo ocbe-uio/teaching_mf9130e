@@ -138,9 +138,6 @@ c(ci_lower_f, ci_upper_f)
 abline(v = ci_lower_f, lwd = 2, col = 'red', lty = 'dashed')
 abline(v = ci_upper_f, lwd = 2, col = 'red', lty = 'dashed')
 
-# if my xbar is normally distributed,  
-# why is t.test returning a CI based on t distribution?
-
 
 
 # height for male 
@@ -175,6 +172,63 @@ t_stat  # 3.323
 pval_twosided <- pt(q = t_stat, df = nf-1, lower.tail = F)*2
 pval_twosided
 
+
+
+
+# test a different value
+# mu = 169
+mean(height_f)
+t.test(height_f, mu = 169)
+
+# calculate by hand
+t_stat <- (mean(height_f) - 169)/(sd(height_f)/sqrt(nf))
+t_stat  # 0.74
+
+# compare this with t distribution with nf-1 degrees of freedom
+pval_twosided <- pt(q = t_stat, df = nf-1, lower.tail = F)*2
+pval_twosided
+
+# visualize with t-dist ----
+
+# quantile for t distribution 
+t975 <- qt(p = 0.975, df = nf-1) # 2.005
+
+# 95% CI 
+ci_upper_f <- mean(height_f) + t975 * sd(height_f)/sqrt(nf) # 171.1277
+ci_lower_f <- mean(height_f) - t975 * sd(height_f)/sqrt(nf) # 168.0204
+c(ci_lower_f, ci_upper_f)
+
+par(mfrow = c(1,2))
+# plot 1: 167
+hist(height_f, main = 'Histogram of height (female)', xlab = 'Height (cm)')
+abline(v = mean(height_f), lwd = 4, col = 'red')
+abline(v = 167, lwd = 4, col = 'forestgreen')
+
+# add CI on top of the plot  
+abline(v = ci_lower_f, lwd = 2, col = 'red', lty = 'dashed')
+abline(v = ci_upper_f, lwd = 2, col = 'red', lty = 'dashed')
+
+# plot 1t
+simt <- rt(1000, df =nf-1)
+hist(simt, xlim = c(-5, 5), main = 't-dist of 53 degrees of freedom')
+abline(v = 3.323, lwd = 4, col = 'blue')
+abline(v = -3.323, lwd = 4, col = 'blue')
+
+
+
+# plot 2: 169
+hist(height_f, main = 'Histogram of height (female)', xlab = 'Height (cm)')
+abline(v = mean(height_f), lwd = 4, col = 'red')
+abline(v = 169, lwd = 4, col = 'forestgreen')
+
+# add CI on top of the plot  
+abline(v = ci_lower_f, lwd = 2, col = 'red', lty = 'dashed')
+abline(v = ci_upper_f, lwd = 2, col = 'red', lty = 'dashed')
+
+# plot 2t
+hist(simt, xlim = c(-5, 5), main = 't-dist of 53 degrees of freedom')
+abline(v = 0.74, lwd = 4, col = 'blue')
+abline(v = -0.74, lwd = 4, col = 'blue')
 
 
 

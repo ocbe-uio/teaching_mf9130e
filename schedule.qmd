@@ -49,7 +49,7 @@ Locations
 |           | | | **Sample mean** | [Lecture](v24/day3_key_concept_1.pdf)|
 |           | | | **Confidence interval** | [Lecture](v24/day3_key_concept_2.pdf) |
 |           | | | **t-test** | [Lecture](v24/day3_key_concept_3.pdf)|
-| Day 4 - Apr 11 |AM | Aud 13 | Lab 5 |Lecture, [Lab notes](lab/lab_ttest.qmd), [Code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/3_ttest.R) |
+| Day 4 - Apr 11 |AM | Aud 13 | Lab 5 |[Lecture](v24/lab_20240411_ttest.pdf), [Lab notes](lab/lab_ttest.qmd), [Code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/3_ttest.R) |
 |                |PM |  | **Categorical data analysis**  | |
 | Day 5 - Apr 12 |AM | Aud 13 | Lab 6 |Lecture, [Lab notes](lab/lab_categorical.qmd), [Code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/4_categorical.R) |
 
