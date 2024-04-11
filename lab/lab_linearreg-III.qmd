@@ -23,7 +23,77 @@ Datasets
 
 ------------------
 
-# Examples (exercises with solution)
+
+## Exercise 1 (crime rate data). 
+
+This data set contains crime rate data for the individual US states, including District of Columbia (Washington D.C.), coded in the variable `state`. The variables are violent crime rate (`crime`), murder rate (`murder`), percentage metropolitan (`pctmetro`), percentage high school graduates (`pcths`), percentage
+poverty (`poverty`), percentage single parents (`single`).
+
+#### 1a)
+
+Make scatter plots with violent crime rate on the y-axis and percentage metropolitan or percentage single parents on the x-axis. Mark each point by the state name. 
+
+Insert regression lines in each of the diagrams. Comment on the diagram. You see that Washington D.C. (dc) has a particularly high crime rate.
+
+*Note: One way how you can add labels (e.g. the state name) to the data points in a scatter plot is to use the command `text()`, like so: `text(y ~ x, labels = lab)`, where `x` and `y` are the variables on the x- and y-axis in the scatterplot and `lab` is the variable that we want to use for the labels.*
+
+#### 1b)
+
+Do a regression analysis with crime rate as the dependent variable and percentage metropolitan as the independent variable. Perform also residual analysis.
+
+#### 1c)
+
+Next, do a regression analysis with percentage single parents as the independent variable. Perform the residual analysis.
+
+#### 1d)
+
+Finally, have a look at the fourth plot of the regression diagnostics plots from tasks b) and c), which shows Residuals vs Leverage. Interpret the results in terms of an analysis of potential influence points.
+
+
+## Exercise 2 (birth). 
+
+In a study in Massachusetts, USA, birth weight was measured for the children of 189 women. The main variable in the study was birth weight, `bwt`, which is an important indicator of the condition of a newborn child. Low birth weight (below 2500 g) may be a medical risk factor. A major question is whether smoking during pregnancy influences the birth weight. One has also studied whether a number of other factors are related to birth weight, such as hypertension in the mother. 
+
+The variables of the study are
+
+* Identification number (id)  
+* Low birth weight (low), i.e. bwt below or above 2500g  
+* Age of the mother in years (age)  
+* Weight (in pounds) at last menstrual period (lwt)  
+* Ethnicity: white, black, or other (eth)  
+* Smoking status, `smoker` means current smoker, `nonsmoker` means not smoking during pregnancy (smk)  
+* History of premature labour, values 0, 1, 2... (ptl)  
+* History of hypertension: yes vs no (ht)  
+* Uterine irritability, yes vs no (ui)  
+* First trimester visits, values 0, 1, 2... (ftv)  
+* Third trimester visits, values 0, 1, 2... (ttv)  
+* Birth weight in grams (bwt)  
+
+#### 2a)
+
+Make scatter plots of birth weight (`bwt`) versus age of the mother (`age`), and versus weight of mother (`lwt`). Edit the scatter plots to insert a regression line. 
+
+Make also separate regression lines for smokers and non-smokers. Interpret the results.
+
+#### 2b)
+
+Compute the correlation between birth weight and weight of mother.
+
+#### 2c)
+
+Make boxplots of birth weight for smokers and non-smokers separately.
+
+#### 2d)
+
+Let us perform regression analyses with birth weight as the dependent variable. First, use only smoking as an independent variable. 
+
+In the second analysis, use also weight of mother as an independent variable. Interpret the results in relation to the earlier results of this exercise.
+
+And finally, in a third analysis, add smoking, weight of the mother and ethnicity.
+
+
+
+# Solution
 
 
 ## Exercise 1 (crime rate data). 

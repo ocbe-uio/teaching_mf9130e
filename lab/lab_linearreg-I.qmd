@@ -21,7 +21,76 @@ Datasets
 
 ------------------
 
+
 # Examples (exercises with solution)
+
+
+## Exercise 1 (lung function)
+
+Lung function has been measured on 106 medical students. Peak expiratory flow rate (PEF, measured in liters per minute) was measured three times in a sitting position, and three times in a standing position.
+
+The variables are 
+
+* Age (years)  
+* Gender (female, male)  
+* Height (cm)  
+* Weight (kg)  
+* PEF measured three times in a sitting position (pefsit1, pefsit2, pefsit3)  
+* PEF measured three times in a standing position (pefsta1, pefsta2, pefsta3)  
+* Mean of the three measurements made in a sitting position (pefsitm)  
+* Mean of the three measurements made in a standing position (pefstam)  
+* Mean of all six PEF values (pefmean)  
+
+
+#### 1a) 
+
+Make a scatter plot of `pefsit2` versus `pefsit1`; and make a separate scatter plot of `pefsit1` versus `weight`. Insert a regression line on top of the scatter plots. 
+
+*Note: You can add a regression line on top of an existing scatter plot by using the `abline(reg = lm(y ~ x))`, where `x` is the variable in the x-axis and `y` is the variable on the y-axis of the scatterplot.*
+
+#### 1b) 
+
+Compute the correlation between `pefsit1` and `pefsit2`; and between `pefsit1` and `weight`. 
+
+Why is the correlation between the first pair closer to 1 than the second pair?
+
+*Note: You can get the pair-wise correlation between many other pairs of variables using `cor(your_data)`. Be mindful of missing values in your data; if there are any missing values, you can still calculate the correlation by using `cor(your_data, use='pairwise.complete.obs').*  
+
+#### 1c) 
+
+Carry out two regression analysis: 
+
+* `pefsit2` as dependent variable (y), `pefsit1` as independent variable (x);
+* `pefsitm` as dependent variable (y), `weight` as independent variable (x).
+
+Interpret the results in relation to the scatter plots.
+
+#### 1d) 
+
+Perform a residual analysis for the analyses you did before. Interpret the results.
+
+
+## Exercise 2 (blood pressure)
+
+The dataset `bp` contains data on 20 healthy adults on two variables, `Age` and `Blood pressure`. We will explore the relationship between these two variables.
+
+#### 2a)
+
+Load the dataset. Find the correlation between age and blood pressure, and test if it is significant. 
+
+Fit a simple linear regression model, where blood pressure is the dependent variable and age is the independent variable. What is the 95% confidence interval for the regression slope parameter?
+
+Also find the squared correlation coefficient between age and blood pressure. What does it mean?
+
+*Bonus task (homework): Plot the regression line, and check the residuals.*
+
+#### 2b)
+
+What is the blood pressure for a person at age 40? For a person at age 75? Comment.
+
+*Bonus task (homework): Plot the regression line, and check the residuals.*
+
+# Solution
 
 
 ## Exercise 1 (lung function)

@@ -20,7 +20,83 @@ Datasets
 
 ------------------
 
-# Examples (exercises with solution)
+## Exercise 1 (lung function)
+
+We continue with the analysis of the lung function data (`PEFH98-english`) by including more than one independent variable in the analysis.
+
+
+#### 1a)
+
+Make a regression analysis with `pefsit1` as dependent variable, and `sex` and `weight` as independent variables. Assess the model fit. Interpret the results.
+
+
+#### 1b)
+
+Perform a regression analysis with `pefmean` as dependent variable, and try out **combinations** of `sex`, `height`, and `weight` as independent variables.
+
+Which variables would you include in your final analysis? How much variation is explained? Assess the model fit, and interpret the results. 
+
+
+
+## Exercise 2 (length of hospital stay)
+
+The data was collected at the Geriatric Department at Ullevål Sykehus. Below is a description of the data set `liggetid`. The file includes the following variables:
+
+- Year of birth (faar)
+- Month of birth (fmaan)
+- Day of birth (fdag)
+- Year of hospital admission (innaar)
+- Month of admission (innmaan)
+- Day of admission (inndag)
+- Year of discharge from hospital (utaar)
+- Month of discharge (utmaan)
+- Day of discharge (utdag)
+- Gender, where 1 = male and 0 = female (kjoenn)
+- Admission from, where 1 = home, 2 = Div. of Medicine, 3 =
+Div. of Surgery, 4 = Other division, 5 = Other hospital, 6 =
+Nursing home (kom_fra)
+- Stroke, where 1 = yes, 0 = no (slag)
+- Age (alder)
+- Hospital stay, in days (liggetid)
+- Logarithm of hospital stay (lnliggti)
+- Comes from Div. of Medicine (kom_fra2)
+- Comes from Div. of Surgery (kom_fra3)
+- Comes from Other division (kom_fra4)
+- Comes from Other hospital (kom_fra5)
+- Comes from Nursing home (kom_fra6)
+- Censoring variable (censor)
+
+The variable `liggetid` time is calculated from the `innaar`, `innmaan`, `inndag`, `utaar`, `utmaan` and `utdag` variables. 
+
+#### 2a)
+
+Create a boxplot for length of hospital stay for men and women.
+
+#### 2b) 
+
+We want to explain the variation in lengths of hospital stay. We will look at the independent variables `kjoenn` (gender) and `slag` (stroke). 
+
+Run a regression analysis using the dependent variable `liggetid`. Also perform a residual analysis. What do you think about this analysis?
+
+
+#### 2c) 
+
+Do the same analysis, but on the log-transformed data. The transformed variable already exists in the dataset, `lnliggti`. Comment on the results.
+
+
+#### 2d) Bonus task (do this only if you still have time)
+
+(*A somewhat more mathematical exercise.*) Set up the regression
+equation for `lnliggti` as estimated in the previous task. Use
+the exponential function `exp()` on both sides of the equation. What kind
+of equation do you get now for liggetid? How much does the length of
+hospital stay increase for those who have a stroke? Comment.
+
+
+
+
+
+# Solution
 
 
 ## Exercise 1 (lung function)
