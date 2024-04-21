@@ -27,7 +27,7 @@ When you have prevalence of the disease, the positive and negative predictive va
 
 $$PPV = \frac{sens \times prev}{sens \times prev + (1-spec) \times (1 - prev)}$$
 
-$$NPV = \frac{spec \times prev}{(1-sens) \times prev + spec \times (1-prev)}$$
+$$NPV = \frac{spec \times (1-prev)}{(1-sens) \times prev + spec \times (1-prev)}$$
 
 
 
@@ -184,6 +184,8 @@ specificity <- 0.998
 sensitivity <- 0.98
 # run the formula for ppv
 (sensitivity * prevalence) / (sensitivity * prevalence + (1-specificity) * (1-prevalence))
+# npv
+(specificity * (1-prevalence)) / ((1-sensitivity) * prevalence + specificity * (1-prevalence))
 ```
 
 

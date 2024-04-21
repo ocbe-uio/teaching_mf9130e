@@ -423,7 +423,7 @@ window.Quarto = {
 </ul>
 <p>When you have prevalence of the disease, the positive and negative predictive value PPV, NPV are</p>
 <p><span class="math display">\[PPV = \frac{sens \times prev}{sens \times prev + (1-spec) \times (1 - prev)}\]</span></p>
-<p><span class="math display">\[NPV = \frac{spec \times prev}{(1-sens) \times prev + spec \times (1-prev)}\]</span></p>
+<p><span class="math display">\[NPV = \frac{spec \times (1-prev)}{(1-sens) \times prev + spec \times (1-prev)}\]</span></p>
 <section id="coin-toss-example" class="level1">
 <h1>Coin toss example</h1>
 <p>You can replicate the coin toss example in the probability section. Modify <span class="math inline">\(n\)</span> (number of tosses) and <span class="math inline">\(p\)</span> (probability of having 1 as outcome) to see what happens.</p>
@@ -784,7 +784,9 @@ prevalence <- 0.01
 specificity <- 0.998
 sensitivity <- 0.98
 # run the formula for ppv
-(sensitivity * prevalence) / (sensitivity * prevalence + (1-specificity) * (1-prevalence))`,
+(sensitivity * prevalence) / (sensitivity * prevalence + (1-specificity) * (1-prevalence))
+# npv
+(specificity * (1-prevalence)) / ((1-sensitivity) * prevalence + specificity * (1-prevalence))`,
       language: 'r',
       theme: 'vs-light',
       automaticLayout: true,           // TODO: Could be problematic for slide decks
@@ -1478,7 +1480,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>$$PPV = \frac{sens \times prev}{sens \times prev + (1-spec) \times (1 - prev)}$$</span>
 <span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>$$NPV = \frac{spec \times prev}{(1-sens) \times prev + spec \times (1-prev)}$$</span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>$$NPV = \frac{spec \times (1-prev)}{(1-sens) \times prev + spec \times (1-prev)}$$</span>
 <span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a></span>
@@ -1635,9 +1637,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb21-196"><a href="#cb21-196" aria-hidden="true" tabindex="-1"></a><span class="in">sensitivity &lt;- 0.98</span></span>
 <span id="cb21-197"><a href="#cb21-197" aria-hidden="true" tabindex="-1"></a><span class="in"># run the formula for ppv</span></span>
 <span id="cb21-198"><a href="#cb21-198" aria-hidden="true" tabindex="-1"></a><span class="in">(sensitivity * prevalence) / (sensitivity * prevalence + (1-specificity) * (1-prevalence))</span></span>
-<span id="cb21-199"><a href="#cb21-199" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-200"><a href="#cb21-200" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-201"><a href="#cb21-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-199"><a href="#cb21-199" aria-hidden="true" tabindex="-1"></a><span class="in"># npv</span></span>
+<span id="cb21-200"><a href="#cb21-200" aria-hidden="true" tabindex="-1"></a><span class="in">(specificity * (1-prevalence)) / ((1-sensitivity) * prevalence + specificity * (1-prevalence))</span></span>
+<span id="cb21-201"><a href="#cb21-201" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-202"><a href="#cb21-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-203"><a href="#cb21-203" aria-hidden="true" tabindex="-1"></a></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
