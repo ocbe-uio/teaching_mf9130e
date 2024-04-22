@@ -67,21 +67,22 @@ Locations
 
 |  Day | Session  | Place |  Topic     |   Course material        |
 |:-------:|:---:|:------:|:---------------:|:---------------:|
-| Apr 22 |AM | Runde | Transformations | |
-| | | | Non-parametric methods|  |
+| Apr 22 |AM | Runde | **Exploratory analysis** (Part II) |[Lecture](v24/nonparametric_lecture_eda2.pdf) |
+| | | | **Transformation, non-parametric** | [Lecture](v24/nonparametric_lecture.pdf) |
+| | | | **Randomness and probability** | [Lecture](v24/week_2_day_1_1.pdf) |
 | | | | Lab 7 |[Lab notes](lab/lab_nonpara.qmd) |
-|        |PM |  | Sample size and statistical power | Exercise|
-| Apr 23 |AM | Runde | Study designs | |
-|        |PM |  | Linear regression I |Lecture |
+|        |PM |  | **Sample size and statistical power** | [Lecture](v24/sample_size_lecture.pdf), [Exercise](v24/sample_size_exercise.pdf), [Code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/day5_lab_sample_size.R)|
+| Apr 23 |AM | Runde | **Study designs** | [Lecture](v24/2024-04-23_Epidemiological-clinical-design_Stenehjem_UPLOAD.pdf)|
+|        |PM |  | **Linear regression I** |[Lecture](v24/linear_regression_part_1.pdf) |
 | | | | Lab 8 |[Lab notes](lab/lab_linearreg-I.qmd) |
-| Apr 24 |AM | Aud 13 | Linear regression II | Lecture|
+| Apr 24 |AM | Aud 13 | **Linear regression II** | Lecture|
 | | | | Lab 9| [Lab notes](lab/lab_linearreg-II.qmd)|
-|        |PM |  | Linear regression III | Lecture|
+|        |PM |  | **Linear regression III** | Lecture|
 | | | |Lab 10 | [Lab notes](lab/lab_linearreg-III.qmd)|
 |        | |  | Course summary | Lecture|
-| Apr 25 |AM | Runde | Logistic regression | Lecture|
+| Apr 25 |AM | Runde | **Logistic regression** | Lecture|
 | | | | Lab 11| [Lab notes](lab/lab_logistic_reg.qmd)|
-|        |PM |  | Survival analysis | Lecture|
+|        |PM |  | **Survival analysis** | Lecture|
 | | | |Lab 12 | [Lab notes](lab/lab_survival.qmd)|
 
 
