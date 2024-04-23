@@ -75,11 +75,12 @@ Locations
 | Apr 23 |AM | Runde | **Study designs** | [Lecture](v24/2024-04-23_Epidemiological-clinical-design_Stenehjem_UPLOAD.pdf)|
 |        |PM |  | **Linear regression I** |[Lecture](v24/linear_regression_part_1.pdf) |
 | | | | Lab 8 |[Lab notes](lab/lab_linearreg-I.qmd) |
-| Apr 24 |AM | Aud 13 | **Linear regression II** | Lecture|
+| Apr 24 |AM | Aud 13 | **Linear regression II** | [Lecture](v24/regression_analysis_part_2.pdf)|
 | | | | Lab 9| [Lab notes](lab/lab_linearreg-II.qmd)|
-|        |PM |  | **Linear regression III** | Lecture|
+|        |PM |  | **Linear regression III** | [Lecture](v24/regression_analysis_part_3.pdf)|
 | | | |Lab 10 | [Lab notes](lab/lab_linearreg-III.qmd)|
-|        | |  | Course summary | Lecture|
+| | | |Additional | [Breiman_2001](v24/Breiman_2001.pdf), [Shmueli_2019_slides](v24/Shmueli_2019_slides.pdf), [Shmueli_2019](v24/Shmueli_2019_StatScience.pdf)|
+|        | |  | Course summary | [Lecture](v24/Course_summary.pdf)|
 | Apr 25 |AM | Runde | **Logistic regression** | [Lecture](v24/Module7-Logistic-Regression.pdf)|
 | | | |Demo: ppn | [Lecture](v24/MF9130E - Introductory course in Statistics LR examples.pdf), [Code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/height_demo.R), [ppnLR.csv](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/ppnLR.csv), [classroom.csv](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/classroom.csv)|
 | | | | Lab 11| [Lab notes](lab/lab_logistic_reg.qmd)|
