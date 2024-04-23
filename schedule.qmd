@@ -80,9 +80,10 @@ Locations
 |        |PM |  | **Linear regression III** | Lecture|
 | | | |Lab 10 | [Lab notes](lab/lab_linearreg-III.qmd)|
 |        | |  | Course summary | Lecture|
-| Apr 25 |AM | Runde | **Logistic regression** | Lecture|
+| Apr 25 |AM | Runde | **Logistic regression** | [Lecture](v24/Module7-Logistic-Regression.pdf)|
+| | | |Demo: ppn | [Lecture](v24/MF9130E - Introductory course in Statistics LR examples.pdf), [Code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/height_demo.R), [ppnLR.csv](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/ppnLR.csv), [classroom.csv](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/classroom.csv)|
 | | | | Lab 11| [Lab notes](lab/lab_logistic_reg.qmd)|
-|        |PM |  | **Survival analysis** | Lecture|
+|        |PM |  | **Survival analysis** | [Lecture](v24/Module8-Survival.pdf)|
 | | | |Lab 12 | [Lab notes](lab/lab_survival.qmd)|
 
 
