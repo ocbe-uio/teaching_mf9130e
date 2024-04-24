@@ -85,6 +85,7 @@ Locations
 | | | |Demo: ppn | [Lecture](v24/MF9130E - Introductory course in Statistics LR examples.pdf), [Code](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/code/height_demo.R), [ppnLR.csv](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/ppnLR.csv), [classroom.csv](https://github.com/ocbe-uio/teaching_mf9130e/blob/main/lab/classroom.csv)|
 | | | | Lab 11| [Lab notes](lab/lab_logistic_reg.qmd)|
 |        |PM |  | **Survival analysis** | [Lecture](v24/Module8-Survival.pdf)|
+| | | || [Tutorial](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1065034/pdf/cc2955.pdf)|
 | | | |Lab 12 | [Lab notes](lab/lab_survival.qmd)|
 
 
